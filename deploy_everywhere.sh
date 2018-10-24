@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git branch -D master
 git checkout master
 git pull
 
