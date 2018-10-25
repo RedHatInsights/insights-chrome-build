@@ -1,9 +1,11 @@
 #!/bin/bash
+set -e
 
+git fetch --all
 git checkout master
-git pull
+git reset --hard origin
 
-for environment in ci-beta ci-stable qa-beta qa-stable stage-beta stage-stable
+for environment in ci-beta ci-stable qa-beta qa-stable #stage-beta stage-stable
 do
     git checkout $environment
     git reset --hard master
