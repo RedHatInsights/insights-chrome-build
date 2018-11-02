@@ -1,0 +1,1 @@
+{"version":3,"sources":["inventoryStyles.js"],"names":[],"mappings":";;;AACA,aADA,QAAA,2EACA,QAAA","file":"inventoryStyles.7a93ae88.map","sourceRoot":"../../src/js","sourcesContent":["import '@red-hat-insights/insights-frontend-components/components/Inventory.css';\nimport '../sass/inventory.scss';\n"]}
