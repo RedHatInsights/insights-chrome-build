@@ -545,10 +545,6 @@ var _Dropdown = require("@patternfly/react-core/dist/esm/components/Dropdown");
 
 var _questionCircleIcon = _interopRequireDefault(require("@patternfly/react-icons/dist/esm/icons/question-circle-icon"));
 
-var _searchIcon = _interopRequireDefault(require("@patternfly/react-icons/dist/esm/icons/search-icon"));
-
-var _bellIcon = _interopRequireDefault(require("@patternfly/react-icons/dist/esm/icons/bell-icon"));
-
 var _cogIcon = _interopRequireDefault(require("@patternfly/react-icons/dist/esm/icons/cog-icon"));
 
 var _UserToggle = _interopRequireDefault(require("./UserToggle"));
@@ -557,15 +553,19 @@ var _ToolbarToggle = _interopRequireDefault(require("./ToolbarToggle"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var actions = [{
-  title: 'Search',
-  icon: _searchIcon.default,
-  widget: 'InsightsSearch'
-}, {
-  title: 'Notification',
-  icon: _bellIcon.default,
-  widget: 'InsightsNotifications'
-}, {
+// import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
+// import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
+var actions = [// {
+//     title: 'Search',
+//     icon: SearchIcon,
+//     widget: 'InsightsSearch'
+// },
+// {
+//     title: 'Notification',
+//     icon: BellIcon,
+//     widget: 'InsightsNotifications'
+// },
+{
   title: 'Settings',
   icon: _cogIcon.default,
   widget: 'InsightsSettings',
@@ -614,7 +614,7 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"react":"ccIB","@patternfly/react-core/dist/esm/components/Button":"CjT+","@patternfly/react-core/dist/esm/layouts/Toolbar":"f7TI","@patternfly/react-core/dist/esm/components/Dropdown":"7GBR","@patternfly/react-icons/dist/esm/icons/question-circle-icon":"wdXW","@patternfly/react-icons/dist/esm/icons/search-icon":"q2Y+","@patternfly/react-icons/dist/esm/icons/bell-icon":"BrM0","@patternfly/react-icons/dist/esm/icons/cog-icon":"EIB9","./UserToggle":"ZPuf","./ToolbarToggle":"i78E"}],"1PeJ":[function(require,module,exports) {
+},{"react":"ccIB","@patternfly/react-core/dist/esm/components/Button":"CjT+","@patternfly/react-core/dist/esm/layouts/Toolbar":"f7TI","@patternfly/react-core/dist/esm/components/Dropdown":"7GBR","@patternfly/react-icons/dist/esm/icons/question-circle-icon":"wdXW","@patternfly/react-icons/dist/esm/icons/cog-icon":"EIB9","./UserToggle":"ZPuf","./ToolbarToggle":"i78E"}],"1PeJ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -892,4 +892,4 @@ var _index2 = _interopRequireDefault(require("./Sidenav/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 },{"./Footer":"rwWu","./Header/index":"1PeJ","./Sidenav/index":"nuDN"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/App.a8454694.map
+//# sourceMappingURL=/insightsbeta/static/chrome/js/App.fd9186fa.map
