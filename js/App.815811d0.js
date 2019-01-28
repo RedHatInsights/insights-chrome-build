@@ -122,7 +122,7 @@ var _default = function _default() {
 
 exports.default = _default;
 },{"react":"ccIB"}],"CQxr":[function(require,module,exports) {
-module.exports = "/insightsbeta/static/chrome/js/logo-cs.2af2148a.svg";
+module.exports = "/insightsbeta/static/chrome/js/logo-cs.7d4907f8.svg";
 },{}],"sxCS":[function(require,module,exports) {
 "use strict";
 
