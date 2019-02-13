@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "644d36018d5e5edeb974cbc22aa94618354aed4d",
+  "src_hash": "245d5d988a166322159f46845e7b0f9b7a1a056c",
   "src_tag": "",
   "src_branch": "master-stable",
   "npm_info": {
@@ -11,9 +11,9 @@
   ],
   "dependencies": {
     "@patternfly/patternfly-next": {
-      "version": "1.0.83",
-      "from": "@patternfly/patternfly-next@1.0.83",
-      "resolved": "https://registry.npmjs.org/@patternfly/patternfly-next/-/patternfly-next-1.0.83.tgz"
+      "version": "1.0.175",
+      "from": "@patternfly/patternfly-next@1.0.175",
+      "resolved": "https://registry.npmjs.org/@patternfly/patternfly-next/-/patternfly-next-1.0.175.tgz"
     },
     "@patternfly/react-core": {
       "version": "1.49.4",
@@ -26,9 +26,9 @@
       "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-2.9.1.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.33.47",
-      "from": "@red-hat-insights/insights-frontend-components@3.33.47",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.33.47.tgz"
+      "version": "3.33.63",
+      "from": "@red-hat-insights/insights-frontend-components@3.33.63",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.33.63.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -53,7 +53,7 @@
     "babel-plugin-syntax-dynamic-import": {
       "version": "6.18.0",
       "from": "babel-plugin-syntax-dynamic-import@6.18.0",
-      "resolved": "http://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
+      "resolved": "https://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
     },
     "babel-plugin-transform-inline-environment-variables": {
       "version": "0.4.3",
@@ -98,7 +98,7 @@
     "eslint": {
       "version": "4.19.1",
       "from": "eslint@4.19.1",
-      "resolved": "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
     },
     "eslint-config-prettier": {
       "version": "2.10.0",
@@ -214,7 +214,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "653",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/488589211"
+    "build_number": "688",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/492829925"
   }
 }
