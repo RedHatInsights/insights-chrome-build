@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "5344bef75ebc60edaf7c43c31c970394d3f5ec04",
+  "src_hash": "06f0cd078870dbf8ec05dbbda6ea53dde32c474c",
   "src_tag": "",
   "src_branch": "master",
   "npm_info": {
@@ -26,9 +26,9 @@
       "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-2.9.1.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.33.65",
-      "from": "@red-hat-insights/insights-frontend-components@3.33.65",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.33.65.tgz"
+      "version": "3.34.1",
+      "from": "@red-hat-insights/insights-frontend-components@3.34.1",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.34.1.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -214,7 +214,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "699",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/493244546"
+    "build_number": "703",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/493329514"
   }
 }

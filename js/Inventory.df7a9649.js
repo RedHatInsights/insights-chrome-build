@@ -13366,5 +13366,5 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
 
 /******/ });
 });
-},{"@patternfly/react-core":"lx13","@patternfly/react-icons":"k73M","classnames":"kpqe","patternfly-react":"OgYW","react":"ccIB","react-redux":"oeDu","react-router-dom":"dYXq","redux":"+Mtl","buffer":"8fe9"}]},{},[], null)
+},{"@patternfly/react-core":"Tk4w","@patternfly/react-icons":"k73M","classnames":"kpqe","patternfly-react":"OgYW","react":"ccIB","react-redux":"oeDu","react-router-dom":"dYXq","redux":"+Mtl","buffer":"8fe9"}]},{},[], null)
 //# sourceMappingURL=/insightsbeta/static/chrome/js/Inventory.df7a9649.map
