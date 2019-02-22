@@ -9029,7 +9029,6 @@ aside {
 .pf-c-page {
   --pf-c-page__header-brand--FlexBasis--lg:         290px;
   --pf-c-page__sidebar--Width--lg:                  290px;
-  --pf-c-page__header--MinHeight:                   110px;
   --pf-c-page__header-brand-logo--Height:           11px;
   --pf-c-page__header-brand--BackgroundColor--md:   rgba(3, 3, 3, 0.62);
   --pf-c-page__sidebar--Transition:                 all 500ms cubic-bezier(.42, 0, .58, 1);
