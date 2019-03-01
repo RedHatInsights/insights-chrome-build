@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "bd64cb1e08e11560da7f611a1464032c00ca7898",
+  "src_hash": "075d64f826192b37afa96818adb3dc7e6d952b9e",
   "src_tag": "",
   "src_branch": "master-stable",
   "npm_info": {
@@ -26,9 +26,9 @@
       "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-2.9.1.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.34.12",
-      "from": "@red-hat-insights/insights-frontend-components@3.34.12",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.34.12.tgz"
+      "version": "3.35.2",
+      "from": "@red-hat-insights/insights-frontend-components@3.35.2",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.35.2.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -53,7 +53,7 @@
     "babel-plugin-syntax-dynamic-import": {
       "version": "6.18.0",
       "from": "babel-plugin-syntax-dynamic-import@6.18.0",
-      "resolved": "https://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
+      "resolved": "http://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
     },
     "babel-plugin-transform-inline-environment-variables": {
       "version": "0.4.3",
@@ -98,7 +98,7 @@
     "eslint": {
       "version": "4.19.1",
       "from": "eslint@4.19.1",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
+      "resolved": "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
     },
     "eslint-config-prettier": {
       "version": "2.10.0",
@@ -214,7 +214,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "727",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/497179076"
+    "build_number": "745",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/500547835"
   }
 }

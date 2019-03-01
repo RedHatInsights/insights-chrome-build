@@ -9037,6 +9037,10 @@ aside {
 .pf-c-nav {
   --pf-c-nav--Width:                                290px; }
 
+.pf-c-nav__list > .pf-c-nav__item > .ins-c-skeleton__link:after {
+  height: 0;
+  width: 0; }
+
 .pf-c-page__header {
   overflow: visible; }
   .pf-c-page__header .pf-c-dropdown__menu .account-number__header {
