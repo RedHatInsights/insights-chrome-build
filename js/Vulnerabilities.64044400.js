@@ -17030,5 +17030,5 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
 
 /******/ });
 });
-},{"react-dom":"fbLo","redux":"+Mtl","classnames":"kpqe","react-router-dom":"dYXq","@patternfly/react-icons":"F/qf","@patternfly/react-core":"lx13","react-redux":"oeDu","react":"ccIB","buffer":"8fe9"}]},{},[], null)
+},{"react-dom":"fbLo","redux":"+Mtl","classnames":"kpqe","react-router-dom":"dYXq","@patternfly/react-icons":"k73M","@patternfly/react-core":"Tk4w","react-redux":"oeDu","react":"ccIB","buffer":"8fe9"}]},{},[], null)
 //# sourceMappingURL=/insightsbeta/static/chrome/js/Vulnerabilities.64044400.map
