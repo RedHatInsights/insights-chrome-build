@@ -135,7 +135,7 @@ var _default = Object.freeze([{
   id: 'dashboard',
   title: 'Dashboard'
 }, {
-  id: 'service-portal',
+  id: 'catalog',
   title: 'Catalog',
   // nav is built before window.insights.chrome
   // detect isProd manually here
