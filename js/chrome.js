@@ -110,7 +110,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GLOBAL_NAV_IDENT = exports.APP_NAV_CLICK = exports.APP_NAV = exports.CLICK_ACTION = exports.USER_LOGIN = exports.NAVIGATION_TOGGLE = void 0;
+exports.GLOBAL_NAV_IDENT = exports.CLEAR_ACTIVE = exports.APP_NAV_CLICK = exports.APP_NAV = exports.CLICK_ACTION = exports.USER_LOGIN = exports.NAVIGATION_TOGGLE = void 0;
 var NAVIGATION_TOGGLE = '@@chrome/navigation-toggle';
 exports.NAVIGATION_TOGGLE = NAVIGATION_TOGGLE;
 var USER_LOGIN = '@@chrome/user-login';
@@ -121,6 +121,8 @@ var APP_NAV = '@@chrome/app-nav-define';
 exports.APP_NAV = APP_NAV;
 var APP_NAV_CLICK = '@@chrome/app-nav-click';
 exports.APP_NAV_CLICK = APP_NAV_CLICK;
+var CLEAR_ACTIVE = '@@chrome/app-clear-active';
+exports.CLEAR_ACTIVE = CLEAR_ACTIVE;
 var GLOBAL_NAV_IDENT = '@@chrome/identify-app';
 exports.GLOBAL_NAV_IDENT = GLOBAL_NAV_IDENT;
 },{}],"c73L":[function(require,module,exports) {
@@ -129,7 +131,85 @@ exports.GLOBAL_NAV_IDENT = GLOBAL_NAV_IDENT;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.grouppedNav = void 0;
+var grouppedNav = {
+  insights: [{
+    group: 'advisor',
+    id: 'actions',
+    title: 'Overview',
+    default: true
+  }, {
+    group: 'advisor',
+    id: 'rules',
+    title: 'Rules'
+  }, {
+    id: 'inventory',
+    title: 'Inventory'
+  }, {
+    id: 'remediations',
+    title: 'Playbooks'
+  }],
+  'cloud-rhel': [{
+    id: 'dashboard',
+    title: 'Dashboard',
+    default: true
+  }, {
+    id: 'vulnerability',
+    title: 'Vulnerability'
+  }, {
+    id: 'compliance',
+    title: 'Compliance'
+  }, {
+    id: 'drift',
+    title: 'System Comparison',
+    disabled: window.location.hostname === 'access.redhat.com'
+  }, {
+    id: 'inventory',
+    title: 'Inventory'
+  }, {
+    id: 'remediations',
+    title: 'Playbooks'
+  }],
+  'openshift-cloud-manager': [{
+    id: 'uhc',
+    title: 'UHC',
+    disabled: window.location.hostname === 'access.redhat.com',
+    default: true
+  }],
+  'hybrid-cloud-management': [{
+    id: 'service-portal',
+    title: 'Catalog',
+    // nav is built before window.insights.chrome
+    // detect isProd manually here
+    disabled: window.location.hostname === 'access.redhat.com',
+    subItems: [{
+      id: 'portfolios',
+      title: 'Portfolios',
+      default: true
+    }, {
+      id: 'platforms',
+      title: 'Platforms'
+    }, {
+      id: 'orders',
+      title: 'Orders'
+    }]
+  }, {
+    id: 'cost-management',
+    title: 'Cost Management',
+    subItems: [{
+      id: '',
+      title: 'Overview',
+      default: true
+    }, {
+      id: 'ocp',
+      title: 'OpenShift Details'
+    }, {
+      id: 'aws',
+      title: 'AWS Details'
+    }]
+  }]
+};
+exports.grouppedNav = grouppedNav;
 
 var _default = Object.freeze([{
   id: 'dashboard',
@@ -215,6 +295,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.identifyApp = identifyApp;
 exports.appNav = appNav;
 exports.appNavClick = appNavClick;
+exports.clearActive = clearActive;
 exports.clickAction = exports.userLogIn = exports.onToggle = void 0;
 
 var actionTypes = _interopRequireWildcard(require("./action-types"));
@@ -254,6 +335,13 @@ var clickAction = function clickAction(data) {
 exports.clickAction = clickAction;
 
 function identifyApp(data) {
+  if (data === 'landing') {
+    return {
+      type: actionTypes.GLOBAL_NAV_IDENT,
+      data: data
+    };
+  }
+
   if (!_globalNav.default.some(function (item) {
     return item.id === data || item.subItems && item.subItems.some(function (sub) {
       return sub.id === data;
@@ -301,6 +389,12 @@ function appNavClick(item, event) {
       id: item && item.id,
       event: event
     }
+  };
+}
+
+function clearActive() {
+  return {
+    type: actionTypes.CLEAR_ACTIVE
   };
 }
 },{"./action-types":"axw9","../nav/globalNav":"c73L"}],"VRuv":[function(require,module,exports) {
@@ -3139,6 +3233,7 @@ exports.clickReducer = clickReducer;
 exports.globalNavReducer = globalNavReducer;
 exports.appNavReducer = appNavReducer;
 exports.appNavClick = appNavClick;
+exports.clearActive = clearActive;
 exports.navToggleReducer = navToggleReducer;
 exports.loginReducer = loginReducer;
 
@@ -3155,11 +3250,27 @@ function clickReducer(state, action) {
 }
 
 function globalNavReducer(state, action) {
+  var activeGroup = state.globalNav.filter(function (item) {
+    return item.group === action.data;
+  });
+  var active;
+
+  if (activeGroup.length > 0) {
+    active = activeGroup.find(function (item) {
+      return window.location.href.indexOf(item.id) !== -1;
+    });
+  } else {
+    active = {
+      id: action.data
+    };
+  }
+
   return _objectSpread({}, state, {
     appId: action.data,
+    navHidden: action.data === 'landing',
     globalNav: state.globalNav && state.globalNav.map(function (item) {
       return _objectSpread({}, item, {
-        active: item.id === action.data
+        active: active && item.id === active.id
       });
     })
   });
@@ -3175,6 +3286,16 @@ function appNavClick(state, _ref) {
   var payload = _ref.payload;
   return _objectSpread({}, state, {
     activeApp: payload.id
+  });
+}
+
+function clearActive(state) {
+  return _objectSpread({}, state, {
+    globalNav: state.globalNav && state.globalNav.map(function (item) {
+      return _objectSpread({}, item, {
+        active: false
+      });
+    })
   });
 }
 
@@ -3219,7 +3340,7 @@ var _reducers;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var reducers = (_reducers = {}, _defineProperty(_reducers, _actionTypes.CLICK_ACTION, _reducers2.clickReducer), _defineProperty(_reducers, _actionTypes.GLOBAL_NAV_IDENT, _reducers2.globalNavReducer), _defineProperty(_reducers, _actionTypes.APP_NAV_CLICK, _reducers2.appNavClick), _defineProperty(_reducers, _actionTypes.NAVIGATION_TOGGLE, _reducers2.navToggleReducer), _defineProperty(_reducers, _actionTypes.USER_LOGIN, _reducers2.loginReducer), _reducers);
+var reducers = (_reducers = {}, _defineProperty(_reducers, _actionTypes.CLEAR_ACTIVE, _reducers2.clearActive), _defineProperty(_reducers, _actionTypes.CLICK_ACTION, _reducers2.clickReducer), _defineProperty(_reducers, _actionTypes.GLOBAL_NAV_IDENT, _reducers2.globalNavReducer), _defineProperty(_reducers, _actionTypes.APP_NAV_CLICK, _reducers2.appNavClick), _defineProperty(_reducers, _actionTypes.NAVIGATION_TOGGLE, _reducers2.navToggleReducer), _defineProperty(_reducers, _actionTypes.USER_LOGIN, _reducers2.loginReducer), _reducers);
 
 function _default() {
   // const chromeInitialState = JSON.parse(localStorage.getItem('chrome')) || {};
@@ -4891,7 +5012,7 @@ var _ReducerRegistry = _interopRequireWildcard(require("@red-hat-insights/insigh
 
 var _MiddlewareListener = _interopRequireDefault(require("@red-hat-insights/insights-frontend-components/Utilities/MiddlewareListener"));
 
-var _globalNav = _interopRequireDefault(require("./nav/globalNav.js"));
+var _globalNav = _interopRequireWildcard(require("./nav/globalNav.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4931,7 +5052,7 @@ function spinUpStore() {
 function initialState() {
   return {
     chrome: {
-      globalNav: _globalNav.default
+      globalNav: _globalNav.grouppedNav[localStorage.getItem('cs-app')] || _globalNav.default
     }
   };
 }
@@ -13547,21 +13668,18 @@ var _default = function _default() {
     store.dispatch((0, _actions.appNavClick)(defaultActive));
     (0, _reactDom.render)(_react.default.createElement(_reactRedux.Provider, {
       store: store
-    }, _react.default.createElement(Header, null)), document.querySelector('header')); // render(
-    //     <Provider store={store}>
-    //         <Footer />
-    //     </Provider>,
-    //     document.querySelector('TODO')
-    // );
+    }, _react.default.createElement(Header, null)), document.querySelector('header'));
 
-    (0, _reactDom.render)(_react.default.createElement(_reactRedux.Provider, {
-      store: store
-    }, _react.default.createElement(Sidenav, null)), document.querySelector('aside'));
+    if (document.querySelector('aside')) {
+      (0, _reactDom.render)(_react.default.createElement(_reactRedux.Provider, {
+        store: store
+      }, _react.default.createElement(Sidenav, null)), document.querySelector('aside'));
+    }
   });
 };
 
 exports.default = _default;
-},{"react":"ccIB","react-dom":"x9tB","react-redux":"IZTr","./redux/actions":"afkn","_bundle_loader":"EIqc","./App/index":[["App.f50c095c.js","Sz1i"],"App.64b93ce1.map",["logo-cs.7d4907f8.svg","/fGt"],"App.79fa4dae.css","Sz1i"]}],"gveJ":[function(require,module,exports) {
+},{"react":"ccIB","react-dom":"x9tB","react-redux":"IZTr","./redux/actions":"afkn","_bundle_loader":"EIqc","./App/index":[["App.4ffa71a9.js","Sz1i"],"App.bd9f29b8.map",["logo-cs.7d4907f8.svg","/fGt"],"App.79fa4dae.css","Sz1i"]}],"gveJ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

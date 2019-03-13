@@ -7454,8 +7454,8 @@ readers do not read off random characters that represent icons */ }
   font-family: 'Overpass', 'OpenSans', sans-serif; }
 
 .ins-c-footer {
-  background: #1d1d1d;
-  color: #6c6c6c;
+  background: var(--pf-global--BackgroundColor--300);
+  color: var(--pf-global--BackgroundColor--dark-transparent-200);
   font-size: 12px;
   font-size: 0.85714rem;
   padding: 15px 20px;
@@ -7469,9 +7469,11 @@ readers do not read off random characters that represent icons */ }
     height: 30px;
     display: inline; }
     .ins-c-footer svg#redhat-logo .st0 {
-      fill: #fff; }
+      fill: var(--pf-global--BackgroundColor--dark-100); }
     .ins-c-footer svg#redhat-logo .st1 {
       fill: #cc0000; }
+    .ins-c-footer svg#redhat-logo .st2 {
+      fill: var(--pf-global--BackgroundColor--100); }
   .ins-c-footer p, .ins-c-footer nav {
     margin-top: 5px;
     margin-top: 0.35714rem; }
@@ -7484,6 +7486,22 @@ readers do not read off random characters that represent icons */ }
     content: "|";
     margin-right: 8px;
     margin-right: 0.53571rem; }
+
+aside.pf-c-page__sidebar {
+  padding-top: 0; }
+  aside.pf-c-page__sidebar .ins-c-navigation__header {
+    height: 67px;
+    height: 4.78571rem;
+    overflow: hidden; }
+    aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item {
+      padding: 18px;
+      padding: 1.28571rem;
+      border-bottom: var(--pf-global--BorderWidth--sm) solid var(--pf-global--BorderColor--light-200); }
+      aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item:first-child {
+        border-right: var(--pf-global--BorderWidth--sm) solid var(--pf-global--BorderColor--light-200); }
+      aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item.ins-c-page__home-icon svg {
+        margin-top: 4px;
+        margin-top: 0.28571rem; }
 
 body {
   position: relative; }
