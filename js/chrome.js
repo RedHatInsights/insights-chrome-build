@@ -4974,7 +4974,7 @@ var _default = function _default(dependencies) {
 };
 
 exports.default = _default;
-},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","./inventoryStyles":[["inventoryStyles.962157c7.js","UTq8"],"inventoryStyles.b956f99d.map","inventoryStyles.d14058c9.css","UTq8"],"@red-hat-insights/insights-frontend-components/components/Inventory":[["Inventory.6892139f.js","axoS"],"Inventory.6892139f.map","axoS"]}],"ZagP":[function(require,module,exports) {
+},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","./inventoryStyles":[["inventoryStyles.9632d279.js","UTq8"],"inventoryStyles.b956f99d.map","inventoryStyles.91840d60.css","UTq8"],"@red-hat-insights/insights-frontend-components/components/Inventory":[["Inventory.a8042e43.js","axoS"],"Inventory.a8042e43.map","axoS"]}],"ZagP":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5003,7 +5003,7 @@ function loadRemediation(dependencies) {
     return remediations;
   });
 }
-},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","@red-hat-insights/insights-frontend-components/components/Remediations":[["Remediations.9ca80b91.js","mkKs"],"Remediations.9ca80b91.map","mkKs"],"./remediationsStyles":[["remediationsStyles.74edab99.js","dd+H"],"remediationsStyles.3b6e8b86.map","remediationsStyles.60fddea1.css","dd+H"]}],"v4u9":[function(require,module,exports) {
+},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","@red-hat-insights/insights-frontend-components/components/Remediations":[["Remediations.9ca80b91.js","mkKs"],"Remediations.9ca80b91.map","mkKs"],"./remediationsStyles":[["remediationsStyles.92b12e0d.js","dd+H"],"remediationsStyles.3b6e8b86.map","remediationsStyles.413621aa.css","dd+H"]}],"v4u9":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -13600,7 +13600,7 @@ var _default = {
   loadCompliance: asyncLoader([require("_bundle_loader")(require.resolve('@red-hat-insights/insights-frontend-components/components/Compliance')), require("_bundle_loader")(require.resolve('./complianceStyles'))])
 };
 exports.default = _default;
-},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","@red-hat-insights/insights-frontend-components/components/Vulnerabilities":[["Vulnerabilities.64044400.js","FCA0"],"Vulnerabilities.64044400.map","FCA0"],"./vulnerabilitiesStyles":[["vulnerabilitiesStyles.a57dc713.js","m4We"],"vulnerabilitiesStyles.c181df4f.map","vulnerabilitiesStyles.b9f72547.css","m4We"],"@red-hat-insights/insights-frontend-components/components/Advisor":[["Advisor.1ab234d5.js","Ghrs"],"Advisor.1ab234d5.map","Ghrs"],"./advisorStyles":[["advisorStyles.7ce81b22.js","hc3o"],"advisorStyles.88279b67.map","advisorStyles.cd6730a7.css","hc3o"],"@red-hat-insights/insights-frontend-components/components/Compliance":[["Compliance.534f178e.js","g2zw"],"Compliance.534f178e.map","g2zw"],"./complianceStyles":[["complianceStyles.04f71f8e.js","/Kv6"],"complianceStyles.489f4f3a.map","complianceStyles.67d15843.css","/Kv6"]}],"+ZUG":[function(require,module,exports) {
+},{"./externalDependencies":"J4S7","_bundle_loader":"EIqc","@red-hat-insights/insights-frontend-components/components/Vulnerabilities":[["Vulnerabilities.37b05334.js","FCA0"],"Vulnerabilities.37b05334.map","FCA0"],"./vulnerabilitiesStyles":[["vulnerabilitiesStyles.001e53da.js","m4We"],"vulnerabilitiesStyles.c181df4f.map","vulnerabilitiesStyles.1fc3f960.css","m4We"],"@red-hat-insights/insights-frontend-components/components/Advisor":[["Advisor.528b93ff.js","Ghrs"],"Advisor.528b93ff.map","Ghrs"],"./advisorStyles":[["advisorStyles.64b12462.js","hc3o"],"advisorStyles.88279b67.map","advisorStyles.9c3b181e.css","hc3o"],"@red-hat-insights/insights-frontend-components/components/Compliance":[["Compliance.bab5c16e.js","g2zw"],"Compliance.bab5c16e.map","g2zw"],"./complianceStyles":[["complianceStyles.5a656bc7.js","/Kv6"],"complianceStyles.489f4f3a.map","complianceStyles.317ef086.css","/Kv6"]}],"+ZUG":[function(require,module,exports) {
 "use strict";
 
 var _reduxConfig = require("./redux-config");
@@ -85042,12 +85042,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"5QAn","ieee754":"O1Qa","isarray":"fIt4","buffer":"8fe9"}],"dYXq":[function(require,module,exports) {
-var _require = require('../src/js/externalDependencies'),
-    ReactRouterDOM = _require.ReactRouterDOM;
-
-module.exports = ReactRouterDOM;
-},{"../src/js/externalDependencies":"J4S7"}],"6SiI":[function(require,module,exports) {
+},{"base64-js":"5QAn","ieee754":"O1Qa","isarray":"fIt4","buffer":"8fe9"}],"6SiI":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85163,7 +85158,7 @@ var _default = createProvider();
 
 exports.default = _default;
 },{"@babel/runtime/helpers/esm/inheritsLoose":"8lmO","react":"ccIB","prop-types":"3/B0","../utils/PropTypes":"6SiI","../utils/warning":"TyKC"}],"rGrn":[function(require,module,exports) {
-/** @license React v16.8.3
+/** @license React v16.8.4
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -86198,9 +86193,224 @@ var _connect = _interopRequireDefault(require("./connect/connect"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-},{"./components/Provider":"xVvi","./components/connectAdvanced":"LIn7","./connect/connect":"+ymG"}],"j4XR":[function(require,module,exports) {
+},{"./components/Provider":"xVvi","./components/connectAdvanced":"LIn7","./connect/connect":"+ymG"}],"dYXq":[function(require,module,exports) {
+var _require = require('../src/js/externalDependencies'),
+    ReactRouterDOM = _require.ReactRouterDOM;
+
+module.exports = ReactRouterDOM;
+},{"../src/js/externalDependencies":"J4S7"}],"rH1J":[function(require,module,exports) {
+
+// shim for using process in browser
+var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+  throw new Error('setTimeout has not been defined');
+}
+
+function defaultClearTimeout() {
+  throw new Error('clearTimeout has not been defined');
+}
+
+(function () {
+  try {
+    if (typeof setTimeout === 'function') {
+      cachedSetTimeout = setTimeout;
+    } else {
+      cachedSetTimeout = defaultSetTimout;
+    }
+  } catch (e) {
+    cachedSetTimeout = defaultSetTimout;
+  }
+
+  try {
+    if (typeof clearTimeout === 'function') {
+      cachedClearTimeout = clearTimeout;
+    } else {
+      cachedClearTimeout = defaultClearTimeout;
+    }
+  } catch (e) {
+    cachedClearTimeout = defaultClearTimeout;
+  }
+})();
+
+function runTimeout(fun) {
+  if (cachedSetTimeout === setTimeout) {
+    //normal enviroments in sane situations
+    return setTimeout(fun, 0);
+  } // if setTimeout wasn't available but was latter defined
+
+
+  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+    cachedSetTimeout = setTimeout;
+    return setTimeout(fun, 0);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedSetTimeout(fun, 0);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+      return cachedSetTimeout.call(null, fun, 0);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+      return cachedSetTimeout.call(this, fun, 0);
+    }
+  }
+}
+
+function runClearTimeout(marker) {
+  if (cachedClearTimeout === clearTimeout) {
+    //normal enviroments in sane situations
+    return clearTimeout(marker);
+  } // if clearTimeout wasn't available but was latter defined
+
+
+  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+    cachedClearTimeout = clearTimeout;
+    return clearTimeout(marker);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedClearTimeout(marker);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+      return cachedClearTimeout.call(null, marker);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+      // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+      return cachedClearTimeout.call(this, marker);
+    }
+  }
+}
+
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+  if (!draining || !currentQueue) {
+    return;
+  }
+
+  draining = false;
+
+  if (currentQueue.length) {
+    queue = currentQueue.concat(queue);
+  } else {
+    queueIndex = -1;
+  }
+
+  if (queue.length) {
+    drainQueue();
+  }
+}
+
+function drainQueue() {
+  if (draining) {
+    return;
+  }
+
+  var timeout = runTimeout(cleanUpNextTick);
+  draining = true;
+  var len = queue.length;
+
+  while (len) {
+    currentQueue = queue;
+    queue = [];
+
+    while (++queueIndex < len) {
+      if (currentQueue) {
+        currentQueue[queueIndex].run();
+      }
+    }
+
+    queueIndex = -1;
+    len = queue.length;
+  }
+
+  currentQueue = null;
+  draining = false;
+  runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+  var args = new Array(arguments.length - 1);
+
+  if (arguments.length > 1) {
+    for (var i = 1; i < arguments.length; i++) {
+      args[i - 1] = arguments[i];
+    }
+  }
+
+  queue.push(new Item(fun, args));
+
+  if (queue.length === 1 && !draining) {
+    runTimeout(drainQueue);
+  }
+}; // v8 likes predictible objects
+
+
+function Item(fun, array) {
+  this.fun = fun;
+  this.array = array;
+}
+
+Item.prototype.run = function () {
+  this.fun.apply(null, this.array);
+};
+
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) {
+  return [];
+};
+
+process.binding = function (name) {
+  throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () {
+  return '/';
+};
+
+process.chdir = function (dir) {
+  throw new Error('process.chdir is not supported');
+};
+
+process.umask = function () {
+  return 0;
+};
+},{}],"j4XR":[function(require,module,exports) {
 var global = arguments[3];
-/** @license React v0.13.3
+/** @license React v0.13.4
  * scheduler.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -86231,7 +86441,7 @@ if ("production" === 'production') {
   module.exports = require('./cjs/scheduler.development.js');
 }
 },{"./cjs/scheduler.production.min.js":"j4XR"}],"xqPY":[function(require,module,exports) {
-/** @license React v16.8.3
+/** @license React v16.8.4
  * react-dom.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -86499,7 +86709,7 @@ function Ti(a,b){var c=2<arguments.length&&void 0!==arguments[2]?arguments[2]:nu
 var Vi={createPortal:Ti,findDOMNode:function(a){if(null==a)return null;if(1===a.nodeType)return a;var b=a._reactInternalFiber;void 0===b&&("function"===typeof a.render?x("188"):x("268",Object.keys(a)));a=hd(b);a=null===a?null:a.stateNode;return a},hydrate:function(a,b,c){Qi(b)?void 0:x("200");return Si(null,a,b,!0,c)},render:function(a,b,c){Qi(b)?void 0:x("200");return Si(null,a,b,!1,c)},unstable_renderSubtreeIntoContainer:function(a,b,c,d){Qi(c)?void 0:x("200");null==a||void 0===a._reactInternalFiber?
 x("38"):void 0;return Si(a,b,c,!1,d)},unmountComponentAtNode:function(a){Qi(a)?void 0:x("40");return a._reactRootContainer?(Hi(function(){Si(null,null,a,!1,function(){a._reactRootContainer=null})}),!0):!1},unstable_createPortal:function(){return Ti.apply(void 0,arguments)},unstable_batchedUpdates:Gi,unstable_interactiveUpdates:Ii,flushSync:function(a,b){W?x("187"):void 0;var c=X;X=!0;try{return ki(a,b)}finally{X=c,Yh(1073741823,!1)}},unstable_createRoot:Ui,unstable_flushControlled:function(a){var b=
 X;X=!0;try{ki(a)}finally{(X=b)||W||Yh(1073741823,!1)}},__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{Events:[Ia,Ja,Ka,Ba.injectEventPluginsByName,pa,Qa,function(a){ya(a,Pa)},Eb,Fb,Dd,Da]}};function Ui(a,b){Qi(a)?void 0:x("299","unstable_createRoot");return new Pi(a,!0,null!=b&&!0===b.hydrate)}
-(function(a){var b=a.findFiberByHostInstance;return Te(n({},a,{overrideProps:null,currentDispatcherRef:Tb.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=hd(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null}}))})({findFiberByHostInstance:Ha,bundleType:0,version:"16.8.3",rendererPackageName:"react-dom"});var Wi={default:Vi},Xi=Wi&&Vi||Wi;module.exports=Xi.default||Xi;
+(function(a){var b=a.findFiberByHostInstance;return Te(n({},a,{overrideProps:null,currentDispatcherRef:Tb.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=hd(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null}}))})({findFiberByHostInstance:Ha,bundleType:0,version:"16.8.4",rendererPackageName:"react-dom"});var Wi={default:Vi},Xi=Wi&&Vi||Wi;module.exports=Xi.default||Xi;
 
 },{"react":"ccIB","object-assign":"W2+e","scheduler":"cIa2"}],"fbLo":[function(require,module,exports) {
 'use strict';
@@ -86539,217 +86749,7 @@ if ("production" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.production.min.js":"xqPY"}],"rH1J":[function(require,module,exports) {
-
-// shim for using process in browser
-var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-  throw new Error('setTimeout has not been defined');
-}
-
-function defaultClearTimeout() {
-  throw new Error('clearTimeout has not been defined');
-}
-
-(function () {
-  try {
-    if (typeof setTimeout === 'function') {
-      cachedSetTimeout = setTimeout;
-    } else {
-      cachedSetTimeout = defaultSetTimout;
-    }
-  } catch (e) {
-    cachedSetTimeout = defaultSetTimout;
-  }
-
-  try {
-    if (typeof clearTimeout === 'function') {
-      cachedClearTimeout = clearTimeout;
-    } else {
-      cachedClearTimeout = defaultClearTimeout;
-    }
-  } catch (e) {
-    cachedClearTimeout = defaultClearTimeout;
-  }
-})();
-
-function runTimeout(fun) {
-  if (cachedSetTimeout === setTimeout) {
-    //normal enviroments in sane situations
-    return setTimeout(fun, 0);
-  } // if setTimeout wasn't available but was latter defined
-
-
-  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-    cachedSetTimeout = setTimeout;
-    return setTimeout(fun, 0);
-  }
-
-  try {
-    // when when somebody has screwed with setTimeout but no I.E. maddness
-    return cachedSetTimeout(fun, 0);
-  } catch (e) {
-    try {
-      // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-      return cachedSetTimeout.call(null, fun, 0);
-    } catch (e) {
-      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-      return cachedSetTimeout.call(this, fun, 0);
-    }
-  }
-}
-
-function runClearTimeout(marker) {
-  if (cachedClearTimeout === clearTimeout) {
-    //normal enviroments in sane situations
-    return clearTimeout(marker);
-  } // if clearTimeout wasn't available but was latter defined
-
-
-  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-    cachedClearTimeout = clearTimeout;
-    return clearTimeout(marker);
-  }
-
-  try {
-    // when when somebody has screwed with setTimeout but no I.E. maddness
-    return cachedClearTimeout(marker);
-  } catch (e) {
-    try {
-      // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-      return cachedClearTimeout.call(null, marker);
-    } catch (e) {
-      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-      // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-      return cachedClearTimeout.call(this, marker);
-    }
-  }
-}
-
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-  if (!draining || !currentQueue) {
-    return;
-  }
-
-  draining = false;
-
-  if (currentQueue.length) {
-    queue = currentQueue.concat(queue);
-  } else {
-    queueIndex = -1;
-  }
-
-  if (queue.length) {
-    drainQueue();
-  }
-}
-
-function drainQueue() {
-  if (draining) {
-    return;
-  }
-
-  var timeout = runTimeout(cleanUpNextTick);
-  draining = true;
-  var len = queue.length;
-
-  while (len) {
-    currentQueue = queue;
-    queue = [];
-
-    while (++queueIndex < len) {
-      if (currentQueue) {
-        currentQueue[queueIndex].run();
-      }
-    }
-
-    queueIndex = -1;
-    len = queue.length;
-  }
-
-  currentQueue = null;
-  draining = false;
-  runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-  var args = new Array(arguments.length - 1);
-
-  if (arguments.length > 1) {
-    for (var i = 1; i < arguments.length; i++) {
-      args[i - 1] = arguments[i];
-    }
-  }
-
-  queue.push(new Item(fun, args));
-
-  if (queue.length === 1 && !draining) {
-    runTimeout(drainQueue);
-  }
-}; // v8 likes predictible objects
-
-
-function Item(fun, array) {
-  this.fun = fun;
-  this.array = array;
-}
-
-Item.prototype.run = function () {
-  this.fun.apply(null, this.array);
-};
-
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) {
-  return [];
-};
-
-process.binding = function (name) {
-  throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () {
-  return '/';
-};
-
-process.chdir = function (dir) {
-  throw new Error('process.chdir is not supported');
-};
-
-process.umask = function () {
-  return 0;
-};
-},{}],"2e76":[function(require,module,exports) {
+},{"./cjs/react-dom.production.min.js":"xqPY"}],"2e76":[function(require,module,exports) {
 module.exports = function loadJSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var script = document.createElement('script');
