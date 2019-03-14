@@ -1,49 +1,65 @@
 {
   "app_name": "chrome",
-  "src_hash": "e93a296ccb0d5f10630875c92ef802b3a636736d",
+  "src_hash": "1ca3159799d1e87d8a605acff4e3bb0b86ce70a5",
   "src_tag": "",
   "src_branch": "master-stable",
   "npm_info": {
   "name": "insights-chrome",
   "version": "0.0.0",
   "problems": [
-    "missing: jwt-redhat@git+https://github.com/RedHatInsights/jwt-redhat.git#b7b00d8c4e400db9aeb7ceb18d263972e0cec66e, required by insights-chrome@0.0.0"
+    "missing: jwt-redhat@git+https://github.com/RedHatInsights/jwt-redhat.git#b7b00d8c4e400db9aeb7ceb18d263972e0cec66e, required by insights-chrome@0.0.0",
+    "peer dep missing: webpack@>=2, required by babel-loader@8.0.5"
   ],
   "dependencies": {
-    "@patternfly/patternfly-next": {
-      "version": "1.0.175",
-      "from": "@patternfly/patternfly-next@1.0.175",
-      "resolved": "https://registry.npmjs.org/@patternfly/patternfly-next/-/patternfly-next-1.0.175.tgz"
+    "@babel/core": {
+      "version": "7.3.4",
+      "from": "@babel/core@7.3.4",
+      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.3.4.tgz"
+    },
+    "@babel/preset-env": {
+      "version": "7.3.1",
+      "from": "@babel/preset-env@7.3.1",
+      "resolved": "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.3.1.tgz"
+    },
+    "@babel/preset-react": {
+      "version": "7.0.0",
+      "from": "@babel/preset-react@7.0.0",
+      "resolved": "https://registry.npmjs.org/@babel/preset-react/-/preset-react-7.0.0.tgz"
+    },
+    "@patternfly/patternfly": {
+      "version": "1.0.201",
+      "from": "@patternfly/patternfly@1.0.201",
+      "resolved": "https://registry.npmjs.org/@patternfly/patternfly/-/patternfly-1.0.201.tgz"
     },
     "@patternfly/react-core": {
-      "version": "1.51.6",
-      "from": "@patternfly/react-core@1.51.6",
-      "resolved": "https://registry.npmjs.org/@patternfly/react-core/-/react-core-1.51.6.tgz"
+      "version": "2.1.4",
+      "from": "@patternfly/react-core@2.1.4",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-core/-/react-core-2.1.4.tgz"
     },
     "@patternfly/react-icons": {
-      "version": "2.9.1",
-      "from": "@patternfly/react-icons@2.9.1",
-      "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-2.9.1.tgz"
+      "version": "3.0.2",
+      "from": "@patternfly/react-icons@3.0.2",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-3.0.2.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.35.2",
-      "from": "@red-hat-insights/insights-frontend-components@3.35.2",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.35.2.tgz"
+      "version": "3.39.5",
+      "from": "@red-hat-insights/insights-frontend-components@3.39.5",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.39.5.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
       "from": "babel-cli@6.26.0",
       "resolved": "https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz"
     },
-    "babel-core": {
-      "version": "6.26.3",
-      "from": "babel-core@6.26.3",
-      "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-6.26.3.tgz"
-    },
     "babel-eslint": {
       "version": "7.2.3",
       "from": "babel-eslint@7.2.3",
       "resolved": "https://registry.npmjs.org/babel-eslint/-/babel-eslint-7.2.3.tgz"
+    },
+    "babel-loader": {
+      "version": "8.0.5",
+      "from": "babel-loader@8.0.5",
+      "resolved": "https://registry.npmjs.org/babel-loader/-/babel-loader-8.0.5.tgz"
     },
     "babel-plugin-dynamic-import-node": {
       "version": "1.2.0",
@@ -116,9 +132,9 @@
       "resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz"
     },
     "jest": {
-      "version": "23.6.0",
-      "from": "jest@23.6.0",
-      "resolved": "https://registry.npmjs.org/jest/-/jest-23.6.0.tgz"
+      "version": "24.3.1",
+      "from": "jest@24.3.1",
+      "resolved": "https://registry.npmjs.org/jest/-/jest-24.3.1.tgz"
     },
     "js-cookie": {
       "version": "2.2.0",
@@ -146,9 +162,9 @@
       "resolved": "https://registry.npmjs.org/npm-run-all/-/npm-run-all-4.1.5.tgz"
     },
     "parcel": {
-      "version": "1.10.3",
-      "from": "parcel@1.10.3",
-      "resolved": "https://registry.npmjs.org/parcel/-/parcel-1.10.3.tgz"
+      "version": "1.11.0",
+      "from": "parcel@1.11.0",
+      "resolved": "https://registry.npmjs.org/parcel/-/parcel-1.11.0.tgz"
     },
     "prop-types": {
       "version": "15.6.2",
@@ -191,9 +207,9 @@
       "resolved": "https://registry.npmjs.org/redux-logger/-/redux-logger-3.0.6.tgz"
     },
     "stylelint": {
-      "version": "9.6.0",
-      "from": "stylelint@9.6.0",
-      "resolved": "https://registry.npmjs.org/stylelint/-/stylelint-9.6.0.tgz"
+      "version": "9.10.1",
+      "from": "stylelint@9.10.1",
+      "resolved": "https://registry.npmjs.org/stylelint/-/stylelint-9.10.1.tgz"
     },
     "stylelint-config-recommended-scss": {
       "version": "3.2.0",
@@ -209,12 +225,27 @@
       "version": "1.4.3",
       "from": "url-parse@1.4.3",
       "resolved": "https://registry.npmjs.org/url-parse/-/url-parse-1.4.3.tgz"
+    },
+    "webpack": {
+      "required": {
+        "_id": "webpack@>=2",
+        "name": "webpack",
+        "version": ">=2",
+        "peerMissing": [
+          {
+            "requiredBy": "babel-loader@8.0.5",
+            "requires": "webpack@>=2"
+          }
+        ],
+        "dependencies": {}
+      },
+      "peerMissing": true
     }
   }
 },
   "travis": {
     "event_type": "push",
-    "build_number": "767",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/503813655"
+    "build_number": "796",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/506541836"
   }
 }
