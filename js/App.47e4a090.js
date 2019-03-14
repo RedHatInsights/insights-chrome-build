@@ -555,35 +555,35 @@ function (_Component) {
       appDetails: {
         apps: [{
           name: 'Chrome',
-          path: 'static/chrome/app.info.json',
+          path: 'apps/chrome/app.info.json',
           version: 'N/A'
         }, {
           name: 'Dashboard',
-          path: "platform/dashboard/app.info.json",
+          path: "apps/dashboard/app.info.json",
           version: 'N/A'
         }, {
           name: 'Inventory',
-          path: "platform/inventory/app.info.json",
+          path: "apps/inventory/app.info.json",
           version: 'N/A'
         }, {
           name: 'Remediations',
-          path: "platform/remediations/app.info.json",
+          path: "apps/remediations/app.info.json",
           version: 'N/A'
         }, {
           name: 'Vulnerabilities',
-          path: 'platform/vulnerability/app.info.json',
+          path: 'apps/vulnerability/app.info.json',
           version: 'N/A'
         }, {
           name: 'Compliance',
-          path: 'platform/compliance/app.info.json',
+          path: 'apps/compliance/app.info.json',
           version: 'N/A'
         }, {
           name: 'Cost Management',
-          path: 'platform/cost-management/app.info.json',
+          path: 'apps/cost-management/app.info.json',
           version: 'N/A'
         }, {
           name: 'Insights',
-          path: 'platform/advisor/app.info.json',
+          path: 'apps/advisor/app.info.json',
           version: 'N/A'
         }]
       },
@@ -1200,4 +1200,4 @@ var _index2 = _interopRequireDefault(require("./Sidenav/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 },{"./Footer":"rwWu","./Header/index":"1PeJ","./Sidenav/index":"nuDN"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/App.bd9f29b8.map
+//# sourceMappingURL=/insightsbeta/static/chrome/js/App.0a315909.map
