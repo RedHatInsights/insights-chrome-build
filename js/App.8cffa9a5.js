@@ -122,7 +122,7 @@ var _default = function _default() {
 
 exports.default = _default;
 },{"react":"ccIB"}],"/fGt":[function(require,module,exports) {
-module.exports = "/insightsbeta/static/chrome/js/logo-cs.7d4907f8.svg";
+module.exports = "/beta/apps/chrome/js/logo-cs.7d4907f8.svg";
 },{}],"sxCS":[function(require,module,exports) {
 "use strict";
 
@@ -1310,4 +1310,4 @@ var _index2 = _interopRequireDefault(require("./Sidenav/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 },{"./Footer":"rwWu","./Header/index":"1PeJ","./Sidenav/index":"nuDN"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/App.d89678b8.map
+//# sourceMappingURL=/beta/apps/chrome/js/App.d89678b8.map

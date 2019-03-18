@@ -19593,4 +19593,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 /******/ });
 });
 },{"react":"ccIB","@patternfly/react-core":"Tk4w","@patternfly/react-icons":"k73M","classnames":"kpqe","process":"rH1J","buffer":"8fe9"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/Remediations.9ca80b91.map
+//# sourceMappingURL=/beta/apps/chrome/js/Remediations.9ca80b91.map

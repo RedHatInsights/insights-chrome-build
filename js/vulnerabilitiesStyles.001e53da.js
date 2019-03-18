@@ -111,4 +111,4 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 require("@red-hat-insights/insights-frontend-components/components/Vulnerabilities.css");
 },{"@red-hat-insights/insights-frontend-components/components/Vulnerabilities.css":"jmZL"}]},{},["m4We"], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/vulnerabilitiesStyles.c181df4f.map
+//# sourceMappingURL=/beta/apps/chrome/js/vulnerabilitiesStyles.c181df4f.map

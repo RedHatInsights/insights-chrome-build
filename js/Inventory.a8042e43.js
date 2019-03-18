@@ -14205,4 +14205,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
 /******/ });
 });
 },{"@patternfly/react-core":"Tk4w","@patternfly/react-icons":"k73M","classnames":"kpqe","react":"ccIB","react-redux":"oeDu","react-router-dom":"dYXq","redux":"+Mtl","buffer":"8fe9"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/Inventory.a8042e43.map
+//# sourceMappingURL=/beta/apps/chrome/js/Inventory.a8042e43.map

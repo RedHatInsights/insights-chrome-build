@@ -111,4 +111,4 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 require("@red-hat-insights/insights-frontend-components/components/Compliance.css");
 },{"@red-hat-insights/insights-frontend-components/components/Compliance.css":"enFi"}]},{},["/Kv6"], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/complianceStyles.489f4f3a.map
+//# sourceMappingURL=/beta/apps/chrome/js/complianceStyles.489f4f3a.map

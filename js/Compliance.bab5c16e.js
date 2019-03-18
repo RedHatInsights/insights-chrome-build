@@ -37469,4 +37469,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_router_dom__;
 /******/ });
 });
 },{"@patternfly/react-core":"Tk4w","@patternfly/react-icons":"k73M","classnames":"kpqe","graphql":"FMoS","react":"ccIB","react-redux":"oeDu","react-router-dom":"dYXq","process":"rH1J","buffer":"8fe9"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/Compliance.bab5c16e.map
+//# sourceMappingURL=/beta/apps/chrome/js/Compliance.bab5c16e.map

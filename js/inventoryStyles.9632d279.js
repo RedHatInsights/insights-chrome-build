@@ -113,4 +113,4 @@ require("@red-hat-insights/insights-frontend-components/components/Inventory.css
 
 require("../sass/inventory.scss");
 },{"@red-hat-insights/insights-frontend-components/components/Inventory.css":"oG2R","../sass/inventory.scss":"oG2R"}]},{},["UTq8"], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/inventoryStyles.b956f99d.map
+//# sourceMappingURL=/beta/apps/chrome/js/inventoryStyles.b956f99d.map

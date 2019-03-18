@@ -111,4 +111,4 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 require("@red-hat-insights/insights-frontend-components/components/Advisor.css");
 },{"@red-hat-insights/insights-frontend-components/components/Advisor.css":"7GW+"}]},{},["hc3o"], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/advisorStyles.88279b67.map
+//# sourceMappingURL=/beta/apps/chrome/js/advisorStyles.88279b67.map

@@ -19823,4 +19823,4 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_redux__;
 /******/ });
 });
 },{"react":"ccIB","react-redux":"oeDu","@patternfly/react-core":"Tk4w","@patternfly/react-icons":"k73M","react-router-dom":"dYXq","classnames":"kpqe","react-dom":"fbLo","redux":"+Mtl","process":"rH1J","buffer":"8fe9"}]},{},[], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/Vulnerabilities.37b05334.map
+//# sourceMappingURL=/beta/apps/chrome/js/Vulnerabilities.37b05334.map

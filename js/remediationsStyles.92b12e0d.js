@@ -111,4 +111,4 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 require("@red-hat-insights/insights-frontend-components/components/Remediations.css");
 },{"@red-hat-insights/insights-frontend-components/components/Remediations.css":"TdXM"}]},{},["dd+H"], null)
-//# sourceMappingURL=/insightsbeta/static/chrome/js/remediationsStyles.3b6e8b86.map
+//# sourceMappingURL=/beta/apps/chrome/js/remediationsStyles.3b6e8b86.map
