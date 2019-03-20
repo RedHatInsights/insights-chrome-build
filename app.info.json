@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "91a27cba1c95c1b676b3579a3b4f7add2a2e2182",
+  "src_hash": "30a6f29e02869f642eb0248ea521b1eaa9814e35",
   "src_tag": "",
   "src_branch": "master",
   "npm_info": {
@@ -42,9 +42,9 @@
       "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-3.0.2.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.39.5",
-      "from": "@red-hat-insights/insights-frontend-components@3.39.5",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.39.5.tgz"
+      "version": "3.39.9",
+      "from": "@red-hat-insights/insights-frontend-components@3.39.9",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.39.9.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -69,7 +69,7 @@
     "babel-plugin-syntax-dynamic-import": {
       "version": "6.18.0",
       "from": "babel-plugin-syntax-dynamic-import@6.18.0",
-      "resolved": "https://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
+      "resolved": "http://registry.npmjs.org/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz"
     },
     "babel-plugin-transform-inline-environment-variables": {
       "version": "0.4.3",
@@ -114,7 +114,7 @@
     "eslint": {
       "version": "4.19.1",
       "from": "eslint@4.19.1",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
+      "resolved": "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz"
     },
     "eslint-config-prettier": {
       "version": "2.10.0",
@@ -245,7 +245,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "819",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/508960468"
+    "build_number": "822",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/508998826"
   }
 }
