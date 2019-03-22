@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "b5f21fa3ac0a4ffebf1b2947ca00806566e86bb2",
+  "src_hash": "a3429cd0fd4c8439b8c9be5a3e11c8319a7a98f4",
   "src_tag": "",
   "src_branch": "master",
   "npm_info": {
@@ -12,9 +12,19 @@
   ],
   "dependencies": {
     "@babel/core": {
-      "version": "7.3.4",
-      "from": "@babel/core@7.3.4",
-      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.3.4.tgz"
+      "version": "7.4.0",
+      "from": "@babel/core@7.4.0",
+      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.4.0.tgz"
+    },
+    "@babel/plugin-proposal-class-properties": {
+      "version": "7.4.0",
+      "from": "@babel/plugin-proposal-class-properties@7.4.0",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.4.0.tgz"
+    },
+    "@babel/polyfill": {
+      "version": "7.2.5",
+      "from": "@babel/polyfill@7.2.5",
+      "resolved": "https://registry.npmjs.org/@babel/polyfill/-/polyfill-7.2.5.tgz"
     },
     "@babel/preset-env": {
       "version": "7.3.1",
@@ -27,14 +37,14 @@
       "resolved": "https://registry.npmjs.org/@babel/preset-react/-/preset-react-7.0.0.tgz"
     },
     "@patternfly/patternfly": {
-      "version": "1.0.201",
-      "from": "@patternfly/patternfly@1.0.201",
-      "resolved": "https://registry.npmjs.org/@patternfly/patternfly/-/patternfly-1.0.201.tgz"
+      "version": "1.0.240",
+      "from": "@patternfly/patternfly@1.0.240",
+      "resolved": "https://registry.npmjs.org/@patternfly/patternfly/-/patternfly-1.0.240.tgz"
     },
     "@patternfly/react-core": {
-      "version": "2.1.4",
-      "from": "@patternfly/react-core@2.1.4",
-      "resolved": "https://registry.npmjs.org/@patternfly/react-core/-/react-core-2.1.4.tgz"
+      "version": "2.3.6",
+      "from": "@patternfly/react-core@2.3.6",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-core/-/react-core-2.3.6.tgz"
     },
     "@patternfly/react-icons": {
       "version": "3.0.2",
@@ -42,9 +52,14 @@
       "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-3.0.2.tgz"
     },
     "@red-hat-insights/insights-frontend-components": {
-      "version": "3.35.6",
-      "from": "@red-hat-insights/insights-frontend-components@3.35.6",
-      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.35.6.tgz"
+      "version": "3.39.9",
+      "from": "@red-hat-insights/insights-frontend-components@3.39.9",
+      "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.39.9.tgz"
+    },
+    "@types/node": {
+      "version": "10.14.1",
+      "from": "@types/node@10.14.1",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-10.14.1.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -101,6 +116,11 @@
       "from": "babel-runtime@6.26.0",
       "resolved": "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.26.0.tgz"
     },
+    "broadcast-channel": {
+      "version": "2.1.10",
+      "from": "broadcast-channel@2.1.10",
+      "resolved": "https://registry.npmjs.org/broadcast-channel/-/broadcast-channel-2.1.10.tgz"
+    },
     "concurrently": {
       "version": "3.6.1",
       "from": "concurrently@3.6.1",
@@ -145,6 +165,16 @@
       "version": "git+https://github.com/RedHatInsights/jwt-redhat.git#b7b00d8c4e400db9aeb7ceb18d263972e0cec66e",
       "from": "git+https://github.com/RedHatInsights/jwt-redhat.git#b7b00d8c4e400db9aeb7ceb18d263972e0cec66e",
       "resolved": "git+https://github.com/RedHatInsights/jwt-redhat.git#b7b00d8c4e400db9aeb7ceb18d263972e0cec66e"
+    },
+    "keycloak-js": {
+      "version": "4.8.3",
+      "from": "keycloak-js@4.8.3",
+      "resolved": "https://registry.npmjs.org/keycloak-js/-/keycloak-js-4.8.3.tgz"
+    },
+    "localforage": {
+      "version": "1.7.3",
+      "from": "localforage@1.7.3",
+      "resolved": "https://registry.npmjs.org/localforage/-/localforage-1.7.3.tgz"
     },
     "lodash": {
       "version": "4.17.11",
@@ -245,7 +275,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "764",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/503798034"
+    "build_number": "858",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/510126855"
   }
 }
