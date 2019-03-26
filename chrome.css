@@ -4829,6 +4829,34 @@ readers do not read off random characters that represent icons */ }
   height: var(--pf-c-avatar--Height);
   border-radius: var(--pf-c-avatar--BorderRadius); }
 
+:root {
+  --ins-color--orange: #ec7a08; }
+
+button:focus {
+  outline: none; }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+
+.ins-c-spinner {
+  display: inline-flex; }
+
+.ins-c-spinner.ins-m-center {
+  display: flex;
+  justify-content: center; }
+
+.ins-c-spinner:before {
+  content: '';
+  width: 30px;
+  width: 1.875rem;
+  height: 30px;
+  height: 1.875rem;
+  border-radius: 50%;
+  border: 3px solid var(--pf-global--active-color--200);
+  border-top-color: var(--pf-global--active-color--100);
+  animation: spinner 1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
 .pf-u-screen-reader {
   position: fixed;
   overflow: hidden;
@@ -7614,6 +7642,10 @@ aside {
   box-shadow: none; }
   .pf-c-card.pf-m-dark:hover {
     background: var(--pf-global--BackgroundColor--dark-transparent-200); }
+
+.ins-l-page__header--loading .ins-c-skeleton {
+  height: 28px;
+  height: 2rem; }
 
 .ins-c-icon-inline {
   display: flex;
