@@ -1,6 +1,6 @@
 {
   "app_name": "chrome",
-  "src_hash": "d52d9055d9aedec0a5d44b59e3a3d7d595bb4094",
+  "src_hash": "70d7dc7c9c8c090b9a7b595cde60eb87a3327839",
   "src_tag": "",
   "src_branch": "master-stable",
   "npm_info": {
@@ -76,10 +76,20 @@
       "from": "@red-hat-insights/insights-frontend-components@3.41.0",
       "resolved": "https://registry.npmjs.org/@red-hat-insights/insights-frontend-components/-/insights-frontend-components-3.41.0.tgz"
     },
+    "@redhat-cloud-services/entitlements-client": {
+      "version": "1.0.4",
+      "from": "@redhat-cloud-services/entitlements-client@1.0.4",
+      "resolved": "https://registry.npmjs.org/@redhat-cloud-services/entitlements-client/-/entitlements-client-1.0.4.tgz"
+    },
     "@types/node": {
       "version": "10.14.1",
       "from": "@types/node@10.14.1",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-10.14.1.tgz"
+    },
+    "axios": {
+      "version": "0.18.0",
+      "from": "axios@0.18.0",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz"
     },
     "babel-cli": {
       "version": "6.26.0",
@@ -295,7 +305,7 @@
 },
   "travis": {
     "event_type": "push",
-    "build_number": "940",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/514849642"
+    "build_number": "964",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/515404145"
   }
 }
