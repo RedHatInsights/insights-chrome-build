@@ -1,1 +1,0 @@
-{"version":3,"sources":["vulnerabilitiesStyles.js"],"names":[],"mappings":";;;AAAA,aAAA,QAAA","file":"vulnerabilitiesStyles.de332d2f.js","sourceRoot":"../../src/js","sourcesContent":["import '@red-hat-insights/insights-frontend-components/components/Vulnerabilities.css';\n"]}
