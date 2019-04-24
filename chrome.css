@@ -8142,12 +8142,12 @@ aside {
 
 .pf-c-page__header {
   overflow: visible; }
-  .pf-c-page__header .account-number {
+  .pf-c-page__header .ins-c-dropdown-item__stack {
     white-space: nowrap;
     padding: var(--pf-c-dropdown__menu-item--PaddingTop) var(--pf-c-dropdown__menu-item--PaddingRight) var(--pf-c-dropdown__menu-item--PaddingBottom) var(--pf-c-dropdown__menu-item--PaddingLeft); }
-    .pf-c-page__header .account-number * {
+    .pf-c-page__header .ins-c-dropdown-item__stack * {
       color: var(--pf-c-dropdown__menu-item--disabled--Color); }
-  .pf-c-page__header .account-number__header {
+  .pf-c-page__header .ins-c-dropdown-item__stack--header {
     font-size: 12px;
     font-size: 0.85714rem; }
 
