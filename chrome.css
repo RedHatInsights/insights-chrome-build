@@ -8360,6 +8360,15 @@ aside.pf-c-page__sidebar {
     aside.pf-c-page__sidebar .ins-c-navigation__header .ins-c-page__home-icon {
       padding-left: 30px;
       padding-left: 2.14286rem; }
+  aside.pf-c-page__sidebar .ins-c-page__documentation a:before {
+    position: absolute;
+    top: 5px;
+    top: 0.35714rem;
+    width: 75%;
+    height: 1px;
+    height: 0.07143rem;
+    content: "";
+    background-color: var(--pf-global--disabled-color--200); }
 
 body {
   position: relative; }
