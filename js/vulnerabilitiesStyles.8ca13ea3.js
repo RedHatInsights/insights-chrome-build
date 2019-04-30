@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"m4We":[function(require,module,exports) {
 "use strict";require("@red-hat-insights/insights-frontend-components/components/Vulnerabilities.css");
 },{"@red-hat-insights/insights-frontend-components/components/Vulnerabilities.css":"jmZL"}]},{},["m4We"], null)
-//# sourceMappingURL=/beta/apps/chrome/js/vulnerabilitiesStyles.55c1d85e.js.map
+//# sourceMappingURL=/beta/apps/chrome/js/vulnerabilitiesStyles.8ca13ea3.js.map
