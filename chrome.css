@@ -8569,4 +8569,4 @@ aside {
     margin-right: var(--pf-global--spacer--md); }
 
 .ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-c-pagination__nav-page-select input {
-  min-width: 75px; }
+  min-width: 5rem !important; }
