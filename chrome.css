@@ -8474,8 +8474,7 @@ button:focus {
 aside.pf-c-page__sidebar {
   padding-top: 0; }
   aside.pf-c-page__sidebar .ins-c-navigation__header {
-    height: 67px;
-    height: 4.78571rem;
+    height: 5rem;
     overflow: hidden; }
     aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item {
       padding: 18px;
