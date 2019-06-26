@@ -5,7 +5,7 @@
   "src_branch": "nightly",
   "travis": {
     "event_type": "push",
-    "build_number": "1467",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/550334207"
+    "build_number": "1480",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/550804095"
   }
 }
