@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"dd+H":[function(require,module,exports) {
 "use strict";require("@redhat-cloud-services/frontend-components-remediations/index.css");
 },{"@redhat-cloud-services/frontend-components-remediations/index.css":"F/Tb"}]},{},["dd+H"], null)
-//# sourceMappingURL=/beta/apps/chrome/js/remediationsStyles.3bc99589.js.map
+//# sourceMappingURL=/apps/chrome/js/remediationsStyles.3bc99589.js.map
