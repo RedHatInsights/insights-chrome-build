@@ -8485,12 +8485,14 @@ aside.pf-c-page__sidebar {
       aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item.ins-c-page__home-icon {
         display: flex;
         align-items: center; }
+      aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item.ins-c-navigation__header-title__wrapper {
+        display: flex;
+        align-items: center; }
       aside.pf-c-page__sidebar .ins-c-navigation__header .pf-l-split__item .ins-c-navigation__header-title {
         width: 160px;
         width: 11.42857rem; }
     aside.pf-c-page__sidebar .ins-c-navigation__header .ins-c-page__home-icon {
-      padding-left: 30px;
-      padding-left: 2.14286rem; }
+      padding-left: 25px; }
 
 body {
   position: relative; }
