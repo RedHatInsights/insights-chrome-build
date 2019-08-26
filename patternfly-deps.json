@@ -1,0 +1,31 @@
+{
+  "name": "insights-chrome",
+  "version": "0.0.0",
+  "dependencies": {
+    "@patternfly/patternfly": {
+      "version": "2.27.1",
+      "from": "@patternfly/patternfly@latest",
+      "resolved": "https://registry.npmjs.org/@patternfly/patternfly/-/patternfly-2.27.1.tgz"
+    },
+    "@patternfly/react-charts": {
+      "version": "4.8.4",
+      "from": "@patternfly/react-charts@prerelease",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-charts/-/react-charts-4.8.4.tgz"
+    },
+    "@patternfly/react-core": {
+      "version": "3.92.1",
+      "from": "@patternfly/react-core@prerelease",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-core/-/react-core-3.92.1.tgz"
+    },
+    "@patternfly/react-icons": {
+      "version": "3.12.0",
+      "from": "@patternfly/react-icons@latest",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-icons/-/react-icons-3.12.0.tgz"
+    },
+    "@patternfly/react-tokens": {
+      "version": "2.6.18",
+      "from": "@patternfly/react-tokens@prerelease",
+      "resolved": "https://registry.npmjs.org/@patternfly/react-tokens/-/react-tokens-2.6.18.tgz"
+    }
+  }
+}
