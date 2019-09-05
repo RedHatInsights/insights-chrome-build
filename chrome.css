@@ -9,7 +9,7 @@
   --pf-global--link--Color--hover: var(--pf-global--link--Color--dark--hover);
   --pf-global--BackgroundColor--100: var(--pf-global--BackgroundColor--light-100); }
 
-.pf-t-dark, .pf-c-page__header, .pf-c-page__main-section[class*="pf-m-dark-"], .pf-c-card.pf-m-dark {
+.pf-t-dark, .pf-c-page__header, .pf-c-page__sidebar.pf-m-dark, .pf-c-page__main-section[class*="pf-m-dark-"], .pf-c-card.pf-m-dark {
   --pf-global--Color--100: var(--pf-global--Color--light-100);
   --pf-global--Color--200: var(--pf-global--Color--light-200);
   --pf-global--BorderColor--100: var(--pf-global--BorderColor--light-100);
@@ -17,9 +17,9 @@
   --pf-global--link--Color: var(--pf-global--link--Color--light);
   --pf-global--link--Color--hover: var(--pf-global--link--Color--light);
   --pf-global--BackgroundColor--100: var(--pf-global--BackgroundColor--dark-100); }
-  .pf-t-dark .pf-c-card, .pf-c-page__header .pf-c-card, .pf-c-page__main-section[class*="pf-m-dark-"] .pf-c-card, .pf-c-card.pf-m-dark .pf-c-card {
+  .pf-t-dark .pf-c-card, .pf-c-page__header .pf-c-card, .pf-c-page__sidebar.pf-m-dark .pf-c-card, .pf-c-page__main-section[class*="pf-m-dark-"] .pf-c-card, .pf-c-card.pf-m-dark .pf-c-card {
     --pf-c-card--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-200); }
-  .pf-t-dark .pf-c-button, .pf-c-page__header .pf-c-button, .pf-c-page__main-section[class*="pf-m-dark-"] .pf-c-button, .pf-c-card.pf-m-dark .pf-c-button {
+  .pf-t-dark .pf-c-button, .pf-c-page__header .pf-c-button, .pf-c-page__sidebar.pf-m-dark .pf-c-button, .pf-c-page__main-section[class*="pf-m-dark-"] .pf-c-button, .pf-c-card.pf-m-dark .pf-c-button {
     --pf-c-button--m-primary--Color: var(--pf-global--primary-color--dark-100);
     --pf-c-button--m-primary--hover--Color: var(--pf-global--primary-color--dark-100);
     --pf-c-button--m-primary--focus--Color: var(--pf-global--primary-color--dark-100);
@@ -48,29 +48,32 @@
   --pf-global--BackgroundColor--light-200: #fafafa;
   --pf-global--BackgroundColor--light-300: #ededed;
   --pf-global--BackgroundColor--dark-100: #151515;
-  --pf-global--BackgroundColor--dark-200: #393f44;
+  --pf-global--BackgroundColor--dark-200: #3c3f42;
+  --pf-global--BackgroundColor--dark-300: #212427;
+  --pf-global--BackgroundColor--dark-400: #4f5255;
   --pf-global--BackgroundColor--dark-transparent-100: rgba(3, 3, 3, 0.62);
   --pf-global--BackgroundColor--dark-transparent-200: rgba(3, 3, 3, 0.32);
   --pf-global--Color--100: #151515;
-  --pf-global--Color--200: #72767b;
-  --pf-global--Color--300: #393f44;
-  --pf-global--Color--400: #8b8d8f;
+  --pf-global--Color--200: #737679;
+  --pf-global--Color--300: #3c3f42;
+  --pf-global--Color--400: #8a8d90;
   --pf-global--Color--light-100: #fff;
   --pf-global--Color--light-200: #ededed;
+  --pf-global--Color--light-300: #d2d2d2;
   --pf-global--Color--dark-100: #151515;
-  --pf-global--Color--dark-200: #72767b;
+  --pf-global--Color--dark-200: #737679;
   --pf-global--active-color--100: #06c;
   --pf-global--active-color--200: #bee1f4;
   --pf-global--active-color--300: #73bcf7;
   --pf-global--active-color--400: #2b9af3;
-  --pf-global--disabled-color--100: #72767b;
+  --pf-global--disabled-color--100: #737679;
   --pf-global--disabled-color--200: #d2d2d2;
   --pf-global--disabled-color--300: #ededed;
   --pf-global--primary-color--100: #06c;
   --pf-global--primary-color--200: #004080;
   --pf-global--primary-color--light-100: #73bcf7;
   --pf-global--primary-color--dark-100: #06c;
-  --pf-global--secondary-color--100: #72767b;
+  --pf-global--secondary-color--100: #737679;
   --pf-global--default-color--100: #73c5c5;
   --pf-global--default-color--200: #009596;
   --pf-global--default-color--300: #003737;
@@ -137,13 +140,13 @@
   --pf-global--BorderWidth--md: 2px;
   --pf-global--BorderWidth--lg: 3px;
   --pf-global--BorderColor--100: #d2d2d2;
-  --pf-global--BorderColor--200: #8b8d8f;
+  --pf-global--BorderColor--200: #8a8d90;
   --pf-global--BorderColor--300: #ededed;
   --pf-global--BorderColor--dark-100: #d2d2d2;
-  --pf-global--BorderColor--light-100: #bbb;
+  --pf-global--BorderColor--light-100: #b8bbbe;
   --pf-global--BorderRadius--sm: 3px;
   --pf-global--BorderRadius--lg: 30em;
-  --pf-global--icon--Color--light: #72767b;
+  --pf-global--icon--Color--light: #737679;
   --pf-global--icon--Color--dark: #151515;
   --pf-global--icon--FontSize--sm: 0.625rem;
   --pf-global--icon--FontSize--md: 1.125rem;
@@ -575,7 +578,7 @@ button:-moz-focusring,
   background-color: rgba(3, 3, 3, 0.6); }
 
 .pf-t-dark.pf-m-opaque-100 {
-  background-color: #393f44; }
+  background-color: #3c3f42; }
 
 .pf-t-dark.pf-m-opaque-200 {
   background-color: #151515; }
@@ -3892,7 +3895,7 @@ readers do not read off random characters that represent icons */ }
   --pf-c-page__header-nav--lg--PaddingLeft: 0;
   --pf-c-page__header-nav--lg--MarginLeft: var(--pf-global--spacer--xl);
   --pf-c-page__header-nav--lg--MarginRight: var(--pf-global--spacer--xl);
-  --pf-c-page__header-nav--BackgroundColor: #242424;
+  --pf-c-page__header-nav--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-page__header-nav--lg--BackgroundColor: transparent;
   --pf-c-page__header-nav--c-nav__scroll-button--nth-of-type-1--Left: calc(-1 * (var(--pf-global--spacer--md) - var(--pf-global--spacer--xs)));
   --pf-c-page__header-nav--c-nav__scroll-button--nth-of-type-1--md--Left: calc(-1 * (var(--pf-global--spacer--md) - var(--pf-global--spacer--xs)));
@@ -3914,6 +3917,7 @@ readers do not read off random characters that represent icons */ }
   --pf-c-page__sidebar--Transform: translate3d(-100%, 0, 0);
   --pf-c-page__sidebar--m-expanded--Transform: translate3d(0, 0, 0);
   --pf-c-page__sidebar--md--Transform: translate3d(0, 0, 0);
+  --pf-c-page__sidebar--m-dark--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-page__sidebar-body--PaddingTop: var(--pf-global--spacer--sm);
   --pf-c-page__sidebar-body--PaddingBottom: var(--pf-global--spacer--md);
   --pf-c-page__main-section--PaddingTop: var(--pf-global--spacer--md);
@@ -4130,6 +4134,9 @@ readers do not read off random characters that represent icons */ }
     .pf-c-page__sidebar.pf-m-collapsed {
       max-width: 0;
       overflow: hidden; } }
+  .pf-c-page__sidebar.pf-m-dark {
+    color: var(--pf-global--Color--100);
+    --pf-c-page__sidebar--BackgroundColor: var(--pf-c-page__sidebar--m-dark--BackgroundColor); }
 
 .pf-c-page__sidebar-body {
   padding-top: var(--pf-c-page__sidebar-body--PaddingTop);
@@ -4243,6 +4250,26 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav--Width: 18.125rem;
   --pf-c-nav--Transition: var(--pf-global--Transition);
   --pf-c-nav__item--m-expanded__toggle-icon--Transform: rotate(90deg);
+  --pf-c-nav--m-dark__list-link--Color: var(--pf-global--Color--light-300);
+  --pf-c-nav--m-dark__list-link--m-current--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__list-link--hover--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__list-link--focus--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__list-link--active--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__simple-list-link--Color: var(--pf-global--Color--light-300);
+  --pf-c-nav--m-dark__simple-list-link--hover--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__simple-list-link--focus--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__simple-list-link--active--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__simple-list-link--hover--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__simple-list-link--focus--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__simple-list-link--active--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__simple-list-link--m-current--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__item--m-current__simple-list-link--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__item--m-current__list-link--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
+  --pf-c-nav--m-dark__section-title--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__item__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-nav__c-divider--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginBottom: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginLeft: var(--pf-c-nav__list-link--PaddingLeft);
@@ -4292,14 +4319,14 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav__horizontal-list-link--FontWeight: var(--pf-global--FontWeight--normal);
   --pf-c-nav__horizontal-list-link--active--FontWeight: var(--pf-global--FontWeight--bold);
   --pf-c-nav__horizontal-list-link--focus--FontWeight: var(--pf-global--FontWeight--bold);
-  --pf-c-nav__horizontal-list-link--Color: #d2d2d2;
-  --pf-c-nav__horizontal-list-link--hover--Color: var(--pf-global--link--Color);
-  --pf-c-nav__horizontal-list-link--active--Color: var(--pf-global--link--Color);
-  --pf-c-nav__horizontal-list-link--focus--Color: var(--pf-global--link--Color);
+  --pf-c-nav__horizontal-list-link--Color: var(--pf-global--Color--light-300);
+  --pf-c-nav__horizontal-list-link--hover--Color: var(--pf-global--active-color--400);
+  --pf-c-nav__horizontal-list-link--active--Color: var(--pf-global--active-color--400);
+  --pf-c-nav__horizontal-list-link--focus--Color: var(--pf-global--active-color--400);
   --pf-c-nav__horizontal-list-link--after--Height: 0.1875rem;
-  --pf-c-nav__horizontal-list-link--hover--after--BackgroundColor: var(--pf-global--link--Color);
-  --pf-c-nav__horizontal-list-link--active--after--BackgroundColor: var(--pf-global--link--Color);
-  --pf-c-nav__horizontal-list-link--focus--after--BackgroundColor: var(--pf-global--link--Color);
+  --pf-c-nav__horizontal-list-link--hover--after--BackgroundColor: var(--pf-global--active-color--400);
+  --pf-c-nav__horizontal-list-link--active--after--BackgroundColor: var(--pf-global--active-color--400);
+  --pf-c-nav__horizontal-list-link--focus--after--BackgroundColor: var(--pf-global--active-color--400);
   --pf-c-nav__tertiary-list-item--MarginRight: var(--pf-global--spacer--xl);
   --pf-c-nav__tertiary-list-link--PaddingTop: var(--pf-global--spacer--md);
   --pf-c-nav__tertiary-list-link--PaddingBottom: var(--pf-global--spacer--sm);
@@ -4342,9 +4369,9 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav__separator--MarginLeft: var(--pf-c-nav__list-link--PaddingLeft);
   --pf-c-nav__simple-list__separator--MarginLeft: var(--pf-c-nav__simple-list-link--PaddingLeft);
   --pf-c-nav__simple-list--nested__separator--MarginLeft: var(--pf-c-nav__simple-list-link--nested--PaddingLeft);
-  --pf-c-nav__horizontal-list-link--m-current--Color: var(--pf-global--link--Color);
+  --pf-c-nav__horizontal-list-link--m-current--Color: var(--pf-global--active-color--400);
   --pf-c-nav__horizontal-list-link--m-current--FontWeight: var(--pf-global--FontWeight--bold);
-  --pf-c-nav__horizontal-list-link--m-current--after--BackgroundColor: var(--pf-global--link--Color);
+  --pf-c-nav__horizontal-list-link--m-current--after--BackgroundColor: var(--pf-global--active-color--400);
   --pf-c-nav__tertiary-list-link--m-current--Color: var(--pf-global--link--Color);
   --pf-c-nav__tertiary-list-link--m-current--FontWeight: var(--pf-global--FontWeight--semi-bold);
   --pf-c-nav__tertiary-list-link--m-current--after--BackgroundColor: var(--pf-global--link--Color);
@@ -4390,6 +4417,36 @@ readers do not read off random characters that represent icons */ }
     margin-top: var(--pf-c-nav__c-divider--MarginTop);
     margin-bottom: var(--pf-c-nav__c-divider--MarginBottom);
     margin-left: var(--pf-c-nav__c-divider--MarginLeft); }
+  .pf-c-nav.pf-m-dark {
+    --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__list-link--Color);
+    --pf-c-nav__list-link--hover--Color: var(--pf-c-nav--m-dark__list-link--hover--Color);
+    --pf-c-nav__list-link--focus--Color: var(--pf-c-nav--m-dark__list-link--focus--Color);
+    --pf-c-nav__list-link--active--Color: var(--pf-c-nav--m-dark__list-link--active--Color);
+    --pf-c-nav__list-link--m-current--Color: var(--pf-c-nav--m-dark__list-link--m-current--Color);
+    --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__list-link--active--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__list-link--focus--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__list-link--m-current--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__simple-list-link--Color);
+    --pf-c-nav__simple-list-link--hover--Color: var(--pf-c-nav--m-dark__simple-list-link--hover--Color);
+    --pf-c-nav__simple-list-link--focus--Color: var(--pf-c-nav--m-dark__simple-list-link--focus--Color);
+    --pf-c-nav__simple-list-link--active--Color: var(--pf-c-nav--m-dark__simple-list-link--active--Color);
+    --pf-c-nav__simple-list-link--hover--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--hover--BackgroundColor);
+    --pf-c-nav__simple-list-link--focus--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--focus--BackgroundColor);
+    --pf-c-nav__simple-list-link--active--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--active--BackgroundColor);
+    --pf-c-nav__simple-list-link--m-current--Color: var(--pf-c-nav--m-dark__simple-list-link--m-current--Color);
+    --pf-c-nav__simple-list-link--m-current--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor);
+    --pf-c-nav__section-title--Color: var(--pf-c-nav--m-dark__section-title--Color); }
+    .pf-c-nav.pf-m-dark .pf-c-divider {
+      background-color: var(--pf-c-nav--m-dark__c-divider--BackgroundColor); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__item .pf-c-divider {
+      background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
+      --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
+      --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
+      /* stylelint-disable-next-line */ }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current.pf-m-expanded {
+        background-color: var(--pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor); }
 
 @media screen and (min-width: 768px) {
   .pf-c-page__sidebar .pf-c-nav {
@@ -4882,6 +4939,7 @@ readers do not read off random characters that represent icons */ }
   --pf-c-dropdown__toggle--m-split-button--first-child--PaddingLeft: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle--m-split-button--last-child--PaddingRight: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle--m-split-button__toggle-check__input--Transform: translateY(-0.0625rem);
+  --pf-c-dropdown__toggle--m-split-button__toggle-text--MarginLeft: var(--pf-global--spacer--xs);
   --pf-c-dropdown__toggle-icon--MarginRight: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle-icon--MarginLeft: var(--pf-global--spacer--md);
   --pf-c-dropdown--m-top--m-expanded__toggle-icon--Transform: rotate(180deg);
@@ -4969,6 +5027,8 @@ readers do not read off random characters that represent icons */ }
     .pf-c-dropdown__toggle.pf-m-split-button .pf-c-dropdown__toggle-button {
       color: var(--pf-c-dropdown__toggle-button--Color);
       border: 0; }
+    .pf-c-dropdown__toggle.pf-m-split-button .pf-c-dropdown__toggle-text {
+      margin-left: var(--pf-c-dropdown__toggle--m-split-button__toggle-text--MarginLeft); }
   .pf-c-dropdown__toggle::before {
     position: absolute;
     top: 0;
