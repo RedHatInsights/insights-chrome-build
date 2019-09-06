@@ -4269,7 +4269,9 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
   --pf-c-nav--m-dark__section-title--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__item__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
+  --pf-c-nav--m-dark__item__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-nav__c-divider--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginBottom: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginLeft: var(--pf-c-nav__list-link--PaddingLeft);
@@ -4436,17 +4438,20 @@ readers do not read off random characters that represent icons */ }
     --pf-c-nav__simple-list-link--active--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--active--BackgroundColor);
     --pf-c-nav__simple-list-link--m-current--Color: var(--pf-c-nav--m-dark__simple-list-link--m-current--Color);
     --pf-c-nav__simple-list-link--m-current--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor);
-    --pf-c-nav__section-title--Color: var(--pf-c-nav--m-dark__section-title--Color); }
+    --pf-c-nav__section-title--Color: var(--pf-c-nav--m-dark__section-title--Color);
+    --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__separator--BackgroundColor); }
     .pf-c-nav.pf-m-dark .pf-c-divider {
       background-color: var(--pf-c-nav--m-dark__c-divider--BackgroundColor); }
-    .pf-c-nav.pf-m-dark .pf-c-nav__item .pf-c-divider {
-      background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
-    .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
-      --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
-      --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
-      /* stylelint-disable-next-line */ }
-      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current.pf-m-expanded {
-        background-color: var(--pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__item {
+      --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__item__separator--BackgroundColor); }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item .pf-c-divider {
+        background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
+        --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
+        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
+        /* stylelint-disable-next-line */ }
+        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current.pf-m-expanded {
+          background-color: var(--pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor); }
 
 @media screen and (min-width: 768px) {
   .pf-c-page__sidebar .pf-c-nav {
@@ -4939,7 +4944,7 @@ readers do not read off random characters that represent icons */ }
   --pf-c-dropdown__toggle--m-split-button--first-child--PaddingLeft: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle--m-split-button--last-child--PaddingRight: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle--m-split-button__toggle-check__input--Transform: translateY(-0.0625rem);
-  --pf-c-dropdown__toggle--m-split-button__toggle-text--MarginLeft: var(--pf-global--spacer--xs);
+  --pf-c-dropdown__toggle--m-split-button__toggle-text--MarginLeft: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle-icon--MarginRight: var(--pf-global--spacer--sm);
   --pf-c-dropdown__toggle-icon--MarginLeft: var(--pf-global--spacer--md);
   --pf-c-dropdown--m-top--m-expanded__toggle-icon--Transform: rotate(180deg);
@@ -5020,6 +5025,8 @@ readers do not read off random characters that represent icons */ }
       .pf-c-dropdown__toggle.pf-m-split-button > *:last-child {
         --pf-c-dropdown__toggle--m-split-button--child--PaddingRight: var(--pf-c-dropdown__toggle--m-split-button--last-child--PaddingRight); }
     .pf-c-dropdown__toggle.pf-m-split-button .pf-c-dropdown__toggle-check {
+      display: flex;
+      align-items: center;
       cursor: pointer;
       /* stylelint-disable-next-line */ }
       .pf-c-dropdown__toggle.pf-m-split-button .pf-c-dropdown__toggle-check input {
