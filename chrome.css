@@ -392,6 +392,9 @@
 .pf-c-content,
 .pf-c-context-selector,
 .pf-c-data-list,
+.pf-c-data-toolbar,
+.pf-c-divider,
+.pf-c-drawer,
 .pf-c-dropdown,
 .pf-c-empty-state,
 .pf-c-expandable,
@@ -403,13 +406,17 @@
 .pf-c-login,
 .pf-c-modal-box,
 .pf-c-nav,
+.pf-c-notification-badge,
 .pf-c-options-menu,
+.pf-c-overflow-menu,
 .pf-c-page,
 .pf-c-pagination,
 .pf-c-popover,
 .pf-c-progress,
 .pf-c-radio,
 .pf-c-select,
+.pf-c-skip-to-content,
+.pf-c-spinner,
 .pf-c-switch,
 .pf-c-tab-content,
 .pf-c-table,
@@ -417,6 +424,7 @@
 .pf-c-title,
 .pf-c-toolbar,
 .pf-c-tooltip,
+.pf-c-wizard,
 .pf-l-bullseye,
 .pf-l-flex,
 .pf-l-gallery,
@@ -4130,10 +4138,9 @@ readers do not read off random characters that represent icons */ }
   .pf-c-page__sidebar.pf-m-expanded {
     --pf-c-page__sidebar--Transform: var(--pf-c-page__sidebar--m-expanded--Transform);
     box-shadow: var(--pf-c-page__sidebar--BoxShadow); }
-  @media screen and (min-width: 768px) {
-    .pf-c-page__sidebar.pf-m-collapsed {
-      max-width: 0;
-      overflow: hidden; } }
+  .pf-c-page__sidebar.pf-m-collapsed {
+    max-width: 0;
+    overflow: hidden; }
   .pf-c-page__sidebar.pf-m-dark {
     color: var(--pf-global--Color--100);
     --pf-c-page__sidebar--BackgroundColor: var(--pf-c-page__sidebar--m-dark--BackgroundColor); }
