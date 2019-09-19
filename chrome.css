@@ -4257,10 +4257,13 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav--Width: 18.125rem;
   --pf-c-nav--Transition: var(--pf-global--Transition);
   --pf-c-nav__item--m-expanded__toggle-icon--Transform: rotate(90deg);
+  --pf-c-nav--m-dark__list-link--PaddingTop: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__list-link--PaddingBottom: var(--pf-global--spacer--md);
   --pf-c-nav--m-dark__list-link--Color: var(--pf-global--Color--light-300);
   --pf-c-nav--m-dark__list-link--m-current--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__list-link--hover--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__list-link--focus--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__list-link--after--Bottom: var(--pf-global--spacer--sm);
   --pf-c-nav--m-dark__list-link--active--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__simple-list-link--Color: var(--pf-global--Color--light-300);
   --pf-c-nav--m-dark__simple-list-link--hover--Color: var(--pf-global--Color--light-100);
@@ -4271,14 +4274,19 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav--m-dark__simple-list-link--active--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__simple-list-link--m-current--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__item--m-expanded--PaddingBottom: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom: 0;
+  --pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__item--m-current--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
   --pf-c-nav--m-dark__item--m-current__simple-list-link--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__item--m-current__list-link--Color: var(--pf-global--Color--light-100);
-  --pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
   --pf-c-nav--m-dark__section-title--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__item__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-nav--m-dark__item__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
+  --pf-c-nav--m-dark__subnav--MarginTop: 0;
+  --pf-c-nav--m-dark__list-link--after--Width: 2.5rem;
   --pf-c-nav__c-divider--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginBottom: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginLeft: var(--pf-c-nav__list-link--PaddingLeft);
@@ -4299,6 +4307,7 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav__list-link--hover--Color: var(--pf-global--link--Color);
   --pf-c-nav__list-link--active--Color: var(--pf-global--link--Color);
   --pf-c-nav__list-link--focus--Color: var(--pf-global--link--Color);
+  --pf-c-nav__list-link--after--Bottom: 0;
   --pf-c-nav__list-link--after--Left: var(--pf-c-nav__list-link--PaddingLeft);
   --pf-c-nav__list-link--after--md--Left: var(--pf-c-nav__list-link--md--PaddingLeft);
   --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--link--Color);
@@ -4427,6 +4436,8 @@ readers do not read off random characters that represent icons */ }
     margin-bottom: var(--pf-c-nav__c-divider--MarginBottom);
     margin-left: var(--pf-c-nav__c-divider--MarginLeft); }
   .pf-c-nav.pf-m-dark {
+    --pf-c-nav__list-link--PaddingTop: var(--pf-c-nav--m-dark__list-link--PaddingTop);
+    --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__list-link--PaddingBottom);
     --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__list-link--Color);
     --pf-c-nav__list-link--hover--Color: var(--pf-c-nav--m-dark__list-link--hover--Color);
     --pf-c-nav__list-link--focus--Color: var(--pf-c-nav--m-dark__list-link--focus--Color);
@@ -4435,6 +4446,7 @@ readers do not read off random characters that represent icons */ }
     --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__list-link--active--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__list-link--focus--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__list-link--after--Bottom);
     --pf-c-nav__list-link--m-current--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__simple-list-link--Color);
     --pf-c-nav__simple-list-link--hover--Color: var(--pf-c-nav--m-dark__simple-list-link--hover--Color);
@@ -4446,7 +4458,9 @@ readers do not read off random characters that represent icons */ }
     --pf-c-nav__simple-list-link--m-current--Color: var(--pf-c-nav--m-dark__simple-list-link--m-current--Color);
     --pf-c-nav__simple-list-link--m-current--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor);
     --pf-c-nav__section-title--Color: var(--pf-c-nav--m-dark__section-title--Color);
-    --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__separator--BackgroundColor); }
+    --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__separator--BackgroundColor);
+    --pf-c-nav__subnav--MarginTop: var(--pf-c-nav--m-dark__subnav--MarginTop);
+    --pf-c-nav__list-link--after--Width: var(--pf-c-nav--m-dark__list-link--after--Width); }
     .pf-c-nav.pf-m-dark .pf-c-divider {
       background-color: var(--pf-c-nav--m-dark__c-divider--BackgroundColor); }
     .pf-c-nav.pf-m-dark .pf-c-nav__item {
@@ -4455,10 +4469,18 @@ readers do not read off random characters that represent icons */ }
         background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
       .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
         --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
-        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
+        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color); }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded {
+        padding-bottom: var(--pf-c-nav--m-dark__item--m-expanded--PaddingBottom);
         /* stylelint-disable-next-line */ }
-        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current.pf-m-expanded {
-          background-color: var(--pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor); }
+        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded > .pf-c-nav__link {
+          --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom);
+          --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item {
+      /* stylelint-disable-next-line */ }
+      .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item.pf-m-current,
+      .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link.pf-m-current {
+        background-color: var(--pf-c-nav--m-dark__item--m-current--BackgroundColor); }
 
 @media screen and (min-width: 768px) {
   .pf-c-page__sidebar .pf-c-nav {
@@ -4478,7 +4500,7 @@ readers do not read off random characters that represent icons */ }
 
 .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link::after {
   position: absolute;
-  bottom: 0;
+  bottom: var(--pf-c-nav__list-link--after--Bottom);
   left: var(--pf-c-nav__list-link--after--Left);
   width: var(--pf-c-nav__list-link--after--Width);
   height: var(--pf-c-nav__list-link--after--Height);
@@ -4773,6 +4795,21 @@ readers do not read off random characters that represent icons */ }
   --pf-c-button--m-plain--active--Color: var(--pf-global--Color--100);
   --pf-c-button--m-plain--disabled--Color: var(--pf-global--disabled-color--200);
   --pf-c-button--m-plain--disabled--BackgroundColor: transparent;
+  --pf-c-button--m-control--after--BorderWidth: var(--pf-global--BorderWidth--sm);
+  --pf-c-button--m-control--after--BorderTopColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--after--BorderRightColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--after--BorderBottomColor: var(--pf-global--BorderColor--200);
+  --pf-c-button--m-control--after--BorderLeftColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--hover--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--hover--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--active--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--active--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--focus--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--focus--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--m-expanded--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--m-expanded--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--disabled--after--BorderBottomColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--disabled--BackgroundColor: transparent;
   --pf-c-button__icon--MarginRight: var(--pf-global--spacer--xs);
   position: relative;
   display: inline-block;
@@ -4794,7 +4831,8 @@ readers do not read off random characters that represent icons */ }
     bottom: 0;
     left: 0;
     content: "";
-    border: var(--pf-c-button--BorderWidth) solid var(--pf-c-button--BorderColor);
+    border: var(--pf-c-button--BorderWidth) solid;
+    border-color: var(--pf-c-button--BorderColor);
     border-radius: var(--pf-c-button--BorderRadius); }
   .pf-c-button:hover, .pf-c-button.pf-m-hover {
     text-decoration: none; }
@@ -4887,6 +4925,26 @@ readers do not read off random characters that represent icons */ }
       .pf-c-button.pf-m-link.pf-m-inline:hover {
         --pf-c-button--m-link--Color: var(--pf-c-button--m-link--m-inline--hover--Color);
         text-decoration: var(--pf-c-button--m-link--m-inline--hover--TextDecoration); }
+  .pf-c-button.pf-m-control::after {
+    --pf-c-button--BorderWidth: var(--pf-c-button--m-control--after--BorderWidth);
+    --pf-c-button--BorderColor: var(--pf-c-button--m-control--after--BorderTopColor) var(--pf-c-button--m-control--after--BorderRightColor) var(--pf-c-button--m-control--after--BorderBottomColor) var(--pf-c-button--m-control--after--BorderLeftColor);
+    border-radius: initial; }
+  .pf-c-button.pf-m-control:hover::after, .pf-c-button.pf-m-control.pf-m-hover::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--hover--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--hover--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:active::after, .pf-c-button.pf-m-control.pf-m-active::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--active--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--active--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:focus::after, .pf-c-button.pf-m-control.pf-m-focus::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--focus--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--focus--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control.pf-m-expanded::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--m-expanded--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--m-expanded--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:disabled, .pf-c-button.pf-m-control.pf-m-disabled {
+    background-color: var(--pf-c-button--m-control--disabled--BackgroundColor); }
+    .pf-c-button.pf-m-control:disabled::after, .pf-c-button.pf-m-control.pf-m-disabled::after {
+      --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--disabled--after--BorderBottomColor); }
   .pf-c-button:disabled, .pf-c-button.pf-m-disabled {
     color: var(--pf-c-button--disabled--Color);
     pointer-events: none;

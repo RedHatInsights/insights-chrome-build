@@ -601,6 +601,21 @@
   --pf-c-button--m-plain--active--Color: var(--pf-global--Color--100);
   --pf-c-button--m-plain--disabled--Color: var(--pf-global--disabled-color--200);
   --pf-c-button--m-plain--disabled--BackgroundColor: transparent;
+  --pf-c-button--m-control--after--BorderWidth: var(--pf-global--BorderWidth--sm);
+  --pf-c-button--m-control--after--BorderTopColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--after--BorderRightColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--after--BorderBottomColor: var(--pf-global--BorderColor--200);
+  --pf-c-button--m-control--after--BorderLeftColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--hover--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--hover--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--active--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--active--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--focus--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--focus--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--m-expanded--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
+  --pf-c-button--m-control--m-expanded--after--BorderBottomColor: var(--pf-global--active-color--100);
+  --pf-c-button--m-control--disabled--after--BorderBottomColor: var(--pf-global--BorderColor--300);
+  --pf-c-button--m-control--disabled--BackgroundColor: transparent;
   --pf-c-button__icon--MarginRight: var(--pf-global--spacer--xs);
   position: relative;
   display: inline-block;
@@ -622,7 +637,8 @@
     bottom: 0;
     left: 0;
     content: "";
-    border: var(--pf-c-button--BorderWidth) solid var(--pf-c-button--BorderColor);
+    border: var(--pf-c-button--BorderWidth) solid;
+    border-color: var(--pf-c-button--BorderColor);
     border-radius: var(--pf-c-button--BorderRadius); }
   .pf-c-button:hover, .pf-c-button.pf-m-hover {
     text-decoration: none; }
@@ -715,6 +731,26 @@
       .pf-c-button.pf-m-link.pf-m-inline:hover {
         --pf-c-button--m-link--Color: var(--pf-c-button--m-link--m-inline--hover--Color);
         text-decoration: var(--pf-c-button--m-link--m-inline--hover--TextDecoration); }
+  .pf-c-button.pf-m-control::after {
+    --pf-c-button--BorderWidth: var(--pf-c-button--m-control--after--BorderWidth);
+    --pf-c-button--BorderColor: var(--pf-c-button--m-control--after--BorderTopColor) var(--pf-c-button--m-control--after--BorderRightColor) var(--pf-c-button--m-control--after--BorderBottomColor) var(--pf-c-button--m-control--after--BorderLeftColor);
+    border-radius: initial; }
+  .pf-c-button.pf-m-control:hover::after, .pf-c-button.pf-m-control.pf-m-hover::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--hover--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--hover--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:active::after, .pf-c-button.pf-m-control.pf-m-active::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--active--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--active--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:focus::after, .pf-c-button.pf-m-control.pf-m-focus::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--focus--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--focus--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control.pf-m-expanded::after {
+    --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--m-expanded--after--BorderBottomColor);
+    border-bottom-width: var(--pf-c-button--m-control--m-expanded--after--BorderBottomWidth); }
+  .pf-c-button.pf-m-control:disabled, .pf-c-button.pf-m-control.pf-m-disabled {
+    background-color: var(--pf-c-button--m-control--disabled--BackgroundColor); }
+    .pf-c-button.pf-m-control:disabled::after, .pf-c-button.pf-m-control.pf-m-disabled::after {
+      --pf-c-button--m-control--after--BorderBottomColor: var(--pf-c-button--m-control--disabled--after--BorderBottomColor); }
   .pf-c-button:disabled, .pf-c-button.pf-m-disabled {
     color: var(--pf-c-button--disabled--Color);
     pointer-events: none;
@@ -1583,6 +1619,8 @@
   text-align: center;
   word-break: break-word;
   background-color: var(--pf-c-tooltip__content--BackgroundColor); }
+  .pf-c-tooltip__content.pf-m-text-align-left {
+    text-align: left; }
 
 .pf-c-tooltip__arrow {
   position: absolute;
@@ -2667,6 +2705,8 @@ label.pf-c-check, .pf-c-check__label,
   border: var(--pf-c-clipboard-copy__expandable-content--BorderWidth) solid transparent;
   outline-offset: var(--pf-c-clipboard-copy__expandable-content--OutlineOffset);
   box-shadow: var(--pf-c-clipboard-copy__expandable-content--BoxShadow); }
+  .pf-c-clipboard-copy__expandable-content pre {
+    white-space: pre-wrap; }
 
 /* stylelint-enable */
 .pf-c-form-control {
@@ -2948,13 +2988,13 @@ label.pf-c-check, .pf-c-check__label,
     cursor: pointer; }
   .pf-c-input-group .pf-c-form-control[aria-invalid="true"]:not(:last-child) {
     margin-right: var(--pf-c-input-group--c-form-control--MarginRight); }
-  .pf-c-input-group .pf-c-button {
+  .pf-c-input-group .pf-c-button:not(.pf-m-control) {
     position: relative; }
-    .pf-c-input-group .pf-c-button, .pf-c-input-group .pf-c-button::after {
+    .pf-c-input-group .pf-c-button:not(.pf-m-control), .pf-c-input-group .pf-c-button:not(.pf-m-control)::after {
       border-radius: 0; }
-    .pf-c-input-group .pf-c-button:first-child, .pf-c-input-group .pf-c-button:first-child::after {
+    .pf-c-input-group .pf-c-button:not(.pf-m-control):first-child, .pf-c-input-group .pf-c-button:not(.pf-m-control):first-child::after {
       border-radius: var(--pf-c-input-group--c-button--BorderRadius) 0 0 var(--pf-c-input-group--c-button--BorderRadius); }
-    .pf-c-input-group .pf-c-button:last-child, .pf-c-input-group .pf-c-button:last-child::after {
+    .pf-c-input-group .pf-c-button:not(.pf-m-control):last-child, .pf-c-input-group .pf-c-button:not(.pf-m-control):last-child::after {
       border-radius: 0 var(--pf-c-input-group--c-button--BorderRadius) var(--pf-c-input-group--c-button--BorderRadius) 0; }
   .pf-c-input-group .pf-c-dropdown__toggle {
     height: 100%; }
@@ -3281,9 +3321,11 @@ label.pf-c-check, .pf-c-check__label,
   --pf-c-empty-state--m-lg--MaxWidth: 37.5rem;
   padding: var(--pf-c-empty-state--Padding);
   text-align: center; }
-  .pf-c-empty-state > .pf-c-button.pf-m-primary {
+  .pf-c-empty-state > .pf-c-button.pf-m-primary,
+  .pf-c-empty-state .pf-c-empty-state__primary {
     margin-top: var(--pf-c-empty-state--c-button--MarginTop); }
-    .pf-c-empty-state > .pf-c-button.pf-m-primary + .pf-c-empty-state__secondary {
+    .pf-c-empty-state > .pf-c-button.pf-m-primary + .pf-c-empty-state__secondary,
+    .pf-c-empty-state .pf-c-empty-state__primary + .pf-c-empty-state__secondary {
       margin-top: var(--pf-c-empty-state--c-button__secondary--MarginTop); }
   .pf-c-empty-state.pf-m-sm {
     max-width: var(--pf-c-empty-state--m-sm--MaxWidth); }
@@ -3878,10 +3920,13 @@ label.pf-c-check, .pf-c-check__label,
   --pf-c-nav--Width: 18.125rem;
   --pf-c-nav--Transition: var(--pf-global--Transition);
   --pf-c-nav__item--m-expanded__toggle-icon--Transform: rotate(90deg);
+  --pf-c-nav--m-dark__list-link--PaddingTop: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__list-link--PaddingBottom: var(--pf-global--spacer--md);
   --pf-c-nav--m-dark__list-link--Color: var(--pf-global--Color--light-300);
   --pf-c-nav--m-dark__list-link--m-current--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__list-link--hover--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__list-link--focus--Color: var(--pf-global--Color--light-100);
+  --pf-c-nav--m-dark__list-link--after--Bottom: var(--pf-global--spacer--sm);
   --pf-c-nav--m-dark__list-link--active--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__simple-list-link--Color: var(--pf-global--Color--light-300);
   --pf-c-nav--m-dark__simple-list-link--hover--Color: var(--pf-global--Color--light-100);
@@ -3892,14 +3937,19 @@ label.pf-c-check, .pf-c-check__label,
   --pf-c-nav--m-dark__simple-list-link--active--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__simple-list-link--m-current--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
+  --pf-c-nav--m-dark__item--m-expanded--PaddingBottom: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom: 0;
+  --pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom: var(--pf-global--spacer--sm);
+  --pf-c-nav--m-dark__item--m-current--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
   --pf-c-nav--m-dark__item--m-current__simple-list-link--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__item--m-current__list-link--Color: var(--pf-global--Color--light-100);
-  --pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor: var(--pf-global--BackgroundColor--dark-200);
   --pf-c-nav--m-dark__section-title--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__item__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-nav--m-dark__item__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
+  --pf-c-nav--m-dark__subnav--MarginTop: 0;
+  --pf-c-nav--m-dark__list-link--after--Width: 2.5rem;
   --pf-c-nav__c-divider--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginBottom: var(--pf-global--spacer--sm);
   --pf-c-nav__c-divider--MarginLeft: var(--pf-c-nav__list-link--PaddingLeft);
@@ -3920,6 +3970,7 @@ label.pf-c-check, .pf-c-check__label,
   --pf-c-nav__list-link--hover--Color: var(--pf-global--link--Color);
   --pf-c-nav__list-link--active--Color: var(--pf-global--link--Color);
   --pf-c-nav__list-link--focus--Color: var(--pf-global--link--Color);
+  --pf-c-nav__list-link--after--Bottom: 0;
   --pf-c-nav__list-link--after--Left: var(--pf-c-nav__list-link--PaddingLeft);
   --pf-c-nav__list-link--after--md--Left: var(--pf-c-nav__list-link--md--PaddingLeft);
   --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--link--Color);
@@ -4048,6 +4099,8 @@ label.pf-c-check, .pf-c-check__label,
     margin-bottom: var(--pf-c-nav__c-divider--MarginBottom);
     margin-left: var(--pf-c-nav__c-divider--MarginLeft); }
   .pf-c-nav.pf-m-dark {
+    --pf-c-nav__list-link--PaddingTop: var(--pf-c-nav--m-dark__list-link--PaddingTop);
+    --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__list-link--PaddingBottom);
     --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__list-link--Color);
     --pf-c-nav__list-link--hover--Color: var(--pf-c-nav--m-dark__list-link--hover--Color);
     --pf-c-nav__list-link--focus--Color: var(--pf-c-nav--m-dark__list-link--focus--Color);
@@ -4056,6 +4109,7 @@ label.pf-c-check, .pf-c-check__label,
     --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__list-link--active--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__list-link--focus--after--BackgroundColor: var(--pf-global--active-color--400);
+    --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__list-link--after--Bottom);
     --pf-c-nav__list-link--m-current--after--BackgroundColor: var(--pf-global--active-color--400);
     --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__simple-list-link--Color);
     --pf-c-nav__simple-list-link--hover--Color: var(--pf-c-nav--m-dark__simple-list-link--hover--Color);
@@ -4067,7 +4121,9 @@ label.pf-c-check, .pf-c-check__label,
     --pf-c-nav__simple-list-link--m-current--Color: var(--pf-c-nav--m-dark__simple-list-link--m-current--Color);
     --pf-c-nav__simple-list-link--m-current--BackgroundColor: var(--pf-c-nav--m-dark__simple-list-link--m-current--BackgroundColor);
     --pf-c-nav__section-title--Color: var(--pf-c-nav--m-dark__section-title--Color);
-    --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__separator--BackgroundColor); }
+    --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__separator--BackgroundColor);
+    --pf-c-nav__subnav--MarginTop: var(--pf-c-nav--m-dark__subnav--MarginTop);
+    --pf-c-nav__list-link--after--Width: var(--pf-c-nav--m-dark__list-link--after--Width); }
     .pf-c-nav.pf-m-dark .pf-c-divider {
       background-color: var(--pf-c-nav--m-dark__c-divider--BackgroundColor); }
     .pf-c-nav.pf-m-dark .pf-c-nav__item {
@@ -4076,10 +4132,18 @@ label.pf-c-check, .pf-c-check__label,
         background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
       .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
         --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
-        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
+        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color); }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded {
+        padding-bottom: var(--pf-c-nav--m-dark__item--m-expanded--PaddingBottom);
         /* stylelint-disable-next-line */ }
-        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current.pf-m-expanded {
-          background-color: var(--pf-c-nav--m-dark__item--m-current--m-expanded--BackgroundColor); }
+        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded > .pf-c-nav__link {
+          --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom);
+          --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item {
+      /* stylelint-disable-next-line */ }
+      .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item.pf-m-current,
+      .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link.pf-m-current {
+        background-color: var(--pf-c-nav--m-dark__item--m-current--BackgroundColor); }
 
 @media screen and (min-width: 768px) {
   .pf-c-page__sidebar .pf-c-nav {
@@ -4099,7 +4163,7 @@ label.pf-c-check, .pf-c-check__label,
 
 .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link::after {
   position: absolute;
-  bottom: 0;
+  bottom: var(--pf-c-nav__list-link--after--Bottom);
   left: var(--pf-c-nav__list-link--after--Left);
   width: var(--pf-c-nav__list-link--after--Width);
   height: var(--pf-c-nav__list-link--after--Height);
@@ -4852,10 +4916,9 @@ label.pf-c-check, .pf-c-check__label,
   .pf-c-page__sidebar.pf-m-expanded {
     --pf-c-page__sidebar--Transform: var(--pf-c-page__sidebar--m-expanded--Transform);
     box-shadow: var(--pf-c-page__sidebar--BoxShadow); }
-  @media screen and (min-width: 768px) {
-    .pf-c-page__sidebar.pf-m-collapsed {
-      max-width: 0;
-      overflow: hidden; } }
+  .pf-c-page__sidebar.pf-m-collapsed {
+    max-width: 0;
+    overflow: hidden; }
   .pf-c-page__sidebar.pf-m-dark {
     color: var(--pf-global--Color--100);
     --pf-c-page__sidebar--BackgroundColor: var(--pf-c-page__sidebar--m-dark--BackgroundColor); }
