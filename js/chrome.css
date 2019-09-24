@@ -2473,7 +2473,7 @@ label.pf-c-check, .pf-c-check__label,
   align-items: center;
   margin-right: var(--pf-c-chip-group--MarginRight);
   margin-bottom: var(--pf-c-chip-group--MarginBottom); }
-  .pf-c-chip-group.pf-m-toolbar > li {
+  .pf-c-chip-group.pf-m-toolbar > li:not(.pf-m-overflow) {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
@@ -2481,6 +2481,8 @@ label.pf-c-check, .pf-c-check__label,
     margin-right: var(--pf-c-chip-group__li--m-toolbar--MarginRight);
     background-color: var(--pf-c-chip-group--m-toolbar--BackgroundColor);
     border-radius: var(--pf-c-chip-group--m-toolbar-BorderRadius); }
+  .pf-c-chip-group.pf-m-toolbar > .pf-c-chip.pf-m-overflow {
+    margin: 0; }
   .pf-c-chip-group .pf-c-chip-group__label {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -5334,10 +5336,11 @@ label.pf-c-radio, .pf-c-radio__label,
   --pf-c-select__toggle--m-plain--BorderColor: transparent;
   --pf-c-select__toggle--m-plain--Color: var(--pf-global--Color--100);
   --pf-c-select__toggle--m-plain--hover--Color: var(--pf-global--Color--100);
-  --pf-c-select__toggle-wrapper--m-typeahead--PaddingTop: var(--pf-global--spacer--xs);
+  --pf-c-select__toggle-wrapper--m-typeahead--PaddingTop: 0;
   --pf-c-select__toggle-wrapper--not-last-child--MarginRight: var(--pf-global--spacer--xs);
   --pf-c-select__toggle-wrapper--MaxWidth: calc(100% - var(--pf-global--spacer--lg));
-  --pf-c-select__toggle-wrapper--c-chip-group--MarginBottom: 0;
+  --pf-c-select__toggle-wrapper--c-chip-group--MarginTop: var(--pf-global--spacer--sm);
+  --pf-c-select__toggle-wrapper--c-chip-group--MarginBottom: var(--pf-global--spacer--xs);
   --pf-c-select__toggle-wrapper--c-chip--c-button--PaddingTop: var(--pf-global--spacer--xs);
   --pf-c-select__toggle-wrapper--c-chip--c-button--PaddingBottom: var(--pf-global--spacer--xs);
   --pf-c-select__toggle-typeahead--FlexBasis: 10em;
@@ -5345,6 +5348,7 @@ label.pf-c-radio, .pf-c-radio__label,
   --pf-c-select__toggle-typeahead--BorderTop: none;
   --pf-c-select__toggle-typeahead--BorderRight: none;
   --pf-c-select__toggle-typeahead--BorderLeft: none;
+  --pf-c-select__toggle-typeahead-form--MinWidth: 7.5rem;
   --pf-c-select__toggle-typeahead--active--PaddingBottom: calc(var(--pf-global--spacer--form-element) - var(--pf-global--BorderWidth--sm));
   --pf-c-select__toggle-icon--toggle-text--MarginLeft: var(--pf-global--spacer--xs);
   --pf-c-select__toggle-badge--PaddingLeft: var(--pf-global--spacer--sm);
@@ -5457,9 +5461,8 @@ label.pf-c-radio, .pf-c-radio__label,
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      position: relative; }
-    .pf-c-select__toggle.pf-m-typeahead input:first-child {
-      margin-left: calc(-1 * var(--pf-c-select__toggle--PaddingLeft)); }
+      position: relative;
+      height: auto; }
   .pf-c-select__toggle .pf-c-select__toggle-clear {
     padding-right: var(--pf-c-select__toggle-clear--PaddingRight);
     padding-left: var(--pf-c-select__toggle-clear--PaddingLeft);
@@ -5486,6 +5489,7 @@ label.pf-c-radio, .pf-c-radio__label,
 
 .pf-c-select__toggle-wrapper {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
@@ -5500,7 +5504,12 @@ label.pf-c-radio, .pf-c-radio__label,
   .pf-c-select__toggle-wrapper > .pf-c-form-control {
     margin-top: calc(-1 * var(--pf-c-select__toggle-wrapper--m-typeahead--PaddingTop)); }
   .pf-c-select__toggle-wrapper .pf-c-chip-group {
+    margin-top: var(--pf-c-select__toggle-wrapper--c-chip-group--MarginTop);
     margin-bottom: var(--pf-c-select__toggle-wrapper--c-chip-group--MarginBottom); }
+  .pf-c-select__toggle-wrapper > form:first-child,
+  .pf-c-select__toggle-wrapper > .pf-c-select__toggle-typeahead-form:first-child,
+  .pf-c-select__toggle-wrapper > .pf-c-select__toggle-typeahead:first-child {
+    margin-left: calc(-1 * var(--pf-c-select__toggle--PaddingLeft)); }
 
 .pf-c-select__toggle-icon + .pf-c-select__toggle-text {
   margin-left: var(--pf-c-select__toggle-icon--toggle-text--MarginLeft); }
@@ -5522,6 +5531,11 @@ label.pf-c-radio, .pf-c-radio__label,
   border-left: var(--pf-c-select__toggle-typeahead--BorderLeft); }
   .pf-c-select__toggle-typeahead:focus, .pf-c-select__toggle-typeahead.pf-m-focus {
     padding-bottom: var(--pf-c-select__toggle-typeahead--active--PaddingBottom); }
+
+.pf-c-select__toggle-typeahead-form,
+.pf-c-select__toggle-typeahead {
+  flex: 1;
+  min-width: var(--pf-c-select__toggle-typeahead-form--MinWidth); }
 
 .pf-c-select__menu {
   position: absolute;
