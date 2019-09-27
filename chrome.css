@@ -9763,6 +9763,8 @@ aside.pf-c-page__sidebar {
         width: 11.42857rem; }
     aside.pf-c-page__sidebar .ins-c-navigation__header .ins-c-page__home-icon {
       padding-left: 25px; }
+  aside.pf-c-page__sidebar .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link::after {
+    bottom: var(--pf-c-nav__list-link--after--Bottom); }
 
 body {
   position: relative; }
