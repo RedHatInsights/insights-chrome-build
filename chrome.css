@@ -9782,7 +9782,7 @@ aside {
   --pf-c-page__sidebar--Transition:                 all 500ms cubic-bezier(.42, 0, .58, 1);
   --pf-m-emphasis--FontSize:                        var(--pf-global--FontSize--xl); }
 
-.pf-c-drawer__content, #root.pf-c-page__main {
+.pf-c-drawer__content, #root.pf-c-page__main, #temp.pf-c-page__main {
   height: 100%; }
 
 .pf-c-page__main#root {
