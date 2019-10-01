@@ -9765,6 +9765,8 @@ aside.pf-c-page__sidebar {
       padding-left: 25px; }
   aside.pf-c-page__sidebar .pf-c-nav__list > .pf-c-nav__item > .pf-c-nav__link::after {
     bottom: var(--pf-c-nav__list-link--after--Bottom); }
+  aside.pf-c-page__sidebar nav.pf-c-nav {
+    padding-top: var(--pf-global--spacer--sm); }
 
 body {
   position: relative; }
