@@ -9807,6 +9807,8 @@ aside {
     height: 1.5rem;
     width: 21px;
     width: 1.5rem; }
+  .pf-c-page__header .pf-c-page__header-tools .pf-c-avatar {
+    height: var(--pf-global--FontSize--4xl); }
 
 .pf-c-brand {
   fill: #fff;
