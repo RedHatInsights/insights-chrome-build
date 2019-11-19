@@ -5040,6 +5040,9 @@ readers do not read off random characters that represent icons */ }
   --pf-c-dropdown__menu-item--disabled--Color: var(--pf-global--Color--dark-200);
   --pf-c-dropdown__menu-item--hover--BackgroundColor: var(--pf-global--BackgroundColor--light-300);
   --pf-c-dropdown__menu-item--disabled--BackgroundColor: transparent;
+  --pf-c-dropdown__menu-item-icon--MarginRight: var(--pf-global--spacer--sm);
+  --pf-c-dropdown__menu-item-icon--Width: var(--pf-global--icon--FontSize--lg);
+  --pf-c-dropdown__menu-item-icon--Height: var(--pf-global--icon--FontSize--lg);
   --pf-c-dropdown__c-divider--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-dropdown__c-divider--MarginBottom: var(--pf-global--spacer--sm);
   --pf-c-dropdown__separator--Height: var(--pf-global--BorderWidth--sm);
@@ -5139,7 +5142,8 @@ readers do not read off random characters that represent icons */ }
   .pf-c-dropdown__toggle.pf-m-action .pf-c-dropdown__toggle-button:focus::before {
     --pf-c-dropdown__toggle--BorderBottomColor: var(--pf-c-dropdown__toggle--focus--BorderBottomColor);
     border-bottom-width: var(--pf-c-dropdown__toggle--focus--BorderBottomWidth); }
-  .pf-m-expanded > .pf-c-dropdown__toggle::before {
+  .pf-m-expanded > .pf-c-dropdown__toggle:not(.pf-m-action)::before,
+  .pf-m-expanded > .pf-c-dropdown__toggle.pf-m-action .pf-c-dropdown__toggle-button::before {
     --pf-c-dropdown__toggle--BorderBottomColor: var(--pf-c-dropdown__toggle--expanded--BorderBottomColor);
     border-bottom-width: var(--pf-c-dropdown__toggle--expanded--BorderBottomWidth); }
   .pf-c-dropdown__toggle.pf-m-plain {
@@ -5220,6 +5224,20 @@ readers do not read off random characters that represent icons */ }
     --pf-c-dropdown__menu-item--Color: var(--pf-c-dropdown__menu-item--disabled--Color);
     --pf-c-dropdown__menu-item--BackgroundColor: var(--pf-c-dropdown__menu-item--disabled--BackgroundColor);
     pointer-events: none; }
+  .pf-c-dropdown__menu-item.pf-m-icon {
+    display: flex;
+    align-items: center; }
+
+.pf-c-dropdown__menu-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pf-c-dropdown__menu-item-icon--Width);
+  height: var(--pf-c-dropdown__menu-item-icon--Height);
+  margin-right: var(--pf-c-dropdown__menu-item-icon--MarginRight); }
+  .pf-c-dropdown__menu-item-icon > * {
+    max-width: 100%;
+    max-height: 100%; }
 
 .pf-c-dropdown__separator {
   height: var(--pf-c-dropdown__separator--Height);
