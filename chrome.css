@@ -157,6 +157,7 @@
   --pf-global--FontFamily--monospace: overpass-mono, overpass-mono, SFMono-Regular, menlo, monaco, consolas, Liberation Mono, Courier New, monospace;
   --pf-global--FontFamily--redhatfont--sans-serif: RedHatText, Overpass, overpass, helvetica, arial, sans-serif;
   --pf-global--FontFamily--redhatfont--heading--sans-serif: RedHatDisplay, Overpass, overpass, helvetica, arial, sans-serif;
+  --pf-global--FontFamily--redhatfont--monospace: Liberation Mono, consolas, SFMono-Regular, menlo, monaco, Courier New, monospace;
   --pf-global--FontSize--4xl: 2.25rem;
   --pf-global--FontSize--3xl: 1.75rem;
   --pf-global--FontSize--2xl: 1.5rem;
@@ -184,6 +185,7 @@
 .pf-m-redhat-font {
   --pf-global--FontFamily--sans-serif: var(--pf-global--FontFamily--redhatfont--sans-serif);
   --pf-global--FontFamily--heading--sans-serif: var(--pf-global--FontFamily--redhatfont--heading--sans-serif);
+  --pf-global--FontFamily--monospace: var(--pf-global--FontFamily--redhatfont--monospace);
   --pf-global--FontWeight--semi-bold: var(--pf-global--FontWeight--redhatfont--bold);
   --pf-global--FontWeight--bold: var(--pf-global--FontWeight--redhatfont--bold);
   --pf-global--link--FontWeight: var(--pf-global--FontWeight--normal); }
@@ -3894,8 +3896,8 @@ readers do not read off random characters that represent icons */ }
   --pf-c-page__header-sidebar-toggle__c-button--PaddingBottom: var(--pf-global--spacer--sm);
   --pf-c-page__header-sidebar-toggle__c-button--PaddingLeft: var(--pf-global--spacer--sm);
   --pf-c-page__header-sidebar-toggle__c-button--MarginRight: var(--pf-global--spacer--md);
-  --pf-c-page__header-sidebar-toggle__c-button--MarginLeft: calc(var(--pf-global--spacer--xs) * -1);
-  --pf-c-page__header-sidebar-toggle__c-button--md--MarginLeft: calc(var(--pf-global--spacer--sm) * -1);
+  --pf-c-page__header-sidebar-toggle__c-button--MarginLeft: calc(var(--pf-c-page__header-sidebar-toggle__c-button--PaddingLeft) * -1);
+  --pf-c-page__header-sidebar-toggle__c-button--md--MarginLeft: calc(var(--pf-c-page__header-sidebar-toggle__c-button--PaddingLeft) * -1);
   --pf-c-page__header-sidebar-toggle__c-button--FontSize: var(--pf-global--FontSize--2xl);
   --pf-c-page__header-brand-link--c-brand--MaxHeight: 3.75rem;
   --pf-c-page__header-nav--PaddingLeft: var(--pf-global--spacer--md);
@@ -4283,8 +4285,8 @@ readers do not read off random characters that represent icons */ }
   --pf-c-nav--m-dark__section-title--Color: var(--pf-global--Color--light-100);
   --pf-c-nav--m-dark__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
   --pf-c-nav--m-dark__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-400);
-  --pf-c-nav--m-dark__item__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
-  --pf-c-nav--m-dark__item__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
+  --pf-c-nav--m-dark__item--m-current__c-divider--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
+  --pf-c-nav--m-dark__item--m-current__separator--BackgroundColor: var(--pf-global--BackgroundColor--dark-300);
   --pf-c-nav--m-dark__subnav--MarginTop: 0;
   --pf-c-nav--m-dark__list-link--after--Width: 2.5rem;
   --pf-c-nav__c-divider--MarginTop: var(--pf-global--spacer--sm);
@@ -4463,19 +4465,19 @@ readers do not read off random characters that represent icons */ }
     --pf-c-nav__list-link--after--Width: var(--pf-c-nav--m-dark__list-link--after--Width); }
     .pf-c-nav.pf-m-dark .pf-c-divider {
       background-color: var(--pf-c-nav--m-dark__c-divider--BackgroundColor); }
-    .pf-c-nav.pf-m-dark .pf-c-nav__item {
-      --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__item__separator--BackgroundColor); }
-      .pf-c-nav.pf-m-dark .pf-c-nav__item .pf-c-divider {
-        background-color: var(--pf-c-nav--m-dark__item__c-divider--BackgroundColor); }
-      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
-        --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
-        --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color); }
-      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded {
-        padding-bottom: var(--pf-c-nav--m-dark__item--m-expanded--PaddingBottom);
-        /* stylelint-disable-next-line */ }
-        .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded > .pf-c-nav__link {
-          --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom);
-          --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current {
+      --pf-c-nav__simple-list-link--Color: var(--pf-c-nav--m-dark__item--m-current__simple-list-link--Color);
+      --pf-c-nav__list-link--Color: var(--pf-c-nav--m-dark__item--m-current__list-link--Color);
+      --pf-c-nav__separator--BackgroundColor: var(--pf-c-nav--m-dark__item--m-current__separator--BackgroundColor);
+      /* stylelint-disable-next-line */ }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-current .pf-c-divider {
+        background-color: var(--pf-c-nav--m-dark__item--m-current__c-divider--BackgroundColor); }
+    .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded {
+      padding-bottom: var(--pf-c-nav--m-dark__item--m-expanded--PaddingBottom);
+      /* stylelint-disable-next-line */ }
+      .pf-c-nav.pf-m-dark .pf-c-nav__item.pf-m-expanded > .pf-c-nav__link {
+        --pf-c-nav__list-link--after--Bottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--after--Bottom);
+        --pf-c-nav__list-link--PaddingBottom: var(--pf-c-nav--m-dark__item--m-expanded__list-link--PaddingBottom); }
     .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item {
       /* stylelint-disable-next-line */ }
       .pf-c-nav.pf-m-dark .pf-c-nav__list > .pf-c-nav__item.pf-m-current,
@@ -5041,8 +5043,10 @@ readers do not read off random characters that represent icons */ }
   --pf-c-dropdown__separator--BackgroundColor: var(--pf-global--BorderColor--100);
   --pf-c-dropdown__separator--MarginTop: var(--pf-global--spacer--sm);
   --pf-c-dropdown__separator--MarginBottom: var(--pf-global--spacer--sm);
-  --pf-c-dropdown__group--PaddingTop: var(--pf-global--spacer--md);
-  --pf-c-dropdown__group--first-child--PaddingTop: var(--pf-global--spacer--sm);
+  --pf-c-dropdown__group--PaddingTop: 0;
+  --pf-c-dropdown__group--group--PaddingTop: var(--pf-global--spacer--sm);
+  --pf-c-dropdown__group--first-child--PaddingTop: 0;
+  --pf-c-dropdown__group-title--PaddingTop: var(--pf-global--spacer--sm);
   --pf-c-dropdown__group-title--PaddingRight: var(--pf-c-dropdown__menu-item--PaddingRight);
   --pf-c-dropdown__group-title--PaddingBottom: var(--pf-c-dropdown__menu-item--PaddingBottom);
   --pf-c-dropdown__group-title--PaddingLeft: var(--pf-c-dropdown__menu-item--PaddingLeft);
@@ -5203,14 +5207,20 @@ readers do not read off random characters that represent icons */ }
   height: var(--pf-c-dropdown__separator--Height);
   margin-top: var(--pf-c-dropdown__separator--MarginTop);
   margin-bottom: var(--pf-c-dropdown__separator--MarginBottom);
-  background-color: var(--pf-c-dropdown__separator--BackgroundColor); }
+  background-color: var(--pf-c-dropdown__separator--BackgroundColor);
+  border: 0; }
+  .pf-c-dropdown__separator:last-child {
+    --pf-c-dropdown__separator--MarginBottom: 0; }
 
 .pf-c-dropdown__group {
   padding-top: var(--pf-c-dropdown__group--PaddingTop); }
   .pf-c-dropdown__group:first-child {
     --pf-c-dropdown__group--PaddingTop: var(--pf-c-dropdown__group--first-child--PaddingTop); }
+  .pf-c-dropdown__group + .pf-c-dropdown__group {
+    --pf-c-dropdown__group--PaddingTop: var(--pf-c-dropdown__group--group--PaddingTop); }
 
 .pf-c-dropdown__group-title {
+  padding-top: var(--pf-c-dropdown__group-title--PaddingTop);
   padding-right: var(--pf-c-dropdown__group-title--PaddingRight);
   padding-bottom: var(--pf-c-dropdown__group-title--PaddingBottom);
   padding-left: var(--pf-c-dropdown__group-title--PaddingLeft);
@@ -9790,6 +9800,11 @@ aside {
 .pf-c-page__main#root {
   background: var(--pf-c-page__main-section--BackgroundColor); }
 
+.pf-c-alert.ins-c-alert__logout {
+  position: absolute;
+  top: var(--pf-c-page__header--MinHeight);
+  right: var(--pf-c-page__header-tools--MarginRight); }
+
 .pf-c-page__header {
   overflow: visible; }
   .pf-c-page__header .ins-c-dropdown-item__stack {
@@ -9807,6 +9822,8 @@ aside {
     height: 1.5rem;
     width: 21px;
     width: 1.5rem; }
+  .pf-c-page__header .pf-c-page__header-tools .pf-c-avatar {
+    height: var(--pf-global--FontSize--4xl); }
 
 .pf-c-brand {
   fill: #fff;
