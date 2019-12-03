@@ -9732,9 +9732,6 @@ button:focus {
     padding-top: var(--pf-global--spacer--3xl) !important;
     padding-bottom: var(--pf-global--spacer--3xl) !important; } }
 
-* {
-  font-family: 'Overpass', 'OpenSans', sans-serif; }
-
 .ins-c-footer {
   background: var(--pf-global--BackgroundColor--300);
   color: var(--pf-global--BackgroundColor--dark-transparent-200);
