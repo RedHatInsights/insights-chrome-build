@@ -1,1 +1,0 @@
-{"version":3,"sources":["inventoryStyles.js"],"names":[],"mappings":";;;AACA,aADA,QAAA,kEACA,QAAA","file":"inventoryStyles.65229c02.js","sourceRoot":"../../src/js","sourcesContent":["import '@redhat-cloud-services/frontend-components-inventory/index.css';\nimport '../sass/inventory.scss';\n"]}
