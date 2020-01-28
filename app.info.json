@@ -1,11 +1,11 @@
 {
   "app_name": "chrome",
-  "src_hash": "8729bc58e796d49c76747814c4b1861d09fb709d",
+  "src_hash": "a2acbdca0efc3035a25f9150076df8c1b1015a3e",
   "src_tag": "",
   "src_branch": "master",
   "travis": {
     "event_type": "push",
-    "build_number": "3078",
-    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/642833534"
+    "build_number": "3087",
+    "build_web_url": "https://travis-ci.org/RedHatInsights/insights-chrome/builds/642936316"
   }
 }
