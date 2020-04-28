@@ -11735,3 +11735,6 @@ aside {
   align-items: baseline; }
   .ins-c-icon-inline > *:not(:last-child) {
     margin-right: var(--pf-global--spacer--md); }
+
+.ins-c-pen-test {
+  border-top: 3px solid #A18FFF; }
