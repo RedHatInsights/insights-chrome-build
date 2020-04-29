@@ -11726,6 +11726,11 @@ aside {
 .ins-c-page__header-brand--loading .pf-c-button.pf-m-plain {
   top: 2px; }
 
+.ins-c-loading-icon__home {
+  height: 34px;
+  width: 34px;
+  vertical-align: -0.1875em; }
+
 .ins-c-navigation__header-name--loading {
   width: 100%; }
 
