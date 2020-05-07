@@ -11743,6 +11743,12 @@ aside {
 .ins-c-navigation__header-name--loading {
   width: 100%; }
 
+.pf-m-user-skeleton .ins-c-skeleton {
+  width: 75px; }
+
+.pf-m-user-skeleton .pf-c-dropdown__toggle-icon {
+  height: 1em; }
+
 .ins-c-icon-inline {
   display: flex;
   flex-wrap: nowrap;
