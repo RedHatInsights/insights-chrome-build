@@ -6448,7 +6448,9 @@ button:-moz-focusring,
       border-color: var(--pf-c-nav__link--m-current--after--BorderColor);
       border-left-width: var(--pf-c-nav__link--m-current--after--BorderLeftWidth); }
   .pf-c-nav__link, .pf-c-nav__link:hover, .pf-c-nav__link:focus, .pf-c-nav__link:active {
-    text-decoration: none; }
+    width: 100%;
+    text-decoration: none;
+    border: none; }
 
 .pf-c-nav__subnav {
   --pf-c-nav__link--PaddingTop: var(--pf-c-nav__subnav__link--PaddingTop);
@@ -6664,6 +6666,12 @@ button:-moz-focusring,
   --pf-c-button--m-control--m-expanded--after--BorderBottomWidth: var(--pf-global--BorderWidth--md);
   --pf-c-button--m-control--m-expanded--after--BorderBottomColor: var(--pf-global--active-color--100);
   --pf-c-button--m-small--FontSize: var(--pf-global--FontSize--sm);
+  --pf-c-button--m-display-lg--PaddingTop: var(--pf-global--spacer--md);
+  --pf-c-button--m-display-lg--PaddingRight: var(--pf-global--spacer--xl);
+  --pf-c-button--m-display-lg--PaddingBottom: var(--pf-global--spacer--md);
+  --pf-c-button--m-display-lg--PaddingLeft: var(--pf-global--spacer--xl);
+  --pf-c-button--m-display-lg--FontWeight: var(--pf-global--FontWeight--bold);
+  --pf-c-button--m-link--m-display-lg--FontSize: var(--pf-global--FontSize--lg);
   --pf-c-button__icon--m-start--MarginRight: var(--pf-global--spacer--xs);
   --pf-c-button__icon--m-end--MarginLeft: var(--pf-global--spacer--xs);
   position: relative;
@@ -6699,6 +6707,12 @@ button:-moz-focusring,
     width: 100%; }
   .pf-c-button.pf-m-small {
     --pf-c-button--FontSize: var(--pf-c-button--m-small--FontSize); }
+  .pf-c-button.pf-m-primary.pf-m-display-lg, .pf-c-button.pf-m-secondary.pf-m-display-lg, .pf-c-button.pf-m-tertiary.pf-m-display-lg, .pf-c-button.pf-m-link.pf-m-display-lg {
+    --pf-c-button--PaddingTop: var(--pf-c-button--m-display-lg--PaddingTop);
+    --pf-c-button--PaddingRight: var(--pf-c-button--m-display-lg--PaddingRight);
+    --pf-c-button--PaddingBottom: var(--pf-c-button--m-display-lg--PaddingBottom);
+    --pf-c-button--PaddingLeft: var(--pf-c-button--m-display-lg--PaddingLeft);
+    --pf-c-button--FontWeight: var(--pf-c-button--m-display-lg--FontWeight); }
   .pf-c-button.pf-m-primary {
     color: var(--pf-c-button--m-primary--Color);
     background-color: var(--pf-c-button--m-primary--BackgroundColor); }
@@ -6775,6 +6789,8 @@ button:-moz-focusring,
       .pf-c-button.pf-m-link.pf-m-inline:hover {
         --pf-c-button--m-link--Color: var(--pf-c-button--m-link--m-inline--hover--Color);
         text-decoration: var(--pf-c-button--m-link--m-inline--hover--TextDecoration); }
+    .pf-c-button.pf-m-link.pf-m-display-lg {
+      --pf-c-button--FontSize: var(--pf-c-button--m-link--m-display-lg--FontSize); }
   .pf-c-button.pf-m-control {
     --pf-c-button--BorderRadius: var(--pf-c-button--m-control--BorderRadius);
     --pf-c-button--disabled--BackgroundColor: var(--pf-c-button--m-control--disabled--BackgroundColor);
@@ -7405,6 +7421,7 @@ button:-moz-focusring,
   --pf-c-modal-box--Width: 100%;
   --pf-c-modal-box--MaxWidth: calc(100% - var(--pf-global--spacer--xl));
   --pf-c-modal-box--m-sm--sm--MaxWidth: 35rem;
+  --pf-c-modal-box--m-md--Width: 52.5rem;
   --pf-c-modal-box--m-lg--lg--MaxWidth: 70rem;
   --pf-c-modal-box--MaxHeight: calc(100% - var(--pf-global--spacer--2xl));
   --pf-c-modal-box__header--PaddingTop: var(--pf-global--spacer--lg);
@@ -7439,12 +7456,12 @@ button:-moz-focusring,
   max-height: var(--pf-c-modal-box--MaxHeight);
   background-color: var(--pf-c-modal-box--BackgroundColor);
   box-shadow: var(--pf-c-modal-box--BoxShadow); }
-  @media screen and (min-width: 576px) {
-    .pf-c-modal-box.pf-m-sm {
-      --pf-c-modal-box--MaxWidth: var(--pf-c-modal-box--m-sm--sm--MaxWidth); } }
-  @media screen and (min-width: 1200px) {
-    .pf-c-modal-box.pf-m-lg {
-      --pf-c-modal-box--MaxWidth: var(--pf-c-modal-box--m-lg--lg--MaxWidth); } }
+  .pf-c-modal-box.pf-m-sm {
+    --pf-c-modal-box--Width: var(--pf-c-modal-box--m-sm--sm--MaxWidth); }
+  .pf-c-modal-box.pf-m-md {
+    --pf-c-modal-box--Width: var(--pf-c-modal-box--m-md--Width); }
+  .pf-c-modal-box.pf-m-lg {
+    --pf-c-modal-box--Width: var(--pf-c-modal-box--m-lg--lg--MaxWidth); }
   .pf-c-modal-box > .pf-c-button {
     position: absolute;
     top: var(--pf-c-modal-box--c-button--Top);
