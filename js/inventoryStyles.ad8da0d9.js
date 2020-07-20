@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"UTq8":[function(require,module,exports) {
 "use strict";require("@redhat-cloud-services/frontend-components-inventory/index.css"),require("../sass/inventory.scss");
 },{"@redhat-cloud-services/frontend-components-inventory/index.css":"DQPc","../sass/inventory.scss":"DQPc"}]},{},["UTq8"], null)
-//# sourceMappingURL=/beta/apps/chrome/js/inventoryStyles.e2247531.js.map
+//# sourceMappingURL=/beta/apps/chrome/js/inventoryStyles.ad8da0d9.js.map
