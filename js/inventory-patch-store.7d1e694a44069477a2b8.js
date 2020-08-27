@@ -1,0 +1,2 @@
+(window.wpJsonpChromeInstance=window.wpJsonpChromeInstance||[]).push([[13],{561:function(n,o,e){const{ReactRouterDOM:s}=e(69);n.exports=s}}]);
+//# sourceMappingURL=sourcemaps/inventory-patch-store.js.map
