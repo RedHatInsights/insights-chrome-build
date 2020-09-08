@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@import url(node_modules/@redhat-cloud-services/frontend-components/components/spinner.css);
-@import url(node_modules/@redhat-cloud-services/frontend-components/components/skeleton.css);
+@import url(node_modules/@redhat-cloud-services/frontend-components/components/Spinner.css);
+@import url(node_modules/@redhat-cloud-services/frontend-components/components/Skeleton.css);
 @import url(node_modules/@redhat-cloud-services/frontend-components/components/conditional-filter.css);
 .pf-t-light, .pf-c-page__sidebar.pf-m-light, .pf-c-alert {
   --pf-global--Color--100: var(--pf-global--Color--dark-100);
