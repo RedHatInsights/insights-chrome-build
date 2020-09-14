@@ -1,2 +1,0 @@
-(window.wpJsonpChromeInstance=window.wpJsonpChromeInstance||[]).push([[8,9,10,12,13,21],{1172:function(t,n,o){const{reactRedux:c}=o(206);t.exports=c},832:function(t,n,o){const{PFReact:c}=o(206);t.exports=c},833:function(t,n,o){const{customReact:c}=o(206);t.exports=c},834:function(t,n,o){const{ReactRouterDOM:c}=o(206);t.exports=c},841:function(t,n,o){const{PFReactTable:c}=o(206);t.exports=c}}]);
-//# sourceMappingURL=sourcemaps/inventory.js.map
