@@ -1,0 +1,2 @@
+(window.wpJsonpChromeInstance=window.wpJsonpChromeInstance||[]).push([[12],{806:function(n,o,t){const{PFReact:s}=t(132);n.exports=s},807:function(n,o,t){const{customReact:s}=t(132);n.exports=s}}]);
+//# sourceMappingURL=sourcemaps/inventory-general-info.js.map
