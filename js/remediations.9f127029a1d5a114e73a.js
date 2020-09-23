@@ -1,2 +1,0 @@
-(window.wpJsonpChromeInstance=window.wpJsonpChromeInstance||[]).push([[21,12],{821:function(n,o,t){const{PFReact:c}=t(132);n.exports=c},822:function(n,o,t){const{customReact:c}=t(132);n.exports=c},831:function(n,o,t){const{PFReactTable:c}=t(132);n.exports=c}}]);
-//# sourceMappingURL=sourcemaps/remediations.js.map
