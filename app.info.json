@@ -1,12 +1,12 @@
 {
   "app_name": "chrome",
-  "src_hash": "69cc97bf9b252af5b7597d2e1b09fce5f3caf138",
+  "src_hash": "9f0e784305b4b372575bba505977d422895cda42",
   "src_tag": "",
   "src_branch": "prod-beta",
   "patternfly_dependencies": ["@patternfly/patternfly@4.42.2","@patternfly/react-core@4.47.0","@patternfly/react-icons@4.7.6","@patternfly/react-table@4.16.20"],
   "travis": {
     "event_type": "push",
-    "build_number": "5572",
-    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/192722103"
+    "build_number": "5593",
+    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/193415911"
   }
 }
