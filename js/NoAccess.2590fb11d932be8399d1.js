@@ -1,2 +1,0 @@
-(window.wpJsonpChromeInstance=window.wpJsonpChromeInstance||[]).push([[7],{2795:function(e,t,n){"use strict";n.r(t);var r=n(0),c=n.n(r),i=n(11),a=n.n(i),p=n(41),l=n(1725),o=n(1727),u=n(1726),s=function(e){var t=e.activeAppTitle;return t?c.a.createElement(l.NotAuthorized,{serviceName:t}):c.a.createElement(u.Bullseye,null,c.a.createElement(o.Spinner,{centered:!0}))};s.propTypes={activeAppTitle:a.a.string},t.default=Object(p.connect)((function(e){return{activeAppTitle:e.chrome.activeAppTitle}}),null)(s)}}]);
-//# sourceMappingURL=sourcemaps/NoAccess.js.map
