@@ -1,12 +1,12 @@
 {
   "app_name": "chrome",
-  "src_hash": "2ede0c0ab2d76400c25c074523e5e07ca4356022",
+  "src_hash": "9aa6b4e1f02354cd6803b3b0666ead888c563b08",
   "src_tag": "",
   "src_branch": "master",
   "patternfly_dependencies": ["UNMET DEPENDENCY @patternfly/patternfly@4.42.2","UNMET DEPENDENCY @patternfly/react-core@4.47.0","─ @patternfly/react-icons@4.7.6","─ @patternfly/react-styles@4.7.5","─ @patternfly/react-tokens@4.9.8","UNMET DEPENDENCY @patternfly/react-icons@4.7.6","UNMET DEPENDENCY @patternfly/react-table@4.16.20","─ @patternfly/patternfly@4.42.2","─ @patternfly/react-core@4.50.2","─ @patternfly/react-icons@4.7.6","─ @patternfly/react-styles@4.7.5","─ @patternfly/react-tokens@4.9.8","─ @patternfly/react-core@4.47.0","─ @patternfly/react-icons@4.7.18","─ @patternfly/react-table@4.19.24","─ @patternfly/react-core@4.79.2","─ @patternfly/react-icons@4.7.18","─ @patternfly/react-styled-system@3.8.10","─ @patternfly/react-table@4.19.24"],
   "travis": {
     "event_type": "push",
-    "build_number": "6143",
-    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/215921522"
+    "build_number": "6150",
+    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/216025298"
   }
 }
