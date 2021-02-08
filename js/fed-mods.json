@@ -1,0 +1,37 @@
+{
+    "chrome": {
+        "entry": [
+            "/beta/apps/chrome/js/chrome.a293fb6ec423bdee33ad.js"
+        ],
+        "modules": [
+            "/beta/apps/chrome/js/5105.b53993f7586ad2e3f957.js",
+            "/beta/apps/chrome/js/1984.7368d285e559c498fe4b.js",
+            "/beta/apps/chrome/js/611.95f9ad732f8f933d84c5.js",
+            "/beta/apps/chrome/js/3096.df018d88f6398f365548.js",
+            "/beta/apps/chrome/js/3473.d2cb2fe4f84f65baf788.js",
+            "/beta/apps/chrome/js/5278.20fe89c234af0b1a705d.js",
+            "/beta/apps/chrome/js/6968.008242778720c9a25a65.js",
+            "/beta/apps/chrome/js/inventory-gen-info-store.13a9b64b5a99720ebeea.js",
+            "/beta/apps/chrome/js/inventory-render-wrapper.0c37625448bafcf69985.js",
+            "/beta/apps/chrome/js/inventory-patch-store.e79a993c39376f81ea69.js",
+            "/beta/apps/chrome/js/inventory-vuln-store.1502872fa9de75e8bfc7.js",
+            "/beta/apps/chrome/js/inventory-vuln.f991747db4d0de63d586.js",
+            "/beta/apps/chrome/js/5561.b030bf3cfaf75debe55f.js",
+            "/beta/apps/chrome/js/7081.ed295f6ec176dfef8e2b.js",
+            "/beta/apps/chrome/js/8917.47e2114b174c8914b137.js",
+            "/beta/apps/chrome/js/4998.c6d8c773974d01f097a1.js",
+            "/beta/apps/chrome/js/2827.886f962c262025af1cf2.js",
+            "/beta/apps/chrome/js/8683.73d9da418bf770928524.js",
+            "/beta/apps/chrome/js/3308.7d13f330cdbe35419e76.js",
+            "/beta/apps/chrome/js/6585.62d79199447806a34e1c.js",
+            "/beta/apps/chrome/js/6952.8e7250df93fa29345d41.js",
+            "/beta/apps/chrome/js/3703.f4cef1d5888f1eeb22ef.js",
+            "/beta/apps/chrome/js/5151.84248ad62e085cab5190.js",
+            "/beta/apps/chrome/js/5600.29b1308ea313bd065989.js",
+            "/beta/apps/chrome/js/7779.f7313e28fe6bc555fc36.js",
+            "/beta/apps/chrome/js/5892.ac37b58c379f97a3f555.js",
+            "/beta/apps/chrome/js/1714.076ac68fea5a91f4389e.js",
+            "/beta/apps/chrome/js/3244.4af9c638377e6033a084.js"
+        ]
+    }
+}
