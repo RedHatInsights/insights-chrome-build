@@ -13446,7 +13446,7 @@ aside {
       .pf-c-page div.ins-c-chrome__global-filter .ins-c-tagfilter .ins-c-tagfilter__option-value {
         max-width: 360px; }
 
-.pf-c-drawer__content, #root.pf-c-page__main, #temp.pf-c-page__main, #no-access.pf-c-page__main {
+.pf-c-drawer__content, #root.pf-c-page__main, #temp.pf-c-page__main {
   height: 100%; }
 
 .pf-c-page__main#root, .pf-c-page__main#no-access {
