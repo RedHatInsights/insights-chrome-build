@@ -13455,7 +13455,7 @@ aside {
 .pf-c-page__main#root, .pf-c-page__main#no-access {
   background: var(--pf-c-page__main-section--BackgroundColor); }
 
-.pf-c-alert.ins-c-alert__logout {
+.pf-c-alert.ins-c-alert {
   position: absolute;
   top: var(--pf-c-page__header--MinHeight);
   right: var(--pf-c-page__header-tools--MarginRight); }
