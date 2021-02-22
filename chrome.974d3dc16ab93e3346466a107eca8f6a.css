@@ -13261,6 +13261,8 @@ section.ins-c-app-switcher--loading {
     .pf-c-page div.ins-c-chrome__global-filter .ins-c-tagfilter .pf-c-select__menu {
       max-height: 400px;
       overflow: auto; }
+    .pf-c-page div.ins-c-chrome__global-filter .ins-c-tagfilter .pf-c-select__menu li button:hover label .pf-c-badge.pf-m-read {
+      background: var(--pf-global--Color--light-100); }
     .pf-c-page div.ins-c-chrome__global-filter .ins-c-tagfilter .ins-c-tagfilter__option-value {
       max-width: 360px; }
 
