@@ -13522,3 +13522,10 @@ section.ins-c-app-switcher--loading {
 
 .ins-m-navigation-align .pf-c-nav__link {
   text-align: inherit; }
+
+.ins-c-render {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; }
+  .ins-c-render > main {
+    flex-grow: 1; }

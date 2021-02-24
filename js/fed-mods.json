@@ -1,15 +1,15 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.611438d25d7ebb7b05cd.js"
+            "/beta/apps/chrome/js/chrome.983483553ff4c24d4e66.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/189.314b9e395289b1edcdb5.js",
-            "/beta/apps/chrome/js/6789.d739041c22e20a7501d5.js",
-            "/beta/apps/chrome/js/7638.8db4bb1eafbc022ebd15.js",
-            "/beta/apps/chrome/js/7288.1cd5579276a41c1a0a54.js",
-            "/beta/apps/chrome/js/3447.f83ff9a7ef36d5a48861.js",
-            "/beta/apps/chrome/js/6832.c7909b2feaf807f78303.js",
+            "/beta/apps/chrome/js/189.4d4360119daa2a05d1d9.js",
+            "/beta/apps/chrome/js/6789.d1c7a767d7d77b7e526d.js",
+            "/beta/apps/chrome/js/7638.19dda59949be69483b1f.js",
+            "/beta/apps/chrome/js/7288.62552402b5c521730462.js",
+            "/beta/apps/chrome/js/3447.6275f1936e2d7606c399.js",
+            "/beta/apps/chrome/js/6832.8603b7ff7c6998565ecc.js",
             "/beta/apps/chrome/js/6663.deb349994eaae8600aed.js",
             "/beta/apps/chrome/js/inventory-gen-info-store.2b7f22c9e34bf0cf36bc.js",
             "/beta/apps/chrome/js/inventory-render-wrapper.db5acb9dfadfdcd463ec.js",
