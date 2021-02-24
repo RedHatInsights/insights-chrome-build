@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.d5fb4fdc2e062acc1637.js"
+            "/beta/apps/chrome/js/chrome.d4e4324f97c9c8877ce9.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/189.4d4360119daa2a05d1d9.js",
@@ -10,9 +10,9 @@
             "/beta/apps/chrome/js/7288.62552402b5c521730462.js",
             "/beta/apps/chrome/js/3447.6275f1936e2d7606c399.js",
             "/beta/apps/chrome/js/6832.8603b7ff7c6998565ecc.js",
-            "/beta/apps/chrome/js/6663.deb349994eaae8600aed.js",
-            "/beta/apps/chrome/js/inventory-gen-info-store.2b7f22c9e34bf0cf36bc.js",
-            "/beta/apps/chrome/js/inventory-render-wrapper.db5acb9dfadfdcd463ec.js",
+            "/beta/apps/chrome/js/6663.1c026010e5e9f9e08ed0.js",
+            "/beta/apps/chrome/js/inventory-gen-info-store.590389292c0ebc9c80c3.js",
+            "/beta/apps/chrome/js/inventory-render-wrapper.ee61ff57191ce4091eae.js",
             "/beta/apps/chrome/js/inventory-vuln-store.0f2f086b27b7d1d01249.js",
             "/beta/apps/chrome/js/inventory-advisor.7137dda0c513388d1faf.js",
             "/beta/apps/chrome/js/inventory-vuln.b6412b68355d73842e86.js",
@@ -28,11 +28,11 @@
             "/beta/apps/chrome/js/5414.5398617de66da5430fef.js",
             "/beta/apps/chrome/js/4358.8fe3ee9f2d298d7abfdb.js",
             "/beta/apps/chrome/js/6232.3fff3f5e75bbd3d27575.js",
-            "/beta/apps/chrome/js/2682.cffc756ce9307aa36404.js",
-            "/beta/apps/chrome/js/8386.7b7ec7521391b3db37aa.js",
+            "/beta/apps/chrome/js/2682.aaf09d54c3508ce80d8b.js",
+            "/beta/apps/chrome/js/8386.79def3093e91034dbb1e.js",
             "/beta/apps/chrome/js/5166.39a931e6c30015cd5552.js",
             "/beta/apps/chrome/js/5892.8706cfb313af2168fcad.js",
-            "/beta/apps/chrome/js/5930.6307152957d6cc762ab9.js",
+            "/beta/apps/chrome/js/5930.2072fc3cbdba7ec0e3e6.js",
             "/beta/apps/chrome/js/8470.37c34ab77b77cdeadac1.js"
         ]
     }
