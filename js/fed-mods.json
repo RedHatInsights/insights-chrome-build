@@ -1,15 +1,15 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.fc065cf69bedcbac6397.js"
+            "/beta/apps/chrome/js/chrome.8e4b761c39b579455395.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/189.59f7ee04fb7076d9f64a.js",
-            "/beta/apps/chrome/js/6789.25bf509aa28991f5721e.js",
-            "/beta/apps/chrome/js/7638.350379463c7a311aa445.js",
-            "/beta/apps/chrome/js/7288.52689cafd0b5aa1dd601.js",
-            "/beta/apps/chrome/js/3447.77808850eb212f18bb2f.js",
-            "/beta/apps/chrome/js/6832.49e0504e7b6e220096f5.js",
+            "/beta/apps/chrome/js/189.d9d521671ff79d5d751f.js",
+            "/beta/apps/chrome/js/6789.6a6420e2ad6a607f4ed4.js",
+            "/beta/apps/chrome/js/7638.6c631f8b63e89fbbae1d.js",
+            "/beta/apps/chrome/js/7288.37c708964848c341efe2.js",
+            "/beta/apps/chrome/js/3447.31100120990ce945d48e.js",
+            "/beta/apps/chrome/js/6832.2b946da09d05775fe636.js",
             "/beta/apps/chrome/js/6663.ef6f39be73132f0b445f.js",
             "/beta/apps/chrome/js/inventory-gen-info-store.cf36057b586ce29e2f31.js",
             "/beta/apps/chrome/js/inventory-render-wrapper.186adef013d52e5d4cc1.js",
@@ -33,13 +33,13 @@
             "/beta/apps/chrome/js/9749.8da926bdc29a90f698b4.js",
             "/beta/apps/chrome/js/2693.18cac95e527e8a362dd2.js",
             "/beta/apps/chrome/js/6232.fae001212a0e43ae78f1.js",
-            "/beta/apps/chrome/js/2682.fa77d8f1181c5eb52108.js",
+            "/beta/apps/chrome/js/2682.549342dfc200ecc10352.js",
             "/beta/apps/chrome/js/1673.7f88828ebde42718e158.js",
-            "/beta/apps/chrome/js/2661.c27cd342bf760969a035.js",
+            "/beta/apps/chrome/js/2661.c523b32f7799c79dac4b.js",
             "/beta/apps/chrome/js/8555.cac49b34f4800dd2dd2d.js",
             "/beta/apps/chrome/js/5691.bf06593969c6b565dd3c.js",
             "/beta/apps/chrome/js/8921.6cda4e00f8f19fb10063.js",
-            "/beta/apps/chrome/js/7588.e11ad3898b5e56ae2322.js"
+            "/beta/apps/chrome/js/7588.5c3c710d6e6e63195ffb.js"
         ]
     }
 }
