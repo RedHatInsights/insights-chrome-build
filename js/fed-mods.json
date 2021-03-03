@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.16362acd58d7ee7f9fe9.js"
+            "/beta/apps/chrome/js/chrome.1c03583888580d120b21.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/189.d9d521671ff79d5d751f.js",
@@ -28,7 +28,7 @@
             "/beta/apps/chrome/js/7729.0e5410ed84c2a67512b3.js",
             "/beta/apps/chrome/js/8845.b1561332954dc23debb4.js",
             "/beta/apps/chrome/js/6876.1038a9b9ed571917d6fb.js",
-            "/beta/apps/chrome/js/6421.865e0887ff196d50351e.js",
+            "/beta/apps/chrome/js/6421.a2c858d585397461b40b.js",
             "/beta/apps/chrome/js/9468.0f0a4300fe3e178e95a3.js",
             "/beta/apps/chrome/js/9749.8da926bdc29a90f698b4.js",
             "/beta/apps/chrome/js/2693.18cac95e527e8a362dd2.js",
