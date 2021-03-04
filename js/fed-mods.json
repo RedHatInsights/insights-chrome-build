@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.1c03583888580d120b21.js"
+            "/beta/apps/chrome/js/chrome.967bf59c15463a9f9553.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/189.d9d521671ff79d5d751f.js",
@@ -10,7 +10,7 @@
             "/beta/apps/chrome/js/7288.37c708964848c341efe2.js",
             "/beta/apps/chrome/js/3447.31100120990ce945d48e.js",
             "/beta/apps/chrome/js/6832.2b946da09d05775fe636.js",
-            "/beta/apps/chrome/js/6663.ef6f39be73132f0b445f.js",
+            "/beta/apps/chrome/js/6663.0cf756e1de440d839d28.js",
             "/beta/apps/chrome/js/inventory-gen-info-store.cf36057b586ce29e2f31.js",
             "/beta/apps/chrome/js/inventory-render-wrapper.186adef013d52e5d4cc1.js",
             "/beta/apps/chrome/js/inventory-vuln-store.bc18f6db37ababed013e.js",
