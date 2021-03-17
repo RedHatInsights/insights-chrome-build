@@ -1,1 +1,0 @@
-(self.webpackChunkinsights_chrome=self.webpackChunkinsights_chrome||[]).push([[7952],{18066:()=>{},75976:()=>{},85208:()=>{},6702:()=>{},12993:()=>{},61758:()=>{}}]);
