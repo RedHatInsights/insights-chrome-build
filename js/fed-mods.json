@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.e90e46a81ac8fcbf8495.js"
+            "/beta/apps/chrome/js/chrome.e1c8396c6a1018e34bf0.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/189.0108cda2c61446545c74.js",
