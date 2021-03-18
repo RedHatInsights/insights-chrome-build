@@ -13529,3 +13529,7 @@ section.ins-c-app-switcher--loading {
   min-height: 100%; }
   .ins-c-render > main {
     flex-grow: 1; }
+
+@media only screen and (max-width: 576px) {
+  .ins-m-hide-on-sm {
+    display: none; } }
