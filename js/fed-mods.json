@@ -1,23 +1,23 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.4a6a40d9dd4765d49c3e.js"
+            "/beta/apps/chrome/js/chrome.56eed617bb8b2fcbc0d3.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/189.319c13e0846b8571c593.js",
-            "/beta/apps/chrome/js/789.97aa265a8578dfb10e08.js",
-            "/beta/apps/chrome/js/638.cbc38b0749ccdfd3decc.js",
-            "/beta/apps/chrome/js/288.5b107cf3827924892482.js",
-            "/beta/apps/chrome/js/447.d0dbf5cc6c5161871f57.js",
-            "/beta/apps/chrome/js/832.0d3c04a05c6403d3debd.js",
-            "/beta/apps/chrome/js/663.ca6ffdf2ec619de8d28a.js",
-            "/beta/apps/chrome/js/inventoryApi.e8757fb1878f63cb6cf2.js",
-            "/beta/apps/chrome/js/561.1bbf82296e8b7fba67c6.js",
-            "/beta/apps/chrome/js/304.0c5ac62f704fd7e2e641.js",
-            "/beta/apps/chrome/js/630.e37b65498da54089d5f1.js",
-            "/beta/apps/chrome/js/209.ffab8a9e789c7a3a0769.js",
-            "/beta/apps/chrome/js/950.2ba4d3b65aba83ae219a.js",
-            "/beta/apps/chrome/js/444.1e401eb2893e6bf30cf6.js"
+            "/beta/apps/chrome/js/189.79ca9fed5342568b2145.js",
+            "/beta/apps/chrome/js/6789.3c0400894ece20cf7c25.js",
+            "/beta/apps/chrome/js/7638.3e9f8116e790fb486bda.js",
+            "/beta/apps/chrome/js/7288.7e4db5c973894c363ec8.js",
+            "/beta/apps/chrome/js/3447.68262579a17ef38dc932.js",
+            "/beta/apps/chrome/js/6832.596606092b6853d71450.js",
+            "/beta/apps/chrome/js/6663.317a1619478ee9f95431.js",
+            "/beta/apps/chrome/js/inventoryApi.cbff82f383076f24f7d7.js",
+            "/beta/apps/chrome/js/5561.d50f31f37c05cccbc1a9.js",
+            "/beta/apps/chrome/js/8304.13138ec7f8f6689f613a.js",
+            "/beta/apps/chrome/js/8630.47b51a0a31fb574d5b8f.js",
+            "/beta/apps/chrome/js/4209.a7e735ac20ed68576727.js",
+            "/beta/apps/chrome/js/3950.93284abf23d6190d39b8.js",
+            "/beta/apps/chrome/js/7444.f2f85ee92bd58749a274.js"
         ]
     }
 }
