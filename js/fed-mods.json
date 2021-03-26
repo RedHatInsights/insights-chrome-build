@@ -1,23 +1,24 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.c2849294493efa396fa1.js"
+            "/beta/apps/chrome/js/chrome.982584bb218520a69c57.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/189.79ca9fed5342568b2145.js",
-            "/beta/apps/chrome/js/6789.3c0400894ece20cf7c25.js",
-            "/beta/apps/chrome/js/7638.3e9f8116e790fb486bda.js",
-            "/beta/apps/chrome/js/7288.7e4db5c973894c363ec8.js",
-            "/beta/apps/chrome/js/3447.68262579a17ef38dc932.js",
-            "/beta/apps/chrome/js/6832.596606092b6853d71450.js",
-            "/beta/apps/chrome/js/6663.e3ff112e0be537a6e268.js",
-            "/beta/apps/chrome/js/inventoryApi.cbff82f383076f24f7d7.js",
-            "/beta/apps/chrome/js/5561.d50f31f37c05cccbc1a9.js",
-            "/beta/apps/chrome/js/8304.13138ec7f8f6689f613a.js",
-            "/beta/apps/chrome/js/8630.47b51a0a31fb574d5b8f.js",
-            "/beta/apps/chrome/js/4209.a7e735ac20ed68576727.js",
-            "/beta/apps/chrome/js/3950.93284abf23d6190d39b8.js",
-            "/beta/apps/chrome/js/7444.f2f85ee92bd58749a274.js"
+            "/beta/apps/chrome/js/189.83224498ea7e15962dae.js",
+            "/beta/apps/chrome/js/789.02660784b0fb7c7024de.js",
+            "/beta/apps/chrome/js/638.f655445774a5f2fa9ddc.js",
+            "/beta/apps/chrome/js/288.643d88653a6f7e0d9940.js",
+            "/beta/apps/chrome/js/447.a87f652ba7c622bcfb5d.js",
+            "/beta/apps/chrome/js/832.d39ab33eda77f915944f.js",
+            "/beta/apps/chrome/js/663.4d5e3e1f2812139e45fb.js",
+            "/beta/apps/chrome/js/inventoryShared.9173a8bacf32db9dfcdc.js",
+            "/beta/apps/chrome/js/inventoryApi.e8757fb1878f63cb6cf2.js",
+            "/beta/apps/chrome/js/561.1bbf82296e8b7fba67c6.js",
+            "/beta/apps/chrome/js/304.0c5ac62f704fd7e2e641.js",
+            "/beta/apps/chrome/js/592.1de5f74d74343a711e8e.js",
+            "/beta/apps/chrome/js/635.928c25297444aad35fae.js",
+            "/beta/apps/chrome/js/950.2ba4d3b65aba83ae219a.js",
+            "/beta/apps/chrome/js/860.3394050869d80dd56eb5.js"
         ]
     }
 }
