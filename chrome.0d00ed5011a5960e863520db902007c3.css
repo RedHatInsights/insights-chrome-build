@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(~@redhat-cloud-services/frontend-components/ConditionalFilter/onditionalFilter.css);
 .pf-t-light, .pf-c-page__sidebar.pf-m-light, .pf-c-alert {
   --pf-global--Color--100: var(--pf-global--Color--dark-100);
   --pf-global--Color--200: var(--pf-global--Color--dark-200);
@@ -9624,78 +9623,6 @@ button:-moz-focusring,
   height: 100%;
   padding: var(--pf-l-bullseye--Padding);
   margin: 0; }
-
-:root {
-  --ins-color--orange: #ec7a08; }
-
-button:focus {
-  outline: none; }
-
-@keyframes spinner {
-  to {
-    transform: rotate(360deg); } }
-
-.ins-c-spinner {
-  display: inline-flex; }
-
-.ins-c-spinner.ins-m-center {
-  display: flex;
-  justify-content: center; }
-
-.ins-c-spinner:before {
-  content: '';
-  width: 30px;
-  width: 1.875rem;
-  height: 30px;
-  height: 1.875rem;
-  border-radius: 50%;
-  border: 3px solid var(--pf-global--active-color--200);
-  border-top-color: var(--pf-global--active-color--100);
-  animation: spinner 1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-
-:root {
-  --ins-color--orange: #ec7a08; }
-
-button:focus {
-  outline: none; }
-
-.ins-c-skeleton {
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-name: skeletonGradient;
-  animation-timing-function: linear;
-  background: var(--pf-global--disabled-color--200);
-  background: linear-gradient(to right, #f5f5f5 10%, #e8e8e8 18%, #f5f5f5 33%);
-  background-size: 1000px 50px;
-  background-size: 62.5rem 3.125rem;
-  border-radius: 5px;
-  border-radius: 0.3125rem; }
-
-.ins-c-skeleton__xs {
-  width: 16%; }
-
-.ins-c-skeleton__sm {
-  width: 33%; }
-
-.ins-c-skeleton__md {
-  width: 66%; }
-
-.ins-c-skeleton__lg {
-  width: 100%; }
-
-.ins-c-skeleton.ins-m-dark {
-  background: #3c3c3c;
-  background: linear-gradient(to right, #3c3c3c 10%, #484848 18%, #3c3c3c 33%);
-  background-size: 1000px 50px;
-  background-size: 62.5rem 3.125rem; }
-
-@keyframes skeletonGradient {
-  0% {
-    background-position: -500px 0px;
-    background-position: -31.25rem 0rem; }
-  100% {
-    background-position: 500px 0px;
-    background-position: 31.25rem 0rem; } }
 
 .pf-u-screen-reader {
   position: fixed;
