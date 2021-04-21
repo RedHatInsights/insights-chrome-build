@@ -1,12 +1,12 @@
 {
   "app_name": "chrome",
-  "src_hash": "94de6caf040fd12929fe3965ba489f4190643736",
+  "src_hash": "137a44bdf736218b8b071ee54f7810a69f68c24c",
   "src_tag": "",
   "src_branch": "master-stable",
-  "patternfly_dependencies": ["UNMET DEPENDENCY @patternfly/patternfly@4.42.2","UNMET DEPENDENCY @patternfly/react-core@4.47.0","─ @patternfly/react-icons@4.7.6","─ @patternfly/react-styles@4.7.5","─ @patternfly/react-tokens@4.9.8","UNMET DEPENDENCY @patternfly/react-icons@4.7.6","UNMET DEPENDENCY @patternfly/react-table@4.16.20","─ @patternfly/patternfly@4.42.2","─ @patternfly/react-core@4.50.2","─ @patternfly/react-icons@4.7.6","─ @patternfly/react-styles@4.7.5","─ @patternfly/react-tokens@4.9.8","─ @patternfly/react-core@4.47.0","─ @patternfly/react-icons@4.7.18","─ @patternfly/react-table@4.19.24","─ @patternfly/react-core@4.79.2","─ @patternfly/react-icons@4.7.18","─ @patternfly/react-styled-system@3.8.10","─ @patternfly/react-table@4.19.24"],
+  "patternfly_dependencies": ["@patternfly/patternfly@4.80.3","@patternfly/react-core@4.90.2","@patternfly/react-icons@4.8.4","@patternfly/react-table@4.20.15","@patternfly/react-tokens@4.10.5"],
   "travis": {
     "event_type": "push",
-    "build_number": "6750",
-    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/221168168"
+    "build_number": "7017",
+    "build_web_url": "https://travis-ci.com/RedHatInsights/insights-chrome/builds/223764630"
   }
 }
