@@ -1,0 +1,24 @@
+{
+    "chrome": {
+        "entry": [
+            "/apps/chrome/js/chrome.603a88c01a94d0767c39.js"
+        ],
+        "modules": [
+            "/apps/chrome/js/916.22475aeb833cd290ed6a.js",
+            "/apps/chrome/js/259.ec695b594b3f0cfd6e0e.js",
+            "/apps/chrome/js/138.f05ba3658f9285b5f007.js",
+            "/apps/chrome/js/256.8348b2da9e4afc7ce38b.js",
+            "/apps/chrome/js/573.993b129be73fa69429b7.js",
+            "/apps/chrome/js/713.6b262dce7a13eca97584.js",
+            "/apps/chrome/js/640.0e18e30126b682edb981.js",
+            "/apps/chrome/js/inventoryShared.8d8eca4acfeffef66e52.js",
+            "/apps/chrome/js/inventoryApi.4a9c77fad21acf5a770b.js",
+            "/apps/chrome/js/561.a2060f8384dd736163f0.js",
+            "/apps/chrome/js/304.e5d967a107e21cc25ad2.js",
+            "/apps/chrome/js/890.ee7bc69a1b1d8379071a.js",
+            "/apps/chrome/js/42.d5a932b8ffd7e622f541.js",
+            "/apps/chrome/js/963.71437bec7311aa4856f3.js",
+            "/apps/chrome/js/274.6fbc39a3ef807b72de2d.js"
+        ]
+    }
+}
