@@ -1,24 +1,24 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.a3effe63d7d321feae66.js"
+            "/beta/apps/chrome/js/chrome.4f9de01f6364fcdbd29e.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/916.22475aeb833cd290ed6a.js",
-            "/beta/apps/chrome/js/259.ec695b594b3f0cfd6e0e.js",
-            "/beta/apps/chrome/js/138.f05ba3658f9285b5f007.js",
-            "/beta/apps/chrome/js/256.8348b2da9e4afc7ce38b.js",
-            "/beta/apps/chrome/js/573.993b129be73fa69429b7.js",
-            "/beta/apps/chrome/js/713.6b262dce7a13eca97584.js",
+            "/beta/apps/chrome/js/916.2331d6209d3a39a1066f.js",
+            "/beta/apps/chrome/js/259.d3dd76f90daba5a4cf91.js",
+            "/beta/apps/chrome/js/138.694cd4ad30235f610110.js",
+            "/beta/apps/chrome/js/256.4e9e9cdedc8e24ad0e90.js",
+            "/beta/apps/chrome/js/573.15bc307382379c7f143f.js",
+            "/beta/apps/chrome/js/713.6205af21ab1a5b00f47e.js",
             "/beta/apps/chrome/js/640.be27e2ddd9a4de5820f5.js",
             "/beta/apps/chrome/js/inventoryShared.8d8eca4acfeffef66e52.js",
-            "/beta/apps/chrome/js/inventoryApi.4a9c77fad21acf5a770b.js",
+            "/beta/apps/chrome/js/inventoryApi.a2e249a825572072a398.js",
             "/beta/apps/chrome/js/561.a2060f8384dd736163f0.js",
             "/beta/apps/chrome/js/304.e5d967a107e21cc25ad2.js",
             "/beta/apps/chrome/js/890.ee7bc69a1b1d8379071a.js",
+            "/beta/apps/chrome/js/732.9acc7720ad6847f01e21.js",
             "/beta/apps/chrome/js/42.d5a932b8ffd7e622f541.js",
-            "/beta/apps/chrome/js/963.71437bec7311aa4856f3.js",
-            "/beta/apps/chrome/js/274.6fbc39a3ef807b72de2d.js"
+            "/beta/apps/chrome/js/932.f13d88b3d67d970012ba.js"
         ]
     }
 }
