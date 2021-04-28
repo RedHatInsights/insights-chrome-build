@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.312e8ff7f6684fb2c69d.js"
+            "/apps/chrome/js/chrome.e6975dc789861cb4fc80.js"
         ],
         "modules": [
             "/apps/chrome/js/916.6ed0e3c3c08940eeeebd.js",
@@ -10,7 +10,7 @@
             "/apps/chrome/js/256.27007bedda0525374e0b.js",
             "/apps/chrome/js/573.d4f070e30d8dc60f96c5.js",
             "/apps/chrome/js/713.e4c76aff11ca42cc7561.js",
-            "/apps/chrome/js/640.62d80ccca36e36df2494.js",
+            "/apps/chrome/js/640.e28d99c7af67583b34c7.js",
             "/apps/chrome/js/inventoryShared.a3de195338da0f1aef36.js",
             "/apps/chrome/js/inventoryApi.b2502ec1172e3b48c44a.js",
             "/apps/chrome/js/561.69a12492f216d7a4d02a.js",
