@@ -1,24 +1,25 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.c556c89bd589451fdacb.js"
+            "/beta/apps/chrome/js/chrome.131321eda50af04807d6.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/916.2331d6209d3a39a1066f.js",
-            "/beta/apps/chrome/js/259.d3dd76f90daba5a4cf91.js",
-            "/beta/apps/chrome/js/138.694cd4ad30235f610110.js",
-            "/beta/apps/chrome/js/256.4e9e9cdedc8e24ad0e90.js",
-            "/beta/apps/chrome/js/573.15bc307382379c7f143f.js",
-            "/beta/apps/chrome/js/713.6205af21ab1a5b00f47e.js",
-            "/beta/apps/chrome/js/640.c42ef6c40f49e9fd5c1b.js",
+            "/beta/apps/chrome/js/916.4595e3871dac274fed22.js",
+            "/beta/apps/chrome/js/259.15916124ca11525ecb8e.js",
+            "/beta/apps/chrome/js/138.14ca31bc9f44e2b55b0d.js",
+            "/beta/apps/chrome/js/256.c844c554eb7daf00d49e.js",
+            "/beta/apps/chrome/js/573.548bd218497d0f573bf8.js",
+            "/beta/apps/chrome/js/713.2fca50771f9073915d0e.js",
+            "/beta/apps/chrome/js/640.364aeac4881cf319c0cd.js",
             "/beta/apps/chrome/js/inventoryShared.8d8eca4acfeffef66e52.js",
-            "/beta/apps/chrome/js/inventoryApi.a2e249a825572072a398.js",
+            "/beta/apps/chrome/js/inventoryApi.adbe7dec2492690d867d.js",
             "/beta/apps/chrome/js/561.a2060f8384dd736163f0.js",
             "/beta/apps/chrome/js/304.e5d967a107e21cc25ad2.js",
-            "/beta/apps/chrome/js/890.ee7bc69a1b1d8379071a.js",
-            "/beta/apps/chrome/js/732.9acc7720ad6847f01e21.js",
+            "/beta/apps/chrome/js/178.742433d19107411aebe2.js",
+            "/beta/apps/chrome/js/724.8f07fdb1867bd41d07b9.js",
+            "/beta/apps/chrome/js/575.7dd8cce58f0323fcf91f.js",
             "/beta/apps/chrome/js/42.d5a932b8ffd7e622f541.js",
-            "/beta/apps/chrome/js/932.f13d88b3d67d970012ba.js"
+            "/beta/apps/chrome/js/932.0cb6aa822137111b59ee.js"
         ]
     }
 }
