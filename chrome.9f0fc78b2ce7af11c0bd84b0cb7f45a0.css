@@ -16428,3 +16428,9 @@ section.ins-c-app-switcher--loading {
     display: none;
   }
 }
+.ins-c-table-empty-state.pf-m-grid-md.pf-c-table [data-label] {
+  --pf-c-table--cell--hidden-visible--Display: 0;
+}
+.ins-c-table-empty-state.pf-m-grid-md.pf-c-table tr:first-of-type > td::before {
+  display: none;
+}
