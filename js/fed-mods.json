@@ -1,24 +1,24 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.c48733c6efe900e9522b.js"
+            "/apps/chrome/js/chrome.54da5bff3c65a911d99c.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.2331d6209d3a39a1066f.js",
-            "/apps/chrome/js/259.d3dd76f90daba5a4cf91.js",
-            "/apps/chrome/js/138.694cd4ad30235f610110.js",
-            "/apps/chrome/js/256.4e9e9cdedc8e24ad0e90.js",
-            "/apps/chrome/js/573.15bc307382379c7f143f.js",
-            "/apps/chrome/js/713.6205af21ab1a5b00f47e.js",
-            "/apps/chrome/js/640.c42ef6c40f49e9fd5c1b.js",
-            "/apps/chrome/js/inventoryShared.8d8eca4acfeffef66e52.js",
-            "/apps/chrome/js/inventoryApi.a2e249a825572072a398.js",
-            "/apps/chrome/js/561.a2060f8384dd736163f0.js",
-            "/apps/chrome/js/304.e5d967a107e21cc25ad2.js",
-            "/apps/chrome/js/890.ee7bc69a1b1d8379071a.js",
-            "/apps/chrome/js/732.9acc7720ad6847f01e21.js",
-            "/apps/chrome/js/42.d5a932b8ffd7e622f541.js",
-            "/apps/chrome/js/932.bafdae12f0db2d3b46cc.js"
+            "/apps/chrome/js/916.f977ec23cd7da02ded85.js",
+            "/apps/chrome/js/259.d326a23e62cd3b9eaba0.js",
+            "/apps/chrome/js/138.92c1feb28ccb98f13287.js",
+            "/apps/chrome/js/256.9e5db2bd2e6621daad87.js",
+            "/apps/chrome/js/573.7a5e2835acd2fe3f46c6.js",
+            "/apps/chrome/js/713.a43a8b1c9537fbd22d0a.js",
+            "/apps/chrome/js/640.c76ef8426a90546f0ac5.js",
+            "/apps/chrome/js/inventoryApi.53075facb763bd942b06.js",
+            "/apps/chrome/js/577.b5a6ca2714d57b29ac9e.js",
+            "/apps/chrome/js/986.bd537e456e1ef90abb6c.js",
+            "/apps/chrome/js/441.cf26cec8682ef0a33952.js",
+            "/apps/chrome/js/849.07a92548ba7d012ab07c.js",
+            "/apps/chrome/js/575.241de482e08d58284dc1.js",
+            "/apps/chrome/js/746.563d262064a59be840ad.js",
+            "/apps/chrome/js/444.784dfe67981e51e05bd1.js"
         ]
     }
 }
