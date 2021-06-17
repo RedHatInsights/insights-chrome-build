@@ -1,20 +1,20 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.54da5bff3c65a911d99c.js"
+            "/apps/chrome/js/chrome.24e639ad91b2c32ea06b.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.f977ec23cd7da02ded85.js",
-            "/apps/chrome/js/259.d326a23e62cd3b9eaba0.js",
-            "/apps/chrome/js/138.92c1feb28ccb98f13287.js",
-            "/apps/chrome/js/256.9e5db2bd2e6621daad87.js",
-            "/apps/chrome/js/573.7a5e2835acd2fe3f46c6.js",
-            "/apps/chrome/js/713.a43a8b1c9537fbd22d0a.js",
-            "/apps/chrome/js/640.c76ef8426a90546f0ac5.js",
+            "/apps/chrome/js/916.aa777b9f54f06c6c24c9.js",
+            "/apps/chrome/js/259.64ce10e47a8b78c4413b.js",
+            "/apps/chrome/js/138.8ae8d5c556183577acee.js",
+            "/apps/chrome/js/256.5e0b00e45379db062dd8.js",
+            "/apps/chrome/js/573.0f50e7c176ac0c51f981.js",
+            "/apps/chrome/js/713.a7bbad7ab8f23be74a14.js",
+            "/apps/chrome/js/640.5c51221ef1ae98fe2b23.js",
             "/apps/chrome/js/inventoryApi.53075facb763bd942b06.js",
             "/apps/chrome/js/577.b5a6ca2714d57b29ac9e.js",
             "/apps/chrome/js/986.bd537e456e1ef90abb6c.js",
-            "/apps/chrome/js/441.cf26cec8682ef0a33952.js",
+            "/apps/chrome/js/689.1b3146fbefc61b241c05.js",
             "/apps/chrome/js/849.07a92548ba7d012ab07c.js",
             "/apps/chrome/js/575.241de482e08d58284dc1.js",
             "/apps/chrome/js/746.563d262064a59be840ad.js",
