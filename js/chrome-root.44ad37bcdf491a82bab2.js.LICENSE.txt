@@ -294,8 +294,6 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! is-buffer */
 
-/*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
-
 /*! md5 */
 
 /*! no static exports found */
