@@ -1,24 +1,24 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.28aa0ecb107e0e89f77e.js"
+            "/beta/apps/chrome/js/chrome.2b140ea468d7a617c003.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/916.aa777b9f54f06c6c24c9.js",
-            "/beta/apps/chrome/js/259.64ce10e47a8b78c4413b.js",
-            "/beta/apps/chrome/js/138.8ae8d5c556183577acee.js",
-            "/beta/apps/chrome/js/256.5e0b00e45379db062dd8.js",
-            "/beta/apps/chrome/js/573.0f50e7c176ac0c51f981.js",
-            "/beta/apps/chrome/js/713.a7bbad7ab8f23be74a14.js",
-            "/beta/apps/chrome/js/640.5c51221ef1ae98fe2b23.js",
-            "/beta/apps/chrome/js/inventoryApi.53075facb763bd942b06.js",
-            "/beta/apps/chrome/js/577.b5a6ca2714d57b29ac9e.js",
-            "/beta/apps/chrome/js/986.bd537e456e1ef90abb6c.js",
-            "/beta/apps/chrome/js/689.1b3146fbefc61b241c05.js",
-            "/beta/apps/chrome/js/849.07a92548ba7d012ab07c.js",
-            "/beta/apps/chrome/js/575.241de482e08d58284dc1.js",
-            "/beta/apps/chrome/js/746.563d262064a59be840ad.js",
-            "/beta/apps/chrome/js/444.784dfe67981e51e05bd1.js"
+            "/beta/apps/chrome/js/7916.bae02b7925f5127a6c44.js",
+            "/beta/apps/chrome/js/4259.ab56e4654e6898ba4a8d.js",
+            "/beta/apps/chrome/js/3138.71d7752a846433f00630.js",
+            "/beta/apps/chrome/js/8256.277b2aab94340ba269e8.js",
+            "/beta/apps/chrome/js/5573.6aaf4d101a3d582a4fc2.js",
+            "/beta/apps/chrome/js/3713.e30e425707578fb9a092.js",
+            "/beta/apps/chrome/js/4640.dfd8137b9a40bdeef580.js",
+            "/beta/apps/chrome/js/inventoryApi.f613a0f16c40edacce0b.js",
+            "/beta/apps/chrome/js/5577.d6f37d3c9b92b8cbd1ba.js",
+            "/beta/apps/chrome/js/715.040fb1240eb446c3bc84.js",
+            "/beta/apps/chrome/js/6689.eea3b445195c7bc8a4ac.js",
+            "/beta/apps/chrome/js/5849.f2df2ee359d52c897f37.js",
+            "/beta/apps/chrome/js/4575.6dd3431d558525716fa5.js",
+            "/beta/apps/chrome/js/2951.3578f34e458b3dc6e4e1.js",
+            "/beta/apps/chrome/js/7444.0479d60e8f6b8d34e06b.js"
         ]
     }
 }
