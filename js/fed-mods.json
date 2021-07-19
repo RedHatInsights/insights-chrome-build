@@ -1,15 +1,15 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.194d9d64b010e1a5a1ee.js"
+            "/beta/apps/chrome/js/chrome.1417ce8950e2978045c2.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/916.2091917715bcb0b3818e.js",
-            "/beta/apps/chrome/js/259.9033887824d07a7752bd.js",
-            "/beta/apps/chrome/js/138.684391ac1b4c3520e156.js",
-            "/beta/apps/chrome/js/256.fae3d33d58f66821a242.js",
-            "/beta/apps/chrome/js/573.58bd936acb231a3428db.js",
-            "/beta/apps/chrome/js/713.928052d90226db0d57b2.js",
+            "/beta/apps/chrome/js/916.b99883fa044d6ea3181e.js",
+            "/beta/apps/chrome/js/259.6b4bdd5a16ba99fb455e.js",
+            "/beta/apps/chrome/js/138.bf0dba4609158b04b579.js",
+            "/beta/apps/chrome/js/256.fa22541cd403a6c44d09.js",
+            "/beta/apps/chrome/js/573.e107f49947d5d9fa7de6.js",
+            "/beta/apps/chrome/js/713.1ccf33874885c378157b.js",
             "/beta/apps/chrome/js/640.416bbd25e749b9081cb8.js",
             "/beta/apps/chrome/js/inventoryApi.53075facb763bd942b06.js",
             "/beta/apps/chrome/js/577.b5a6ca2714d57b29ac9e.js",
