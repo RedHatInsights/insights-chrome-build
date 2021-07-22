@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.9aea31f9a59df1fc0f7a.js"
+            "/apps/chrome/js/chrome.d713b51798232a2c2114.js"
         ],
         "modules": [
             "/apps/chrome/js/916.b99883fa044d6ea3181e.js",
