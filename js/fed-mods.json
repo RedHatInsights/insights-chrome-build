@@ -1,22 +1,22 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.19f16af96407def0fc4f.js"
+            "/apps/chrome/js/chrome.416a7e6b0cf88d6822e4.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.b99883fa044d6ea3181e.js",
-            "/apps/chrome/js/259.6b4bdd5a16ba99fb455e.js",
-            "/apps/chrome/js/138.bf0dba4609158b04b579.js",
-            "/apps/chrome/js/256.fa22541cd403a6c44d09.js",
-            "/apps/chrome/js/573.e107f49947d5d9fa7de6.js",
-            "/apps/chrome/js/713.1ccf33874885c378157b.js",
-            "/apps/chrome/js/640.416bbd25e749b9081cb8.js",
-            "/apps/chrome/js/inventoryApi.53075facb763bd942b06.js",
+            "/apps/chrome/js/916.c62fd428f368c9463ba6.js",
+            "/apps/chrome/js/259.495247be0de886c5d0dc.js",
+            "/apps/chrome/js/138.a47a8b7ffce33c58ff53.js",
+            "/apps/chrome/js/256.c56b3b2dd198b91c9819.js",
+            "/apps/chrome/js/573.89675dce7de3ab302e28.js",
+            "/apps/chrome/js/713.b231a224c35389c66ef9.js",
+            "/apps/chrome/js/640.8f8d43b4344155517254.js",
+            "/apps/chrome/js/inventoryApi.0b7a649281045240f64b.js",
             "/apps/chrome/js/577.b5a6ca2714d57b29ac9e.js",
             "/apps/chrome/js/715.040fb1240eb446c3bc84.js",
-            "/apps/chrome/js/689.1b3146fbefc61b241c05.js",
-            "/apps/chrome/js/849.07a92548ba7d012ab07c.js",
-            "/apps/chrome/js/575.aa2eccc15243b9c03eb4.js",
+            "/apps/chrome/js/689.1e2f48ca321bdda6cb8b.js",
+            "/apps/chrome/js/849.25bb92a969b69f970df8.js",
+            "/apps/chrome/js/575.be75f56a1b1aae044219.js",
             "/apps/chrome/js/951.ccc6d6cf15abdcdc7be3.js",
             "/apps/chrome/js/444.784dfe67981e51e05bd1.js"
         ]
