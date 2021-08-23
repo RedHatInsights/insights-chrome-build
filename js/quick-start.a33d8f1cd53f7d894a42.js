@@ -1,0 +1,1 @@
+(self.webpackChunkinsights_chrome=self.webpackChunkinsights_chrome||[]).push([[436],{87402:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>u});var n=a(22122),r=a(96985),s=a.n(r),c=a(3109);const u=function(e){var t=(0,n.Z)({},e);return s().createElement(c.QuickStartCatalogPage,t)}}}]);
