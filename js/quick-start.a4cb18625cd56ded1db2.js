@@ -1,1 +1,0 @@
-(self.webpackChunkinsights_chrome=self.webpackChunkinsights_chrome||[]).push([[436],{87402:(e,n,s)=>{"use strict";s.r(n),s.d(n,{default:()=>u});var t=s(22122),r=s(96985),c=s.n(r),h=s(81393);const u=function(e){var n=(0,t.Z)({},e);return c().createElement(h.Gf,n)}}}]);
