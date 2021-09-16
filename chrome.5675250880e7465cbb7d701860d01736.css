@@ -249,8 +249,8 @@
   --pf-global--BoxShadow--xl-bottom: 0 1rem 1rem -0.5rem rgba(3, 3, 3, 0.2);
   --pf-global--BoxShadow--xl-left: -1rem 0 1rem -0.5rem rgba(3, 3, 3, 0.2);
   --pf-global--BoxShadow--inset: inset 0 0 0.625rem 0 rgba(3, 3, 3, 0.25);
-  --pf-global--font-path: "~@patternfly/patternfly/assets/fonts";
-  --pf-global--fonticon-path: "~@patternfly/patternfly/assets/pficon";
+  --pf-global--font-path: "./assets/fonts";
+  --pf-global--fonticon-path: "./assets/pficon";
   --pf-global--spacer--xs: 0.25rem;
   --pf-global--spacer--sm: 0.5rem;
   --pf-global--spacer--md: 1rem;
@@ -341,35 +341,35 @@
 
 @font-face {
   font-family: "RedHatDisplay";
-  src: url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff") format("woff");
+  src: url("./assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff2") format("woff2"), url("./assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff") format("woff");
   font-style: normal;
   font-weight: 300;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "RedHatDisplay";
-  src: url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff") format("woff");
+  src: url("./assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff2") format("woff2"), url("./assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "RedHatDisplay";
-  src: url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff") format("woff");
+  src: url("./assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff2") format("woff2"), url("./assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "RedHatText";
-  src: url("~@patternfly/patternfly/assets/fonts/RedHatText/RedHatText-Regular.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/RedHatText/RedHatText-Regular.woff") format("woff");
+  src: url("./assets/fonts/RedHatText/RedHatText-Regular.woff2") format("woff2"), url("./assets/fonts/RedHatText/RedHatText-Regular.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
 @font-face {
   font-family: "RedHatText";
-  src: url("~@patternfly/patternfly/assets/fonts/RedHatText/RedHatText-Medium.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/RedHatText/RedHatText-Medium.woff") format("woff");
+  src: url("./assets/fonts/RedHatText/RedHatText-Medium.woff2") format("woff2"), url("./assets/fonts/RedHatText/RedHatText-Medium.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -378,121 +378,121 @@
   font-family: "overpass";
   font-style: normal;
   font-weight: 200;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-thin.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-thin.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-thin.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-thin.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 200;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-thin-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-thin-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-thin-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-thin-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 300;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extralight.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extralight.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-extralight.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-extralight.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 300;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extralight-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extralight-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-extralight-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-extralight-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 400;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-light.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-light.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-light.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-light.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 400;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-light-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-light-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-light-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-light-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 500;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-regular.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-regular.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-regular.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-regular.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 500;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 600;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-semibold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-semibold.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-semibold.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-semibold.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 600;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-semibold-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-semibold-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-semibold-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-semibold-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 700;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-bold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-bold.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-bold.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-bold.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 700;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-bold-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-bold-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-bold-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-bold-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 800;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extrabold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extrabold.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-extrabold.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-extrabold.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 800;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extrabold-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-extrabold-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-extrabold-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-extrabold-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: normal;
   font-weight: 900;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-heavy.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-heavy.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-heavy.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-heavy.woff") format("woff");
 }
 @font-face {
   font-family: "overpass";
   font-style: italic;
   font-weight: 900;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-heavy-italic.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-webfont/overpass-heavy-italic.woff") format("woff");
+  src: url("./assets/fonts/overpass-webfont/overpass-heavy-italic.woff2") format("woff2"), url("./assets/fonts/overpass-webfont/overpass-heavy-italic.woff") format("woff");
 }
 @font-face {
   font-family: "overpass-mono";
   font-style: normal;
   font-weight: 300;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-light.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-light.woff") format("woff");
+  src: url("./assets/fonts/overpass-mono-webfont/overpass-mono-light.woff2") format("woff2"), url("./assets/fonts/overpass-mono-webfont/overpass-mono-light.woff") format("woff");
 }
 @font-face {
   font-family: "overpass-mono";
   font-style: normal;
   font-weight: 400;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-regular.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-regular.woff") format("woff");
+  src: url("./assets/fonts/overpass-mono-webfont/overpass-mono-regular.woff2") format("woff2"), url("./assets/fonts/overpass-mono-webfont/overpass-mono-regular.woff") format("woff");
 }
 @font-face {
   font-family: "overpass-mono";
   font-style: normal;
   font-weight: 500;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-semibold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-semibold.woff") format("woff");
+  src: url("./assets/fonts/overpass-mono-webfont/overpass-mono-semibold.woff2") format("woff2"), url("./assets/fonts/overpass-mono-webfont/overpass-mono-semibold.woff") format("woff");
 }
 @font-face {
   font-family: "overpass-mono";
   font-style: normal;
   font-weight: 600;
-  src: url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-bold.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/overpass-mono-webfont/overpass-mono-bold.woff") format("woff");
+  src: url("./assets/fonts/overpass-mono-webfont/overpass-mono-bold.woff2") format("woff2"), url("./assets/fonts/overpass-mono-webfont/overpass-mono-bold.woff") format("woff");
 }
 [class*=pf-c-], [class*=pf-c-]::before, [class*=pf-c-]::after {
   padding: 0;
@@ -4859,7 +4859,7 @@ button:-moz-focusring,
   font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 900;
-  src: url("~@patternfly/patternfly/assets/fonts/webfonts/fa-solid-900.woff2") format("woff2"), url("~@patternfly/patternfly/assets/fonts/webfonts/fa-solid-900.woff") format("woff");
+  src: url("./assets/fonts/webfonts/fa-solid-900.woff2") format("woff2"), url("./assets/fonts/webfonts/fa-solid-900.woff") format("woff");
 }
 .fa,
 .fas {
@@ -4869,7 +4869,7 @@ button:-moz-focusring,
 
 @font-face {
   font-family: "pficon";
-  src: url("~@patternfly/patternfly/assets/pficon/pficon.woff2") format("woff2"), url("~@patternfly/patternfly/assets/pficon/pficon.woff") format("woff");
+  src: url("./assets/pficon/pficon.woff2") format("woff2"), url("./assets/pficon/pficon.woff") format("woff");
 }
 .pf-icon-zone:before, .pf-icon-warning-triangle:before, .pf-icon-volume:before, .pf-icon-virtual-machine:before, .pf-icon-users:before, .pf-icon-user:before, .pf-icon-unplugged:before, .pf-icon-unlocked:before, .pf-icon-unknown:before, .pf-icon-trend-up:before, .pf-icon-trend-down:before, .pf-icon-topology:before, .pf-icon-thumb-tack:before, .pf-icon-tenant:before, .pf-icon-task:before, .pf-icon-storage-domain:before, .pf-icon-spinner2:before, .pf-icon-spinner:before, .pf-icon-services:before, .pf-icon-service:before, .pf-icon-service-catalog:before, .pf-icon-server:before, .pf-icon-server-group:before, .pf-icon-security:before, .pf-icon-screen:before, .pf-icon-save:before, .pf-icon-running:before, .pf-icon-resources-full:before, .pf-icon-resources-empty:before, .pf-icon-resources-almost-full:before, .pf-icon-resources-almost-empty:before, .pf-icon-resource-pool:before, .pf-icon-repository:before, .pf-icon-replicator:before, .pf-icon-remove2:before, .pf-icon-registry:before, .pf-icon-regions:before, .pf-icon-rebooting:before, .pf-icon-rebalance:before, .pf-icon-project:before, .pf-icon-process-automation:before, .pf-icon-private:before, .pf-icon-print:before, .pf-icon-port:before, .pf-icon-plugged:before, .pf-icon-pficon-vcenter:before, .pf-icon-pficon-template:before, .pf-icon-pficon-sort-common-desc:before, .pf-icon-pficon-sort-common-asc:before, .pf-icon-pficon-satellite:before, .pf-icon-pficon-network-range:before, .pf-icon-pficon-history:before, .pf-icon-pficon-dragdrop:before, .pf-icon-pending:before, .pf-icon-paused:before, .pf-icon-panel-open:before, .pf-icon-panel-close:before, .pf-icon-package:before, .pf-icon-os-image:before, .pf-icon-orders:before, .pf-icon-optimize:before, .pf-icon-openstack:before, .pf-icon-openshift:before, .pf-icon-on:before, .pf-icon-on-running:before, .pf-icon-ok:before, .pf-icon-off:before, .pf-icon-not-started:before, .pf-icon-new-process:before, .pf-icon-network:before, .pf-icon-namespaces:before, .pf-icon-monitoring:before, .pf-icon-module:before, .pf-icon-migration:before, .pf-icon-middleware:before, .pf-icon-messages:before, .pf-icon-memory:before, .pf-icon-maintenance:before, .pf-icon-locked:before, .pf-icon-key:before, .pf-icon-integration:before, .pf-icon-infrastructure:before, .pf-icon-info:before, .pf-icon-in-progress:before, .pf-icon-import:before, .pf-icon-home:before, .pf-icon-history:before, .pf-icon-help:before, .pf-icon-globe-route:before, .pf-icon-folder-open:before, .pf-icon-folder-close:before, .pf-icon-flavor:before, .pf-icon-filter:before, .pf-icon-export:before, .pf-icon-error-circle-o:before, .pf-icon-equalizer:before, .pf-icon-enterprise:before, .pf-icon-enhancement:before, .pf-icon-edit:before, .pf-icon-domain:before, .pf-icon-disconnected:before, .pf-icon-degraded:before, .pf-icon-cpu:before, .pf-icon-container-node:before, .pf-icon-connected:before, .pf-icon-cluster:before, .pf-icon-cloud-tenant:before, .pf-icon-cloud-security:before, .pf-icon-close:before, .pf-icon-chat:before, .pf-icon-catalog:before, .pf-icon-bundle:before, .pf-icon-builder-image:before, .pf-icon-build:before, .pf-icon-blueprint:before, .pf-icon-bell:before, .pf-icon-automation:before, .pf-icon-attention-bell:before, .pf-icon-asleep:before, .pf-icon-arrow:before, .pf-icon-applications:before, .pf-icon-ansible-tower:before, .pf-icon-add-circle-o:before {
   font-family: "pficon";
@@ -8324,11 +8324,11 @@ button:-moz-focusring,
 
 .pf-c-background-image {
   --pf-c-background-image--BackgroundColor: var(--pf-global--BackgroundColor--dark-100);
-  --pf-c-background-image--BackgroundImage: url("~@patternfly/patternfly/assets/images//pfbg_576.jpg");
-  --pf-c-background-image--BackgroundImage-2x: url("~@patternfly/patternfly/assets/images//pfbg_576@2x.jpg");
-  --pf-c-background-image--BackgroundImage--sm: url("~@patternfly/patternfly/assets/images//pfbg_768.jpg");
-  --pf-c-background-image--BackgroundImage--sm-2x: url("~@patternfly/patternfly/assets/images//pfbg_768@2x.jpg");
-  --pf-c-background-image--BackgroundImage--lg: url("~@patternfly/patternfly/assets/images//pfbg_2000.jpg");
+  --pf-c-background-image--BackgroundImage: url("./assets/images/pfbg_576.jpg");
+  --pf-c-background-image--BackgroundImage-2x: url("./assets/images/pfbg_576@2x.jpg");
+  --pf-c-background-image--BackgroundImage--sm: url("./assets/images/pfbg_768.jpg");
+  --pf-c-background-image--BackgroundImage--sm-2x: url("./assets/images/pfbg_768@2x.jpg");
+  --pf-c-background-image--BackgroundImage--lg: url("./assets/images/pfbg_2000.jpg");
   --pf-c-background-image--Filter: url("#image_overlay");
 }
 .pf-c-background-image::before {
@@ -10073,7 +10073,7 @@ button:-moz-focusring,
   --pf-c-about-modal-box__close--c-button--Height: calc(var(--pf-c-about-modal-box__close--c-button--FontSize) * 2);
   --pf-c-about-modal-box__close--c-button--BackgroundColor: var(--pf-global--palette--black-1000);
   --pf-c-about-modal-box__close--c-button--hover--BackgroundColor: rgba(3, 3, 3, 0.4);
-  --pf-c-about-modal-box__hero--sm--BackgroundImage: url("~@patternfly/patternfly/assets/images//pfbg_992@2x.jpg");
+  --pf-c-about-modal-box__hero--sm--BackgroundImage: url("./assets/images/pfbg_992@2x.jpg");
   --pf-c-about-modal-box__hero--sm--BackgroundPosition: top left;
   --pf-c-about-modal-box__hero--sm--BackgroundSize: cover;
   --pf-c-about-modal-box__brand-image--Height: 2.5rem;
