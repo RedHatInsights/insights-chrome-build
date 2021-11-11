@@ -45561,16 +45561,8 @@ aside {
   grid-template-areas: "banner banner" "header header" "nav main";
 }
 
-.ins-c-header-link {
-  display: flex;
-}
-
 #no-access.pf-c-page__main {
   display: none;
-}
-
-.pf-c-page__header-tools[widget-type=InsightsToolbar] .pf-l-toolbar, .pf-c-page__header-tools[widget-type=InsightsToolbar] .pf-c-toolbar, .pf-c-page__header-tools[widget-type=InsightsToolbar] .pf-l-toolbar__group, .pf-c-page__header-tools[widget-type=InsightsToolbar] .pf-c-toolbar__group {
-  display: flex;
 }
 
 .pf-c-page {
@@ -45623,45 +45615,31 @@ aside {
   right: var(--pf-c-page__header-tools--MarginRight);
 }
 
-.pf-c-page__header {
+.chr-c-masthead {
   overflow: visible;
 }
-.pf-c-page__header .ins-c-dropdown-item__stack {
+.chr-c-masthead .chr-c-dropdown-item__stack {
   white-space: nowrap;
 }
-.pf-c-page__header .ins-c-dropdown-item__stack * {
+.chr-c-masthead .chr-c-dropdown-item__stack * {
   color: var(--pf-c-dropdown__menu-item--disabled--Color);
 }
-.pf-c-page__header .ins-c-dropdown-item__stack--header,
-.pf-c-page__header .ins-c-dropdown-item__stack--subValue {
+.chr-c-masthead .chr-c-dropdown-item__stack--header,
+.chr-c-masthead .chr-c-dropdown-item__stack--subValue {
   font-size: var(--pf-global--FontSize--xs);
 }
-.pf-c-page__header .ins-c-dropdown-item__stack--subValue {
+.chr-c-masthead .chr-c-dropdown-item__stack--subValue {
   padding-top: var(--pf-global--spacer--xs);
 }
-.pf-c-page__header .pf-c-page__header-brand-link img {
-  height: 30px;
-  height: 2.1428571429rem;
+.chr-c-masthead .chr-c-brand {
+  width: 170px;
 }
-.pf-c-page__header .pf-c-page__header-brand-toggle svg {
-  height: 21px;
-  height: 1.5rem;
-  width: 21px;
-  width: 1.5rem;
+.chr-c-masthead .chr-c-badge-beta {
+  background-color: var(--pf-global--palette--green-300);
+  color: var(--pf-global--Color--dark-100);
 }
-.pf-c-page__header .pf-c-page__header-tools .pf-c-avatar {
-  height: var(--pf-global--FontSize--4xl);
-}
-
-.pf-c-brand {
-  fill: #fff;
-  min-width: 200px;
-}
-@media screen and (min-width: 768px) {
-  .pf-c-brand {
-    width: 100%;
-    min-width: auto;
-  }
+.chr-c-masthead .chr-c-dropdown-user-toggle {
+  --pf-c-dropdown--m-expanded__toggle--before--BorderBottomColor: #151515;
 }
 
 .pf-c-page__sidebar {
