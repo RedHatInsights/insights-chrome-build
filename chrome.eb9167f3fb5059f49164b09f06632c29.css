@@ -39948,46 +39948,46 @@ svg.pf-c-spinner.pf-m-xl {
   white-space: nowrap !important;
 }
 
-.pfext-quick-start-panel-content dl {
+.pfext-quick-start-panel-content__body dl {
   margin: 0;
 }
 
-.pfext-quick-start-panel-content dt {
+.pfext-quick-start-panel-content__body dt {
   font-weight: var(--pf-global--FontWeight--bold);
 }
 
-.pfext-quick-start-panel-content dd {
+.pfext-quick-start-panel-content__body dd {
   margin-bottom: 20px;
 }
 
-.pfext-quick-start-panel-content dd:last-child {
+.pfext-quick-start-panel-content__body dd:last-child {
   margin-bottom: 0;
 }
 
-.pfext-quick-start-panel-content input[type=number] {
+.pfext-quick-start-panel-content__body input[type=number] {
   -webkit-appearance: textfield;
   appearance: textfield;
   max-width: 100px;
 }
 
-.pfext-quick-start-panel-content input[type=number]::-webkit-inner-spin-button, .pfext-quick-start-panel-content input[type=number]::-webkit-outer-spin-button {
+.pfext-quick-start-panel-content__body input[type=number]::-webkit-inner-spin-button, .pfext-quick-start-panel-content__body input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-.pfext-quick-start-panel-content input[type=radio] {
+.pfext-quick-start-panel-content__body input[type=radio] {
   margin-right: 7px;
 }
 
-.pfext-page-layout__base, .pfext-page-layout__content, .pfext-quick-start-panel-content {
+.pfext-page-layout__content, .pfext-popover__base, .pfext-quick-start-panel-content__body, .pfext-quick-start-panel-content__header {
   --pf-global--FontSize--md:14px;
   --pf-global--FontSize--sm:13px;
 }
 
-.pfext-page-layout__base ul, .pfext-page-layout__content ul, .pfext-quick-start-panel-content ul {
+.pfext-page-layout__content ul, .pfext-popover__base ul, .pfext-quick-start-panel-content__body ul, .pfext-quick-start-panel-content__header ul {
   list-style-type: disc;
 }
 
-.pfext-page-layout__base input[type=checkbox], .pfext-page-layout__base input[type=radio], .pfext-page-layout__content input[type=checkbox], .pfext-page-layout__content input[type=radio], .pfext-quick-start-panel-content input[type=checkbox], .pfext-quick-start-panel-content input[type=radio] {
+.pfext-page-layout__content input[type=checkbox], .pfext-page-layout__content input[type=radio], .pfext-popover__base input[type=checkbox], .pfext-popover__base input[type=radio], .pfext-quick-start-panel-content__body input[type=checkbox], .pfext-quick-start-panel-content__body input[type=radio], .pfext-quick-start-panel-content__header input[type=checkbox], .pfext-quick-start-panel-content__header input[type=radio] {
   margin-top: 1px !important;
 }
 
@@ -40003,6 +40003,26 @@ svg.pf-c-spinner.pf-m-xl {
 .pfext-icon-and-text__icon {
   flex-shrink: 0;
   margin-right: 5px;
+}
+
+.pfext-markdown-view.is-empty {
+  color: #999;
+}
+
+.pfext-markdown-view table {
+  display: block;
+  margin-bottom: 11.5px;
+  overflow-x: auto;
+}
+
+.pfext-markdown-view td, .pfext-markdown-view th {
+  border-bottom: 1px solid #ededed;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.pfext-markdown-view th {
+  padding-top: 0;
 }
 
 .catalog-item-header-pf-subtitle {
@@ -40464,6 +40484,100 @@ svg.pf-c-spinner.pf-m-xl {
   line-height: 1.1;
 }
 
+.pfext-markdown-view .pfext-code-block__pre {
+  display: flex;
+  border: none;
+  border-radius: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.pfext-markdown-view .pfext-markdown-execute-snippet__button > i.fa-check {
+  display: none;
+}
+
+.pfext-markdown-view .pfext-markdown-execute-snippet__button > i.fa-play {
+  display: inline;
+}
+
+.pfext-markdown-view .pfext-markdown-execute-snippet__button[data-executed] > i.fa-check {
+  display: inline;
+}
+
+.pfext-markdown-view .pfext-markdown-execute-snippet__button[data-executed] > i.fa-play {
+  display: none;
+}
+
+.pfext-modal {
+  position: absolute !important;
+}
+
+@keyframes pfext-spotlight-expand {
+  0% {
+    outline-offset: -4px;
+    outline-width: 4px;
+    opacity: 1;
+  }
+  100% {
+    outline-offset: 21px;
+    outline-width: 12px;
+    opacity: 0;
+  }
+}
+@keyframes pfext-spotlight-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes pfext-spotlight-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.pfext-spotlight {
+  pointer-events: none;
+  position: absolute;
+}
+
+.pfext-spotlight__with-backdrop {
+  mix-blend-mode: hard-light;
+}
+
+.pfext-spotlight__element-highlight-noanimate {
+  border: var(--pf-global--BorderWidth--xl) solid var(--pf-global--palette--blue-200);
+  background-color: var(--pf-global--palette--black-500);
+  z-index: 9999;
+}
+
+.pfext-spotlight__element-highlight-animate {
+  pointer-events: none;
+  position: absolute;
+  box-shadow: inset 0 0 0 4px var(--pf-global--palette--blue-200);
+  opacity: 0;
+  animation: 0.4s pfext-spotlight-fade-in 0s ease-in-out, 5s pfext-spotlight-fade-out 12.8s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.pfext-spotlight__element-highlight-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  animation: 1.2s pfext-spotlight-expand 1.6s ease-out;
+  animation-fill-mode: forwards;
+  outline: 4px solid var(--pf-global--palette--blue-200);
+  outline-offset: -4px;
+}
+
 .pfext-markdown-view .h1, .pfext-markdown-view .h2, .pfext-markdown-view .h3, .pfext-markdown-view .h4, .pfext-markdown-view .h5, .pfext-markdown-view .h6, .pfext-markdown-view h1, .pfext-markdown-view h2, .pfext-markdown-view h3, .pfext-markdown-view h4, .pfext-markdown-view h5, .pfext-markdown-view h6 {
   font-family: var(--pf-global--FontFamily--heading--sans-serif);
   font-weight: var(--pf-global--FontWeight--normal);
@@ -40630,6 +40744,22 @@ svg.pf-c-spinner.pf-m-xl {
   box-shadow: var(--pf-global--BoxShadow--sm-bottom);
 }
 
+.pfext-quick-start-panel-content__header--blue-white {
+  background-color: var(--pf-global--palette--blue-400);
+}
+
+.pfext-quick-start-panel-content__header--blue-white .pfext-quick-start-panel-content__title {
+  color: var(--pf-global--Color--light-100);
+}
+
+.pfext-quick-start-panel-content__header--blue-white .pfext-quick-start-panel-content__duration {
+  color: var(--pf-global--Color--light-200);
+}
+
+.pfext-quick-start-panel-content__header--blue-white .pfext-quick-start-panel-content__close-button button {
+  color: var(--pf-global--Color--light-100) !important;
+}
+
 .pfext-quick-start-panel-content__body {
   display: flex;
   flex-direction: column;
@@ -40647,7 +40777,7 @@ svg.pf-c-spinner.pf-m-xl {
 
 .pfext-quick-start-panel-content__duration {
   display: inline-block;
-  font-size: 65%;
+  font-size: var(--pf-global--FontSize--md);
   font-weight: 400;
   line-height: 1;
   color: #9c9c9c;
@@ -40755,8 +40885,8 @@ svg.pf-c-spinner.pf-m-xl {
 .pfext-quick-start-content {
   flex: 1 1 0;
   overflow: auto;
-  padding: var(--pf-global--spacer--sm) var(--pf-global--spacer--lg);
-  font-size: 14px;
+  padding: var(--pf-global--spacer--lg);
+  font-size: 16px;
 }
 
 .pfext-quick-start-content .pf-c-alert__description p {
@@ -40797,19 +40927,158 @@ svg.pf-c-spinner.pf-m-xl {
   padding-top: 0;
 }
 
-.pfext-quick-start-task-header {
+.pfext-quick-start-intro__prereq {
+  margin-bottom: var(--pf-global--spacer--md);
+}
+
+.pfext-quick-start-intro__prereq .pf-c-expandable-section__content {
+  margin-top: var(--pf-global--spacer--sm);
+}
+
+.pfext-quick-start-intro__prereq .pf-c-expandable-section__toggle {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.pfext-quick-start-intro__prereq .pf-c-expandable-section__toggle-text {
+  margin-left: var(--pf-global--spacer--sm);
+}
+
+.pfext-quick-start-intro__prereq .pf-c-expandable-section__toggle-icon {
+  color: var(--pf-c-expandable-section__toggle--Color);
+}
+
+.pfext-quick-start-intro__prereq .pf-c-expandable-section__toggle-icon:focus, .pfext-quick-start-intro__prereq .pf-c-expandable-section__toggle-icon:hover {
+  --pf-c-expandable-section__toggle--Color:var(--pf-c-expandable-section__toggle--focus--Color);
+}
+
+.pfext-quick-start-intro__prereq-list {
+  padding-left: 20px;
+}
+
+.pfext-quick-start-intro__prereq-list__item::marker {
+  font-size: 0.8rem;
+}
+
+.pfext-quick-start-intro__prereq-list__item-content {
+  position: relative;
+  left: 2px;
+}
+
+.pfext-quick-start-tasks__list button::before {
+  content: none;
+}
+
+.pfext-quick-start-tasks__list li.pf-c-wizard__nav-item {
+  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: var(--pf-global--spacer--xs);
 }
 
-.pfext-quick-start-task-header button::before {
+.pfext-quick-start-tasks__list .pfext-quick-start-task__content {
+  margin-left: var(--pf-global--spacer--lg);
+  margin-bottom: var(--pf-global--spacer--md);
+}
+
+.pfext-quick-start-tasks__list .task-pflist-title {
+  font-size: 14px !important;
+  margin-bottom: 6px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-subtitle {
+  color: var(--pf-global--Color--200);
+  font-size: 16px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list {
+  font-size: 16px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list--prereq {
+  padding-left: var(--pf-global--spacer--lg);
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list--prereq li + li {
+  margin-top: 4px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list--proc {
+  padding-left: 10px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list--proc li + li {
+  margin-top: 16px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item--prereq::marker {
+  font-size: 0.8rem;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item--prereq .task-pflist-list__item__content {
+  position: relative;
+  left: 2px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item--proc {
+  font-size: 14px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item--proc .task-pflist-list__item__content {
+  position: relative;
+  left: 4px;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item__content .pf-c-alert {
+  margin: var(--pf-global--spacer--md) 0;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item__content .pf-c-alert__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: var(--pf-c-alert__title--FontWeight);
+  font-family: inherit;
+  line-height: inherit;
+  color: var(--pf-c-alert__title--Color);
+  word-break: break-word;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item__content .task-pflist-list__item__content__note {
+  background-color: var(--pf-global--palette--blue-50);
+  border-color: var(--pf-global--active-color--200);
+  margin: var(--pf-global--spacer--md) 0;
+}
+
+.pfext-quick-start-tasks__list .task-pflist-list__item__content .task-pflist-list__item__content__note__body {
+  font-size: 14px;
+}
+
+.pfext-quick-start-task-header__list {
+  padding: 0 !important;
+}
+
+.pfext-quick-start-task-header__list button::before {
   content: none;
 }
 
-.pfext-quick-start-task-header li {
+.pfext-quick-start-task-header__list li {
   list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--pf-global--spacer--xs);
+}
+
+.pfext-quick-start-task-header {
+  margin-bottom: var(--pf-global--spacer--sm);
+  display: grid;
+  grid-template-columns: min-content auto;
+  font-size: var(--pf-global--FontSize--md);
+}
+
+.pfext-quick-start-task-header button::before {
+  content: none;
 }
 
 .pfext-quick-start-task-header__title {
@@ -40818,8 +41087,14 @@ svg.pf-c-spinner.pf-m-xl {
 }
 
 .pfext-quick-start-task-header__subtitle {
-  display: inline-block;
   font-size: var(--pf-global--FontSize--sm);
+  color: var(--pf-global--Color--400) !important;
+}
+
+.pfext-quick-start-task-header__tryagain {
+  display: block;
+  font-size: var(--pf-global--FontSize--md);
+  color: var(--pf-global--Color--300) !important;
 }
 
 .pfext-quick-start-task-header__title-success {
@@ -40827,7 +41102,7 @@ svg.pf-c-spinner.pf-m-xl {
 }
 
 .pfext-quick-start-task-header__title-failed {
-  color: var(--pf-chart-global--danger--Color--100) !important;
+  color: var(--pf-global--danger-color--100) !important;
 }
 
 .pfext-quick-start-task-header__task-icon-init {
@@ -40842,6 +41117,18 @@ svg.pf-c-spinner.pf-m-xl {
 
 .pfext-quick-start-task-header__task-icon-failed, .pfext-quick-start-task-header__task-icon-success {
   vertical-align: middle !important;
+}
+
+.pfext-quick-start-task-header__task-icon-success {
+  color: var(--pf-global--palette--green-500) !important;
+}
+
+.pfext-quick-start-task-header__task-icon-failed {
+  color: var(--pf-global--danger-color--100) !important;
+}
+
+.pfext-quick-start-task-review-alert {
+  margin: var(--pf-global--spacer--lg) 0;
 }
 
 .pfext-quick-start-task-review {
