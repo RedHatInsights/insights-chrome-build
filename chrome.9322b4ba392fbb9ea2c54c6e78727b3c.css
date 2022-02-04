@@ -46672,11 +46672,7 @@ aside {
   display: none !important;
 }
 
-.inc-c-chrome__root-element {
-  height: 100vh !important;
-}
-
-.pf-c-page.ins-c-page__hasBanner {
+.pf-c-page.chr-c-page__hasBanner {
   grid-template-areas: "banner banner" "header header" "nav main";
 }
 
@@ -46687,9 +46683,6 @@ aside {
 .pf-c-page {
   --pf-c-page__sidebar--Transition: all 500ms cubic-bezier(.42, 0, .58, 1);
   --pf-m-emphasis--FontSize: var(--pf-global--FontSize--xl);
-}
-.pf-c-page .ins-m-full--height {
-  height: 100%;
 }
 .pf-c-page .ins-c-chrome__global-filter {
   padding: var(--pf-global--spacer--md) var(--pf-global--spacer--lg);
@@ -46728,7 +46721,7 @@ aside {
   background: var(--pf-c-page__main-section--BackgroundColor);
 }
 
-.pf-c-alert.ins-c-alert {
+.pf-c-alert.chr-c-alert {
   position: absolute;
   top: var(--pf-c-page__header--MinHeight);
   right: var(--pf-c-page__header-tools--MarginRight);
@@ -46765,27 +46758,6 @@ aside {
   grid-row-end: 4;
 }
 
-/**
-* patch for issue: https://github.com/patternfly/patternfly-react/issues/6540
-* navigation arrow is always looking as if the expandable section is expanded
-*/
-.pf-c-nav__item .pf-c-nav__toggle-icon {
-  transform: none !important;
-}
-
-.pf-c-nav__item.pf-m-expanded .pf-c-nav__toggle-icon, .pf-c-nav__item .pf-c-nav__item.pf-m-expanded .pf-c-nav__toggle-icon {
-  transform: rotate(var(--pf-c-nav__item--m-expanded__toggle-icon--Rotate)) !important;
-}
-
-.ins-c-footer {
-  grid-column-start: 1;
-}
-@media screen and (min-width: 768px) {
-  .ins-c-footer {
-    grid-column-start: 2;
-  }
-}
-
 .ins-l-page__header--loading .ins-c-skeleton {
   height: 28px;
   height: 2rem;
@@ -46808,20 +46780,16 @@ section.ins-c-app-switcher--loading {
   height: 1em;
 }
 
-.ins-c-pen-test {
+.chr-pen-test {
   border-top: 3px solid #A18FFF;
 }
 
-.ins-m-navigation-align .pf-c-nav__link {
-  text-align: inherit;
-}
-
-.ins-c-render {
+.chr-render {
   display: flex;
   flex-direction: column;
   min-height: 100%;
 }
-.ins-c-render > main {
+.chr-render > main {
   flex-grow: 1;
 }
 
