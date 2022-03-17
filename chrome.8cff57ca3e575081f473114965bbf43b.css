@@ -45163,6 +45163,10 @@ svg.pf-c-spinner.pf-m-xl {
   margin-right: 7px;
 }
 
+.pfext-quick-start-panel-content__body .pf-c-list {
+  --pf-c-list--PaddingLeft:20px;
+}
+
 .pfext-page-layout__content, .pfext-popover__base, .pfext-quick-start-panel-content__body, .pfext-quick-start-panel-content__header {
   --pf-global--FontSize--md:14px;
   --pf-global--FontSize--sm:13px;
@@ -45648,6 +45652,7 @@ svg.pf-c-spinner.pf-m-xl {
 }
 
 .pfext-page-layout__header {
+  padding-top: 1px;
   background-color: var(--pf-global--BackgroundColor--light-100);
 }
 
@@ -45692,6 +45697,20 @@ svg.pf-c-spinner.pf-m-xl {
 
 .pfext-markdown-view .pfext-markdown-execute-snippet__button[data-executed] > i.fa-play {
   display: none;
+}
+
+.pfext-markdown-view .pfext-markdown-admonition.pf-c-alert {
+  margin: var(--pf-global--spacer--md) 0;
+}
+
+.pfext-markdown-view .pfext-markdown-admonition.pf-c-alert .pf-c-alert__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: var(--pf-c-alert__title--FontWeight);
+  font-family: inherit;
+  line-height: inherit;
+  color: var(--pf-c-alert__title--Color);
+  word-break: break-word;
 }
 
 .pfext-modal {
@@ -45950,10 +45969,6 @@ svg.pf-c-spinner.pf-m-xl {
   flex-direction: column;
 }
 
-.pfext-quick-start-panel-content__body ol, .pfext-quick-start-panel-content__body ul {
-  padding-left: 20px;
-}
-
 .pfext-quick-start-panel-content__title {
   display: flex;
   align-items: center;
@@ -46163,7 +46178,6 @@ svg.pf-c-spinner.pf-m-xl {
 }
 
 .pfext-quick-start-tasks__list .pfext-quick-start-task__content {
-  margin-left: var(--pf-global--spacer--lg);
   margin-bottom: var(--pf-global--spacer--md);
 }
 
@@ -46273,7 +46287,7 @@ svg.pf-c-spinner.pf-m-xl {
 
 .pfext-quick-start-task-header__subtitle {
   font-size: var(--pf-global--FontSize--sm);
-  color: var(--pf-global--Color--400) !important;
+  color: var(--pf-global--Color--dark-200) !important;
 }
 
 .pfext-quick-start-task-header__tryagain {
@@ -46372,6 +46386,20 @@ svg.pf-c-spinner.pf-m-xl {
 
 .pfext-markdown-view .pfext-markdown-execute-snippet__button[data-executed] > i.fa-play {
   display: none;
+}
+
+.pfext-markdown-view .pfext-markdown-admonition.pf-c-alert {
+  margin: var(--pf-global--spacer--md) 0;
+}
+
+.pfext-markdown-view .pfext-markdown-admonition.pf-c-alert .pf-c-alert__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: var(--pf-c-alert__title--FontWeight);
+  font-family: inherit;
+  line-height: inherit;
+  color: var(--pf-c-alert__title--Color);
+  word-break: break-word;
 }
 
 @keyframes pfext-spotlight-expand {
