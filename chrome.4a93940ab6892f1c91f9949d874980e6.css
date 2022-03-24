@@ -46269,6 +46269,39 @@ svg.pf-c-spinner.pf-m-xl {
   margin-bottom: var(--pf-global--spacer--xs);
 }
 
+.pfext-quick-start-task-review-alert {
+  margin: var(--pf-global--spacer--lg) 0;
+}
+
+.pfext-quick-start-task-review {
+  font-size: var(--pf-global--FontSize--md);
+  line-height: var(--pf-global--FontSize--xl);
+  font-family: var(--pf-global--FontFamily--heading--sans-serif);
+}
+
+.pfext-quick-start-task-review__actions {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--pf-global--spacer--sm);
+}
+
+.pfext-quick-start-task-review__actions input[type=radio] {
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.pfext-quick-start-task-review__radio {
+  margin-right: var(--pf-global--spacer--xl) !important;
+}
+
+.pfext-quick-start-task-review--success {
+  color: var(--pf-global--palette--green-500);
+}
+
+.pfext-quick-start-task-review--failed {
+  color: var(--pf-chart-global--danger--Color--100);
+}
+
 .pfext-quick-start-task-header {
   margin-bottom: var(--pf-global--spacer--sm);
   display: grid;
@@ -46326,43 +46359,6 @@ svg.pf-c-spinner.pf-m-xl {
   color: var(--pf-global--danger-color--100) !important;
 }
 
-.pfext-quick-start-task-review-alert {
-  margin: var(--pf-global--spacer--lg) 0;
-}
-
-.pfext-quick-start-task-review {
-  font-size: var(--pf-global--FontSize--md);
-  line-height: var(--pf-global--FontSize--xl);
-  font-family: var(--pf-global--FontFamily--heading--sans-serif);
-}
-
-.pfext-quick-start-task-review__actions {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: var(--pf-global--spacer--sm);
-}
-
-.pfext-quick-start-task-review__actions input[type=radio] {
-  margin-top: 0;
-  margin-right: 0;
-}
-
-.pfext-quick-start-task-review__radio {
-  margin-right: var(--pf-global--spacer--xl) !important;
-}
-
-.pfext-quick-start-task-review--success {
-  color: var(--pf-global--palette--green-500);
-}
-
-.pfext-quick-start-task-review--failed {
-  color: var(--pf-chart-global--danger--Color--100);
-}
-
-.pfext-modal {
-  position: absolute !important;
-}
-
 .pfext-markdown-view .pfext-code-block__pre {
   display: flex;
   border: none;
@@ -46400,6 +46396,10 @@ svg.pf-c-spinner.pf-m-xl {
   line-height: inherit;
   color: var(--pf-c-alert__title--Color);
   word-break: break-word;
+}
+
+.pfext-modal {
+  position: absolute !important;
 }
 
 @keyframes pfext-spotlight-expand {
