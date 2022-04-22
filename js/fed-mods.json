@@ -1,19 +1,20 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.bafbc16fb00fccc878b7.js"
+            "/apps/chrome/js/chrome.9039998276c62787e2f1.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.10ea8c8b7ace8879190f.js",
-            "/apps/chrome/js/259.63a0e3ab5eeb14eebb60.js",
-            "/apps/chrome/js/138.3fdcc27cb94720509771.js",
-            "/apps/chrome/js/256.f031283636b69e33ac57.js",
-            "/apps/chrome/js/573.abee96ae6b5dce992c1d.js",
-            "/apps/chrome/js/713.e0d8340ff8b830816ec5.js",
-            "/apps/chrome/js/736.661b80b10dcfd2efac23.js",
-            "/apps/chrome/js/665.e638e7aac33c74b59c93.js",
-            "/apps/chrome/js/141.7901c9ba5a54c7957837.js",
-            "/apps/chrome/js/882.09eb987fd0d89d0845d9.js"
+            "/apps/chrome/js/186.7300ea1b4511a47b4727.js",
+            "/apps/chrome/js/258.a992aed6dc96c1c6b63f.js",
+            "/apps/chrome/js/553.fe3d0c04e9b57e1fe97a.js",
+            "/apps/chrome/js/122.c9d903d4da7dce6461ca.js",
+            "/apps/chrome/js/336.fd4b9b16be329b093c98.js",
+            "/apps/chrome/js/535.67ddc8fd1fb7b07e4629.js",
+            "/apps/chrome/js/736.ecfa18fb47deb445ce75.js",
+            "/apps/chrome/js/665.887c65c0802ad80c2cb8.js",
+            "/apps/chrome/js/663.e8ecefcda6892125d5a3.js",
+            "/apps/chrome/js/141.21600f5f8ba5c74d2ddb.js",
+            "/apps/chrome/js/199.024583aeacef96ec4c52.js"
         ]
     }
 }
