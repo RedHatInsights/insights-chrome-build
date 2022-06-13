@@ -1,19 +1,18 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.62987f80db97ed0a71af.js"
+            "/apps/chrome/js/chrome.3b2d397200cb20ab6874.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.bb85a8d13b557482491a.js",
-            "/apps/chrome/js/259.c25387ba650d41e75b89.js",
-            "/apps/chrome/js/138.41fb0e0b513bd3468da8.js",
-            "/apps/chrome/js/256.9ee84ba8e4a987a4e944.js",
-            "/apps/chrome/js/573.f953601545d9a6418184.js",
-            "/apps/chrome/js/713.1ac1c6ba2e4d0cdfc02f.js",
-            "/apps/chrome/js/736.661b80b10dcfd2efac23.js",
-            "/apps/chrome/js/665.1c505f04d2e0d0c2298b.js",
-            "/apps/chrome/js/141.b873126e2d8bd3e46c88.js",
-            "/apps/chrome/js/816.0d8aac792980158ad1f0.js"
+            "/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_inventory_modules_AppInfo_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/src_js_jwt_modules_useChromeAuth_js.3b2d397200cb20ab6874.js",
+            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.3b2d397200cb20ab6874.js"
         ]
     }
 }
