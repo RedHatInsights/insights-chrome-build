@@ -1661,12 +1661,14 @@ function isFedRamp() {
     return getEnv() === 'gov';
 }
 exports.isFedRamp = isFedRamp;
-function updateDocumentTitle(title) {
+function updateDocumentTitle(title, noSuffix) {
+    if (noSuffix === void 0) { noSuffix = false; }
+    var titleSuffix = '| console.redhat.com';
     if (typeof title === 'undefined') {
         return;
     }
     if (typeof title === 'string') {
-        document.title = title;
+        document.title = title.includes(titleSuffix) || noSuffix ? title : "".concat(title, " ").concat(titleSuffix);
     }
     else {
         console.warn("Title is not a string. Got ".concat(typeof title, " instead."));
