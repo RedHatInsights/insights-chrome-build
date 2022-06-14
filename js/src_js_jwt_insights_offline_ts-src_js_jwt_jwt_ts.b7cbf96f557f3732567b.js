@@ -1,4 +1,4 @@
-(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts"],{
+(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_js_jwt_insights_offline_ts-src_js_jwt_jwt_ts"],{
 
 /***/ "./src/js/App/FeatureFlags/FeatureFlagsProvider.js":
 /*!*********************************************************!*\
@@ -462,163 +462,6 @@ var isVisible = function isVisible(limitedApps, app, visibility) {
 
 /***/ }),
 
-/***/ "./src/js/jwt/insights/offline.js":
-/*!****************************************!*\
-  !*** ./src/js/jwt/insights/offline.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "wipePostbackParamsThatAreNotForUs": () => (/* binding */ wipePostbackParamsThatAreNotForUs),
-/* harmony export */   "getOfflineToken": () => (/* binding */ getOfflineToken)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../consts */ "./src/js/consts.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./src/js/jwt/constants.ts");
-/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./url */ "./src/js/jwt/insights/url.ts");
-/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_url__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! urijs */ "./node_modules/urijs/src/URI.js");
-/* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(urijs__WEBPACK_IMPORTED_MODULE_6__);
-
-
-
-
-
-
-
-var priv = {}; // note this function is not exposed
-// it is a run everytime and produce some side affect thing
-// if a special condition is encountered
-//
-// it would be great to not have this behave this way
-// but the order that this needs to run in is very specific
-// so that is somewhat difficult
-
-function wipePostbackParamsThatAreNotForUs() {
-  if (getWindow().location.href.indexOf(_consts__WEBPACK_IMPORTED_MODULE_2__.default.offlineToken) !== -1) {
-    var _getWindow$location = getWindow().location,
-        hash = _getWindow$location.hash,
-        search = _getWindow$location.search,
-        origin = _getWindow$location.origin,
-        pathname = _getWindow$location.pathname;
-    var noAuthParam = new URLSearchParams(search).get(_consts__WEBPACK_IMPORTED_MODULE_2__.default.noAuthParam); // this is a UHC offline token postback
-    // we need to not let the JWT lib see this
-    // and try to use it
-
-    priv.postbackUrl = "".concat(origin).concat(pathname, "?").concat(_consts__WEBPACK_IMPORTED_MODULE_2__.default.noAuthParam, "=").concat(noAuthParam).concat(hash); // we do this because keycloak.js looks at the hash for its parameters
-    // and if found uses the params for its own use
-    //
-    // in the UHC offline post back case we *dont*
-    // want the params to be used by keycloak.js
-    // so we have to destroy this stuff and let regular auth routines happen
-
-    getWindow().location.hash = ''; // nuke the params so that people dont see the ugly
-
-    var url = urijs__WEBPACK_IMPORTED_MODULE_6___default()(getWindow().location.href);
-    url.removeQuery(_consts__WEBPACK_IMPORTED_MODULE_2__.default.noAuthParam);
-    getWindow().history.pushState('offlinePostback', '', url.toString());
-  }
-}
-function getOfflineToken(_x, _x2) {
-  return _getOfflineToken.apply(this, arguments);
-}
-
-function _getOfflineToken() {
-  _getOfflineToken = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(realm, clientId) {
-    var postbackUrl, ssoUrl, tokenURL, params;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            postbackUrl = getPostbackUrl();
-
-            if (!priv.response) {
-              _context.next = 3;
-              break;
-            }
-
-            return _context.abrupt("return", Promise.resolve(priv.response));
-
-          case 3:
-            if (postbackUrl) {
-              _context.next = 5;
-              break;
-            }
-
-            return _context.abrupt("return", Promise.reject('not available'));
-
-          case 5:
-            _context.next = 7;
-            return _url__WEBPACK_IMPORTED_MODULE_4___default()(_constants__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_ROUTES);
-
-          case 7:
-            ssoUrl = _context.sent;
-            tokenURL = "".concat(ssoUrl, "/realms/").concat(realm, "/protocol/openid-connect/token");
-            params = parseHashString(postbackUrl);
-            return _context.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default().post(tokenURL, getPostDataString(getPostDataObject(postbackUrl, clientId, params.code)), {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              }
-            }).then(function (response) {
-              priv.response = response;
-              return response;
-            }));
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _getOfflineToken.apply(this, arguments);
-}
-
-function getWindow() {
-  return window;
-}
-
-function getPostbackUrl() {
-  // let folks only do this once
-  var ret = priv.postbackUrl;
-  delete priv.postbackUrl;
-  return ret;
-}
-
-function getPostDataObject(url, clientId, code) {
-  return {
-    code: code,
-    grant_type: 'authorization_code',
-    // eslint-disable-line camelcase
-    client_id: clientId,
-    // eslint-disable-line camelcase
-    redirect_uri: encodeURIComponent(url.split('#')[0]) // eslint-disable-line camelcase
-
-  };
-}
-
-function parseHashString(str) {
-  return str.split('#')[1].split('&').reduce(function (result, item) {
-    var parts = item.split('=');
-    result[parts[0]] = parts[1];
-    return result;
-  }, {});
-}
-
-function getPostDataString(obj) {
-  return Object.entries(obj).map(function (entry) {
-    return "".concat(entry[0], "=").concat(entry[1]);
-  }).join('&');
-}
-
-/***/ }),
-
 /***/ "./src/js/jwt/insights/ssoUrl.js":
 /*!***************************************!*\
   !*** ./src/js/jwt/insights/ssoUrl.js ***!
@@ -802,6 +645,144 @@ exports.default = (function (cachePrefix) {
     });
     return new entitlements_client_1.ServicesApi(undefined, BASE_PATH, instance);
 });
+
+
+/***/ }),
+
+/***/ "./src/js/jwt/insights/offline.ts":
+/*!****************************************!*\
+  !*** ./src/js/jwt/insights/offline.ts ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.parseHashString = exports.getPostDataObject = exports.getPostbackUrl = exports.getWindow = exports.getOfflineToken = exports.wipePostbackParamsThatAreNotForUs = void 0;
+var consts_1 = __importDefault(__webpack_require__(/*! ../../consts */ "./src/js/consts.js"));
+var constants_1 = __webpack_require__(/*! ../constants */ "./src/js/jwt/constants.ts");
+var url_1 = __importDefault(__webpack_require__(/*! ./url */ "./src/js/jwt/insights/url.ts"));
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+var priv = {};
+function wipePostbackParamsThatAreNotForUs() {
+    if (getWindow().location.href.indexOf(consts_1.default.offlineToken) !== -1) {
+        var _a = getWindow().location, hash = _a.hash, search = _a.search, origin_1 = _a.origin, pathname = _a.pathname;
+        var noAuthParam = new URLSearchParams(search).get(consts_1.default.noAuthParam);
+        priv.postbackUrl = "".concat(origin_1).concat(pathname, "?").concat(consts_1.default.noAuthParam, "=").concat(noAuthParam).concat(hash);
+        getWindow().location.hash = '';
+        var url = new URL(getWindow().location.href);
+        url.searchParams.delete(consts_1.default.noAuthParam);
+        getWindow().history.pushState('offlinePostback', '', url.toString());
+    }
+}
+exports.wipePostbackParamsThatAreNotForUs = wipePostbackParamsThatAreNotForUs;
+function getOfflineToken(realm, clientId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var postbackUrl, ssoUrl, tokenURL, params;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    postbackUrl = getPostbackUrl();
+                    if (priv.response) {
+                        return [2, Promise.resolve(priv.response)];
+                    }
+                    if (!postbackUrl) {
+                        return [2, Promise.reject('not available')];
+                    }
+                    return [4, (0, url_1.default)(constants_1.DEFAULT_ROUTES)];
+                case 1:
+                    ssoUrl = _a.sent();
+                    tokenURL = "".concat(ssoUrl, "/realms/").concat(realm, "/protocol/openid-connect/token");
+                    params = parseHashString(postbackUrl);
+                    return [2, axios_1.default
+                            .post(tokenURL, getPostDataString(getPostDataObject(postbackUrl, clientId, params.code)), {
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        })
+                            .then(function (response) {
+                            priv.response = response;
+                            return response;
+                        })];
+            }
+        });
+    });
+}
+exports.getOfflineToken = getOfflineToken;
+function getWindow() {
+    return window;
+}
+exports.getWindow = getWindow;
+function getPostbackUrl() {
+    var ret = priv.postbackUrl;
+    delete priv.postbackUrl;
+    return ret;
+}
+exports.getPostbackUrl = getPostbackUrl;
+function getPostDataObject(url, clientId, code) {
+    return {
+        code: code,
+        grant_type: 'authorization_code',
+        client_id: clientId,
+        redirect_uri: encodeURIComponent(url.split('#')[0]),
+    };
+}
+exports.getPostDataObject = getPostDataObject;
+function parseHashString(str) {
+    return str
+        .split('#')[1]
+        .split('&')
+        .reduce(function (result, item) {
+        var parts = item.split('=');
+        result[parts[0]] = parts[1];
+        return result;
+    }, {});
+}
+exports.parseHashString = parseHashString;
+function getPostDataString(obj) {
+    return Object.entries(obj)
+        .map(function (entry) {
+        return "".concat(entry[0], "=").concat(entry[1]);
+    })
+        .join('&');
+}
 
 
 /***/ }),
