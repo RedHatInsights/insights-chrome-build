@@ -1,4 +1,3 @@
-var chrome;
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -2344,6 +2343,31 @@ module.exports = react;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/@redhat-cloud-services/frontend-components-pdf-generator/node_modules/react/cjs/react.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./src/js/chrome.js":
+/*!**************************!*\
+  !*** ./src/js/chrome.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _sass_chrome_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/chrome.scss */ "./src/sass/chrome.scss");
+
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f"), __webpack_require__.e("vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-99f1d8"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_entitlements-client_dist_index_js-node_modules_red-c07355"), __webpack_require__.e("vendors-node_modules_react-router_esm_react-router_js"), __webpack_require__.e("vendors-node_modules_lodash__baseClone_js-node_modules_lodash__baseMerge_js-node_modules_loda-21f4a7"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-20c9c0"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-4a8116"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts"), __webpack_require__.e("src_js_bootstrap_js-node_modules_redhat-cloud-services_frontend-components_esm_BulkSelect_bul-e57e32")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/js/bootstrap.js"));
+
+/***/ }),
+
+/***/ "./src/sass/chrome.scss":
+/*!******************************!*\
+  !*** ./src/sass/chrome.scss ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
 
 
 /***/ }),
@@ -32291,67 +32315,6 @@ if (false) {} else {
 }
 
 
-/***/ }),
-
-/***/ "webpack/container/entry/chrome":
-/*!***********************!*\
-  !*** container entry ***!
-  \***********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-var moduleMap = {
-	"./InventoryTable": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_InventoryTable_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/InventoryTable.js */ "./src/js/inventory/modules/InventoryTable.js")))));
-	},
-	"./AppInfo": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_AppInfo_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/AppInfo.js */ "./src/js/inventory/modules/AppInfo.js")))));
-	},
-	"./InventoryDetailHead": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_InventoryDetailHead_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/InventoryDetailHead.js */ "./src/js/inventory/modules/InventoryDetailHead.js")))));
-	},
-	"./InventoryDetail": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_InventoryDetail_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/InventoryDetail.js */ "./src/js/inventory/modules/InventoryDetail.js")))));
-	},
-	"./TagWithDialog": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_TagWithDialog_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/TagWithDialog.js */ "./src/js/inventory/modules/TagWithDialog.js")))));
-	},
-	"./DetailWrapper": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_js_inventory_modules_DetailWrapper_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/inventory/modules/DetailWrapper.js */ "./src/js/inventory/modules/DetailWrapper.js")))));
-	},
-	"./DownloadButton": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f"), __webpack_require__.e("vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-99f1d8"), __webpack_require__.e("vendors-node_modules_lodash__baseClone_js-node_modules_lodash__baseMerge_js-node_modules_loda-21f4a7"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react")]).then(() => (() => ((__webpack_require__(/*! ./src/js/pdf/DownloadButton.js */ "./src/js/pdf/DownloadButton.js")))));
-	},
-	"./useChromeAuth": () => {
-		return Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-99f1d8"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_entitlements-client_dist_index_js-node_modules_red-c07355"), __webpack_require__.e("src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts"), __webpack_require__.e("src_js_jwt_modules_useChromeAuth_js")]).then(() => (() => ((__webpack_require__(/*! ./src/js/jwt/modules/useChromeAuth.js */ "./src/js/jwt/modules/useChromeAuth.js")))));
-	}
-};
-var get = (module, getScope) => {
-	__webpack_require__.R = getScope;
-	getScope = (
-		__webpack_require__.o(moduleMap, module)
-			? moduleMap[module]()
-			: Promise.resolve().then(() => {
-				throw new Error('Module "' + module + '" does not exist in container.');
-			})
-	);
-	__webpack_require__.R = undefined;
-	return getScope;
-};
-var init = (shareScope, initScope) => {
-	if (!__webpack_require__.S) return;
-	var oldScope = __webpack_require__.S["default"];
-	var name = "default"
-	if(oldScope && oldScope !== shareScope) throw new Error("Container initialization failed as it has already been initialized with a different share scope");
-	__webpack_require__.S[name] = shareScope;
-	return __webpack_require__.I(name, initScope);
-};
-
-// This exports getters to disallow modifications
-__webpack_require__.d(exports, {
-	get: () => (get),
-	init: () => (init)
-});
-
 /***/ })
 
 /******/ 	});
@@ -32437,7 +32400,7 @@ __webpack_require__.d(exports, {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"vendors-node_modules_tslib_tslib_es6_js":1,"vendors-node_modules_patternfly_quickstarts_dist_index_es_js":1,"webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core":1,"webpack_sharing_consume_default_react-dom_react-dom":1,"node_modules_patternfly_react-icons_dist_js_icons_bars-icon_js-node_modules_patternfly_react--73ba53":1,"vendors-node_modules_prop-types_index_js":1,"vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f":1,"vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-20c9c0":1,"vendors-node_modules_patternfly_react-core_dist_esm_index_js":1,"_e6c7-_c8e2-_e6f2-_f5f0-_baa3-_f5b3-_9609-_7327-_e64b-_1dc3-_5da5-_cf22-_9531-_be8c-_50cd-_d0-bbe023":1,"vendors-node_modules_lodash__baseIsEqual_js":1,"vendors-node_modules_scalprum_react-core_dist_esm_index_js":1,"vendors-node_modules_unleash_proxy-client-react_dist_index_browser_js":1,"vendors-node_modules_react-redux_es_index_js":1,"node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules_babel_r-e54863":1,"vendors-node_modules_react-router_esm_react-router_js":1,"vendors-node_modules_react-router-dom_esm_react-router-dom_js":1,"node_modules_babel_runtime_helpers_esm_objectWithoutPropertiesLoose_js":1,"webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core":1,"src_js_inventory_modules_InventoryTable_js":1,"src_js_inventory_modules_AppInfo_js":1,"src_js_inventory_modules_InventoryDetailHead_js":1,"src_js_inventory_modules_InventoryDetail_js":1,"src_js_inventory_modules_TagWithDialog_js":1,"src_js_inventory_modules_DetailWrapper_js":1,"vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-99f1d8":1,"vendors-node_modules_lodash__baseClone_js-node_modules_lodash__baseMerge_js-node_modules_loda-21f4a7":1,"vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js":1,"src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react":1,"vendors-node_modules_redhat-cloud-services_entitlements-client_dist_index_js-node_modules_red-c07355":1,"src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts":1,"src_js_jwt_modules_useChromeAuth_js":1}[chunkId]) return "" + chunkId + "." + __webpack_require__.h() + ".js";
+/******/ 			if ({"vendors-node_modules_prop-types_index_js":1,"vendors-node_modules_lodash__baseIsEqual_js":1,"vendors-node_modules_tslib_tslib_es6_js":1,"vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f":1,"vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-99f1d8":1,"vendors-node_modules_redhat-cloud-services_entitlements-client_dist_index_js-node_modules_red-c07355":1,"vendors-node_modules_react-router_esm_react-router_js":1,"vendors-node_modules_lodash__baseClone_js-node_modules_lodash__baseMerge_js-node_modules_loda-21f4a7":1,"vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-20c9c0":1,"vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-4a8116":1,"webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core":1,"webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core":1,"webpack_sharing_consume_default_react-dom_react-dom":1,"src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts":1,"src_js_bootstrap_js-node_modules_redhat-cloud-services_frontend-components_esm_BulkSelect_bul-e57e32":1,"vendors-node_modules_patternfly_quickstarts_dist_index_es_js":1,"node_modules_patternfly_react-icons_dist_js_icons_bars-icon_js-node_modules_patternfly_react--73ba53":1,"vendors-node_modules_patternfly_react-core_dist_esm_index_js":1,"_e6c7-_c8e2-_e6f2-_f5f0-_baa3-_f5b3-_9609-_7327-_e64b-_1dc3-_5da5-_cf22-_9531-_be8c-_50cd-_d0-bbe023":1,"vendors-node_modules_scalprum_react-core_dist_esm_index_js":1,"vendors-node_modules_unleash_proxy-client-react_dist_index_browser_js":1,"vendors-node_modules_react-redux_es_index_js":1,"node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules_babel_r-e54863":1,"vendors-node_modules_react-router-dom_esm_react-router-dom_js":1,"node_modules_babel_runtime_helpers_esm_objectWithoutPropertiesLoose_js":1,"src_js_App_Sidenav_Navigation_componentMapper_js":1,"src_js_App_Sidenav_Navigation_index_js":1,"src_js_App_Sidenav_LandingNav_js":1,"src_js_App_Routes_QuickstartsCatalogRoute_js":1,"quick-start":1}[chunkId]) return "" + chunkId + "." + __webpack_require__.h() + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -32448,13 +32411,13 @@ __webpack_require__.d(exports, {
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return undefined;
+/******/ 			return "" + chunkId + "." + __webpack_require__.h() + ".css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("95421f931b596f80298a")
+/******/ 		__webpack_require__.h = () => ("61e721d5580c516d1e58")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -32740,10 +32703,12 @@ __webpack_require__.d(exports, {
 /******/ 		var installedModules = {};
 /******/ 		var moduleToHandlerMapping = {
 /******/ 			"webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core": () => (loadStrictVersionCheckFallback("default", "@patternfly/react-core", [4,4,206,2], () => (Promise.all([__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-20c9c0"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("_e6c7-_c8e2-_e6f2-_f5f0-_baa3-_f5b3-_9609-_7327-_e64b-_1dc3-_5da5-_cf22-_9531-_be8c-_50cd-_d0-bbe023")]).then(() => (() => (__webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/react-dom/react-dom": () => (loadSingletonVersionCheckFallback("default", "react-dom", [1,17,0,2], () => (() => (__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"))))),
 /******/ 			"webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core": () => (loadSingletonVersionCheckFallback("default", "@scalprum/react-core", [2,0,1,9], () => (Promise.all([__webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_scalprum_react-core_dist_esm_index_js")]).then(() => (() => (__webpack_require__(/*! @scalprum/react-core */ "./node_modules/@scalprum/react-core/dist/esm/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/react/react?1267": () => (loadSingletonVersionCheckFallback("default", "react", [1,17,0,2], () => (() => (__webpack_require__(/*! react */ "./node_modules/@redhat-cloud-services/frontend-components-pdf-generator/node_modules/react/index.js"))))),
+/******/ 			"webpack/sharing/consume/default/react-dom/react-dom": () => (loadSingletonVersionCheckFallback("default", "react-dom", [1,17,0,2], () => (() => (__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"))))),
 /******/ 			"webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react": () => (loadSingletonVersionCheckFallback("default", "@unleash/proxy-client-react", [1,3,0,0], () => (__webpack_require__.e("vendors-node_modules_unleash_proxy-client-react_dist_index_browser_js").then(() => (() => (__webpack_require__(/*! @unleash/proxy-client-react */ "./node_modules/@unleash/proxy-client-react/dist/index.browser.js"))))))),
+/******/ 			"webpack/sharing/consume/default/react-redux/react-redux": () => (loadStrictVersionCheckFallback("default", "react-redux", [1,7,2,4], () => (__webpack_require__.e("vendors-node_modules_react-redux_es_index_js").then(() => (() => (__webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js"))))))),
+/******/ 			"webpack/sharing/consume/default/react-router-dom/react-router-dom": () => (loadStrictVersionCheckFallback("default", "react-router-dom", [4,5,2,1], () => (__webpack_require__.e("vendors-node_modules_react-router-dom_esm_react-router-dom_js").then(() => (() => (__webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js"))))))),
+/******/ 			"webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts": () => (loadSingletonVersionCheckFallback("default", "@patternfly/quickstarts", [4,2,2,3], () => (__webpack_require__.e("vendors-node_modules_patternfly_quickstarts_dist_index_es_js").then(() => (() => (__webpack_require__(/*! @patternfly/quickstarts */ "./node_modules/@patternfly/quickstarts/dist/index.es.js"))))))),
 /******/ 			"webpack/sharing/consume/default/react/react?474c": () => (loadSingletonVersionCheckFallback("default", "react", [1,17,0,2], () => (() => (__webpack_require__(/*! react */ "./node_modules/react/index.js")))))
 /******/ 		};
 /******/ 		var initialConsumes = ["webpack/sharing/consume/default/react/react?474c"];
@@ -32761,17 +32726,19 @@ __webpack_require__.d(exports, {
 /******/ 			"webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core": [
 /******/ 				"webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core"
 /******/ 			],
-/******/ 			"webpack_sharing_consume_default_react-dom_react-dom": [
-/******/ 				"webpack/sharing/consume/default/react-dom/react-dom"
-/******/ 			],
 /******/ 			"webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core": [
 /******/ 				"webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core"
 /******/ 			],
-/******/ 			"src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react": [
-/******/ 				"webpack/sharing/consume/default/react/react?1267"
+/******/ 			"webpack_sharing_consume_default_react-dom_react-dom": [
+/******/ 				"webpack/sharing/consume/default/react-dom/react-dom"
 /******/ 			],
 /******/ 			"src_js_jwt_insights_offline_js-src_js_jwt_jwt_ts": [
 /******/ 				"webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react"
+/******/ 			],
+/******/ 			"src_js_bootstrap_js-node_modules_redhat-cloud-services_frontend-components_esm_BulkSelect_bul-e57e32": [
+/******/ 				"webpack/sharing/consume/default/react-redux/react-redux",
+/******/ 				"webpack/sharing/consume/default/react-router-dom/react-router-dom",
+/******/ 				"webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts"
 /******/ 			]
 /******/ 		};
 /******/ 		__webpack_require__.f.consumes = (chunkId, promises) => {
@@ -32803,6 +32770,78 @@ __webpack_require__.d(exports, {
 /******/ 		}
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/css loading */
+/******/ 	(() => {
+/******/ 		var createStylesheet = (chunkId, fullhref, resolve, reject) => {
+/******/ 			var linkTag = document.createElement("link");
+/******/ 		
+/******/ 			linkTag.rel = "stylesheet";
+/******/ 			linkTag.type = "text/css";
+/******/ 			var onLinkComplete = (event) => {
+/******/ 				// avoid mem leaks.
+/******/ 				linkTag.onerror = linkTag.onload = null;
+/******/ 				if (event.type === 'load') {
+/******/ 					resolve();
+/******/ 				} else {
+/******/ 					var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 					var realHref = event && event.target && event.target.href || fullhref;
+/******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + realHref + ")");
+/******/ 					err.code = "CSS_CHUNK_LOAD_FAILED";
+/******/ 					err.type = errorType;
+/******/ 					err.request = realHref;
+/******/ 					linkTag.parentNode.removeChild(linkTag)
+/******/ 					reject(err);
+/******/ 				}
+/******/ 			}
+/******/ 			linkTag.onerror = linkTag.onload = onLinkComplete;
+/******/ 			linkTag.href = fullhref;
+/******/ 		
+/******/ 			document.head.appendChild(linkTag);
+/******/ 			return linkTag;
+/******/ 		};
+/******/ 		var findStylesheet = (href, fullhref) => {
+/******/ 			var existingLinkTags = document.getElementsByTagName("link");
+/******/ 			for(var i = 0; i < existingLinkTags.length; i++) {
+/******/ 				var tag = existingLinkTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
+/******/ 				if(tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return tag;
+/******/ 			}
+/******/ 			var existingStyleTags = document.getElementsByTagName("style");
+/******/ 			for(var i = 0; i < existingStyleTags.length; i++) {
+/******/ 				var tag = existingStyleTags[i];
+/******/ 				var dataHref = tag.getAttribute("data-href");
+/******/ 				if(dataHref === href || dataHref === fullhref) return tag;
+/******/ 			}
+/******/ 		};
+/******/ 		var loadStylesheet = (chunkId) => {
+/******/ 			return new Promise((resolve, reject) => {
+/******/ 				var href = __webpack_require__.miniCssF(chunkId);
+/******/ 				var fullhref = __webpack_require__.p + href;
+/******/ 				if(findStylesheet(href, fullhref)) return resolve();
+/******/ 				createStylesheet(chunkId, fullhref, resolve, reject);
+/******/ 			});
+/******/ 		}
+/******/ 		// object to store loaded CSS chunks
+/******/ 		var installedCssChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
+/******/ 			var cssChunks = {"src_js_bootstrap_js-node_modules_redhat-cloud-services_frontend-components_esm_BulkSelect_bul-e57e32":1,"src_js_App_Sidenav_LandingNav_js":1};
+/******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
+/******/ 					installedCssChunks[chunkId] = 0;
+/******/ 				}, (e) => {
+/******/ 					delete installedCssChunks[chunkId];
+/******/ 					throw e;
+/******/ 				}));
+/******/ 			}
+/******/ 		};
+/******/ 		
+/******/ 		// no hmr
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
@@ -32811,7 +32850,7 @@ __webpack_require__.d(exports, {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"chrome": 0
+/******/ 			"main": 0
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.j = (chunkId, promises) => {
@@ -32898,8 +32937,7 @@ __webpack_require__.d(exports, {
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	var __webpack_exports__ = __webpack_require__("webpack/container/entry/chrome");
-/******/ 	chrome = __webpack_exports__;
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/chrome.js");
 /******/ 	
 /******/ })()
 ;
