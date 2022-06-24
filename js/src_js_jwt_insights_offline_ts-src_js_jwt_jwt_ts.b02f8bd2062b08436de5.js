@@ -152,7 +152,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isVisible = exports.visibilityFunctions = exports.CROSS_ACCESS_ORG_ID = exports.ACTIVE_REMOTE_REQUEST = exports.CROSS_ACCESS_ACCOUNT_NUMBER = exports.ACCOUNT_REQUEST_TIMEOUT = exports.ACTIVE_ACCOUNT_SWITCH_NOTIFICATION = exports.REQUESTS_DATA = exports.REQUESTS_COUNT = exports.HYDRA_ENDPOINT = void 0;
+exports.activationRequestURLs = exports.isVisible = exports.visibilityFunctions = exports.CROSS_ACCESS_ORG_ID = exports.ACTIVE_REMOTE_REQUEST = exports.CROSS_ACCESS_ACCOUNT_NUMBER = exports.ACCOUNT_REQUEST_TIMEOUT = exports.ACTIVE_ACCOUNT_SWITCH_NOTIFICATION = exports.REQUESTS_DATA = exports.REQUESTS_COUNT = exports.HYDRA_ENDPOINT = void 0;
 var interceptors_1 = __importDefault(__webpack_require__(/*! @redhat-cloud-services/frontend-components-utilities/interceptors */ "./node_modules/@redhat-cloud-services/frontend-components-utilities/esm/interceptors/index.js"));
 var get_1 = __importDefault(__webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js"));
 var isEmpty_1 = __importDefault(__webpack_require__(/*! lodash/isEmpty */ "./node_modules/lodash/isEmpty.js"));
@@ -333,6 +333,16 @@ var isVisible = function (limitedApps, app, visibility) {
 };
 exports.isVisible = isVisible;
 exports.default = Object.freeze(obj);
+exports.activationRequestURLs = [
+    'azure-openshift-activation',
+    'azure-ocp-activation',
+    'azure-oke-activation',
+    'azure-opp-activation',
+    'aws-openshift-activation',
+    'aws-ocp-activation',
+    'aws-oke-activation',
+    'aws-opp-activation',
+];
 
 
 /***/ }),
