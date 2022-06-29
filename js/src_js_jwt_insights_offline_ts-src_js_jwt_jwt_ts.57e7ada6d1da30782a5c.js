@@ -1368,10 +1368,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.levelArray = exports.highlightItems = exports.updateDocumentTitle = exports.isFedRamp = exports.isBeta = exports.isProd = exports.getEnvDetails = exports.getEnv = exports.getUrl = exports.isAnsible = exports.lastActive = exports.deleteLocalStorageItems = exports.createReduxListener = exports.pageRequiresAuthentication = exports.pageAllowsUnentitled = exports.getSection = exports.isValidAccountNumber = exports.getWindow = void 0;
+exports.loadFedModules = exports.trustarcScriptSetup = exports.noop = exports.levelArray = exports.highlightItems = exports.updateDocumentTitle = exports.isFedRamp = exports.isBeta = exports.isProd = exports.getEnvDetails = exports.getEnv = exports.getUrl = exports.isAnsible = exports.lastActive = exports.deleteLocalStorageItems = exports.createReduxListener = exports.pageRequiresAuthentication = exports.pageAllowsUnentitled = exports.getSection = exports.isValidAccountNumber = exports.getWindow = void 0;
 var get_1 = __importDefault(__webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js"));
 var constants_1 = __webpack_require__(/*! ./jwt/constants */ "./src/js/jwt/constants.ts");
 var flatMap_1 = __importDefault(__webpack_require__(/*! lodash/flatMap */ "./node_modules/lodash/flatMap.js"));
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 function getWindow() {
     return window;
 }
@@ -1582,6 +1583,30 @@ var levelArray = function (navItems) {
     });
 };
 exports.levelArray = levelArray;
+function noop() { }
+exports.noop = noop;
+var trustarcScriptSetup = function () {
+    var trustarcScript = document.createElement('script');
+    trustarcScript.id = 'trustarc';
+    if (location.host === 'console.redhat.com') {
+        trustarcScript.src = '//static.redhat.com/libs/redhat/marketing/latest/trustarc/trustarc.js';
+    }
+    else {
+        trustarcScript.src = '//static.redhat.com/libs/redhat/marketing/latest/trustarc/trustarc.stage.js';
+    }
+    document.body.appendChild(trustarcScript);
+};
+exports.trustarcScriptSetup = trustarcScriptSetup;
+var loadFedModules = function () {
+    return axios_1.default.get("".concat(window.location.origin).concat(isBeta() ? '/beta' : '', "/config/chrome/fed-modules.json?ts=").concat(Date.now()), {
+        headers: {
+            'Cache-Control': 'no-cache',
+            Pragma: 'no-cache',
+            Expires: '0',
+        },
+    });
+};
+exports.loadFedModules = loadFedModules;
 
 
 /***/ }),
