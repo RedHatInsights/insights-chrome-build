@@ -2355,7 +2355,9 @@ if (false) {} else {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_chrome_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/chrome.scss */ "./src/sass/chrome.scss");
+ // Add Red Hat font to body
 
+document.querySelector('body').classList.add('pf-m-redhat-font');
 Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Spinner_Spinner_js-node_module-1e699f"), __webpack_require__.e("vendors-node_modules_babel_runtime_helpers_interopRequireDefault_js-node_modules_babel_runtim-889348"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_entitlements-client_dist_index_js-node_modules_red-88c0e9"), __webpack_require__.e("vendors-node_modules_babel_runtime_regenerator_index_js-node_modules_hoist-non-react-statics_-7a3563"), __webpack_require__.e("vendors-node_modules_react-router_esm_react-router_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-20c9c0"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-4517be"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("src_js_jwt_insights_offline_ts-src_js_jwt_jwt_ts"), __webpack_require__.e("src_js_bootstrap_js-src_js_unfetch_index_js-node_modules_redhat-cloud-services_frontend-compo-4f5f41")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/js/bootstrap.js"));
 
 /***/ }),
@@ -32447,7 +32449,7 @@ if (false) {} else {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("28cb3e8b70640253ba92")
+/******/ 		__webpack_require__.h = () => ("57e7ada6d1da30782a5c")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
