@@ -897,7 +897,7 @@ function tryBounceIfUnentitled(data, section) {
 }
 exports.tryBounceIfUnentitled = tryBounceIfUnentitled;
 exports.default = (function (token) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, pathName, data, accNumber, orgId, _a;
+    var user, pathName, data, _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -911,20 +911,18 @@ exports.default = (function (token) { return __awaiter(void 0, void 0, void 0, f
                     pathName.shift();
                 }
                 if (!user) return [3, 7];
-                log("Account Number: ".concat(user.identity.account_number, ", Org ID: ").concat(user.identity.org_id));
+                log("Account Number: ".concat(user.identity.account_number));
                 data = void 0;
-                accNumber = user.identity.account_number;
-                orgId = user.identity.org_id;
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 5, , 6]);
-                if (!(accNumber || orgId)) return [3, 3];
+                if (!user.identity.account_number) return [3, 3];
                 return [4, (0, entitlements_1.default)(token.jti).servicesGet()];
             case 2:
                 data = _b.sent();
                 return [3, 4];
             case 3:
-                console.log("Cannot call entitlements API. Org ID and Account Number not found.");
+                console.log('Cannot call entitlements API, no account number');
                 _b.label = 4;
             case 4: return [3, 6];
             case 5:
