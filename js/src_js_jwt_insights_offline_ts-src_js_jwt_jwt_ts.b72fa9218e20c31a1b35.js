@@ -920,8 +920,6 @@ function login() {
 }
 function logout(bounce) {
     log('Logging out');
-    // Clear cookies and tokens
-    priv.clearToken();
     const cookieName = priv.getCookie()?.cookieName;
     if (cookieName) {
         js_cookie__WEBPACK_IMPORTED_MODULE_1__.default.remove(cookieName);
@@ -943,6 +941,8 @@ function logout(bounce) {
         priv.logout({
             redirectUri: `https://${window.location.host}${isBeta}`,
         });
+        // Clear cookies and tokens
+        priv.clearToken();
     }
 }
 const logoutAllTabs = (bounce) => {
