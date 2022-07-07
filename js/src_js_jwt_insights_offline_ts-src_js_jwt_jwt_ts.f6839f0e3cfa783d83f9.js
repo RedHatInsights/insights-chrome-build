@@ -446,7 +446,7 @@ function wipePostbackParamsThatAreNotForUs() {
         getWindow().history.pushState('offlinePostback', '', url.toString());
     }
 }
-async function getOfflineToken(realm, clientId) {
+async function getOfflineToken(realm, clientId, configSsoUrl) {
     const postbackUrl = getPostbackUrl();
     if (priv.response) {
         return Promise.resolve(priv.response);
@@ -457,7 +457,7 @@ async function getOfflineToken(realm, clientId) {
         // thus we cant continue if it is missing
         return Promise.reject('not available');
     }
-    const ssoUrl = await (0,_url__WEBPACK_IMPORTED_MODULE_2__.default)(_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_ROUTES);
+    const ssoUrl = await (0,_url__WEBPACK_IMPORTED_MODULE_2__.default)(_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_ROUTES, configSsoUrl);
     const tokenURL = `${ssoUrl}/realms/${realm}/protocol/openid-connect/token`;
     const params = parseHashString(postbackUrl);
     return axios__WEBPACK_IMPORTED_MODULE_3___default().post(tokenURL, getPostDataString(getPostDataObject(postbackUrl, clientId, params.code)), {
@@ -521,10 +521,13 @@ __webpack_require__.r(__webpack_exports__);
 const log = (0,_logger__WEBPACK_IMPORTED_MODULE_0__.default)('insights/url.js');
 const ssoUrl = __webpack_require__.e(/*! import() | sso-url */ "sso-url").then(__webpack_require__.bind(__webpack_require__, /*! ./ssoUrl */ "./src/js/jwt/insights/ssoUrl.js")).then((sso) => sso.default);
 // Parse through keycloak options routes
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (async (env) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (async (env, configSsoUrl) => {
     if (await ssoUrl) {
         log('Using dynamic SSO_URL found! ' + ssoUrl);
         return ssoUrl;
+    }
+    if (configSsoUrl) {
+        return configSsoUrl;
     }
     const ssoEnv = Object.entries(env).find(([, { url }]) => url.includes(location.hostname));
     if (ssoEnv) {
@@ -794,11 +797,11 @@ function decodeToken(str) {
     const res = JSON.parse(str);
     return res;
 }
-const doOffline = (key, val) => {
+const doOffline = (key, val, configSsoUrl) => {
     const url = urijs__WEBPACK_IMPORTED_MODULE_6___default()(window.location.href);
     url.removeSearch(key);
     url.addSearch(key, val);
-    Promise.resolve((0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(_constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES)).then(async (ssoUrl) => {
+    Promise.resolve((0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(_constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES, configSsoUrl)).then(async (ssoUrl) => {
         const options = {
             ..._constants__WEBPACK_IMPORTED_MODULE_7__.options,
             promiseType: 'native',
@@ -813,11 +816,11 @@ const doOffline = (key, val) => {
     });
 };
 /*** Initialization ***/
-const init = (options) => {
+const init = (options, configSsoUrl) => {
     log('Initializing');
     const cookieName = options.cookieName ? options.cookieName : DEFAULT_COOKIE_NAME;
     priv.setCookie({ cookieName });
-    return Promise.resolve((0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(options.routes ? options.routes : _constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES)).then((ssoUrl) => {
+    return Promise.resolve((0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(options.routes ? options.routes : _constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES, configSsoUrl)).then((ssoUrl) => {
         //constructor for new Keycloak Object?
         options.url = ssoUrl;
         options.clientId = 'cloud-services';
@@ -1049,8 +1052,8 @@ const getEncodedToken = () => {
     return priv.getToken();
 };
 // Keycloak server URL
-const getUrl = () => {
-    return (0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(_constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES);
+const getUrl = (ssoUrl) => {
+    return (0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(_constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES, ssoUrl);
 };
 
 
