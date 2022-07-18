@@ -1035,7 +1035,7 @@ function setCookie(token) {
 function setRefresh(refreshToken) {
     log('Setting the refresh token');
     if (refreshToken) {
-        js_cookie__WEBPACK_IMPORTED_MODULE_1__.default.set('cs_jwt_refresh', refreshToken, { secure: true });
+        localStorage.setItem('cs_jwt_refresh', refreshToken);
     }
 }
 // do this so we can mock out for test

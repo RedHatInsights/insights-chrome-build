@@ -35,7 +35,7 @@ const initChromeAuth = () => {
     };
     (0,_insights_offline__WEBPACK_IMPORTED_MODULE_0__.wipePostbackParamsThatAreNotForUs)();
     const token = js_cookie__WEBPACK_IMPORTED_MODULE_2__.default.get(options.cookieName);
-    const refreshToken = js_cookie__WEBPACK_IMPORTED_MODULE_2__.default.get('cs_jwt_refresh');
+    const refreshToken = localStorage.getItem('cs_jwt_refresh');
     // If we find an existing token, use it
     // so that we dont auth even when a valid token is present
     // otherwise its quick, but we bounce around and get a new token
