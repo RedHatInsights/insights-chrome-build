@@ -652,10 +652,10 @@ function tryBounceIfUnentitled(data, section) {
     }
     if (user) {
         log(`Account Number: ${user.identity.account_number}`);
-        let data;
+        let data = {};
         try {
             if (user.identity.account_number) {
-                data = await (0,_entitlements__WEBPACK_IMPORTED_MODULE_1__.default)(token.jti).servicesGet();
+                data = (await (0,_entitlements__WEBPACK_IMPORTED_MODULE_1__.default)(token.jti).servicesGet());
             }
             else {
                 console.log('Cannot call entitlements API, no account number');
@@ -674,7 +674,7 @@ function tryBounceIfUnentitled(data, section) {
         if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.pageAllowsUnentitled)()) {
             return {
                 ...user,
-                entitlements: data || {}, // if the services returned error, use empty object
+                entitlements: data,
             };
         }
         // Important this has to come after the above -1 allow checks
