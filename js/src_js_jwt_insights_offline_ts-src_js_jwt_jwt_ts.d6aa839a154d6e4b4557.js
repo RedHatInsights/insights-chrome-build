@@ -1027,7 +1027,7 @@ function setCookie(token) {
     if (token && token.length > 10) {
         const cookieName = priv.getCookie()?.cookieName;
         if (cookieName) {
-            setCookieWrapper(`${cookieName}=${token};` + `path=/;` + `secure=true;` + `expires=${getCookieExpires(decodeToken(token).exp)}`);
+            setCookieWrapper(`${cookieName}=${token};` + `path=/api;` + `secure=true;` + `expires=${getCookieExpires(decodeToken(token).exp)}`);
         }
     }
 }
