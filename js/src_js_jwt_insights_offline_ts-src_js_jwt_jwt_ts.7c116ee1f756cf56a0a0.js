@@ -20,6 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -36,12 +39,34 @@ const UNLEASH_ERROR_KEY = 'chrome:feature-flags:error';
  * Clear error localstorage flag before initialization
  */
 localStorage.setItem(UNLEASH_ERROR_KEY, 'false');
-const unleashClient = new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__.UnleashClient(config);
+let unleashClient;
 const getFeatureFlagsError = () => localStorage.getItem(UNLEASH_ERROR_KEY) === 'true';
-unleashClient.on('error', () => {
-    localStorage.setItem(UNLEASH_ERROR_KEY, 'true');
-});
-const FeatureFlagsProvider = ({ children }) => react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default()), { unleashClient: unleashClient }, children);
+const FeatureFlagsProvider = ({ children }) => {
+    const user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)((state) => state.chrome.user);
+    const unleashClientInternal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+    // create the unleash client only after the user object is avaiable
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        if (user && !unleashClientInternal.current) {
+            unleashClientInternal.current = new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__.UnleashClient({
+                ...config,
+                context: {
+                    properties: {
+                        account_number: user.identity.account_number,
+                    },
+                },
+            });
+            unleashClient = unleashClientInternal.current;
+            unleashClient.on('error', () => {
+                localStorage.setItem(UNLEASH_ERROR_KEY, 'true');
+            });
+        }
+    }, [user]);
+    // fallback to render the chrome withouth the feature flags if the provider is not initialized properly
+    if (getFeatureFlagsError() || !unleashClientInternal.current) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+    }
+    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default()), { unleashClient: unleashClientInternal.current }, children);
+};
 FeatureFlagsProvider.propTypes = {
     children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node.isRequired),
 };
