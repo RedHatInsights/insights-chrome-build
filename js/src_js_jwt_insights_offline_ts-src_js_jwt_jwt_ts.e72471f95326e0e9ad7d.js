@@ -63,7 +63,8 @@ const FeatureFlagsProvider = ({ children }) => {
     }, [user]);
     // fallback to render the chrome withouth the feature flags if the provider is not initialized properly
     if (getFeatureFlagsError() || !unleashClientInternal.current) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+        // Fallback to handle errored client. The default flags provides has silent error handling if the client fails to initialize
+        return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__.FlagProvider, { config: config }, children);
     }
     return react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default()), { unleashClient: unleashClientInternal.current }, children);
 };
