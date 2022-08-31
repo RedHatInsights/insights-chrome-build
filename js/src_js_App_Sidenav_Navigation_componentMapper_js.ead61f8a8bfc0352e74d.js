@@ -345,9 +345,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/external-link-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/external-link-alt-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_bell_icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/bell-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/bell-icon.js");
-/* harmony import */ var title_case__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! title-case */ "./node_modules/title-case/dist.es2015/index.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/external-link-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/external-link-alt-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_bell_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/bell-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/bell-icon.js");
+/* harmony import */ var title_case__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! title-case */ "./node_modules/title-case/dist.es2015/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
@@ -358,6 +358,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _utils_useRenderFedramp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../utils/useRenderFedramp */ "./src/js/utils/useRenderFedramp.js");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../redux/actions */ "./src/js/redux/actions.ts");
+
 
 
 
@@ -383,12 +385,19 @@ var ChromeNavItem = function ChromeNavItem(_ref) {
       isExternal = _ref.isExternal,
       isBetaEnv = _ref.isBeta,
       active = _ref.active,
+      product = _ref.product,
       _ref$notifier = _ref.notifier,
       notifier = _ref$notifier === void 0 ? '' : _ref$notifier;
   var hasNotifier = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useSelector)(function (state) {
     return lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(state, notifier);
   });
   var renderFedramp = (0,_utils_useRenderFedramp__WEBPACK_IMPORTED_MODULE_10__.default)(appId, href);
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useDispatch)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (active) {
+      dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_11__.markActiveProduct)(product));
+    }
+  }, [active]);
 
   if (renderFedramp !== true) {
     return null;
@@ -416,7 +425,7 @@ var ChromeNavItem = function ChromeNavItem(_ref) {
         appId: appId
       }));
     }
-  }, typeof title === 'string' && !ignoreCase ? (0,title_case__WEBPACK_IMPORTED_MODULE_11__.titleCase)(title) : title, " ", isExternal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_icons_dist_js_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_12__.default, null), isBetaEnv && !(0,_utils__WEBPACK_IMPORTED_MODULE_6__.isBeta)() && !isExternal && (0,_Header_Tools__WEBPACK_IMPORTED_MODULE_7__.betaBadge)('chr-c-navigation__beta-badge'), hasNotifier && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_icons_dist_js_icons_bell_icon__WEBPACK_IMPORTED_MODULE_13__.default, {
+  }, typeof title === 'string' && !ignoreCase ? (0,title_case__WEBPACK_IMPORTED_MODULE_12__.titleCase)(title) : title, " ", isExternal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_icons_dist_js_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_13__.default, null), isBetaEnv && !(0,_utils__WEBPACK_IMPORTED_MODULE_6__.isBeta)() && !isExternal && (0,_Header_Tools__WEBPACK_IMPORTED_MODULE_7__.betaBadge)('chr-c-navigation__beta-badge'), hasNotifier && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_icons_dist_js_icons_bell_icon__WEBPACK_IMPORTED_MODULE_14__.default, {
     size: "md",
     className: "notifier-icon",
     color: "var(--pf-global--default-color--200)"
@@ -433,7 +442,8 @@ ChromeNavItem.propTypes = {
   className: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
   active: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
   appId: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  notifier: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)
+  notifier: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
+  product: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeNavItem);
 
