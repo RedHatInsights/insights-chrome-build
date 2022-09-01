@@ -1130,7 +1130,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "levelArray": () => (/* binding */ levelArray),
 /* harmony export */   "noop": () => (/* binding */ noop),
 /* harmony export */   "trustarcScriptSetup": () => (/* binding */ trustarcScriptSetup),
-/* harmony export */   "loadFedModules": () => (/* binding */ loadFedModules)
+/* harmony export */   "loadFedModules": () => (/* binding */ loadFedModules),
+/* harmony export */   "generateRoutesList": () => (/* binding */ generateRoutesList)
 /* harmony export */ });
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_0__);
@@ -1362,6 +1363,24 @@ const loadFedModules = () => axios__WEBPACK_IMPORTED_MODULE_3___default().get(`$
         Expires: '0',
     },
 });
+const generateRoutesList = (modules) => Object.entries(modules)
+    .reduce((acc, [scope, { dynamic, manifestLocation, isFedramp, modules = [] }]) => [
+    ...acc,
+    ...modules
+        .map(({ module, routes }) => 
+    /**Clean up this map function */
+    routes.map((route) => ({
+        scope,
+        module,
+        isFedramp: typeof route === 'string' ? isFedramp : route.isFedramp,
+        path: typeof route === 'string' ? route : route.pathname,
+        manifestLocation,
+        dynamic: typeof dynamic === 'boolean' ? dynamic : typeof route === 'string' ? true : route.dynamic,
+        exact: typeof route === 'string' ? false : route.exact,
+    })))
+        .flat(),
+], [])
+    .sort((a, b) => (a.path.length < b.path.length ? 1 : -1));
 
 
 /***/ }),
