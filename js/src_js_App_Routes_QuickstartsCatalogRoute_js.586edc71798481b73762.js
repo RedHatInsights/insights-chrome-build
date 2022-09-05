@@ -46,12 +46,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils */ "./src/js/utils.ts");
 /* harmony import */ var _QuickStart_QuickStartCatalog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../QuickStart/QuickStartCatalog */ "./src/js/App/QuickStart/QuickStartCatalog.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/useIntl.js");
+/* harmony import */ var _Messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Messages */ "./src/js/Messages.js");
+
+
 
 
 
 
 
 var QuickstartCatalogRoute = function QuickstartCatalogRoute() {
+  var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_5__.default)();
   var bundle = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getUrl)('bundle');
   var disabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (_ref) {
     var disabled = _ref.chrome.quickstarts.disabled;
@@ -59,10 +64,12 @@ var QuickstartCatalogRoute = function QuickstartCatalogRoute() {
   });
 
   if (disabled) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Unable to load the quickstarts content."));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_4__.default.unableToLoadQuickstartsContent)));
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "There will be a catalog page for ", bundle, " bundle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_QuickStart_QuickStartCatalog__WEBPACK_IMPORTED_MODULE_3__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_4__.default.thereWillBeACatalgPage, {
+    bundle: bundle
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_QuickStart_QuickStartCatalog__WEBPACK_IMPORTED_MODULE_3__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuickstartCatalogRoute);
