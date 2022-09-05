@@ -34,11 +34,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?474c");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_info_circle_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/info-circle-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/info-circle-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_info_circle_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/info-circle-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/info-circle-icon.js");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/useIntl.js");
+/* harmony import */ var _Messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Messages */ "./src/js/Messages.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 
@@ -49,6 +53,7 @@ var BetaInfoModal = function BetaInfoModal(_ref) {
       onClick = _ref.onClick,
       onCancel = _ref.onCancel,
       menuItemClicked = _ref.menuItemClicked;
+  var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_4__.default)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.Modal, {
     "aria-label": "Beta info modal",
     isOpen: isOpen,
@@ -56,28 +61,28 @@ var BetaInfoModal = function BetaInfoModal(_ref) {
     variant: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.ModalVariant.medium
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "chr-c-navigation__beta-info-modal"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_info_circle_icon__WEBPACK_IMPORTED_MODULE_3__.InfoCircleIcon, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_info_circle_icon__WEBPACK_IMPORTED_MODULE_5__.InfoCircleIcon, {
     size: "xl",
     className: "info-icon"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.Title, {
     headingLevel: "h4",
     size: "xl"
-  }, "".concat(menuItemClicked, " is only available in our Beta Environment")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Try this feature in our Beta Environment on cloud.redhat.com/beta. The Beta Environment allows you to interact with new features in an active development space. Because beta pre-release software is still being developed, you may encounter bugs or flaws in availability, stability, data, or performance."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "After you use a feature in beta, you\u2019ll stay in the Beta Environment until you manually exit the beta release. Leave the Beta Environment any time by clicking on the settings (gear) icon or beta icon in the top toolbar."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "".concat(menuItemClicked, " is only available in our Beta Environment")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_2__.default.tryThisFeatureInBeta)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_2__.default.afterBetaUse)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pf-u-pt-md"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.Button, {
     key: "confirm",
     variant: "primary",
     onClick: onClick
-  }, "Use feature in beta")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+  }, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_2__.default.useFeatureInBeta))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://access.redhat.com/support/policy/updates/cloud-redhat/lifecycle"
-  }, "Learn more about Beta Environment")))));
+  }, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_2__.default.learnMoreABoutBeta))))));
 };
 
 BetaInfoModal.propTypes = {
-  isOpen: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  onClick: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
-  onCancel: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().func),
-  menuItemClicked: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)
+  isOpen: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+  onClick: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+  onCancel: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().func),
+  menuItemClicked: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BetaInfoModal);
 

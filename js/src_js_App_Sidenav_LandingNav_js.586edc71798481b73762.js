@@ -28,6 +28,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navigation_ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Navigation/ChromeNavItemFactory */ "./src/js/App/Sidenav/Navigation/ChromeNavItemFactory.js");
 /* harmony import */ var _Navigation_navContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Navigation/navContext */ "./src/js/App/Sidenav/Navigation/navContext.ts");
 /* harmony import */ var _Navigation_componentMapper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Navigation/componentMapper */ "./src/js/App/Sidenav/Navigation/componentMapper.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/useIntl.js");
+/* harmony import */ var _Messages__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Messages */ "./src/js/Messages.js");
+
+
 
 
 
@@ -44,6 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var LandingNav = function LandingNav() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
+  var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_14__.default)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
@@ -84,7 +89,7 @@ var LandingNav = function LandingNav() {
     ouiaId: "SideNavigation"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.NavList, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "chr-c-app-title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("b", null, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.PageContextConsumer, null, function (_ref3) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("b", null, intl.formatMessage(_Messages__WEBPACK_IMPORTED_MODULE_13__.default.home))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.PageContextConsumer, null, function (_ref3) {
     var isNavOpen = _ref3.isNavOpen;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_Navigation_navContext__WEBPACK_IMPORTED_MODULE_11__.default.Provider, {
       value: {
