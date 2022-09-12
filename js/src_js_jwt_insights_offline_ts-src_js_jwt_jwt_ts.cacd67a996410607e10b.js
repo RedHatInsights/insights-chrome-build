@@ -254,9 +254,12 @@ class Priv {
     _cookie;
     _keycloak;
     cookie;
+    logoutDelay;
+    logoutTimeout;
     constructor() {
         this._cookie;
         this._keycloak = {};
+        this.logoutDelay = 3 * 60 * 60 * 1000; // 3 hours in MS
     }
     setCookie(cookie) {
         this.cookie = cookie;
@@ -290,7 +293,15 @@ class Priv {
         return this._keycloak.refreshToken;
     }
     login(options) {
-        return this._keycloak.login(options);
+        return this._keycloak.login(options).then((resp) => {
+            if (this.logoutTimeout) {
+                clearTimeout(this.logoutTimeout);
+            }
+            this.logoutTimeout = setTimeout(() => {
+                this.logout();
+            }, this.logoutDelay);
+            return resp;
+        });
     }
     clearToken() {
         this._keycloak.clearToken();
@@ -298,7 +309,7 @@ class Priv {
     getCookie() {
         return this.cookie;
     }
-    logout(options) {
+    logout(options = {}) {
         return this._keycloak.logout(options);
     }
     getAuthenticated() {
