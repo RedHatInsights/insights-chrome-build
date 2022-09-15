@@ -556,13 +556,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../logger */ "./src/js/jwt/logger.ts");
 
 const log = (0,_logger__WEBPACK_IMPORTED_MODULE_0__.default)('insights/url.js');
-const ssoUrl = __webpack_require__.e(/*! import() | sso-url */ "sso-url").then(__webpack_require__.bind(__webpack_require__, /*! ./ssoUrl */ "./src/js/jwt/insights/ssoUrl.js")).then((sso) => sso.default);
 // Parse through keycloak options routes
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (async (env, configSsoUrl) => {
-    if (await ssoUrl) {
-        log('Using dynamic SSO_URL found! ' + ssoUrl);
-        return ssoUrl;
-    }
     if (configSsoUrl) {
         return configSsoUrl;
     }
