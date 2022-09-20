@@ -1,19 +1,19 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.0915c800d6dd5b0c1073.js"
+            "/apps/chrome/js/chrome.80fdeec37a9cc33663ed.js"
         ],
         "modules": [
-            "/apps/chrome/js/916.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/259.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/138.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/256.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/573.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/713.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/736.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/455.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/141.0915c800d6dd5b0c1073.js",
-            "/apps/chrome/js/224.0915c800d6dd5b0c1073.js"
+            "/apps/chrome/js/916.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/259.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/138.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/256.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/573.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/713.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/736.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/455.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/141.80fdeec37a9cc33663ed.js",
+            "/apps/chrome/js/224.80fdeec37a9cc33663ed.js"
         ]
     }
 }
