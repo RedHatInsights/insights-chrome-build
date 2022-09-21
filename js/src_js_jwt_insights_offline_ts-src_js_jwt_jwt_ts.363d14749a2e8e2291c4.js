@@ -801,6 +801,16 @@ authChannel.onmessage = (e) => {
         }
     }
 };
+function getPartnerScope(pathname) {
+    // replace beta and leading "/"
+    const sanitizedPathname = pathname.replace(/^\/beta\//, '/').replace(/^\//, '');
+    // check if the pathname is connect/:partner
+    if (sanitizedPathname.match(/^connect\/.+/)) {
+        // return :partner param
+        return `api.partner_link.${sanitizedPathname.split('/')[1]}`;
+    }
+    return undefined;
+}
 function decodeToken(str) {
     str = str.split('.')[1];
     str = str.replace('/-/g', '+');
@@ -836,8 +846,9 @@ const doOffline = (key, val, configSsoUrl) => {
         };
         const kc = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__.default(options);
         await kc.init(options);
+        const partnerScope = getPartnerScope(window.location.pathname);
         kc.login({
-            scope: 'offline_access',
+            scope: `offline_access${partnerScope ? ` ${partnerScope}` : ''}`,
         });
     });
 };
@@ -944,7 +955,7 @@ function login() {
     log('Logging in');
     // Redirect to login
     js_cookie__WEBPACK_IMPORTED_MODULE_1__.default.set('cs_loggedOut', 'false');
-    return priv.login({ redirectUri: location.href });
+    return priv.login({ redirectUri: location.href, scope: getPartnerScope(window.location.pathname) });
 }
 function logout(bounce) {
     log('Logging out');
