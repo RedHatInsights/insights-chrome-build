@@ -1,18 +1,18 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.a40363e0fe3f844f4f43.js"
+            "/apps/chrome/js/chrome.363d14749a2e8e2291c4.js"
         ],
         "modules": [
-            "/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_inventory_modules_AppInfo_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.a40363e0fe3f844f4f43.js",
-            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.a40363e0fe3f844f4f43.js"
+            "/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_inventory_modules_AppInfo_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.363d14749a2e8e2291c4.js",
+            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.363d14749a2e8e2291c4.js"
         ]
     }
 }
