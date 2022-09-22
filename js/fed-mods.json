@@ -1,18 +1,18 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.a62ea751a125a9baede8.js"
+            "/beta/apps/chrome/js/chrome.fbfff53e96d6e353d884.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_AppInfo_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.a62ea751a125a9baede8.js",
-            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.a62ea751a125a9baede8.js"
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_AppInfo_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.fbfff53e96d6e353d884.js",
+            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.fbfff53e96d6e353d884.js"
         ]
     }
 }
