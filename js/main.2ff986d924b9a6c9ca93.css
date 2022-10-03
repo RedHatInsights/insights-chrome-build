@@ -51463,3 +51463,7 @@ aside {
 .pfext-quick-start-drawer__body .pf-c-backdrop {
   --pf-c-backdrop--Position: absolute;
 }
+
+#chrome-entry {
+  height: 100vh;
+}
