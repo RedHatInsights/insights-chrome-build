@@ -596,6 +596,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ "./src/js/utils.ts");
 /* harmony import */ var _entitlements__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entitlements */ "./src/js/jwt/insights/entitlements.ts");
 /* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../logger */ "./src/js/jwt/logger.ts");
+/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/isAnsibleTrialFlagActive */ "./src/js/utils/isAnsibleTrialFlagActive.ts");
+
 
 
 
@@ -611,9 +613,10 @@ const pathMapper = {
     'user-preferences': 'user_preferences',
     internal: 'internal',
 };
-const unentitledPathMapper = (section, service) => ({
-    ansible: `${document.baseURI}${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? 'beta/' : ''}ansible/ansible-dashboard/trial`,
-}[section] || `${document.baseURI}?not_entitled=${service}`);
+const REDIRECT_BASE = `${document.location.origin}${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? 'beta/' : '/'}`;
+const unentitledPathMapper = (section, service, expired = false) => ({
+    ansible: `${REDIRECT_BASE}ansible/ansible-dashboard/${expired ? 'trial/expired' : 'trial'}`,
+}[section] || `${REDIRECT_BASE}?not_entitled=${service}`);
 function getWindow() {
     return window;
 }
@@ -660,8 +663,14 @@ function tryBounceIfUnentitled(data, section) {
         section !== 'internal') {
         return;
     }
+    const ansibleActive = (0,_utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_3__.isAnsibleTrialFlagActive)();
+    // test temporary ansible trial flag
+    if (section === 'ansible' && ansibleActive) {
+        return;
+    }
     const service = pathMapper[section];
-    const redirectAddress = unentitledPathMapper(section, service);
+    // ansibleActive can be true/false/undefined
+    const redirectAddress = unentitledPathMapper(section, service, ansibleActive === false);
     if (data === true) {
         // this is a force bounce scenario!
         getWindow().location.replace(redirectAddress);
@@ -1529,6 +1538,50 @@ class CacheAdapter {
         return Promise.resolve();
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/js/utils/isAnsibleTrialFlagActive.ts":
+/*!**************************************************!*\
+  !*** ./src/js/utils/isAnsibleTrialFlagActive.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ANSIBLE_TRIAL_FLAG": () => (/* binding */ ANSIBLE_TRIAL_FLAG),
+/* harmony export */   "isAnsibleTrialFlagActive": () => (/* binding */ isAnsibleTrialFlagActive),
+/* harmony export */   "setAnsibleTrialFlag": () => (/* binding */ setAnsibleTrialFlag),
+/* harmony export */   "clearAnsibleTrialFlag": () => (/* binding */ clearAnsibleTrialFlag)
+/* harmony export */ });
+/* harmony import */ var _jwt_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jwt/logger */ "./src/js/jwt/logger.ts");
+
+const ANSIBLE_TRIAL_FLAG = 'chrome.ansible.trial';
+const TRIAL_DURATION = 10 * 60 * 1000; // 10 minutes
+const log = (0,_jwt_logger__WEBPACK_IMPORTED_MODULE_0__.default)('Ansible trial invalidation');
+const isAnsibleTrialFlagActive = () => {
+    let expiration = localStorage.getItem(ANSIBLE_TRIAL_FLAG);
+    if (expiration) {
+        try {
+            expiration = parseInt(expiration);
+            if (isNaN(expiration)) {
+                // expiration is not a valid number
+                return false;
+            }
+            return expiration + TRIAL_DURATION > Date.now();
+        }
+        catch (error) {
+            log(`Enable to parse ansible trial flag expiration: ${error}`);
+        }
+    }
+};
+const setAnsibleTrialFlag = () => {
+    localStorage.setItem(ANSIBLE_TRIAL_FLAG, Date.now().toString());
+};
+const clearAnsibleTrialFlag = () => {
+    localStorage.removeItem(ANSIBLE_TRIAL_FLAG);
+};
 
 
 /***/ })
