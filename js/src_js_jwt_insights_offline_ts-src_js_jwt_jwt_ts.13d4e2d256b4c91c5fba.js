@@ -780,7 +780,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var broadcast_channel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! broadcast-channel */ "./node_modules/broadcast-channel/dist/esbrowser/broadcast-channel.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./src/js/utils.ts");
-/* harmony import */ var _sentry_browser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @sentry/browser */ "./node_modules/@sentry/minimal/esm/index.js");
+/* harmony import */ var _sentry_browser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @sentry/browser */ "./node_modules/@sentry/hub/esm/exports.js");
 /* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./logger */ "./src/js/jwt/logger.ts");
 /* harmony import */ var _insights_url__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./insights/url */ "./src/js/jwt/insights/url.ts");
 /* harmony import */ var _insights_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./insights/user */ "./src/js/jwt/insights/user.ts");
