@@ -613,7 +613,7 @@ const pathMapper = {
     'user-preferences': 'user_preferences',
     internal: 'internal',
 };
-const REDIRECT_BASE = `${document.location.origin}${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? 'beta/' : '/'}`;
+const REDIRECT_BASE = `${document.location.origin}${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? '/beta/' : '/'}`;
 const unentitledPathMapper = (section, service, expired = false) => ({
     ansible: `${REDIRECT_BASE}ansible/ansible-dashboard/${expired ? 'trial/expired' : 'trial'}`,
 }[section] || `${REDIRECT_BASE}?not_entitled=${service}`);
