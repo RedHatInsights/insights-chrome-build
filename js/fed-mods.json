@@ -1,18 +1,18 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.6cd53ed23c431561441a.js"
+            "/beta/apps/chrome/js/chrome.c902932468f179675948.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_AppInfo_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_pdf_DownloadButton_js-webpack_sharing_consume_default_react_react.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.6cd53ed23c431561441a.js",
-            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-styles_css_layouts_Bullseye_bullseye_js-node_modules_re-500c1a.6cd53ed23c431561441a.js"
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_AppInfo_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_overrides_chart-utils-override_js-src_js_pdf_DownloadButton_js-webpack_sharing_consume-5c7286.c902932468f179675948.js",
+            "/beta/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.c902932468f179675948.js",
+            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.c902932468f179675948.js"
         ]
     }
 }
