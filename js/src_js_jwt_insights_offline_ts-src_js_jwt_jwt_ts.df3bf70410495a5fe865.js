@@ -340,7 +340,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DEFAULT_ROUTES": () => (/* binding */ DEFAULT_ROUTES),
 /* harmony export */   "options": () => (/* binding */ options),
 /* harmony export */   "noAuthParam": () => (/* binding */ noAuthParam),
-/* harmony export */   "offlineToken": () => (/* binding */ offlineToken)
+/* harmony export */   "offlineToken": () => (/* binding */ offlineToken),
+/* harmony export */   "OFFLINE_REDIRECT_STORAGE_KEY": () => (/* binding */ OFFLINE_REDIRECT_STORAGE_KEY)
 /* harmony export */ });
 // Global Defaults
 const DEFAULT_ROUTES = {
@@ -392,6 +393,7 @@ const options = {
 };
 const noAuthParam = 'noauth';
 const offlineToken = '2402500adeacc30eb5c5a8a5e2e0ec1f';
+const OFFLINE_REDIRECT_STORAGE_KEY = 'chrome.offline.redirectUri';
 
 
 /***/ }),
@@ -468,12 +470,14 @@ const priv = {};
 // so that is somewhat difficult
 function wipePostbackParamsThatAreNotForUs() {
     if (getWindow().location.href.indexOf(_consts__WEBPACK_IMPORTED_MODULE_0__.default.offlineToken) !== -1) {
-        const { hash, search, origin, pathname } = getWindow().location;
-        const noAuthParam = new URLSearchParams(search).get(_consts__WEBPACK_IMPORTED_MODULE_0__.default.noAuthParam);
+        const { hash, origin, pathname } = getWindow().location;
+        // attempt to use postback created from in previous doOffline call
+        const postbackUrl = new URL(localStorage.getItem(_constants__WEBPACK_IMPORTED_MODULE_1__.OFFLINE_REDIRECT_STORAGE_KEY) || `${origin}${pathname}`);
+        postbackUrl.hash = hash;
         // this is a UHC offline token postback
         // we need to not let the JWT lib see this
         // and try to use it
-        priv.postbackUrl = `${origin}${pathname}?${_consts__WEBPACK_IMPORTED_MODULE_0__.default.noAuthParam}=${noAuthParam}${hash}`;
+        priv.postbackUrl = postbackUrl.toString();
         // we do this because keycloak.js looks at the hash for its parameters
         // and if found uses the params for its own use
         //
@@ -853,14 +857,21 @@ function decodeToken(str) {
     return res;
 }
 const doOffline = (key, val, configSsoUrl) => {
+    // clear previous postback
+    localStorage.removeItem(_constants__WEBPACK_IMPORTED_MODULE_7__.OFFLINE_REDIRECT_STORAGE_KEY);
     const url = urijs__WEBPACK_IMPORTED_MODULE_6___default()(window.location.href);
     url.removeSearch(key);
     url.addSearch(key, val);
+    const redirectUri = url.toString();
+    if (redirectUri) {
+        // set new postback
+        localStorage.setItem(_constants__WEBPACK_IMPORTED_MODULE_7__.OFFLINE_REDIRECT_STORAGE_KEY, redirectUri);
+    }
     Promise.resolve((0,_insights_url__WEBPACK_IMPORTED_MODULE_4__.default)(_constants__WEBPACK_IMPORTED_MODULE_7__.DEFAULT_ROUTES, configSsoUrl)).then(async (ssoUrl) => {
         const options = {
             ..._constants__WEBPACK_IMPORTED_MODULE_7__.options,
             promiseType: 'native',
-            redirectUri: url.toString(),
+            redirectUri,
             url: ssoUrl,
         };
         const kc = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__.default(options);
@@ -974,7 +985,8 @@ function login() {
     log('Logging in');
     // Redirect to login
     js_cookie__WEBPACK_IMPORTED_MODULE_1__.default.set('cs_loggedOut', 'false');
-    return priv.login({ redirectUri: location.href, scope: getPartnerScope(window.location.pathname) });
+    const redirectUri = location.href;
+    return priv.login({ redirectUri, scope: getPartnerScope(window.location.pathname) });
 }
 function logout(bounce) {
     log('Logging out');
