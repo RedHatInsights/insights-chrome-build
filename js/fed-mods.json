@@ -1,18 +1,11 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.8497337282311952142d.js"
+            "/beta/apps/chrome/js/chrome.842b2c7e2e4366d4253f.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryTable_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_AppInfo_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetailHead_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_InventoryDetail_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_TagWithDialog_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_inventory_modules_DetailWrapper_js.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_overrides_chart-utils-override_js-src_js_pdf_DownloadButton_js-webpack_sharing_consume-5c7286.8497337282311952142d.js",
-            "/beta/apps/chrome/js/src_js_jwt_modules_useChromeAuth_ts.8497337282311952142d.js",
-            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.8497337282311952142d.js"
+            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-999b81.842b2c7e2e4366d4253f.js",
+            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.842b2c7e2e4366d4253f.js"
         ]
     }
 }
