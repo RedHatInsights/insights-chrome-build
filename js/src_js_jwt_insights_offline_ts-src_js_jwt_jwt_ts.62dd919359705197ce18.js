@@ -1219,7 +1219,9 @@ function pageAllowsUnentitled() {
         pathname.indexOf('/hac') === 0 ||
         pathname.indexOf('/beta/hac') === 0 ||
         pathname.indexOf('/ansible/ansible-dashboard/trial') === 0 ||
-        pathname.indexOf('/beta/ansible/ansible-dashboard/trial') === 0) {
+        pathname.indexOf('/beta/ansible/ansible-dashboard/trial') === 0 ||
+        // allow tenants with no account numbers: RHCLOUD-21396
+        pathname.match(/\/connect\//)) {
         return true;
     }
     return false;
