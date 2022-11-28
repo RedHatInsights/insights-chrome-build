@@ -441,16 +441,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/Skeleton */ "./node_modules/@redhat-cloud-services/frontend-components/esm/Skeleton/Skeleton.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/Skeleton */ "./node_modules/@redhat-cloud-services/frontend-components/esm/Skeleton/Skeleton.js");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ChromeNavItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChromeNavItem */ "./src/components/Navigation/ChromeNavItem.tsx");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ChromeNavItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChromeNavItem */ "./src/components/Navigation/ChromeNavItem.tsx");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 
 
 
@@ -468,9 +469,9 @@ const isRootNavigation = (schema) => {
 const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => {
     const currentNamespace = pathname.split('/')[1];
     const [isLoaded, setIsLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    const schema = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]);
-    const currNav = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]?.navItems?.filter((item) => item.dynamicNav === dynamicNav));
+    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+    const schema = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]);
+    const currNav = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]?.navItems?.filter((item) => item.dynamicNav === dynamicNav));
     const newNav = useNavigation({ schema, dynamicNav, currentNamespace, currNav });
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         if (newNav) {
@@ -479,10 +480,10 @@ const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => 
                 ...(currNav?.[key] || currNav?.[0]),
                 ...item,
             }));
-            if (!lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default()(newValue, currNav) && isRootNavigation(schema)) {
+            if (!lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default()(newValue, currNav) && isRootNavigation(schema)) {
                 const currNavIndex = schema.navItems.findIndex((item) => item.dynamicNav === dynamicNav);
                 if (currNavIndex !== -1) {
-                    dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_6__.loadLeftNavSegment)({
+                    dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.loadLeftNavSegment)({
                         ...schema,
                         navItems: mergeArrays(schema.navItems.filter((item) => !(item.dynamicNav && item.dynamicNav === dynamicNav)), currNavIndex, newValue),
                     }, currentNamespace, pathname, true));
@@ -491,12 +492,12 @@ const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => 
             setIsLoaded(true);
         }
     }, [JSON.stringify(newNav)]);
-    return isLoaded ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItem__WEBPACK_IMPORTED_MODULE_5__["default"], { ...props })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__.NavItem, { preventDefault: true },
+    return isLoaded ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItem__WEBPACK_IMPORTED_MODULE_6__["default"], { ...props })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__.NavItem, { preventDefault: true },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "#" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__["default"], { size: _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__.SkeletonSize.lg, isDark: true }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__["default"], { size: _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__.SkeletonSize.lg, isDark: true }))));
 };
 const DynamicNav = ({ dynamicNav, ...props }) => {
-    const { location: { pathname }, } = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
+    const { pathname } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
     const [appName] = dynamicNav.split('/');
     // TODO make useLoadModule generic type
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
