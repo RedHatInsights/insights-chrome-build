@@ -1,19 +1,19 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.af5dfca7bab09ce21f2a.js"
+            "/beta/apps/chrome/js/chrome.954844512fba6b89236b.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/916.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/259.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/138.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/256.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/573.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/713.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/597.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/455.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/141.af5dfca7bab09ce21f2a.js",
-            "/beta/apps/chrome/js/470.af5dfca7bab09ce21f2a.js"
+            "/beta/apps/chrome/js/916.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/259.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/138.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/256.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/573.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/713.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/597.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/455.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/141.954844512fba6b89236b.js",
+            "/beta/apps/chrome/js/470.954844512fba6b89236b.js"
         ]
     }
 }
