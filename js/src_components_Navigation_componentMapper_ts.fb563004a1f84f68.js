@@ -268,52 +268,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/wrench-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/wrench-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/security-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/security-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/trend-up-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/trend-up-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/code-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/code-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/database-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/database-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon.js");
 /* harmony import */ var _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChromeNavItemFactory */ "./src/components/Navigation/ChromeNavItemFactory.tsx");
 
 
 
-
-
-
-
-
-
-
-const sectionTitleMapper = {
-    wrench: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    shield: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_4__["default"], null),
-    database: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    cloud: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    code: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_7__["default"], null),
-    'trend-up': react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_8__["default"], null),
-};
 const ChromeNavGroup = ({ navItems, isHidden, icon, title }) => {
     const filteredFedrampNavItems = navItems;
     if (isHidden) {
         return null;
     }
     const groupTitle = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-        icon && sectionTitleMapper[icon],
+        icon && _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__.sectionTitleMapper[icon],
         title));
     return (
     // PF does not allow node/element in the NavGroup prop types, hence the type cast
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.NavGroup, { className: "chr-c-section-nav", id: title, title: groupTitle }, filteredFedrampNavItems.map((item, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__["default"], { key: index, ...item })))));
-};
-ChromeNavGroup.propTypes = {
-    navItems: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().array.isRequired),
-    icon: prop_types__WEBPACK_IMPORTED_MODULE_9___default().oneOf(['wrench', 'shield', 'trend-up', 'database', 'cloud', 'code']),
-    title: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().string.isRequired),
-    isHidden: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().bool),
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeNavGroup);
 
@@ -396,13 +367,34 @@ const ChromeNavItem = ({ appId, className, href, isHidden, ignoreCase, title, is
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sectionTitleMapper": () => (/* binding */ sectionTitleMapper),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _navContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navContext */ "./src/components/Navigation/navContext.ts");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/wrench-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/wrench-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/security-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/security-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/trend-up-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/trend-up-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/code-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/code-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/database-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/database-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon.js");
 
 
+
+
+
+
+
+
+const sectionTitleMapper = {
+    wrench: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_2__["default"], null),
+    shield: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    database: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    cloud: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+    code: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    'trend-up': react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_7__["default"], null),
+};
 const isNavExpandableProps = (props, expandable) => expandable === true;
 const isNavGroupProps = (props, groupId) => typeof groupId === 'string';
 const isDynamicNavProps = (props, dynamicNav) => typeof dynamicNav === 'string';
