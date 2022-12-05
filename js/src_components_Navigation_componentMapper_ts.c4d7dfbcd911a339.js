@@ -268,52 +268,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/wrench-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/wrench-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/security-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/security-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/trend-up-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/trend-up-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/code-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/code-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/database-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/database-icon.js");
-/* harmony import */ var _patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon.js");
 /* harmony import */ var _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChromeNavItemFactory */ "./src/components/Navigation/ChromeNavItemFactory.tsx");
 
 
 
-
-
-
-
-
-
-
-const sectionTitleMapper = {
-    wrench: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    shield: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_4__["default"], null),
-    database: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_5__["default"], null),
-    cloud: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_6__["default"], null),
-    code: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_7__["default"], null),
-    'trend-up': react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_8__["default"], null),
-};
 const ChromeNavGroup = ({ navItems, isHidden, icon, title }) => {
     const filteredFedrampNavItems = navItems;
     if (isHidden) {
         return null;
     }
     const groupTitle = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-        icon && sectionTitleMapper[icon],
+        icon && _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__.sectionTitleMapper[icon],
         title));
     return (
     // PF does not allow node/element in the NavGroup prop types, hence the type cast
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_1__.NavGroup, { className: "chr-c-section-nav", id: title, title: groupTitle }, filteredFedrampNavItems.map((item, index) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_2__["default"], { key: index, ...item })))));
-};
-ChromeNavGroup.propTypes = {
-    navItems: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().array.isRequired),
-    icon: prop_types__WEBPACK_IMPORTED_MODULE_9___default().oneOf(['wrench', 'shield', 'trend-up', 'database', 'cloud', 'code']),
-    title: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().string.isRequired),
-    isHidden: (prop_types__WEBPACK_IMPORTED_MODULE_9___default().bool),
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeNavGroup);
 
@@ -396,13 +367,34 @@ const ChromeNavItem = ({ appId, className, href, isHidden, ignoreCase, title, is
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sectionTitleMapper": () => (/* binding */ sectionTitleMapper),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _navContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navContext */ "./src/components/Navigation/navContext.ts");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/wrench-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/wrench-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/security-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/security-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/trend-up-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/trend-up-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/code-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/code-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/database-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/database-icon.js");
+/* harmony import */ var _patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon */ "./node_modules/@patternfly/react-icons/dist/js/icons/cloud-upload-alt-icon.js");
 
 
+
+
+
+
+
+
+const sectionTitleMapper = {
+    wrench: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_wrench_icon__WEBPACK_IMPORTED_MODULE_2__["default"], null),
+    shield: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_security_icon__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    database: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_database_icon__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    cloud: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+    code: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_code_icon__WEBPACK_IMPORTED_MODULE_6__["default"], null),
+    'trend-up': react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_js_icons_trend_up_icon__WEBPACK_IMPORTED_MODULE_7__["default"], null),
+};
 const isNavExpandableProps = (props, expandable) => expandable === true;
 const isNavGroupProps = (props, groupId) => typeof groupId === 'string';
 const isDynamicNavProps = (props, dynamicNav) => typeof dynamicNav === 'string';
@@ -441,16 +433,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/Skeleton */ "./node_modules/@redhat-cloud-services/frontend-components/esm/Skeleton/Skeleton.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/Skeleton */ "./node_modules/@redhat-cloud-services/frontend-components/esm/Skeleton/Skeleton.js");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core */ "webpack/sharing/consume/default/@patternfly/react-core/@patternfly/react-core");
 /* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ChromeNavItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChromeNavItem */ "./src/components/Navigation/ChromeNavItem.tsx");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ChromeNavItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChromeNavItem */ "./src/components/Navigation/ChromeNavItem.tsx");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 
 
 
@@ -468,9 +461,9 @@ const isRootNavigation = (schema) => {
 const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => {
     const currentNamespace = pathname.split('/')[1];
     const [isLoaded, setIsLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    const schema = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]);
-    const currNav = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]?.navItems?.filter((item) => item.dynamicNav === dynamicNav));
+    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+    const schema = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]);
+    const currNav = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(({ chrome: { navigation } }) => navigation[currentNamespace]?.navItems?.filter((item) => item.dynamicNav === dynamicNav));
     const newNav = useNavigation({ schema, dynamicNav, currentNamespace, currNav });
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         if (newNav) {
@@ -479,10 +472,10 @@ const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => 
                 ...(currNav?.[key] || currNav?.[0]),
                 ...item,
             }));
-            if (!lodash_isEqual__WEBPACK_IMPORTED_MODULE_4___default()(newValue, currNav) && isRootNavigation(schema)) {
+            if (!lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default()(newValue, currNav) && isRootNavigation(schema)) {
                 const currNavIndex = schema.navItems.findIndex((item) => item.dynamicNav === dynamicNav);
                 if (currNavIndex !== -1) {
-                    dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_6__.loadLeftNavSegment)({
+                    dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.loadLeftNavSegment)({
                         ...schema,
                         navItems: mergeArrays(schema.navItems.filter((item) => !(item.dynamicNav && item.dynamicNav === dynamicNav)), currNavIndex, newValue),
                     }, currentNamespace, pathname, true));
@@ -491,12 +484,12 @@ const HookedNavigation = ({ useNavigation, dynamicNav, pathname, ...props }) => 
             setIsLoaded(true);
         }
     }, [JSON.stringify(newNav)]);
-    return isLoaded ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItem__WEBPACK_IMPORTED_MODULE_5__["default"], { ...props })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__.NavItem, { preventDefault: true },
+    return isLoaded ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeNavItem__WEBPACK_IMPORTED_MODULE_6__["default"], { ...props })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__.NavItem, { preventDefault: true },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", { href: "#" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__["default"], { size: _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_7__.SkeletonSize.lg, isDark: true }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__["default"], { size: _redhat_cloud_services_frontend_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__.SkeletonSize.lg, isDark: true }))));
 };
 const DynamicNav = ({ dynamicNav, ...props }) => {
-    const { location: { pathname }, } = (0,react_router__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
+    const { pathname } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
     const [appName] = dynamicNav.split('/');
     // TODO make useLoadModule generic type
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
