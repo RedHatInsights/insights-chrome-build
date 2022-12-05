@@ -174,9 +174,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
 /* harmony import */ var _isNavItemVisible__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
@@ -221,7 +221,8 @@ const useNavigation = () => {
     const { flagsReady } = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_8__.useFlagsStatus)();
     const isBetaEnv = (0,_common__WEBPACK_IMPORTED_MODULE_5__.isBeta)();
     const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-    const { replace, location } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
+    const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
+    const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
     const { pathname } = location;
     const { activeQuickStartID } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_7__.QuickStartContext);
     const currentNamespace = pathname.split('/')[1];
@@ -237,26 +238,28 @@ const useNavigation = () => {
     }, [activeQuickStartID]);
     const registerLocationObserver = (initialPathname, schema) => {
         let prevPathname = initialPathname;
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.loadLeftNavSegment)(schema, currentNamespace, initialPathname));
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.loadLeftNavSegment)(schema, currentNamespace, initialPathname));
         return new MutationObserver((mutations) => {
             mutations.forEach(() => {
                 const newPathname = window.location.pathname;
                 if (newPathname !== prevPathname) {
                     prevPathname = newPathname;
                     (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.batch)(() => {
-                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.loadLeftNavSegment)(schema, currentNamespace, prevPathname));
+                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.loadLeftNavSegment)(schema, currentNamespace, prevPathname));
                         /**
                          * Clean gateway error on URL change
                          */
-                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.setGatewayError)());
+                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.setGatewayError)());
                     });
                 }
                 setTimeout(() => {
                     if (activeQSId.current && shouldPreseverQuickstartSearch(window.location.search, activeQSId.current)) {
-                        replace({
+                        navigate({
                             ...activeLocation.current,
                             pathname: newPathname.replace(/^\/beta\//, '/'),
                             search: appendQSSearch(window.location.search, activeQSId.current),
+                        }, {
+                            replace: true,
                         });
                     }
                 });
