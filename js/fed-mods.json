@@ -1,11 +1,11 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.8447d93e9220e972.js"
+            "/beta/apps/chrome/js/chrome.47097db9f4109e56.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.8447d93e9220e972.js",
-            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.8447d93e9220e972.js"
+            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.47097db9f4109e56.js",
+            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.47097db9f4109e56.js"
         ]
     }
 }
