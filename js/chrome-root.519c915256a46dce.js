@@ -32339,7 +32339,7 @@ if (false) {} else {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_chrome_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sass/chrome.scss */ "./src/sass/chrome.scss");
 
-Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-af7af0"), __webpack_require__.e("vendors-node_modules_lodash_isEqual_js"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_buffer_index_js-node_modules_hoist-non-react-statics_dist_hoist-non-reac-e82ff1"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-2976f7"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-af7af0"), __webpack_require__.e("vendors-node_modules_lodash_isEqual_js"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_buffer_index_js-node_modules_hoist-non-react-statics_dist_hoist-non-reac-e82ff1"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-44fb01"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
 
 
 /***/ })
@@ -32472,7 +32472,7 @@ Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_prop-typ
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("c485ef94eeee821f")
+/******/ 		__webpack_require__.h = () => ("519c915256a46dce")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
