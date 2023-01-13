@@ -106,7 +106,7 @@ const Footer = () => (react__WEBPACK_IMPORTED_MODULE_1___default().createElement
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", { className: "chr-c-footer__logo pf-u-mr-3xl", src: "/apps/frontend-assets/red-hat-logos/logo.svg" })),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.LevelItem, { className: "pf-u-mr-2xl" },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.TextContent, null,
-                react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.Text, { component: "small" }, "Copyright c 2022 Red Hat, Inc."))),
+                react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.Text, { component: "small" }, "Copyright c 2023 Red Hat, Inc."))),
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.LevelItem, { className: "pf-u-mr-auto" },
             react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.Flex, null,
                 react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_0__.FlexItem, null,
