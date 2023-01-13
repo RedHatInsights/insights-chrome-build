@@ -1,11 +1,11 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.fe96f31f19288e09.js"
+            "/apps/chrome/js/chrome.c43dff5529b27cb3.js"
         ],
         "modules": [
-            "/apps/chrome/js/809.fe96f31f19288e09.js",
-            "/apps/chrome/js/559.fe96f31f19288e09.js"
+            "/apps/chrome/js/809.c43dff5529b27cb3.js",
+            "/apps/chrome/js/279.c43dff5529b27cb3.js"
         ]
     }
 }
