@@ -1,11 +1,11 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.262b331c9cd6fa33.js"
+            "/beta/apps/chrome/js/chrome.f016ab3d983e45c9.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/809.262b331c9cd6fa33.js",
-            "/beta/apps/chrome/js/279.262b331c9cd6fa33.js"
+            "/beta/apps/chrome/js/809.f016ab3d983e45c9.js",
+            "/beta/apps/chrome/js/279.f016ab3d983e45c9.js"
         ]
     }
 }
