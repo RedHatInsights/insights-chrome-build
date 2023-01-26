@@ -1,11 +1,11 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.1deb3f79c848ad7a.js"
+            "/beta/apps/chrome/js/chrome.78c490bf89cd9938.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.1deb3f79c848ad7a.js",
-            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-charts_dist_esm_components_ChartUtils_chart-theme_js-no-cf6fa1.1deb3f79c848ad7a.js"
+            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.78c490bf89cd9938.js",
+            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-charts_dist_esm_components_ChartUtils_chart-theme_js-no-cf6fa1.78c490bf89cd9938.js"
         ]
     }
 }
