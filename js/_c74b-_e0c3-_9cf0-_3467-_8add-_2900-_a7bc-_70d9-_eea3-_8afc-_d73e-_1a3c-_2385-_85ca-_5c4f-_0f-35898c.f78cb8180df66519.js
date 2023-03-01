@@ -1,4 +1,4 @@
-(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["_c74b-_e0c3-_9cf0-_3467-_8add-_2900-_a7bc-_70d9-_eea3-_8afc-_d73e-_1a3c-_2385-_85ca-_5c4f-_0f-35898c1"],{
+(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["_c74b-_e0c3-_9cf0-_3467-_8add-_2900-_a7bc-_70d9-_eea3-_8afc-_d73e-_1a3c-_2385-_85ca-_5c4f-_0f-35898c"],{
 
 /***/ "?c74b":
 /*!***************************************************************************!*\
