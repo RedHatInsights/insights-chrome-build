@@ -1,0 +1,30 @@
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/components/NotEntitledModal/styles.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+.chr-c-error-modal__header {
+  text-align: center;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: var(--pf-global--spacer--md);
+}
+.chr-c-error-modal__content {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.chr-c-error-modal__content--body {
+  width: 75%;
+}
+.chr-c-error-modal__content--footer-secondary {
+  margin-top: var(--pf-global--spacer--sm);
+}
+
+.chr-c-icon__active {
+  fill: var(--pf-global--active-color--100);
+}
+
+img.chr-c-application-info__logo {
+  height: 76px;
+  height: 4.75rem;
+}
