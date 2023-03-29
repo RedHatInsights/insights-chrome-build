@@ -294,8 +294,8 @@ var productsList = [
         img: "/apps/frontend-assets/logos/logo__rhel.svg",
         description: "You can create your own OS image to deploy to your cloud instance.",
         link: {
-            href: "/insights/image-builder",
-            appId: "image_builder",
+            href: "/insights/dashboard",
+            appId: "dashboard",
             label: "Create an OS image"
         }
     },
@@ -310,16 +310,16 @@ var productsList = [
     },
     {
         img: "/apps/frontend-assets/logos/logo__ansible-automation.svg",
-        description: "Part of configuration is to obtain the repository authorization token.",
+        description: "Learn how to install and configure your Ansible infrastructure.",
         link: {
             href: "/ansible/ansible-dashboard",
             appId: "ansibleDashboard",
-            label: "Retrieve authorization token"
+            label: "Ansible Automation Platform"
         }
     },
     {
         img: "/apps/frontend-assets/logos/logo__application-services.svg",
-        description: "Part of configuration is to obtain the repository authorization token.",
+        description: "Learn how to access your Application and Data services.",
         link: {
             href: "/application-services/overview",
             appId: "applicationServices",
