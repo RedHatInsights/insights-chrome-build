@@ -1,1 +1,0 @@
-(self.webpackChunkinsights_chrome=self.webpackChunkinsights_chrome||[]).push([[809],{51885:(e,s,t)=>{"use strict";t.d(s,{L:()=>c,U:()=>h});var r=t(67058),c=r.LK,h=r.LK},30478:(e,s,t)=>{"use strict";t.r(s),t.d(s,{default:()=>n});var r=t(96985),c=t.n(r),h=t(58141);const n=e=>c().createElement(h.rU,{...e})},25832:()=>{},69862:()=>{},40964:()=>{}}]);

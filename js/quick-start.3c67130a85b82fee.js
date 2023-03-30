@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinsights_chrome=self.webpackChunkinsights_chrome||[]).push([[436],{32677:(e,t,s)=>{s.r(t),s.d(t,{default:()=>n});var a=s(96985),c=s.n(a),h=s(3576);const n=({...e})=>c().createElement(h.QuickStartCatalogPage,{...e})}}]);
