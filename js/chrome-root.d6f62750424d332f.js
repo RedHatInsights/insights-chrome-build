@@ -41893,7 +41893,7 @@ Object.keys(localStorage).map(function(key) {
         }, 10000);
     }
 });
-Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-b60fc9"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-3a1c06"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
 
 
 /***/ }),
@@ -41909,6 +41909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BLOCK_CLEAR_GATEWAY_ERROR": () => (/* binding */ BLOCK_CLEAR_GATEWAY_ERROR),
 /* harmony export */   "DEFAULT_SSO_ROUTES": () => (/* binding */ DEFAULT_SSO_ROUTES),
+/* harmony export */   "ITLess": () => (/* binding */ ITLess),
 /* harmony export */   "LOGIN_TYPE_STORAGE_KEY": () => (/* binding */ LOGIN_TYPE_STORAGE_KEY),
 /* harmony export */   "chunkLoadErrorRefreshKey": () => (/* binding */ chunkLoadErrorRefreshKey),
 /* harmony export */   "createReduxListener": () => (/* binding */ createReduxListener),
@@ -41922,7 +41923,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "highlightItems": () => (/* binding */ highlightItems),
 /* harmony export */   "isAnsible": () => (/* binding */ isAnsible),
 /* harmony export */   "isBeta": () => (/* binding */ isBeta),
-/* harmony export */   "isFedRamp": () => (/* binding */ isFedRamp),
 /* harmony export */   "isGlobalFilterAllowed": () => (/* binding */ isGlobalFilterAllowed),
 /* harmony export */   "isProd": () => (/* binding */ isProd),
 /* harmony export */   "isValidAccountNumber": () => (/* binding */ isValidAccountNumber),
@@ -42106,21 +42106,19 @@ var DEFAULT_SSO_ROUTES = {
         sso: "https://sso.stage.redhat.com/auth",
         portal: "https://access.stage.redhat.com"
     },
-    gov: {
+    frh: {
         url: [
-            "gov.cloud.redhat.com",
-            "gov.console.redhat.com"
+            "console.stage.openshiftusgov.com"
         ],
-        sso: "https://sso.redhat.com/auth",
-        portal: "https://access.redhat.com"
+        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        portal: "https://console.stage.openshiftusgov.com"
     },
-    govStage: {
+    frhStage: {
         url: [
-            "ephem.outsrights.cc",
             "ephem.outsrights.cc"
         ],
-        sso: "https://stage-gov-console.auth.us-east-1.amazoncognito.com/login?client_id=6c7ba7mlnnv9db9ijqj73a1vpg&response_type=code&scope=openid&redirect_uri=https%3A%2F%2Fephem.outsrights.cc%2Fbeta%2Fapps%2Fchrome%2Findex.html",
-        portal: "https://ephem.outsrights.cc/beta/apps/chrome/index.html"
+        sso: "https://stage-gov-console.auth.us-east-1.amazoncognito.com/login",
+        portal: "https://ephem.outsrights.cc/"
     },
     dev: {
         url: [
@@ -42240,8 +42238,8 @@ function isProd() {
 function isBeta() {
     return window.location.pathname.split("/")[1] === "beta" ? true : false;
 }
-function isFedRamp() {
-    return getEnv() === "outsrights";
+function ITLess() {
+    return getEnv() === "frh" || getEnv() === "frhStage";
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
@@ -42500,7 +42498,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("04cd5c00e60e2817")
+/******/ 		__webpack_require__.h = () => ("d6f62750424d332f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
