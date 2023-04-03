@@ -51199,3 +51199,13 @@ aside {
 .chr-c-favorite-trigger.chr-c-icon-favorited .pf-c-icon:hover .chr-c-icon-external-link, .chr-c-favorite-trigger.chr-c-icon-favorited .pf-c-icon:hover .chr-c-icon-external-link:hover {
   --pf-c-icon__content--Color: var(--pf-global--active-color--100);
 }
+
+.chr-c-link-favorite-card .pf-c-icon {
+  --pf-c-icon__content--Color: var(--pf-global--palette--gold-400);
+}
+.chr-c-link-favorite-card .pf-c-icon:hover {
+  --pf-c-icon__content--Color: var(--pf-global--palette--gold-500);
+}
+.chr-c-link-favorite-card .pf-c-icon:hover .chr-c-icon-external-link, .chr-c-link-favorite-card .pf-c-icon:hover .chr-c-icon-external-link:hover {
+  --pf-c-icon__content--Color: var(--pf-global--active-color--100);
+}
