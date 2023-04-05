@@ -41917,6 +41917,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "generateRoutesList": () => (/* binding */ generateRoutesList),
 /* harmony export */   "getEnv": () => (/* binding */ getEnv),
 /* harmony export */   "getEnvDetails": () => (/* binding */ getEnvDetails),
+/* harmony export */   "getRouterBasename": () => (/* binding */ getRouterBasename),
 /* harmony export */   "getSection": () => (/* binding */ getSection),
 /* harmony export */   "getUrl": () => (/* binding */ getUrl),
 /* harmony export */   "getWindow": () => (/* binding */ getWindow),
@@ -42150,7 +42151,7 @@ function getSection() {
 }
 function pageAllowsUnentitled() {
     var pathname = getWindow().location.pathname;
-    if (pathname === "/" || pathname === "/beta" || pathname === "/beta/" || pathname.indexOf("/openshift") === 0 || pathname.indexOf("/beta/openshift") === 0 || pathname.indexOf("/security") === 0 || pathname.indexOf("/beta/security") === 0 || pathname.indexOf("/application-services") === 0 || pathname.indexOf("/beta/application-services") === 0 || pathname.indexOf("/hac") === 0 || pathname.indexOf("/beta/hac") === 0 || pathname.indexOf("/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/beta/ansible/ansible-dashboard/trial") === 0 || // allow tenants with no account numbers: RHCLOUD-21396
+    if (pathname === "/" || pathname === "/beta" || pathname === "/beta/" || pathname === "/preview" || pathname === "/preview/" || pathname.indexOf("/openshift") === 0 || pathname.indexOf("/beta/openshift") === 0 || pathname.indexOf("/preview/openshift") === 0 || pathname.indexOf("/security") === 0 || pathname.indexOf("/beta/security") === 0 || pathname.indexOf("/preview/security") === 0 || pathname.indexOf("/application-services") === 0 || pathname.indexOf("/beta/application-services") === 0 || pathname.indexOf("/preview/application-services") === 0 || pathname.indexOf("/hac") === 0 || pathname.indexOf("/beta/hac") === 0 || pathname.indexOf("/preview/hac") === 0 || pathname.indexOf("/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/beta/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/preview/ansible/ansible-dashboard/trial") === 0 || // allow tenants with no account numbers: RHCLOUD-21396
     pathname.match(/\/connect\//)) {
         return true;
     }
@@ -42209,11 +42210,20 @@ var isAnsible = function(sections) {
     return sections.includes("ansible") && sections.includes("insights") ? 1 : 0;
 };
 function getUrl(type) {
-    if (window.location.pathname === "/beta/" || window.location.pathname === "/") {
+    if ([
+        "/",
+        "/beta",
+        "/beta/",
+        "/preview",
+        "/preview/"
+    ].includes(window.location.pathname)) {
         return "landing";
     }
     var sections = window.location.pathname.split("/");
-    if (sections[1] === "beta") {
+    if ([
+        "beta",
+        "preview"
+    ].includes(sections[1])) {
         return type === "bundle" ? sections[2] : sections[3 + isAnsible(sections)];
     }
     return type === "bundle" ? sections[1] : sections[2 + isAnsible(sections)];
@@ -42235,8 +42245,16 @@ function getEnvDetails() {
 function isProd() {
     return location.host === "cloud.redhat.com" || location.host === "console.redhat.com" || location.host.includes("prod.foo.redhat.com");
 }
-function isBeta() {
-    return window.location.pathname.split("/")[1] === "beta" ? true : false;
+function isBeta(pathname) {
+    var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
+    return [
+        "beta",
+        "preview"
+    ].includes(previewFragment);
+}
+function getRouterBasename(pathname) {
+    var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
+    return isBeta(pathname) ? "/".concat(previewFragment) : "/";
 }
 function ITLess() {
     return getEnv() === "frh" || getEnv() === "frhStage";
@@ -42498,7 +42516,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("70e4b44a185dfdbf")
+/******/ 		__webpack_require__.h = () => ("131699d52ca4f32b")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
