@@ -41893,7 +41893,7 @@ Object.keys(localStorage).map(function(key) {
         }, 10000);
     }
 });
-Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-82bbd7"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-f3d3f2"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
 
 
 /***/ }),
@@ -41911,12 +41911,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DEFAULT_SSO_ROUTES": () => (/* binding */ DEFAULT_SSO_ROUTES),
 /* harmony export */   "ITLess": () => (/* binding */ ITLess),
 /* harmony export */   "LOGIN_TYPE_STORAGE_KEY": () => (/* binding */ LOGIN_TYPE_STORAGE_KEY),
+/* harmony export */   "chromeServiceStaticPathname": () => (/* binding */ chromeServiceStaticPathname),
 /* harmony export */   "chunkLoadErrorRefreshKey": () => (/* binding */ chunkLoadErrorRefreshKey),
 /* harmony export */   "createReduxListener": () => (/* binding */ createReduxListener),
 /* harmony export */   "deleteLocalStorageItems": () => (/* binding */ deleteLocalStorageItems),
 /* harmony export */   "generateRoutesList": () => (/* binding */ generateRoutesList),
+/* harmony export */   "getChromeStaticPathname": () => (/* binding */ getChromeStaticPathname),
 /* harmony export */   "getEnv": () => (/* binding */ getEnv),
 /* harmony export */   "getEnvDetails": () => (/* binding */ getEnvDetails),
+/* harmony export */   "getRouterBasename": () => (/* binding */ getRouterBasename),
 /* harmony export */   "getSection": () => (/* binding */ getSection),
 /* harmony export */   "getUrl": () => (/* binding */ getUrl),
 /* harmony export */   "getWindow": () => (/* binding */ getWindow),
@@ -41928,6 +41931,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isValidAccountNumber": () => (/* binding */ isValidAccountNumber),
 /* harmony export */   "lastActive": () => (/* binding */ lastActive),
 /* harmony export */   "levelArray": () => (/* binding */ levelArray),
+/* harmony export */   "loadFEOFedModules": () => (/* binding */ loadFEOFedModules),
 /* harmony export */   "loadFedModules": () => (/* binding */ loadFedModules),
 /* harmony export */   "noop": () => (/* binding */ noop),
 /* harmony export */   "pageAllowsUnentitled": () => (/* binding */ pageAllowsUnentitled),
@@ -41951,6 +41955,35 @@ function _arrayWithHoles(arr) {
 }
 function _arrayWithoutHoles(arr) {
     if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
 }
 function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -42055,6 +42088,101 @@ function _unsupportedIterableToArray(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
+var __generator = undefined && undefined.__generator || function(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return(g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g);
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+};
 
 
 
@@ -42150,7 +42278,7 @@ function getSection() {
 }
 function pageAllowsUnentitled() {
     var pathname = getWindow().location.pathname;
-    if (pathname === "/" || pathname === "/beta" || pathname === "/beta/" || pathname.indexOf("/openshift") === 0 || pathname.indexOf("/beta/openshift") === 0 || pathname.indexOf("/security") === 0 || pathname.indexOf("/beta/security") === 0 || pathname.indexOf("/application-services") === 0 || pathname.indexOf("/beta/application-services") === 0 || pathname.indexOf("/hac") === 0 || pathname.indexOf("/beta/hac") === 0 || pathname.indexOf("/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/beta/ansible/ansible-dashboard/trial") === 0 || // allow tenants with no account numbers: RHCLOUD-21396
+    if (pathname === "/" || pathname === "/beta" || pathname === "/beta/" || pathname === "/preview" || pathname === "/preview/" || pathname.indexOf("/openshift") === 0 || pathname.indexOf("/beta/openshift") === 0 || pathname.indexOf("/preview/openshift") === 0 || pathname.indexOf("/security") === 0 || pathname.indexOf("/beta/security") === 0 || pathname.indexOf("/preview/security") === 0 || pathname.indexOf("/application-services") === 0 || pathname.indexOf("/beta/application-services") === 0 || pathname.indexOf("/preview/application-services") === 0 || pathname.indexOf("/hac") === 0 || pathname.indexOf("/beta/hac") === 0 || pathname.indexOf("/preview/hac") === 0 || pathname.indexOf("/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/beta/ansible/ansible-dashboard/trial") === 0 || pathname.indexOf("/preview/ansible/ansible-dashboard/trial") === 0 || // allow tenants with no account numbers: RHCLOUD-21396
     pathname.match(/\/connect\//)) {
         return true;
     }
@@ -42209,11 +42337,20 @@ var isAnsible = function(sections) {
     return sections.includes("ansible") && sections.includes("insights") ? 1 : 0;
 };
 function getUrl(type) {
-    if (window.location.pathname === "/beta/" || window.location.pathname === "/") {
+    if ([
+        "/",
+        "/beta",
+        "/beta/",
+        "/preview",
+        "/preview/"
+    ].includes(window.location.pathname)) {
         return "landing";
     }
     var sections = window.location.pathname.split("/");
-    if (sections[1] === "beta") {
+    if ([
+        "beta",
+        "preview"
+    ].includes(sections[1])) {
         return type === "bundle" ? sections[2] : sections[3 + isAnsible(sections)];
     }
     return type === "bundle" ? sections[1] : sections[2 + isAnsible(sections)];
@@ -42235,8 +42372,16 @@ function getEnvDetails() {
 function isProd() {
     return location.host === "cloud.redhat.com" || location.host === "console.redhat.com" || location.host.includes("prod.foo.redhat.com");
 }
-function isBeta() {
-    return window.location.pathname.split("/")[1] === "beta" ? true : false;
+function isBeta(pathname) {
+    var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
+    return [
+        "beta",
+        "preview"
+    ].includes(previewFragment);
+}
+function getRouterBasename(pathname) {
+    var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
+    return isBeta(pathname) ? "/".concat(previewFragment) : "/";
 }
 function ITLess() {
     return getEnv() === "frh" || getEnv() === "frhStage";
@@ -42326,15 +42471,47 @@ var trustarcScriptSetup = function() {
     }
     document.body.appendChild(trustarcScript);
 };
-var loadFedModules = function() {
+var CHROME_SERVICE_BASE = "/api/chrome-service/v1";
+var chromeServiceStaticPathname = {
+    beta: {
+        stage: "/static/beta/stage",
+        prod: "/static/beta/prod"
+    },
+    stable: {
+        stage: "/static/stable/stage",
+        prod: "/static/stable/prod"
+    }
+};
+function getChromeStaticPathname(type) {
+    var stableEnv = isBeta() ? "beta" : "stable";
+    var prodEnv = isProd() ? "prod" : "stage";
+    return "".concat(CHROME_SERVICE_BASE).concat(chromeServiceStaticPathname[stableEnv][prodEnv], "/").concat(type);
+}
+var fedModulesheaders = {
+    "Cache-Control": "no-cache",
+    Pragma: "no-cache",
+    Expires: "0"
+};
+var loadFEOFedModules = function() {
     return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(window.location.origin).concat(isBeta() ? "/beta" : "", "/config/chrome/fed-modules.json?ts=").concat(Date.now()), {
-        headers: {
-            "Cache-Control": "no-cache",
-            Pragma: "no-cache",
-            Expires: "0"
-        }
+        headers: fedModulesheaders
     });
 };
+var loadFedModules = function() {
+    var _ref = _asyncToGenerator(function() {
+        return __generator(this, function(_state) {
+            return [
+                2,
+                axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(getChromeStaticPathname("modules"), "/fed-modules.json"), {
+                    headers: fedModulesheaders
+                })
+            ];
+        });
+    });
+    return function loadFedModules() {
+        return _ref.apply(this, arguments);
+    };
+}();
 var generateRoutesList = function(modules) {
     return Object.entries(modules).reduce(function(acc, param) {
         var _param = _slicedToArray(param, 2), scope = _param[0], _param_ = _param[1], dynamic = _param_.dynamic, manifestLocation = _param_.manifestLocation, isFedramp = _param_.isFedramp, _param__modules = _param_.modules, _$modules = _param__modules === void 0 ? [] : _param__modules;
@@ -42498,7 +42675,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("beac903240636838")
+/******/ 		__webpack_require__.h = () => ("6f2ae4060c7233c7")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
