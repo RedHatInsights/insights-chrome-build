@@ -42525,7 +42525,8 @@ var generateRoutesList = function(modules) {
                     path: typeof route === "string" ? route : route.pathname,
                     manifestLocation: manifestLocation,
                     dynamic: typeof dynamic === "boolean" ? dynamic : typeof route === "string" ? true : route.dynamic,
-                    exact: typeof route === "string" ? false : route.exact
+                    exact: typeof route === "string" ? false : route.exact,
+                    props: typeof route === "object" ? route.props : undefined
                 };
             });
         }).flat()));
@@ -42675,7 +42676,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("b6413fb38d415662")
+/******/ 		__webpack_require__.h = () => ("38d01744f1f997dd")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
