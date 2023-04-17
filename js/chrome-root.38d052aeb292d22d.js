@@ -41910,7 +41910,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "BLOCK_CLEAR_GATEWAY_ERROR": () => (/* binding */ BLOCK_CLEAR_GATEWAY_ERROR),
 /* harmony export */   "DEFAULT_SSO_ROUTES": () => (/* binding */ DEFAULT_SSO_ROUTES),
 /* harmony export */   "ITLess": () => (/* binding */ ITLess),
-/* harmony export */   "LOGIN_TYPE_STORAGE_KEY": () => (/* binding */ LOGIN_TYPE_STORAGE_KEY),
+/* harmony export */   "LOGIN_SCOPES_STORAGE_KEY": () => (/* binding */ LOGIN_SCOPES_STORAGE_KEY),
 /* harmony export */   "chromeServiceStaticPathname": () => (/* binding */ chromeServiceStaticPathname),
 /* harmony export */   "chunkLoadErrorRefreshKey": () => (/* binding */ chunkLoadErrorRefreshKey),
 /* harmony export */   "createReduxListener": () => (/* binding */ createReduxListener),
@@ -42257,7 +42257,7 @@ var DEFAULT_SSO_ROUTES = {
         portal: "https://access.redhat.com"
     }
 };
-var LOGIN_TYPE_STORAGE_KEY = "@chrome/profile-type";
+var LOGIN_SCOPES_STORAGE_KEY = "@chrome/login-scopes";
 var chunkLoadErrorRefreshKey = "ChunkLoadErrorRefreshed";
 var BLOCK_CLEAR_GATEWAY_ERROR = "BLOCK_CLEAR_GATEWAY_ERROR";
 function getWindow() {
@@ -42676,7 +42676,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("0108bbb8aeb27de4")
+/******/ 		__webpack_require__.h = () => ("38d052aeb292d22d")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
