@@ -41954,6 +41954,17 @@ Object.keys(localStorage).map(function(key) {
         }, 10000);
     }
 });
+// we can't use build to set base to /beta or /preview as they both share the same build
+// base tag has to be adjusted once at start up
+function adjustBase() {
+    var _document_getElementsByTagName, _window_location_pathname_split;
+    var baseTag = (_document_getElementsByTagName = document.getElementsByTagName("base")) === null || _document_getElementsByTagName === void 0 ? void 0 : _document_getElementsByTagName[0];
+    var previewFragment = (_window_location_pathname_split = window.location.pathname.split("/")) === null || _window_location_pathname_split === void 0 ? void 0 : _window_location_pathname_split[1];
+    if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() && baseTag && previewFragment) {
+        baseTag.href = "/".concat(previewFragment, "/");
+    }
+}
+adjustBase();
 Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-5383d2"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
 
 
@@ -42763,7 +42774,7 @@ function findNavLeafPath(navItems) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e0bad8541c7aec0f")
+/******/ 		__webpack_require__.h = () => ("9a4475ad01e8e390")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
