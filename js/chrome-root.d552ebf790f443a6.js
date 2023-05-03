@@ -41874,6 +41874,67 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/hooks/useBundle.ts":
+/*!********************************!*\
+  !*** ./src/hooks/useBundle.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "bundleMapping": () => (/* binding */ bundleMapping),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getUrl": () => (/* binding */ getUrl),
+/* harmony export */   "isAnsible": () => (/* binding */ isAnsible)
+/* harmony export */ });
+var isAnsible = function(sections) {
+    return sections.includes("ansible") && sections.includes("insights") ? 1 : 0;
+};
+function getUrl(type) {
+    if ([
+        "/",
+        "/beta",
+        "/beta/",
+        "/preview",
+        "/preview/"
+    ].includes(window.location.pathname)) {
+        return "landing";
+    }
+    var sections = window.location.pathname.split("/");
+    if ([
+        "beta",
+        "preview"
+    ].includes(sections[1])) {
+        return type === "bundle" ? sections[2] : sections[3 + isAnsible(sections)];
+    }
+    return type === "bundle" ? sections[1] : sections[2 + isAnsible(sections)];
+}
+var bundleMapping = {
+    "application-services": "Application and Data Services",
+    openshift: "OpenShift",
+    ansible: "Ansible Automation Platform",
+    insights: "Red Hat Insights",
+    edge: "Edge management",
+    settings: "Settings",
+    landing: "Home",
+    allservices: "Home",
+    iam: "Identity & Access Management",
+    internal: "Internal",
+    containers: "Containers"
+};
+var useBundle = function() {
+    var bundleId = getUrl("bundle");
+    return {
+        bundleId: bundleId,
+        bundleTitle: bundleMapping[bundleId] || bundleId
+    };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useBundle);
+
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -41904,7 +41965,7 @@ function adjustBase() {
     }
 }
 adjustBase();
-Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-f3d3f2"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_hoist-non-react-statics_dist_hoist-non-react-statics_cjs_js-node_modules-455f30"), __webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("vendors-node_modules_patternfly_react-icons_dist_esm_icons_outlined-comments-icon_js-node_mod-760701"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("webpack_sharing_consume_default_scalprum_react-core_scalprum_react-core"), __webpack_require__.e("src_bootstrap_tsx-src_moduleOverrides_unfetch_ts-node_modules_redhat-cloud-services_frontend--275e6e")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap */ "./src/bootstrap.tsx"));
 
 
 /***/ }),
@@ -41921,22 +41982,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "BLOCK_CLEAR_GATEWAY_ERROR": () => (/* binding */ BLOCK_CLEAR_GATEWAY_ERROR),
 /* harmony export */   "DEFAULT_SSO_ROUTES": () => (/* binding */ DEFAULT_SSO_ROUTES),
 /* harmony export */   "ITLess": () => (/* binding */ ITLess),
-/* harmony export */   "LOGIN_TYPE_STORAGE_KEY": () => (/* binding */ LOGIN_TYPE_STORAGE_KEY),
+/* harmony export */   "LOGIN_SCOPES_STORAGE_KEY": () => (/* binding */ LOGIN_SCOPES_STORAGE_KEY),
 /* harmony export */   "chromeServiceStaticPathname": () => (/* binding */ chromeServiceStaticPathname),
 /* harmony export */   "chunkLoadErrorRefreshKey": () => (/* binding */ chunkLoadErrorRefreshKey),
 /* harmony export */   "createReduxListener": () => (/* binding */ createReduxListener),
 /* harmony export */   "deleteLocalStorageItems": () => (/* binding */ deleteLocalStorageItems),
+/* harmony export */   "findNavLeafPath": () => (/* binding */ findNavLeafPath),
 /* harmony export */   "generateRoutesList": () => (/* binding */ generateRoutesList),
 /* harmony export */   "getChromeStaticPathname": () => (/* binding */ getChromeStaticPathname),
 /* harmony export */   "getEnv": () => (/* binding */ getEnv),
 /* harmony export */   "getEnvDetails": () => (/* binding */ getEnvDetails),
 /* harmony export */   "getRouterBasename": () => (/* binding */ getRouterBasename),
 /* harmony export */   "getSection": () => (/* binding */ getSection),
-/* harmony export */   "getUrl": () => (/* binding */ getUrl),
 /* harmony export */   "getWindow": () => (/* binding */ getWindow),
 /* harmony export */   "highlightItems": () => (/* binding */ highlightItems),
-/* harmony export */   "isAnsible": () => (/* binding */ isAnsible),
 /* harmony export */   "isBeta": () => (/* binding */ isBeta),
+/* harmony export */   "isExpandableNav": () => (/* binding */ isExpandableNav),
 /* harmony export */   "isGlobalFilterAllowed": () => (/* binding */ isGlobalFilterAllowed),
 /* harmony export */   "isProd": () => (/* binding */ isProd),
 /* harmony export */   "isValidAccountNumber": () => (/* binding */ isValidAccountNumber),
@@ -41956,6 +42017,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_flatMap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_flatMap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -42197,6 +42259,7 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
+
 var DEFAULT_SSO_ROUTES = {
     prod: {
         url: [
@@ -42268,7 +42331,7 @@ var DEFAULT_SSO_ROUTES = {
         portal: "https://access.redhat.com"
     }
 };
-var LOGIN_TYPE_STORAGE_KEY = "@chrome/profile-type";
+var LOGIN_SCOPES_STORAGE_KEY = "@chrome/login-scopes";
 var chunkLoadErrorRefreshKey = "ChunkLoadErrorRefreshed";
 var BLOCK_CLEAR_GATEWAY_ERROR = "BLOCK_CLEAR_GATEWAY_ERROR";
 function getWindow() {
@@ -42344,28 +42407,6 @@ function lastActive(searchString, fallback) {
         return acc;
     }, fallback);
 }
-var isAnsible = function(sections) {
-    return sections.includes("ansible") && sections.includes("insights") ? 1 : 0;
-};
-function getUrl(type) {
-    if ([
-        "/",
-        "/beta",
-        "/beta/",
-        "/preview",
-        "/preview/"
-    ].includes(window.location.pathname)) {
-        return "landing";
-    }
-    var sections = window.location.pathname.split("/");
-    if ([
-        "beta",
-        "preview"
-    ].includes(sections[1])) {
-        return type === "bundle" ? sections[2] : sections[3 + isAnsible(sections)];
-    }
-    return type === "bundle" ? sections[1] : sections[2 + isAnsible(sections)];
-}
 function getEnv() {
     var _Object_entries_find;
     return ((_Object_entries_find = Object.entries(DEFAULT_SSO_ROUTES).find(function(param) {
@@ -42399,7 +42440,7 @@ function ITLess() {
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
-    var titleSuffix = "| console.redhat.com";
+    var titleSuffix = "| ".concat((0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_3__["default"])().bundleTitle);
     if (typeof title === "undefined") {
         return;
     }
@@ -42412,6 +42453,18 @@ function updateDocumentTitle(title) {
 var activateChild = function(hrefMatch, childRoutes) {
     var hasActiveChild = false;
     var routes = childRoutes.map(function(item) {
+        // If expandable traverse children again
+        if (item.expandable) {
+            var nestedResult = activateChild(hrefMatch, item.routes || []);
+            // mark active if nested child is active
+            if (nestedResult.active) {
+                hasActiveChild = true;
+            }
+            return _objectSpreadProps(_objectSpread({}, item), {
+                active: nestedResult.active,
+                routes: nestedResult.routes
+            });
+        }
         var active = item.href === hrefMatch;
         if (active) {
             hasActiveChild = true;
@@ -42546,15 +42599,49 @@ var generateRoutesList = function(modules) {
     });
 };
 var isGlobalFilterAllowed = function() {
-    if (getUrl("bundle") === "insights") {
+    if ((0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_3__.getUrl)("bundle") === "insights") {
         return true;
     }
-    return getUrl("bundle") === "ansible" && [
+    return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_3__.getUrl)("bundle") === "ansible" && [
         "inventory",
         "drift",
         "advisor"
-    ].includes(getUrl("app"));
+    ].includes((0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_3__.getUrl)("app"));
 };
+function isExpandableNav(item) {
+    return !!item.expandable;
+}
+function isActiveLeaf(item) {
+    return typeof (item === null || item === void 0 ? void 0 : item.href) === "string" && (item === null || item === void 0 ? void 0 : item.active) === true;
+}
+function findNavLeafPath(navItems) {
+    var matcher = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : isActiveLeaf;
+    var leaf;
+    // store the parent nodes
+    var leafPath = [];
+    var index = 0;
+    while(leaf === undefined && index < navItems.length){
+        var item = navItems[index];
+        index += 1;
+        if (item && isExpandableNav(item)) {
+            var _ref = findNavLeafPath(item.routes, matcher) || {}, activeItem = _ref.activeItem, _$navItems = _ref.navItems;
+            if (activeItem) {
+                var // append parent nodes of an active item
+                _leafPath;
+                leaf = activeItem;
+                (_leafPath = leafPath).push.apply(_leafPath, [
+                    item
+                ].concat(_toConsumableArray(_$navItems)));
+            }
+        } else if (matcher(item) && (item === null || item === void 0 ? void 0 : item.href)) {
+            leaf = item;
+        }
+    }
+    return {
+        activeItem: leaf,
+        navItems: leafPath
+    };
+}
 
 
 /***/ })
@@ -42687,7 +42774,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("c35bb965b4bf96fd")
+/******/ 		__webpack_require__.h = () => ("d552ebf790f443a6")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -42827,7 +42914,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 			switch(name) {
 /******/ 				case "default": {
 /******/ 					register("@openshift/dynamic-plugin-sdk", "3.0.0", () => (Promise.all([__webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_lodash_mapValues_js-node_modules_process_browser_js"), __webpack_require__.e("vendors-node_modules_openshift_dynamic-plugin-sdk_dist_index_js")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@openshift/dynamic-plugin-sdk/dist/index.js */ "./node_modules/@openshift/dynamic-plugin-sdk/dist/index.js"))))));
-/******/ 					register("@patternfly/quickstarts", "2.3.3", () => (Promise.all([__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_quickstarts_dist_index_es_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("node_modules_patternfly_react-icons_dist_js_icons_bars-icon_js-node_modules_patternfly_react--0a3495")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@patternfly/quickstarts/dist/index.es.js */ "./node_modules/@patternfly/quickstarts/dist/index.es.js"))))));
+/******/ 					register("@patternfly/quickstarts", "2.4.0", () => (Promise.all([__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_quickstarts_dist_index_es_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("webpack_sharing_consume_default_patternfly_react-core_patternfly_react-core"), __webpack_require__.e("node_modules_patternfly_react-icons_dist_js_icons_bars-icon_js-node_modules_patternfly_react--0a3495")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@patternfly/quickstarts/dist/index.es.js */ "./node_modules/@patternfly/quickstarts/dist/index.es.js"))))));
 /******/ 					register("@patternfly/react-core", "4.276.6", () => (Promise.all([__webpack_require__.e("vendors-node_modules_tslib_tslib_es6_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js-node_modules_-c8d3b3"), __webpack_require__.e("vendors-node_modules_prop-types_index_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom"), __webpack_require__.e("_c74b-_e0c3-_9cf0-_3467-_8add-_2900-_a7bc-_70d9-_eea3-_8afc-_d73e-_1a3c-_2385-_85ca-_5c4f-_0f-35898c0")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@patternfly/react-core/dist/esm/index.js */ "./node_modules/@patternfly/react-core/dist/esm/index.js"))))));
 /******/ 					register("@redhat-cloud-services/chrome", "0.0.9", () => (Promise.all([__webpack_require__.e("vendors-node_modules_redhat-cloud-services_chrome_esm_useFavoritePages_useFavoritePages_js-no-2a8eaa"), __webpack_require__.e("webpack_sharing_consume_default_react-router-dom_react-router-dom"), __webpack_require__.e("node_modules_redhat-cloud-services_chrome_esm_index_js-_f9400")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@redhat-cloud-services/chrome/esm/index.js */ "./node_modules/@redhat-cloud-services/chrome/esm/index.js"))))));
 /******/ 					register("@scalprum/react-core", "0.5.1", () => (Promise.all([__webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_scalprum_react-core_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk"), __webpack_require__.e("node_modules_lodash_isEqual_js")]).then(() => (() => (__webpack_require__(/*! ./node_modules/@scalprum/react-core/dist/esm/index.js */ "./node_modules/@scalprum/react-core/dist/esm/index.js"))))));
@@ -42992,7 +43079,7 @@ var isGlobalFilterAllowed = function() {
 /******/ 			"webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core": () => (loadSingletonVersionCheckFallback("default", "@scalprum/react-core", [4,0,5,1], () => (Promise.all([__webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_scalprum_react-core_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk")]).then(() => (() => (__webpack_require__(/*! @scalprum/react-core */ "./node_modules/@scalprum/react-core/dist/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/react-redux/react-redux": () => (loadStrictVersionCheckFallback("default", "react-redux", [1,8,0,5], () => (__webpack_require__.e("vendors-node_modules_react-redux_es_index_js").then(() => (() => (__webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react": () => (loadSingletonVersionCheckFallback("default", "@unleash/proxy-client-react", [1,3,5,2], () => (__webpack_require__.e("vendors-node_modules_unleash_proxy-client-react_dist_index_browser_js").then(() => (() => (__webpack_require__(/*! @unleash/proxy-client-react */ "./node_modules/@unleash/proxy-client-react/dist/index.browser.js"))))))),
-/******/ 			"webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts": () => (loadSingletonVersionCheckFallback("default", "@patternfly/quickstarts", [1,2,3,3], () => (__webpack_require__.e("vendors-node_modules_patternfly_quickstarts_dist_index_es_js").then(() => (() => (__webpack_require__(/*! @patternfly/quickstarts */ "./node_modules/@patternfly/quickstarts/dist/index.es.js"))))))),
+/******/ 			"webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts": () => (loadSingletonVersionCheckFallback("default", "@patternfly/quickstarts", [1,2,4,0], () => (__webpack_require__.e("vendors-node_modules_patternfly_quickstarts_dist_index_es_js").then(() => (() => (__webpack_require__(/*! @patternfly/quickstarts */ "./node_modules/@patternfly/quickstarts/dist/index.es.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome": () => (loadSingletonVersionCheckFallback("default", "@redhat-cloud-services/chrome", [3,0,0,9], () => (__webpack_require__.e("node_modules_redhat-cloud-services_chrome_esm_index_js-_f9401").then(() => (() => (__webpack_require__(/*! @redhat-cloud-services/chrome */ "./node_modules/@redhat-cloud-services/chrome/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/react/react?88de": () => (loadSingletonVersionCheckFallback("default", "react", [1,17,0,2], () => (() => (__webpack_require__(/*! react */ "./node_modules/react/index.js")))))
 /******/ 		};
