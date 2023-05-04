@@ -329,7 +329,7 @@ var requiredBundles = [
     "ansible",
     "settings",
     "iam",
-    "containers"
+    "quay"
 ].concat(_toConsumableArray((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? [
     "business-services"
 ] : []));
@@ -343,7 +343,7 @@ var bundlesOrder = [
     "cost-management",
     "subscriptions",
     "iam",
-    "containers",
+    "quay",
     "business-services"
 ];
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
@@ -2143,10 +2143,19 @@ var handleBundleResponse = function(bundle) {
             rest
         ]);
     }, []);
+    var bundleFirstLink = getFirstChildRoute(bundle.navItems);
+    if (bundleFirstLink) {
+        var bundleLink = _objectSpreadProps(_objectSpread({}, bundleFirstLink), {
+            title: bundle.title,
+            id: bundle.id,
+            description: bundle.description
+        });
+        flatLinks.push(bundleLink);
+    }
     return {
         id: bundle.id,
         title: bundle.title,
-        links: (flatLinks || []).flat()
+        links: flatLinks.flat()
     };
 };
 var parseBundlesToObject = function(items) {

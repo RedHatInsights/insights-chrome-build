@@ -41921,7 +41921,7 @@ var bundleMapping = {
     allservices: "Home",
     iam: "Identity & Access Management",
     internal: "Internal",
-    containers: "Containers"
+    quay: "Quay.io"
 };
 var useBundle = function() {
     var bundleId = getUrl("bundle");
@@ -42774,7 +42774,7 @@ function findNavLeafPath(navItems) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f2845cccd63983e7")
+/******/ 		__webpack_require__.h = () => ("2eb2f982c87ba3ee")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
