@@ -2144,7 +2144,7 @@ var handleBundleResponse = function(bundle) {
         ]);
     }, []);
     var bundleFirstLink = getFirstChildRoute(bundle.navItems);
-    if (bundleFirstLink) {
+    if (bundleFirstLink && bundle.id) {
         var bundleLink = _objectSpreadProps(_objectSpread({}, bundleFirstLink), {
             title: bundle.title,
             id: bundle.id,
@@ -2164,7 +2164,7 @@ var parseBundlesToObject = function(items) {
         if (curr.expandable && curr.routes) {
             return _objectSpread({}, acc, parseBundlesToObject(curr.routes));
         }
-        return curr.href ? _objectSpreadProps(_objectSpread({}, acc), _defineProperty({}, curr.href, curr)) : acc;
+        return curr.id ? _objectSpreadProps(_objectSpread({}, acc), _defineProperty({}, curr.id, curr)) : acc;
     }, {});
 };
 var matchStrings = function(value, searchTerm) {
