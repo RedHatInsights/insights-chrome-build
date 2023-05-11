@@ -13,6 +13,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/analytics/SegmentContext.ts":
+/*!*****************************************!*\
+  !*** ./src/analytics/SegmentContext.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var SegmentContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+    ready: false,
+    analytics: undefined
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SegmentContext);
+
+
+/***/ }),
+
+/***/ "./src/analytics/useSegment.ts":
+/*!*************************************!*\
+  !*** ./src/analytics/useSegment.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useSegment": () => (/* binding */ useSegment)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/useIntl.js");
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _SegmentContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SegmentContext */ "./src/analytics/SegmentContext.ts");
+
+
+
+
+function useSegment() {
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    var ctx = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_SegmentContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    if (!ctx) {
+        throw new Error("".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_1__["default"].segmentError)));
+    }
+    return ctx;
+}
+
+
+/***/ }),
+
 /***/ "./src/components/AllServices/allServicesLinks.ts":
 /*!********************************************************!*\
   !*** ./src/components/AllServices/allServicesLinks.ts ***!
@@ -2415,6 +2468,134 @@ var useAllServices = function() {
 
 /***/ }),
 
+/***/ "./src/hooks/useFavoritePagesWrapper.ts":
+/*!**********************************************!*\
+  !*** ./src/hooks/useFavoritePagesWrapper.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
+/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../analytics/useSegment */ "./src/analytics/useSegment.ts");
+function _defineProperty(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _objectSpreadProps(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+
+
+var FAVORITE_PAGE_EVENT = "page-favorite";
+var UNFAVORITE_PAGE_EVENT = "page-unfavorite";
+var useFavoritePagesWrapper = function() {
+    var _useFavoritePages = (0,_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__.useFavoritePages)(), favoritePage = _useFavoritePages.favoritePage, unfavoritePage = _useFavoritePages.unfavoritePage, rest = _objectWithoutProperties(_useFavoritePages, [
+        "favoritePage",
+        "unfavoritePage"
+    ]);
+    var _useSegment = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_1__.useSegment)(), ready = _useSegment.ready, analytics = _useSegment.analytics;
+    var favoritePageInternal = function(pathname) {
+        if (ready && analytics) {
+            analytics.track(FAVORITE_PAGE_EVENT, {
+                pathname: pathname
+            });
+        }
+        return favoritePage(pathname);
+    };
+    var unfavoritePageInternal = function(pathname) {
+        if (ready && analytics) {
+            analytics.track(UNFAVORITE_PAGE_EVENT, {
+                pathname: pathname
+            });
+        }
+        return unfavoritePage(pathname);
+    };
+    return _objectSpreadProps(_objectSpread({}, rest), {
+        favoritePage: favoritePageInternal,
+        unfavoritePage: unfavoritePageInternal
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useFavoritePagesWrapper);
+
+
+/***/ }),
+
 /***/ "./src/hooks/useFavoritedServices.ts":
 /*!*******************************************!*\
   !*** ./src/hooks/useFavoritedServices.ts ***!
@@ -2425,13 +2606,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
-/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _useAllServices__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useAllServices */ "./src/hooks/useAllServices.ts");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _useAllServices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useAllServices */ "./src/hooks/useAllServices.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?88de");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2548,22 +2728,22 @@ function _unsupportedIterableToArray(o, minLen) {
 
 
 var useFavoritedServices = function() {
-    var favoritePages = (0,_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_0__.useFavoritePages)().favoritePages;
-    var allLinks = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_1__["default"])().allLinks;
-    var _useState = _slicedToArray((0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]), 2), bundles = _useState[0], setBundles = _useState[1];
-    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function() {
-        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_3__["default"])().then(function(data) {
+    var favoritePages = (0,_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__["default"])().favoritePages;
+    var allLinks = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])().allLinks;
+    var _useState = _slicedToArray((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), 2), bundles = _useState[0], setBundles = _useState[1];
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
+        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__["default"])().then(function(data) {
             return setBundles(data);
         }).catch(function(error) {
             console.error("Unable to fetch favorite services", error);
         });
     }, []);
-    var linksWithFragments = (0,react__WEBPACK_IMPORTED_MODULE_2__.useMemo)(function() {
+    var linksWithFragments = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
         return allLinks.map(function(link) {
             var linkLeaf;
             // use every to exit early if match was found
             bundles.every(function(bundle) {
-                var leaf = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.findNavLeafPath)((0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_3__.extractNavItemGroups)(bundle), function(item) {
+                var leaf = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.findNavLeafPath)((0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__.extractNavItemGroups)(bundle), function(item) {
                     return (item === null || item === void 0 ? void 0 : item.href) === link.href;
                 });
                 if (leaf.activeItem) {
@@ -2609,6 +2789,557 @@ var useFavoritedServices = function() {
     return favoriteServices;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useFavoritedServices);
+
+
+/***/ }),
+
+/***/ "./src/locales/Messages.ts":
+/*!*********************************!*\
+  !*** ./src/locales/Messages.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.js");
+/* eslint-disable max-len */ 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_intl__WEBPACK_IMPORTED_MODULE_0__.defineMessages)({
+    activationTitle: {
+        id: "activationTitle",
+        description: "Thank you for submitting your activation request",
+        defaultMessage: "Thank you for submitting your activation request"
+    },
+    activationDescription: {
+        id: "activationDescription",
+        description: "Red Hat will be in touch within 1 business day to confirm your subscription benefits are ready to be activated.",
+        defaultMessage: "Red Hat will be in touch within 1 business day to confirm your subscription benefits are ready to be activated."
+    },
+    segmentError: {
+        id: "segmentError",
+        description: "Context used outside of its Provider!",
+        defaultMessage: "Context used outside of its Provider!"
+    },
+    changesComing: {
+        id: "changesComing",
+        description: "Changes are coming to cloud.redhat.com on July 29.",
+        defaultMessage: "Changes are coming to cloud.redhat.com on July 29."
+    },
+    learnMore: {
+        id: "learnMore",
+        description: "Learn more on our blog.",
+        defaultMessage: "Learn more on our blog."
+    },
+    viewChanged: {
+        id: "viewChanged",
+        description: "View has changed",
+        defaultMessage: "View has changed"
+    },
+    viewAsCustomer: {
+        id: "viewAsCustomer",
+        description: "You are now viewing console.redhat.com as a customer, and will be interacting with real customer data.",
+        defaultMessage: "You are now viewing console.redhat.com as a customer, and will be interacting with real customer data."
+    },
+    newRequestReview: {
+        id: "newRequestReview",
+        description: "You have a new access request that needs your review",
+        defaultMessage: "You have a new access request that needs your review"
+    },
+    noLongerHaveAccess: {
+        id: "noLongerHaveAccess",
+        description: "You no longer have access to account {accountId}.",
+        defaultMessage: "You no longer have access to account {accountId}."
+    },
+    somethingWentWrong: {
+        id: "somethingWentWrong",
+        description: "Something went wrong",
+        defaultMessage: "Something went wrong"
+    },
+    globalRuntimeErrorId: {
+        id: "globalRuntimeErrorId",
+        description: "Global runtime error Id",
+        defaultMessage: "Sentry error ID: {errorId}"
+    },
+    problemProcessingRequest: {
+        id: "problemProcessingRequest",
+        description: "There was a problem processing the request. Try reloading the page. If the problem persists, contact",
+        defaultMessage: "There was a problem processing the request. Try reloading the page. If the problem persists, contact"
+    },
+    redHatSupport: {
+        id: "redHatSupport",
+        description: "Red Hat support",
+        defaultMessage: "Red Hat support"
+    },
+    checkOur: {
+        id: "checkOur",
+        description: "or check our",
+        defaultMessage: "or check our"
+    },
+    statusPage: {
+        id: "statusPage",
+        description: "Status page",
+        defaultMessage: "Status page"
+    },
+    knownOutages: {
+        id: "knownOutages",
+        description: "for known outages.",
+        defaultMessage: "for known outages."
+    },
+    returnToHomepage: {
+        id: "returnToHomepage",
+        description: "Return to home page",
+        defaultMessage: "Return to home page"
+    },
+    shareYourFeedback: {
+        id: "shareYourFeedback",
+        description: "Share your feedback with us!",
+        defaultMessage: "Share your feedback with us!"
+    },
+    enterFeedback: {
+        id: "enterFeedback",
+        description: "Enter your feedback",
+        defaultMessage: "Enter your feedback"
+    },
+    researchOpportunities: {
+        id: "researchOpportunities",
+        description: "Yes, I would like to hear about research opportunities",
+        defaultMessage: "Yes, I would like to hear about research opportunities"
+    },
+    learnAboutResearchOpportunities: {
+        id: "learnAboutResearchOpportunities",
+        description: "Learn about opportunities to share your feedback with our User Research Team.",
+        defaultMessage: "Learn about opportunities to share your feedback with our User Research Team."
+    },
+    weNeverSharePersonalInformation: {
+        id: "weNeverSharePersonalInformation",
+        description: "We never share your personal information, and you can opt out at any time.",
+        defaultMessage: "We never share your personal information, and you can opt out at any time."
+    },
+    email: {
+        id: "email",
+        description: "Email",
+        defaultMessage: "Email"
+    },
+    submitFeedback: {
+        id: "submitFeedback",
+        description: "Submit feedback",
+        defaultMessage: "Submit feedback"
+    },
+    cancel: {
+        id: "cancel",
+        description: "Cancel",
+        defaultMessage: "Cancel"
+    },
+    feedback: {
+        id: "feedback",
+        description: "Feedback",
+        defaultMessage: "Feedback"
+    },
+    tellAboutExperience: {
+        id: "tellAboutExperience",
+        description: "Tell us about your experience",
+        defaultMessage: "Tell us about your experience"
+    },
+    helpUsImproveHCC: {
+        id: "helpUsImproveHCC",
+        description: "Help us improve the Red Hat Hybrid Cloud Console.",
+        defaultMessage: "Help us improve the Red Hat Hybrid Cloud Console."
+    },
+    shareFeedback: {
+        id: "shareFeedback",
+        description: "Share feedback",
+        defaultMessage: "Share feedback"
+    },
+    howIsConsoleExperience: {
+        id: "howIsConsoleExperience",
+        description: "What has your console experience been like so far?",
+        defaultMessage: "What has your console experience been like so far?"
+    },
+    reportBug: {
+        id: "reportBug",
+        description: "Report a bug",
+        defaultMessage: "Report a bug"
+    },
+    describeBug: {
+        id: "describeBug",
+        description: "Describe the bug you encountered. For urgent issues, open a support case instead.",
+        defaultMessage: "Describe the bug you encountered. For urgent issues, open a support case instead."
+    },
+    openSupportCase: {
+        id: "openSupportCase",
+        description: "Open a support case ",
+        defaultMessage: "Open a support case "
+    },
+    getSupport: {
+        id: "getSupport",
+        description: "Get help from Red Hat support.",
+        defaultMessage: "Get help from Red Hat support."
+    },
+    submitOnlyInStageProd: {
+        id: "submitOnlyInStageProd",
+        description: "Submitting feedback only works in prod and stage",
+        defaultMessage: "Submitting feedback only works in prod and stage"
+    },
+    feedbackSent: {
+        id: "feedbackSent",
+        description: "Feedback Sent",
+        defaultMessage: "Feedback Sent"
+    },
+    thankYouForFeedback: {
+        id: "thankYouForFeedback",
+        description: "Thank you, we appreciate your feedback.",
+        defaultMessage: "Thank you, we appreciate your feedback."
+    },
+    close: {
+        id: "close",
+        description: "Close",
+        defaultMessage: "Close"
+    },
+    showMore: {
+        id: "showMore",
+        description: "Show more",
+        defaultMessage: "Show more"
+    },
+    clearFilters: {
+        id: "clearFilters",
+        description: "Clear filters",
+        defaultMessage: "Clear filters"
+    },
+    noInventoryPermissions: {
+        id: "noInventoryPermissions",
+        description: "You do not have the required inventory permissions to perform this action",
+        defaultMessage: "You do not have the required inventory permissions to perform this action"
+    },
+    globalFilterNotApplicable: {
+        id: "globalFilterNotApplicable",
+        description: "Global filter is not applicable for this page",
+        defaultMessage: "Global filter is not applicable for this page"
+    },
+    filterResults: {
+        id: "filterResults",
+        description: "Filter results",
+        defaultMessage: "Filter results"
+    },
+    selectTagsOrSIDs: {
+        id: "selectTagsOrSIDs",
+        description: "Select one or more tags/SAP IDs (SID)",
+        defaultMessage: "Select one or more tags/SAP IDs (SID)"
+    },
+    name: {
+        id: "name",
+        description: "Name",
+        defaultMessage: "Name"
+    },
+    value: {
+        id: "value",
+        description: "Value",
+        defaultMessage: "Value"
+    },
+    tagSources: {
+        id: "tagSources",
+        description: "Tag sources",
+        defaultMessage: "Tag sources"
+    },
+    tagsFilter: {
+        id: "tagsFilter",
+        description: "Tags filter",
+        defaultMessage: "Tags filter"
+    },
+    filterTags: {
+        id: "filterTags",
+        description: "Filter tags",
+        defaultMessage: "Filter tags"
+    },
+    SIDsFilter: {
+        id: "SIDsFilter",
+        description: "SIDs Filter",
+        defaultMessage: "SIDs Filter"
+    },
+    filterSAPIDs: {
+        id: "filterSAPIDs",
+        description: "Filter SAP IDs",
+        defaultMessage: "Filter SAP IDs"
+    },
+    findAppOrService: {
+        id: "findAppOrService",
+        description: "Find a service",
+        defaultMessage: "Find a service"
+    },
+    noMatchingAppsFound: {
+        id: "noMatchingAppsFound",
+        description: "No matching applications or services found.",
+        defaultMessage: "No matching applications or services found."
+    },
+    tryChangingSearch: {
+        id: "tryChangingSearch",
+        description: "This filter criteria matches no applications or services. Try changing your input filter.",
+        defaultMessage: "This filter criteria matches no applications or services. Try changing your input filter."
+    },
+    personalAccount: {
+        id: "personalAccount",
+        description: "Personal account",
+        defaultMessage: "Personal account"
+    },
+    noResults: {
+        id: "noResults",
+        description: "No results",
+        defaultMessage: "No results"
+    },
+    searchAccount: {
+        id: "searchAccount",
+        description: "Search account",
+        defaultMessage: "Search account"
+    },
+    login: {
+        id: "login",
+        description: "Log in",
+        defaultMessage: "Log in"
+    },
+    stopUsing: {
+        id: "stopUsing",
+        description: "Stop using",
+        defaultMessage: "Stop using"
+    },
+    use: {
+        id: "use",
+        description: "Use",
+        defaultMessage: "Use"
+    },
+    betaRelease: {
+        id: "betaRelease",
+        description: "the beta release",
+        defaultMessage: "the beta release"
+    },
+    supportOptions: {
+        id: "supportOptions",
+        description: "Support options",
+        defaultMessage: "Support options"
+    },
+    apiDocumentation: {
+        id: "apiDocumentation",
+        description: "API documentation",
+        defaultMessage: "API documentation"
+    },
+    insightsRhelDocumentation: {
+        id: "insightsRhelDocumentation",
+        description: "Insights for RHEL Documentation",
+        defaultMessage: "Insights for RHEL Documentation"
+    },
+    demoMode: {
+        id: "demoMode",
+        description: "Demo mode",
+        defaultMessage: "Demo mode"
+    },
+    loggedOut: {
+        id: "loggedOut",
+        description: "You have successfully logged out.",
+        defaultMessage: "You have successfully logged out."
+    },
+    useAccountNumber: {
+        id: "useAccountNumber",
+        description: "Use this number when contacting Red Hat for support. If you don't have any active subscriptions, you will not have an account number.",
+        defaultMessage: "Use this number when contacting Red Hat for support. If you don't have any active subscriptions, you will not have an account number."
+    },
+    accountNumber: {
+        id: "accountNumber",
+        description: "Account number:",
+        defaultMessage: "Account number:"
+    },
+    orgAdministrator: {
+        id: "orgAdministrator",
+        description: "Org. Administrator",
+        defaultMessage: "Org. Administrator"
+    },
+    internalUser: {
+        id: "internalUser",
+        description: "Internal user",
+        defaultMessage: "Internal user"
+    },
+    myProfile: {
+        id: "myProfile",
+        description: "My profile",
+        defaultMessage: "My profile"
+    },
+    myUserAccess: {
+        id: "myUserAccess",
+        description: "My User Access",
+        defaultMessage: "My User Access"
+    },
+    userPreferences: {
+        id: "userPreferences",
+        description: "User Preferences",
+        defaultMessage: "User Preferences"
+    },
+    internal: {
+        id: "internal",
+        description: "Internal",
+        defaultMessage: "Internal"
+    },
+    logout: {
+        id: "logout",
+        description: "Log out",
+        defaultMessage: "Log out"
+    },
+    home: {
+        id: "home",
+        description: "Home",
+        defaultMessage: "Home"
+    },
+    viewingAsAccount: {
+        id: "viewingAsAccount",
+        description: "Viewing as Account {selectedAccountNumber}",
+        defaultMessage: "Viewing as Account {selectedAccountNumber}"
+    },
+    viewRequest: {
+        id: "viewRequest",
+        description: "View request",
+        defaultMessage: "View request"
+    },
+    username: {
+        id: "username",
+        description: "Username:",
+        defaultMessage: "Username:"
+    },
+    authFailure: {
+        id: "authFailure",
+        description: "Authorization failure",
+        defaultMessage: "Authorization failure"
+    },
+    accessRestricted: {
+        id: "accessRestricted",
+        description: "Access to this page is reserved for third party IDP token from users on authorized accounts.",
+        defaultMessage: "Access to this page is reserved for third party IDP token from users on authorized accounts."
+    },
+    tryUsingDifferentAccount: {
+        id: "tryUsingDifferentAccount",
+        description: "Try using different account",
+        defaultMessage: "Try using different account"
+    },
+    quickStarts: {
+        id: "quickStarts",
+        description: "Quick starts",
+        defaultMessage: "Quick starts"
+    },
+    learnHowTo: {
+        id: "learnHowTo",
+        description: "Learn how to create, import, and run applications with step-by-step instructions and tasks.",
+        defaultMessage: "Learn how to create, import, and run applications with step-by-step instructions and tasks."
+    },
+    unableToLoadQuickstartsContent: {
+        id: "unableToLoadQuickstartsContent",
+        description: "Unable to load the quickstarts content.",
+        defaultMessage: "Unable to load the quickstarts content."
+    },
+    thereWillBeACatalgPage: {
+        id: "thereWillBeACatalgPage",
+        description: "There will be a catalog page for {bundle} bundle",
+        defaultMessage: "There will be a catalog page for {bundle} bundle"
+    },
+    tryThisFeatureInBeta: {
+        id: "tryThisFeatureInBeta",
+        description: "Try this feature in our Preview Environment on console.redhat.com/preview. The Preview Environment allows you to interact with new features in an active development space. Because beta pre-release software is still being developed, you may encounter bugs or flaws in availability, stability, data, or performance.",
+        defaultMessage: "Try this feature in our Preview Environment on console.redhat.com/preview. The Preview Environment allows you to interact with new features in an active development space. Because beta pre-release software is still being developed, you may encounter bugs or flaws in availability, stability, data, or performance."
+    },
+    afterBetaUse: {
+        id: "afterBetaUse",
+        description: "After you use a feature in beta, you’ll stay in the Beta Environment until you manually exit the beta release. Leave the Beta Environment any time by clicking on the settings (gear) icon or beta icon in the top toolbar.",
+        defaultMessage: "After you use a feature in beta, you’ll stay in the Beta Environment until you manually exit the beta release. Leave the Beta Environment any time by clicking on the settings (gear) icon or beta icon in the top toolbar."
+    },
+    useFeatureInBeta: {
+        id: "useFeatureInBeta",
+        description: "Use feature in beta",
+        defaultMessage: "Use feature in beta"
+    },
+    learnMoreABoutBeta: {
+        id: "learnMoreABoutBeta",
+        description: "Learn more about Beta Environment",
+        defaultMessage: "Learn more about Beta Environment"
+    },
+    permissionErrorDescription: {
+        id: "permissionErrorDescription",
+        defaultMessage: "Contact your organization administrator(s) for more information or visit <MuaLink>My User Access</MuaLink> to learn more about your permissions."
+    },
+    permissionErrorDetail: {
+        id: "permissionErrorDetail",
+        defaultMessage: "Detail: {message}."
+    },
+    filterByTags: {
+        id: "filterByTags",
+        description: "Placeholder to indicate ",
+        defaultMessage: "Filter by tags"
+    },
+    reportABug: {
+        id: "reportABug",
+        description: "Report a bug",
+        defaultMessage: "Report a bug"
+    },
+    describeReportBug: {
+        id: "describeReportBug",
+        description: "Describe the bug you encountered. Include where it is located and what action caused it. If this issue is urgent or blocking your workflow, ",
+        defaultMessage: "Describe the bug you encountered. Include where it is located and what action caused it. If this issue is urgent or blocking your workflow, "
+    },
+    describeBugUrgentCases: {
+        id: "describeBugUrgentCases",
+        description: "Describe the bug you encountered. For urgent issues, open a support case instead.",
+        defaultMessage: "Describe the bug you encountered. For urgent issues, open a support case instead."
+    },
+    addDescription: {
+        id: "addDescription",
+        description: "Add description",
+        defaultMessage: "Add description"
+    },
+    back: {
+        id: "back",
+        description: "Back",
+        defaultMessage: "Back"
+    },
+    informRedhatDirection: {
+        id: "informRedhatDirection",
+        description: "Inform the direction of Red Hat",
+        defaultMessage: "Inform the direction of Red Hat"
+    },
+    informDirectionDescription: {
+        id: "informDirectionDescription",
+        description: "By participating in feedback sessions, usability tests, and interviews with our ",
+        defaultMessage: "By participating in feedback sessions, usability tests, and interviews with our "
+    },
+    userResearchTeam: {
+        id: "userResearchTeam",
+        description: "User Research Team",
+        defaultMessage: "User Research Team"
+    },
+    directInfluence: {
+        id: "directInfluence",
+        description: ", your feedback will directly influence the future of Red Hat’s products. Opt in below to hear about future research opportunities via email.",
+        defaultMessage: ", your feedback will directly influence the future of Red Hat’s products. Opt in below to hear about future research opportunities via email."
+    },
+    bugReported: {
+        id: "bugReported",
+        description: "Bug Reported",
+        defaultMessage: "Bug Reported"
+    },
+    teamWillReviewBug: {
+        id: "teamWillReviewBug",
+        description: "We appreciate your feedback and our team will review your report shorlty",
+        defaultMessage: "We appreciate your feedback and our team will review your report shorlty"
+    },
+    responseSent: {
+        id: "responseSent",
+        description: "Response sent",
+        defaultMessage: "Response sent"
+    },
+    thankYouForInterest: {
+        id: "thankYouForInterest",
+        description: "Thank you for your interest in user research. You have been added to our mailing list.",
+        defaultMessage: "Thank you for your interest in user research. You have been added to our mailing list."
+    },
+    joinMailingList: {
+        id: "joinMailingList",
+        description: "Join mailing list",
+        defaultMessage: "Join mailing list"
+    }
+}));
 
 
 /***/ }),
