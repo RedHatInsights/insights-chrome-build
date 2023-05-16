@@ -51178,6 +51178,9 @@ aside {
 #chrome-entry {
   height: 100vh;
 }
+#chrome-entry .pf-c-drawer.pf-m-inline > .pf-c-drawer__main > .pf-c-drawer__content {
+  overflow: hidden;
+}
 
 .chr-c-favorite-trigger {
   cursor: pointer;
