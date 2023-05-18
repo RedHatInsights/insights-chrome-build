@@ -2142,7 +2142,8 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
-var getFirstChildRoute = function(routes) {
+var getFirstChildRoute = function() {
+    var routes = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
     var firstLeaf = routes.find(function(item) {
         return !item.expandable && item.href;
     });
@@ -2155,7 +2156,7 @@ var getFirstChildRoute = function(routes) {
     });
     // make sure to find first deeply nested item
     nestedItems.every(function(item) {
-        childRoute = getFirstChildRoute(item.routes || []);
+        childRoute = getFirstChildRoute(item.routes);
         return !childRoute;
     });
     return childRoute;
@@ -2208,7 +2209,7 @@ var handleBundleResponse = function(bundle) {
     return {
         id: bundle.id,
         title: bundle.title,
-        links: flatLinks.flat()
+        links: (flatLinks || []).flat()
     };
 };
 var parseBundlesToObject = function(items) {
@@ -4567,9 +4568,10 @@ function isGroup(item) {
     return typeof item.groupId === "string";
 }
 function extractNavItemGroups(activeNavigation) {
-    return (isNavItems(activeNavigation) ? activeNavigation.navItems.map(function(item) {
+    var _ref, _ref_flat;
+    return ((_ref = isNavItems(activeNavigation) ? activeNavigation.navItems.map(function(item) {
         return isGroup(item) ? item.navItems : item;
-    }) : activeNavigation).flat();
+    }) : activeNavigation) === null || _ref === void 0 ? void 0 : (_ref_flat = _ref.flat) === null || _ref_flat === void 0 ? void 0 : _ref_flat.call(_ref)) || [];
 }
 var CACHE_TIMEOUT = 5 * 60000; // 5 minutes cache window
 // use simple memory cache to not fetch the data ll the time
