@@ -384,7 +384,8 @@ var requiredBundles = [
     "iam",
     "quay"
 ].concat(_toConsumableArray((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? [
-    "business-services"
+    "business-services",
+    "subscription-services"
 ] : []));
 var bundlesOrder = [
     "application-services",
@@ -397,7 +398,8 @@ var bundlesOrder = [
     "subscriptions",
     "iam",
     "quay",
-    "business-services"
+    "business-services",
+    "subscription-services"
 ];
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
 function findModuleByLink(href) {
