@@ -384,7 +384,8 @@ var requiredBundles = [
     "iam",
     "quay"
 ].concat(_toConsumableArray((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? [
-    "business-services"
+    "business-services",
+    "subscription-services"
 ] : []));
 var bundlesOrder = [
     "application-services",
@@ -397,7 +398,8 @@ var bundlesOrder = [
     "subscriptions",
     "iam",
     "quay",
-    "business-services"
+    "business-services",
+    "subscription-services"
 ];
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
 function findModuleByLink(href) {
@@ -3381,6 +3383,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TOGGLE_DEBUGGER_BUTTON": () => (/* binding */ TOGGLE_DEBUGGER_BUTTON),
 /* harmony export */   "TOGGLE_DEBUGGER_MODAL": () => (/* binding */ TOGGLE_DEBUGGER_MODAL),
 /* harmony export */   "TOGGLE_FEEDBACK_MODAL": () => (/* binding */ TOGGLE_FEEDBACK_MODAL),
+/* harmony export */   "TOGGLE_NOTIFICATIONS_DRAWER": () => (/* binding */ TOGGLE_NOTIFICATIONS_DRAWER),
 /* harmony export */   "UPDATE_ACCESS_REQUESTS_NOTIFICATIONS": () => (/* binding */ UPDATE_ACCESS_REQUESTS_NOTIFICATIONS),
 /* harmony export */   "UPDATE_DOCUMENT_TITLE_REDUCER": () => (/* binding */ UPDATE_DOCUMENT_TITLE_REDUCER),
 /* harmony export */   "USER_LOGIN": () => (/* binding */ USER_LOGIN)
@@ -3416,6 +3419,7 @@ var ADD_QUICKSTARTS_TO_APP = "@@chrome/add-quickstart";
 var DISABLE_QUICKSTARTS = "@@chrome/disable-quickstarts";
 var CLEAR_QUICKSTARTS = "@@chrome/clear-quickstarts";
 var SET_GATEWAY_ERROR = "@@chrome/set-gateway-error";
+var TOGGLE_NOTIFICATIONS_DRAWER = "@@chrome/toggle-notifications-drawer";
 
 
 /***/ }),
@@ -3456,6 +3460,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "toggleDebuggerModal": () => (/* binding */ toggleDebuggerModal),
 /* harmony export */   "toggleFeedbackModal": () => (/* binding */ toggleFeedbackModal),
 /* harmony export */   "toggleGlobalFilter": () => (/* binding */ toggleGlobalFilter),
+/* harmony export */   "toggleNotificationsDrawer": () => (/* binding */ toggleNotificationsDrawer),
 /* harmony export */   "updateAccessRequestsNotifications": () => (/* binding */ updateAccessRequestsNotifications),
 /* harmony export */   "updateDocumentTitle": () => (/* binding */ updateDocumentTitle),
 /* harmony export */   "userLogIn": () => (/* binding */ userLogIn)
@@ -3731,6 +3736,11 @@ var setGatewayError = function(error) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.SET_GATEWAY_ERROR,
         payload: error
+    };
+};
+var toggleNotificationsDrawer = function() {
+    return {
+        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.TOGGLE_NOTIFICATIONS_DRAWER
     };
 };
 
