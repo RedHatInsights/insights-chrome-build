@@ -1142,8 +1142,8 @@ var FeatureFlagsProvider = function(param) {
                 userId: (_user_identity_internal = user === null || user === void 0 ? void 0 : user.identity.internal) === null || _user_identity_internal === void 0 ? void 0 : _user_identity_internal.account_id
             }, user ? {
                 properties: {
-                    account_number: user.identity.account_number,
-                    email: user.identity.user.email
+                    account_number: user === null || user === void 0 ? void 0 : user.identity.account_number,
+                    email: user === null || user === void 0 ? void 0 : user.identity.user.email
                 }
             } : {})
         }));
