@@ -3749,45 +3749,26 @@ var toggleNotificationsDrawer = function() {
 
 /***/ }),
 
-/***/ "./src/utils/consts.ts":
-/*!*****************************!*\
-  !*** ./src/utils/consts.ts ***!
-  \*****************************/
+/***/ "./src/utils/VisibilitySingleton.ts":
+/*!******************************************!*\
+  !*** ./src/utils/VisibilitySingleton.ts ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ACCESS_KEY": () => (/* binding */ ACCESS_KEY),
-/* harmony export */   "ACCOUNT_REQUEST_TIMEOUT": () => (/* binding */ ACCOUNT_REQUEST_TIMEOUT),
-/* harmony export */   "ACTIVE_ACCOUNT_SWITCH_NOTIFICATION": () => (/* binding */ ACTIVE_ACCOUNT_SWITCH_NOTIFICATION),
-/* harmony export */   "ACTIVE_REMOTE_REQUEST": () => (/* binding */ ACTIVE_REMOTE_REQUEST),
-/* harmony export */   "CROSS_ACCESS_ACCOUNT_NUMBER": () => (/* binding */ CROSS_ACCESS_ACCOUNT_NUMBER),
-/* harmony export */   "CROSS_ACCESS_ORG_ID": () => (/* binding */ CROSS_ACCESS_ORG_ID),
-/* harmony export */   "GLOBAL_FILTER_KEY": () => (/* binding */ GLOBAL_FILTER_KEY),
-/* harmony export */   "HYDRA_ENDPOINT": () => (/* binding */ HYDRA_ENDPOINT),
-/* harmony export */   "OFFLINE_REDIRECT_STORAGE_KEY": () => (/* binding */ OFFLINE_REDIRECT_STORAGE_KEY),
-/* harmony export */   "PUBLIC_EVENTS": () => (/* binding */ PUBLIC_EVENTS),
-/* harmony export */   "REFRESH_KEY": () => (/* binding */ REFRESH_KEY),
-/* harmony export */   "REQUESTS_COUNT": () => (/* binding */ REQUESTS_COUNT),
-/* harmony export */   "REQUESTS_DATA": () => (/* binding */ REQUESTS_DATA),
-/* harmony export */   "activationRequestURLs": () => (/* binding */ activationRequestURLs),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "defaultAuthOptions": () => (/* binding */ defaultAuthOptions),
-/* harmony export */   "isITLessEnv": () => (/* binding */ isITLessEnv),
-/* harmony export */   "isVisible": () => (/* binding */ isVisible),
-/* harmony export */   "noAuthParam": () => (/* binding */ noAuthParam),
-/* harmony export */   "offlineToken": () => (/* binding */ offlineToken),
-/* harmony export */   "visibilityFunctions": () => (/* binding */ visibilityFunctions)
+/* harmony export */   "getVisibilityFunctions": () => (/* binding */ getVisibilityFunctions),
+/* harmony export */   "initializeVisibilityFunctions": () => (/* binding */ initializeVisibilityFunctions)
 /* harmony export */ });
-/* harmony import */ var _redhat_cloud_services_frontend_components_utilities_interceptors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components-utilities/interceptors */ "./node_modules/@redhat-cloud-services/frontend-components-utilities/esm/interceptors/interceptors.js");
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isEmpty */ "./node_modules/lodash/isEmpty.js");
-/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/FeatureFlags/FeatureFlagsProvider */ "./src/components/FeatureFlags/FeatureFlagsProvider.tsx");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
-/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/isEmpty */ "./node_modules/lodash/isEmpty.js");
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/FeatureFlags/FeatureFlagsProvider */ "./src/components/FeatureFlags/FeatureFlagsProvider.tsx");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -3837,13 +3818,6 @@ function _defineProperty(obj, key, value) {
         obj[key] = value;
     }
     return obj;
-}
-function _instanceof(left, right) {
-    if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
-        return !!right[Symbol.hasInstance](left);
-    } else {
-        return left instanceof right;
-    }
 }
 function _iterableToArrayLimit(arr, i) {
     var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
@@ -4050,284 +4024,75 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
-
-var noAuthParam = "noauth";
-var offlineToken = "2402500adeacc30eb5c5a8a5e2e0ec1f";
-var GLOBAL_FILTER_KEY = "chrome:global-filter";
-var HYDRA_ENDPOINT = "/hydra/rest/se/sessions";
-var isITLessEnv = (0,_common__WEBPACK_IMPORTED_MODULE_4__.ITLess)();
-/**
- * Keys for storing acess reqeusts data
- */ var REQUESTS_COUNT = "chrome:cross-account-requests:pending:count";
-var REQUESTS_DATA = "chrome:cross-account-requests:pending:data";
-var ACTIVE_ACCOUNT_SWITCH_NOTIFICATION = "chrome:cross-account-requests:active-notification";
-var ACCOUNT_REQUEST_TIMEOUT = "chrome:cross-account-requests:request-timeout";
-var CROSS_ACCESS_ACCOUNT_NUMBER = "cross_access_account_number";
-var ACTIVE_REMOTE_REQUEST = "chrome/active-remote-request";
-var CROSS_ACCESS_ORG_ID = "cross_access_org_id";
-var REFRESH_KEY = "refresh_key";
-var ACCESS_KEY = "access_key";
-var obj = {
-    noAuthParam: noAuthParam,
-    offlineToken: offlineToken
-};
 var matcherMapper = {
-    isEmpty: (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_1___default()),
+    isEmpty: (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3___default()),
     isNotEmpty: function(value) {
-        return !lodash_isEmpty__WEBPACK_IMPORTED_MODULE_1___default()(value);
+        return !lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3___default()(value);
     }
 };
 var matchValue = function(value, matcher) {
     var match = matcherMapper[matcher];
     return typeof match === "function" ? match(value) : value;
 };
-/**
- * Check if is permitted to see navigation link
- * @param {array} permissions array checked user permissions
- * @param {every|some} require type of permissions requirement
- * @returns {boolean}
- */ var checkPermissions = function() {
-    var _ref = _asyncToGenerator(function() {
-        var permissions, require, userPermissions;
-        var _arguments = arguments;
-        return __generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    permissions = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : [], require = _arguments.length > 1 && _arguments[1] !== void 0 ? _arguments[1] : "every";
-                    return [
-                        4,
-                        window.insights.chrome.getUserPermissions()
-                    ];
-                case 1:
-                    userPermissions = _state.sent();
-                    return [
-                        2,
-                        userPermissions && permissions[require](function(item) {
-                            return userPermissions.find(function(param) {
-                                var permission = param.permission;
-                                return permission === item;
-                            });
-                        })
-                    ];
-            }
-        });
-    });
-    return function checkPermissions() {
-        return _ref.apply(this, arguments);
-    };
-}();
-var visibilityFunctions = {
-    isOrgAdmin: /*#__PURE__*/ _asyncToGenerator(function() {
-        var data, _data_identity_user;
-        return __generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        window.insights.chrome.auth.getUser()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    try {
-                        ;
-                        return [
-                            2,
-                            !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_org_admin)
-                        ];
-                    } catch (e) {
-                        return [
-                            2,
-                            false
-                        ];
-                    }
-                    return [
-                        2
-                    ];
-            }
-        });
-    }),
-    isActive: /*#__PURE__*/ _asyncToGenerator(function() {
-        var data, _data_identity_user;
-        return __generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        window.insights.chrome.auth.getUser()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    try {
-                        ;
-                        return [
-                            2,
-                            !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_active)
-                        ];
-                    } catch (e) {
-                        return [
-                            2,
-                            false
-                        ];
-                    }
-                    return [
-                        2
-                    ];
-            }
-        });
-    }),
-    isInternal: /*#__PURE__*/ _asyncToGenerator(function() {
-        var data, _data_identity_user;
-        return __generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        window.insights.chrome.auth.getUser()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    try {
-                        ;
-                        return [
-                            2,
-                            !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_internal)
-                        ];
-                    } catch (e) {
-                        return [
-                            2,
-                            false
-                        ];
-                    }
-                    return [
-                        2
-                    ];
-            }
-        });
-    }),
-    isEntitled: function() {
-        var _ref = _asyncToGenerator(function(appName) {
-            var data, entitlements;
+var visibilityFunctions;
+var initialized = false;
+var initialize = function(param) {
+    var getUserPermissions = param.getUserPermissions, getUser = param.getUser, getToken = param.getToken;
+    /**
+   * Check if is permitted to see navigation link
+   * @param {array} permissions array checked user permissions
+   * @param {every|some} require type of permissions requirement
+   * @returns {boolean}
+   */ var checkPermissions = function() {
+        var _ref = _asyncToGenerator(function() {
+            var permissions, require, userPermissions;
+            var _arguments = arguments;
             return __generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
+                        permissions = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : [], require = _arguments.length > 1 && _arguments[1] !== void 0 ? _arguments[1] : "every";
                         return [
                             4,
-                            window.insights.chrome.auth.getUser()
+                            getUserPermissions()
                         ];
                     case 1:
-                        data = _state.sent();
-                        entitlements = (data || {
-                            entitlements: {}
-                        }).entitlements;
+                        userPermissions = _state.sent();
                         return [
                             2,
-                            (data === null || data === void 0 ? void 0 : data.entitlements) && appName ? Boolean(entitlements[appName] && entitlements[appName].is_entitled) : Object.entries(entitlements || {}).reduce(function(acc, param) {
-                                var _param = _slicedToArray(param, 2), key = _param[0], is_entitled = _param[1].is_entitled;
-                                return _objectSpreadProps(_objectSpread({}, acc), _defineProperty({}, key, is_entitled));
-                            }, {})
+                            userPermissions && permissions[require](function(item) {
+                                return userPermissions.find(function(param) {
+                                    var permission = param.permission;
+                                    return permission === item;
+                                });
+                            })
                         ];
                 }
             });
         });
-        return function(appName) {
+        return function checkPermissions() {
             return _ref.apply(this, arguments);
         };
-    }(),
-    isProd: function() {
-        return (0,_common__WEBPACK_IMPORTED_MODULE_4__.isProd)();
-    },
-    isBeta: function() {
-        return (0,_common__WEBPACK_IMPORTED_MODULE_4__.isBeta)();
-    },
-    isHidden: function() {
-        return true;
-    },
-    withEmail: /*#__PURE__*/ _asyncToGenerator(function() {
-        var _len, toHave, _key, data, _ref, user;
-        var _arguments = arguments;
-        return __generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    for(_len = _arguments.length, toHave = new Array(_len), _key = 0; _key < _len; _key++){
-                        toHave[_key] = _arguments[_key];
-                    }
-                    return [
-                        4,
-                        window.insights.chrome.auth.getUser()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    _ref = data || {
-                        identity: {}
-                    }, user = _ref.identity.user;
-                    return [
-                        2,
-                        toHave === null || toHave === void 0 ? void 0 : toHave.some(function(item) {
-                            var _user_email;
-                            return user === null || user === void 0 ? void 0 : (_user_email = user.email) === null || _user_email === void 0 ? void 0 : _user_email.includes(item);
-                        })
-                    ];
-            }
-        });
-    }),
-    loosePermissions: function(permissions) {
-        return checkPermissions(permissions, "some");
-    },
-    hasPermissions: checkPermissions,
-    hasLocalStorage: function(key, value) {
-        return localStorage.get(key) === value;
-    },
-    hasCookie: function(cookieKey, cookieValue) {
-        return js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get(cookieKey) === cookieValue;
-    },
-    apiRequest: function() {
-        var _ref = _asyncToGenerator(function(_param) {
-            var url, _param_method, method, accessor, matcher, options, data, token;
+    }();
+    var _tmp;
+    _tmp = {
+        isOrgAdmin: /*#__PURE__*/ _asyncToGenerator(function() {
+            var data, _data_identity_user;
             return __generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
-                        url = _param.url, _param_method = _param.method, method = _param_method === void 0 ? "GET" : _param_method, accessor = _param.accessor, matcher = _param.matcher, options = _objectWithoutProperties(_param, [
-                            "url",
-                            "method",
-                            "accessor",
-                            "matcher"
-                        ]);
                         return [
                             4,
-                            window.insights.chrome.auth.getUser()
+                            getUser()
                         ];
                     case 1:
                         data = _state.sent();
-                        return [
-                            4,
-                            window.insights.chrome.auth.getToken()
-                        ];
-                    case 2:
-                        token = _state.sent();
-                        // this will log a bunch of 403s if the account number isn't present
-                        if (data === null || data === void 0 ? void 0 : data.identity.org_id) {
+                        try {
+                            ;
                             return [
                                 2,
-                                (0,_redhat_cloud_services_frontend_components_utilities_interceptors__WEBPACK_IMPORTED_MODULE_6__["default"])(_objectSpreadProps(_objectSpread({
-                                    url: url,
-                                    method: method
-                                }, options), {
-                                    headers: _objectSpread({
-                                        Authorization: "Bearer ".concat(token)
-                                    }, options.headers)
-                                })).then(function(response) {
-                                    return matchValue(accessor ? lodash_get__WEBPACK_IMPORTED_MODULE_0___default()(response || {}, accessor) : response, matcher);
-                                }).catch(function() {
-                                    console.log("Unable to retrieve visibility result", {
-                                        visibilityMethod: "apiRequest",
-                                        method: method,
-                                        url: url
-                                    });
-                                    return false;
-                                })
+                                !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_org_admin)
                             ];
-                        } else {
-                            console.log("Unable to call API, no account number");
+                        } catch (e) {
                             return [
                                 2,
                                 false
@@ -4338,90 +4103,218 @@ var visibilityFunctions = {
                         ];
                 }
             });
-        });
-        return function(_param) {
-            return _ref.apply(this, arguments);
-        };
-    }(),
-    featureFlag: function(flagName, expectedValue) {
-        return (0,_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_3__.getFeatureFlagsError)() !== true && (_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_3__.unleashClient === null || _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_3__.unleashClient === void 0 ? void 0 : _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_3__.unleashClient.isEnabled(flagName)) === expectedValue;
-    }
-};
-var isVisible = function(limitedApps, app, visibility) {
-    if (limitedApps && app && limitedApps.includes(app)) {
-        if (_instanceof(visibility, Object)) {
-            return Boolean(visibility[app]);
-        }
-        return visibility;
-    }
-    return true;
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.freeze(obj));
-var activationRequestURLs = [
-    "azure-openshift-activation",
-    "azure-ocp-activation",
-    "azure-oke-activation",
-    "azure-opp-activation",
-    "azure-ansible-activation",
-    "azure-eap-activation",
-    "azure-sap-activation",
-    "azure-rhel-activation",
-    "aws-openshift-activation",
-    "aws-ocp-activation",
-    "aws-oke-activation",
-    "aws-opp-activation",
-    "gcp-opp-activation",
-    "gcp-oke-activation",
-    "gcp-ocp-activation",
-    "gcp-rhaap2-activation",
-    "gcp-rhaap2-ext100-activation",
-    "gcp-rhaap2-ext200-activation",
-    "gcp-rhaap2-ext400-activation"
-];
-// Global Defaults
-var defaultAuthOptions = {
-    realm: "redhat-external",
-    clientId: "cloud-services",
-    cookieName: "cs_jwt"
-};
-var OFFLINE_REDIRECT_STORAGE_KEY = "chrome.offline.redirectUri";
-var PUBLIC_EVENTS = {
-    APP_NAVIGATION: [
-        function(callback) {
-            var appNavListener = {
-                on: _redux_action_types__WEBPACK_IMPORTED_MODULE_5__.APP_NAV_CLICK,
-                callback: function(param) {
-                    var data = param.data;
-                    if (data.id !== undefined || data.event) {
-                        callback({
-                            navId: data.id,
-                            domEvent: data.event
-                        });
-                    }
+        }),
+        isActive: /*#__PURE__*/ _asyncToGenerator(function() {
+            var data, _data_identity_user;
+            return __generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        return [
+                            4,
+                            getUser()
+                        ];
+                    case 1:
+                        data = _state.sent();
+                        try {
+                            ;
+                            return [
+                                2,
+                                !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_active)
+                            ];
+                        } catch (e) {
+                            return [
+                                2,
+                                false
+                            ];
+                        }
+                        return [
+                            2
+                        ];
                 }
+            });
+        }),
+        isInternal: /*#__PURE__*/ _asyncToGenerator(function() {
+            var data, _data_identity_user;
+            return __generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        return [
+                            4,
+                            getUser()
+                        ];
+                    case 1:
+                        data = _state.sent();
+                        try {
+                            ;
+                            return [
+                                2,
+                                !!((_data_identity_user = data === null || data === void 0 ? void 0 : data.identity.user) === null || _data_identity_user === void 0 ? void 0 : _data_identity_user.is_internal)
+                            ];
+                        } catch (e) {
+                            return [
+                                2,
+                                false
+                            ];
+                        }
+                        return [
+                            2
+                        ];
+                }
+            });
+        }),
+        isEntitled: function() {
+            var _ref = _asyncToGenerator(function(appName) {
+                var data, baseEntitlements, entitlements;
+                return __generator(this, function(_state) {
+                    switch(_state.label){
+                        case 0:
+                            return [
+                                4,
+                                getUser()
+                            ];
+                        case 1:
+                            data = _state.sent();
+                            baseEntitlements = {};
+                            entitlements = (data || {
+                                entitlements: baseEntitlements
+                            }).entitlements;
+                            return [
+                                2,
+                                (data === null || data === void 0 ? void 0 : data.entitlements) && appName ? Boolean(entitlements[appName] && entitlements[appName].is_entitled) : Object.entries(entitlements || {}).reduce(function(acc, param) {
+                                    var _param = _slicedToArray(param, 2), key = _param[0], is_entitled = _param[1].is_entitled;
+                                    return _objectSpreadProps(_objectSpread({}, acc), _defineProperty({}, key, is_entitled));
+                                }, {})
+                            ];
+                    }
+                });
+            });
+            return function(appName) {
+                return _ref.apply(this, arguments);
             };
-            return appNavListener;
-        }
-    ],
-    NAVIGATION_TOGGLE: [
-        function(callback) {
-            console.error("NAVIGATION_TOGGLE event is deprecated and will be removed in future versions of chrome.");
-            return {
-                on: "NAVIGATION_TOGGLE",
-                callback: callback
-            };
-        }
-    ],
-    GLOBAL_FILTER_UPDATE: [
-        function(callback) {
-            return {
-                on: _redux_action_types__WEBPACK_IMPORTED_MODULE_5__.GLOBAL_FILTER_UPDATE,
-                callback: callback
-            };
+        }(),
+        isProd: function() {
+            return (0,_common__WEBPACK_IMPORTED_MODULE_0__.isProd)();
         },
-        "globalFilter.selectedTags"
-    ]
+        isBeta: function() {
+            return (0,_common__WEBPACK_IMPORTED_MODULE_0__.isBeta)();
+        },
+        isHidden: function() {
+            return true;
+        },
+        withEmail: /*#__PURE__*/ _asyncToGenerator(function() {
+            var _len, toHave, _key, data, _ref, user;
+            var _arguments = arguments;
+            return __generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        for(_len = _arguments.length, toHave = new Array(_len), _key = 0; _key < _len; _key++){
+                            toHave[_key] = _arguments[_key];
+                        }
+                        return [
+                            4,
+                            getUser()
+                        ];
+                    case 1:
+                        data = _state.sent();
+                        _ref = data || {
+                            identity: {}
+                        }, user = _ref.identity.user;
+                        return [
+                            2,
+                            toHave === null || toHave === void 0 ? void 0 : toHave.some(function(item) {
+                                var _user_email;
+                                return user === null || user === void 0 ? void 0 : (_user_email = user.email) === null || _user_email === void 0 ? void 0 : _user_email.includes(item);
+                            })
+                        ];
+                }
+            });
+        }),
+        loosePermissions: function(permissions) {
+            return checkPermissions(permissions, "some");
+        },
+        hasPermissions: checkPermissions,
+        hasLocalStorage: function(key, value) {
+            return localStorage.get(key) === value;
+        },
+        hasCookie: function(cookieKey, cookieValue) {
+            return js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get(cookieKey) === cookieValue;
+        },
+        apiRequest: function() {
+            var _ref = _asyncToGenerator(function(_param) {
+                var url, _param_method, method, accessor, matcher, options, data, token;
+                return __generator(this, function(_state) {
+                    switch(_state.label){
+                        case 0:
+                            url = _param.url, _param_method = _param.method, method = _param_method === void 0 ? "GET" : _param_method, accessor = _param.accessor, matcher = _param.matcher, options = _objectWithoutProperties(_param, [
+                                "url",
+                                "method",
+                                "accessor",
+                                "matcher"
+                            ]);
+                            return [
+                                4,
+                                getUser()
+                            ];
+                        case 1:
+                            data = _state.sent();
+                            return [
+                                4,
+                                getToken()
+                            ];
+                        case 2:
+                            token = _state.sent();
+                            // this will log a bunch of 403s if the account number isn't present
+                            if (data === null || data === void 0 ? void 0 : data.identity.org_id) {
+                                return [
+                                    2,
+                                    axios__WEBPACK_IMPORTED_MODULE_2___default()(_objectSpreadProps(_objectSpread({
+                                        url: url,
+                                        method: method
+                                    }, options), {
+                                        headers: _objectSpread({
+                                            Authorization: "Bearer ".concat(token)
+                                        }, options.headers)
+                                    })).then(function(response) {
+                                        return matchValue(accessor ? lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, accessor) : response, matcher);
+                                    }).catch(function() {
+                                        console.log("Unable to retrieve visibility result", {
+                                            visibilityMethod: "apiRequest",
+                                            method: method,
+                                            url: url
+                                        });
+                                        return false;
+                                    })
+                                ];
+                            } else {
+                                console.log("Unable to call API, no account number");
+                                return [
+                                    2,
+                                    false
+                                ];
+                            }
+                            return [
+                                2
+                            ];
+                    }
+                });
+            });
+            return function(_param) {
+                return _ref.apply(this, arguments);
+            };
+        }(),
+        featureFlag: function(flagName, expectedValue) {
+            return (0,_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.getFeatureFlagsError)() !== true && (_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === null || _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === void 0 ? void 0 : _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient.isEnabled(flagName)) === expectedValue;
+        }
+    }, visibilityFunctions = _tmp, _tmp;
+    initialized = true;
 };
+var getVisibilityFunctions = function() {
+    if (!initialized) {
+        throw new Error("Visibility functions were not initialized!. Call the initialized function first.");
+    }
+    return visibilityFunctions;
+};
+var initializeVisibilityFunctions = initialize;
 
 
 /***/ }),
@@ -4655,7 +4548,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var lodash_flatMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/flatMap */ "./node_modules/lodash/flatMap.js");
 /* harmony import */ var lodash_flatMap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_flatMap__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consts */ "./src/utils/consts.ts");
+/* harmony import */ var _VisibilitySingleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4861,15 +4754,16 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 var visibilityHandler = function() {
     var _ref = _asyncToGenerator(function(param) {
-        var method, args, _visibilityFunctions_method, _visibilityFunctions_method1;
+        var method, args, _visibilityFunctions_method, _visibilityFunctions_method1, visibilityFunctions;
         return __generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     method = param.method, args = param.args;
+                    visibilityFunctions = (0,_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_1__.getVisibilityFunctions)();
                     return [
                         4,
-                        (_visibilityFunctions_method1 = _consts__WEBPACK_IMPORTED_MODULE_1__.visibilityFunctions[method]) === null || _visibilityFunctions_method1 === void 0 ? void 0 : (_visibilityFunctions_method = _visibilityFunctions_method1).call.apply(_visibilityFunctions_method, [
-                            _consts__WEBPACK_IMPORTED_MODULE_1__.visibilityFunctions
+                        (_visibilityFunctions_method1 = visibilityFunctions[method]) === null || _visibilityFunctions_method1 === void 0 ? void 0 : (_visibilityFunctions_method = _visibilityFunctions_method1).call.apply(_visibilityFunctions_method, [
+                            visibilityFunctions
                         ].concat(_toConsumableArray(args || [])))
                     ];
                 case 1:
