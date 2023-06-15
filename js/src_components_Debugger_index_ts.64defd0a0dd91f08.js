@@ -173,11 +173,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/TableComposable.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Thead.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Tr.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Th.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Tbody.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/TableComposable.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Thead.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Tr.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Th.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/TableComposable/Tbody.js");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -402,6 +403,7 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 };
 
 
+
 var DebuggerTable = function(props) {
     var table;
     var entitlements = Object.entries(props.user.entitlements).reduce(function(acc, param) {
@@ -410,6 +412,7 @@ var DebuggerTable = function(props) {
         return _objectSpreadProps(_objectSpread({}, acc), (_obj = {}, _defineProperty(_obj, "entitlements_".concat(key), entitlement.is_entitled), _defineProperty(_obj, "entitlements_".concat(key, "_trial"), entitlement.is_trial), _obj));
     }, {});
     var _React_useState = _slicedToArray(react__WEBPACK_IMPORTED_MODULE_0___default().useState({}), 2), permissions = _React_useState[0], setPermissions = _React_useState[1];
+    var chrome = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
     react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function() {
         function getPermissions() {
             return _getPermissions.apply(this, arguments);
@@ -422,7 +425,7 @@ var DebuggerTable = function(props) {
                         case 0:
                             return [
                                 4,
-                                window.insights.chrome.getUserPermissions()
+                                chrome.getUserPermissions()
                             ];
                         case 1:
                             userPermissions = _state.sent();
@@ -443,9 +446,9 @@ var DebuggerTable = function(props) {
     }, []);
     if (props.selected === "Entitlements") {
         var _props_user_identity_user;
-        table = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_1__.TableComposable, {
+        table = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__.TableComposable, {
             variant: "compact"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__.Tr, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__.Th, null, "Entitlements given to ", (_props_user_identity_user = props.user.identity.user) === null || _props_user_identity_user === void 0 ? void 0 : _props_user_identity_user.username))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__.Tbody, null, Object.entries(entitlements).map(function(val, index) {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__.Tr, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__.Th, null, "Entitlements given to ", (_props_user_identity_user = props.user.identity.user) === null || _props_user_identity_user === void 0 ? void 0 : _props_user_identity_user.username))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_6__.Tbody, null, Object.entries(entitlements).map(function(val, index) {
             //remove entitlement if false
             if (val[1] === true) {
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
@@ -457,9 +460,9 @@ var DebuggerTable = function(props) {
         })));
     } else if (props.selected === "Roles") {
         var _props_user_identity_user1;
-        table = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_1__.TableComposable, {
+        table = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__.TableComposable, {
             variant: "compact"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_2__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__.Tr, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__.Th, null, "Roles given to ", (_props_user_identity_user1 = props.user.identity.user) === null || _props_user_identity_user1 === void 0 ? void 0 : _props_user_identity_user1.username))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__.Tbody, null, Object.values(permissions).map(function(val, index) {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_3__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_4__.Tr, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_5__.Th, null, "Roles given to ", (_props_user_identity_user1 = props.user.identity.user) === null || _props_user_identity_user1 === void 0 ? void 0 : _props_user_identity_user1.username))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_6__.Tbody, null, Object.values(permissions).map(function(val, index) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
                 key: index
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, val));
