@@ -375,6 +375,10 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
+var previewBunldes = [
+    "business-services",
+    "subscription-services"
+];
 var requiredBundles = [
     "application-services",
     "openshift",
@@ -384,10 +388,7 @@ var requiredBundles = [
     "settings",
     "iam",
     "quay"
-].concat(_toConsumableArray((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? [
-    "business-services",
-    "subscription-services"
-] : []));
+].concat(_toConsumableArray(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBunldes : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBunldes : []));
 var bundlesOrder = [
     "application-services",
     "openshift",
