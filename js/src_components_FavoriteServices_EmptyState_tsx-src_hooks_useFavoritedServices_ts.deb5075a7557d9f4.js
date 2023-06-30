@@ -4034,6 +4034,10 @@ var matchValue = function(value, matcher) {
     var match = matcherMapper[matcher];
     return typeof match === "function" ? match(value) : value;
 };
+var getValue = function() {
+    var response = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, accessor = arguments.length > 1 ? arguments[1] : void 0;
+    return lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, accessor) || lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, "data.".concat(accessor));
+};
 var visibilityFunctions;
 var initialized = false;
 var initialize = function(param) {
@@ -4275,7 +4279,7 @@ var initialize = function(param) {
                                             Authorization: "Bearer ".concat(token)
                                         }, options.headers)
                                     })).then(function(response) {
-                                        return matchValue(accessor ? lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, accessor) : response, matcher);
+                                        return matchValue(accessor ? getValue(response, accessor) : response, matcher);
                                     }).catch(function() {
                                         console.log("Unable to retrieve visibility result", {
                                             visibilityMethod: "apiRequest",
