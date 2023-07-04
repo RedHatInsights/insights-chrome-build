@@ -515,7 +515,8 @@ var DEFAULT_SSO_ROUTES = {
             "access.redhat.com",
             "prod.foo.redhat.com",
             "cloud.redhat.com",
-            "console.redhat.com"
+            "console.redhat.com",
+            "us.console.redhat.com"
         ],
         sso: "https://sso.redhat.com/auth",
         portal: "https://access.redhat.com"
@@ -552,7 +553,8 @@ var DEFAULT_SSO_ROUTES = {
             "stage.foo.redhat.com",
             "cloud.stage.redhat.com",
             "console.stage.redhat.com",
-            "fetest.stage.redhat.com"
+            "fetest.stage.redhat.com",
+            "us.stage.redhat.com"
         ],
         sso: "https://sso.stage.redhat.com/auth",
         portal: "https://access.stage.redhat.com"
