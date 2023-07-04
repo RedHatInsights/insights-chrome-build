@@ -3770,6 +3770,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/FeatureFlags/FeatureFlagsProvider */ "./src/components/FeatureFlags/FeatureFlagsProvider.tsx");
+/* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/dist/esm/index.js");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4025,6 +4026,7 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
+
 var matcherMapper = {
     isEmpty: (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3___default()),
     isNotEmpty: function(value) {
@@ -4039,8 +4041,6 @@ var getValue = function() {
     var response = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, accessor = arguments.length > 1 ? arguments[1] : void 0;
     return lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, accessor) || lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, "data.".concat(accessor));
 };
-var visibilityFunctions;
-var initialized = false;
 var initialize = function(param) {
     var getUserPermissions = param.getUserPermissions, getUser = param.getUser, getToken = param.getToken;
     /**
@@ -4078,8 +4078,7 @@ var initialize = function(param) {
             return _ref.apply(this, arguments);
         };
     }();
-    var _tmp;
-    _tmp = {
+    var visibilityFunctions = {
         isOrgAdmin: /*#__PURE__*/ _asyncToGenerator(function() {
             var data, _data_identity_user;
             return __generator(this, function(_state) {
@@ -4310,14 +4309,25 @@ var initialize = function(param) {
         featureFlag: function(flagName, expectedValue) {
             return (0,_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.getFeatureFlagsError)() !== true && (_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === null || _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === void 0 ? void 0 : _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient.isEnabled(flagName)) === expectedValue;
         }
-    }, visibilityFunctions = _tmp, _tmp;
-    initialized = true;
+    };
+    // in order to properly distribute the module, it has be added to the webpack share scope to avoid reference issues if these functions are called from chrome shared modules
+    (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.initSharedScope)();
+    var scope = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.getSharedScope)();
+    scope["@chrome/visibilityFunctions"] = {
+        "*": {
+            loaded: 1,
+            get: function() {
+                return visibilityFunctions;
+            }
+        }
+    };
 };
 var getVisibilityFunctions = function() {
-    if (!initialized) {
-        throw new Error("Visibility functions were not initialized!. Call the initialized function first.");
+    var visibilityFunctions = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.getSharedScope)()["@chrome/visibilityFunctions"];
+    if (!visibilityFunctions) {
+        throw new Error("Visibility functions were not initialized! Call the initialized function first.");
     }
-    return visibilityFunctions;
+    return visibilityFunctions["*"].get();
 };
 var initializeVisibilityFunctions = initialize;
 
