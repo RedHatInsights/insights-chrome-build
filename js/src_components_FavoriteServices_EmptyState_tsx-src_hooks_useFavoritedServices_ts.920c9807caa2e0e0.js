@@ -375,9 +375,9 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
 
 
 
-var previewBunldes = [
+var previewBundles = [
     "business-services",
-    "subscription-services"
+    "subscriptions"
 ];
 var requiredBundles = [
     "application-services",
@@ -388,7 +388,7 @@ var requiredBundles = [
     "settings",
     "iam",
     "quay"
-].concat(_toConsumableArray(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBunldes : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBunldes : []));
+].concat(_toConsumableArray(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBundles : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBundles : []));
 var bundlesOrder = [
     "application-services",
     "openshift",
@@ -400,8 +400,7 @@ var bundlesOrder = [
     "subscriptions",
     "iam",
     "quay",
-    "business-services",
-    "subscription-services"
+    "business-services"
 ];
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
 function findModuleByLink(href) {
