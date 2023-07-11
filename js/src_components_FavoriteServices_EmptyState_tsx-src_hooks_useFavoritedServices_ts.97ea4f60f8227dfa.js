@@ -785,7 +785,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 
 var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(param) {
-    var href = param.href, isBeta = param.isBeta, onLinkClick = param.onLinkClick, className = param.className, currAppId = param.currAppId, appId = param.appId, children = param.children, tabIndex = param.tabIndex;
+    var _param_href = param.href, href = _param_href === void 0 ? "" : _param_href, isBeta = param.isBeta, onLinkClick = param.onLinkClick, className = param.className, currAppId = param.currAppId, appId = param.appId, children = param.children, tabIndex = param.tabIndex;
     var linkRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     var moduleRoutes = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
         var moduleRoutes = param.chrome.moduleRoutes;
