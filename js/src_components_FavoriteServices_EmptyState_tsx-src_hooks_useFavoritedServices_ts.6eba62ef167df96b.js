@@ -793,7 +793,7 @@ var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
     });
     var moduleEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         return moduleRoutes.find(function(route) {
-            return href.includes(route.path);
+            return href === null || href === void 0 ? void 0 : href.includes(route.path);
         });
     }, [
         href,
