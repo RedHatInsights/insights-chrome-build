@@ -2463,8 +2463,10 @@ var useAllServices = function() {
         servicesLinks: servicesLinks,
         error: error,
         ready: ready,
+        availableSections: availableSections,
         filterValue: filterValue,
-        setFilterValue: setFilterValue
+        setFilterValue: setFilterValue,
+        findNavItems: findNavItems
     };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useAllServices);
@@ -2616,6 +2618,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
+/* harmony import */ var _components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
 function _arrayLikeToArray(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2731,10 +2734,27 @@ function _unsupportedIterableToArray(o, minLen) {
 
 
 
+
 var useFavoritedServices = function() {
     var favoritePages = (0,_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__["default"])().favoritePages;
-    var allLinks = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])().allLinks;
+    var _useAllServices = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])(), allLinks = _useAllServices.allLinks, availableSections = _useAllServices.availableSections;
     var _useState = _slicedToArray((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), 2), bundles = _useState[0], setBundles = _useState[1];
+    var fakeBundle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
+        // escape early if we have no services
+        if (availableSections.length === 0) {
+            return [];
+        }
+        // map services links to nav links
+        return availableSections.reduce(function(acc, curr) {
+            var // no need to recreate the reduce array
+            _acc;
+            var fakeNavItems = curr.links.filter(_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_5__.isAllServicesLink);
+            (_acc = acc).push.apply(_acc, _toConsumableArray(fakeNavItems));
+            return acc;
+        }, []);
+    }, [
+        availableSections
+    ]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__["default"])().then(function(data) {
             return setBundles(data);
@@ -2743,10 +2763,20 @@ var useFavoritedServices = function() {
         });
     }, []);
     var linksWithFragments = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
+        // push items with unique hrefs from our fake bundle for leaf creation
+        fakeBundle.forEach(function(item) {
+            if (!allLinks.some(function(link) {
+                return link.href === item.href;
+            })) {
+                allLinks.push(item);
+            }
+        });
         return allLinks.map(function(link) {
             var linkLeaf;
             // use every to exit early if match was found
-            bundles.every(function(bundle) {
+            _toConsumableArray(bundles).concat([
+                fakeBundle || []
+            ]).every(function(bundle) {
                 var leaf = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.findNavLeafPath)((0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__.extractNavItemGroups)(bundle), function(item) {
                     return (item === null || item === void 0 ? void 0 : item.href) === link.href;
                 });
@@ -2762,7 +2792,8 @@ var useFavoritedServices = function() {
         });
     }, [
         allLinks,
-        bundles
+        bundles,
+        fakeBundle
     ]);
     // extract human friendly data from the all services data set
     var favoriteServices = favoritePages.reduce(function(acc, curr) {
