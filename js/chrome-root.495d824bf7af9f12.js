@@ -56448,7 +56448,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isValidAccountNumber": () => (/* binding */ isValidAccountNumber),
 /* harmony export */   "lastActive": () => (/* binding */ lastActive),
 /* harmony export */   "levelArray": () => (/* binding */ levelArray),
-/* harmony export */   "loadFEOFedModules": () => (/* binding */ loadFEOFedModules),
 /* harmony export */   "loadFedModules": () => (/* binding */ loadFedModules),
 /* harmony export */   "noop": () => (/* binding */ noop),
 /* harmony export */   "pageAllowsUnentitled": () => (/* binding */ pageAllowsUnentitled),
@@ -57003,11 +57002,6 @@ var fedModulesheaders = {
     Pragma: "no-cache",
     Expires: "0"
 };
-var loadFEOFedModules = function() {
-    return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(window.location.origin).concat(isBeta() ? "/beta" : "", "/config/chrome/fed-modules.json?ts=").concat(Date.now()), {
-        headers: fedModulesheaders
-    });
-};
 var loadFedModules = function() {
     var _ref = _asyncToGenerator(function() {
         return __generator(this, function(_state) {
@@ -57221,7 +57215,7 @@ function findNavLeafPath(navItems) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("de4ae087cad326e7")
+/******/ 		__webpack_require__.h = () => ("495d824bf7af9f12")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
