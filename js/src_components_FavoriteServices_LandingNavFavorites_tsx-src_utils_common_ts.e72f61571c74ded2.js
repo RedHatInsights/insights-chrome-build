@@ -809,6 +809,14 @@ var fedModulesheaders = {
     Pragma: "no-cache",
     Expires: "0"
 };
+// FIXME: Remove once qaprodauth is dealt with
+// can't use /beta because it will ge redirected by Akamai to /preview and we don't have any assets there\\
+// Always use stable
+var loadCSCFedModules = function() {
+    return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(window.location.origin, "/config/chrome/fed-modules.json?ts=").concat(Date.now()), {
+        headers: fedModulesheaders
+    });
+};
 var loadFedModules = function() {
     var _ref = _asyncToGenerator(function() {
         return __generator(this, function(_state) {
@@ -817,7 +825,7 @@ var loadFedModules = function() {
                 Promise.all([
                     axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(getChromeStaticPathname("modules"), "/fed-modules.json"), {
                         headers: fedModulesheaders
-                    }),
+                    }).catch(loadCSCFedModules),
                     axios__WEBPACK_IMPORTED_MODULE_2___default().get(getChromeDynamicPaths()).catch(function() {
                         return {
                             data: {}
