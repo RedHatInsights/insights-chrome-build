@@ -801,6 +801,9 @@ function getChromeStaticPathname(type) {
     var prodEnv = isProd() ? "prod" : "stage";
     return "".concat(CHROME_SERVICE_BASE).concat(chromeServiceStaticPathname[stableEnv][prodEnv], "/").concat(type);
 }
+function getChromeDynamicPaths() {
+    return "".concat(isBeta() ? "/beta" : "", "/apps/chrome/operator-generated/fed-modules.json");
+}
 var fedModulesheaders = {
     "Cache-Control": "no-cache",
     Pragma: "no-cache",
@@ -811,8 +814,20 @@ var loadFedModules = function() {
         return __generator(this, function(_state) {
             return [
                 2,
-                axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(getChromeStaticPathname("modules"), "/fed-modules.json"), {
-                    headers: fedModulesheaders
+                Promise.all([
+                    axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(getChromeStaticPathname("modules"), "/fed-modules.json"), {
+                        headers: fedModulesheaders
+                    }),
+                    axios__WEBPACK_IMPORTED_MODULE_2___default().get(getChromeDynamicPaths()).catch(function() {
+                        return {
+                            data: {}
+                        };
+                    })
+                ]).then(function(param) {
+                    var _param = _slicedToArray(param, 2), staticConfig = _param[0], feoConfig = _param[1];
+                    var _feoConfig_data;
+                    staticConfig.data.chrome = feoConfig === null || feoConfig === void 0 ? void 0 : (_feoConfig_data = feoConfig.data) === null || _feoConfig_data === void 0 ? void 0 : _feoConfig_data.chrome;
+                    return staticConfig;
                 })
             ];
         });
