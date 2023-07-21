@@ -1,15 +1,15 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.e72f61571c74ded2.js"
+            "/beta/apps/chrome/js/chrome.6cabed078f9159b3.js"
         ],
         "modules": [
-            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.e72f61571c74ded2.js",
-            "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.e72f61571c74ded2.css",
-            "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.e72f61571c74ded2.js",
-            "/beta/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.e72f61571c74ded2.js",
-            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-charts_dist_esm_components_ChartUtils_chart-theme_js-no-cf6fa1.e72f61571c74ded2.js",
-            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-icons_dist_esm_icons_star-icon_js-node_modules_axios_in-5e2298.e72f61571c74ded2.js"
+            "/beta/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.6cabed078f9159b3.js",
+            "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.6cabed078f9159b3.css",
+            "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.6cabed078f9159b3.js",
+            "/beta/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.6cabed078f9159b3.js",
+            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-charts_dist_esm_components_ChartUtils_chart-theme_js-no-cf6fa1.6cabed078f9159b3.js",
+            "/beta/apps/chrome/js/vendors-node_modules_patternfly_react-icons_dist_esm_icons_star-icon_js-node_modules_axios_in-5e2298.6cabed078f9159b3.js"
         ]
     }
 }
