@@ -834,7 +834,10 @@ var loadFedModules = function() {
                 ]).then(function(param) {
                     var _param = _slicedToArray(param, 2), staticConfig = _param[0], feoConfig = _param[1];
                     var _feoConfig_data;
-                    staticConfig.data.chrome = feoConfig === null || feoConfig === void 0 ? void 0 : (_feoConfig_data = feoConfig.data) === null || _feoConfig_data === void 0 ? void 0 : _feoConfig_data.chrome;
+                    if (feoConfig === null || feoConfig === void 0 ? void 0 : (_feoConfig_data = feoConfig.data) === null || _feoConfig_data === void 0 ? void 0 : _feoConfig_data.chrome) {
+                        var _feoConfig_data1;
+                        staticConfig.data.chrome = feoConfig === null || feoConfig === void 0 ? void 0 : (_feoConfig_data1 = feoConfig.data) === null || _feoConfig_data1 === void 0 ? void 0 : _feoConfig_data1.chrome;
+                    }
                     return staticConfig;
                 })
             ];
