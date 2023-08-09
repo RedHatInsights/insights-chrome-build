@@ -553,7 +553,7 @@ var DEFAULT_SSO_ROUTES = {
             "cloud.stage.redhat.com",
             "console.stage.redhat.com",
             "fetest.stage.redhat.com",
-            "us.stage.redhat.com"
+            "us.console.stage.redhat.com"
         ],
         sso: "https://sso.stage.redhat.com/auth",
         portal: "https://access.stage.redhat.com"
@@ -575,7 +575,8 @@ var DEFAULT_SSO_ROUTES = {
     dev: {
         url: [
             "dev.foo.redhat.com",
-            "console.dev.redhat.com"
+            "console.dev.redhat.com",
+            "us.console.dev.redhat.com"
         ],
         sso: "https://sso.redhat.com/auth",
         portal: "https://access.redhat.com"
