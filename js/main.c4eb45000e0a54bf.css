@@ -51168,7 +51168,15 @@ aside {
   z-index: 19001;
   position: fixed;
   bottom: 0;
+  padding-left: var(--pf-global--spacer--xl);
+  padding-right: var(--pf-global--spacer--xl);
   width: 100%;
+}
+@media only screen and (max-width: 992px) {
+  #truste-consent-track .truste-banner {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .pfext-quick-start-drawer__body .pf-c-backdrop {
