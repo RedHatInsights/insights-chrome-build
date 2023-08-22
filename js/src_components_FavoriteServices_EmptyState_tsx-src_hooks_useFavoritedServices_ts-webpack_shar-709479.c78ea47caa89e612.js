@@ -1606,6 +1606,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _globalFilterApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globalFilterApi */ "./src/components/GlobalFilter/globalFilterApi.ts");
 /* harmony import */ var _redhat_cloud_services_host_inventory_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @redhat-cloud-services/host-inventory-client */ "./node_modules/@redhat-cloud-services/host-inventory-client/dist/index.js");
 /* harmony import */ var _redhat_cloud_services_host_inventory_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_host_inventory_client__WEBPACK_IMPORTED_MODULE_1__);
+/* eslint-disable @typescript-eslint/ban-ts-comment */ // FIXME: Figure out what are the issues with the JS client
 /* eslint-disable camelcase */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1873,18 +1874,16 @@ function getAllTags() {
     var _ref = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, search = _ref.search, activeTags = _ref.activeTags, registeredWith = _ref.registeredWith, pagination = arguments.length > 1 ? arguments[1] : void 0;
     var _pagination, _pagination1;
     var _flatTags = _sliced_to_array((0,_globalFilterApi__WEBPACK_IMPORTED_MODULE_0__.flatTags)(activeTags, false, true), 3), workloads = _flatTags[0], SID = _flatTags[1], selectedTags = _flatTags[2];
-    return tags.apiTagGetTags(selectedTags, "tag", "ASC", ((_pagination = pagination) === null || _pagination === void 0 ? void 0 : _pagination.perPage) || 10, ((_pagination1 = pagination) === null || _pagination1 === void 0 ? void 0 : _pagination1.page) || 1, undefined, search, undefined, undefined, undefined, undefined, undefined, undefined, registeredWith ? [
-        registeredWith
-    ] : undefined, undefined, {
+    return tags.apiTagGetTags(selectedTags, "tag", "ASC", ((_pagination = pagination) === null || _pagination === void 0 ? void 0 : _pagination.perPage) || 10, ((_pagination1 = pagination) === null || _pagination1 === void 0 ? void 0 : _pagination1.page) || 1, undefined, search, undefined, undefined, undefined, undefined, undefined, undefined, // @ts-ignore
+    registeredWith ? registeredWith : undefined, undefined, {
         query: generateFilter(buildFilter(workloads, SID))
     });
 }
 function getAllSIDs() {
     var _ref = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, search = _ref.search, activeTags = _ref.activeTags, registeredWith = _ref.registeredWith, pagination = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     var _flatTags = _sliced_to_array((0,_globalFilterApi__WEBPACK_IMPORTED_MODULE_0__.flatTags)(activeTags, false, true), 3), workloads = _flatTags[0], SID = _flatTags[1], selectedTags = _flatTags[2];
-    return sap.apiSystemProfileGetSapSids(search, selectedTags, pagination && pagination.perPage || 10, pagination && pagination.page || 1, undefined, registeredWith ? [
-        registeredWith
-    ] : undefined, undefined, {
+    return sap.apiSystemProfileGetSapSids(search, selectedTags, pagination && pagination.perPage || 10, pagination && pagination.page || 1, undefined, // @ts-ignore
+    registeredWith ? registeredWith : undefined, undefined, {
         query: generateFilter(buildFilter(workloads, SID))
     });
 }
@@ -1903,21 +1902,18 @@ function _getAllWorkloads() {
                     return [
                         4,
                         Promise.all([
-                            sap.apiSystemProfileGetSapSystem(selectedTags, pagination && pagination.perPage || 10, pagination && pagination.page || 1, undefined, registeredWith ? [
-                                registeredWith
-                            ] : undefined, undefined, {
+                            sap.apiSystemProfileGetSapSystem(selectedTags, pagination && pagination.perPage || 10, pagination && pagination.page || 1, undefined, // @ts-ignore
+                            registeredWith ? registeredWith : undefined, undefined, {
                                 query: generateFilter(buildFilter(workloads, SID))
                             }),
-                            system.apiHostGetHostList(undefined, undefined, undefined, undefined, undefined, undefined, undefined, 1, undefined, undefined, undefined, undefined, selectedTags, registeredWith ? [
-                                registeredWith
-                            ] : undefined, undefined, undefined, {
+                            system.apiHostGetHostList(undefined, undefined, undefined, undefined, undefined, undefined, undefined, 1, undefined, undefined, undefined, undefined, selectedTags, // @ts-ignore
+                            registeredWith ? registeredWith : undefined, undefined, undefined, {
                                 query: generateFilter(buildFilter(_object_spread_props(_object_spread({}, workloads || {}), _define_property({}, _globalFilterApi__WEBPACK_IMPORTED_MODULE_0__.AAP_KEY, {
                                     isSelected: true
                                 })), SID))
                             }),
-                            system.apiHostGetHostList(undefined, undefined, undefined, undefined, undefined, undefined, undefined, 1, undefined, undefined, undefined, undefined, selectedTags, registeredWith ? [
-                                registeredWith
-                            ] : undefined, undefined, undefined, {
+                            system.apiHostGetHostList(undefined, undefined, undefined, undefined, undefined, undefined, undefined, 1, undefined, undefined, undefined, undefined, selectedTags, // @ts-ignore
+                            registeredWith ? registeredWith : undefined, undefined, undefined, {
                                 query: generateFilter(buildFilter(_object_spread_props(_object_spread({}, workloads || {}), _define_property({}, _globalFilterApi__WEBPACK_IMPORTED_MODULE_0__.MSSQL_KEY, {
                                     isSelected: true
                                 })), SID))
