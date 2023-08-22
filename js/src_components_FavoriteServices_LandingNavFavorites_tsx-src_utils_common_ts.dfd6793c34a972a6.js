@@ -43,7 +43,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FavoriteServices_EmptyState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../FavoriteServices/EmptyState */ "./src/components/FavoriteServices/EmptyState.tsx");
 /* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../hooks/useBundle */ "./src/hooks/useBundle.ts");
 /* harmony import */ var _LandingNavFavorites_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./LandingNavFavorites.scss */ "./src/components/FavoriteServices/LandingNavFavorites.scss");
-/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_12__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -121,8 +122,8 @@ var LandingNavFavorites = function() {
         return favoritedServices.slice((page - 1) * perPage, page * perPage).map(function(favorite, index) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_2__.GalleryItem, {
                 key: index
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_12__["default"], {
-                href: favorite.pathname,
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+                to: favorite.pathname,
                 className: "chr-c-favorite-service__tile"
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.Card, {
                 isFullHeight: true,
@@ -150,8 +151,8 @@ var LandingNavFavorites = function() {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_6__.StarIcon, null)), "My favorite services"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
         component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.TextVariants.p,
         className: "pf-v5-u-display-inline"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        href: "/allservices"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+        to: "/allservices"
     }, "View all services")))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.FlexItem, {
         align: {
             default: "alignRight"
