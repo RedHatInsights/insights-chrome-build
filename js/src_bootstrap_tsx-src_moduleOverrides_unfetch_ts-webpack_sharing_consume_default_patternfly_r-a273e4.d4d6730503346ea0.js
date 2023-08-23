@@ -18612,10 +18612,10 @@ var DefaultLayout = function(param) {
     };
     var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.notifications-drawer");
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_6__.Page, _object_spread_props(_object_spread({
-        className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("chr-c-page", {
+        className: (classnames__WEBPACK_IMPORTED_MODULE_1___default()("chr-c-page", {
             "chr-c-page__hasBanner": hasBanner,
             "chr-c-page__account-banner": selectedAccountNumber
-        }),
+        }), "pf-c-page"),
         onPageResize: null,
         header: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Masthead__WEBPACK_IMPORTED_MODULE_5__.Masthead, {
             className: "chr-c-masthead pf-v5-u-p-0",
