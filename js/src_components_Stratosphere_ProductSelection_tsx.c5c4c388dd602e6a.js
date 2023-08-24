@@ -199,7 +199,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Header/Header */ "./src/components/Header/Header.tsx");
 /* harmony import */ var _ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../ChromeLink/ChromeLink */ "./src/components/ChromeLink/ChromeLink.tsx");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Footer */ "./src/components/Stratosphere/Footer.tsx");
-/* harmony import */ var _product_selection_scss__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./product-selection.scss */ "./src/components/Stratosphere/product-selection.scss");
+/* harmony import */ var _hooks_useMarketplacePartner__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../hooks/useMarketplacePartner */ "./src/hooks/useMarketplacePartner.ts");
+/* harmony import */ var _product_selection_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./product-selection.scss */ "./src/components/Stratosphere/product-selection.scss");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -268,7 +269,9 @@ function _object_spread_props(target, source) {
 
 
 
+
 var ProductSelection = function() {
+    var _useMarketplacePartner = (0,_hooks_useMarketplacePartner__WEBPACK_IMPORTED_MODULE_15__["default"])(), partner = _useMarketplacePartner.partner, partnerId = _useMarketplacePartner.partnerId;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         id: "chrome-app-render-root"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_5__.Page, {
@@ -276,13 +279,13 @@ var ProductSelection = function() {
             className: "chr-c-masthead"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header_Header__WEBPACK_IMPORTED_MODULE_12__.Header, null))
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "chr-c-product-selection pf-v5-u-pt-lg pf-v5-u-pb-lg"
+        className: "chr-c-product-selection pf-u-pt-lg pf-u-pb-lg"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.Stack, {
         hasGutter: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_3__.Icon, {
-        iconSize: "xl"
+        size: "xl"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_check_circle_icon__WEBPACK_IMPORTED_MODULE_9___default()), {
-        color: "var(--pf-v5-global--success-color--100)"
+        color: "var(--pf-global--success-color--100)"
     })))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__.Title, {
         size: "3xl",
         headingLevel: "h1"
@@ -290,7 +293,7 @@ var ProductSelection = function() {
         className: "chr-c-product-selection__description",
         size: "3xl",
         headingLevel: "h1"
-    }, "your Red Hat and AWS accounts are connected and you can now access Red Hat support resources")))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, "To get started using your Red Hat products, follow the links below")))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_2__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "your Red Hat and ", partner, " accounts are connected and you can now access Red Hat support resources")))), partnerId !== "from-azure" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, "To get started using your Red Hat products, follow the links below")))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_2__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "chr-c-product-selection__layout"
     }, _products_list__WEBPACK_IMPORTED_MODULE_10__["default"].map(function(item, i) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductCard__WEBPACK_IMPORTED_MODULE_11__["default"], _object_spread_props(_object_spread({
@@ -298,7 +301,7 @@ var ProductSelection = function() {
         }, item), {
             order: i
         }));
-    })))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, "To manage or learn more about your Red Hat subscriptions, visit", " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_6__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, "To manage or learn more about your Red Hat subscriptions, visit", " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_13__["default"], {
         href: "/insights/subscriptions/rhel",
         appId: "subscriptions"
     }, "subscriptions."))))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_14__["default"], null)));
