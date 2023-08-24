@@ -5993,12 +5993,13 @@ var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(func
         });
         /**
        * update pendo metadata on application change
-       */ try {
-            var _window_pendo, _window;
-            (_window = window) === null || _window === void 0 ? void 0 : (_window_pendo = _window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.updateOptions((0,_analytics__WEBPACK_IMPORTED_MODULE_6__.getPendoConf)(user));
-        } catch (error) {
-            console.error("Unable to update pendo options");
-            console.error(error);
+       */ if (window.pendo) {
+            try {
+                window.pendo.updateOptions((0,_analytics__WEBPACK_IMPORTED_MODULE_6__.getPendoConf)(user));
+            } catch (error) {
+                console.error("Unable to update pendo options");
+                console.error(error);
+            }
         }
         /**
        * TODO: Discuss default close feature of topics
