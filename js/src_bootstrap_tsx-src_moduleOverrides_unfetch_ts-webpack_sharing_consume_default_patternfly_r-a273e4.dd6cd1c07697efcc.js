@@ -10241,7 +10241,9 @@ var Tools = function() {
     /* list out the items for the about menu */ var aboutMenuDropdownItems = [
         {
             title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].apiDocumentation)),
-            url: "https://developers.redhat.com/api-catalog/",
+            onClick: function() {
+                return window.open("https://developers.redhat.com/api-catalog/", "_blank");
+            },
             isHidden: isITLessEnv
         },
         {
@@ -10254,17 +10256,23 @@ var Tools = function() {
         },
         {
             title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].statusPage)),
-            url: "https://status.redhat.com/",
+            onClick: function() {
+                return window.open("https://status.redhat.com/", "_blank");
+            },
             isHidden: isITLessEnv
         },
         {
             title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].supportOptions)),
-            url: "https://access.redhat.com/support",
+            onClick: function() {
+                return window.open("https://access.redhat.com/support", "_blank");
+            },
             isHidden: isITLessEnv
         },
         {
             title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].insightsRhelDocumentation)),
-            url: "https://access.redhat.com/documentation/en-us/red_hat_insights",
+            onClick: function() {
+                return window.open("https://access.redhat.com/documentation/en-us/red_hat_insights", "_blank");
+            },
             isHidden: (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.getSection)() !== "insights" || isITLessEnv
         },
         {
