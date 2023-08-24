@@ -15214,9 +15214,6 @@ var parseHighlights = function(base) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AWS_BANNER_NAME: () => (/* binding */ AWS_BANNER_NAME),
-/* harmony export */   AZURE_BANNER_NAME: () => (/* binding */ AZURE_BANNER_NAME),
-/* harmony export */   GCP_BANNER_NAME: () => (/* binding */ GCP_BANNER_NAME),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
@@ -15229,58 +15226,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_4__);
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
+/* harmony import */ var _hooks_useMarketplacePartner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/useMarketplacePartner */ "./src/hooks/useMarketplacePartner.ts");
 
 
 
 
 
-// TODO: Figure out what param chrome should expect
-var AWS_BANNER_NAME = "from-aws";
-var AZURE_BANNER_NAME = "from-azure";
-var GCP_BANNER_NAME = "from-gcp";
-var _obj;
-var partnerMapper = (_obj = {}, _define_property(_obj, AWS_BANNER_NAME, "AWS"), _define_property(_obj, AZURE_BANNER_NAME, "Microsoft Azure"), _define_property(_obj, GCP_BANNER_NAME, "Google Cloud"), _obj);
-var possibleParams = [
-    AWS_BANNER_NAME,
-    AZURE_BANNER_NAME,
-    GCP_BANNER_NAME
-];
-var hasPartner = function(params) {
-    return possibleParams.find(function(param) {
-        return params.has(param);
-    });
-};
+
 var RedirectBanner = function() {
-    var _useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)(), pathname = _useLocation.pathname, search = _useLocation.search, hash = _useLocation.hash, state = _useLocation.state;
+    var _useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)(), pathname = _useLocation.pathname, hash = _useLocation.hash, state = _useLocation.state;
+    var _useMarketplacePartner = (0,_hooks_useMarketplacePartner__WEBPACK_IMPORTED_MODULE_5__["default"])(), partnerId = _useMarketplacePartner.partnerId, partner = _useMarketplacePartner.partner, removePartnerParam = _useMarketplacePartner.removePartnerParam;
     var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-    var params = new URLSearchParams(search);
-    var isVisible = hasPartner(params);
-    var partner = isVisible ? partnerMapper[isVisible] : null;
     var product = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(state) {
         return state.chrome.activeProduct;
     });
     var handleClose = function() {
         // remove only the flag search param
-        params.delete(AWS_BANNER_NAME);
-        params.delete(AZURE_BANNER_NAME);
-        params.delete(GCP_BANNER_NAME);
+        var clearedParams = removePartnerParam();
         // only change the search params
         navigate({
             pathname: pathname,
-            search: params.toString(),
+            search: clearedParams.toString(),
             hash: hash
         }, {
             state: state,
@@ -15288,7 +15254,7 @@ var RedirectBanner = function() {
         });
     };
     // show the banner only if correct search param exists
-    return isVisible ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_1__.Alert, {
+    return partnerId ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_1__.Alert, {
         actionClose: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_1__.AlertActionCloseButton, {
             "data-testid": "stratosphere-banner-close",
             onClose: handleClose
@@ -15963,6 +15929,76 @@ var useChromeServiceEvents = function() {
     ]);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useChromeServiceEvents);
+
+
+/***/ }),
+
+/***/ "./src/hooks/useMarketplacePartner.ts":
+/*!********************************************!*\
+  !*** ./src/hooks/useMarketplacePartner.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AWS_BANNER_NAME: () => (/* binding */ AWS_BANNER_NAME),
+/* harmony export */   AZURE_BANNER_NAME: () => (/* binding */ AZURE_BANNER_NAME),
+/* harmony export */   GCP_BANNER_NAME: () => (/* binding */ GCP_BANNER_NAME),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_0__);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+
+// TODO: Figure out what param chrome should expect
+var AWS_BANNER_NAME = "from-aws";
+var AZURE_BANNER_NAME = "from-azure";
+var GCP_BANNER_NAME = "from-gcp";
+var _obj;
+var partnerMapper = (_obj = {}, _define_property(_obj, AWS_BANNER_NAME, "AWS"), _define_property(_obj, AZURE_BANNER_NAME, "Microsoft Azure"), _define_property(_obj, GCP_BANNER_NAME, "Google Cloud"), _obj);
+var possibleParams = [
+    AWS_BANNER_NAME,
+    AZURE_BANNER_NAME,
+    GCP_BANNER_NAME
+];
+var hasPartner = function(params) {
+    return possibleParams.find(function(param) {
+        return params.has(param);
+    });
+};
+var removePartnerParam = function(params) {
+    params.delete(AWS_BANNER_NAME);
+    params.delete(AZURE_BANNER_NAME);
+    params.delete(GCP_BANNER_NAME);
+    return params;
+};
+var useMarketplacePartner = function() {
+    var search = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_0__.useLocation)().search;
+    var params = new URLSearchParams(search);
+    var partnerId = hasPartner(params);
+    var partner = partnerId ? partnerMapper[partnerId] : null;
+    return {
+        partner: partner,
+        partnerId: partnerId,
+        removePartnerParam: function() {
+            return removePartnerParam(params);
+        }
+    };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useMarketplacePartner);
 
 
 /***/ }),
