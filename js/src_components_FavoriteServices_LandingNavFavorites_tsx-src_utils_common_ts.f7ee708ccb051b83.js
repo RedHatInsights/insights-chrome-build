@@ -247,6 +247,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BLOCK_CLEAR_GATEWAY_ERROR: () => (/* binding */ BLOCK_CLEAR_GATEWAY_ERROR),
 /* harmony export */   DEFAULT_SSO_ROUTES: () => (/* binding */ DEFAULT_SSO_ROUTES),
 /* harmony export */   ITLess: () => (/* binding */ ITLess),
+/* harmony export */   ITLessCognito: () => (/* binding */ ITLessCognito),
+/* harmony export */   ITLessKeycloak: () => (/* binding */ ITLessKeycloak),
 /* harmony export */   LOGIN_SCOPES_STORAGE_KEY: () => (/* binding */ LOGIN_SCOPES_STORAGE_KEY),
 /* harmony export */   chromeServiceStaticPathname: () => (/* binding */ chromeServiceStaticPathname),
 /* harmony export */   chunkLoadErrorRefreshKey: () => (/* binding */ chunkLoadErrorRefreshKey),
@@ -583,10 +585,31 @@ var DEFAULT_SSO_ROUTES = {
     },
     frhStage: {
         url: [
+            "console.stage.openshiftusgov.com"
+        ],
+        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        portal: "https://console.stage.openshiftusgov.com"
+    },
+    ephem: {
+        url: [
             "ephem.outsrights.cc"
         ],
-        sso: "https://stage-gov-console.auth.us-east-1.amazoncognito.com/login",
+        sso: "https://keycloak-fips-test.apps.fips-key.2vn8.p1.openshiftapps.com",
         portal: "https://ephem.outsrights.cc/"
+    },
+    int: {
+        url: [
+            "console.int.openshiftusgov.com"
+        ],
+        sso: "https://sso.int.openshiftusgov.com/",
+        portal: "https://console.int.openshiftusgov.com/"
+    },
+    scr: {
+        url: [
+            "console01.stage.openshiftusgov.com"
+        ],
+        sso: "https://sso01.stage.openshiftusgov.com/",
+        portal: "https://console01.stage.openshiftusgov.com"
     },
     dev: {
         url: [
@@ -703,7 +726,13 @@ function getRouterBasename(pathname) {
     return isBeta(pathname) ? "/".concat(previewFragment) : "/";
 }
 function ITLess() {
+    return getEnv() === "frh" || getEnv() === "frhStage" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
+}
+function ITLessCognito() {
     return getEnv() === "frh" || getEnv() === "frhStage";
+}
+function ITLessKeycloak() {
+    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
@@ -807,16 +836,18 @@ var CHROME_SERVICE_BASE = "/api/chrome-service/v1";
 var chromeServiceStaticPathname = {
     beta: {
         stage: "/static/beta/stage",
-        prod: "/static/beta/prod"
+        prod: "/static/beta/prod",
+        itless: "/static/beta/itless"
     },
     stable: {
         stage: "/static/stable/stage",
-        prod: "/static/stable/prod"
+        prod: "/static/stable/prod",
+        itless: "/static/stable/itless"
     }
 };
 function getChromeStaticPathname(type) {
     var stableEnv = isBeta() ? "beta" : "stable";
-    var prodEnv = isProd() ? "prod" : "stage";
+    var prodEnv = isProd() ? "prod" : ITLess() ? "itless" : "stage";
     return "".concat(CHROME_SERVICE_BASE).concat(chromeServiceStaticPathname[stableEnv][prodEnv], "/").concat(type);
 }
 function getChromeDynamicPaths() {
@@ -867,14 +898,13 @@ var loadFedModules = function() {
 }();
 var generateRoutesList = function(modules) {
     return Object.entries(modules).reduce(function(acc, param) {
-        var _param = _sliced_to_array(param, 2), scope = _param[0], _param_ = _param[1], dynamic = _param_.dynamic, manifestLocation = _param_.manifestLocation, isFedramp = _param_.isFedramp, _param__modules = _param_.modules, _$modules = _param__modules === void 0 ? [] : _param__modules;
+        var _param = _sliced_to_array(param, 2), scope = _param[0], _param_ = _param[1], dynamic = _param_.dynamic, manifestLocation = _param_.manifestLocation, _param__modules = _param_.modules, _$modules = _param__modules === void 0 ? [] : _param__modules;
         return _to_consumable_array(acc).concat(_to_consumable_array(_$modules.map(function(param) {
             var module = param.module, routes = param.routes;
             return /**Clean up this map function */ routes.map(function(route) {
                 return {
                     scope: scope,
                     module: module,
-                    isFedramp: typeof route === "string" ? isFedramp : route.isFedramp,
                     path: typeof route === "string" ? route : route.pathname,
                     manifestLocation: manifestLocation,
                     dynamic: typeof dynamic === "boolean" ? dynamic : typeof route === "string" ? true : route.dynamic,

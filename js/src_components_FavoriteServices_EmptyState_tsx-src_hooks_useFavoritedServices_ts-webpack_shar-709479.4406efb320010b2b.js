@@ -101,6 +101,7 @@ function isAllServicesLink(item) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   itLessBundles: () => (/* binding */ itLessBundles),
 /* harmony export */   requiredBundles: () => (/* binding */ requiredBundles)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -111,7 +112,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
-/* harmony import */ var _utils_useRenderFedramp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/useRenderFedramp */ "./src/utils/useRenderFedramp.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -378,7 +378,6 @@ function _ts_generator(thisArg, body) {
 
 
 
-
 var previewBundles = [
     "business-services",
     "subscriptions"
@@ -393,6 +392,12 @@ var requiredBundles = [
     "iam",
     "quay"
 ].concat(_to_consumable_array(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBundles : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBundles : []));
+var itLessBundles = [
+    "openshift",
+    "insights",
+    "settings",
+    "iam"
+];
 var bundlesOrder = [
     "application-services",
     "openshift",
@@ -406,7 +411,6 @@ var bundlesOrder = [
     "quay",
     "business-services"
 ];
-var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
 function findModuleByLink(href) {
     var modules = (arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
         modules: []
@@ -435,7 +439,6 @@ function getBundleLink(_param, modules) {
     var subscriptionsLinks = [];
     var url = href;
     var appId = rest.appId;
-    var isFedramp = (0,_utils_useRenderFedramp__WEBPACK_IMPORTED_MODULE_5__.computeFedrampResult)(isITLessEnv, url, modules[appId]);
     if (expandable) {
         var _routes;
         (_routes = routes) === null || _routes === void 0 ? void 0 : _routes.forEach(function(_param) {
@@ -453,7 +456,6 @@ function getBundleLink(_param, modules) {
             }
             if (rest.filterable !== false && (((_href1 = href) === null || _href1 === void 0 ? void 0 : _href1.includes("/insights/subscriptions")) || ((_href2 = href) === null || _href2 === void 0 ? void 0 : _href2.includes("/openshift/subscriptions")))) {
                 subscriptionsLinks.push(_object_spread_props(_object_spread({}, rest), {
-                    isFedramp: false,
                     href: href,
                     title: title
                 }));
@@ -463,12 +465,10 @@ function getBundleLink(_param, modules) {
                 var truncatedRoute = href.split("/").slice(0, 3).join("/");
                 url = isExternal ? href : moduleRoute.length > truncatedRoute.length ? moduleRoute : truncatedRoute;
                 appId = rest.appId ? rest.appId : appId;
-                isFedramp = (0,_utils_useRenderFedramp__WEBPACK_IMPORTED_MODULE_5__.computeFedrampResult)(isITLessEnv, url, modules[appId]);
             }
         });
     }
     return _object_spread_props(_object_spread({}, rest), {
-        isFedramp: isFedramp,
         appId: appId,
         isExternal: isExternal,
         title: title,
@@ -532,9 +532,6 @@ var useAppFilter = function() {
                             ]);
                         }, []).flat().map(function(link) {
                             return getBundleLink(link, modules || {});
-                        }).filter(function(param) {
-                            var isFedramp = param.isFedramp;
-                            return isITLessEnv ? !!isFedramp : true;
                         }).filter(function(param) {
                             var filterable = param.filterable;
                             return filterable !== false;
@@ -4626,6 +4623,7 @@ function _ts_generator(thisArg, body) {
 function isBundleNavigation(item) {
     return typeof item !== "undefined";
 }
+var bundles = (0,_common__WEBPACK_IMPORTED_MODULE_2__.ITLessKeycloak)() ? _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.itLessBundles : _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles;
 function isNavItems(navigation) {
     return Array.isArray(navigation.navItems);
 }
@@ -4662,7 +4660,7 @@ var fetchNavigationFiles = function() {
                     filesCache.existingRequest
                 ];
             }
-            filesCache.existingRequest = Promise.all(_components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles.map(function(fragment) {
+            filesCache.existingRequest = Promise.all(bundles.map(function(fragment) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_common__WEBPACK_IMPORTED_MODULE_2__.getChromeStaticPathname)("navigation"), "/").concat(fragment, "-navigation.json?ts=").concat(Date.now())).catch(function() {
                     return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_common__WEBPACK_IMPORTED_MODULE_2__.isBeta)() ? "/beta" : "", "/config/chrome/").concat(fragment, "-navigation.json?ts=").concat(Date.now()));
                 }).then(function(response) {
@@ -5025,131 +5023,6 @@ var evaluateVisibility = function() {
         return _ref.apply(this, arguments);
     };
 }();
-
-
-/***/ }),
-
-/***/ "./src/utils/useRenderFedramp.ts":
-/*!***************************************!*\
-  !*** ./src/utils/useRenderFedramp.ts ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   computeFedrampResult: () => (/* binding */ computeFedrampResult),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_with_holes(arr) {
-    if (Array.isArray(arr)) return arr;
-}
-function _iterable_to_array_limit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _s, _e;
-    try {
-        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _non_iterable_rest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _sliced_to_array(arr, i) {
-    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
-
-
-
-
-var isITLessEnv = (0,_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)();
-var computeFedrampResult = function(isITLessEnv) {
-    var linkHref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "", _ref = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {
-        modules: []
-    }, modules = _ref.modules, isFedramp = _ref.isFedramp;
-    var _modules;
-    /**
-   * Render everything on non-fedramp env
-   */ if (!isITLessEnv) {
-        return undefined;
-    }
-    /**
-   * Look for module routes with fedramp flag that match the link
-   */ var configs = ((_modules = modules) === null || _modules === void 0 ? void 0 : _modules.map(function(param) {
-        var routes = param.routes;
-        return routes;
-    }).flat().filter(function(route) {
-        if (typeof route !== "object") {
-            return false;
-        }
-        var match = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.matchPath)(linkHref, route.pathname);
-        return match !== null;
-    }).filter(function(moduleRoute) {
-        return typeof moduleRoute !== "string" && typeof moduleRoute.isFedramp === "boolean";
-    })) || [];
-    var result = configs.length > 0 ? configs.some(function(moduleRoute) {
-        return typeof moduleRoute !== "string" && moduleRoute.isFedramp === true;
-    }) : undefined;
-    if (typeof result === "boolean") {
-        return result;
-    }
-    /**
-   * Global module setting has the lowest priority
-   */ return isFedramp;
-};
-var useRenderFedramp = function(appId, linkHref) {
-    var module = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
-        var modules = param.chrome.modules;
-        return modules && modules[appId];
-    });
-    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function() {
-        return computeFedrampResult(isITLessEnv, linkHref, module);
-    }), 2), shouldRender = _useState[0], setShouldRender = _useState[1];
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        setShouldRender(computeFedrampResult(isITLessEnv, linkHref, module));
-    }, [
-        appId,
-        linkHref
-    ]);
-    return isITLessEnv ? shouldRender : true;
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useRenderFedramp);
 
 
 /***/ }),
