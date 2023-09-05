@@ -20620,63 +20620,11 @@ function _async_to_generator(fn) {
         });
     };
 }
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
 function _iterable_to_array(iter) {
     if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 function _non_iterable_spread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
 }
 function _to_consumable_array(arr) {
     return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
@@ -20877,20 +20825,19 @@ function init(store, libJwt) {
    * Check response errors for cross_account requests.
    * If we get error response with specific cross account error message, we kick the user out of the corss account session.
    */ window.fetch = function fetchReplacement() {
-        var path = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", options = arguments.length > 1 ? arguments[1] : void 0;
+        var input = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", _$init = arguments.length > 1 ? arguments[1] : void 0;
         for(var _len = arguments.length, rest = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++){
             rest[_key - 2] = arguments[_key];
         }
-        var _libJwt, _libJwt1, _libJwt2, _libJwt3;
+        var _libJwt, _libJwt1;
         var tid = Math.random().toString(36);
-        var additionalHeaders = spreadAdditionalHeaders(options);
+        var request = new Request(input, _$init);
+        if (checkOrigin(input) && ((_libJwt1 = libJwt) === null || _libJwt1 === void 0 ? void 0 : (_libJwt = _libJwt1()) === null || _libJwt === void 0 ? void 0 : _libJwt.jwt.isAuthenticated()) && !request.headers.has("Authorization")) {
+            var _libJwt2, _libJwt3;
+            request.headers.append("Authorization", "Bearer ".concat((_libJwt3 = libJwt) === null || _libJwt3 === void 0 ? void 0 : (_libJwt2 = _libJwt3()) === null || _libJwt2 === void 0 ? void 0 : _libJwt2.jwt.getEncodedToken()));
+        }
         var prom = oldFetch.apply(this, [
-            path,
-            _object_spread_props(_object_spread({}, options || {}), {
-                headers: _object_spread({}, checkOrigin(path) && ((_libJwt1 = libJwt) === null || _libJwt1 === void 0 ? void 0 : (_libJwt = _libJwt1()) === null || _libJwt === void 0 ? void 0 : _libJwt.jwt.isAuthenticated()) && {
-                    Authorization: "Bearer ".concat((_libJwt3 = libJwt) === null || _libJwt3 === void 0 ? void 0 : (_libJwt2 = _libJwt3()) === null || _libJwt2 === void 0 ? void 0 : _libJwt2.jwt.getEncodedToken())
-                }, additionalHeaders)
-            })
+            request
         ].concat(_to_consumable_array(rest)));
         if (iqeEnabled) {
             fetchResults[tid] = arguments[0];
