@@ -1,15 +1,15 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.72ce3696e4c3e247.js"
+            "/apps/chrome/js/chrome.63ab018ee68de51e.js"
         ],
         "modules": [
-            "/apps/chrome/js/src_moduleOverrides_chart-utils-override_js-src_pdf_DownloadButton_tsx-webpack_sharing_consum-3a44a6.72ce3696e4c3e247.js",
-            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.72ce3696e4c3e247.css",
-            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.72ce3696e4c3e247.js",
-            "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.72ce3696e4c3e247.js",
-            "/apps/chrome/js/vendors-node_modules_patternfly_react-charts_dist_esm_components_ChartUtils_chart-theme_js-no-cf6fa1.72ce3696e4c3e247.js",
-            "/apps/chrome/js/vendors-node_modules_patternfly_react-icons_dist_esm_icons_star-icon_js-node_modules_axios_in-5e2298.72ce3696e4c3e247.js"
+            "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.afdc470990922d08.js",
+            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.66be6754bdb433c1.css",
+            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.f7ee708ccb051b83.js",
+            "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.0f1b0fa873d4a200.js",
+            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.7e4495bb4956d1be.js",
+            "/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.402785891657e9b8.js"
         ]
     }
 }
