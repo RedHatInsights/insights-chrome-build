@@ -4748,12 +4748,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
-/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../hooks/useBundle */ "./src/hooks/useBundle.ts");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../hooks/useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
-
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../hooks/useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
 
 
 
@@ -4767,10 +4765,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AllServicesGalleryLink = function(param) {
-    var href = param.href, title = param.title, description = param.description, isExternal = param.isExternal, subtitle = param.subtitle;
-    var bundle = _hooks_useBundle__WEBPACK_IMPORTED_MODULE_9__.bundleMapping[href.split("/")[1]];
-    var _useFavoritePagesWrapper = (0,_hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_11__["default"])(), favoritePage = _useFavoritePagesWrapper.favoritePage, unfavoritePage = _useFavoritePagesWrapper.unfavoritePage, favoritePages = _useFavoritePagesWrapper.favoritePages;
-    var onLinkClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_common__WEBPACK_IMPORTED_MODULE_12__.AllServicesDropdownContext).onLinkClick;
+    var href = param.href, title = param.title, description = param.description, isExternal = param.isExternal;
+    var _useFavoritePagesWrapper = (0,_hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_10__["default"])(), favoritePage = _useFavoritePagesWrapper.favoritePage, unfavoritePage = _useFavoritePagesWrapper.unfavoritePage, favoritePages = _useFavoritePagesWrapper.favoritePages;
+    var onLinkClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_common__WEBPACK_IMPORTED_MODULE_11__.AllServicesDropdownContext).onLinkClick;
     var handleFavoriteToggle = function(pathname, favorite) {
         if (favorite) {
             unfavoritePage(pathname);
@@ -4787,7 +4784,7 @@ var AllServicesGalleryLink = function(param) {
         href: href,
         className: "chr-c-favorite-service__tile"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
-        className: classnames__WEBPACK_IMPORTED_MODULE_10___default()("chr-c-link-service-card chr-c-favorite-trigger", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_9___default()("chr-c-link-service-card chr-c-favorite-trigger", {
             "chr-c-icon-favorited": isFavorite
         }),
         isFullHeight: true,
@@ -4798,7 +4795,9 @@ var AllServicesGalleryLink = function(param) {
         className: "pf-v5-u-p-md"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_4__.Split, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_4__.SplitItem, {
         className: "pf-v5-m-fill"
-    }, title), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_4__.SplitItem, null, isExternal ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_3__.Icon, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "pf-v5-u-mb-sm"
+    }, title)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_4__.SplitItem, null, isExternal ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_3__.Icon, {
         className: "pf-v5-u-ml-sm chr-c-icon-external-link",
         isInline: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default()), null)) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -4810,15 +4809,12 @@ var AllServicesGalleryLink = function(param) {
             handleFavoriteToggle(href, isFavorite);
         },
         icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_3__.Icon, {
-            className: classnames__WEBPACK_IMPORTED_MODULE_10___default()("pf-v5-u-ml-sm chr-c-icon-star", {
+            className: classnames__WEBPACK_IMPORTED_MODULE_9___default()("pf-v5-u-ml-sm chr-c-icon-star", {
                 favorite: isFavorite
             })
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_6___default()), null))
     }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
-        component: "small"
-    }, subtitle || (bundle !== title ? bundle : null)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
-        component: "small",
-        className: "pf-v5-u-color-100"
+        className: "pf-v5-u-font-size-xs pf-v5-u-color-100"
     }, description !== null && description !== void 0 ? description : "")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllServicesGalleryLink);
@@ -4839,8 +4835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Gallery */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Gallery/@patternfly/react-core/dist/dynamic/layouts/Gallery");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Label */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Label/@patternfly/react-core/dist/dynamic/components/Label");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _AllServicesGalleryLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllServicesGalleryLink */ "./src/components/AllServicesDropdown/AllServicesGalleryLink.tsx");
@@ -4907,9 +4903,8 @@ var AllServicesGallerySection = function(param) {
     }
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
         className: "pf-v5-u-mb-lg"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_1__.Title, {
-        className: "pf-v5-u-mb-md",
-        headingLevel: "h3"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_1__.Label, {
+        className: "pf-v5-u-mb-md"
     }, title), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__.Gallery, {
         hasGutter: true
     }, links.map(function(link, index) {
