@@ -10352,7 +10352,9 @@ var Tools = function() {
         spacer: {
             default: "spacerMd"
         }
-    }), !xs && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(BetaSwitcher, null)), isNotificationsEnabled && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationBadge__WEBPACK_IMPORTED_MODULE_6__.NotificationBadge, {
+    }), !xs && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(BetaSwitcher, null)), isNotificationsEnabled && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
+        className: "pf-v5-u-mr-0 pf-v5-u-ml-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationBadge__WEBPACK_IMPORTED_MODULE_6__.NotificationBadge, {
         className: "chr-c-notification-badge",
         variant: unreadNotifications.length === 0 ? "read" : "unread",
         onClick: function() {
