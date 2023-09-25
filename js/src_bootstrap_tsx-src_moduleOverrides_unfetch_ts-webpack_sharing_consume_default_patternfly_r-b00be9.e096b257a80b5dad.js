@@ -10192,10 +10192,9 @@ var Tools = function() {
     });
     var unreadNotifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
-        var _notifications_data, _notifications;
-        return ((_notifications = notifications) === null || _notifications === void 0 ? void 0 : (_notifications_data = _notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.filter(function(isRead) {
-            return !isRead;
-        })) || [];
+        return notifications.data.some(function(item) {
+            return !item.read;
+        });
     });
     var isDrawerExpanded = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
@@ -10356,7 +10355,7 @@ var Tools = function() {
         className: "pf-v5-u-mr-0 pf-v5-u-ml-sm"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationBadge__WEBPACK_IMPORTED_MODULE_6__.NotificationBadge, {
         className: "chr-c-notification-badge",
-        variant: unreadNotifications.length === 0 ? "read" : "unread",
+        variant: unreadNotifications ? "unread" : "read",
         onClick: function() {
             return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_25__.toggleNotificationsDrawer)());
         },
@@ -14019,36 +14018,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
-/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
-/* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
-/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
-/* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
-/* harmony import */ var _layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/FavoritedServices */ "./src/layouts/FavoritedServices.tsx");
-/* harmony import */ var _layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/SatelliteToken */ "./src/layouts/SatelliteToken.tsx");
-/* harmony import */ var _utils_historyListener__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/historyListener */ "./src/utils/historyListener.ts");
-/* harmony import */ var _analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../analytics/SegmentContext */ "./src/analytics/SegmentContext.ts");
-/* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../auth */ "./src/auth/index.ts");
-/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
-/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
-/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
-/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
-/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
-/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
-/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
+/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
+/* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
+/* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
+/* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
+/* harmony import */ var _layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/FavoritedServices */ "./src/layouts/FavoritedServices.tsx");
+/* harmony import */ var _layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../layouts/SatelliteToken */ "./src/layouts/SatelliteToken.tsx");
+/* harmony import */ var _utils_historyListener__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/historyListener */ "./src/utils/historyListener.ts");
+/* harmony import */ var _analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../analytics/SegmentContext */ "./src/analytics/SegmentContext.ts");
+/* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../auth */ "./src/auth/index.ts");
+/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
+/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
+/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
+/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
+/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
+/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
+/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
+/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
+/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -14303,14 +14305,16 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 var ProductSelection = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_Stratosphere_ProductSelection_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../Stratosphere/ProductSelection */ "./src/components/Stratosphere/ProductSelection.tsx"));
 });
 var useGlobalFilter = function(callback) {
-    var selectedTags = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
+    var selectedTags = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
         var selectedTags = param.globalFilter.selectedTags;
         return selectedTags;
-    }, react_redux__WEBPACK_IMPORTED_MODULE_2__.shallowEqual);
+    }, react_redux__WEBPACK_IMPORTED_MODULE_3__.shallowEqual);
     return callback(selectedTags);
 };
 var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(_param) {
@@ -14336,18 +14340,61 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         "cookieElement",
         "setCookieElement"
     ]);
-    var setFilteredHelpTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_4__.HelpTopicContext).setFilteredHelpTopics;
+    var setFilteredHelpTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5__.HelpTopicContext).setFilteredHelpTopics;
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var internalFilteredTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
-    var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_12__["default"]).analytics;
-    var libJwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_15__["default"]);
-    var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useStore)();
-    var modulesConfig = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
+    var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_13__["default"]).analytics;
+    var libJwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_16__["default"]);
+    var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
+    var modulesConfig = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
         var modules = param.chrome.modules;
         return modules;
     });
     // initialize WS event handling
-    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
-    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_18__["default"])(helpTopicsAPI).setActiveTopic;
+    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_26__["default"])();
+    function getNotifications() {
+        return _getNotifications.apply(this, arguments);
+    }
+    function _getNotifications() {
+        _getNotifications = _async_to_generator(function() {
+            var _notifications_data, notifications, error;
+            return _ts_generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        _state.trys.push([
+                            0,
+                            2,
+                            ,
+                            3
+                        ]);
+                        return [
+                            4,
+                            axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/notifications/v1/notifications/drawer")
+                        ];
+                    case 1:
+                        notifications = _state.sent();
+                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_27__.populateNotifications)(((_notifications_data = notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.data) || []));
+                        return [
+                            3,
+                            3
+                        ];
+                    case 2:
+                        error = _state.sent();
+                        console.error("Unable to get Notifications ", error);
+                        return [
+                            3,
+                            3
+                        ];
+                    case 3:
+                        return [
+                            2
+                        ];
+                }
+            });
+        });
+        return _getNotifications.apply(this, arguments);
+    }
+    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_19__["default"])(helpTopicsAPI).setActiveTopic;
     function enableTopics() {
         return _enableTopics.apply(this, arguments);
     }
@@ -14386,11 +14433,13 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         return _enableTopics.apply(this, arguments);
     }
     // track bundle visits
-    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_21__["default"])();
+    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_22__["default"])();
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         // prepare webpack module sharing scope overrides
-        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_20__["default"])();
-        var unregister = _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_6__["default"].listen(_utils_historyListener__WEBPACK_IMPORTED_MODULE_11__["default"]);
+        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_21__["default"])();
+        // get notifications drawer api
+        getNotifications();
+        var unregister = _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_7__["default"].listen(_utils_historyListener__WEBPACK_IMPORTED_MODULE_12__["default"]);
         return function() {
             if (typeof unregister === "function") {
                 return unregister();
@@ -14402,7 +14451,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
             pageOptions: pageOptions
         });
     }, []);
-    var getUser = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,_auth__WEBPACK_IMPORTED_MODULE_14__.createGetUser)(libJwt), [
+    var getUser = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,_auth__WEBPACK_IMPORTED_MODULE_15__.createGetUser)(libJwt), [
         libJwt
     ]);
     var helpTopicsChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
@@ -14416,7 +14465,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         });
     }, []);
     var chromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        return (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_16__.createChromeContext)({
+        return (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_17__.createChromeContext)({
             analytics: analytics,
             getUser: getUser,
             helpTopics: helpTopicsChromeApi,
@@ -14431,7 +14480,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var scalprumProviderProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         // set the deprecated chrome API to window
         // eslint-disable-next-line rulesdir/no-chrome-api-call-from-window
-        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_22__["default"])(chromeApi);
+        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_23__["default"])(chromeApi);
         return {
             config: config,
             api: {
@@ -14470,57 +14519,57 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
        * - define chrome API in chrome root after it mounts
        * - copy these functions to window
        * - add deprecation warning to the window functions
-       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_24__["default"].Provider, {
+       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_25__["default"].Provider, {
         value: chromeApi
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_1__.ScalprumProvider, scalprumProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Routes, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__.ScalprumProvider, scalprumProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         index: true,
         path: "/",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_7__["default"], _object_spread({
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], _object_spread({
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }, props))
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/connect/products",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_13__["default"]
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProductSelection, null))
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/allservices",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_13__["default"]
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_AllServices__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_AllServices__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/favoritedservices",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_13__["default"]
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/insights/satellite",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_11__["default"], null)
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/security",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_7__["default"], props)
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], props)
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "*",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_7__["default"], _object_spread({
-            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_17__["default"]
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], _object_spread({
+            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_18__["default"]
         }, props))
     })))));
 }, // config rarely changes
 function(prev, next) {
-    return lodash_isEqual__WEBPACK_IMPORTED_MODULE_5___default()(prev.config, next.config);
+    return lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default()(prev.config, next.config);
 });
 ScalprumRoot.displayName = "MemoizedScalprumRoot";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScalprumRoot);
@@ -16128,7 +16177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
+/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
+/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -16270,6 +16320,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var NOTIFICATION_DRAWER = "notifications.drawer";
 var SAMPLE_EVENT = "sample.type";
 var ALL_TYPES = [
@@ -16289,8 +16340,8 @@ var useChromeServiceEvents = function() {
     var handlerMap = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         var _obj;
         return(_obj = {}, _define_property(_obj, NOTIFICATION_DRAWER, function(data) {
-            return dispatch({
-                type: "foo",
+            dispatch({
+                type: _redux_action_types__WEBPACK_IMPORTED_MODULE_3__.UPDATE_NOTIFICATIONS,
                 payload: data
             });
         }), _define_property(_obj, SAMPLE_EVENT, function(data) {
@@ -16303,7 +16354,7 @@ var useChromeServiceEvents = function() {
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
-                        token = (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_3__.getEncodedToken)();
+                        token = (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_4__.getEncodedToken)();
                         if (!token) return [
                             3,
                             2
@@ -16312,7 +16363,7 @@ var useChromeServiceEvents = function() {
                         // ensure the cookie exists before we try to establish connection
                         return [
                             4,
-                            (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_3__.setCookie)(token)
+                            (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_4__.setCookie)(token)
                         ];
                     case 1:
                         _state.sent();
@@ -16323,7 +16374,7 @@ var useChromeServiceEvents = function() {
                             try {
                                 var payload = JSON.parse(data);
                                 if (isGenericEvent(payload)) {
-                                    handleEvent(payload.type, payload.data);
+                                    handleEvent(payload.type, payload);
                                 } else {
                                     throw new Error("Unable to handle event type: ".concat(event.type, ". The payload does not have required shape! ").concat(event));
                                 }
@@ -19464,13 +19515,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   onPageAction: () => (/* binding */ onPageAction),
 /* harmony export */   onPageObjectId: () => (/* binding */ onPageObjectId),
 /* harmony export */   onRegisterModule: () => (/* binding */ onRegisterModule),
+/* harmony export */   populateNotificationsReducer: () => (/* binding */ populateNotificationsReducer),
 /* harmony export */   populateQuickstartsReducer: () => (/* binding */ populateQuickstartsReducer),
 /* harmony export */   setGatewayError: () => (/* binding */ setGatewayError),
 /* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
 /* harmony export */   toggleDebuggerButton: () => (/* binding */ toggleDebuggerButton),
 /* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
 /* harmony export */   toggleFeedbackModal: () => (/* binding */ toggleFeedbackModal),
-/* harmony export */   toggleNotificationsReducer: () => (/* binding */ toggleNotificationsReducer)
+/* harmony export */   toggleNotificationsReducer: () => (/* binding */ toggleNotificationsReducer),
+/* harmony export */   updateNotificationsReducer: () => (/* binding */ updateNotificationsReducer)
 /* harmony export */ });
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
@@ -19822,6 +19875,14 @@ function toggleNotificationsReducer(state) {
         })
     });
 }
+function populateNotificationsReducer(state, param) {
+    var data = param.payload.data;
+    return _object_spread_props(_object_spread({}, state), {
+        notifications: _object_spread_props(_object_spread({}, state.notifications), {
+            data: data
+        })
+    });
+}
 function markNotificationAsRead(state, param) {
     var payload = param.payload;
     var _state_notifications, _state_notifications_data, _state_notifications1, _state_notifications2;
@@ -19878,6 +19939,16 @@ function markAllNotificationsAsUnread(state) {
                 });
             })
         }
+    });
+}
+function updateNotificationsReducer(state, param) {
+    var payload = param.payload;
+    return _object_spread_props(_object_spread({}, state), {
+        notifications: _object_spread_props(_object_spread({}, state.notifications), {
+            data: _to_consumable_array(state.notifications.data).concat([
+                payload.data
+            ])
+        })
     });
 }
 
@@ -20215,7 +20286,7 @@ function _define_property(obj, key, value) {
 
 
 var _obj;
-var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.REGISTER_MODULE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onRegisterModule), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLECONTEXTSWITCHER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.contextSwitcherBannerReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_MODULES_SCHEMA, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadModulesSchemaReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHANGE_ACTIVE_MODULE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.changeActiveModuleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_PENDO_FEEDBACK_FLAG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setPendoFeedbackFlag), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_FEEDBACK_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleFeedbackModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_GATEWAY_ERROR, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setGatewayError), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_NOTIFICATIONS_DRAWER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsUnread), _obj);
+var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.REGISTER_MODULE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onRegisterModule), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLECONTEXTSWITCHER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.contextSwitcherBannerReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_MODULES_SCHEMA, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadModulesSchemaReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHANGE_ACTIVE_MODULE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.changeActiveModuleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_PENDO_FEEDBACK_FLAG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setPendoFeedbackFlag), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_FEEDBACK_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleFeedbackModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_GATEWAY_ERROR, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setGatewayError), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_NOTIFICATIONS_DRAWER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.updateNotificationsReducer), _obj);
 var _obj1;
 var globalFilter = (_obj1 = {}, _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTags), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTagsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDs), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloads), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloadsPending), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_SCOPE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onSetGlobalFilterScope), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_TOGGLE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterToggle), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_REMOVE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterRemove), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_UPDATE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onTagSelect), _obj1);
 var chromeInitialState = {
