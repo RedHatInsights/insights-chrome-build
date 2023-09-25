@@ -3518,6 +3518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MARK_NOTIFICATION_AS_READ: () => (/* binding */ MARK_NOTIFICATION_AS_READ),
 /* harmony export */   MARK_NOTIFICATION_AS_UNREAD: () => (/* binding */ MARK_NOTIFICATION_AS_UNREAD),
 /* harmony export */   MARK_REQUEST_NOTIFICATION_SEEN: () => (/* binding */ MARK_REQUEST_NOTIFICATION_SEEN),
+/* harmony export */   POPULATE_NOTIFICATIONS: () => (/* binding */ POPULATE_NOTIFICATIONS),
 /* harmony export */   POPULATE_QUICKSTARTS_CATALOG: () => (/* binding */ POPULATE_QUICKSTARTS_CATALOG),
 /* harmony export */   REGISTER_MODULE: () => (/* binding */ REGISTER_MODULE),
 /* harmony export */   SET_GATEWAY_ERROR: () => (/* binding */ SET_GATEWAY_ERROR),
@@ -3530,6 +3531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TOGGLE_NOTIFICATIONS_DRAWER: () => (/* binding */ TOGGLE_NOTIFICATIONS_DRAWER),
 /* harmony export */   UPDATE_ACCESS_REQUESTS_NOTIFICATIONS: () => (/* binding */ UPDATE_ACCESS_REQUESTS_NOTIFICATIONS),
 /* harmony export */   UPDATE_DOCUMENT_TITLE_REDUCER: () => (/* binding */ UPDATE_DOCUMENT_TITLE_REDUCER),
+/* harmony export */   UPDATE_NOTIFICATIONS: () => (/* binding */ UPDATE_NOTIFICATIONS),
 /* harmony export */   USER_LOGIN: () => (/* binding */ USER_LOGIN)
 /* harmony export */ });
 var USER_LOGIN = "@@chrome/user-login";
@@ -3564,10 +3566,12 @@ var DISABLE_QUICKSTARTS = "@@chrome/disable-quickstarts";
 var CLEAR_QUICKSTARTS = "@@chrome/clear-quickstarts";
 var SET_GATEWAY_ERROR = "@@chrome/set-gateway-error";
 var TOGGLE_NOTIFICATIONS_DRAWER = "@@chrome/toggle-notifications-drawer";
+var POPULATE_NOTIFICATIONS = "@@chrome/populate-notifications";
 var MARK_NOTIFICATION_AS_READ = "@@chrome/mark-notification-as-read";
 var MARK_NOTIFICATION_AS_UNREAD = "@@chrome/mark-notification-as-unread";
 var MARK_ALL_NOTIFICATION_AS_READ = "@@chrome/mark-all-notification-as-read";
 var MARK_ALL_NOTIFICATION_AS_UNREAD = "@@chrome/mark-all-notification-as-unread";
+var UPDATE_NOTIFICATIONS = "@@chrome/update-notifications";
 
 
 /***/ }),
@@ -3604,6 +3608,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   markNotificationAsUnread: () => (/* binding */ markNotificationAsUnread),
 /* harmony export */   onToggle: () => (/* binding */ onToggle),
 /* harmony export */   onToggleContextSwitcher: () => (/* binding */ onToggleContextSwitcher),
+/* harmony export */   populateNotifications: () => (/* binding */ populateNotifications),
 /* harmony export */   populateQuickstartsCatalog: () => (/* binding */ populateQuickstartsCatalog),
 /* harmony export */   registerModule: () => (/* binding */ registerModule),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
@@ -3616,6 +3621,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   toggleNotificationsDrawer: () => (/* binding */ toggleNotificationsDrawer),
 /* harmony export */   updateAccessRequestsNotifications: () => (/* binding */ updateAccessRequestsNotifications),
 /* harmony export */   updateDocumentTitle: () => (/* binding */ updateDocumentTitle),
+/* harmony export */   updateNotifications: () => (/* binding */ updateNotifications),
 /* harmony export */   userLogIn: () => (/* binding */ userLogIn)
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action-types */ "./src/redux/action-types.ts");
@@ -3897,6 +3903,14 @@ var toggleNotificationsDrawer = function() {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.TOGGLE_NOTIFICATIONS_DRAWER
     };
 };
+var populateNotifications = function(data) {
+    return {
+        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.POPULATE_NOTIFICATIONS,
+        payload: {
+            data: data
+        }
+    };
+};
 var markNotificationAsRead = function(id) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_NOTIFICATION_AS_READ,
@@ -3917,6 +3931,12 @@ var markAllNotificationsAsRead = function() {
 var markAllNotificationsAsUnread = function() {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ALL_NOTIFICATION_AS_UNREAD
+    };
+};
+var updateNotifications = function(payload) {
+    return {
+        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.UPDATE_NOTIFICATIONS,
+        payload: payload
     };
 };
 
