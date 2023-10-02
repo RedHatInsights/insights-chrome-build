@@ -126,20 +126,18 @@ var LandingNavFavorites = function() {
                 to: favorite.pathname,
                 className: "chr-c-favorite-service__tile"
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.Card, {
-                isFullHeight: true,
-                isFlat: true,
-                isSelectableRaised: true
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.CardBody, {
-                className: "pf-v5-u-p-lg pf-v5-u-pt-xl"
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.TextContent, {
-                className: "pf-v5-u-text-align-center"
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
-                component: "p",
-                className: "pf-v5-u-mb-sm"
-            }, favorite.name), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
-                component: "p",
-                className: "pf-v5-u-font-size-xs"
-            }, getBundle(favorite.pathname)))))));
+                isClickable: true
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.CardHeader, {
+                selectableActions: {
+                    selectableActionId: "id",
+                    selectableActionAriaLabelledby: "clickable-card"
+                },
+                className: "pf-v5-u-pb-0"
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.CardTitle, {
+                className: "pf-v5-u-text-align-center pf-v5-u-active-color-100 pf-v5-u-font-size-sm"
+            }, favorite.name)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.CardBody, {
+                className: "pf-v5-u-text-align-center pf-v5-u-color-100 pf-v5-u-font-size-xs"
+            }, getBundle(favorite.pathname)))));
         });
     };
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement((react__WEBPACK_IMPORTED_MODULE_7___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.FlexItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_5__.Text, {
@@ -168,6 +166,7 @@ var LandingNavFavorites = function() {
         widgetId: "favorites-cards-pagination",
         className: "chr-c-pagination-landing-favorites"
     }))), favoritedServices.length === 0 ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_FavoriteServices_EmptyState__WEBPACK_IMPORTED_MODULE_9__["default"], null) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement((react__WEBPACK_IMPORTED_MODULE_7___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_2__.Gallery, {
+        className: "pf-v5-u-pt-md",
         hasGutter: true
     }, buildFavorites())));
 };
