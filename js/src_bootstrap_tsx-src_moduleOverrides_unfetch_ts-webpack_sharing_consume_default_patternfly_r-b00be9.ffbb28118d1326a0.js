@@ -13062,7 +13062,8 @@ var DrawerPanelBase = function(param) {
                     return setIsFilterDropdownOpen(!isFilterDropdownOpen);
                 },
                 id: "notifications-filter-toggle",
-                variant: "plain"
+                variant: "plain",
+                "aria-label": "Notifications filter"
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_14___default()), null));
         },
         isOpen: isFilterDropdownOpen,
@@ -13070,8 +13071,7 @@ var DrawerPanelBase = function(param) {
         popperProps: {
             position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__.PopoverPosition.right
         },
-        id: "notifications-filter-dropdown",
-        "aria-label": "Notifications filter"
+        id: "notifications-filter-dropdown"
     }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.Dropdown, {
         toggle: function(toggleRef) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6__.MenuToggle, {
@@ -13081,6 +13081,7 @@ var DrawerPanelBase = function(param) {
                 },
                 variant: "plain",
                 id: "notifications-actions-toggle",
+                "aria-label": "Notifications actions dropdown",
                 isFullWidth: true
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_18___default()), null));
         },
@@ -13211,6 +13212,7 @@ var NotificationItem = function(param) {
         }, "Manage this event")
     ];
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__.NotificationDrawerList, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__.NotificationDrawerListItem, {
+        "aria-label": "Notification item ".concat(notification.title),
         variant: "info",
         isRead: notification.read
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__.NotificationDrawerListItemHeader, {
@@ -13266,7 +13268,9 @@ var NotificationItem = function(param) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   filterConfig: () => (/* binding */ filterConfig)
+/* harmony export */   filterConfig: () => (/* binding */ filterConfig),
+/* harmony export */   readTestData: () => (/* binding */ readTestData),
+/* harmony export */   testData: () => (/* binding */ testData)
 /* harmony export */ });
 var filterConfig = [
     {
@@ -13284,6 +13288,50 @@ var filterConfig = [
     {
         title: "Ansible Automation Platform",
         value: "ansible"
+    }
+];
+var testData = [
+    {
+        id: "1",
+        title: "Test Notification 1",
+        description: "Testing of notification",
+        read: false,
+        source: "rhel",
+        created: "2023-08-18T12:00:00Z"
+    },
+    {
+        id: "2",
+        title: "Test Notification 2",
+        description: "Testing of notification",
+        read: false,
+        source: "ansible",
+        created: "2023-08-18T12:05:00Z"
+    },
+    {
+        id: "3",
+        title: "Test Notification 3",
+        description: "Testin of notification",
+        read: false,
+        source: "openshift",
+        created: "2023-08-18T12:10:00Z"
+    }
+];
+var readTestData = [
+    {
+        id: "1",
+        title: "Read test notification 1",
+        description: "Notification testing with read",
+        read: true,
+        source: "NEPTUNO",
+        created: "20 mins ago"
+    },
+    {
+        id: "2",
+        title: "Read test notification 2",
+        description: "Notification testing with read",
+        read: true,
+        source: "MARS",
+        created: "25 mins ago"
     }
 ];
 
