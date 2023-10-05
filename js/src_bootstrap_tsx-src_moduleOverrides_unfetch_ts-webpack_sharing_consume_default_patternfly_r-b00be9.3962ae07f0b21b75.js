@@ -11095,6 +11095,14 @@ var Tools = function() {
         }
     }), !xs && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(BetaSwitcher, null)), isNotificationsEnabled && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
         className: "pf-v5-u-mr-0 pf-v5-u-ml-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
+        aria: "none",
+        "aria-live": "polite",
+        content: "Notifications",
+        flipBehavior: [
+            "bottom"
+        ],
+        className: "tooltip-inner-settings-cy"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationBadge__WEBPACK_IMPORTED_MODULE_6__.NotificationBadge, {
         className: "chr-c-notification-badge",
         variant: unreadNotifications ? "unread" : "read",
@@ -11103,7 +11111,7 @@ var Tools = function() {
         },
         "aria-label": "Notifications",
         isExpanded: isDrawerExpanded
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default()), null))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default()), null)))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
         className: "pf-v5-u-mr-0"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
         aria: "none",
