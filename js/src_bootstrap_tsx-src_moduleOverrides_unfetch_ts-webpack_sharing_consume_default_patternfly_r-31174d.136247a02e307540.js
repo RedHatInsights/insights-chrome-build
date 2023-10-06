@@ -10982,14 +10982,14 @@ var Tools = function() {
     ]);
     /* list out the items for the about menu */ var aboutMenuDropdownItems = [
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].apiDocumentation)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].apiDocumentation),
             onClick: function() {
                 return window.open("https://developers.redhat.com/api-catalog/", "_blank");
             },
             isHidden: isITLessEnv
         },
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].openSupportCase)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].openSupportCase),
             onClick: function() {
                 return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_22__.createSupportCase)(user.identity, libjwt);
             },
@@ -10997,25 +10997,25 @@ var Tools = function() {
             isHidden: isITLessEnv
         },
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].statusPage)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].statusPage),
             onClick: function() {
                 return window.open("https://status.redhat.com/", "_blank");
             },
             isHidden: isITLessEnv
         },
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].supportOptions)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].supportOptions),
             url: isITLessEnv ? "https://redhatgov.servicenowservices.com/css" : "https://access.redhat.com/support"
         },
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].insightsRhelDocumentation)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].insightsRhelDocumentation),
             onClick: function() {
                 return window.open("https://access.redhat.com/documentation/en-us/red_hat_insights", "_blank");
             },
             isHidden: (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.getSection)() !== "insights" || isITLessEnv
         },
         {
-            title: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].demoMode)),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].demoMode),
             onClick: function() {
                 return js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_demo", "true") && window.location.reload();
             },
@@ -21734,7 +21734,7 @@ function createSupportCase(userInfo, libjwt, fields) {
 }
 function _createSupportCase() {
     _createSupportCase = _async_to_generator(function(userInfo, libjwt, fields) {
-        var _getEnvDetails, _userInfo_user, _userInfo_user1, _fields, currentProduct, _ref, src_hash, app_name, portalUrl, caseUrl, token;
+        var _productData, _productData1, _getEnvDetails, _userInfo_user, _userInfo_user1, _fields, currentProduct, productData, _productData_app_name, _ref, src_hash, app_name, portalUrl, caseUrl, token;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
@@ -21744,7 +21744,11 @@ function _createSupportCase() {
                         getProductData()
                     ];
                 case 1:
-                    _ref = _state.sent(), src_hash = _ref.src_hash, app_name = _ref.app_name;
+                    productData = _state.sent();
+                    _ref = {
+                        src_hash: (_productData = productData) === null || _productData === void 0 ? void 0 : _productData.src_hash,
+                        app_name: (_productData_app_name = (_productData1 = productData) === null || _productData1 === void 0 ? void 0 : _productData1.app_name) !== null && _productData_app_name !== void 0 ? _productData_app_name : (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_5__.getUrl)("app")
+                    }, src_hash = _ref.src_hash, app_name = _ref.app_name;
                     portalUrl = "".concat((_getEnvDetails = (0,_common__WEBPACK_IMPORTED_MODULE_2__.getEnvDetails)()) === null || _getEnvDetails === void 0 ? void 0 : _getEnvDetails.portal);
                     caseUrl = "".concat(portalUrl).concat(_consts__WEBPACK_IMPORTED_MODULE_3__.HYDRA_ENDPOINT);
                     log("Creating a support case");
