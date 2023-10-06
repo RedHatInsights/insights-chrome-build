@@ -10657,7 +10657,7 @@ var ToolbarToggle = function(props) {
         return !isHidden ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, _object_spread({
             key: title,
             ouiaId: title,
-            disabled: isDisabled,
+            isDisabled: isDisabled,
             component: appId && url ? function(param) {
                 var itemClassName = param.className;
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], _object_spread_props(_object_spread({}, rest), {
