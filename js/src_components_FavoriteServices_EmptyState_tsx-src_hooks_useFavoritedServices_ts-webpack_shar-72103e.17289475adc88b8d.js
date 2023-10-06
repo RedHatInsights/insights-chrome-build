@@ -379,7 +379,6 @@ function _ts_generator(thisArg, body) {
 
 
 var previewBundles = [
-    "business-services",
     "subscriptions"
 ];
 var requiredBundles = [
@@ -390,7 +389,8 @@ var requiredBundles = [
     "ansible",
     "settings",
     "iam",
-    "quay"
+    "quay",
+    "business-services"
 ].concat(_to_consumable_array(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBundles : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBundles : []));
 var itLessBundles = [
     "openshift",
