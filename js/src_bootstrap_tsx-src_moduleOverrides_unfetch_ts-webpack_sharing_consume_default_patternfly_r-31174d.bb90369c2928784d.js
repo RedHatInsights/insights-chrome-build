@@ -15307,9 +15307,9 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                             });
                         }
                         var _manifest_baseURL, _manifest_loadScripts_map, _manifest_registrationMethod;
-                        return _object_spread_props(_object_spread({}, manifest), {
+                        var newManifest = _object_spread_props(_object_spread({}, manifest), {
                             // Compatibility required for bot pure SDK plugins, HCC plugins and sdk v1/v2 plugins until all are on the same system.
-                            baseURL: "/",
+                            baseURL: manifest.name.includes("hac-") && !manifest.baseURL ? "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.isBeta)() ? "/beta" : "", "/api/plugins/").concat(manifest.name, "/") : "/",
                             loadScripts: (_manifest_loadScripts_map = (_manifest_loadScripts = manifest.loadScripts) === null || _manifest_loadScripts === void 0 ? void 0 : _manifest_loadScripts.map(function(script) {
                                 return "".concat(manifest.baseURL).concat(script).replace(/\/\//, "/");
                             })) !== null && _manifest_loadScripts_map !== void 0 ? _manifest_loadScripts_map : [
@@ -15317,6 +15317,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                             ],
                             registrationMethod: (_manifest_registrationMethod = manifest.registrationMethod) !== null && _manifest_registrationMethod !== void 0 ? _manifest_registrationMethod : "callback"
                         });
+                        return newManifest;
                     }
                 }
             }
