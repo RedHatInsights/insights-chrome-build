@@ -1689,11 +1689,17 @@ var createAuthObject = function(libjwt, getUser, store, globalConfig) {
     };
 };
 var createGetUser = function(libjwt) {
-    return function() {
-        return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
-            libjwt.jwt.logoutAllTabs();
-        });
-    };
+    if (isITLessCognito) {
+        return function() {
+            return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_3__.createUser)();
+        };
+    } else {
+        return function() {
+            return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
+                libjwt.jwt.logoutAllTabs();
+            });
+        };
+    }
 };
 var createGetUserPermissions = function(libJwt, getUser) {
     var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_7__.createFetchPermissionsWatcher)(getUser);
@@ -1830,6 +1836,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jwt_initialize_jwt__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./jwt/initialize-jwt */ "./src/jwt/initialize-jwt.ts");
 /* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
 /* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./cognito/auth */ "./src/cognito/auth.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2101,6 +2108,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var language = "en";
 var initializeAccessRequestCookies = function() {
     var initialAccount = localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.ACTIVE_REMOTE_REQUEST);
@@ -2125,13 +2133,15 @@ var libjwtSetup = function(chromeConfig) {
     }) || {
         ssoScopes: ssoScopes
     });
-    libjwt.initPromise.then(function() {
-        return libjwt.jwt.getUserInfo().then(function(chromeUser) {
-            if (chromeUser) {
-                (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
-            }
-        }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
-    });
+    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)()) {
+        libjwt.initPromise.then(function() {
+            return libjwt.jwt.getUserInfo().then(function(chromeUser) {
+                if (chromeUser) {
+                    (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
+                }
+            }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
+        });
+    }
     return libjwt;
 };
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)();
@@ -2185,7 +2195,7 @@ var useInitialize = function() {
                         (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__.initializeVisibilityFunctions)({
                             getUser: getUser,
                             getToken: function() {
-                                return libJwt.initPromise.then(function() {
+                                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_21__.getTokenWithAuthorizationCode)() : libJwt.initPromise.then(function() {
                                     return libJwt.jwt.getUserInfo().then(function() {
                                         return libJwt.jwt.getEncodedToken();
                                     });
@@ -17712,6 +17722,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -17837,13 +17849,19 @@ function _ts_generator(thisArg, body) {
     }
 }
 
+
+
 var initializeJWT = function() {
     var _ref = _async_to_generator(function(libjwt) {
-        var actions, user, encodedToken, error;
+        var actions, user, error, user1, encodedToken, error1;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     actions = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_0__.spinUpStore)().actions;
+                    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.ITLessCognito)()) return [
+                        3,
+                        6
+                    ];
                     _state.label = 1;
                 case 1:
                     _state.trys.push([
@@ -17854,22 +17872,18 @@ var initializeJWT = function() {
                     ]);
                     return [
                         4,
-                        libjwt.initPromise
+                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.getTokenWithAuthorizationCode)()
                     ];
                 case 2:
                     _state.sent();
                     return [
                         4,
-                        libjwt.jwt.getUserInfo()
+                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.createUser)()
                     ];
                 case 3:
                     user = _state.sent();
                     if (user) {
                         actions.userLogIn(user);
-                    }
-                    encodedToken = libjwt.jwt.getEncodedToken();
-                    if (encodedToken) {
-                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
                     }
                     return [
                         3,
@@ -17884,6 +17898,49 @@ var initializeJWT = function() {
                         5
                     ];
                 case 5:
+                    return [
+                        3,
+                        10
+                    ];
+                case 6:
+                    _state.trys.push([
+                        6,
+                        9,
+                        ,
+                        10
+                    ]);
+                    return [
+                        4,
+                        libjwt.initPromise
+                    ];
+                case 7:
+                    _state.sent();
+                    return [
+                        4,
+                        libjwt.jwt.getUserInfo()
+                    ];
+                case 8:
+                    user1 = _state.sent();
+                    if (user1) {
+                        actions.userLogIn(user1);
+                    }
+                    encodedToken = libjwt.jwt.getEncodedToken();
+                    if (encodedToken) {
+                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
+                    }
+                    return [
+                        3,
+                        10
+                    ];
+                case 9:
+                    error1 = _state.sent();
+                    console.error(error1);
+                    actions.userLogIn(false);
+                    return [
+                        3,
+                        10
+                    ];
+                case 10:
                     return [
                         2
                     ];
@@ -18259,7 +18316,7 @@ var doOffline = function(key, val, configSsoUrl) {
                         if (partnerScope) {
                             scopes.push(partnerScope);
                         }
-                        if (ssoScopes && !itLessKeycloakEnv) {
+                        if (ssoScopes && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)()) {
                             try {
                                 // make sure add openid scope when custom scope is used
                                 scopes.push("openid", JSON.parse(ssoScopes));
