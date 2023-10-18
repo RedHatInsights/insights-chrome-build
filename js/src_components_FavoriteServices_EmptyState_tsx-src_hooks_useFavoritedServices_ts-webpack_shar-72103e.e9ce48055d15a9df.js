@@ -4677,7 +4677,7 @@ function _ts_generator(thisArg, body) {
 function isBundleNavigation(item) {
     return typeof item !== "undefined";
 }
-var bundles = (0,_common__WEBPACK_IMPORTED_MODULE_2__.ITLessKeycloak)() ? _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.itLessBundles : _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles;
+var bundles = (0,_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)() ? _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.itLessBundles : _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles;
 function isNavItems(navigation) {
     return Array.isArray(navigation.navItems);
 }

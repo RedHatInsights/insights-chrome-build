@@ -575,19 +575,19 @@ var DEFAULT_SSO_ROUTES = {
         sso: "https://sso.stage.redhat.com/auth",
         portal: "https://access.stage.redhat.com"
     },
-    frh: {
-        url: [
-            "console.stage.openshiftusgov.com"
-        ],
-        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
-        portal: "https://console.stage.openshiftusgov.com"
-    },
     frhStage: {
         url: [
             "console.stage.openshiftusgov.com"
         ],
         sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
         portal: "https://console.stage.openshiftusgov.com"
+    },
+    frh: {
+        url: [
+            "console.openshiftusgov.com"
+        ],
+        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        portal: "https://console.openshiftusgov.com"
     },
     ephem: {
         url: [
@@ -725,10 +725,10 @@ function getRouterBasename(pathname) {
     return isBeta(pathname) ? "/".concat(previewFragment) : "/";
 }
 function ITLess() {
-    return getEnv() === "frh" || getEnv() === "frhStage" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
+    return getEnv() === "frhStage" || getEnv() === "frh" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
 }
 function ITLessCognito() {
-    return getEnv() === "frh" || getEnv() === "frhStage";
+    return getEnv() === "frhStage" || getEnv() === "frh";
 }
 function ITLessKeycloak() {
     return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
