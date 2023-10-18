@@ -10774,6 +10774,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -10887,6 +10888,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)();
 var switchRelease = function(isBeta, pathname, previewEnabled) {
     js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_toggledRelease", "true");
@@ -10937,6 +10939,7 @@ var Tools = function() {
         isRhosakEntitled: false,
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
+    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__.usePreviewFlag)("platform.sources.integrations");
     var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__["default"])().xs;
     var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var user = param.chrome.user;
@@ -10957,7 +10960,7 @@ var Tools = function() {
     var libjwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_23__["default"]);
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_19__.useIntl)();
     var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
-    var settingsPath = isITLessEnv ? "/settings/my-user-access" : "/settings/sources";
+    var settingsPath = isITLessEnv ? "/settings/my-user-access" : enableIntegrations ? "/settings/integrations" : "/settings/sources";
     var identityAndAccessManagmentPath = "/iam/user-access/users";
     var betaSwitcherTitle = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)() ? intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].stopUsing) : intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].use), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].betaRelease));
     var enableAuthDropdownOption = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.chrome.dropdown.authfactor");
@@ -15528,6 +15531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ChromeRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ChromeRoute */ "./src/components/ChromeRoute/index.ts");
 /* harmony import */ var _NotFoundRoute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../NotFoundRoute */ "./src/components/NotFoundRoute/index.ts");
 /* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
+/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -15562,6 +15566,8 @@ function _object_spread(target) {
 
 
 
+
+var INTEGRATION_SOURCES = "platform.sources.integrations";
 var QuickstartCatalogRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_QuickstartsCatalogRoute_index_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../QuickstartsCatalogRoute */ "./src/components/QuickstartsCatalogRoute/index.ts"));
 });
@@ -15576,7 +15582,19 @@ var redirects = [
     },
     {
         path: "/settings",
-        to: "/settings/sources"
+        to: "/settings/integrations",
+        previewFlag: {
+            value: true,
+            name: INTEGRATION_SOURCES
+        }
+    },
+    {
+        path: "/settings",
+        to: "/settings/sources",
+        previewFlag: {
+            value: false,
+            name: INTEGRATION_SOURCES
+        }
     },
     {
         path: "/user-preferences",
@@ -15605,6 +15623,14 @@ var redirects = [
 ];
 var ChromeRoutes = function(param) {
     var routesProps = param.routesProps;
+    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__.usePreviewFlag)(INTEGRATION_SOURCES);
+    var previewFlags = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        return {
+            INTEGRATION_SOURCES: enableIntegrations
+        };
+    }, [
+        enableIntegrations
+    ]);
     var moduleRoutes = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
         var moduleRoutes = param.chrome.moduleRoutes;
         return moduleRoutes;
@@ -15616,7 +15642,15 @@ var ChromeRoutes = function(param) {
             fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(QuickstartCatalogRoute, null))
     }), redirects.map(function(param) {
-        var path = param.path, to = param.to;
+        var path = param.path, to = param.to, previewFlag = param.previewFlag;
+        if (previewFlag) {
+            var found = Object.keys(previewFlags).find(function(item) {
+                return item === previewFlag.name;
+            });
+            if (previewFlags[found] !== previewFlag.value) {
+                return null;
+            }
+        }
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
             key: path,
             path: path,
@@ -23176,6 +23210,33 @@ var useOuiaTags = function() {
     return state;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useOuiaTags);
+
+
+/***/ }),
+
+/***/ "./src/utils/usePreviewFlag.ts":
+/*!*************************************!*\
+  !*** ./src/utils/usePreviewFlag.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   usePreviewFlag: () => (/* binding */ usePreviewFlag)
+/* harmony export */ });
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
+
+
+var usePreviewFlag = function(flag) {
+    var notificationsOverhaul = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__.useFlag)(flag);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_1__.isProd)() && !(0,_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)()) {
+        return false;
+    }
+    return notificationsOverhaul;
+};
 
 
 /***/ }),
