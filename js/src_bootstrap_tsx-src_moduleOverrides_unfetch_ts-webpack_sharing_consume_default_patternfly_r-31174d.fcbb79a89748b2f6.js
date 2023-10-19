@@ -1689,11 +1689,17 @@ var createAuthObject = function(libjwt, getUser, store, globalConfig) {
     };
 };
 var createGetUser = function(libjwt) {
-    return function() {
-        return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
-            libjwt.jwt.logoutAllTabs();
-        });
-    };
+    if (isITLessCognito) {
+        return function() {
+            return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_3__.createUser)();
+        };
+    } else {
+        return function() {
+            return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
+                libjwt.jwt.logoutAllTabs();
+            });
+        };
+    }
 };
 var createGetUserPermissions = function(libJwt, getUser) {
     var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_7__.createFetchPermissionsWatcher)(getUser);
@@ -1830,6 +1836,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jwt_initialize_jwt__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./jwt/initialize-jwt */ "./src/jwt/initialize-jwt.ts");
 /* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
 /* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./cognito/auth */ "./src/cognito/auth.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2101,6 +2108,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var language = "en";
 var initializeAccessRequestCookies = function() {
     var initialAccount = localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.ACTIVE_REMOTE_REQUEST);
@@ -2125,13 +2133,15 @@ var libjwtSetup = function(chromeConfig) {
     }) || {
         ssoScopes: ssoScopes
     });
-    libjwt.initPromise.then(function() {
-        return libjwt.jwt.getUserInfo().then(function(chromeUser) {
-            if (chromeUser) {
-                (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
-            }
-        }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
-    });
+    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)()) {
+        libjwt.initPromise.then(function() {
+            return libjwt.jwt.getUserInfo().then(function(chromeUser) {
+                if (chromeUser) {
+                    (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
+                }
+            }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
+        });
+    }
     return libjwt;
 };
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)();
@@ -2185,7 +2195,7 @@ var useInitialize = function() {
                         (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__.initializeVisibilityFunctions)({
                             getUser: getUser,
                             getToken: function() {
-                                return libJwt.initPromise.then(function() {
+                                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_21__.getTokenWithAuthorizationCode)() : libJwt.initPromise.then(function() {
                                     return libJwt.jwt.getUserInfo().then(function() {
                                         return libJwt.jwt.getEncodedToken();
                                     });
@@ -10774,6 +10784,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -10887,6 +10898,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)();
 var switchRelease = function(isBeta, pathname, previewEnabled) {
     js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_toggledRelease", "true");
@@ -10937,6 +10949,7 @@ var Tools = function() {
         isRhosakEntitled: false,
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
+    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__.usePreviewFlag)("platform.sources.integrations");
     var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__["default"])().xs;
     var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var user = param.chrome.user;
@@ -10957,7 +10970,7 @@ var Tools = function() {
     var libjwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_23__["default"]);
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_19__.useIntl)();
     var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
-    var settingsPath = isITLessEnv ? "/settings/my-user-access" : "/settings/sources";
+    var settingsPath = isITLessEnv ? "/settings/my-user-access" : enableIntegrations ? "/settings/integrations" : "/settings/sources";
     var identityAndAccessManagmentPath = "/iam/user-access/users";
     var betaSwitcherTitle = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)() ? intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].stopUsing) : intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].use), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].betaRelease));
     var enableAuthDropdownOption = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.chrome.dropdown.authfactor");
@@ -14608,24 +14621,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
-/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _FeatureFlags__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../FeatureFlags */ "./src/components/FeatureFlags/index.ts");
-/* harmony import */ var _ScalprumRoot__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ScalprumRoot */ "./src/components/RootApp/ScalprumRoot.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _QuickStart_LazyQuickStartCatalog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../QuickStart/LazyQuickStartCatalog */ "./src/components/QuickStart/LazyQuickStartCatalog.tsx");
-/* harmony import */ var _QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../QuickStart/useQuickstartsStates */ "./src/components/QuickStart/useQuickstartsStates.ts");
-/* harmony import */ var _QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../QuickStart/useHelpTopicState */ "./src/components/QuickStart/useHelpTopicState.ts");
-/* harmony import */ var _QuickStart_quickstartValidation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../QuickStart/quickstartValidation */ "./src/components/QuickStart/quickstartValidation.ts");
-/* harmony import */ var _analytics_SegmentProvider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../analytics/SegmentProvider */ "./src/analytics/SegmentProvider.tsx");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../hooks/useBundle */ "./src/hooks/useBundle.ts");
-/* harmony import */ var _hooks_useUserSSOScopes__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../hooks/useUserSSOScopes */ "./src/hooks/useUserSSOScopes.ts");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-dom */ "webpack/sharing/consume/default/react-dom/react-dom");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
+/* harmony import */ var _FeatureFlags__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../FeatureFlags */ "./src/components/FeatureFlags/index.ts");
+/* harmony import */ var _ScalprumRoot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ScalprumRoot */ "./src/components/RootApp/ScalprumRoot.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _QuickStart_LazyQuickStartCatalog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../QuickStart/LazyQuickStartCatalog */ "./src/components/QuickStart/LazyQuickStartCatalog.tsx");
+/* harmony import */ var _QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../QuickStart/useQuickstartsStates */ "./src/components/QuickStart/useQuickstartsStates.ts");
+/* harmony import */ var _QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../QuickStart/useHelpTopicState */ "./src/components/QuickStart/useHelpTopicState.ts");
+/* harmony import */ var _QuickStart_quickstartValidation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../QuickStart/quickstartValidation */ "./src/components/QuickStart/quickstartValidation.ts");
+/* harmony import */ var _analytics_SegmentProvider__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../analytics/SegmentProvider */ "./src/analytics/SegmentProvider.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _hooks_useUserSSOScopes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hooks/useUserSSOScopes */ "./src/hooks/useUserSSOScopes.ts");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-dom */ "webpack/sharing/consume/default/react-dom/react-dom");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_15__);
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -14694,8 +14704,6 @@ function _object_spread_props(target, source) {
 
 
 
-
-
 var NotEntitledModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_NotEntitledModal_index_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../NotEntitledModal */ "./src/components/NotEntitledModal/index.tsx"));
 });
@@ -14704,33 +14712,32 @@ var Debugger = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(functio
 });
 var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(props) {
     var _user_identity, _user;
-    var _useQuickstartsStates = (0,_QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_10__["default"])(), activateQuickstart = _useQuickstartsStates.activateQuickstart, allQuickStartStates = _useQuickstartsStates.allQuickStartStates, setAllQuickStartStates = _useQuickstartsStates.setAllQuickStartStates, activeQuickStartID = _useQuickstartsStates.activeQuickStartID, setActiveQuickStartID = _useQuickstartsStates.setActiveQuickStartID;
-    var _useHelpTopicState = (0,_QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_11__["default"])(), helpTopics = _useHelpTopicState.helpTopics, addHelpTopics = _useHelpTopicState.addHelpTopics, disableTopics = _useHelpTopicState.disableTopics, enableTopics = _useHelpTopicState.enableTopics;
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useDispatch)();
-    var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(function(param) {
+    var _useQuickstartsStates = (0,_QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_9__["default"])(), activateQuickstart = _useQuickstartsStates.activateQuickstart, allQuickStartStates = _useQuickstartsStates.allQuickStartStates, setAllQuickStartStates = _useQuickstartsStates.setAllQuickStartStates, activeQuickStartID = _useQuickstartsStates.activeQuickStartID, setActiveQuickStartID = _useQuickstartsStates.setActiveQuickStartID;
+    var _useHelpTopicState = (0,_QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_10__["default"])(), helpTopics = _useHelpTopicState.helpTopics, addHelpTopics = _useHelpTopicState.addHelpTopics, disableTopics = _useHelpTopicState.disableTopics, enableTopics = _useHelpTopicState.enableTopics;
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
+    var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var activeModule = param.chrome.activeModule;
         return activeModule;
     });
-    var quickStarts = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(function(param) {
+    var quickStarts = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var _param_chrome = param.chrome, quickstarts = _param_chrome.quickstarts.quickstarts;
         return Object.values(quickstarts).flat();
     });
-    var bundleTitle = (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__["default"])().bundleTitle;
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(function(param) {
+    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var chrome = param.chrome;
         return chrome.user;
     });
-    var isDebuggerEnabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(function(param) {
+    var isDebuggerEnabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var isDebuggerEnabled = param.chrome.isDebuggerEnabled;
         return isDebuggerEnabled;
     });
     // verify use loged in scopes
-    (0,_hooks_useUserSSOScopes__WEBPACK_IMPORTED_MODULE_16__["default"])();
+    (0,_hooks_useUserSSOScopes__WEBPACK_IMPORTED_MODULE_14__["default"])();
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_8__.clearQuickstarts)(activeQuickStartID));
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.clearQuickstarts)(activeQuickStartID));
         if (activeModule) {
             var timeout;
-            var moduleStorageKey = "".concat(_utils_common__WEBPACK_IMPORTED_MODULE_14__.chunkLoadErrorRefreshKey, "-").concat(activeModule);
+            var moduleStorageKey = "".concat(_utils_common__WEBPACK_IMPORTED_MODULE_13__.chunkLoadErrorRefreshKey, "-").concat(activeModule);
             if (localStorage.getItem(moduleStorageKey) === "true") {
                 // The localStorage should either be true or null. A false value
                 // can cause infinite loops. The timeout will remove the value after
@@ -14758,10 +14765,10 @@ var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
    * @param {string} key App identifier
    * @param {array} qs Array of quick starts
    */ var updateQuickStarts = function(key, qs) {
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_8__.populateQuickstartsCatalog)(key, qs));
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.populateQuickstartsCatalog)(key, qs));
     };
     var addQuickstart = function(key, qs) {
-        return (0,_QuickStart_quickstartValidation__WEBPACK_IMPORTED_MODULE_12__["default"])(key, qs) ? !!dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_8__.addQuickstart)(key, qs)) : false;
+        return (0,_QuickStart_quickstartValidation__WEBPACK_IMPORTED_MODULE_11__["default"])(key, qs) ? !!dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.addQuickstart)(key, qs)) : false;
     };
     var quickStartProps = {
         quickStarts: quickStarts,
@@ -14784,28 +14791,26 @@ var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
         activateQuickstart: activateQuickstart,
         add: addQuickstart,
         toggle: setActiveQuickStartID,
-        Catalog: _QuickStart_LazyQuickStartCatalog__WEBPACK_IMPORTED_MODULE_9__.LazyQuickStartCatalog,
+        Catalog: _QuickStart_LazyQuickStartCatalog__WEBPACK_IMPORTED_MODULE_8__.LazyQuickStartCatalog,
         updateQuickStarts: updateQuickStarts
     };
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_HistoryRouter, {
-        history: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_4__["default"],
-        basename: (0,_utils_common__WEBPACK_IMPORTED_MODULE_14__.getRouterBasename)()
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_analytics_SegmentProvider__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        history: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_3__["default"],
+        basename: (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.getRouterBasename)()
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_analytics_SegmentProvider__WEBPACK_IMPORTED_MODULE_12__["default"], {
         activeModule: activeModule
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeatureFlags__WEBPACK_IMPORTED_MODULE_5__.FeatureFlagsProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeatureFlags__WEBPACK_IMPORTED_MODULE_4__.FeatureFlagsProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
         fallback: null
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(NotEntitledModal, null)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
         fallback: null
-    }, ((_user = user) === null || _user === void 0 ? void 0 : (_user_identity = _user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.account_number) && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_14__.ITLess)() && isDebuggerEnabled && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_17___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Debugger, {
+    }, ((_user = user) === null || _user === void 0 ? void 0 : (_user_identity = _user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.account_number) && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)() && isDebuggerEnabled && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_15___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Debugger, {
         user: user
-    }), document.body)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_3__.ChromeProvider, {
-        bundle: bundleTitle
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.QuickStartContainer, quickStartProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.HelpTopicContainer, {
+    }), document.body)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.QuickStartContainer, quickStartProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.HelpTopicContainer, {
         helpTopics: helpTopics
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ScalprumRoot__WEBPACK_IMPORTED_MODULE_6__["default"], _object_spread_props(_object_spread({}, props), {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ScalprumRoot__WEBPACK_IMPORTED_MODULE_5__["default"], _object_spread_props(_object_spread({}, props), {
         quickstartsAPI: quickstartsAPI,
         helpTopicsAPI: helpTopicsAPI
-    }))))))));
+    })))))));
 });
 RootApp.displayName = "MemoizedRootApp";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RootApp);
@@ -14838,27 +14843,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
 /* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
-/* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
-/* harmony import */ var _layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/FavoritedServices */ "./src/layouts/FavoritedServices.tsx");
-/* harmony import */ var _layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../layouts/SatelliteToken */ "./src/layouts/SatelliteToken.tsx");
-/* harmony import */ var _utils_historyListener__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/historyListener */ "./src/utils/historyListener.ts");
-/* harmony import */ var _analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../analytics/SegmentContext */ "./src/analytics/SegmentContext.ts");
-/* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../auth */ "./src/auth/index.ts");
-/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
-/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
-/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
-/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
-/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
-/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
-/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
+/* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
+/* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
+/* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
+/* harmony import */ var _layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../layouts/FavoritedServices */ "./src/layouts/FavoritedServices.tsx");
+/* harmony import */ var _layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../layouts/SatelliteToken */ "./src/layouts/SatelliteToken.tsx");
+/* harmony import */ var _utils_historyListener__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/historyListener */ "./src/utils/historyListener.ts");
+/* harmony import */ var _analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../analytics/SegmentContext */ "./src/analytics/SegmentContext.ts");
+/* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../auth */ "./src/auth/index.ts");
+/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
+/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
+/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
+/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
+/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
+/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
+/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
+/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
+/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -15115,6 +15122,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var ProductSelection = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_Stratosphere_ProductSelection_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../Stratosphere/ProductSelection */ "./src/components/Stratosphere/ProductSelection.tsx"));
 });
@@ -15151,15 +15159,15 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var setFilteredHelpTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_5__.HelpTopicContext).setFilteredHelpTopics;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var internalFilteredTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
-    var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_13__["default"]).analytics;
-    var libJwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_16__["default"]);
+    var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__["default"]).analytics;
+    var libJwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_17__["default"]);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var modulesConfig = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
         var modules = param.chrome.modules;
         return modules;
     });
     // initialize WS event handling
-    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_26__["default"])();
+    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__["default"])();
     function getNotifications() {
         return _getNotifications.apply(this, arguments);
     }
@@ -15181,7 +15189,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                         ];
                     case 1:
                         notifications = _state.sent();
-                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_27__.populateNotifications)(((_notifications_data = notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.data) || []));
+                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_28__.populateNotifications)(((_notifications_data = notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.data) || []));
                         return [
                             3,
                             3
@@ -15202,7 +15210,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         });
         return _getNotifications.apply(this, arguments);
     }
-    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_19__["default"])(helpTopicsAPI).setActiveTopic;
+    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_20__["default"])(helpTopicsAPI).setActiveTopic;
     function enableTopics() {
         return _enableTopics.apply(this, arguments);
     }
@@ -15241,13 +15249,13 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         return _enableTopics.apply(this, arguments);
     }
     // track bundle visits
-    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_22__["default"])();
+    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_23__["default"])();
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         // prepare webpack module sharing scope overrides
-        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_21__["default"])();
+        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_22__["default"])();
         // get notifications drawer api
         getNotifications();
-        var unregister = _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_7__["default"].listen(_utils_historyListener__WEBPACK_IMPORTED_MODULE_12__["default"]);
+        var unregister = _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_8__["default"].listen(_utils_historyListener__WEBPACK_IMPORTED_MODULE_13__["default"]);
         return function() {
             if (typeof unregister === "function") {
                 return unregister();
@@ -15259,7 +15267,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
             pageOptions: pageOptions
         });
     }, []);
-    var getUser = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,_auth__WEBPACK_IMPORTED_MODULE_15__.createGetUser)(libJwt), [
+    var getUser = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,_auth__WEBPACK_IMPORTED_MODULE_16__.createGetUser)(libJwt), [
         libJwt
     ]);
     var helpTopicsChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
@@ -15273,7 +15281,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         });
     }, []);
     var chromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        return (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_17__.createChromeContext)({
+        return (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_18__.createChromeContext)({
             analytics: analytics,
             getUser: getUser,
             helpTopics: helpTopicsChromeApi,
@@ -15288,7 +15296,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var scalprumProviderProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         // set the deprecated chrome API to window
         // eslint-disable-next-line rulesdir/no-chrome-api-call-from-window
-        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_23__["default"])(chromeApi);
+        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_24__["default"])(chromeApi);
         return {
             config: config,
             api: {
@@ -15309,7 +15317,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                         var _manifest_baseURL, _manifest_loadScripts_map, _manifest_registrationMethod;
                         var newManifest = _object_spread_props(_object_spread({}, manifest), {
                             // Compatibility required for bot pure SDK plugins, HCC plugins and sdk v1/v2 plugins until all are on the same system.
-                            baseURL: manifest.name.includes("hac-") && !manifest.baseURL ? "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.isBeta)() ? "/beta" : "", "/api/plugins/").concat(manifest.name, "/") : "/",
+                            baseURL: manifest.name.includes("hac-") && !manifest.baseURL ? "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.isBeta)() ? "/beta" : "", "/api/plugins/").concat(manifest.name, "/") : "/",
                             loadScripts: (_manifest_loadScripts_map = (_manifest_loadScripts = manifest.loadScripts) === null || _manifest_loadScripts === void 0 ? void 0 : _manifest_loadScripts.map(function(script) {
                                 return "".concat(manifest.baseURL).concat(script).replace(/\/\//, "/");
                             })) !== null && _manifest_loadScripts_map !== void 0 ? _manifest_loadScripts_map : [
@@ -15328,13 +15336,13 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
        * - define chrome API in chrome root after it mounts
        * - copy these functions to window
        * - add deprecation warning to the window functions
-       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_25__["default"].Provider, {
+       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_26__["default"].Provider, {
         value: chromeApi
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__.ScalprumProvider, scalprumProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__.ScalprumProvider, scalprumProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__.ChromeProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         index: true,
         path: "/",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], _object_spread({
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__["default"], _object_spread({
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
@@ -15342,40 +15350,40 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/connect/products",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProductSelection, null))
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/allservices",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_AllServices__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__["default"]
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_AllServices__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/favoritedservices",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
-            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_14__["default"]
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_10__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_20__["default"], {
+            fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__["default"]
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_11__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/insights/satellite",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_11__["default"], null)
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_12__["default"], null)
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/security",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], props)
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__["default"], props)
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "*",
-        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_8__["default"], _object_spread({
-            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_18__["default"]
+        element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__["default"], _object_spread({
+            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_19__["default"]
         }, props))
-    })))));
+    }))))));
 }, // config rarely changes
 function(prev, next) {
     return lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default()(prev.config, next.config);
@@ -15533,6 +15541,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ChromeRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ChromeRoute */ "./src/components/ChromeRoute/index.ts");
 /* harmony import */ var _NotFoundRoute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../NotFoundRoute */ "./src/components/NotFoundRoute/index.ts");
 /* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
+/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -15567,6 +15576,8 @@ function _object_spread(target) {
 
 
 
+
+var INTEGRATION_SOURCES = "platform.sources.integrations";
 var QuickstartCatalogRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_QuickstartsCatalogRoute_index_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../QuickstartsCatalogRoute */ "./src/components/QuickstartsCatalogRoute/index.ts"));
 });
@@ -15581,7 +15592,23 @@ var redirects = [
     },
     {
         path: "/settings",
-        to: "/settings/sources"
+        to: "/settings/integrations",
+        previewFlag: {
+            value: true,
+            name: INTEGRATION_SOURCES
+        }
+    },
+    {
+        path: "/settings",
+        to: "/settings/sources",
+        previewFlag: {
+            value: false,
+            name: INTEGRATION_SOURCES
+        }
+    },
+    {
+        path: "/user-preferences",
+        to: "/user-preferences/notifications"
     },
     {
         path: "/quay",
@@ -15606,6 +15633,14 @@ var redirects = [
 ];
 var ChromeRoutes = function(param) {
     var routesProps = param.routesProps;
+    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__.usePreviewFlag)(INTEGRATION_SOURCES);
+    var previewFlags = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        return {
+            INTEGRATION_SOURCES: enableIntegrations
+        };
+    }, [
+        enableIntegrations
+    ]);
     var moduleRoutes = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
         var moduleRoutes = param.chrome.moduleRoutes;
         return moduleRoutes;
@@ -15617,7 +15652,15 @@ var ChromeRoutes = function(param) {
             fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(QuickstartCatalogRoute, null))
     }), redirects.map(function(param) {
-        var path = param.path, to = param.to;
+        var path = param.path, to = param.to, previewFlag = param.previewFlag;
+        if (previewFlag) {
+            var found = Object.keys(previewFlags).find(function(item) {
+                return item === previewFlag.name;
+            });
+            if (previewFlags[found] !== previewFlag.value) {
+                return null;
+            }
+        }
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
             key: path,
             path: path,
@@ -17679,6 +17722,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -17804,13 +17849,19 @@ function _ts_generator(thisArg, body) {
     }
 }
 
+
+
 var initializeJWT = function() {
     var _ref = _async_to_generator(function(libjwt) {
-        var actions, user, encodedToken, error;
+        var actions, user, error, user1, encodedToken, error1;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     actions = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_0__.spinUpStore)().actions;
+                    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.ITLessCognito)()) return [
+                        3,
+                        6
+                    ];
                     _state.label = 1;
                 case 1:
                     _state.trys.push([
@@ -17821,22 +17872,18 @@ var initializeJWT = function() {
                     ]);
                     return [
                         4,
-                        libjwt.initPromise
+                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.getTokenWithAuthorizationCode)()
                     ];
                 case 2:
                     _state.sent();
                     return [
                         4,
-                        libjwt.jwt.getUserInfo()
+                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.createUser)()
                     ];
                 case 3:
                     user = _state.sent();
                     if (user) {
                         actions.userLogIn(user);
-                    }
-                    encodedToken = libjwt.jwt.getEncodedToken();
-                    if (encodedToken) {
-                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
                     }
                     return [
                         3,
@@ -17851,6 +17898,49 @@ var initializeJWT = function() {
                         5
                     ];
                 case 5:
+                    return [
+                        3,
+                        10
+                    ];
+                case 6:
+                    _state.trys.push([
+                        6,
+                        9,
+                        ,
+                        10
+                    ]);
+                    return [
+                        4,
+                        libjwt.initPromise
+                    ];
+                case 7:
+                    _state.sent();
+                    return [
+                        4,
+                        libjwt.jwt.getUserInfo()
+                    ];
+                case 8:
+                    user1 = _state.sent();
+                    if (user1) {
+                        actions.userLogIn(user1);
+                    }
+                    encodedToken = libjwt.jwt.getEncodedToken();
+                    if (encodedToken) {
+                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
+                    }
+                    return [
+                        3,
+                        10
+                    ];
+                case 9:
+                    error1 = _state.sent();
+                    console.error(error1);
+                    actions.userLogIn(false);
+                    return [
+                        3,
+                        10
+                    ];
+                case 10:
                     return [
                         2
                     ];
@@ -18226,7 +18316,7 @@ var doOffline = function(key, val, configSsoUrl) {
                         if (partnerScope) {
                             scopes.push(partnerScope);
                         }
-                        if (ssoScopes && !itLessKeycloakEnv) {
+                        if (ssoScopes && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)()) {
                             try {
                                 // make sure add openid scope when custom scope is used
                                 scopes.push("openid", JSON.parse(ssoScopes));
@@ -23177,6 +23267,33 @@ var useOuiaTags = function() {
     return state;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useOuiaTags);
+
+
+/***/ }),
+
+/***/ "./src/utils/usePreviewFlag.ts":
+/*!*************************************!*\
+  !*** ./src/utils/usePreviewFlag.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   usePreviewFlag: () => (/* binding */ usePreviewFlag)
+/* harmony export */ });
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
+
+
+var usePreviewFlag = function(flag) {
+    var notificationsOverhaul = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__.useFlag)(flag);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_1__.isProd)() && !(0,_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)()) {
+        return false;
+    }
+    return notificationsOverhaul;
+};
 
 
 /***/ }),
