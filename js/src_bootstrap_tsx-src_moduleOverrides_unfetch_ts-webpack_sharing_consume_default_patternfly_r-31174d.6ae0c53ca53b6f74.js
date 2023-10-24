@@ -7855,7 +7855,7 @@ var FeedbackError = function(param) {
         component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextVariants.h1
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_6__["default"].somethingWentWrong)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_6__["default"].problemProcessingRequest), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
         target: "_blank",
-        href: "https://access.redhat.com/support",
+        href: "https://access.redhat.com/support/cases/#/case/new/get-support?caseCreate=true&source=console",
         rel: "noreferrer"
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_6__["default"].redHatSupport)))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
         variant: "primary",
@@ -8452,7 +8452,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].reportABug),
                     modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].describeReportBug), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, {
                         component: "a",
-                        href: "https://access.redhat.com/support/cases/#/case/new/open-case?caseCreate=true",
+                        href: "https://access.redhat.com/support/cases/#/case/new/get-support?caseCreate=true&source=console",
                         target: "_blank"
                     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default()), null))),
                     feedbackType: "Bug",
