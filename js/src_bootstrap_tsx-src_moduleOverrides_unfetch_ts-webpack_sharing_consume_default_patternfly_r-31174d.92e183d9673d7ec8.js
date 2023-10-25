@@ -4256,8 +4256,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cube-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cube-icon/@patternfly/react-icons/dist/dynamic/icons/cube-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_database_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/database-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/database-icon/@patternfly/react-icons/dist/dynamic/icons/database-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_database_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_database_icon__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/lightbulb-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/infrastructure-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/rocket-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/rocket-icon/@patternfly/react-icons/dist/dynamic/icons/rocket-icon");
@@ -4286,7 +4286,7 @@ __webpack_require__.r(__webpack_exports__);
 var AllServicesIcons = {
     CloudUploadAltIcon: (_patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_5___default()),
     AutomationIcon: (_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_0___default()),
-    DatabaseIcon: (_patternfly_react_icons_dist_dynamic_icons_database_icon__WEBPACK_IMPORTED_MODULE_9___default()),
+    LightBulbIcon: (_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_9___default()),
     RocketIcon: (_patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_11___default()),
     UsersIcon: (_patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_13___default()),
     InfrastructureIcon: (_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_10___default()),
