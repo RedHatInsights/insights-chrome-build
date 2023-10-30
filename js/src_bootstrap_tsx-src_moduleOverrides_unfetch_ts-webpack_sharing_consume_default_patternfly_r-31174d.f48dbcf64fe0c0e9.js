@@ -10784,7 +10784,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
-/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -10898,7 +10897,6 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)();
 var switchRelease = function(isBeta, pathname, previewEnabled) {
     js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_toggledRelease", "true");
@@ -10949,7 +10947,7 @@ var Tools = function() {
         isRhosakEntitled: false,
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
-    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_27__.usePreviewFlag)("platform.sources.integrations");
+    var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.sources.integrations");
     var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__["default"])().xs;
     var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var user = param.chrome.user;
@@ -15541,7 +15539,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ChromeRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ChromeRoute */ "./src/components/ChromeRoute/index.ts");
 /* harmony import */ var _NotFoundRoute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../NotFoundRoute */ "./src/components/NotFoundRoute/index.ts");
 /* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
-/* harmony import */ var _utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/usePreviewFlag */ "./src/utils/usePreviewFlag.ts");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_6__);
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -15593,7 +15592,7 @@ var redirects = [
     {
         path: "/settings",
         to: "/settings/integrations",
-        previewFlag: {
+        featureFlag: {
             value: true,
             name: INTEGRATION_SOURCES
         }
@@ -15601,7 +15600,7 @@ var redirects = [
     {
         path: "/settings",
         to: "/settings/sources",
-        previewFlag: {
+        featureFlag: {
             value: false,
             name: INTEGRATION_SOURCES
         }
@@ -15633,8 +15632,8 @@ var redirects = [
 ];
 var ChromeRoutes = function(param) {
     var routesProps = param.routesProps;
-    var enableIntegrations = (0,_utils_usePreviewFlag__WEBPACK_IMPORTED_MODULE_6__.usePreviewFlag)(INTEGRATION_SOURCES);
-    var previewFlags = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+    var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_6__.useFlag)(INTEGRATION_SOURCES);
+    var featureFlags = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         return {
             INTEGRATION_SOURCES: enableIntegrations
         };
@@ -15652,12 +15651,12 @@ var ChromeRoutes = function(param) {
             fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_5__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(QuickstartCatalogRoute, null))
     }), redirects.map(function(param) {
-        var path = param.path, to = param.to, previewFlag = param.previewFlag;
-        if (previewFlag) {
-            var found = Object.keys(previewFlags).find(function(item) {
-                return item === previewFlag.name;
+        var path = param.path, to = param.to, featureFlag = param.featureFlag;
+        if (featureFlag) {
+            var found = Object.keys(featureFlags).find(function(item) {
+                return item === featureFlag.name;
             });
-            if (previewFlags[found] !== previewFlag.value) {
+            if (featureFlags[found] !== featureFlag.value) {
                 return null;
             }
         }
@@ -23267,33 +23266,6 @@ var useOuiaTags = function() {
     return state;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useOuiaTags);
-
-
-/***/ }),
-
-/***/ "./src/utils/usePreviewFlag.ts":
-/*!*************************************!*\
-  !*** ./src/utils/usePreviewFlag.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   usePreviewFlag: () => (/* binding */ usePreviewFlag)
-/* harmony export */ });
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
-
-
-var usePreviewFlag = function(flag) {
-    var notificationsOverhaul = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_0__.useFlag)(flag);
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_1__.isProd)() && !(0,_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)()) {
-        return false;
-    }
-    return notificationsOverhaul;
-};
 
 
 /***/ }),
