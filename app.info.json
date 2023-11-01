@@ -1,14 +1,14 @@
 {
   "app_name": "chrome",
   "node_version": ">=16.0.0",
-  "src_hash": "d8eadf6568add991c7ef009936242a47fa50d7ea",
+  "src_hash": "88ed9a15d7190677757fba3eaf9b70069ede019c",
   "src_tag": "",
   "src_branch": "master",
   "patternfly_dependencies": ["@patternfly/patternfly@5.0.4","@patternfly/quickstarts@5.0.0","@patternfly/react-charts@7.0.0","@patternfly/react-core@5.0.1","@patternfly/react-icons@5.0.1","@patternfly/react-tokens@5.0.1","pf-4-styles@npm:@patternfly/patternfly@4.224.5"],
-  "rh_cloud_services_dependencies": ["@redhat-cloud-services/chrome@1.0.2","@redhat-cloud-services/entitlements-client@1.2.0","@redhat-cloud-services/frontend-components-notifications@4.0.2","@redhat-cloud-services/frontend-components-pdf-generator@4.0.1","@redhat-cloud-services/frontend-components-utilities@4.0.2","@redhat-cloud-services/frontend-components@4.0.10","@redhat-cloud-services/host-inventory-client@1.2.0","@redhat-cloud-services/rbac-client@1.2.0"],
+  "rh_cloud_services_dependencies": ["@redhat-cloud-services/chrome@1.0.3","@redhat-cloud-services/entitlements-client@1.2.0","@redhat-cloud-services/frontend-components-notifications@4.0.2","@redhat-cloud-services/frontend-components-pdf-generator@4.0.1","@redhat-cloud-services/frontend-components-utilities@4.0.2","@redhat-cloud-services/frontend-components@4.0.10","@redhat-cloud-services/host-inventory-client@1.2.0","@redhat-cloud-services/rbac-client@1.2.0"],
   "travis": {
     "event_type": "push",
-    "build_number": "12723",
-    "build_web_url": "https://app.travis-ci.com/RedHatInsights/insights-chrome/builds/266916900"
+    "build_number": "12727",
+    "build_web_url": "https://app.travis-ci.com/RedHatInsights/insights-chrome/builds/266969112"
   }
 }
