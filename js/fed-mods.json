@@ -1,14 +1,14 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.2129f1a9ce3ea67c.js"
+            "/beta/apps/chrome/js/chrome.93d2426418714690.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.afdc470990922d08.js",
             "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.66be6754bdb433c1.css",
             "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx-src_utils_common_ts.0ae8fc7c925f58b2.js",
             "/beta/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-d46c7c.b6f4919b91548c29.js",
-            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.68cb9788098a1320.js",
+            "/beta/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.2ef87e583e4d0156.js",
             "/beta/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.402785891657e9b8.js"
         ]
     }
