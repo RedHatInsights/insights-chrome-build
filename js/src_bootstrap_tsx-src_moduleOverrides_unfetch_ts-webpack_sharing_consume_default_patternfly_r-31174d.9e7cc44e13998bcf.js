@@ -11001,6 +11001,9 @@ var Tools = function() {
     }, [
         user
     ]);
+    var supportOptionsUrl = function() {
+        return isITLessEnv ? "https://redhatgov.servicenowservices.com/css" : "https://access.redhat.com/support";
+    };
     /* list out the items for the about menu */ var aboutMenuDropdownItems = [
         {
             title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].apiDocumentation),
@@ -11026,7 +11029,9 @@ var Tools = function() {
         },
         {
             title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].supportOptions),
-            url: isITLessEnv ? "https://redhatgov.servicenowservices.com/css" : "https://access.redhat.com/support"
+            onClick: function() {
+                return window.location.href = supportOptionsUrl();
+            }
         },
         {
             title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].insightsRhelDocumentation),
