@@ -55807,14 +55807,14 @@ var DEFAULT_SSO_ROUTES = {
         url: [
             "console.stage.openshiftusgov.com"
         ],
-        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        sso: "https://sso.stage.openshiftusgov.com/auth",
         portal: "https://console.stage.openshiftusgov.com"
     },
     frh: {
         url: [
             "console.openshiftusgov.com"
         ],
-        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        sso: "https://ocm-ra-prod-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
         portal: "https://console.openshiftusgov.com"
     },
     ephem: {
@@ -55956,10 +55956,10 @@ function ITLess() {
     return getEnv() === "frhStage" || getEnv() === "frh" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
 }
 function ITLessCognito() {
-    return getEnv() === "frhStage" || getEnv() === "frh";
+    return getEnv() === "frh";
 }
 function ITLessKeycloak() {
-    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
+    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr" || getEnv() === "frhStage";
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
@@ -57153,8 +57153,8 @@ function __disposeResources(env) {
 /******/ 			"webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core": () => (loadSingletonVersionCheckFallback("default", "@scalprum/react-core", [4,0,5,4], () => (Promise.all([__webpack_require__.e("vendors-node_modules_lodash__baseIsEqual_js"), __webpack_require__.e("vendors-node_modules_scalprum_core_dist_esm_index_js"), __webpack_require__.e("vendors-node_modules_scalprum_react-core_dist_esm_index_js"), __webpack_require__.e("webpack_sharing_consume_default_openshift_dynamic-plugin-sdk_openshift_dynamic-plugin-sdk")]).then(() => (() => (__webpack_require__(/*! @scalprum/react-core */ "./node_modules/@scalprum/react-core/dist/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@openshift/dynamic-plugin-sdk/@openshift/dynamic-plugin-sdk": () => (loadSingletonVersionCheckFallback("default", "@openshift/dynamic-plugin-sdk", [1,4,0,0], () => (Promise.all([__webpack_require__.e("vendors-node_modules_lodash__baseCreate_js-node_modules_lodash__copyArray_js-node_modules_lod-39595a"), __webpack_require__.e("vendors-node_modules_lodash__baseForOwn_js-node_modules_lodash__baseIteratee_js-node_modules_-167437"), __webpack_require__.e("vendors-node_modules_lodash__baseClone_js-node_modules_lodash__baseSlice_js"), __webpack_require__.e("vendors-node_modules_lodash__createAssigner_js-node_modules_lodash_isArrayLikeObject_js-node_-57e072"), __webpack_require__.e("vendors-node_modules_openshift_dynamic-plugin-sdk_dist_index_esm_js")]).then(() => (() => (__webpack_require__(/*! @openshift/dynamic-plugin-sdk */ "./node_modules/@openshift/dynamic-plugin-sdk/dist/index.esm.js"))))))),
 /******/ 			"webpack/sharing/consume/default/react-router-dom/react-router-dom": () => (loadSingletonVersionCheckFallback("default", "react-router-dom", [1,6,8,2], () => (__webpack_require__.e("vendors-node_modules_react-router-dom_dist_index_js").then(() => (() => (__webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/react-intl/react-intl": () => (loadSingletonVersionCheckFallback("default", "react-intl", [1,6,2,10], () => (() => (__webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.js"))))),
 /******/ 			"webpack/sharing/consume/default/react-redux/react-redux": () => (loadStrictVersionCheckFallback("default", "react-redux", [1,8,0,5], () => (Promise.all([__webpack_require__.e("vendors-node_modules_react-redux_es_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js"))))))),
+/******/ 			"webpack/sharing/consume/default/react-intl/react-intl": () => (loadSingletonVersionCheckFallback("default", "react-intl", [1,6,2,10], () => (() => (__webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/index.js"))))),
 /******/ 			"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Card/@patternfly/react-core/dist/dynamic/components/Card": () => (loadStrictVersionCheckFallback("default", "@patternfly/react-core/dist/dynamic/components/Card", [1,5,0,1], () => (Promise.all([__webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Button_Button_js"), __webpack_require__.e("vendors-node_modules_patternfly_react-core_dist_esm_components_Card_CardBody_js-node_modules_-a55ddf"), __webpack_require__.e("node_modules_patternfly_react-core_dist_esm_components_Card_index_js-node_modules_patternfly_-67de27")]).then(() => (() => (__webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Card */ "./node_modules/@patternfly/react-core/dist/esm/components/Card/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Icon/@patternfly/react-core/dist/dynamic/components/Icon?9be4": () => (loadStrictVersionCheckFallback("default", "@patternfly/react-core/dist/dynamic/components/Icon", [1,5,0,1], () => (__webpack_require__.e("node_modules_patternfly_react-core_dist_esm_components_Icon_index_js-_dcca0").then(() => (() => (__webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Icon */ "./node_modules/@patternfly/react-core/dist/esm/components/Icon/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text": () => (loadStrictVersionCheckFallback("default", "@patternfly/react-core/dist/dynamic/components/Text", [1,5,0,1], () => (__webpack_require__.e("node_modules_patternfly_react-core_dist_esm_components_Text_index_js").then(() => (() => (__webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "./node_modules/@patternfly/react-core/dist/esm/components/Text/index.js"))))))),
@@ -57311,8 +57311,8 @@ function __disposeResources(env) {
 /******/ 				"webpack/sharing/consume/default/react-router-dom/react-router-dom"
 /******/ 			],
 /******/ 			"src_components_FavoriteServices_EmptyState_tsx-src_hooks_useFavoritedServices_ts-webpack_shar-72103e": [
-/******/ 				"webpack/sharing/consume/default/react-intl/react-intl",
 /******/ 				"webpack/sharing/consume/default/react-redux/react-redux",
+/******/ 				"webpack/sharing/consume/default/react-intl/react-intl",
 /******/ 				"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Card/@patternfly/react-core/dist/dynamic/components/Card",
 /******/ 				"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Icon/@patternfly/react-core/dist/dynamic/components/Icon?9be4",
 /******/ 				"webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text",
