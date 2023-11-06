@@ -579,14 +579,14 @@ var DEFAULT_SSO_ROUTES = {
         url: [
             "console.stage.openshiftusgov.com"
         ],
-        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        sso: "https://sso.stage.openshiftusgov.com/auth",
         portal: "https://console.stage.openshiftusgov.com"
     },
     frh: {
         url: [
             "console.openshiftusgov.com"
         ],
-        sso: "https://ocm-ra-stage-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
+        sso: "https://ocm-ra-prod-domain.auth-fips.us-gov-west-1.amazoncognito.com/login",
         portal: "https://console.openshiftusgov.com"
     },
     ephem: {
@@ -728,10 +728,10 @@ function ITLess() {
     return getEnv() === "frhStage" || getEnv() === "frh" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
 }
 function ITLessCognito() {
-    return getEnv() === "frhStage" || getEnv() === "frh";
+    return getEnv() === "frh";
 }
 function ITLessKeycloak() {
-    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
+    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr" || getEnv() === "frhStage";
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
