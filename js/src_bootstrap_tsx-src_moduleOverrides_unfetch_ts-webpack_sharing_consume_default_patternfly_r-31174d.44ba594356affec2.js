@@ -11370,33 +11370,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?d3ce");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Dropdown */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Dropdown/@patternfly/react-core/dist/dynamic/components/Dropdown?71b3");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?5b04");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Tooltip */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Tooltip/@patternfly/react-core/dist/dynamic/components/Tooltip?717a");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/question-circle-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/question-circle-icon/@patternfly/react-icons/dist/dynamic/icons/question-circle-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _UserIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserIcon */ "./src/components/Header/UserIcon.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ChromeLink/ChromeLink */ "./src/components/ChromeLink/ChromeLink.tsx");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../cognito/auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon?fc6c");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _UserToggle_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./UserToggle.scss */ "./src/components/Header/UserToggle.scss");
+/* harmony import */ var _UserToggle_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserToggle.scss */ "./src/components/Header/UserToggle.scss");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Dropdown */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Dropdown/@patternfly/react-core/dist/dynamic/components/Dropdown?71b3");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ChromeLink/ChromeLink */ "./src/components/ChromeLink/ChromeLink.tsx");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?d3ce");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon?fc6c");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?5b04");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/question-circle-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/question-circle-icon/@patternfly/react-icons/dist/dynamic/icons/question-circle-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Tooltip */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Tooltip/@patternfly/react-core/dist/dynamic/components/Tooltip?717a");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _UserIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./UserIcon */ "./src/components/Header/UserIcon.tsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../cognito/auth */ "./src/cognito/auth.ts");
+/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_16__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -11490,107 +11490,114 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 var buildItems = function() {
     var username = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", isOrgAdmin = arguments.length > 1 ? arguments[1] : void 0, accountNumber = arguments.length > 2 ? arguments[2] : void 0, isInternal = arguments.length > 3 ? arguments[3] : void 0, extraItems = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : [];
-    var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_8__.getEnv)();
-    var isProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_8__.isProd)();
-    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_8__.ITLess)();
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
+    var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.getEnv)();
+    var isProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.isProd)();
+    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_15__.useIntl)();
     var prefix = isProd ? "" : "".concat(env === "ci" ? "qa" : env, ".");
-    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].useAccountNumber));
-    var questionMarkRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].useAccountNumber));
+    var questionMarkRef = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
     return [
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "Username",
             isDisabled: true
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dl", {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dl", {
             className: "chr-c-dropdown-item__stack"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dt", {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dd", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value data-hj-suppress sentry-mask"
-        }, username), isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dd", {
+        }, username), isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].orgAdministrator)))),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].orgAdministrator)))),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "account wrapper"
-        }, accountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_4__.Tooltip, {
+        }, accountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
             triggerRef: questionMarkRef,
             id: "accountNumber-tooltip",
             content: accountNumberTooltip
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             component: "span",
             key: "Account",
             className: "chr-c-disabled-pointer"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dl", {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dl", {
             className: "chr-c-dropdown-item__stack"
-        }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dt", {
+        }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", {
             ref: questionMarkRef,
             className: "visible-pointer pf-v5-u-ml-sm"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_5___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dd", {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value sentry-mask data-hj-suppress"
-        }, accountNumber)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("dd", {
+        }, accountNumber)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].internalUser)))))),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_1__.Divider, {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].internalUser)))))),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__.Divider, {
             component: "li",
             key: "separator"
         }),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "My Profile wrapper"
-        }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "My Profile",
             to: "https://www.".concat(prefix, "redhat.com/wapps/ugc/protected/personalInfo.html"),
             target: "_blank",
             rel: "noopener noreferrer",
             component: "a"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].myProfile))),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].myProfile))),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "My user access wrapper"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             component: function(param) {
                 var className = param.className;
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     className: className,
                     href: "/iam/my-user-access",
                     appId: "rbac"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].myUserAccess));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].myUserAccess));
             },
             key: "My user access"
         })),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "user prefs wrapper"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             component: function(param) {
                 var className = param.className;
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     className: className,
                     href: "/user-preferences/notifications",
                     appId: "userPreferences"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].userPreferences));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].userPreferences));
             },
             key: "User preferences"
         })),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "internal wrapper"
-        }, isInternal && isProd && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+        }, isInternal && isProd && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "Internal",
-            href: "./internal"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].internal))),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownItem, {
+            component: function(param) {
+                var className = param.className;
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                    className: className,
+                    href: "/internal",
+                    appId: "internal"
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].internal));
+            }
+        })),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "logout",
             component: "button",
             onClick: function() {
-                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_8__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_13__.cogLogout)() : (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_12__.logout)(true);
+                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_12__.cogLogout)() : (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_13__.logout)(true);
             }
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_11__["default"].logout)),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].logout)),
         extraItems
     ];
 };
 var UserToggle = function(param) {
     var _param_isSmall = param.isSmall, isSmall = _param_isSmall === void 0 ? false : _param_isSmall, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
-    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
-    var account = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(function(param) {
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
+    var account = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var chrome = param.chrome;
         var _chrome_user, _chrome_user_identity_user, _chrome_user1, _chrome_user_identity_user1, _chrome_user2, _chrome_user_identity_user2, _chrome_user3, _chrome_user_identity_user3, _chrome_user4, _chrome_user_identity_user4, _chrome_user5;
         return {
@@ -11614,7 +11621,7 @@ var UserToggle = function(param) {
             return !prev;
         });
     };
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
         popperProps: {
             position: "right"
         },
@@ -11623,25 +11630,25 @@ var UserToggle = function(param) {
         onSelect: onSelect,
         onOpenChange: setIsOpen,
         toggle: function(toggleRef) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__.MenuToggle, _object_spread({
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__.MenuToggle, _object_spread({
                 ref: toggleRef,
                 isExpanded: isOpen,
                 isFullHeight: true,
                 onClick: onToggle,
                 variant: isSmall ? "plain" : undefined,
-                className: classnames__WEBPACK_IMPORTED_MODULE_15___default()("data-hj-suppress", "sentry-mask", {
+                className: classnames__WEBPACK_IMPORTED_MODULE_11___default()("data-hj-suppress", "sentry-mask", {
                     "pf-v5-u-pr-lg pf-v5-u-pl-lg": isSmall
                 })
             }, isSmall ? {
                 id: "UserMenu",
                 "widget-type": "UserMenu"
             } : {
-                icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UserIcon__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-            }), isSmall ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_14__.EllipsisVIcon, null) : account.name);
+                icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_UserIcon__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+            }), isSmall ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6__.EllipsisVIcon, null) : account.name);
         },
         className: "chr-c-dropdown-user-toggle",
         isOpen: isOpen
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_2__.DropdownList, null, buildItems(account.username, account.isOrgAdmin, account.number, account.isInternal, extraItems)));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownList, null, buildItems(account.username, account.isOrgAdmin, account.number, account.isInternal, extraItems)));
 };
 // TODO update this to use account_id
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserToggle);
