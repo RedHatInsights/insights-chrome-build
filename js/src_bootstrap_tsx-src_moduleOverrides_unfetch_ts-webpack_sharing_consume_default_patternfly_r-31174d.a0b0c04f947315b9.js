@@ -16268,6 +16268,8 @@ var SUGGEST_SEARCH = new URLSearchParams();
 SUGGEST_SEARCH.append("redhat_client", "console"); // required client id
 SUGGEST_SEARCH.append("q", REPLACE_TAG); // add query replacement tag and enable fuzzy search with ~ and wildcards
 SUGGEST_SEARCH.append("suggest.count", "10"); // request 10 results
+SUGGEST_SEARCH.append("suggest.dictionary", "improvedInfixSuggester"); // console  new suggest dictionary
+SUGGEST_SEARCH.append("suggest.dictionary", "default");
 var SUGGEST_URL = new URL("https://access.".concat(IS_PROD ? "" : "stage.", "redhat.com/hydra/proxy/gss-diag/rs/search/autosuggest"));
 // search API stopped receiving encoded search string
 SUGGEST_URL.search = decodeURIComponent(SUGGEST_SEARCH.toString());
@@ -16415,14 +16417,10 @@ var SearchInput = function(param) {
                             var item = param.item;
                             return item;
                         });
-                        console.log(suggests);
                         if (!(items.length < 10)) return [
                             3,
                             3
                         ];
-                        console.log({
-                            value: value
-                        });
                         return [
                             4,
                             fetch(BASE_URL.toString().replaceAll(REPLACE_TAG, "(".concat(suggests.join(" OR "), " OR ").concat(value, ")")).replaceAll(REPLACE_COUNT_TAG, "10")).then(function(r) {
