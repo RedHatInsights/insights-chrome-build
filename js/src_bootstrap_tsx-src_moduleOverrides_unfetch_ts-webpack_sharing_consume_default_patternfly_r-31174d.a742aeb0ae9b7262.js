@@ -16284,6 +16284,22 @@ var getMaxMenuHeight = function(menuElement) {
     // leave 4 px free on the bottom of the viewport
     return bodyHeight - menuTopOffset - 4;
 };
+function parseSuggestions() {
+    var suggestions = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+    return suggestions.map(function(suggestion) {
+        var _suggestion_term_split = _sliced_to_array(suggestion.term.split(_SearchTypes__WEBPACK_IMPORTED_MODULE_10__.AUTOSUGGEST_TERM_DELIMITER), 3), allTitle = _suggestion_term_split[0], bundleTitle = _suggestion_term_split[1], abstract = _suggestion_term_split[2];
+        var url = new URL(suggestion.payload);
+        return {
+            item: {
+                title: allTitle,
+                bundleTitle: bundleTitle,
+                description: abstract,
+                pathname: url.pathname
+            },
+            allTitle: allTitle
+        };
+    });
+}
 var SearchInput = function(param) {
     var onStateChange = param.onStateChange;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
@@ -16379,7 +16395,7 @@ var SearchInput = function(param) {
     ]);
     var handleFetch = function() {
         var _ref = _async_to_generator(function() {
-            var value, _response_suggest_default_value, _response_suggest, _response, response, items, suggests, searchItems, altTitleResults;
+            var value, _response_suggest_default_value, _response_suggest, _response, _response_suggest_improvedInfixSuggester_value, _response_suggest1, _response1, response, items, suggests, searchItems, altTitleResults;
             var _arguments = arguments;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
@@ -16393,22 +16409,8 @@ var SearchInput = function(param) {
                         ];
                     case 1:
                         response = _state.sent();
-                        items = (((_response = response) === null || _response === void 0 ? void 0 : (_response_suggest = _response.suggest) === null || _response_suggest === void 0 ? void 0 : (_response_suggest_default_value = _response_suggest.default[value]) === null || _response_suggest_default_value === void 0 ? void 0 : _response_suggest_default_value.suggestions) || []).map(function(suggestion) {
-                            var _suggestion_term_split = _sliced_to_array(suggestion.term.split(_SearchTypes__WEBPACK_IMPORTED_MODULE_10__.AUTOSUGGEST_TERM_DELIMITER), 3), allTitle = _suggestion_term_split[0], bundleTitle = _suggestion_term_split[1], abstract = _suggestion_term_split[2];
-                            var url = new URL(suggestion.payload);
-                            var pathname = url.pathname;
-                            var item = {
-                                title: allTitle,
-                                bundleTitle: bundleTitle,
-                                description: abstract,
-                                pathname: pathname
-                            };
-                            // wrap multiple terms in quotes - otherwise search treats each as an individual term to search
-                            return {
-                                item: item,
-                                allTitle: allTitle
-                            };
-                        });
+                        items = [];
+                        items = items.concat(parseSuggestions((_response = response) === null || _response === void 0 ? void 0 : (_response_suggest = _response.suggest) === null || _response_suggest === void 0 ? void 0 : (_response_suggest_default_value = _response_suggest.default[value]) === null || _response_suggest_default_value === void 0 ? void 0 : _response_suggest_default_value.suggestions), parseSuggestions((_response1 = response) === null || _response1 === void 0 ? void 0 : (_response_suggest1 = _response1.suggest) === null || _response_suggest1 === void 0 ? void 0 : (_response_suggest_improvedInfixSuggester_value = _response_suggest1.improvedInfixSuggester[value]) === null || _response_suggest_improvedInfixSuggester_value === void 0 ? void 0 : _response_suggest_improvedInfixSuggester_value.suggestions)).slice(0, 10);
                         suggests = lodash_uniq__WEBPACK_IMPORTED_MODULE_7___default()(items.map(function(param) {
                             var allTitle = param.allTitle;
                             return allTitle.replace(/(<b>|<\/b>)/gm, "").trim();
@@ -16423,7 +16425,7 @@ var SearchInput = function(param) {
                         ];
                         return [
                             4,
-                            fetch(BASE_URL.toString().replaceAll(REPLACE_TAG, "(".concat(suggests.join(" OR "), " OR ").concat(value, ")")).replaceAll(REPLACE_COUNT_TAG, "10")).then(function(r) {
+                            fetch(BASE_URL.toString().replaceAll(REPLACE_TAG, "(".concat(suggests.length > 0 ? suggests.join(" OR ") + " OR " : "").concat(value, ")")).replaceAll(REPLACE_COUNT_TAG, "10")).then(function(r) {
                                 return r.json();
                             })
                         ];
