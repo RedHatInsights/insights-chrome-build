@@ -20358,6 +20358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Page */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Page/@patternfly/react-core/dist/dynamic/components/Page");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Satellite_SatelliteTable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Satellite/SatelliteTable */ "./src/components/Satellite/SatelliteTable.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -20414,6 +20415,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var SatelliteToken = function() {
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), 2), token = _useState[0], setToken = _useState[1];
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), 2), error = _useState1[0], setError = _useState1[1];
@@ -20425,6 +20427,8 @@ var SatelliteToken = function() {
             setError(err);
         });
     };
+    var itlessProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.getEnv)() === "frh";
+    var satelliteUrl = itlessProd ? "https://mtls.console.openshiftusgov.com" : "https://mtls.console.stage.openshiftusgov.com";
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         if (token.length < 1 && error === null) {
             generateToken();
@@ -20464,7 +20468,7 @@ var SatelliteToken = function() {
         isReadOnly: true,
         hoverTip: "Copy",
         clickTip: "Copied"
-    }, "SATELLITE_RH_CLOUD_URL=https://mtls.console.stage.openshiftusgov.com org_id=<organization_id> foreman-rake rh_cloud:hybridcloud_register"))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_8__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "Registrations"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_SatelliteTable__WEBPACK_IMPORTED_MODULE_9__["default"], null))))));
+    }, "SATELLITE_RH_CLOUD_URL=".concat(satelliteUrl, " org_id=<organization_id> foreman-rake rh_cloud:hybridcloud_register")))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_8__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "Registrations"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_SatelliteTable__WEBPACK_IMPORTED_MODULE_9__["default"], null))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SatelliteToken);
 
