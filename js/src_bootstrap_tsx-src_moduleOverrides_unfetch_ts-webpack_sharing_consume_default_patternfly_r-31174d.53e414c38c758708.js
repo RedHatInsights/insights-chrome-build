@@ -16859,13 +16859,14 @@ var useBreadcrumbsLinks = function() {
         routes
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
+        var _navigation;
         var segments = [
             {
                 title: bundleTitle,
                 href: "/".concat(bundleId)
             }
         ];
-        var activeNavSegment = navigation[bundleId];
+        var activeNavSegment = (_navigation = navigation) === null || _navigation === void 0 ? void 0 : _navigation[bundleId];
         if (activeNavSegment && (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_5__.isNavItems)(activeNavSegment)) {
             var activeNavigation = (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_5__.extractNavItemGroups)(activeNavSegment);
             var _findNavLeafPath = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.findNavLeafPath)(activeNavigation), activeItem = _findNavLeafPath.activeItem, navItems = _findNavLeafPath.navItems;
