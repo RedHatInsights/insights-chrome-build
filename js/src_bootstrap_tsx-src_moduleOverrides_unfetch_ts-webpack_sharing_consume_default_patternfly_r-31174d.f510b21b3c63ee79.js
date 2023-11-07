@@ -17274,7 +17274,7 @@ function _ts_generator(thisArg, body) {
 
 
 
-var NOTIFICATION_DRAWER = "notifications.drawer";
+var NOTIFICATION_DRAWER = "com.redhat.console.notifications.drawer";
 var SAMPLE_EVENT = "sample.type";
 var ALL_TYPES = [
     NOTIFICATION_DRAWER,
