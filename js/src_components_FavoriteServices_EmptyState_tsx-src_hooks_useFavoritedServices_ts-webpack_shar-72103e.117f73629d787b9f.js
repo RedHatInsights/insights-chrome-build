@@ -2335,6 +2335,11 @@ var filterAllServicesLinks = function(links, filterValue) {
     return links.reduce(function(acc, link) {
         // groups have links nested, we have to filter them as well
         if ((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(link)) {
+            if (matchStrings(link.title, filterValue)) {
+                return _to_consumable_array(acc).concat([
+                    link
+                ]);
+            }
             var groupLinks = filterAllServicesLinks(link.links, filterValue);
             // replace group links with filtered results
             var newGroup = _object_spread_props(_object_spread({}, link), {
