@@ -14859,6 +14859,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 /* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../hooks/useTrackPendoUsage */ "./src/hooks/useTrackPendoUsage.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -15116,6 +15117,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var ProductSelection = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_Stratosphere_ProductSelection_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../Stratosphere/ProductSelection */ "./src/components/Stratosphere/ProductSelection.tsx"));
 });
@@ -15161,6 +15163,8 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     });
     // initialize WS event handling
     (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__["default"])();
+    // track pendo usage
+    (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_29__["default"])();
     function getNotifications() {
         return _getNotifications.apply(this, arguments);
     }
@@ -17415,6 +17419,89 @@ var useMarketplacePartner = function() {
     };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useMarketplacePartner);
+
+
+/***/ }),
+
+/***/ "./src/hooks/useTrackPendoUsage.ts":
+/*!*****************************************!*\
+  !*** ./src/hooks/useTrackPendoUsage.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../analytics/useSegment */ "./src/analytics/useSegment.ts");
+
+
+
+var badgeQuery = 'div[id^="_pendo-badge_"]';
+var RETRY_ATTEMPS = 10;
+var RETRY_INTERVAL = 2000;
+var SEGMENT_EVENT_NAME = "pendo-badge-clicked";
+var useTrackPendoUsage = function() {
+    var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function(state) {
+        return state.chrome.activeModule;
+    });
+    var mutableData = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)({
+        activeModule: activeModule
+    });
+    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_2__.useSegment)().analytics;
+    var setupEventTracking = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function() {
+        var _analytics;
+        (_analytics = analytics) === null || _analytics === void 0 ? void 0 : _analytics.track(SEGMENT_EVENT_NAME, {
+            application: mutableData.current.activeModule
+        });
+    }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
+        var interval = undefined;
+        var pendoBadgeElement = document.querySelector(badgeQuery);
+        try {
+            // this feature is not critical, if any of the following fails, we just ignore it
+            mutableData.current.activeModule = activeModule;
+            var attempt = 0;
+            if (!pendoBadgeElement) {
+                // pendo badge was not loaded yet
+                // try a few times to find it, then give up
+                interval = setInterval(function() {
+                    if (attempt < RETRY_ATTEMPS) {
+                        attempt += 1;
+                        pendoBadgeElement = document.querySelector(badgeQuery);
+                        if (pendoBadgeElement) {
+                            clearInterval(interval);
+                            pendoBadgeElement.addEventListener("click", setupEventTracking);
+                        }
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, RETRY_INTERVAL);
+            } else {
+                pendoBadgeElement.addEventListener("click", setupEventTracking);
+            }
+        } catch (error) {
+            console.error("Failed to setup pendo badge event tracking", error);
+        }
+        return function() {
+            if (interval) {
+                clearInterval(interval);
+            }
+            if (pendoBadgeElement) {
+                pendoBadgeElement.removeEventListener("click", setupEventTracking);
+                pendoBadgeElement = null;
+            }
+        };
+    }, [
+        activeModule
+    ]);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useTrackPendoUsage);
 
 
 /***/ }),
