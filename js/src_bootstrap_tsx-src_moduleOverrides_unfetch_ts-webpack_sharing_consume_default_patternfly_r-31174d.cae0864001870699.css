@@ -18009,13 +18009,13 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
 @media screen and (min-width: 1450px) {
   .chr-c-page__services-nav-dropdown-menu {
     top: 70px;
-    height: calc(100vh - 70px);
+    height: 100vh;
   }
 }
 @media screen and (max-width: 1450px) {
   .chr-c-page__services-nav-dropdown-menu {
     top: 118px;
-    height: calc(100vh - 118px);
+    height: 100vh;
   }
 }
 .chr-c-page__services-nav-dropdown-menu .pf-v5-c-dropdown__menu::before {
@@ -18030,53 +18030,37 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
 }
 
 @media (max-width: 768px) {
-  .chr-c-panel-services-nav .chr-l-flex__item-browse-all-services {
+  .chr-c-panel-services-nav .chr-l-stack__item-browse-all-services {
     background: var(--pf-v5-global--BackgroundColor--200);
     border-bottom: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--dark-100);
   }
   .chr-c-panel-services-nav .pf-v5-c-tabs {
     background: var(--pf-v5-global--BackgroundColor--200);
     border-bottom: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--dark-100);
-    height: calc(100% - 80px);
-  }
-  .chr-c-panel-services-nav .pf-v5-c-tabs__toggle-button {
-    width: 100%;
-  }
-  .chr-c-panel-services-nav .pf-v5-c-tabs__toggle-button .pf-v5-c-button {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    padding: var(--pf-v5-global--spacer--sm);
-    width: 100%;
+    height: 100%;
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__panel {
     --pf-v5-l-flex--RowGap: 0;
   }
 }
 @media (min-width: 768px) {
-  .chr-c-panel-services-nav .chr-l-flex__item-browse-all-services {
-    border-top: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--dark-100);
-    bottom: 0;
-    position: absolute;
+  .chr-c-panel-services-nav .chr-l-stack__item-browse-all-services {
+    border-bottom: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--dark-100);
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar {
     --pf-v5-c-sidebar__panel--md--FlexBasis: 20rem;
     --pf-v5-c-sidebar__panel--BackgroundColor: var(--pf-v5-global--BackgroundColor--200);
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__main {
-    height: 80vh;
+    height: 630px;
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__content {
-    height: 80vh;
+    height: 630px;
     overflow: auto;
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__panel {
-    height: 80vh;
-    position: relative;
+    height: 630px;
     box-shadow: inset -4px 0 4px -4px rgba(0, 0, 0, 0.16);
-  }
-  .chr-c-panel-services-nav .pf-v5-c-sidebar__panel .chr-l-flex__item-tabs {
-    overflow: auto;
-    padding-bottom: var(--pf-v5-global--spacer--2xl);
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__panel .pf-v5-c-tabs {
     --pf-v5-c-tabs__item--m-current__link--after--BorderColor: transparent;
