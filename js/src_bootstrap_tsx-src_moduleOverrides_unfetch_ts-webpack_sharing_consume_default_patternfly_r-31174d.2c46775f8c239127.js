@@ -7022,29 +7022,37 @@ var ContextSwitcher = function(param) {
     }, user && ((_user = user) === null || _user === void 0 ? void 0 : (_user_identity = _user.identity) === null || _user_identity === void 0 ? void 0 : (_user_identity_account_number = _user_identity.account_number) === null || _user_identity_account_number === void 0 ? void 0 : _user_identity_account_number.includes(searchValue)) ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_deprecated__WEBPACK_IMPORTED_MODULE_16__.ContextSelectorItem, {
         onClick: resetAccountRequest
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.TextContent, {
-        className: "chr-c-content-personal-account"
+        className: "chr-c-content-account"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
         className: "account-label pf-v5-u-mb-0 sentry-mask data-hj-suppress"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, (_user1 = user) === null || _user1 === void 0 ? void 0 : (_user_identity1 = _user1.identity) === null || _user_identity1 === void 0 ? void 0 : _user_identity1.account_number), ((_user2 = user) === null || _user2 === void 0 ? void 0 : (_user_identity2 = _user2.identity) === null || _user_identity2 === void 0 ? void 0 : _user_identity2.account_number) === "".concat(selectedAccountNumber) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-        size: "sm"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_check_icon__WEBPACK_IMPORTED_MODULE_5___default()), {
-        color: "var(--pf-v5-global--primary-color--100)",
+        size: "sm",
         className: "pf-v5-u-ml-auto"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_check_icon__WEBPACK_IMPORTED_MODULE_5___default()), {
+        color: "var(--pf-v5-global--primary-color--100)"
     }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
+        className: "account-name",
         component: "small"
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_10__["default"].personalAccount)))) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), ((_filteredData = filteredData) === null || _filteredData === void 0 ? void 0 : _filteredData.length) === 0 ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_deprecated__WEBPACK_IMPORTED_MODULE_16__.ContextSelectorItem, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_10__["default"].noResults)) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), filteredData ? filteredData.map(function(param) {
-        var target_account = param.target_account, request_id = param.request_id, end_date = param.end_date, target_org = param.target_org;
+        var target_account = param.target_account, request_id = param.request_id, end_date = param.end_date, target_org = param.target_org, email = param.email, first_name = param.first_name, last_name = param.last_name;
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_deprecated__WEBPACK_IMPORTED_MODULE_16__.ContextSelectorItem, {
             onClick: function() {
                 return handleItemClick(target_account, request_id, end_date, target_org);
             },
             key: request_id
-        }, target_account, target_account === selectedAccountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-            size: "sm"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_check_icon__WEBPACK_IMPORTED_MODULE_5___default()), {
-            color: "var(--pf-v5-global--primary-color--100)",
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.TextContent, {
+            className: "chr-c-content-account"
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
+            className: "account-label"
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, target_account), target_account === selectedAccountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+            size: "sm",
             className: "pf-v5-u-ml-auto"
-        })));
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_check_icon__WEBPACK_IMPORTED_MODULE_5___default()), {
+            color: "var(--pf-v5-global--primary-color--100)"
+        }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
+            className: "account-name",
+            component: "small"
+        }, first_name && last_name ? "".concat(first_name, " ").concat(last_name) : email)));
     }) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_deprecated__WEBPACK_IMPORTED_MODULE_16__.ContextSelectorItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Bullseye__WEBPACK_IMPORTED_MODULE_1__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Spinner__WEBPACK_IMPORTED_MODULE_3__.Spinner, {
         size: "md"
     }))));
