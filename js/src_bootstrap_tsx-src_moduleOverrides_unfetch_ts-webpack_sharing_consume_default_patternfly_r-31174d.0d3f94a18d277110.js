@@ -17389,18 +17389,42 @@ __webpack_require__.r(__webpack_exports__);
 // interval timing is short because we want to catch the bubble before ASAP so it does not cover the VA button
 var RETRY_ATTEMPS = 500;
 var RETRY_INTERVAL = 50;
+function retry(fn) {
+    var retriesLeft = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 10, interval = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 100;
+    try {
+        return fn();
+    } catch (error) {
+        console.error(error);
+        var newRetry = retriesLeft - 1;
+        if (newRetry > 0) {
+            setTimeout(function() {
+                retry(fn, newRetry, interval);
+            }, interval);
+        }
+    }
+}
 var useDisablePendoOnLanding = function() {
     var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(state) {
         return state.chrome.activeModule;
     });
     var toggleGuides = function() {
-        if (window.pendo && activeModule === "landing") {
-            var _window_pendo_stopGuides, _window_pendo;
-            (_window_pendo_stopGuides = (_window_pendo = window.pendo).stopGuides) === null || _window_pendo_stopGuides === void 0 ? void 0 : _window_pendo_stopGuides.call(_window_pendo);
-        } else {
-            var _window_pendo_startGuides, _window_pendo1;
-            (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : (_window_pendo_startGuides = _window_pendo1.startGuides) === null || _window_pendo_startGuides === void 0 ? void 0 : _window_pendo_startGuides.call(_window_pendo1);
-        }
+        // push the call to the end of the event loop to make sure the pendo script is loaded and initialized
+        setTimeout(function() {
+            if (window.pendo && activeModule === "landing") {
+                // pendo functions might not be ready for what ever reason, we will have to retry a few times to give it a shot
+                retry(function() {
+                    var _window_pendo, _window_pendo1;
+                    (_window_pendo = window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.setGuidesDisabled(true);
+                    (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : _window_pendo1.stopGuides();
+                });
+            } else if (window.pendo) {
+                retry(function() {
+                    var _window_pendo, _window_pendo1;
+                    (_window_pendo = window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.setGuidesDisabled(false);
+                    (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : _window_pendo1.startGuides();
+                });
+            }
+        });
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var attempt = 0;
