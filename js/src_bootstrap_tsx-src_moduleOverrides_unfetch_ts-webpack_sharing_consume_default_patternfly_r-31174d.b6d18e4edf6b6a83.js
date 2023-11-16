@@ -17394,12 +17394,13 @@ function retry(fn) {
     try {
         return fn();
     } catch (error) {
-        console.error(error);
         var newRetry = retriesLeft - 1;
         if (newRetry > 0) {
             setTimeout(function() {
                 retry(fn, newRetry, interval);
             }, interval);
+        } else {
+            console.error("Pendo retries exhausted: ", error);
         }
     }
 }
