@@ -17395,10 +17395,11 @@ var useDisablePendoOnLanding = function() {
     });
     var toggleGuides = function() {
         if (window.pendo && activeModule === "landing") {
-            window.pendo.stopGuides();
+            var _window_pendo_stopGuides, _window_pendo;
+            (_window_pendo_stopGuides = (_window_pendo = window.pendo).stopGuides) === null || _window_pendo_stopGuides === void 0 ? void 0 : _window_pendo_stopGuides.call(_window_pendo);
         } else {
-            var _window_pendo;
-            (_window_pendo = window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.startGuides();
+            var _window_pendo_startGuides, _window_pendo1;
+            (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : (_window_pendo_startGuides = _window_pendo1.startGuides) === null || _window_pendo_startGuides === void 0 ? void 0 : _window_pendo_startGuides.call(_window_pendo1);
         }
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
