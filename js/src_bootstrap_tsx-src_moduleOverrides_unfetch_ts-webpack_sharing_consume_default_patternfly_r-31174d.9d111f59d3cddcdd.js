@@ -18636,6 +18636,7 @@ var doOffline = function(key, val, configSsoUrl) {
         }
         return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getTokenWithAuthorizationCode)().then(function(res) {
             priv.setToken(res);
+            initSuccess();
             token = res;
             return token;
         });
