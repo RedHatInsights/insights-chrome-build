@@ -15598,7 +15598,7 @@ var redirects = [
     },
     {
         path: "/docs",
-        to: "/api/docs"
+        to: "/docs/api"
     },
     {
         path: "/settings",
