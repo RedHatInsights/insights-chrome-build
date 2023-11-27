@@ -247,7 +247,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   DEFAULT_SSO_ROUTES: () => (/* binding */ DEFAULT_SSO_ROUTES),
 /* harmony export */   ITLess: () => (/* binding */ ITLess),
 /* harmony export */   ITLessCognito: () => (/* binding */ ITLessCognito),
-/* harmony export */   ITLessKeycloak: () => (/* binding */ ITLessKeycloak),
 /* harmony export */   LOGIN_SCOPES_STORAGE_KEY: () => (/* binding */ LOGIN_SCOPES_STORAGE_KEY),
 /* harmony export */   chromeServiceStaticPathname: () => (/* binding */ chromeServiceStaticPathname),
 /* harmony export */   chunkLoadErrorRefreshKey: () => (/* binding */ chunkLoadErrorRefreshKey),
@@ -728,10 +727,7 @@ function ITLess() {
     return getEnv() === "frhStage" || getEnv() === "frh" || getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr";
 }
 function ITLessCognito() {
-    return getEnv() === "frh";
-}
-function ITLessKeycloak() {
-    return getEnv() === "ephem" || getEnv() === "int" || getEnv() === "scr" || getEnv() === "frhStage";
+    return getEnv() === "ephem";
 }
 function updateDocumentTitle(title) {
     var noSuffix = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
