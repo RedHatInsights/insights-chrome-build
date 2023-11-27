@@ -1444,11 +1444,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jwt_offline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jwt/offline */ "./src/jwt/offline.ts");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
 /* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _fetchPermissions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./fetchPermissions */ "./src/auth/fetchPermissions.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _fetchPermissions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fetchPermissions */ "./src/auth/fetchPermissions.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -1632,25 +1630,22 @@ function _ts_generator(thisArg, body) {
 
 
 
-
-
 var TIMER_STR = "[JWT][jwt.js] Auth time";
-var isITLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.ITLessCognito)();
 function bouncer() {
     if (!_jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.isAuthenticated()) {
-        js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.defaultAuthOptions.cookieName);
+        js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.defaultAuthOptions.cookieName);
         _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.login();
     }
     console.timeEnd(TIMER_STR); // eslint-disable-line no-console
 }
 function crossAccountBouncer() {
-    var requestCookie = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.CROSS_ACCESS_ACCOUNT_NUMBER);
+    var requestCookie = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ACCOUNT_NUMBER);
     if (requestCookie) {
-        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.ACCOUNT_REQUEST_TIMEOUT, requestCookie);
-        localStorage.removeItem(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.ACTIVE_REMOTE_REQUEST);
+        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.ACCOUNT_REQUEST_TIMEOUT, requestCookie);
+        localStorage.removeItem(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.ACTIVE_REMOTE_REQUEST);
     }
-    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.CROSS_ACCESS_ACCOUNT_NUMBER);
-    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_5__.CROSS_ACCESS_ORG_ID);
+    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ACCOUNT_NUMBER);
+    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ORG_ID);
     window.location.reload();
 }
 var createAuthObject = function(libjwt, getUser, store, globalConfig) {
@@ -1660,7 +1655,7 @@ var createAuthObject = function(libjwt, getUser, store, globalConfig) {
         },
         doOffline: function() {
             var _globalConfig_chrome, _globalConfig, _globalConfig_chrome_config, _globalConfig_chrome1, _globalConfig1;
-            return libjwt.jwt.doOffline(_utils_consts__WEBPACK_IMPORTED_MODULE_5__["default"].noAuthParam, _utils_consts__WEBPACK_IMPORTED_MODULE_5__["default"].offlineToken, ((_globalConfig = globalConfig) === null || _globalConfig === void 0 ? void 0 : (_globalConfig_chrome = _globalConfig.chrome) === null || _globalConfig_chrome === void 0 ? void 0 : _globalConfig_chrome.ssoUrl) || ((_globalConfig1 = globalConfig) === null || _globalConfig1 === void 0 ? void 0 : (_globalConfig_chrome1 = _globalConfig1.chrome) === null || _globalConfig_chrome1 === void 0 ? void 0 : (_globalConfig_chrome_config = _globalConfig_chrome1.config) === null || _globalConfig_chrome_config === void 0 ? void 0 : _globalConfig_chrome_config.ssoUrl));
+            return libjwt.jwt.doOffline(_utils_consts__WEBPACK_IMPORTED_MODULE_3__["default"].noAuthParam, _utils_consts__WEBPACK_IMPORTED_MODULE_3__["default"].offlineToken, ((_globalConfig = globalConfig) === null || _globalConfig === void 0 ? void 0 : (_globalConfig_chrome = _globalConfig.chrome) === null || _globalConfig_chrome === void 0 ? void 0 : _globalConfig_chrome.ssoUrl) || ((_globalConfig1 = globalConfig) === null || _globalConfig1 === void 0 ? void 0 : (_globalConfig_chrome1 = _globalConfig1.chrome) === null || _globalConfig_chrome1 === void 0 ? void 0 : (_globalConfig_chrome_config = _globalConfig_chrome1.config) === null || _globalConfig_chrome_config === void 0 ? void 0 : _globalConfig_chrome_config.ssoUrl));
         },
         getToken: function() {
             return libjwt.initPromise.then(function() {
@@ -1673,9 +1668,9 @@ var createAuthObject = function(libjwt, getUser, store, globalConfig) {
             return libjwt.jwt.getRefreshToken();
         },
         getUser: getUser,
-        qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_6__["default"]), {
+        qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__["default"]), {
             init: function() {
-                return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_6__["default"].init(store, function() {
+                return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__["default"].init(store, function() {
                     return libjwt;
                 });
             }
@@ -1689,55 +1684,30 @@ var createAuthObject = function(libjwt, getUser, store, globalConfig) {
     };
 };
 var createGetUser = function(libjwt) {
-    if (isITLessCognito) {
-        return function() {
-            return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_3__.createUser)();
-        };
-    } else {
-        return function() {
-            return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
-                libjwt.jwt.logoutAllTabs();
-            });
-        };
-    }
+    return function() {
+        return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
+            libjwt.jwt.logoutAllTabs();
+        });
+    };
 };
 var createGetUserPermissions = function(libJwt, getUser) {
-    var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_7__.createFetchPermissionsWatcher)(getUser);
+    var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_5__.createFetchPermissionsWatcher)(getUser);
     return /*#__PURE__*/ _async_to_generator(function() {
-        var app, bypassCache, cogToken;
+        var app, bypassCache;
         var _arguments = arguments;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     app = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : "", bypassCache = _arguments.length > 1 ? _arguments[1] : void 0;
-                    if (!isITLessCognito) return [
-                        3,
-                        2
-                    ];
-                    return [
-                        4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_3__.getTokenWithAuthorizationCode)()
-                    ];
-                case 1:
-                    cogToken = _state.sent();
-                    return [
-                        2,
-                        fetchPermissions(cogToken || "", app, bypassCache)
-                    ];
-                case 2:
                     return [
                         4,
                         getUser()
                     ];
-                case 3:
+                case 1:
                     _state.sent();
                     return [
                         2,
                         fetchPermissions(libJwt.jwt.getEncodedToken() || "", app, bypassCache)
-                    ];
-                case 4:
-                    return [
-                        2
                     ];
             }
         });
@@ -1746,7 +1716,7 @@ var createGetUserPermissions = function(libJwt, getUser) {
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(param) {
     var ssoUrl = param.ssoUrl, ssoScopes = param.ssoScopes;
     console.time(TIMER_STR); // eslint-disable-line no-console
-    var options = _object_spread_props(_object_spread({}, _utils_consts__WEBPACK_IMPORTED_MODULE_5__.defaultAuthOptions), {
+    var options = _object_spread_props(_object_spread({}, _utils_consts__WEBPACK_IMPORTED_MODULE_3__.defaultAuthOptions), {
         scope: ssoScopes.join(" ")
     });
     (0,_jwt_offline__WEBPACK_IMPORTED_MODULE_0__.wipePostbackParamsThatAreNotForUs)();
@@ -1761,7 +1731,7 @@ var createGetUserPermissions = function(libJwt, getUser) {
     var promise = _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.init(options, ssoUrl).then(bouncer);
     return {
         getOfflineToken: function() {
-            return isITLessCognito ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_3__.getTokenWithAuthorizationCode)() : (0,_jwt_offline__WEBPACK_IMPORTED_MODULE_0__.getOfflineToken)(options.realm, options.clientId, ssoUrl);
+            return (0,_jwt_offline__WEBPACK_IMPORTED_MODULE_0__.getOfflineToken)(options.realm, options.clientId, ssoUrl);
         },
         jwt: _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__,
         initPromise: promise
@@ -1836,7 +1806,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jwt_initialize_jwt__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./jwt/initialize-jwt */ "./src/jwt/initialize-jwt.ts");
 /* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
 /* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./cognito/auth */ "./src/cognito/auth.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2108,7 +2077,6 @@ function _ts_generator(thisArg, body) {
 
 
 
-
 var language = "en";
 var initializeAccessRequestCookies = function() {
     var initialAccount = localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.ACTIVE_REMOTE_REQUEST);
@@ -2133,15 +2101,13 @@ var libjwtSetup = function(chromeConfig) {
     }) || {
         ssoScopes: ssoScopes
     });
-    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)()) {
-        libjwt.initPromise.then(function() {
-            return libjwt.jwt.getUserInfo().then(function(chromeUser) {
-                if (chromeUser) {
-                    (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
-                }
-            }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
-        });
-    }
+    libjwt.initPromise.then(function() {
+        return libjwt.jwt.getUserInfo().then(function(chromeUser) {
+            if (chromeUser) {
+                (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
+            }
+        }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
+    });
     return libjwt;
 };
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)();
@@ -2195,7 +2161,7 @@ var useInitialize = function() {
                         (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__.initializeVisibilityFunctions)({
                             getUser: getUser,
                             getToken: function() {
-                                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_21__.getTokenWithAuthorizationCode)() : libJwt.initPromise.then(function() {
+                                return libJwt.initPromise.then(function() {
                                     return libJwt.jwt.getUserInfo().then(function() {
                                         return libJwt.jwt.getEncodedToken();
                                     });
@@ -2256,16 +2222,6 @@ var App = function() {
     }, [
         documentTitle
     ]);
-    if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLessCognito)()) {
-        return isReady && modules && scalprumConfig ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_RootApp__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            cookieElement: cookieElement,
-            setCookieElement: setCookieElement,
-            config: scalprumConfig
-        }) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__["default"], {
-            cookieElement: cookieElement,
-            setCookieElement: setCookieElement
-        });
-    }
     return isReady && modules && scalprumConfig && libJwt ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_LibJWTContext__WEBPACK_IMPORTED_MODULE_16__["default"].Provider, {
         value: libJwt
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_RootApp__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -2324,11 +2280,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
 /* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
 /* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
-/* harmony import */ var _cognito__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../cognito */ "./src/cognito/index.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
-/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
+/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2581,12 +2535,10 @@ function _ts_generator(thisArg, body) {
 
 
 
-
-
 var createChromeContext = function(param) {
     var useGlobalFilter = param.useGlobalFilter, libJwt = param.libJwt, getUser = param.getUser, store = param.store, modulesConfig = param.modulesConfig, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics;
     var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(getUser);
-    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_19__.getVisibilityFunctions)();
+    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_17__.getVisibilityFunctions)();
     var dispatch = store.dispatch;
     var actions = {
         appAction: function(action) {
@@ -2628,20 +2580,19 @@ var createChromeContext = function(param) {
         return Promise.resolve();
     };
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.ITLess)();
-    var isITLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.ITLessCognito)();
     var api = _object_spread_props(_object_spread({}, actions), {
-        auth: isITLessCognito ? (0,_cognito__WEBPACK_IMPORTED_MODULE_15__.createCognitoAuthObject)(store) : (0,_auth__WEBPACK_IMPORTED_MODULE_1__.createAuthObject)(libJwt, getUser, store, modulesConfig),
+        auth: (0,_auth__WEBPACK_IMPORTED_MODULE_1__.createAuthObject)(libJwt, getUser, store, modulesConfig),
         initialized: true,
         isProd: _utils_common__WEBPACK_IMPORTED_MODULE_5__.isProd,
         forceDemo: function() {
             return js_cookie__WEBPACK_IMPORTED_MODULE_3__["default"].set("cs_demo", "true");
         },
         getBundle: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_17__.getUrl)("bundle");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__.getUrl)("bundle");
         },
-        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_17__["default"],
+        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__["default"],
         getApp: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_17__.getUrl)("app");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__.getUrl)("app");
         },
         getEnvironment: function() {
             return (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.getEnv)();
@@ -2655,40 +2606,21 @@ var createChromeContext = function(param) {
             });
         },
         getUserPermissions: /*#__PURE__*/ _async_to_generator(function() {
-            var app, bypassCache, cogToken;
+            var app, bypassCache;
             var _arguments = arguments;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
                         app = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : "", bypassCache = _arguments.length > 1 ? _arguments[1] : void 0;
-                        if (!isITLessCognito) return [
-                            3,
-                            2
-                        ];
-                        return [
-                            4,
-                            (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_16__.getTokenWithAuthorizationCode)()
-                        ];
-                    case 1:
-                        cogToken = _state.sent();
-                        return [
-                            2,
-                            fetchPermissions(cogToken || "", app, bypassCache)
-                        ];
-                    case 2:
                         return [
                             4,
                             getUser()
                         ];
-                    case 3:
+                    case 1:
                         _state.sent();
                         return [
                             2,
                             fetchPermissions(libJwt.jwt.getEncodedToken() || "", app, bypassCache)
-                        ];
-                    case 4:
-                        return [
-                            2
                         ];
                 }
             });
@@ -2768,7 +2700,7 @@ var createChromeContext = function(param) {
             store: store
         },
         enablePackagesDebug: function() {
-            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_18__.warnDuplicatePkg)();
+            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_16__.warnDuplicatePkg)();
         }
     });
     return api;
@@ -3770,98 +3702,6 @@ function _cogLogout() {
     });
     return _cogLogout.apply(this, arguments);
 }
-
-
-/***/ }),
-
-/***/ "./src/cognito/index.ts":
-/*!******************************!*\
-  !*** ./src/cognito/index.ts ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createCognitoAuthObject: () => (/* binding */ createCognitoAuthObject)
-/* harmony export */ });
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-
-
-var createCognitoAuthObject = function(store) {
-    return {
-        getToken: function() {
-            return (0,_auth__WEBPACK_IMPORTED_MODULE_0__.getTokenWithAuthorizationCode)();
-        },
-        getUser: function() {
-            return (0,_auth__WEBPACK_IMPORTED_MODULE_0__.createUser)();
-        },
-        logout: function() {
-            return (0,_auth__WEBPACK_IMPORTED_MODULE_0__.cogLogout)();
-        },
-        login: function() {
-            return (0,_auth__WEBPACK_IMPORTED_MODULE_0__.login)("your_username", "your_password");
-        },
-        qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_1__["default"]), {
-            init: function() {
-                return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_1__["default"].init(store);
-            }
-        })
-    };
-};
 
 
 /***/ }),
@@ -11381,13 +11221,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./UserIcon */ "./src/components/Header/UserIcon.tsx");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../cognito/auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_15__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -11478,15 +11317,14 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-
 var buildItems = function() {
     var username = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", isOrgAdmin = arguments.length > 1 ? arguments[1] : void 0, accountNumber = arguments.length > 2 ? arguments[2] : void 0, isInternal = arguments.length > 3 ? arguments[3] : void 0, extraItems = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : [];
     var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.getEnv)();
     var isProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.isProd)();
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)();
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_15__.useIntl)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_14__.useIntl)();
     var prefix = isProd ? "" : "".concat(env === "ci" ? "qa" : env, ".");
-    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].useAccountNumber));
+    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].useAccountNumber));
     var questionMarkRef = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
     return [
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
@@ -11496,11 +11334,11 @@ var buildItems = function() {
             className: "chr-c-dropdown-item__stack"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value data-hj-suppress sentry-mask"
         }, username), isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].orgAdministrator)))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].orgAdministrator)))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "account wrapper"
         }, accountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
@@ -11515,14 +11353,14 @@ var buildItems = function() {
             className: "chr-c-dropdown-item__stack"
         }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", {
             ref: questionMarkRef,
             className: "visible-pointer pf-v5-u-ml-sm"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value sentry-mask data-hj-suppress"
         }, accountNumber)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].internalUser)))))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].internalUser)))))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__.Divider, {
             component: "li",
             key: "separator"
@@ -11535,7 +11373,7 @@ var buildItems = function() {
             target: "_blank",
             rel: "noopener noreferrer",
             component: "a"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].myProfile))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].myProfile))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "My user access wrapper"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
@@ -11545,7 +11383,7 @@ var buildItems = function() {
                     className: className,
                     href: "/iam/my-user-access",
                     appId: "rbac"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].myUserAccess));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].myUserAccess));
             },
             key: "My user access"
         })),
@@ -11558,7 +11396,7 @@ var buildItems = function() {
                     className: className,
                     href: "/user-preferences/notifications",
                     appId: "userPreferences"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].userPreferences));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].userPreferences));
             },
             key: "User preferences"
         })),
@@ -11572,23 +11410,23 @@ var buildItems = function() {
                     className: className,
                     href: "/internal",
                     appId: "internal"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].internal));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].internal));
             }
         })),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "logout",
             component: "button",
             onClick: function() {
-                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLessCognito)() ? (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_12__.cogLogout)() : (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_13__.logout)(true);
+                return (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_12__.logout)(true);
             }
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].logout)),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].logout)),
         extraItems
     ];
 };
 var UserToggle = function(param) {
     var _param_isSmall = param.isSmall, isSmall = _param_isSmall === void 0 ? false : _param_isSmall, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
-    var account = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
+    var account = (0,react_redux__WEBPACK_IMPORTED_MODULE_15__.useSelector)(function(param) {
         var chrome = param.chrome;
         var _chrome_user, _chrome_user_identity_user, _chrome_user1, _chrome_user_identity_user1, _chrome_user2, _chrome_user_identity_user2, _chrome_user3, _chrome_user_identity_user3, _chrome_user4, _chrome_user_identity_user4, _chrome_user5;
         return {
@@ -17773,7 +17611,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var keycloak_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! keycloak-js */ "./node_modules/keycloak-js/dist/keycloak.mjs");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 function _class_call_check(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -17807,8 +17644,6 @@ function _define_property(obj, key, value) {
     return obj;
 }
 
-
-var isITLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.ITLessCognito)();
 var Priv = /*#__PURE__*/ function() {
     "use strict";
     function Priv() {
@@ -17926,9 +17761,7 @@ var Priv = /*#__PURE__*/ function() {
             key: "updateToken",
             value: function updateToken() {
                 // 5 is default KC value, min validaty is required by KC byt then has a default value for some reason
-                if (!isITLessCognito) {
-                    return this._keycloak.updateToken(5);
-                }
+                return this._keycloak.updateToken(5);
             }
         }
     ]);
@@ -17992,8 +17825,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -18119,19 +17950,13 @@ function _ts_generator(thisArg, body) {
     }
 }
 
-
-
 var initializeJWT = function() {
     var _ref = _async_to_generator(function(libjwt) {
-        var actions, user, error, user1, encodedToken, error1;
+        var actions, user, encodedToken, error;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     actions = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_0__.spinUpStore)().actions;
-                    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.ITLessCognito)()) return [
-                        3,
-                        6
-                    ];
                     _state.label = 1;
                 case 1:
                     _state.trys.push([
@@ -18142,18 +17967,22 @@ var initializeJWT = function() {
                     ]);
                     return [
                         4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.getTokenWithAuthorizationCode)()
+                        libjwt.initPromise
                     ];
                 case 2:
                     _state.sent();
                     return [
                         4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_2__.createUser)()
+                        libjwt.jwt.getUserInfo()
                     ];
                 case 3:
                     user = _state.sent();
                     if (user) {
                         actions.userLogIn(user);
+                    }
+                    encodedToken = libjwt.jwt.getEncodedToken();
+                    if (encodedToken) {
+                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
                     }
                     return [
                         3,
@@ -18168,49 +17997,6 @@ var initializeJWT = function() {
                         5
                     ];
                 case 5:
-                    return [
-                        3,
-                        10
-                    ];
-                case 6:
-                    _state.trys.push([
-                        6,
-                        9,
-                        ,
-                        10
-                    ]);
-                    return [
-                        4,
-                        libjwt.initPromise
-                    ];
-                case 7:
-                    _state.sent();
-                    return [
-                        4,
-                        libjwt.jwt.getUserInfo()
-                    ];
-                case 8:
-                    user1 = _state.sent();
-                    if (user1) {
-                        actions.userLogIn(user1);
-                    }
-                    encodedToken = libjwt.jwt.getEncodedToken();
-                    if (encodedToken) {
-                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
-                    }
-                    return [
-                        3,
-                        10
-                    ];
-                case 9:
-                    error1 = _state.sent();
-                    console.error(error1);
-                    actions.userLogIn(false);
-                    return [
-                        3,
-                        10
-                    ];
-                case 10:
                     return [
                         2
                     ];
@@ -18487,7 +18273,6 @@ var log = (0,_logger__WEBPACK_IMPORTED_MODULE_4__["default"])("jwt.js");
 var DEFAULT_COOKIE_NAME = "cs_jwt";
 var priv = new _Priv__WEBPACK_IMPORTED_MODULE_10__["default"]();
 var itLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLessCognito)();
-var itLessKeycloakEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLessKeycloak)();
 var AllowedPartnerScopes;
 (function(AllowedPartnerScopes) {
     AllowedPartnerScopes["aws"] = "aws";
@@ -18614,72 +18399,44 @@ var doOffline = function(key, val, configSsoUrl) {
     priv.setCookie({
         cookieName: cookieName
     });
-    if (itLessCognito) {
-        var token;
-        var cogUser;
-        if (token) {
-            (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getUser)().then(function(res) {
-                cogUser = res;
-                if (cogUser) {
-                    var _cogUser;
-                    var now = Date.now().toString().substr(0, 10);
-                    var exp = ((_cogUser = cogUser) === null || _cogUser === void 0 ? void 0 : _cogUser.exp) - parseInt(now);
-                    if (exp < 30) {
-                        return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getTokenWithAuthorizationCode)().then(function(res) {
-                            priv.setToken(res);
-                            token = res;
-                            return token;
-                        });
-                    }
-                }
-            });
+    return Promise.resolve((0,_url__WEBPACK_IMPORTED_MODULE_6__["default"])(options.routes ? options.routes : _utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, configSsoUrl)).then(function(ssoUrl) {
+        //constructor for new Keycloak Object?
+        options.url = ssoUrl;
+        options.clientId = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? "console-dot" : "cloud-services";
+        options.realm = "redhat-external";
+        //options for keycloak.init method
+        options.promiseType = "native";
+        options.onLoad = "check-sso";
+        options.checkLoginIframe = false;
+        var isBeta = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? "/beta" : "";
+        options.silentCheckSsoRedirectUri = "https://".concat(window.location.host).concat(isBeta, "/apps/chrome/silent-check-sso.html");
+        if (window.localStorage && window.localStorage.getItem("chrome:jwt:shortSession") === "true") {
+            options.realm = "short-session";
         }
-        return (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getTokenWithAuthorizationCode)().then(function(res) {
-            priv.setToken(res);
-            initSuccess();
-            token = res;
-            return token;
-        });
-    } else {
-        return Promise.resolve((0,_url__WEBPACK_IMPORTED_MODULE_6__["default"])(options.routes ? options.routes : _utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, configSsoUrl)).then(function(ssoUrl) {
-            //constructor for new Keycloak Object?
-            options.url = ssoUrl;
-            options.clientId = itLessKeycloakEnv ? "console-dot" : "cloud-services";
-            options.realm = "redhat-external";
-            //options for keycloak.init method
-            options.promiseType = "native";
-            options.onLoad = "check-sso";
-            options.checkLoginIframe = false;
-            var isBeta = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? "/beta" : "";
-            options.silentCheckSsoRedirectUri = "https://".concat(window.location.host).concat(isBeta, "/apps/chrome/silent-check-sso.html");
-            if (window.localStorage && window.localStorage.getItem("chrome:jwt:shortSession") === "true") {
-                options.realm = "short-session";
+        //priv.keycloak = Keycloak(options);
+        priv.setKeycloak(options, updateToken, loginAllTabs, refreshTokens);
+        if (options.token) {
+            if (isExistingValid(options.token)) {
+                // we still need to init async
+                // so that the renewal times and such fire
+                priv.initializeKeycloak(options);
+                // Here we have an existing key
+                // We need to set up some of the keycloak state
+                // so that the reset of the methods that Chrome uses
+                // to check if things are good get faked out
+                // TODO reafctor the direct access to priv.keycloak
+                // away from the users
+                priv.setToken(options.token);
+                return Promise.resolve();
+            // return new Promise((resolve) => {
+            //   resolve();
+            // });
+            } else {
+                delete options.token;
             }
-            //priv.keycloak = Keycloak(options);
-            priv.setKeycloak(options, updateToken, loginAllTabs, refreshTokens);
-            if (options.token) {
-                if (isExistingValid(options.token)) {
-                    // we still need to init async
-                    // so that the renewal times and such fire
-                    priv.initializeKeycloak(options);
-                    // Here we have an existing key
-                    // We need to set up some of the keycloak state
-                    // so that the reset of the methods that Chrome uses
-                    // to check if things are good get faked out
-                    // TODO reafctor the direct access to priv.keycloak
-                    // away from the users
-                    priv.setToken(options.token);
-                    return Promise.resolve();
-                // return new Promise((resolve) => {
-                //   resolve();
-                // });
-                } else {
-                    delete options.token;
-                }
-            }
-            return priv.initialize(options).then(initSuccess).catch(initError);
-        });
-    }
+        }
+        return priv.initialize(options).then(initSuccess).catch(initError);
+    });
 };
 function isExistingValid(token) {
     log("Checking validity of existing JWT");
@@ -18887,54 +18644,19 @@ function getCookieExpires(exp) {
 }
 // Set the cookie for 3scale
 function setCookie(token) {
-    return _setCookie.apply(this, arguments);
-}
-function _setCookie() {
-    _setCookie = _async_to_generator(function(token) {
-        var cogToken, cogUser, tok, _priv_getCookie, tokExpires, cookieName;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    log("Setting the cs_jwt cookie");
-                    if (!itLessCognito) return [
-                        3,
-                        3
-                    ];
-                    return [
-                        4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getTokenWithAuthorizationCode)()
-                    ];
-                case 1:
-                    cogToken = _state.sent();
-                    return [
-                        4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getUser)()
-                    ];
-                case 2:
-                    cogUser = _state.sent();
-                    _state.label = 3;
-                case 3:
-                    tok = itLessCognito ? cogToken : token;
-                    if (tok && tok.length > 10) {
-                        ;
-                        tokExpires = itLessCognito ? cogUser.exp : decodeToken(tok).exp;
-                        cookieName = (_priv_getCookie = priv.getCookie()) === null || _priv_getCookie === void 0 ? void 0 : _priv_getCookie.cookieName;
-                        if (cookieName) {
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/wss;" + "secure=true;" + "expires=".concat(getCookieExpires(tokExpires)));
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/ws;" + "secure=true;" + "expires=".concat(getCookieExpires(tokExpires)));
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/api/tasks/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(tokExpires)));
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/api/automation-hub;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(tok).exp)));
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/api/remediations/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(tokExpires)));
-                            setCookieWrapper("".concat(cookieName, "=").concat(tok, ";") + "path=/api/edge/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(tokExpires)));
-                        }
-                    }
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _setCookie.apply(this, arguments);
+    log("Setting the cs_jwt cookie");
+    if (token && token.length > 10) {
+        var _priv_getCookie;
+        var cookieName = (_priv_getCookie = priv.getCookie()) === null || _priv_getCookie === void 0 ? void 0 : _priv_getCookie.cookieName;
+        if (cookieName) {
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/wss;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/ws;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/tasks/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/automation-hub;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/remediations/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/edge/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
+        }
+    }
 }
 // do this so we can mock out for test
 function setCookieWrapper(str) {
@@ -19227,8 +18949,8 @@ function getPostDataObject(url, clientId, code) {
     return {
         code: code,
         grant_type: "authorization_code",
-        client_id: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLessKeycloak)() ? "console-dot" : clientId,
-        redirect_uri: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLessKeycloak)() ? redirectUrl : encodeURIComponent(url.split("#")[0])
+        client_id: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? "console-dot" : clientId,
+        redirect_uri: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? redirectUrl : encodeURIComponent(url.split("#")[0])
     };
 }
 function parseHashString(str) {
@@ -19503,7 +19225,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logger */ "./src/jwt/logger.ts");
 /* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
 /* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -19685,9 +19406,7 @@ function _ts_generator(thisArg, body) {
 
 
 
-
 var serviceAPI = (0,_entitlements__WEBPACK_IMPORTED_MODULE_1__["default"])();
-var isITLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.ITLessCognito)();
 var bounceInvocationLock = {
     // not_entitled modal should appear only once for insights bundle
     insights: false
@@ -19808,29 +19527,11 @@ function tryBounceIfUnentitled(data, section) {
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((function() {
     var _ref = _async_to_generator(function(token) {
-        var _pathName, _pathName1, user, _tmp, pathName, data, _tmp1, e;
+        var _pathName, _pathName1, user, pathName, data, e;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    if (!isITLessCognito) return [
-                        3,
-                        2
-                    ];
-                    return [
-                        4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.createUser)()
-                    ];
-                case 1:
-                    _tmp = _state.sent();
-                    return [
-                        3,
-                        3
-                    ];
-                case 2:
-                    _tmp = buildUser(token);
-                    _state.label = 3;
-                case 3:
-                    user = _tmp;
+                    user = buildUser(token);
                     pathName = getWindow().location.pathname.split("/");
                     pathName.shift();
                     if (pathName[0] === "beta") {
@@ -19841,69 +19542,47 @@ function tryBounceIfUnentitled(data, section) {
                     }
                     if (!user) return [
                         3,
-                        13
+                        7
                     ];
                     log("Account Number: ".concat(user.identity.account_number));
                     data = {};
-                    // let cogToken;
-                    if (isITLessCognito) {
-                    // cogToken = await getTokenWithAuthorizationCode();
-                    }
-                    _state.label = 4;
-                case 4:
+                    _state.label = 1;
+                case 1:
                     _state.trys.push([
-                        4,
-                        11,
+                        1,
+                        5,
                         ,
-                        12
+                        6
                     ]);
                     if (!user.identity.org_id) return [
                         3,
-                        9
+                        3
                     ];
-                    if (!isITLessCognito) return [
+                    return [
+                        4,
+                        serviceAPI.servicesGet()
+                    ];
+                case 2:
+                    data = _state.sent();
+                    return [
+                        3,
+                        4
+                    ];
+                case 3:
+                    console.log("Cannot call entitlements API, no account number");
+                    _state.label = 4;
+                case 4:
+                    return [
                         3,
                         6
                     ];
-                    return [
-                        4,
-                        serviceAPI.servicesGet()
-                    ];
                 case 5:
-                    _tmp1 = _state.sent();
-                    return [
-                        3,
-                        8
-                    ];
-                case 6:
-                    return [
-                        4,
-                        serviceAPI.servicesGet()
-                    ];
-                case 7:
-                    _tmp1 = _state.sent();
-                    _state.label = 8;
-                case 8:
-                    data = _tmp1;
-                    return [
-                        3,
-                        10
-                    ];
-                case 9:
-                    console.log("Cannot call entitlements API, no account number");
-                    _state.label = 10;
-                case 10:
-                    return [
-                        3,
-                        12
-                    ];
-                case 11:
                     e = _state.sent();
                     return [
                         3,
-                        12
+                        6
                     ];
-                case 12:
+                case 6:
                     // NOTE: Openshift supports Users with Account Number of -1
                     // thus we need to bypass here
                     // call entitlements on / /beta /openshift or /beta/openshift,
@@ -19945,10 +19624,10 @@ function tryBounceIfUnentitled(data, section) {
                             entitlements: data
                         })
                     ];
-                case 13:
+                case 7:
                     log("User not ready");
-                    _state.label = 14;
-                case 14:
+                    _state.label = 8;
+                case 8:
                     return [
                         2
                     ];
@@ -21715,7 +21394,7 @@ var activationRequestURLs = [
 // Global Defaults
 var defaultAuthOptions = {
     realm: "redhat-external",
-    clientId: (0,_common__WEBPACK_IMPORTED_MODULE_0__.ITLessKeycloak)() ? "console-dot" : "cloud-services",
+    clientId: (0,_common__WEBPACK_IMPORTED_MODULE_0__.ITLess)() ? "console-dot" : "cloud-services",
     cookieName: "cs_jwt"
 };
 var OFFLINE_REDIRECT_STORAGE_KEY = "chrome.offline.redirectUri";
