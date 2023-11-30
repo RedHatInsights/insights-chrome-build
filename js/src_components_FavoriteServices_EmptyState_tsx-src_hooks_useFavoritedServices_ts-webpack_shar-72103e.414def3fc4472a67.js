@@ -69,6 +69,64 @@ function useSegment() {
 
 /***/ }),
 
+/***/ "./src/auth/ChromeAuthContext.ts":
+/*!***************************************!*\
+  !*** ./src/auth/ChromeAuthContext.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var blankUser = {
+    entitlements: {},
+    identity: {
+        org_id: "",
+        type: ""
+    }
+};
+var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+    ready: false,
+    logoutAllTabs: function() {
+        return undefined;
+    },
+    loginAllTabs: function() {
+        return undefined;
+    },
+    logout: function() {
+        return undefined;
+    },
+    login: function() {
+        return Promise.resolve();
+    },
+    getToken: function() {
+        return Promise.resolve("");
+    },
+    getOfflineToken: function() {
+        return Promise.resolve({
+            data: {}
+        });
+    },
+    doOffline: function() {
+        return Promise.resolve();
+    },
+    getUser: function() {
+        return Promise.resolve(blankUser);
+    },
+    token: "",
+    tokenExpires: 0,
+    user: blankUser
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeAuthContext);
+
+
+/***/ }),
+
 /***/ "./src/components/AllServices/allServicesLinks.ts":
 /*!********************************************************!*\
   !*** ./src/components/AllServices/allServicesLinks.ts ***!
@@ -1113,9 +1171,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1229,9 +1286,7 @@ var getFeatureFlagsError = function() {
 };
 var FeatureFlagsProvider = function(param) {
     var children = param.children;
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(state) {
-        return state.chrome.user;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__["default"]).user;
     unleashClient = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         var _user_identity_internal, _user, _user1, _user2;
         return new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.UnleashClient(_object_spread_props(_object_spread({}, config), {
@@ -2246,6 +2301,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+var allServicesFetchCache = {};
 var getFirstChildRoute = function() {
     var routes = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
     var firstLeaf = routes.find(function(item) {
@@ -2454,17 +2510,27 @@ var useAllServices = function() {
         });
     }, []);
     var fetchSections = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(/*#__PURE__*/ _async_to_generator(function() {
+        var query, request, response;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
+                    query = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getChromeStaticPathname)("services"), "/services.json");
+                    request = allServicesFetchCache[query];
+                    if (!request) {
+                        request = axios__WEBPACK_IMPORTED_MODULE_0___default().get(query);
+                        allServicesFetchCache[query] = request;
+                    }
                     return [
                         4,
-                        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getChromeStaticPathname)("services"), "/services.json"))
+                        request
                     ];
                 case 1:
+                    response = _state.sent();
+                    // clear the cache
+                    delete allServicesFetchCache[query];
                     return [
                         2,
-                        _state.sent().data
+                        response.data
                     ];
             }
         });

@@ -247,7 +247,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _segment_analytics_next__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @segment/analytics-next */ "./node_modules/@segment/analytics-next/dist/pkg/browser/index.js");
+/* harmony import */ var _segment_analytics_next__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @segment/analytics-next */ "./node_modules/@segment/analytics-next/dist/pkg/browser/index.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
@@ -259,6 +259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SegmentContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SegmentContext */ "./src/analytics/SegmentContext.ts");
 /* harmony import */ var _resetIntegrations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./resetIntegrations */ "./src/analytics/resetIntegrations.ts");
 /* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -503,6 +504,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var KEY_FALLBACK = {
     prod: "nm7VsnYsBVJ9MqjaVInft69pAkhCXq9Q",
     dev: "Aoak9IFNixtkZJRatfZG9cY1RHxbATW1"
@@ -643,10 +645,7 @@ var SegmentProvider = function(param) {
     var disableIntegrations = localStorage.getItem("chrome:analytics:disable") === "true" || isITLessEnv;
     var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     var analyticsLoaded = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
-        var user = param.chrome.user;
-        return user;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_9__["default"]).user;
     var moduleAPIKey = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
         var modules = param.chrome.modules;
         var _modules_activeModule_analytics, _modules_activeModule, _modules;
@@ -707,7 +706,7 @@ var SegmentProvider = function(param) {
         };
     }();
     if (!analytics.current) {
-        analytics.current = new _segment_analytics_next__WEBPACK_IMPORTED_MODULE_9__.AnalyticsBrowser();
+        analytics.current = new _segment_analytics_next__WEBPACK_IMPORTED_MODULE_10__.AnalyticsBrowser();
     }
     var handleModuleUpdate = function() {
         var _ref = _async_to_generator(function() {
@@ -772,7 +771,7 @@ var SegmentProvider = function(param) {
                         if (window.segment) {
                             window.segment = undefined;
                         }
-                        analytics.current = _segment_analytics_next__WEBPACK_IMPORTED_MODULE_9__.AnalyticsBrowser.load({
+                        analytics.current = _segment_analytics_next__WEBPACK_IMPORTED_MODULE_10__.AnalyticsBrowser.load({
                             writeKey: newKey
                         }, {
                             initialPageview: false,
@@ -820,9 +819,10 @@ var SegmentProvider = function(param) {
     }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         handleModuleUpdate();
+    // need the json stringify to prevent the effect from running on every user update if not necessary
     }, [
         activeModule,
-        user
+        JSON.stringify(user)
     ]);
     /**
    * This needs to happen in a condition and during first valid render!
@@ -913,7 +913,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getPendoConf: () => (/* binding */ getPendoConf)
 /* harmony export */ });
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1178,6 +1177,1388 @@ var resetIntegrations = function(client) {
 
 /***/ }),
 
+/***/ "./src/auth/OIDCConnector/OIDCProvider.tsx":
+/*!*************************************************!*\
+  !*** ./src/auth/OIDCConnector/OIDCProvider.tsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var react_oidc_context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-oidc-context */ "./node_modules/react-oidc-context/dist/esm/react-oidc-context.js");
+/* harmony import */ var oidc_client_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! oidc-client-ts */ "./node_modules/oidc-client-ts/dist/esm/oidc-client-ts.js");
+/* harmony import */ var _platformUrl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../platformUrl */ "./src/auth/platformUrl.ts");
+/* harmony import */ var _OIDCSecured__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./OIDCSecured */ "./src/auth/OIDCConnector/OIDCSecured.tsx");
+/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
+/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+
+
+
+
+var betaPartial = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() ? "/beta" : "";
+var OIDCProvider = function(param) {
+    var children = param.children;
+    var _state, _state1, _state2;
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), 2), cookieElement = _useState[0], setCookieElement = _useState[1];
+    var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined), 2), state = _useState1[0], setState = _useState1[1];
+    function setupSSO() {
+        return _setupSSO.apply(this, arguments);
+    }
+    function _setupSSO() {
+        _setupSSO = _async_to_generator(function() {
+            var data, _data_chrome, ssoUrl, sanitizedSSOUrl;
+            return _ts_generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        return [
+                            4,
+                            (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.loadFedModules)()
+                        ];
+                    case 1:
+                        data = _state.sent().data;
+                        try {
+                            _data_chrome = data.chrome, ssoUrl = _data_chrome.config.ssoUrl;
+                            sanitizedSSOUrl = "".concat(ssoUrl.replace(/\/$/, ""), "/");
+                            setState({
+                                ssoUrl: (0,_platformUrl__WEBPACK_IMPORTED_MODULE_4__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_SSO_ROUTES, sanitizedSSOUrl),
+                                microFrontendConfig: data
+                            });
+                        } catch (error) {
+                            setState({
+                                ssoUrl: (0,_platformUrl__WEBPACK_IMPORTED_MODULE_4__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_SSO_ROUTES),
+                                microFrontendConfig: data
+                            });
+                        }
+                        return [
+                            2
+                        ];
+                }
+            });
+        });
+        return _setupSSO.apply(this, arguments);
+    }
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        // required for offline token generation
+        (0,_offline__WEBPACK_IMPORTED_MODULE_7__.postbackUrlSetup)();
+        setupSSO();
+    }, []);
+    var authProviderProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        var _state, _state1, _state2, _state3, _state4;
+        return {
+            client_id: (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.ITLess)() ? "console-dot" : "cloud-services",
+            silent_redirect_uri: "https://".concat(window.location.host).concat(betaPartial, "/apps/chrome/silent-check-sso.html"),
+            automaticSilentRenew: true,
+            redirect_uri: "".concat(window.location.origin),
+            authority: "".concat((_state = state) === null || _state === void 0 ? void 0 : _state.ssoUrl),
+            metadataUrl: "/realms/redhat-external/protocol/openid-connect/auth",
+            monitorSession: true,
+            metadata: {
+                authorization_endpoint: "".concat((_state1 = state) === null || _state1 === void 0 ? void 0 : _state1.ssoUrl, "realms/redhat-external/protocol/openid-connect/auth"),
+                token_endpoint: "".concat((_state2 = state) === null || _state2 === void 0 ? void 0 : _state2.ssoUrl, "realms/redhat-external/protocol/openid-connect/token"),
+                end_session_endpoint: "".concat((_state3 = state) === null || _state3 === void 0 ? void 0 : _state3.ssoUrl, "realms/redhat-external/protocol/openid-connect/logout"),
+                check_session_iframe: "https://".concat(window.location.host).concat(betaPartial, "/apps/chrome/silent-check-sso.html"),
+                revocation_endpoint: "".concat((_state4 = state) === null || _state4 === void 0 ? void 0 : _state4.ssoUrl, "realms/redhat-external/protocol/openid-connect/revoke")
+            },
+            // removes code_challenge query param from the url
+            disablePKCE: true,
+            response_type: "code",
+            response_mode: "fragment",
+            onSigninCallback: function() {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            },
+            userStore: new oidc_client_ts__WEBPACK_IMPORTED_MODULE_3__.WebStorageStateStore({
+                store: window.localStorage
+            })
+        };
+    }, [
+        (_state = state) === null || _state === void 0 ? void 0 : _state.ssoUrl
+    ]);
+    if (!((_state1 = state) === null || _state1 === void 0 ? void 0 : _state1.ssoUrl) || !((_state2 = state) === null || _state2 === void 0 ? void 0 : _state2.microFrontendConfig)) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            cookieElement: cookieElement,
+            setCookieElement: setCookieElement
+        });
+    }
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_oidc_context__WEBPACK_IMPORTED_MODULE_2__.AuthProvider, authProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OIDCSecured__WEBPACK_IMPORTED_MODULE_5__.OIDCSecured, {
+        cookieElement: cookieElement,
+        setCookieElement: setCookieElement,
+        microFrontendConfig: state.microFrontendConfig
+    }, children));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OIDCProvider);
+
+
+/***/ }),
+
+/***/ "./src/auth/OIDCConnector/OIDCSecured.tsx":
+/*!************************************************!*\
+  !*** ./src/auth/OIDCConnector/OIDCSecured.tsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OIDCSecured: () => (/* binding */ OIDCSecured)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_oidc_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-oidc-context */ "./node_modules/react-oidc-context/dist/esm/react-oidc-context.js");
+/* harmony import */ var broadcast_channel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! broadcast-channel */ "./node_modules/broadcast-channel/dist/esbrowser/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _getInitialScope__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../getInitialScope */ "./src/auth/getInitialScope.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _entitlementsApi__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../entitlementsApi */ "./src/auth/entitlementsApi.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/sentry */ "./src/utils/sentry.ts");
+/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils */ "./src/auth/OIDCConnector/utils.ts");
+/* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
+/* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
+/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return(g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g);
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_9__["default"])();
+var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_13__["default"])("OIDCSecured.tsx");
+/* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
+    var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
+    return {
+        entitlements: entitlements,
+        identity: {
+            org_id: (_user_profile = user.profile) === null || _user_profile === void 0 ? void 0 : _user_profile.org_id,
+            type: (_user_profile1 = user.profile) === null || _user_profile1 === void 0 ? void 0 : _user_profile1.type,
+            account_number: (_user_profile2 = user.profile) === null || _user_profile2 === void 0 ? void 0 : _user_profile2.account_number,
+            internal: {
+                org_id: (_user_profile3 = user.profile) === null || _user_profile3 === void 0 ? void 0 : _user_profile3.org_id,
+                account_id: (_user_profile4 = user.profile) === null || _user_profile4 === void 0 ? void 0 : _user_profile4.account_id
+            },
+            user: {
+                email: (_user_profile5 = user.profile) === null || _user_profile5 === void 0 ? void 0 : _user_profile5.email,
+                first_name: (_user_profile6 = user.profile) === null || _user_profile6 === void 0 ? void 0 : _user_profile6.first_name,
+                last_name: (_user_profile7 = user.profile) === null || _user_profile7 === void 0 ? void 0 : _user_profile7.last_name,
+                is_active: (_user_profile8 = user.profile) === null || _user_profile8 === void 0 ? void 0 : _user_profile8.is_active,
+                is_org_admin: (_user_profile9 = user.profile) === null || _user_profile9 === void 0 ? void 0 : _user_profile9.is_org_admin,
+                is_internal: (_user_profile10 = user.profile) === null || _user_profile10 === void 0 ? void 0 : _user_profile10.is_internal,
+                locale: (_user_profile11 = user.profile) === null || _user_profile11 === void 0 ? void 0 : _user_profile11.locale,
+                username: (_user_profile12 = user.profile) === null || _user_profile12 === void 0 ? void 0 : _user_profile12.username
+            }
+        }
+    };
+}
+function fetchEntitlements(user) {
+    return _fetchEntitlements.apply(this, arguments);
+}
+function _fetchEntitlements() {
+    _fetchEntitlements = /* eslint-enable @typescript-eslint/no-explicit-any */ _async_to_generator(function(user) {
+        var entitlements, e;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    entitlements = {};
+                    _state.label = 1;
+                case 1:
+                    _state.trys.push([
+                        1,
+                        5,
+                        ,
+                        6
+                    ]);
+                    if (!user.profile.org_id) return [
+                        3,
+                        3
+                    ];
+                    return [
+                        4,
+                        serviceAPI.servicesGet()
+                    ];
+                case 2:
+                    entitlements = _state.sent();
+                    return [
+                        2,
+                        entitlements
+                    ];
+                case 3:
+                    console.log("Cannot call entitlements API, no account number");
+                    return [
+                        2,
+                        entitlements
+                    ];
+                case 4:
+                    return [
+                        3,
+                        6
+                    ];
+                case 5:
+                    e = _state.sent();
+                    // let's swallow error from services API
+                    return [
+                        2,
+                        entitlements
+                    ];
+                case 6:
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return _fetchEntitlements.apply(this, arguments);
+}
+function OIDCSecured(param) {
+    var children = param.children, microFrontendConfig = param.microFrontendConfig, cookieElement = param.cookieElement, setCookieElement = param.setCookieElement;
+    var _auth_user, _auth_user1;
+    var auth = (0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.useAuth)();
+    var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
+    var _auth_user_access_token, _auth_settings_metadata_token_endpoint, _auth_settings_metadata_token_endpoint1, _auth_user2, _auth_user_access_token1, _auth_user_expires_at, _auth_user3;
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+        ready: false,
+        logoutAllTabs: function() {
+            var bounce = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : true;
+            authChannel.postMessage({
+                type: "logout"
+            });
+            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.logout)(auth, bounce);
+        },
+        logout: function() {
+            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.logout)(auth, true);
+        },
+        login: function(requiredScopes) {
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(auth, requiredScopes);
+        },
+        loginAllTabs: function() {
+            authChannel.postMessage({
+                type: "login"
+            });
+        },
+        getToken: function() {
+            var _auth_user;
+            return Promise.resolve((_auth_user_access_token = (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : _auth_user.access_token) !== null && _auth_user_access_token !== void 0 ? _auth_user_access_token : "");
+        },
+        getOfflineToken: function() {
+            var _auth_settings_metadata, _auth_settings_metadata1;
+            return (0,_offline__WEBPACK_IMPORTED_MODULE_17__.getOfflineToken)((_auth_settings_metadata_token_endpoint = (_auth_settings_metadata = auth.settings.metadata) === null || _auth_settings_metadata === void 0 ? void 0 : _auth_settings_metadata.token_endpoint) !== null && _auth_settings_metadata_token_endpoint !== void 0 ? _auth_settings_metadata_token_endpoint : "", auth.settings.client_id, encodeURIComponent(((_auth_settings_metadata_token_endpoint1 = (_auth_settings_metadata1 = auth.settings.metadata) === null || _auth_settings_metadata1 === void 0 ? void 0 : _auth_settings_metadata1.token_endpoint) !== null && _auth_settings_metadata_token_endpoint1 !== void 0 ? _auth_settings_metadata_token_endpoint1 : "").split("#")[0]));
+        },
+        doOffline: function() {
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(auth, [
+                "offline_access"
+            ], (0,_offline__WEBPACK_IMPORTED_MODULE_17__.prepareOfflineRedirect)());
+        },
+        getUser: function() {
+            return Promise.resolve(mapOIDCUserToChromeUser((_auth_user2 = auth.user) !== null && _auth_user2 !== void 0 ? _auth_user2 : {}, {}));
+        },
+        token: (_auth_user_access_token1 = (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : _auth_user.access_token) !== null && _auth_user_access_token1 !== void 0 ? _auth_user_access_token1 : "",
+        tokenExpires: (_auth_user_expires_at = (_auth_user1 = auth.user) === null || _auth_user1 === void 0 ? void 0 : _auth_user1.expires_at) !== null && _auth_user_expires_at !== void 0 ? _auth_user_expires_at : 0,
+        user: mapOIDCUserToChromeUser((_auth_user3 = auth.user) !== null && _auth_user3 !== void 0 ? _auth_user3 : {}, {})
+    }), 2), state = _useState[0], setState = _useState[1];
+    var startChrome = function() {
+        var _ref = _async_to_generator(function() {
+            var _microFrontendConfig_initialModuleScope, routes, initialModuleScope, initialModuleConfig, _initialModuleConfig;
+            return _ts_generator(this, function(_state) {
+                routes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.generateRoutesList)(microFrontendConfig);
+                dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_6__.loadModulesSchema)(microFrontendConfig));
+                initialModuleScope = (0,_getInitialScope__WEBPACK_IMPORTED_MODULE_7__["default"])(routes, window.location.pathname);
+                initialModuleConfig = initialModuleScope && ((_microFrontendConfig_initialModuleScope = microFrontendConfig[initialModuleScope]) === null || _microFrontendConfig_initialModuleScope === void 0 ? void 0 : _microFrontendConfig_initialModuleScope.config);
+                (0,_initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__["default"])();
+                if (!(0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.hasAuthParams)() && !auth.activeNavigator && !auth.isLoading && !auth.isAuthenticated) {
+                    ;
+                    (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(auth, (_initialModuleConfig = initialModuleConfig) === null || _initialModuleConfig === void 0 ? void 0 : _initialModuleConfig.ssoScopes);
+                }
+                return [
+                    2
+                ];
+            });
+        });
+        return function startChrome() {
+            return _ref.apply(this, arguments);
+        };
+    }();
+    function onUserAuthenticated(user) {
+        return _onUserAuthenticated.apply(this, arguments);
+    }
+    function _onUserAuthenticated() {
+        _onUserAuthenticated = _async_to_generator(function(user) {
+            var entitlements, chromeUser, getUser;
+            return _ts_generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        // order of calls is important
+                        // init the IQE enablement first to add the necessary auth headers to the requests
+                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_8__.init)(store, user.access_token);
+                        return [
+                            4,
+                            fetchEntitlements(user)
+                        ];
+                    case 1:
+                        entitlements = _state.sent();
+                        chromeUser = mapOIDCUserToChromeUser(user, entitlements);
+                        getUser = function() {
+                            return Promise.resolve(chromeUser);
+                        };
+                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_10__.initializeVisibilityFunctions)({
+                            getUser: getUser,
+                            getToken: function() {
+                                return Promise.resolve(user.access_token);
+                            },
+                            getUserPermissions: (0,_createGetUserPermissions__WEBPACK_IMPORTED_MODULE_15__["default"])(getUser, function() {
+                                return Promise.resolve(user.access_token);
+                            })
+                        });
+                        setState(function(prev) {
+                            return _object_spread_props(_object_spread({}, prev), {
+                                ready: true,
+                                getUser: getUser,
+                                user: chromeUser,
+                                token: user.access_token,
+                                tokenExpires: user.expires_at
+                            });
+                        });
+                        (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
+                        return [
+                            2
+                        ];
+                }
+            });
+        });
+        return _onUserAuthenticated.apply(this, arguments);
+    }
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        var user = auth.user;
+        if (auth.isAuthenticated && user) {
+            onUserAuthenticated(user);
+            authChannel.onmessage = function(e) {
+                if (e && e.data && e.data.type) {
+                    log("BroadcastChannel, Received event : ".concat(e.data.type));
+                    // TODO: handle scopes
+                    switch(e.data.type){
+                        case "logout":
+                            return state.logout();
+                        case "login":
+                            return state.login();
+                        case "refresh":
+                            return auth.signinSilent();
+                    }
+                }
+            };
+        }
+    }, [
+        JSON.stringify(auth.user),
+        auth.isAuthenticated
+    ]);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        if (!auth.error) {
+            startChrome();
+        }
+    }, [
+        auth
+    ]);
+    if (!auth.isAuthenticated || !state.ready) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            cookieElement: cookieElement,
+            setCookieElement: setCookieElement
+        });
+    }
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+        value: state
+    }, children);
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/OIDCConnector/createUUID.ts":
+/*!**********************************************!*\
+  !*** ./src/auth/OIDCConnector/createUUID.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// UUID generator required to create a nonce attribute for SSO login
+// More efficient than installing the uuid package as we need just a small fragment of the package
+// Same as the keycloack-js implementation
+function generateRandomData(len) {
+    // use web crypto APIs if possible
+    var array = null;
+    var crypto = window.crypto;
+    if (crypto && crypto.getRandomValues && window.Uint8Array) {
+        array = new Uint8Array(len);
+        crypto.getRandomValues(array);
+        return array;
+    }
+    // fallback to Math random
+    array = new Array(len);
+    for(var j = 0; j < array.length; j++){
+        array[j] = Math.floor(256 * Math.random());
+    }
+    return array;
+}
+function generateRandomString(len, alphabet) {
+    var randomData = generateRandomData(len);
+    var chars = new Array(len);
+    for(var i = 0; i < len; i++){
+        chars[i] = alphabet.charCodeAt(randomData[i] % alphabet.length);
+    }
+    return String.fromCharCode.apply(null, chars);
+}
+function createUUID() {
+    var hexDigits = "0123456789abcdef";
+    var s = generateRandomString(36, hexDigits).split("");
+    s[14] = "4";
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    s[19] = hexDigits.substr(s[19] & 0x3 | 0x8, 1);
+    s[8] = s[13] = s[18] = s[23] = "-";
+    var uuid = s.join("");
+    return uuid;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createUUID);
+
+
+/***/ }),
+
+/***/ "./src/auth/OIDCConnector/utils.ts":
+/*!*****************************************!*\
+  !*** ./src/auth/OIDCConnector/utils.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   login: () => (/* binding */ login),
+/* harmony export */   logout: () => (/* binding */ logout)
+/* harmony export */ });
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
+/* harmony import */ var _createUUID__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createUUID */ "./src/auth/OIDCConnector/createUUID.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_without_holes(arr) {
+    if (Array.isArray(arr)) return _array_like_to_array(arr);
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _iterable_to_array(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _non_iterable_spread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _to_consumable_array(arr) {
+    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_3__["default"])("auth:utils");
+var AllowedPartnerScopes;
+(function(AllowedPartnerScopes) {
+    AllowedPartnerScopes["aws"] = "aws";
+    AllowedPartnerScopes["azure"] = "azure";
+    AllowedPartnerScopes["gcp"] = "gcp";
+})(AllowedPartnerScopes || (AllowedPartnerScopes = {}));
+function isPartnerScope(scope) {
+    return Object.values(AllowedPartnerScopes).includes(scope);
+}
+function getPartnerScope(pathname) {
+    // replace beta and leading "/"
+    var sanitizedPathname = pathname.replace(/^(\/beta\/|\/preview\/)/, "/").replace(/^\//, "");
+    // check if the pathname is connect/:partner
+    if (sanitizedPathname.match(/^connect\/.+/)) {
+        // return :partner param
+        var fragmentScope = sanitizedPathname.split("/")[1];
+        if (isPartnerScope(fragmentScope)) {
+            return "api.partner_link.".concat(fragmentScope);
+        }
+        log("Invalid stratosphere scope: ".concat(fragmentScope));
+        return undefined;
+    }
+    return undefined;
+}
+function logout(auth, bounce) {
+    return _logout.apply(this, arguments);
+}
+function _logout() {
+    _logout = _async_to_generator(function(auth, bounce) {
+        var keys, pathname, eightSeconds;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    keys = Object.keys(localStorage).filter(function(key) {
+                        return key.endsWith("/api/entitlements/v1/services") || key.endsWith("/chrome") || key.endsWith("/chrome-store") || key.startsWith("kc-callback") || key.startsWith(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.GLOBAL_FILTER_KEY);
+                    });
+                    (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.deleteLocalStorageItems)(_to_consumable_array(keys).concat([
+                        _utils_consts__WEBPACK_IMPORTED_MODULE_1__.OFFLINE_REDIRECT_STORAGE_KEY,
+                        _utils_common__WEBPACK_IMPORTED_MODULE_0__.LOGIN_SCOPES_STORAGE_KEY
+                    ]));
+                    pathname = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.getRouterBasename)() : "";
+                    if (!bounce) return [
+                        3,
+                        2
+                    ];
+                    eightSeconds = new Date(new Date().getTime() + 8 * 1000);
+                    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "true", {
+                        expires: eightSeconds
+                    });
+                    return [
+                        4,
+                        auth.signoutRedirect({
+                            redirectTarget: "top",
+                            post_logout_redirect_uri: "".concat(window.location.origin).concat(pathname),
+                            id_token_hint: undefined
+                        })
+                    ];
+                case 1:
+                    _state.sent();
+                    return [
+                        3,
+                        4
+                    ];
+                case 2:
+                    return [
+                        4,
+                        auth.revokeTokens([
+                            "access_token",
+                            "refresh_token"
+                        ])
+                    ];
+                case 3:
+                    _state.sent();
+                    _state.label = 4;
+                case 4:
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return _logout.apply(this, arguments);
+}
+function login(auth) {
+    var requiredScopes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [], redirectUri = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : location.href;
+    log("Logging in");
+    // Redirect to login
+    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "false");
+    // TODO: Remove once ephemeral environment supports full and thin profile
+    var scope = [
+        "openid"
+    ].concat(_to_consumable_array(requiredScopes));
+    var partner = getPartnerScope(window.location.pathname);
+    if (partner) {
+        scope.push(partner);
+    }
+    scope = Array.from(new Set(scope));
+    localStorage.setItem(_utils_common__WEBPACK_IMPORTED_MODULE_0__.LOGIN_SCOPES_STORAGE_KEY, JSON.stringify(scope));
+    // KC scopes are delimited by a space character, hence the join(' ')
+    return auth.signinRedirect({
+        redirect_uri: redirectUri,
+        scope: scope.join(" "),
+        nonce: (0,_createUUID__WEBPACK_IMPORTED_MODULE_4__["default"])()
+    });
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/createGetUserPermissions.ts":
+/*!**********************************************!*\
+  !*** ./src/auth/createGetUserPermissions.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createGetUserPermissions)
+/* harmony export */ });
+/* harmony import */ var _fetchPermissions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchPermissions */ "./src/auth/fetchPermissions.ts");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+function createGetUserPermissions(getUser, getToken) {
+    var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(getUser);
+    return /*#__PURE__*/ _async_to_generator(function() {
+        var app, bypassCache, token;
+        var _arguments = arguments;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    app = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : "", bypassCache = _arguments.length > 1 ? _arguments[1] : void 0;
+                    return [
+                        4,
+                        getToken()
+                    ];
+                case 1:
+                    token = _state.sent();
+                    return [
+                        2,
+                        fetchPermissions(token || "", app, bypassCache)
+                    ];
+            }
+        });
+    });
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/crossAccountBouncer.ts":
+/*!*****************************************!*\
+  !*** ./src/auth/crossAccountBouncer.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ crossAccountBouncer)
+/* harmony export */ });
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
+
+
+function crossAccountBouncer() {
+    var requestCookie = js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.CROSS_ACCESS_ACCOUNT_NUMBER);
+    if (requestCookie) {
+        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.ACCOUNT_REQUEST_TIMEOUT, requestCookie);
+        localStorage.removeItem(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.ACTIVE_REMOTE_REQUEST);
+    }
+    js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.CROSS_ACCESS_ACCOUNT_NUMBER);
+    js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.CROSS_ACCESS_ORG_ID);
+    window.location.reload();
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/entitlementsApi.ts":
+/*!*************************************!*\
+  !*** ./src/auth/entitlementsApi.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @redhat-cloud-services/entitlements-client */ "./node_modules/@redhat-cloud-services/entitlements-client/dist/index.js");
+/* harmony import */ var _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios_cache_interceptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios-cache-interceptor */ "./node_modules/axios-cache-interceptor/dist/index.mjs");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+
+
+
+
+var BASE_PATH = "/api/entitlements/v1";
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+    var instance = axios__WEBPACK_IMPORTED_MODULE_0___default().create();
+    (0,axios_cache_interceptor__WEBPACK_IMPORTED_MODULE_3__.setupCache)(instance, {});
+    instance.interceptors.response.use(function(response) {
+        if (response && response.request && response.request.fromCache !== true) {
+            var last = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.lastActive)("/api/entitlements/v1/services", "fallback");
+            var keys = Object.keys(localStorage).filter(function(key) {
+                return key.endsWith("/api/entitlements/v1/services") && key !== last;
+            });
+            (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.deleteLocalStorageItems)(keys);
+        }
+        return response.data || response;
+    });
+    return new _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__.ServicesApi(undefined, BASE_PATH, instance);
+};
+
+
+/***/ }),
+
 /***/ "./src/auth/fetchPermissions.ts":
 /*!**************************************!*\
   !*** ./src/auth/fetchPermissions.ts ***!
@@ -1190,7 +2571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createFetchPermissionsWatcher: () => (/* binding */ createFetchPermissionsWatcher)
 /* harmony export */ });
 /* harmony import */ var _rbac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rbac */ "./src/auth/rbac.ts");
-/* harmony import */ var _jwt_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jwt/logger */ "./src/jwt/logger.ts");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logger */ "./src/auth/logger.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1342,7 +2723,7 @@ function _ts_generator(thisArg, body) {
 }
 
 
-var log = (0,_jwt_logger__WEBPACK_IMPORTED_MODULE_1__["default"])("fetchPermissions.ts");
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_1__["default"])("fetchPermissions.ts");
 var perPage = 1000;
 var rbacApi = (0,_rbac__WEBPACK_IMPORTED_MODULE_0__["default"])();
 var fetchPermissions = function(userToken) {
@@ -1352,7 +2733,7 @@ var fetchPermissions = function(userToken) {
        * We have to override the type because of interceptors. They are mutatuing the response.
        * We should come up with a nice pattern to work around the interceptors
        * */ var data = resp.data, meta = resp.meta;
-        if (meta.count > perPage) {
+        if (meta.count && meta.count > perPage) {
             return Promise.all(_to_consumable_array(new Array(Math.ceil(meta.count / perPage))).map(function(_empty, key) {
                 return rbacApi.getPrincipalAccess(app, undefined, undefined, perPage, (key + 1) * perPage).then(function(param) {
                     var data = param.data;
@@ -1426,56 +2807,19 @@ var createFetchPermissionsWatcher = function(getUser) {
 
 /***/ }),
 
-/***/ "./src/auth/index.ts":
-/*!***************************!*\
-  !*** ./src/auth/index.ts ***!
-  \***************************/
+/***/ "./src/auth/getInitialScope.ts":
+/*!*************************************!*\
+  !*** ./src/auth/getInitialScope.ts ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createAuthObject: () => (/* binding */ createAuthObject),
-/* harmony export */   createGetUser: () => (/* binding */ createGetUser),
-/* harmony export */   createGetUserPermissions: () => (/* binding */ createGetUserPermissions),
-/* harmony export */   crossAccountBouncer: () => (/* binding */ crossAccountBouncer),
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _jwt_offline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jwt/offline */ "./src/jwt/offline.ts");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _fetchPermissions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./fetchPermissions */ "./src/auth/fetchPermissions.ts");
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_0__);
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1527,6 +2871,164 @@ function _object_spread_props(target, source) {
         });
     }
     return target;
+}
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+    var target = _object_without_properties_loose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+
+function getInitialScope(routes, pathname) {
+    var _matchRoutes__route, _matchRoutes_, _matchRoutes;
+    var _matchRoutes1;
+    var initialModuleScope = (_matchRoutes1 = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_0__.matchRoutes)(routes.map(function(_param) {
+        var path = _param.path, rest = _object_without_properties(_param, [
+            "path"
+        ]);
+        return _object_spread_props(_object_spread({}, rest), {
+            path: "".concat(path, "/*")
+        });
+    }), // modules config does not include the preview fragment
+    pathname.replace(/^\/(preview|beta)/, "")), _matchRoutes = _matchRoutes1, _matchRoutes1) === null || _matchRoutes === void 0 ? void 0 : (_matchRoutes_ = _matchRoutes[0]) === null || _matchRoutes_ === void 0 ? void 0 : (_matchRoutes__route = _matchRoutes_.route) === null || _matchRoutes__route === void 0 ? void 0 : _matchRoutes__route.scope;
+    return initialModuleScope;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getInitialScope);
+
+
+/***/ }),
+
+/***/ "./src/auth/initializeAccessRequestCookies.ts":
+/*!****************************************************!*\
+  !*** ./src/auth/initializeAccessRequestCookies.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ initializeAccessRequestCookies)
+/* harmony export */ });
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./crossAccountBouncer */ "./src/auth/crossAccountBouncer.ts");
+
+
+
+function initializeAccessRequestCookies() {
+    var initialAccount = localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.ACTIVE_REMOTE_REQUEST);
+    if (js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.CROSS_ACCESS_ACCOUNT_NUMBER) && initialAccount) {
+        try {
+            var end_date = JSON.parse(initialAccount).end_date;
+            /**
+       * Remove cross account request if it is expired
+       */ if (new Date(end_date).getTime() <= Date.now()) {
+                (0,_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__["default"])();
+            }
+        } catch (e) {
+            console.log("Unable to parse initial account. Using default account");
+            js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_1__.CROSS_ACCESS_ACCOUNT_NUMBER);
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/logger.ts":
+/*!****************************!*\
+  !*** ./src/auth/logger.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// const pub = {};
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(fileName) {
+    return function(msg) {
+        if (window.console) {
+            if (window.localStorage && window.localStorage.getItem("chrome:auth:debug")) {
+                window.console.log("[AUTH][".concat(fileName, "] ").concat(msg));
+            }
+        }
+    };
+};
+
+
+/***/ }),
+
+/***/ "./src/auth/offline.ts":
+/*!*****************************!*\
+  !*** ./src/auth/offline.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getOfflineToken: () => (/* binding */ getOfflineToken),
+/* harmony export */   getPostDataObject: () => (/* binding */ getPostDataObject),
+/* harmony export */   getPostbackUrl: () => (/* binding */ getPostbackUrl),
+/* harmony export */   offline: () => (/* binding */ offline),
+/* harmony export */   parseHashString: () => (/* binding */ parseHashString),
+/* harmony export */   postbackUrlSetup: () => (/* binding */ postbackUrlSetup),
+/* harmony export */   prepareOfflineRedirect: () => (/* binding */ prepareOfflineRedirect)
+/* harmony export */ });
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
 }
 function _ts_generator(thisArg, body) {
     var f, y, t, g, _ = {
@@ -1625,118 +3127,202 @@ function _ts_generator(thisArg, body) {
 }
 
 
-
-
-
-
-
-var TIMER_STR = "[JWT][jwt.js] Auth time";
-function bouncer() {
-    if (!_jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.isAuthenticated()) {
-        js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.defaultAuthOptions.cookieName);
-        _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.login();
-    }
-    console.timeEnd(TIMER_STR); // eslint-disable-line no-console
+var offline = {};
+function getPostbackUrl() {
+    // let folks only do this once
+    var ret = offline.postbackUrl;
+    delete offline.postbackUrl;
+    return ret;
 }
-function crossAccountBouncer() {
-    var requestCookie = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ACCOUNT_NUMBER);
-    if (requestCookie) {
-        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.ACCOUNT_REQUEST_TIMEOUT, requestCookie);
-        localStorage.removeItem(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.ACTIVE_REMOTE_REQUEST);
-    }
-    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ACCOUNT_NUMBER);
-    js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_3__.CROSS_ACCESS_ORG_ID);
-    window.location.reload();
+function getOfflineToken(tokenUrl, clientId, redirectUrl) {
+    return _getOfflineToken.apply(this, arguments);
 }
-var createAuthObject = function(libjwt, getUser, store, globalConfig) {
-    return {
-        getOfflineToken: function() {
-            return libjwt.getOfflineToken();
-        },
-        doOffline: function() {
-            var _globalConfig_chrome, _globalConfig, _globalConfig_chrome_config, _globalConfig_chrome1, _globalConfig1;
-            return libjwt.jwt.doOffline(_utils_consts__WEBPACK_IMPORTED_MODULE_3__["default"].noAuthParam, _utils_consts__WEBPACK_IMPORTED_MODULE_3__["default"].offlineToken, ((_globalConfig = globalConfig) === null || _globalConfig === void 0 ? void 0 : (_globalConfig_chrome = _globalConfig.chrome) === null || _globalConfig_chrome === void 0 ? void 0 : _globalConfig_chrome.ssoUrl) || ((_globalConfig1 = globalConfig) === null || _globalConfig1 === void 0 ? void 0 : (_globalConfig_chrome1 = _globalConfig1.chrome) === null || _globalConfig_chrome1 === void 0 ? void 0 : (_globalConfig_chrome_config = _globalConfig_chrome1.config) === null || _globalConfig_chrome_config === void 0 ? void 0 : _globalConfig_chrome_config.ssoUrl));
-        },
-        getToken: function() {
-            return libjwt.initPromise.then(function() {
-                return libjwt.jwt.getUserInfo().then(function() {
-                    return libjwt.jwt.getEncodedToken();
-                });
-            });
-        },
-        getRefreshToken: function() {
-            return libjwt.jwt.getRefreshToken();
-        },
-        getUser: getUser,
-        qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__["default"]), {
-            init: function() {
-                return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_4__["default"].init(store, function() {
-                    return libjwt;
-                });
-            }
-        }),
-        logout: function(bounce) {
-            return libjwt.jwt.logoutAllTabs(bounce);
-        },
-        login: function() {
-            return libjwt.jwt.login();
-        }
-    };
-};
-var createGetUser = function(libjwt) {
-    return function() {
-        return libjwt.initPromise.then(libjwt.jwt.getUserInfo).catch(function() {
-            libjwt.jwt.logoutAllTabs();
-        });
-    };
-};
-var createGetUserPermissions = function(libJwt, getUser) {
-    var fetchPermissions = (0,_fetchPermissions__WEBPACK_IMPORTED_MODULE_5__.createFetchPermissionsWatcher)(getUser);
-    return /*#__PURE__*/ _async_to_generator(function() {
-        var app, bypassCache;
-        var _arguments = arguments;
+function _getOfflineToken() {
+    _getOfflineToken = _async_to_generator(function(tokenUrl, clientId, redirectUrl) {
+        var postbackUrl, params;
         return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    app = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : "", bypassCache = _arguments.length > 1 ? _arguments[1] : void 0;
-                    return [
-                        4,
-                        getUser()
-                    ];
-                case 1:
-                    _state.sent();
-                    return [
-                        2,
-                        fetchPermissions(libJwt.jwt.getEncodedToken() || "", app, bypassCache)
-                    ];
+            postbackUrl = getPostbackUrl();
+            if (offline.response) {
+                return [
+                    2,
+                    Promise.resolve(offline.response)
+                ];
             }
+            if (!postbackUrl) {
+                // we need this postback URL because it contains parameters needed to
+                // call KC for the actual offline token
+                // thus we cant continue if it is missing
+                return [
+                    2,
+                    Promise.reject("not available")
+                ];
+            }
+            params = parseHashString(postbackUrl);
+            return [
+                2,
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post(tokenUrl, getPostDataString(getPostDataObject(redirectUrl, clientId, params.code)), {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                }).then(function(response) {
+                    offline.response = response;
+                    return response;
+                })
+            ];
         });
     });
-};
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(param) {
-    var ssoUrl = param.ssoUrl, ssoScopes = param.ssoScopes;
-    console.time(TIMER_STR); // eslint-disable-line no-console
-    var options = _object_spread_props(_object_spread({}, _utils_consts__WEBPACK_IMPORTED_MODULE_3__.defaultAuthOptions), {
-        scope: ssoScopes.join(" ")
-    });
-    (0,_jwt_offline__WEBPACK_IMPORTED_MODULE_0__.wipePostbackParamsThatAreNotForUs)();
-    var token = js_cookie__WEBPACK_IMPORTED_MODULE_1__["default"].get(options.cookieName);
-    // If we find an existing token, use it
-    // so that we dont auth even when a valid token is present
-    // otherwise its quick, but we bounce around and get a new token
-    // on every page load
-    if (token && token.length > 10) {
-        options.token = token;
-    }
-    var promise = _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.init(options, ssoUrl).then(bouncer);
+    return _getOfflineToken.apply(this, arguments);
+}
+function getPostDataObject(redirectUrl, clientId, code) {
     return {
-        getOfflineToken: function() {
-            return (0,_jwt_offline__WEBPACK_IMPORTED_MODULE_0__.getOfflineToken)(options.realm, options.clientId, ssoUrl);
-        },
-        jwt: _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__,
-        initPromise: promise
+        code: code,
+        grant_type: "authorization_code",
+        client_id: clientId,
+        redirect_uri: redirectUrl
     };
-};
+}
+function parseHashString(str) {
+    try {
+        return str.split("#")[1].split("&").reduce(function(result, item) {
+            var parts = item.split("=");
+            result[parts[0]] = parts[1];
+            return result;
+        }, {});
+    } catch (e) {
+        console.error("failed to parse hash string", str);
+        return {};
+    }
+}
+function getPostDataString(obj) {
+    return Object.entries(obj).map(function(entry) {
+        return "".concat(entry[0], "=").concat(entry[1]);
+    }).join("&");
+}
+function postbackUrlSetup() {
+    if (window.location.href.indexOf(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.offlineToken) !== -1) {
+        var _window_location = window.location, hash = _window_location.hash, origin = _window_location.origin, pathname = _window_location.pathname;
+        // attempt to use postback created from in previous doOffline call
+        var postbackUrl = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(origin).concat(pathname));
+        postbackUrl.hash = hash;
+        // this is a UHC offline token postback
+        // we need to not let the JWT lib see this
+        // and try to use it
+        offline.postbackUrl = postbackUrl.toString();
+        // we do this because keycloak.js looks at the hash for its parameters
+        // and if found uses the params for its own use
+        //
+        // in the UHC offline post back case we *dont*
+        // want the params to be used by keycloak.js
+        // so we have to destroy this stuff and let regular auth routines happen
+        window.location.hash = "";
+        // nuke the params so that people dont see the ugly
+        var url = new URL(window.location.href);
+        url.searchParams.delete(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam);
+        window.history.pushState("offlinePostback", "", url.toString());
+    }
+}
+function prepareOfflineRedirect() {
+    var base = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : window.location.href;
+    var url = new URL(base);
+    url.searchParams.delete(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam);
+    url.searchParams.append(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam, _utils_consts__WEBPACK_IMPORTED_MODULE_0__.offlineToken);
+    var redirectUri = url.toString().replace("/?", "?");
+    if (redirectUri) {
+        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.OFFLINE_REDIRECT_STORAGE_KEY, redirectUri);
+    }
+    return redirectUri;
+}
+
+
+/***/ }),
+
+/***/ "./src/auth/platformUrl.ts":
+/*!*********************************!*\
+  !*** ./src/auth/platformUrl.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ platformUlr)
+/* harmony export */ });
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logger */ "./src/auth/logger.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+
+
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_1__["default"])("auth/platform.ts");
+// Parse through keycloak options routes
+function platformUlr(env, configSsoUrl) {
+    // we have to use hard coded value for console.dev.redhat.com
+    // ugly hack
+    if (location.hostname === "console.dev.redhat.com") {
+        return _utils_common__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_SSO_ROUTES.dev.sso;
+    }
+    if (configSsoUrl) {
+        return configSsoUrl;
+    }
+    var ssoEnv = Object.entries(env).find(function(param) {
+        var _param = _sliced_to_array(param, 2), url = _param[1].url;
+        return url.includes(location.hostname);
+    });
+    if (ssoEnv) {
+        var _ssoEnv, _ssoEnv1, _ssoEnv2;
+        log("SSO Url: ".concat((_ssoEnv = ssoEnv) === null || _ssoEnv === void 0 ? void 0 : _ssoEnv[1].sso));
+        log("Current env: ".concat((_ssoEnv1 = ssoEnv) === null || _ssoEnv1 === void 0 ? void 0 : _ssoEnv1[0]));
+        return (_ssoEnv2 = ssoEnv) === null || _ssoEnv2 === void 0 ? void 0 : _ssoEnv2[1].sso;
+    } else {
+        log("SSO url: not found, defaulting to qa");
+        log("Current env: not found, defaulting to qa");
+        return "https://sso.qa.redhat.com/auth";
+    }
+}
 
 
 /***/ }),
@@ -1773,47 +3359,18 @@ var BASE_PATH = "/api/rbac/v1";
 
 /***/ }),
 
-/***/ "./src/bootstrap.tsx":
-/*!***************************!*\
-  !*** ./src/bootstrap.tsx ***!
-  \***************************/
+/***/ "./src/auth/setCookie.ts":
+/*!*******************************!*\
+  !*** ./src/auth/setCookie.ts ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redux/redux-config */ "./src/redux/redux-config.ts");
-/* harmony import */ var _components_RootApp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/RootApp */ "./src/components/RootApp/index.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auth */ "./src/auth/index.ts");
-/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/sentry */ "./src/utils/sentry.ts");
-/* harmony import */ var _analytics_analyticsObserver__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./analytics/analyticsObserver */ "./src/analytics/analyticsObserver.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _locales_data_json__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./locales/data.json */ "./src/locales/data.json");
-/* harmony import */ var _components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/ErrorComponents/ErrorBoundary */ "./src/components/ErrorComponents/ErrorBoundary.tsx");
-/* harmony import */ var _components_LibJWTContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _jwt_initialize_jwt__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./jwt/initialize-jwt */ "./src/jwt/initialize-jwt.ts");
-/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_with_holes(arr) {
-    if (Array.isArray(arr)) return arr;
-}
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setCookie: () => (/* binding */ setCookie)
+/* harmony export */ });
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logger */ "./src/auth/logger.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -1843,123 +3400,6 @@ function _async_to_generator(fn) {
         });
     };
 }
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _iterable_to_array_limit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _s, _e;
-    try {
-        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _non_iterable_rest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-    var target = _object_without_properties_loose(source, excluded);
-    var key, i;
-    if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for(i = 0; i < sourceSymbolKeys.length; i++){
-            key = sourceSymbolKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-    return target;
-}
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for(i = 0; i < sourceKeys.length; i++){
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        target[key] = source[key];
-    }
-    return target;
-}
-function _sliced_to_array(arr, i) {
-    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
 function _ts_generator(thisArg, body) {
     var f, y, t, g, _ = {
         label: 0,
@@ -1970,13 +3410,13 @@ function _ts_generator(thisArg, body) {
         trys: [],
         ops: []
     };
-    return(g = {
+    return g = {
         next: verb(0),
         "throw": verb(1),
         "return": verb(2)
     }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
         return this;
-    }), g);
+    }), g;
     function verb(n) {
         return function(v) {
             return step([
@@ -2056,179 +3496,156 @@ function _ts_generator(thisArg, body) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var language = "en";
-var initializeAccessRequestCookies = function() {
-    var initialAccount = localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.ACTIVE_REMOTE_REQUEST);
-    if (js_cookie__WEBPACK_IMPORTED_MODULE_8__["default"].get(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.CROSS_ACCESS_ACCOUNT_NUMBER) && initialAccount) {
-        try {
-            var end_date = JSON.parse(initialAccount).end_date;
-            /**
-       * Remove cross account request if it is expired
-       */ if (new Date(end_date).getTime() <= Date.now()) {
-                (0,_auth__WEBPACK_IMPORTED_MODULE_10__.crossAccountBouncer)();
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_0__["default"])("auth/setCookie.ts");
+function setCookieWrapper(str) {
+    window.document.cookie = str;
+}
+var DEFAULT_COOKIE_NAME = "cs_jwt";
+function getCookieExpires(exp) {
+    // we want the cookie to expire at the same time as the JWT session
+    // so we take the exp and get a new GTMString from that
+    var date = new Date(0);
+    date.setUTCSeconds(exp);
+    return date.toUTCString();
+}
+function setCookie(token, expiresAt) {
+    return _setCookie.apply(this, arguments);
+}
+function _setCookie() {
+    _setCookie = _async_to_generator(function(token, expiresAt) {
+        var cookieName;
+        return _ts_generator(this, function(_state) {
+            log("Setting the cs_jwt cookie");
+            if (token && token.length > 10) {
+                cookieName = DEFAULT_COOKIE_NAME;
+                if (cookieName) {
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/wss;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/ws;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/tasks/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/automation-hub;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/remediations/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/edge/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                }
             }
-        } catch (e) {
-            console.log("Unable to parse initial account. Using default account");
-            js_cookie__WEBPACK_IMPORTED_MODULE_8__["default"].remove(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.CROSS_ACCESS_ACCOUNT_NUMBER);
+            return [
+                2
+            ];
+        });
+    });
+    return _setCookie.apply(this, arguments);
+}
+
+
+/***/ }),
+
+/***/ "./src/bootstrap.tsx":
+/*!***************************!*\
+  !*** ./src/bootstrap.tsx ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./redux/redux-config */ "./src/redux/redux-config.ts");
+/* harmony import */ var _components_RootApp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/RootApp */ "./src/components/RootApp/index.ts");
+/* harmony import */ var _analytics_analyticsObserver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./analytics/analyticsObserver */ "./src/analytics/analyticsObserver.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _auth_OIDCConnector_OIDCProvider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth/OIDCConnector/OIDCProvider */ "./src/auth/OIDCConnector/OIDCProvider.tsx");
+/* harmony import */ var _locales_data_json__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./locales/data.json */ "./src/locales/data.json");
+/* harmony import */ var _components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ErrorComponents/ErrorBoundary */ "./src/components/ErrorComponents/ErrorBoundary.tsx");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
         }
     }
-};
-var libjwtSetup = function(chromeConfig) {
-    var ssoScopes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [];
-    var libjwt = (0,_auth__WEBPACK_IMPORTED_MODULE_10__["default"])(_object_spread_props(_object_spread({}, chromeConfig), {
-        ssoScopes: ssoScopes
-    }) || {
-        ssoScopes: ssoScopes
-    });
-    libjwt.initPromise.then(function() {
-        return libjwt.jwt.getUserInfo().then(function(chromeUser) {
-            if (chromeUser) {
-                (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
-            }
-        }).catch(_utils_common__WEBPACK_IMPORTED_MODULE_13__.noop);
-    });
-    return libjwt;
-};
-var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.ITLess)();
-var useInitialize = function() {
-    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-        isReady: false,
-        libJwt: undefined
-    }), 2), _useState_ = _useState[0], isReady = _useState_.isReady, libJwt = _useState_.libJwt, setState = _useState[1];
-    var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useStore)();
-    var init = function() {
-        var _ref = _async_to_generator(function() {
-            var _matchRoutes__route, _matchRoutes_, _matchRoutes, _modulesData_initialModuleScope, _chromeConfig, _initialModuleConfig, pathname, libJwt, _ref, modulesData, chromeConfig, routes, _matchRoutes1, initialModuleScope, initialModuleConfig, getUser;
-            return _ts_generator(this, function(_state) {
-                switch(_state.label){
-                    case 0:
-                        pathname = window.location.pathname;
-                        libJwt = undefined;
-                        // init qe functions, callback for libjwt because we want it to initialize before jwt is ready
-                        _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(store, function() {
-                            return libJwt;
-                        });
-                        return [
-                            4,
-                            (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.loadFedModules)()
-                        ];
-                    case 1:
-                        _ref = _state.sent(), modulesData = _ref.data;
-                        chromeConfig = modulesData.chrome;
-                        routes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.generateRoutesList)(modulesData);
-                        store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_7__.loadModulesSchema)(modulesData));
-                        initialModuleScope = (_matchRoutes1 = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.matchRoutes)(routes.map(function(_param) {
-                            var path = _param.path, rest = _object_without_properties(_param, [
-                                "path"
-                            ]);
-                            return _object_spread_props(_object_spread({}, rest), {
-                                path: "".concat(path, "/*")
-                            });
-                        }), // modules config does not include the preview fragment
-                        pathname.replace(/^\/(preview|beta)/, "")), _matchRoutes = _matchRoutes1, _matchRoutes1) === null || _matchRoutes === void 0 ? void 0 : (_matchRoutes_ = _matchRoutes[0]) === null || _matchRoutes_ === void 0 ? void 0 : (_matchRoutes__route = _matchRoutes_.route) === null || _matchRoutes__route === void 0 ? void 0 : _matchRoutes__route.scope;
-                        initialModuleConfig = initialModuleScope && ((_modulesData_initialModuleScope = modulesData[initialModuleScope]) === null || _modulesData_initialModuleScope === void 0 ? void 0 : _modulesData_initialModuleScope.config);
-                        initializeAccessRequestCookies();
-                        // create JWT instance
-                        libJwt = libjwtSetup(_object_spread({}, (_chromeConfig = chromeConfig) === null || _chromeConfig === void 0 ? void 0 : _chromeConfig.config, chromeConfig), (_initialModuleConfig = initialModuleConfig) === null || _initialModuleConfig === void 0 ? void 0 : _initialModuleConfig.ssoScopes);
-                        return [
-                            4,
-                            (0,_jwt_initialize_jwt__WEBPACK_IMPORTED_MODULE_18__["default"])(libJwt)
-                        ];
-                    case 2:
-                        _state.sent();
-                        getUser = (0,_auth__WEBPACK_IMPORTED_MODULE_10__.createGetUser)(libJwt);
-                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_20__.initializeVisibilityFunctions)({
-                            getUser: getUser,
-                            getToken: function() {
-                                return libJwt.initPromise.then(function() {
-                                    return libJwt.jwt.getUserInfo().then(function() {
-                                        return libJwt.jwt.getEncodedToken();
-                                    });
-                                });
-                            },
-                            getUserPermissions: (0,_auth__WEBPACK_IMPORTED_MODULE_10__.createGetUserPermissions)(libJwt, getUser)
-                        });
-                        setState({
-                            libJwt: libJwt,
-                            isReady: true
-                        });
-                        return [
-                            2
-                        ];
-                }
-            });
-        });
-        return function init() {
-            return _ref.apply(this, arguments);
-        };
-    }();
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+
+
+
+
+
+
+
+
+
+
+
+var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_7__.ITLess)();
+var language = "en";
+var AuthProvider = _auth_OIDCConnector_OIDCProvider__WEBPACK_IMPORTED_MODULE_8__["default"];
+var useInitializeAnalytics = function() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        init();
         // setup trust arc
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.trustarcScriptSetup)();
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_7__.trustarcScriptSetup)();
         // setup adobe analytics
         if (!isITLessEnv && typeof window._satellite !== "undefined" && typeof window._satellite.pageBottom === "function") {
             window._satellite.pageBottom();
-            (0,_analytics_analyticsObserver__WEBPACK_IMPORTED_MODULE_12__["default"])();
+            (0,_analytics_analyticsObserver__WEBPACK_IMPORTED_MODULE_6__["default"])();
         }
     }, []);
-    return {
-        isReady: isReady,
-        libJwt: libJwt
-    };
 };
 var App = function() {
-    var modules = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        var _chrome;
-        return (_chrome = chrome) === null || _chrome === void 0 ? void 0 : _chrome.modules;
-    });
-    var scalprumConfig = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        var _chrome;
-        return (_chrome = chrome) === null || _chrome === void 0 ? void 0 : _chrome.scalprumConfig;
-    });
     var documentTitle = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
         var chrome = param.chrome;
         var _chrome;
         return (_chrome = chrome) === null || _chrome === void 0 ? void 0 : _chrome.documentTitle;
     });
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), 2), cookieElement = _useState[0], setCookieElement = _useState[1];
-    var _useInitialize = useInitialize(), isReady = _useInitialize.isReady, libJwt = _useInitialize.libJwt;
+    useInitializeAnalytics();
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var title = typeof documentTitle === "string" ? "".concat(documentTitle, " | ") : "";
         document.title = "".concat(title, "console.redhat.com");
     }, [
         documentTitle
     ]);
-    return isReady && modules && scalprumConfig && libJwt ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_LibJWTContext__WEBPACK_IMPORTED_MODULE_16__["default"].Provider, {
-        value: libJwt
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_RootApp__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        cookieElement: cookieElement,
-        setCookieElement: setCookieElement,
-        config: scalprumConfig
-    })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_19__["default"], {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_RootApp__WEBPACK_IMPORTED_MODULE_5__["default"], {
         cookieElement: cookieElement,
         setCookieElement: setCookieElement
     });
@@ -2237,17 +3654,17 @@ var entry = document.getElementById("chrome-entry");
 if (entry) {
     var _spinUpStore;
     var reactRoot = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(entry);
-    reactRoot.render(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__.IntlProvider, {
+    reactRoot.render(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
+        store: (_spinUpStore = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_4__.spinUpStore)()) === null || _spinUpStore === void 0 ? void 0 : _spinUpStore.store
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AuthProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__.IntlProvider, {
         locale: language,
-        messages: _locales_data_json__WEBPACK_IMPORTED_MODULE_14__[language],
+        messages: _locales_data_json__WEBPACK_IMPORTED_MODULE_9__[language],
         onError: function(error) {
-            if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.getEnv)() === "stage" && !window.location.origin.includes("foo") || localStorage.getItem("chrome:intl:debug") === "true" || !(error.code === react_intl__WEBPACK_IMPORTED_MODULE_3__.ReactIntlErrorCode.MISSING_TRANSLATION)) {
+            if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_7__.getEnv)() === "stage" && !window.location.origin.includes("foo") || localStorage.getItem("chrome:intl:debug") === "true" || !(error.code === react_intl__WEBPACK_IMPORTED_MODULE_3__.ReactIntlErrorCode.MISSING_TRANSLATION)) {
                 console.error(error);
             }
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
-        store: (_spinUpStore = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_5__.spinUpStore)()) === null || _spinUpStore === void 0 ? void 0 : _spinUpStore.store
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_15__["default"], null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null)))));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null))))));
 }
 
 
@@ -2265,24 +3682,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createChromeContext: () => (/* binding */ createChromeContext)
 /* harmony export */ });
 /* harmony import */ var _auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../auth/fetchPermissions */ "./src/auth/fetchPermissions.ts");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth */ "./src/auth/index.ts");
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
-/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _utils_debugFunctions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/debugFunctions */ "./src/utils/debugFunctions.ts");
-/* harmony import */ var _components_GlobalFilter_globalFilterApi__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/GlobalFilter/globalFilterApi */ "./src/components/GlobalFilter/globalFilterApi.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _components_Feedback__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Feedback */ "./src/components/Feedback/index.ts");
-/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
-/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
-/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
-/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/createCase */ "./src/utils/createCase.ts");
+/* harmony import */ var _utils_debugFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/debugFunctions */ "./src/utils/debugFunctions.ts");
+/* harmony import */ var _components_GlobalFilter_globalFilterApi__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/GlobalFilter/globalFilterApi */ "./src/components/GlobalFilter/globalFilterApi.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _components_Feedback__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Feedback */ "./src/components/Feedback/index.ts");
+/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
+/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
+/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
+/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
+/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
+/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2536,77 +3953,89 @@ function _ts_generator(thisArg, body) {
 
 
 var createChromeContext = function(param) {
-    var useGlobalFilter = param.useGlobalFilter, libJwt = param.libJwt, getUser = param.getUser, store = param.store, modulesConfig = param.modulesConfig, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics;
-    var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(getUser);
-    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_17__.getVisibilityFunctions)();
+    var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, chromeAuth = param.chromeAuth;
+    var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(chromeAuth.getUser);
+    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__.getVisibilityFunctions)();
     var dispatch = store.dispatch;
     var actions = {
         appAction: function(action) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.appAction)(action));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.appAction)(action));
         },
         appObjectId: function(objectId) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.appObjectId)(objectId));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.appObjectId)(objectId));
         },
         appNavClick: function(item, event) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.appNavClick)(item, event));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.appNavClick)(item, event));
         },
         globalFilterScope: function(scope) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.globalFilterScope)(scope));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.globalFilterScope)(scope));
         },
         registerModule: function(module, manifest) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.registerModule)(module, manifest));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.registerModule)(module, manifest));
         },
         removeGlobalFilter: function(isHidden) {
             console.error("`removeGlobalFilter` is deprecated. Use `hideGlobalFilter` instead.");
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.removeGlobalFilter)(isHidden));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.removeGlobalFilter)(isHidden));
         }
     };
     var on = function(type, callback) {
-        if (!Object.prototype.hasOwnProperty.call(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.PUBLIC_EVENTS, type)) {
+        if (!Object.prototype.hasOwnProperty.call(_utils_consts__WEBPACK_IMPORTED_MODULE_8__.PUBLIC_EVENTS, type)) {
             throw new Error("Unknown event type: ".concat(type));
         }
-        var _PUBLIC_EVENTS_type = _sliced_to_array(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.PUBLIC_EVENTS[type], 2), listener = _PUBLIC_EVENTS_type[0], selector = _PUBLIC_EVENTS_type[1];
+        var _PUBLIC_EVENTS_type = _sliced_to_array(_utils_consts__WEBPACK_IMPORTED_MODULE_8__.PUBLIC_EVENTS[type], 2), listener = _PUBLIC_EVENTS_type[0], selector = _PUBLIC_EVENTS_type[1];
         if (type !== "APP_NAVIGATION" && typeof selector === "string") {
             callback({
-                data: lodash_get__WEBPACK_IMPORTED_MODULE_2___default()(store.getState(), selector) || {}
+                data: lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(store.getState(), selector) || {}
             });
         }
         if (typeof listener === "function") {
-            return _redux_redux_config__WEBPACK_IMPORTED_MODULE_11__.middlewareListener.addNew(listener(callback));
+            return _redux_redux_config__WEBPACK_IMPORTED_MODULE_10__.middlewareListener.addNew(listener(callback));
         }
     };
     var identifyApp = function(_data, appTitle, noSuffix) {
-        (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.updateDocumentTitle)(appTitle, noSuffix);
+        (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.updateDocumentTitle)(appTitle, noSuffix);
         return Promise.resolve();
     };
-    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.ITLess)();
+    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.ITLess)();
     var api = _object_spread_props(_object_spread({}, actions), {
-        auth: (0,_auth__WEBPACK_IMPORTED_MODULE_1__.createAuthObject)(libJwt, getUser, store, modulesConfig),
+        auth: {
+            getToken: chromeAuth.getToken,
+            getUser: chromeAuth.getUser,
+            logout: chromeAuth.logout,
+            login: chromeAuth.login,
+            doOffline: chromeAuth.doOffline,
+            getOfflineToken: chromeAuth.getOfflineToken,
+            qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"]), {
+                init: function() {
+                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(store, chromeAuth.token);
+                }
+            })
+        },
         initialized: true,
-        isProd: _utils_common__WEBPACK_IMPORTED_MODULE_5__.isProd,
+        isProd: _utils_common__WEBPACK_IMPORTED_MODULE_4__.isProd,
         forceDemo: function() {
-            return js_cookie__WEBPACK_IMPORTED_MODULE_3__["default"].set("cs_demo", "true");
+            return js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_demo", "true");
         },
         getBundle: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__.getUrl)("bundle");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.getUrl)("bundle");
         },
-        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__["default"],
+        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__["default"],
         getApp: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__.getUrl)("app");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.getUrl)("app");
         },
         getEnvironment: function() {
-            return (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.getEnv)();
+            return (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnv)();
         },
         getEnvironmentDetails: function() {
-            return (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.getEnvDetails)();
+            return (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnvDetails)();
         },
         createCase: function(fields) {
-            return getUser().then(function(user) {
-                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_6__.createSupportCase)(user.identity, libJwt, fields);
+            return chromeAuth.getUser().then(function(user) {
+                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_5__.createSupportCase)(user.identity, chromeAuth.token, fields);
             });
         },
         getUserPermissions: /*#__PURE__*/ _async_to_generator(function() {
-            var app, bypassCache;
+            var app, bypassCache, token;
             var _arguments = arguments;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
@@ -2614,13 +4043,13 @@ var createChromeContext = function(param) {
                         app = _arguments.length > 0 && _arguments[0] !== void 0 ? _arguments[0] : "", bypassCache = _arguments.length > 1 ? _arguments[1] : void 0;
                         return [
                             4,
-                            getUser()
+                            chromeAuth.getToken()
                         ];
                     case 1:
-                        _state.sent();
+                        token = _state.sent();
                         return [
                             2,
-                            fetchPermissions(libJwt.jwt.getEncodedToken() || "", app, bypassCache)
+                            fetchPermissions(token, app, bypassCache)
                         ];
                 }
             });
@@ -2632,34 +4061,34 @@ var createChromeContext = function(param) {
             /**
        * Restore app URL hash fragment after the global filter is disabled
        */ if (initialHash) {
-                _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_13__["default"].replace(_object_spread_props(_object_spread({}, _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_13__["default"].location), {
+                _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"].replace(_object_spread_props(_object_spread({}, _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"].location), {
                     hash: initialHash
                 }));
                 dispatch({
-                    type: _redux_action_types__WEBPACK_IMPORTED_MODULE_14__.STORE_INITIAL_HASH
+                    type: _redux_action_types__WEBPACK_IMPORTED_MODULE_13__.STORE_INITIAL_HASH
                 });
             }
-            dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.toggleGlobalFilter)(isHidden));
+            dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleGlobalFilter)(isHidden));
         },
-        isBeta: _utils_common__WEBPACK_IMPORTED_MODULE_5__.isBeta,
+        isBeta: _utils_common__WEBPACK_IMPORTED_MODULE_4__.isBeta,
         isChrome2: true,
-        enable: _utils_debugFunctions__WEBPACK_IMPORTED_MODULE_7__["default"],
+        enable: _utils_debugFunctions__WEBPACK_IMPORTED_MODULE_6__["default"],
         isDemo: function() {
-            return Boolean(js_cookie__WEBPACK_IMPORTED_MODULE_3__["default"].get("cs_demo"));
+            return Boolean(js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("cs_demo"));
         },
         isPenTest: function() {
-            return Boolean(js_cookie__WEBPACK_IMPORTED_MODULE_3__["default"].get("x-rh-insights-pentest"));
+            return Boolean(js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get("x-rh-insights-pentest"));
         },
-        mapGlobalFilter: _components_GlobalFilter_globalFilterApi__WEBPACK_IMPORTED_MODULE_8__.flatTags,
+        mapGlobalFilter: _components_GlobalFilter_globalFilterApi__WEBPACK_IMPORTED_MODULE_7__.flatTags,
         navigation: function() {
             return console.error("Don't use insights.chrome.navigation, it has been deprecated!");
         },
-        updateDocumentTitle: _utils_common__WEBPACK_IMPORTED_MODULE_5__.updateDocumentTitle,
+        updateDocumentTitle: _utils_common__WEBPACK_IMPORTED_MODULE_4__.updateDocumentTitle,
         visibilityFunctions: visibilityFunctions,
         on: on,
         experimentalApi: true,
         isFedramp: isITLessEnv,
-        usePendoFeedback: _components_Feedback__WEBPACK_IMPORTED_MODULE_10__.usePendoFeedback,
+        usePendoFeedback: _components_Feedback__WEBPACK_IMPORTED_MODULE_9__.usePendoFeedback,
         segment: {
             setPageMetadata: setPageMetadata
         },
@@ -2667,24 +4096,24 @@ var createChromeContext = function(param) {
             for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
                 args[_key] = arguments[_key];
             }
-            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_4__.toggleFeedbackModal.apply(void 0, _to_consumable_array(args)));
+            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleFeedbackModal.apply(void 0, _to_consumable_array(args)));
         },
         enableDebugging: function() {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.toggleDebuggerButton)(true));
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerButton)(true));
         },
         toggleDebuggerModal: function() {
             for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
                 args[_key] = arguments[_key];
             }
-            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_4__.toggleDebuggerModal.apply(void 0, _to_consumable_array(args)));
+            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerModal.apply(void 0, _to_consumable_array(args)));
         },
         // FIXME: Update types once merged
         quickStarts: quickstartsAPI,
         helpTopics: helpTopics,
-        clearAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_12__.clearAnsibleTrialFlag,
-        isAnsibleTrialFlagActive: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_12__.isAnsibleTrialFlagActive,
-        setAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_12__.setAnsibleTrialFlag,
-        chromeHistory: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_13__["default"],
+        clearAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.clearAnsibleTrialFlag,
+        isAnsibleTrialFlagActive: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.isAnsibleTrialFlagActive,
+        setAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.setAnsibleTrialFlag,
+        chromeHistory: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"],
         analytics: analytics,
         // FIXME: Update types once merged
         useGlobalFilter: useGlobalFilter,
@@ -2692,7 +4121,7 @@ var createChromeContext = function(param) {
             console.error('Calling deprecated "chrome.init function"! Please remove the function call from your code. Functions "on" and "updateDocumentTitle" are directly accessible from "useChrome" hook.');
             return {
                 on: on,
-                updateDocumentTitle: _utils_common__WEBPACK_IMPORTED_MODULE_5__.updateDocumentTitle,
+                updateDocumentTitle: _utils_common__WEBPACK_IMPORTED_MODULE_4__.updateDocumentTitle,
                 identifyApp: identifyApp
             };
         },
@@ -2700,7 +4129,7 @@ var createChromeContext = function(param) {
             store: store
         },
         enablePackagesDebug: function() {
-            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_16__.warnDuplicatePkg)();
+            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__.warnDuplicatePkg)();
         }
     });
     return api;
@@ -3090,618 +4519,6 @@ var prepareUpdateCommands = function(entries) {
         console.groupEnd();
     }
 };
-
-
-/***/ }),
-
-/***/ "./src/cognito/auth.ts":
-/*!*****************************!*\
-  !*** ./src/cognito/auth.ts ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   cogLogout: () => (/* binding */ cogLogout),
-/* harmony export */   createUser: () => (/* binding */ createUser),
-/* harmony export */   getEntitlements: () => (/* binding */ getEntitlements),
-/* harmony export */   getTokenWithAuthorizationCode: () => (/* binding */ getTokenWithAuthorizationCode),
-/* harmony export */   getUser: () => (/* binding */ getUser),
-/* harmony export */   login: () => (/* binding */ login)
-/* harmony export */ });
-/* harmony import */ var amazon_cognito_identity_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! amazon-cognito-identity-js */ "./node_modules/amazon-cognito-identity-js/es/index.js");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_with_holes(arr) {
-    if (Array.isArray(arr)) return arr;
-}
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _iterable_to_array_limit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _s, _e;
-    try {
-        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _non_iterable_rest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _sliced_to_array(arr, i) {
-    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g;
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-
-
-function fetchData() {
-    return _fetchData.apply(this, arguments);
-}
-function _fetchData() {
-    _fetchData = _async_to_generator(function() {
-        var response, jsonData, error;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    _state.trys.push([
-                        0,
-                        3,
-                        ,
-                        4
-                    ]);
-                    return [
-                        4,
-                        fetch("".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() ? "/beta" : "", "/apps/chrome/env.json"))
-                    ];
-                case 1:
-                    response = _state.sent();
-                    return [
-                        4,
-                        response.json()
-                    ];
-                case 2:
-                    jsonData = _state.sent();
-                    return [
-                        2,
-                        jsonData
-                    ];
-                case 3:
-                    error = _state.sent();
-                    console.log(error);
-                    return [
-                        3,
-                        4
-                    ];
-                case 4:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _fetchData.apply(this, arguments);
-}
-function getSearchParams(url) {
-    var searchString = new URL(url).search;
-    var searchParams = new URLSearchParams(searchString);
-    var searchParamsObject = {};
-    var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
-    try {
-        for(var _iterator = searchParams[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
-            var _step_value = _sliced_to_array(_step.value, 2), key = _step_value[0], value = _step_value[1];
-            searchParamsObject[key] = value;
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally{
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-            }
-        } finally{
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
-    }
-    return searchParamsObject;
-}
-function getTokenWithAuthorizationCode() {
-    return _getTokenWithAuthorizationCode.apply(this, arguments);
-}
-function _getTokenWithAuthorizationCode() {
-    _getTokenWithAuthorizationCode = _async_to_generator(function() {
-        var _data_poolData, _data_poolData1, _dataConfig, _dataConfig1, _dataConfig2, _dataConfig3, code, refreshToken, data, dataConfig, loginUrl, redirectUri, _dataConfig4, _dataConfig5, response, tokens, error, _dataConfig6, _dataConfig7, response1, tokens1, error1;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    code = getSearchParams(window.location.href).code;
-                    refreshToken = localStorage.getItem("REFRESH_TOKEN");
-                    return [
-                        4,
-                        fetchData()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    dataConfig = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.getEnv)() === "frh" ? (_data_poolData = data.poolData) === null || _data_poolData === void 0 ? void 0 : _data_poolData.prod : (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.getEnv)() === "frhStage" ? (_data_poolData1 = data.poolData) === null || _data_poolData1 === void 0 ? void 0 : _data_poolData1.stage : null;
-                    loginUrl = "".concat((_dataConfig = dataConfig) === null || _dataConfig === void 0 ? void 0 : _dataConfig.ssoUrl, "/login?client_id=").concat((_dataConfig1 = dataConfig) === null || _dataConfig1 === void 0 ? void 0 : _dataConfig1.ClientId, "&response_type=code&scope=openid&redirect_uri=").concat((_dataConfig2 = dataConfig) === null || _dataConfig2 === void 0 ? void 0 : _dataConfig2.redirectUri);
-                    redirectUri = (_dataConfig3 = dataConfig) === null || _dataConfig3 === void 0 ? void 0 : _dataConfig3.redirectUri;
-                    if (!code && !refreshToken) {
-                        localStorage.clear();
-                        window.location.href = loginUrl;
-                    }
-                    if (!refreshToken) return [
-                        3,
-                        6
-                    ];
-                    _state.label = 2;
-                case 2:
-                    _state.trys.push([
-                        2,
-                        5,
-                        ,
-                        6
-                    ]);
-                    return [
-                        4,
-                        fetch("".concat((_dataConfig4 = dataConfig) === null || _dataConfig4 === void 0 ? void 0 : _dataConfig4.ssoUrl, "/oauth2/token"), {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            },
-                            body: "grant_type=refresh_token&client_id=".concat((_dataConfig5 = dataConfig) === null || _dataConfig5 === void 0 ? void 0 : _dataConfig5.ClientId, "&refresh_token=").concat(localStorage.getItem("REFRESH_TOKEN"))
-                        })
-                    ];
-                case 3:
-                    response = _state.sent();
-                    if (!response.ok) {
-                        localStorage.clear();
-                        window.location.href = loginUrl;
-                        throw new Error("Request failed with status code ".concat(response.status));
-                    }
-                    return [
-                        4,
-                        response.json()
-                    ];
-                case 4:
-                    tokens = _state.sent();
-                    localStorage.setItem("ACCESS_TOKEN", tokens.access_token);
-                    return [
-                        2,
-                        tokens.access_token
-                    ];
-                case 5:
-                    error = _state.sent();
-                    console.error(error);
-                    return [
-                        3,
-                        6
-                    ];
-                case 6:
-                    _state.trys.push([
-                        6,
-                        9,
-                        ,
-                        10
-                    ]);
-                    return [
-                        4,
-                        fetch("".concat((_dataConfig6 = dataConfig) === null || _dataConfig6 === void 0 ? void 0 : _dataConfig6.ssoUrl, "/oauth2/token"), {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            },
-                            body: "grant_type=authorization_code&client_id=".concat((_dataConfig7 = dataConfig) === null || _dataConfig7 === void 0 ? void 0 : _dataConfig7.ClientId, "&redirect_uri=").concat(redirectUri, "&code=").concat(code)
-                        })
-                    ];
-                case 7:
-                    response1 = _state.sent();
-                    if (!response1.ok) {
-                        throw new Error("Request failed with status code ".concat(response1.status));
-                    }
-                    return [
-                        4,
-                        response1.json()
-                    ];
-                case 8:
-                    tokens1 = _state.sent();
-                    localStorage.setItem("REFRESH_TOKEN", tokens1.refresh_token);
-                    localStorage.setItem("ACCESS_TOKEN", tokens1.access_token);
-                    return [
-                        2,
-                        tokens1.access_token
-                    ];
-                case 9:
-                    error1 = _state.sent();
-                    console.error(error1);
-                    return [
-                        3,
-                        10
-                    ];
-                case 10:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _getTokenWithAuthorizationCode.apply(this, arguments);
-}
-function getUser() {
-    return _getUser.apply(this, arguments);
-}
-function _getUser() {
-    _getUser = _async_to_generator(function() {
-        var token, requestOptions, response, error;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    token = localStorage.getItem("ACCESS_TOKEN");
-                    requestOptions = {
-                        method: "GET",
-                        headers: {
-                            Authorization: "Bearer ".concat(token)
-                        }
-                    };
-                    _state.label = 1;
-                case 1:
-                    _state.trys.push([
-                        1,
-                        3,
-                        ,
-                        4
-                    ]);
-                    return [
-                        4,
-                        fetch("/api/identity/me", requestOptions)
-                    ];
-                case 2:
-                    response = _state.sent();
-                    if (!response.ok) {
-                        throw new Error("Request failed with status code: ".concat(response.status));
-                    }
-                    return [
-                        2,
-                        response.json()
-                    ];
-                case 3:
-                    error = _state.sent();
-                    console.error(error);
-                    throw error;
-                case 4:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _getUser.apply(this, arguments);
-}
-function getEntitlements() {
-    return _getEntitlements.apply(this, arguments);
-}
-function _getEntitlements() {
-    _getEntitlements = _async_to_generator(function() {
-        var token, requestOptions, response, error;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    token = localStorage.getItem("ACCESS_TOKEN");
-                    requestOptions = {
-                        method: "GET",
-                        headers: {
-                            Authorization: "Bearer ".concat(token)
-                        }
-                    };
-                    _state.label = 1;
-                case 1:
-                    _state.trys.push([
-                        1,
-                        3,
-                        ,
-                        4
-                    ]);
-                    return [
-                        4,
-                        fetch("/api/entitlements/v1/services", requestOptions)
-                    ];
-                case 2:
-                    response = _state.sent();
-                    if (!response.ok) {
-                        throw new Error("Request failed with status code: ".concat(response.status));
-                    }
-                    return [
-                        2,
-                        response.json()
-                    ];
-                case 3:
-                    error = _state.sent();
-                    console.error(error);
-                    throw error;
-                case 4:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _getEntitlements.apply(this, arguments);
-}
-function createUser() {
-    return _createUser.apply(this, arguments);
-}
-function _createUser() {
-    _createUser = _async_to_generator(function() {
-        var _userRes, userRes, entitlementRes, user;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        getUser()
-                    ];
-                case 1:
-                    userRes = _state.sent();
-                    return [
-                        4,
-                        getEntitlements()
-                    ];
-                case 2:
-                    entitlementRes = _state.sent();
-                    user = {
-                        entitlements: entitlementRes,
-                        identity: {
-                            account_number: "1234",
-                            org_id: userRes.org_id,
-                            type: "User",
-                            user: {
-                                username: userRes.username,
-                                email: userRes.email,
-                                first_name: userRes.first_name,
-                                last_name: userRes.last_name,
-                                is_active: ((_userRes = userRes) === null || _userRes === void 0 ? void 0 : _userRes.is_active) || true,
-                                is_org_admin: userRes.is_org_admin,
-                                is_internal: userRes.is_internal,
-                                locale: userRes.locale
-                            },
-                            internal: {
-                                org_id: userRes.org_id,
-                                account_id: userRes.id
-                            }
-                        }
-                    };
-                    return [
-                        2,
-                        user
-                    ];
-            }
-        });
-    });
-    return _createUser.apply(this, arguments);
-}
-function login(username, password) {
-    return _login.apply(this, arguments);
-}
-function _login() {
-    _login = _async_to_generator(function(username, password) {
-        var data;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        fetchData()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    return [
-                        2,
-                        new Promise(function(resolve, reject) {
-                            var authenticationData = {
-                                Username: username,
-                                Password: password
-                            };
-                            var authenticationDetails = new amazon_cognito_identity_js__WEBPACK_IMPORTED_MODULE_0__.AuthenticationDetails(authenticationData);
-                            var userPool = new amazon_cognito_identity_js__WEBPACK_IMPORTED_MODULE_0__.CognitoUserPool(data.poolData.stage);
-                            var userData = {
-                                Username: username,
-                                Pool: userPool
-                            };
-                            var cognitoUser = new amazon_cognito_identity_js__WEBPACK_IMPORTED_MODULE_0__.CognitoUser(userData);
-                            cognitoUser.authenticateUser(authenticationDetails, {
-                                onSuccess: function onSuccess(result) {
-                                    resolve(result);
-                                },
-                                onFailure: function onFailure(err) {
-                                    reject(err);
-                                }
-                            });
-                        })
-                    ];
-            }
-        });
-    });
-    return _login.apply(this, arguments);
-}
-function cogLogout() {
-    return _cogLogout.apply(this, arguments);
-}
-function _cogLogout() {
-    _cogLogout = _async_to_generator(function() {
-        var _data_poolData, _data_poolData1, _dataConfig, _dataConfig1, _dataConfig2, data, dataConfig, loginUrl;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    return [
-                        4,
-                        fetchData()
-                    ];
-                case 1:
-                    data = _state.sent();
-                    dataConfig = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.getEnv)() === "frh" ? (_data_poolData = data.poolData) === null || _data_poolData === void 0 ? void 0 : _data_poolData.prod : (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.getEnv)() === "frhStage" ? (_data_poolData1 = data.poolData) === null || _data_poolData1 === void 0 ? void 0 : _data_poolData1.stage : null;
-                    loginUrl = "".concat((_dataConfig = dataConfig) === null || _dataConfig === void 0 ? void 0 : _dataConfig.ssoUrl, "/login?client_id=").concat((_dataConfig1 = dataConfig) === null || _dataConfig1 === void 0 ? void 0 : _dataConfig1.ClientId, "&response_type=code&scope=openid&redirect_uri=").concat((_dataConfig2 = dataConfig) === null || _dataConfig2 === void 0 ? void 0 : _dataConfig2.redirectUri);
-                    localStorage.clear();
-                    window.location.href = loginUrl;
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _cogLogout.apply(this, arguments);
-}
 
 
 /***/ }),
@@ -6496,6 +7313,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ErrorComponents/GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -6534,15 +7352,13 @@ function _object_spread(target) {
 
 
 
+
 // eslint-disable-next-line react/display-name
 var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function(param) {
     var scope = param.scope, module = param.module, scopeClass = param.scopeClass, path = param.path, props = param.props;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var setActiveHelpTopicByName = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__.HelpTopicContext).setActiveHelpTopicByName;
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
-        var user = param.chrome.user;
-        return user;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__["default"]).user;
     var gatewayError = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
         var gatewayError = param.chrome.gatewayError;
         return gatewayError;
@@ -8106,9 +8922,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
 /* harmony import */ var _FeedbackError__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./FeedbackError */ "./src/components/Feedback/FeedbackError.tsx");
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
+/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
+/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -8176,8 +8992,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(param) {
-    var user = param.user;
+var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function() {
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
     var usePendoFeedback = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useSelector)(function(param) {
         var usePendoFeedback = param.chrome.usePendoFeedback;
@@ -8190,7 +9005,8 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useDispatch)();
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("feedbackHome"), 2), modalPage = _useState[0], setModalPage = _useState[1];
     var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__["default"]).getEnvironment;
-    var libjwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_18__["default"]);
+    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    var user = chromeAuth.user;
     var env = getEnvironment();
     var isAvailable = env === "prod" || env === "stage";
     var setIsModalOpen = function(isOpen) {
@@ -8229,7 +9045,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
-                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_19__.createSupportCase)(user.identity, libjwt);
+                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_18__.createSupportCase)(user.identity, chromeAuth.token);
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "chr-c-feedback-card-title"
@@ -9760,19 +10576,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ContextSwitcher__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../ContextSwitcher */ "./src/components/ContextSwitcher/index.tsx");
 /* harmony import */ var _Feedback__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Feedback */ "./src/components/Feedback/index.ts");
 /* harmony import */ var _Activation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Activation */ "./src/components/Activation/index.ts");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Logo */ "./src/components/Header/Logo.tsx");
-/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _Header_scss__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Header.scss */ "./src/components/Header/Header.scss");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _Search_SearchInput__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Search/SearchInput */ "./src/components/Search/SearchInput.tsx");
-/* harmony import */ var _AllServicesDropdown_AllServicesDropdown__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../AllServicesDropdown/AllServicesDropdown */ "./src/components/AllServicesDropdown/AllServicesDropdown.tsx");
-/* harmony import */ var _Breadcrumbs_Breadcrumbs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Breadcrumbs/Breadcrumbs */ "./src/components/Breadcrumbs/Breadcrumbs.tsx");
-/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Logo */ "./src/components/Header/Logo.tsx");
+/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _Header_scss__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Header.scss */ "./src/components/Header/Header.scss");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _Search_SearchInput__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../Search/SearchInput */ "./src/components/Search/SearchInput.tsx");
+/* harmony import */ var _AllServicesDropdown_AllServicesDropdown__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../AllServicesDropdown/AllServicesDropdown */ "./src/components/AllServicesDropdown/AllServicesDropdown.tsx");
+/* harmony import */ var _Breadcrumbs_Breadcrumbs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Breadcrumbs/Breadcrumbs */ "./src/components/Breadcrumbs/Breadcrumbs.tsx");
+/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9892,8 +10707,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-var FeedbackRoute = function(param) {
-    var user = param.user;
+var FeedbackRoute = function() {
     var paths = localStorage.getItem("chrome:experimental:feedback") === "true" ? [
         "*"
     ] : [
@@ -9904,33 +10718,28 @@ var FeedbackRoute = function(param) {
         "ansible/*",
         "edge/*"
     ];
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, null, paths.map(function(path) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, paths.map(function(path) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
             key: path,
             path: path,
-            element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Feedback__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                user: user
-            })
+            element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Feedback__WEBPACK_IMPORTED_MODULE_8__["default"], null)
         });
     }));
 };
 var Header = function(param) {
     var breadcrumbsProps = param.breadcrumbsProps;
     var _user_identity, _user, _user_identity_user, _user_identity1, _user1;
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        return chrome.user;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]).user;
     var search = new URLSearchParams(window.location.search).keys().next().value;
-    var isActivationPath = _utils_consts__WEBPACK_IMPORTED_MODULE_15__.activationRequestURLs.includes(search);
-    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_16__.ITLess)();
-    var pathname = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_13__.useLocation)().pathname;
+    var isActivationPath = _utils_consts__WEBPACK_IMPORTED_MODULE_14__.activationRequestURLs.includes(search);
+    var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_15__.ITLess)();
+    var pathname = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useLocation)().pathname;
     var noBreadcrumb = ![
         "/",
         "/allservices",
         "/favoritedservices"
     ].includes(pathname);
-    var _useWindowWidth = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_20__["default"])(), md = _useWindowWidth.md, lg = _useWindowWidth.lg;
+    var _useWindowWidth = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_19__["default"])(), md = _useWindowWidth.md, lg = _useWindowWidth.lg;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), searchOpen = _useState[0], setSearchOpen = _useState[1];
     var hideAllServices = function(isOpen) {
         setSearchOpen(isOpen);
@@ -9940,12 +10749,12 @@ var Header = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Masthead__WEBPACK_IMPORTED_MODULE_4__.MastheadBrand, {
         className: "pf-v5-u-flex-shrink-0 pf-v5-u-mr-lg",
         component: function(props) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_12__["default"], _object_spread_props(_object_spread({}, props), {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_11__["default"], _object_spread_props(_object_spread({}, props), {
                 appId: "landing",
                 href: "/"
             }));
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Logo__WEBPACK_IMPORTED_MODULE_11__["default"], null)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.Toolbar, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Logo__WEBPACK_IMPORTED_MODULE_10__["default"], null)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.Toolbar, {
         isFullHeight: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, {
         className: "pf-v5-m-icon-button-group pf-v5-u-ml-auto",
@@ -9955,16 +10764,14 @@ var Header = function(param) {
         }
     }, !lg && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(HeaderTools, null))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Masthead__WEBPACK_IMPORTED_MODULE_4__.MastheadContent, {
         className: "pf-v5-u-mx-md pf-v5-u-mx-0-on-2xl"
-    }, ((_user = user) === null || _user === void 0 ? void 0 : (_user_identity = _user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.account_number) && !isITLessEnv && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_1___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(FeedbackRoute, {
-        user: user
-    }), document.body), user && isActivationPath && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Activation__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, ((_user = user) === null || _user === void 0 ? void 0 : (_user_identity = _user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.account_number) && !isITLessEnv && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_1___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(FeedbackRoute, null), document.body), user && isActivationPath && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Activation__WEBPACK_IMPORTED_MODULE_9__["default"], {
         user: user,
         request: search
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.Toolbar, {
         isFullHeight: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, {
         variant: "filter-group"
-    }, user && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarItem, null, !(!md && searchOpen) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesDropdown_AllServicesDropdown__WEBPACK_IMPORTED_MODULE_18__["default"], null), isITLessEnv && ((_user1 = user) === null || _user1 === void 0 ? void 0 : (_user_identity1 = _user1.identity) === null || _user_identity1 === void 0 ? void 0 : (_user_identity_user = _user_identity1.user) === null || _user_identity_user === void 0 ? void 0 : _user_identity_user.is_org_admin) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SatelliteLink__WEBPACK_IMPORTED_MODULE_6__["default"], null)), user && !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarItem, {
+    }, user && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarItem, null, !(!md && searchOpen) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesDropdown_AllServicesDropdown__WEBPACK_IMPORTED_MODULE_17__["default"], null), isITLessEnv && ((_user1 = user) === null || _user1 === void 0 ? void 0 : (_user_identity1 = _user1.identity) === null || _user_identity1 === void 0 ? void 0 : (_user_identity_user = _user_identity1.user) === null || _user_identity_user === void 0 ? void 0 : _user_identity_user.is_org_admin) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SatelliteLink__WEBPACK_IMPORTED_MODULE_6__["default"], null)), user && !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarItem, {
         className: "pf-v5-m-hidden pf-v5-m-visible-on-xl"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ContextSwitcher__WEBPACK_IMPORTED_MODULE_7__["default"], {
         user: user,
@@ -9972,7 +10779,7 @@ var Header = function(param) {
     }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, {
         className: "pf-v5-u-flex-grow-1 pf-v5-u-mr-0 pf-v5-u-mr-md-on-2xl",
         variant: "filter-group"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Search_SearchInput__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Search_SearchInput__WEBPACK_IMPORTED_MODULE_16__["default"], {
         onStateChange: hideAllServices
     })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, {
         className: "pf-v5-m-icon-button-group pf-v5-u-ml-auto",
@@ -9983,15 +10790,11 @@ var Header = function(param) {
         "widget-type": "InsightsToolbar"
     }, lg && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(HeaderTools, null))))), noBreadcrumb && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.ToolbarGroup, {
         className: "chr-c-breadcrumbs__group"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Breadcrumbs_Breadcrumbs__WEBPACK_IMPORTED_MODULE_19__["default"], breadcrumbsProps)));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Breadcrumbs_Breadcrumbs__WEBPACK_IMPORTED_MODULE_18__["default"], breadcrumbsProps)));
 };
 var HeaderTools = function() {
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        var _chrome;
-        return (_chrome = chrome) === null || _chrome === void 0 ? void 0 : _chrome.user;
-    });
-    if (!user) {
+    var ready = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]).ready;
+    if (!ready) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UnAuthtedHeader__WEBPACK_IMPORTED_MODULE_3__["default"], null);
     }
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Tools__WEBPACK_IMPORTED_MODULE_2__["default"], null);
@@ -10127,26 +10930,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?15a0");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 
 
 
 
 
 var Login = function() {
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_3__.useIntl)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_2__.useIntl)();
+    var login = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__["default"]).login;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
         ouiaId: "top-right-login-button",
         variant: "tertiary",
         "aria-label": "Toggle primary navigation",
         "widget-type": "InsightsNavToggle",
         onClick: function() {
-            return (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.login)();
+            return login();
         }
-    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_4__["default"].login));
+    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_3__["default"].login));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
@@ -10610,11 +11414,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__);
 /* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
 /* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -10779,11 +11583,8 @@ var Tools = function() {
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
     var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.sources.integrations");
-    var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__["default"])().xs;
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
-        var user = param.chrome.user;
-        return user;
-    });
+    var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_25__["default"])().xs;
+    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_26__["default"]), user = _useContext.user, token = _useContext.token;
     var unreadNotifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
         return notifications.data.some(function(item) {
@@ -10796,7 +11597,6 @@ var Tools = function() {
         return (_notifications = notifications) === null || _notifications === void 0 ? void 0 : _notifications.isExpanded;
     });
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useDispatch)();
-    var libjwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_23__["default"]);
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_19__.useIntl)();
     var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
     var settingsPath = isITLessEnv ? "/settings/my-user-access" : enableIntegrations ? "/settings/integrations" : "/settings/sources";
@@ -10846,7 +11646,7 @@ var Tools = function() {
         {
             title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].openSupportCase),
             onClick: function() {
-                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_22__.createSupportCase)(user.identity, libjwt);
+                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_22__.createSupportCase)(user.identity, token);
             },
             isDisabled: window.location.href.includes("/application-services") && !isRhosakEntitled,
             isHidden: isITLessEnv
@@ -10964,11 +11764,11 @@ var Tools = function() {
         className: "chr-c-notification-badge",
         variant: unreadNotifications ? "unread" : "read",
         onClick: function() {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_25__.toggleNotificationsDrawer)());
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_24__.toggleNotificationsDrawer)());
         },
         "aria-label": "Notifications",
         isExpanded: isDrawerExpanded
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default()), null)))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23___default()), null)))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
         className: "pf-v5-u-mr-0"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
         aria: "none",
@@ -11221,12 +12021,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserIcon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./UserIcon */ "./src/components/Header/UserIcon.tsx");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -11316,16 +12114,16 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-
-var buildItems = function() {
-    var username = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", isOrgAdmin = arguments.length > 1 ? arguments[1] : void 0, accountNumber = arguments.length > 2 ? arguments[2] : void 0, isInternal = arguments.length > 3 ? arguments[3] : void 0, extraItems = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : [];
+var DropdownItems = function(param) {
+    var _param_username = param.username, username = _param_username === void 0 ? "" : _param_username, isOrgAdmin = param.isOrgAdmin, accountNumber = param.accountNumber, isInternal = param.isInternal, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
     var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.getEnv)();
     var isProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.isProd)();
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)();
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_14__.useIntl)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_13__.useIntl)();
     var prefix = isProd ? "" : "".concat(env === "ci" ? "qa" : env, ".");
-    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].useAccountNumber));
+    var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].useAccountNumber));
     var questionMarkRef = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
+    var logout = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__["default"]).logout;
     return [
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "Username",
@@ -11334,11 +12132,11 @@ var buildItems = function() {
             className: "chr-c-dropdown-item__stack"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].username)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value data-hj-suppress sentry-mask"
         }, username), isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].orgAdministrator)))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].orgAdministrator)))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "account wrapper"
         }, accountNumber && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
@@ -11353,14 +12151,14 @@ var buildItems = function() {
             className: "chr-c-dropdown-item__stack"
         }, !isITLessEnv && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
             className: "chr-c-dropdown-item__stack--header"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", {
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].accountNumber), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", {
             ref: questionMarkRef,
             className: "visible-pointer pf-v5-u-ml-sm"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((_patternfly_react_icons_dist_dynamic_icons_question_circle_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--value sentry-mask data-hj-suppress"
         }, accountNumber)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].internalUser)))))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].internalUser)))))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__.Divider, {
             component: "li",
             key: "separator"
@@ -11373,7 +12171,7 @@ var buildItems = function() {
             target: "_blank",
             rel: "noopener noreferrer",
             component: "a"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].myProfile))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].myProfile))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), {
             key: "My user access wrapper"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
@@ -11383,7 +12181,7 @@ var buildItems = function() {
                     className: className,
                     href: "/iam/my-user-access",
                     appId: "rbac"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].myUserAccess));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].myUserAccess));
             },
             key: "My user access"
         })),
@@ -11396,7 +12194,7 @@ var buildItems = function() {
                     className: className,
                     href: "/user-preferences/notifications",
                     appId: "userPreferences"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].userPreferences));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].userPreferences));
             },
             key: "User preferences"
         })),
@@ -11410,33 +12208,23 @@ var buildItems = function() {
                     className: className,
                     href: "/internal",
                     appId: "internal"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].internal));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].internal));
             }
         })),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "logout",
             component: "button",
-            onClick: function() {
-                return (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_12__.logout)(true);
-            }
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].logout)),
+            onClick: logout
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].logout)),
         extraItems
     ];
 };
 var UserToggle = function(param) {
     var _param_isSmall = param.isSmall, isSmall = _param_isSmall === void 0 ? false : _param_isSmall, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
+    var _user, _user1, _user2, _user3, _user4;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
-    var account = (0,react_redux__WEBPACK_IMPORTED_MODULE_15__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        var _chrome_user, _chrome_user_identity_user, _chrome_user1, _chrome_user_identity_user1, _chrome_user2, _chrome_user_identity_user2, _chrome_user3, _chrome_user_identity_user3, _chrome_user4, _chrome_user_identity_user4, _chrome_user5;
-        return {
-            number: (_chrome_user = chrome.user) === null || _chrome_user === void 0 ? void 0 : _chrome_user.identity.account_number,
-            username: (_chrome_user1 = chrome.user) === null || _chrome_user1 === void 0 ? void 0 : (_chrome_user_identity_user = _chrome_user1.identity.user) === null || _chrome_user_identity_user === void 0 ? void 0 : _chrome_user_identity_user.username,
-            isOrgAdmin: (_chrome_user2 = chrome.user) === null || _chrome_user2 === void 0 ? void 0 : (_chrome_user_identity_user1 = _chrome_user2.identity.user) === null || _chrome_user_identity_user1 === void 0 ? void 0 : _chrome_user_identity_user1.is_org_admin,
-            isInternal: (_chrome_user3 = chrome.user) === null || _chrome_user3 === void 0 ? void 0 : (_chrome_user_identity_user2 = _chrome_user3.identity.user) === null || _chrome_user_identity_user2 === void 0 ? void 0 : _chrome_user_identity_user2.is_internal,
-            name: "".concat(((_chrome_user4 = chrome.user) === null || _chrome_user4 === void 0 ? void 0 : (_chrome_user_identity_user3 = _chrome_user4.identity.user) === null || _chrome_user_identity_user3 === void 0 ? void 0 : _chrome_user_identity_user3.first_name) || "", " ").concat(((_chrome_user5 = chrome.user) === null || _chrome_user5 === void 0 ? void 0 : (_chrome_user_identity_user4 = _chrome_user5.identity.user) === null || _chrome_user_identity_user4 === void 0 ? void 0 : _chrome_user_identity_user4.last_name) || "")
-        };
-    });
+    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__["default"]), _useContext_user = _useContext.user, _useContext_user_identity = _useContext_user.identity, user = _useContext_user_identity.user, account_number = _useContext_user_identity.account_number;
+    var name = ((_user = user) === null || _user === void 0 ? void 0 : _user.first_name) + " " + ((_user1 = user) === null || _user1 === void 0 ? void 0 : _user1.last_name);
     var onSelect = function(event) {
         if ([
             "A",
@@ -11473,34 +12261,20 @@ var UserToggle = function(param) {
                 "widget-type": "UserMenu"
             } : {
                 icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_UserIcon__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-            }), isSmall ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6__.EllipsisVIcon, null) : account.name);
+            }), isSmall ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_6__.EllipsisVIcon, null) : name);
         },
         className: "chr-c-dropdown-user-toggle",
         isOpen: isOpen
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownList, null, buildItems(account.username, account.isOrgAdmin, account.number, account.isInternal, extraItems)));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownList, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(DropdownItems, {
+        username: (_user2 = user) === null || _user2 === void 0 ? void 0 : _user2.username,
+        isOrgAdmin: (_user3 = user) === null || _user3 === void 0 ? void 0 : _user3.is_org_admin,
+        accountNumber: account_number,
+        isInternal: (_user4 = user) === null || _user4 === void 0 ? void 0 : _user4.is_internal,
+        extraItems: extraItems
+    })));
 };
 // TODO update this to use account_id
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserToggle);
-
-
-/***/ }),
-
-/***/ "./src/components/LibJWTContext/index.ts":
-/*!***********************************************!*\
-  !*** ./src/components/LibJWTContext/index.ts ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-var LibtJWTContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LibtJWTContext);
 
 
 /***/ }),
@@ -14475,6 +15249,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useUserSSOScopes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hooks/useUserSSOScopes */ "./src/hooks/useUserSSOScopes.ts");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-dom */ "webpack/sharing/consume/default/react-dom/react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -14543,6 +15318,7 @@ function _object_spread_props(target, source) {
 
 
 
+
 var NotEntitledModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_NotEntitledModal_index_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../NotEntitledModal */ "./src/components/NotEntitledModal/index.tsx"));
 });
@@ -14551,6 +15327,10 @@ var Debugger = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(functio
 });
 var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(props) {
     var _user_identity, _user;
+    var config = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
+        var chrome = param.chrome;
+        return chrome.scalprumConfig;
+    });
     var _useQuickstartsStates = (0,_QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_9__["default"])(), activateQuickstart = _useQuickstartsStates.activateQuickstart, allQuickStartStates = _useQuickstartsStates.allQuickStartStates, setAllQuickStartStates = _useQuickstartsStates.setAllQuickStartStates, activeQuickStartID = _useQuickstartsStates.activeQuickStartID, setActiveQuickStartID = _useQuickstartsStates.setActiveQuickStartID;
     var _useHelpTopicState = (0,_QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_10__["default"])(), helpTopics = _useHelpTopicState.helpTopics, addHelpTopics = _useHelpTopicState.addHelpTopics, disableTopics = _useHelpTopicState.disableTopics, enableTopics = _useHelpTopicState.enableTopics;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
@@ -14562,10 +15342,7 @@ var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
         var _param_chrome = param.chrome, quickstarts = _param_chrome.quickstarts.quickstarts;
         return Object.values(quickstarts).flat();
     });
-    var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        return chrome.user;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_16__["default"]).user;
     var isDebuggerEnabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var isDebuggerEnabled = param.chrome.isDebuggerEnabled;
         return isDebuggerEnabled;
@@ -14647,6 +15424,7 @@ var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
     }), document.body)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.QuickStartContainer, quickStartProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__.HelpTopicContainer, {
         helpTopics: helpTopics
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ScalprumRoot__WEBPACK_IMPORTED_MODULE_5__["default"], _object_spread_props(_object_spread({}, props), {
+        config: config,
         quickstartsAPI: quickstartsAPI,
         helpTopicsAPI: helpTopicsAPI
     })))))));
@@ -14692,21 +15470,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_historyListener__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/historyListener */ "./src/utils/historyListener.ts");
 /* harmony import */ var _analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../analytics/SegmentContext */ "./src/analytics/SegmentContext.ts");
 /* harmony import */ var _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils/loading-fallback */ "./src/utils/loading-fallback.tsx");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../auth */ "./src/auth/index.ts");
-/* harmony import */ var _LibJWTContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../LibJWTContext */ "./src/components/LibJWTContext/index.ts");
-/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
-/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
-/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
-/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
-/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
-/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
-/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../hooks/useTrackPendoUsage */ "./src/hooks/useTrackPendoUsage.ts");
-/* harmony import */ var _hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../hooks/useDisablePendoOnLanding */ "./src/hooks/useDisablePendoOnLanding.ts");
+/* harmony import */ var _chrome_create_chrome__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../chrome/create-chrome */ "./src/chrome/create-chrome.ts");
+/* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Navigation */ "./src/components/Navigation/index.tsx");
+/* harmony import */ var _QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../QuickStart/useHelpTopicManager */ "./src/components/QuickStart/useHelpTopicManager.ts");
+/* harmony import */ var _Footer_Footer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Footer/Footer */ "./src/components/Footer/Footer.tsx");
+/* harmony import */ var _chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../chrome/update-shared-scope */ "./src/chrome/update-shared-scope.ts");
+/* harmony import */ var _hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../hooks/useBundleVisitDetection */ "./src/hooks/useBundleVisitDetection.ts");
+/* harmony import */ var _chromeApiWrapper__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./chromeApiWrapper */ "./src/components/RootApp/chromeApiWrapper.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
+/* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useTrackPendoUsage */ "./src/hooks/useTrackPendoUsage.ts");
+/* harmony import */ var _hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../hooks/useDisablePendoOnLanding */ "./src/hooks/useDisablePendoOnLanding.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -14951,7 +15728,7 @@ function _ts_generator(thisArg, body) {
 
 
 
-
+// import { createGetUser } from '../../auth';
 
 
 
@@ -15003,18 +15780,15 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var internalFilteredTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
     var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__["default"]).analytics;
-    var libJwt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LibJWTContext__WEBPACK_IMPORTED_MODULE_17__["default"]);
+    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_29__["default"]);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
-    var modulesConfig = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
-        var modules = param.chrome.modules;
-        return modules;
-    });
+    var mutableChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     // initialize WS event handling
-    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_27__["default"])();
+    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
     // track pendo usage
-    (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_29__["default"])();
+    (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__["default"])();
     // disable guides on landing page
-    (0,_hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_30__["default"])();
+    (0,_hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_28__["default"])();
     function getNotifications() {
         return _getNotifications.apply(this, arguments);
     }
@@ -15036,7 +15810,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                         ];
                     case 1:
                         notifications = _state.sent();
-                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_28__.populateNotifications)(((_notifications_data = notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.data) || []));
+                        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_26__.populateNotifications)(((_notifications_data = notifications.data) === null || _notifications_data === void 0 ? void 0 : _notifications_data.data) || []));
                         return [
                             3,
                             3
@@ -15057,7 +15831,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         });
         return _getNotifications.apply(this, arguments);
     }
-    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_20__["default"])(helpTopicsAPI).setActiveTopic;
+    var setActiveTopic = (0,_QuickStart_useHelpTopicManager__WEBPACK_IMPORTED_MODULE_18__["default"])(helpTopicsAPI).setActiveTopic;
     function enableTopics() {
         return _enableTopics.apply(this, arguments);
     }
@@ -15096,10 +15870,10 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         return _enableTopics.apply(this, arguments);
     }
     // track bundle visits
-    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_23__["default"])();
+    (0,_hooks_useBundleVisitDetection__WEBPACK_IMPORTED_MODULE_21__["default"])();
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         // prepare webpack module sharing scope overrides
-        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_22__["default"])();
+        (0,_chrome_update_shared_scope__WEBPACK_IMPORTED_MODULE_20__["default"])();
         // get notifications drawer api
         getNotifications();
         var unregister = _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_8__["default"].listen(_utils_historyListener__WEBPACK_IMPORTED_MODULE_13__["default"]);
@@ -15114,9 +15888,6 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
             pageOptions: pageOptions
         });
     }, []);
-    var getUser = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((0,_auth__WEBPACK_IMPORTED_MODULE_16__.createGetUser)(libJwt), [
-        libJwt
-    ]);
     var helpTopicsChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         return _object_spread_props(_object_spread({}, helpTopicsAPI), {
             setActiveTopic: setActiveTopic,
@@ -15127,27 +15898,31 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
             }
         });
     }, []);
-    var chromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        return (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_18__.createChromeContext)({
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        mutableChromeApi.current = (0,_chrome_create_chrome__WEBPACK_IMPORTED_MODULE_16__.createChromeContext)({
             analytics: analytics,
-            getUser: getUser,
             helpTopics: helpTopicsChromeApi,
-            libJwt: libJwt,
-            modulesConfig: modulesConfig,
             quickstartsAPI: quickstartsAPI,
             useGlobalFilter: useGlobalFilter,
             store: store,
-            setPageMetadata: setPageMetadata
+            setPageMetadata: setPageMetadata,
+            chromeAuth: chromeAuth
         });
-    }, []);
+    // reset chrome object after token (user) updates/changes
+    }, [
+        chromeAuth.token
+    ]);
     var scalprumProviderProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        if (!mutableChromeApi.current) {
+            throw new Error("Chrome API failed to initialize.");
+        }
         // set the deprecated chrome API to window
         // eslint-disable-next-line rulesdir/no-chrome-api-call-from-window
-        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_24__["default"])(chromeApi);
+        window.insights.chrome = (0,_chromeApiWrapper__WEBPACK_IMPORTED_MODULE_22__["default"])(mutableChromeApi.current);
         return {
             config: config,
             api: {
-                chrome: chromeApi
+                chrome: mutableChromeApi.current
             },
             pluginSDKOptions: {
                 pluginLoaderOptions: {
@@ -15164,7 +15939,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                         var _manifest_baseURL, _manifest_loadScripts_map, _manifest_registrationMethod;
                         var newManifest = _object_spread_props(_object_spread({}, manifest), {
                             // Compatibility required for bot pure SDK plugins, HCC plugins and sdk v1/v2 plugins until all are on the same system.
-                            baseURL: manifest.name.includes("hac-") && !manifest.baseURL ? "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.isBeta)() ? "/beta" : "", "/api/plugins/").concat(manifest.name, "/") : "/",
+                            baseURL: manifest.name.includes("hac-") && !manifest.baseURL ? "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.isBeta)() ? "/beta" : "", "/api/plugins/").concat(manifest.name, "/") : "/",
                             loadScripts: (_manifest_loadScripts_map = (_manifest_loadScripts = manifest.loadScripts) === null || _manifest_loadScripts === void 0 ? void 0 : _manifest_loadScripts.map(function(script) {
                                 return "".concat(manifest.baseURL).concat(script).replace(/\/\//, "/");
                             })) !== null && _manifest_loadScripts_map !== void 0 ? _manifest_loadScripts_map : [
@@ -15177,19 +15952,24 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                 }
             }
         };
-    }, []);
+    }, [
+        chromeAuth.token
+    ]);
+    if (!mutableChromeApi.current) {
+        return null;
+    }
     return(/**
        * Once all applications are migrated to chrome 2:
        * - define chrome API in chrome root after it mounts
        * - copy these functions to window
        * - add deprecation warning to the window functions
-       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_26__["default"].Provider, {
-        value: chromeApi
+       */ /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_24__["default"].Provider, {
+        value: mutableChromeApi.current
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__.ScalprumProvider, scalprumProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__.ChromeProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         index: true,
         path: "/",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__["default"], _object_spread({
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
@@ -15204,22 +15984,22 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
             fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_AllServices__WEBPACK_IMPORTED_MODULE_10__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    }), !(0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/favoritedservices",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
             fallback: _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_15__["default"]
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_FavoritedServices__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_21__["default"], {
+            Footer: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer_Footer__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 setCookieElement: setCookieElement,
                 cookieElement: cookieElement
             })
         }))
-    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_25__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    }), (0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "/insights/satellite",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_SatelliteToken__WEBPACK_IMPORTED_MODULE_12__["default"], null)
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
@@ -15228,7 +16008,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
         path: "*",
         element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__["default"], _object_spread({
-            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_19__["default"]
+            Sidebar: _Navigation__WEBPACK_IMPORTED_MODULE_17__["default"]
         }, props))
     }))))));
 }, // config rarely changes
@@ -16969,7 +17749,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
+/* harmony import */ var _auth_setCookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth/setCookie */ "./src/auth/setCookie.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -17112,6 +17893,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var NOTIFICATION_DRAWER = "com.redhat.console.notifications.drawer";
 var SAMPLE_EVENT = "sample.type";
 var ALL_TYPES = [
@@ -17128,6 +17910,7 @@ var useChromeServiceEvents = function() {
     var connection = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
     var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_2__.useFlag)("platform.chrome.notifications-drawer");
+    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_5__["default"]), token = _useContext.token, tokenExpires = _useContext.tokenExpires;
     var handlerMap = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         var _obj;
         return(_obj = {}, _define_property(_obj, NOTIFICATION_DRAWER, function(data) {
@@ -17141,11 +17924,10 @@ var useChromeServiceEvents = function() {
     }, []);
     var createConnection = function() {
         var _ref = _async_to_generator(function() {
-            var token, socketUrl, socket;
+            var socketUrl, socket;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
-                        token = (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_4__.getEncodedToken)();
                         if (!token) return [
                             3,
                             2
@@ -17154,7 +17936,7 @@ var useChromeServiceEvents = function() {
                         // ensure the cookie exists before we try to establish connection
                         return [
                             4,
-                            (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_4__.setCookie)(token)
+                            (0,_auth_setCookie__WEBPACK_IMPORTED_MODULE_4__.setCookie)(token, tokenExpires)
                         ];
                     case 1:
                         _state.sent();
@@ -17465,8 +18247,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _jwt_jwt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jwt/jwt */ "./src/jwt/jwt.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_without_holes(arr) {
+    if (Array.isArray(arr)) return _array_like_to_array(arr);
+}
+function _iterable_to_array(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _non_iterable_spread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _to_consumable_array(arr) {
+    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
 
 
 
@@ -17475,9 +18282,10 @@ __webpack_require__.r(__webpack_exports__);
  * If required, attempt to reauthenticate current user with full profile login.
  */ var useUserSSOScopes = function() {
     var _activeModule_config, _activeModule, _activeModule1;
+    var login = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__["default"]).login;
     var getCurrentScopes = function() {
         try {
-            return JSON.parse(localStorage.getItem(_utils_common__WEBPACK_IMPORTED_MODULE_3__.LOGIN_SCOPES_STORAGE_KEY) || "[]");
+            return JSON.parse(localStorage.getItem(_utils_common__WEBPACK_IMPORTED_MODULE_2__.LOGIN_SCOPES_STORAGE_KEY) || "[]");
         } catch (e) {
             // unable to parse scopes because the entry does not exist or the entry is not an array
             return [];
@@ -17499,9 +18307,12 @@ __webpack_require__.r(__webpack_exports__);
         var shouldReAuth = // normal scenario for account that was not authenticated with required scopes
         missingScope || // scenario accounts that were redirected from sso and might not have completed required steps (like completing full profile registration)
         requiredScopes.length > 0 && !missingScope && document.referrer.match(/sso\.[a-z]+\.redhat\.com/);
-        // if current login scope is not full profile and scope requires it, trigger full profile login`
+        /**
+     * FIXME: RHFULL scope (and all legacy scopes??) are not showing up in the token response, so we don't know if the scope was authenticated
+     * Work with #forum-ciam and the `@ciam-s-client-integration-sre` to fix that
+     *  */ // if current login scope is not full profile and scope requires it, trigger full profile login`
         if (shouldReAuth) {
-            (0,_jwt_jwt__WEBPACK_IMPORTED_MODULE_2__.login)(requiredScopes);
+            login(Array.from(new Set(_to_consumable_array(requiredScopes).concat(_to_consumable_array(currentScopes)))));
         }
     }, [
         requiredScopes,
@@ -17595,2049 +18406,6 @@ var useWindowWidth = function() {
     };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useWindowWidth);
-
-
-/***/ }),
-
-/***/ "./src/jwt/Priv.ts":
-/*!*************************!*\
-  !*** ./src/jwt/Priv.ts ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var keycloak_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! keycloak-js */ "./node_modules/keycloak-js/dist/keycloak.mjs");
-function _class_call_check(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
-function _defineProperties(target, props) {
-    for(var i = 0; i < props.length; i++){
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-    }
-}
-function _create_class(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-}
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-
-var Priv = /*#__PURE__*/ function() {
-    "use strict";
-    function Priv() {
-        _class_call_check(this, Priv);
-        _define_property(this, "_cookie", void 0);
-        _define_property(this, "_keycloak", void 0);
-        _define_property(this, "cookie", void 0);
-        _define_property(this, "logoutDelay", void 0);
-        _define_property(this, "logoutTimeout", void 0);
-        this._cookie;
-        this._keycloak = {};
-        this.logoutDelay = 3 * 60 * 60 * 1000; // 3 hours in MS
-    }
-    _create_class(Priv, [
-        {
-            key: "setCookie",
-            value: function setCookie(cookie) {
-                this.cookie = cookie;
-            }
-        },
-        {
-            key: "setKeycloak",
-            value: function setKeycloak(options, onTokenExpired, onAuthSuccess, onAuthRefreshSuccess) {
-                this._keycloak = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__["default"](options);
-                this._keycloak.onTokenExpired = onTokenExpired;
-                this._keycloak.onAuthSuccess = onAuthSuccess;
-                this._keycloak.onAuthRefreshSuccess = onAuthRefreshSuccess;
-            }
-        },
-        {
-            key: "initializeKeycloak",
-            value: function initializeKeycloak(options) {
-                var _this__keycloak;
-                (_this__keycloak = this._keycloak) === null || _this__keycloak === void 0 ? void 0 : _this__keycloak.init(options);
-            }
-        },
-        {
-            key: "setToken",
-            value: function setToken(token) {
-                this._keycloak.authenticated = true;
-                this._keycloak.token = token;
-            }
-        },
-        {
-            key: "initialize",
-            value: function initialize(options) {
-                return this._keycloak.init(options);
-            }
-        },
-        {
-            key: "setTokenParsed",
-            value: function setTokenParsed(tokenParsed) {
-                this._keycloak.tokenParsed = tokenParsed;
-            }
-        },
-        {
-            key: "getTokenParsed",
-            value: function getTokenParsed() {
-                return this._keycloak.tokenParsed;
-            }
-        },
-        {
-            key: "getToken",
-            value: function getToken() {
-                return this._keycloak.token;
-            }
-        },
-        {
-            key: "getRefershToken",
-            value: function getRefershToken() {
-                return this._keycloak.refreshToken;
-            }
-        },
-        {
-            key: "login",
-            value: function login(options) {
-                var _this = this;
-                return this._keycloak.login(options).then(function(resp) {
-                    if (_this.logoutTimeout) {
-                        clearTimeout(_this.logoutTimeout);
-                    }
-                    _this.logoutTimeout = setTimeout(function() {
-                        _this.logout();
-                    }, _this.logoutDelay);
-                    return resp;
-                });
-            }
-        },
-        {
-            key: "clearToken",
-            value: function clearToken() {
-                this._keycloak.clearToken();
-            }
-        },
-        {
-            key: "getCookie",
-            value: function getCookie() {
-                return this.cookie;
-            }
-        },
-        {
-            key: "logout",
-            value: function logout() {
-                var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-                return this._keycloak.logout(options);
-            }
-        },
-        {
-            key: "getAuthenticated",
-            value: function getAuthenticated() {
-                return this._keycloak.authenticated;
-            }
-        },
-        {
-            key: "updateToken",
-            value: function updateToken() {
-                // 5 is default KC value, min validaty is required by KC byt then has a default value for some reason
-                return this._keycloak.updateToken(5);
-            }
-        }
-    ]);
-    return Priv;
-}();
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Priv);
-
-
-/***/ }),
-
-/***/ "./src/jwt/entitlements.ts":
-/*!*********************************!*\
-  !*** ./src/jwt/entitlements.ts ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @redhat-cloud-services/entitlements-client */ "./node_modules/@redhat-cloud-services/entitlements-client/dist/index.js");
-/* harmony import */ var _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios_cache_interceptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios-cache-interceptor */ "./node_modules/axios-cache-interceptor/dist/index.mjs");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-
-
-
-
-var BASE_PATH = "/api/entitlements/v1";
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-    var instance = axios__WEBPACK_IMPORTED_MODULE_0___default().create();
-    (0,axios_cache_interceptor__WEBPACK_IMPORTED_MODULE_3__.setupCache)(instance, {});
-    instance.interceptors.response.use(function(response) {
-        if (response && response.request && response.request.fromCache !== true) {
-            var last = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.lastActive)("/api/entitlements/v1/services", "fallback");
-            var keys = Object.keys(localStorage).filter(function(key) {
-                return key.endsWith("/api/entitlements/v1/services") && key !== last;
-            });
-            (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.deleteLocalStorageItems)(keys);
-        }
-        return response.data || response;
-    });
-    return new _redhat_cloud_services_entitlements_client__WEBPACK_IMPORTED_MODULE_1__.ServicesApi(undefined, BASE_PATH, instance);
-};
-
-
-/***/ }),
-
-/***/ "./src/jwt/initialize-jwt.ts":
-/*!***********************************!*\
-  !*** ./src/jwt/initialize-jwt.ts ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return(g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g);
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-var initializeJWT = function() {
-    var _ref = _async_to_generator(function(libjwt) {
-        var actions, user, encodedToken, error;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    actions = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_0__.spinUpStore)().actions;
-                    _state.label = 1;
-                case 1:
-                    _state.trys.push([
-                        1,
-                        4,
-                        ,
-                        5
-                    ]);
-                    return [
-                        4,
-                        libjwt.initPromise
-                    ];
-                case 2:
-                    _state.sent();
-                    return [
-                        4,
-                        libjwt.jwt.getUserInfo()
-                    ];
-                case 3:
-                    user = _state.sent();
-                    if (user) {
-                        actions.userLogIn(user);
-                    }
-                    encodedToken = libjwt.jwt.getEncodedToken();
-                    if (encodedToken) {
-                    // chromeInstance.cache = new CacheAdapter('chrome-store', `${decodeToken(encodedToken).session_state}-chrome-store`);
-                    }
-                    return [
-                        3,
-                        5
-                    ];
-                case 4:
-                    error = _state.sent();
-                    console.error(error);
-                    actions.userLogIn(false);
-                    return [
-                        3,
-                        5
-                    ];
-                case 5:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return function initializeJWT(libjwt) {
-        return _ref.apply(this, arguments);
-    };
-}();
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (initializeJWT);
-
-
-/***/ }),
-
-/***/ "./src/jwt/jwt.ts":
-/*!************************!*\
-  !*** ./src/jwt/jwt.ts ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   decodeToken: () => (/* binding */ decodeToken),
-/* harmony export */   doOffline: () => (/* binding */ doOffline),
-/* harmony export */   expiredToken: () => (/* binding */ expiredToken),
-/* harmony export */   getCookieExpires: () => (/* binding */ getCookieExpires),
-/* harmony export */   getEncodedToken: () => (/* binding */ getEncodedToken),
-/* harmony export */   getRefreshToken: () => (/* binding */ getRefreshToken),
-/* harmony export */   getUrl: () => (/* binding */ getUrl),
-/* harmony export */   getUserInfo: () => (/* binding */ getUserInfo),
-/* harmony export */   init: () => (/* binding */ init),
-/* harmony export */   initError: () => (/* binding */ initError),
-/* harmony export */   initSuccess: () => (/* binding */ initSuccess),
-/* harmony export */   isAuthenticated: () => (/* binding */ isAuthenticated),
-/* harmony export */   isExistingValid: () => (/* binding */ isExistingValid),
-/* harmony export */   login: () => (/* binding */ login),
-/* harmony export */   logout: () => (/* binding */ logout),
-/* harmony export */   logoutAllTabs: () => (/* binding */ logoutAllTabs),
-/* harmony export */   setCookie: () => (/* binding */ setCookie),
-/* harmony export */   setCookieWrapper: () => (/* binding */ setCookieWrapper),
-/* harmony export */   updateToken: () => (/* binding */ updateToken)
-/* harmony export */ });
-/* harmony import */ var keycloak_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! keycloak-js */ "./node_modules/keycloak-js/dist/keycloak.mjs");
-/* harmony import */ var broadcast_channel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! broadcast-channel */ "./node_modules/broadcast-channel/dist/esbrowser/index.js");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
-/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./logger */ "./src/jwt/logger.ts");
-/* harmony import */ var _cognito_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../cognito/auth */ "./src/cognito/auth.ts");
-/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./url */ "./src/jwt/url.ts");
-/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user */ "./src/jwt/user.ts");
-/* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! urijs */ "./node_modules/urijs/src/URI.js");
-/* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(urijs__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _Priv__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Priv */ "./src/jwt/Priv.ts");
-// Imports
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_without_holes(arr) {
-    if (Array.isArray(arr)) return _array_like_to_array(arr);
-}
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _iterable_to_array(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _non_iterable_spread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-function _to_consumable_array(arr) {
-    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return(g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g);
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-
-
-
-
-
-
-// Insights Specific
-
-
-
-
-
-var log = (0,_logger__WEBPACK_IMPORTED_MODULE_4__["default"])("jwt.js");
-var DEFAULT_COOKIE_NAME = "cs_jwt";
-var priv = new _Priv__WEBPACK_IMPORTED_MODULE_10__["default"]();
-var itLessCognito = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLessCognito)();
-var AllowedPartnerScopes;
-(function(AllowedPartnerScopes) {
-    AllowedPartnerScopes["aws"] = "aws";
-    AllowedPartnerScopes["azure"] = "azure";
-    AllowedPartnerScopes["gcp"] = "gcp";
-})(AllowedPartnerScopes || (AllowedPartnerScopes = {}));
-function isPartnerScope(scope) {
-    return Object.values(AllowedPartnerScopes).includes(scope);
-}
-// Broadcast Channel
-var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_1__.BroadcastChannel("auth");
-authChannel.onmessage = function(e) {
-    if (e && e.data && e.data.type) {
-        log("BroadcastChannel, Received event : ".concat(e.data.type));
-        switch(e.data.type){
-            case "logout":
-                return logout();
-            case "login":
-                return login();
-            case "refresh":
-                return updateToken();
-        }
-    }
-};
-function getPartnerScope(pathname) {
-    // replace beta and leading "/"
-    var sanitizedPathname = pathname.replace(/^(\/beta\/|\/preview\/)/, "/").replace(/^\//, "");
-    // check if the pathname is connect/:partner
-    if (sanitizedPathname.match(/^connect\/.+/)) {
-        // return :partner param
-        var fragmentScope = sanitizedPathname.split("/")[1];
-        if (isPartnerScope(fragmentScope)) {
-            return "api.partner_link.".concat(fragmentScope);
-        }
-        log("Invalid stratosphere scope: ".concat(fragmentScope));
-        return undefined;
-    }
-    return undefined;
-}
-function decodeToken(str) {
-    str = str.split(".")[1];
-    str = str.replace("/-/g", "+");
-    str = str.replace("/_/g", "/");
-    switch(str.length % 4){
-        case 0:
-            break;
-        case 2:
-            str += "==";
-            break;
-        case 3:
-            str += "=";
-            break;
-        default:
-            throw "Invalid token";
-    }
-    str = (str + "===").slice(0, str.length + str.length % 4);
-    str = str.replace(/-/g, "+").replace(/_/g, "/");
-    str = decodeURIComponent(escape(atob(str)));
-    var res = JSON.parse(str);
-    return res;
-}
-var doOffline = function(key, val, configSsoUrl) {
-    // clear previous postback
-    localStorage.removeItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.OFFLINE_REDIRECT_STORAGE_KEY);
-    var url = urijs__WEBPACK_IMPORTED_MODULE_8___default()(window.location.href);
-    url.removeSearch(key);
-    url.addSearch(key, val);
-    var redirectUri = url.toString();
-    if (redirectUri) {
-        // set new postback
-        localStorage.setItem(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.OFFLINE_REDIRECT_STORAGE_KEY, redirectUri);
-    }
-    Promise.resolve((0,_url__WEBPACK_IMPORTED_MODULE_6__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, configSsoUrl)).then(function() {
-        var _ref = _async_to_generator(function(ssoUrl) {
-            var options, kc, partnerScope, ssoScopes, scopes;
-            return _ts_generator(this, function(_state) {
-                switch(_state.label){
-                    case 0:
-                        options = _object_spread_props(_object_spread({}, _utils_consts__WEBPACK_IMPORTED_MODULE_9__.defaultAuthOptions), {
-                            promiseType: "native",
-                            redirectUri: redirectUri,
-                            url: ssoUrl
-                        });
-                        kc = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__["default"](options);
-                        return [
-                            4,
-                            kc.init(options)
-                        ];
-                    case 1:
-                        _state.sent();
-                        partnerScope = getPartnerScope(window.location.pathname);
-                        ssoScopes = localStorage.getItem(_utils_common__WEBPACK_IMPORTED_MODULE_3__.LOGIN_SCOPES_STORAGE_KEY);
-                        scopes = [
-                            "offline_access"
-                        ];
-                        if (partnerScope) {
-                            scopes.push(partnerScope);
-                        }
-                        if (ssoScopes && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)()) {
-                            try {
-                                // make sure add openid scope when custom scope is used
-                                scopes.push("openid", JSON.parse(ssoScopes));
-                            } catch (e) {
-                                console.error("Unable to parse sso scopes!");
-                            }
-                        }
-                        kc.login({
-                            scope: scopes.join(" ")
-                        });
-                        return [
-                            2
-                        ];
-                }
-            });
-        });
-        return function(ssoUrl) {
-            return _ref.apply(this, arguments);
-        };
-    }());
-};
-/*** Initialization ***/ var init = function(options, configSsoUrl) {
-    log("Initializing");
-    var cookieName = options.cookieName ? options.cookieName : DEFAULT_COOKIE_NAME;
-    priv.setCookie({
-        cookieName: cookieName
-    });
-    return Promise.resolve((0,_url__WEBPACK_IMPORTED_MODULE_6__["default"])(options.routes ? options.routes : _utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, configSsoUrl)).then(function(ssoUrl) {
-        //constructor for new Keycloak Object?
-        options.url = ssoUrl;
-        options.clientId = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? "console-dot" : "cloud-services";
-        options.realm = "redhat-external";
-        //options for keycloak.init method
-        options.promiseType = "native";
-        options.onLoad = "check-sso";
-        options.checkLoginIframe = false;
-        var isBeta = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? "/beta" : "";
-        options.silentCheckSsoRedirectUri = "https://".concat(window.location.host).concat(isBeta, "/apps/chrome/silent-check-sso.html");
-        if (window.localStorage && window.localStorage.getItem("chrome:jwt:shortSession") === "true") {
-            options.realm = "short-session";
-        }
-        //priv.keycloak = Keycloak(options);
-        priv.setKeycloak(options, updateToken, loginAllTabs, refreshTokens);
-        if (options.token) {
-            if (isExistingValid(options.token)) {
-                // we still need to init async
-                // so that the renewal times and such fire
-                priv.initializeKeycloak(options);
-                // Here we have an existing key
-                // We need to set up some of the keycloak state
-                // so that the reset of the methods that Chrome uses
-                // to check if things are good get faked out
-                // TODO reafctor the direct access to priv.keycloak
-                // away from the users
-                priv.setToken(options.token);
-                return Promise.resolve();
-            // return new Promise((resolve) => {
-            //   resolve();
-            // });
-            } else {
-                delete options.token;
-            }
-        }
-        return priv.initialize(options).then(initSuccess).catch(initError);
-    });
-};
-function isExistingValid(token) {
-    log("Checking validity of existing JWT");
-    try {
-        if (!token) {
-            return false;
-        }
-        var parsed = decodeToken(token);
-        if (!parsed.exp) {
-            return false;
-        }
-        // Date.now() has extra precision...
-        // it includes milis
-        // we need to trim it down to valid seconds from epoch
-        // because we compare to KC's exp which is seconds from epoch
-        var now = Date.now().toString().substr(0, 10);
-        var exp = parsed.exp - parseInt(now);
-        log("Token expires in ".concat(exp));
-        // We want to invalidate tokens if they are getting close
-        // to the expiry time
-        // So that we can be someone safe from time skew
-        // issues on our APIs
-        // i.e. the client could have a slight time skew
-        // and the API is true (because NTP) and we could send down
-        // a JWT that is actually exipred
-        if (exp > 90) {
-            priv.setTokenParsed(parsed);
-            return true;
-        } else {
-            if (exp > 0) {
-                log("token is expiring in < 90 seconds");
-            } else {
-                log("token is expired");
-            }
-            return false;
-        }
-    } catch (e) {
-        log(e);
-        return false;
-    }
-}
-// keycloak init successful
-function initSuccess() {
-    return _initSuccess.apply(this, arguments);
-}
-function _initSuccess() {
-    _initSuccess = _async_to_generator(function() {
-        var cogToken, token;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    log("JWT Initialized");
-                    if (!itLessCognito) return [
-                        3,
-                        2
-                    ];
-                    return [
-                        4,
-                        (0,_cognito_auth__WEBPACK_IMPORTED_MODULE_5__.getTokenWithAuthorizationCode)()
-                    ];
-                case 1:
-                    cogToken = _state.sent();
-                    _state.label = 2;
-                case 2:
-                    token = itLessCognito ? cogToken : priv.getToken();
-                    setCookie(token);
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return _initSuccess.apply(this, arguments);
-}
-// keycloak init failed
-function initError() {
-    log("JWT init error");
-    logout();
-}
-/*** Login/Logout ***/ function login() {
-    var requiredScopes = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
-    log("Logging in");
-    // Redirect to login
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "false");
-    var redirectUri = location.href;
-    // TODO: Remove once ephemeral environment supports full and thin profile
-    var scope = [
-        "openid"
-    ].concat(_to_consumable_array(requiredScopes));
-    var partner = getPartnerScope(window.location.pathname);
-    if (partner) {
-        scope.push(partner);
-    }
-    localStorage.setItem(_utils_common__WEBPACK_IMPORTED_MODULE_3__.LOGIN_SCOPES_STORAGE_KEY, JSON.stringify(scope));
-    // KC scopes are delimited by a space character, hence the join(' ')
-    return priv.login({
-        redirectUri: redirectUri,
-        scope: scope.join(" ")
-    });
-}
-function logout(bounce) {
-    var _priv_getCookie;
-    log("Logging out");
-    var cookieName = (_priv_getCookie = priv.getCookie()) === null || _priv_getCookie === void 0 ? void 0 : _priv_getCookie.cookieName;
-    if (cookieName) {
-        js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove(cookieName);
-    }
-    js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].remove("cs_demo");
-    var isBeta = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getRouterBasename)() : "";
-    var keys = Object.keys(localStorage).filter(function(key) {
-        return key.endsWith("/api/entitlements/v1/services") || key.endsWith("/chrome") || key.endsWith("/chrome-store") || key.startsWith("kc-callback") || key.startsWith(_utils_consts__WEBPACK_IMPORTED_MODULE_9__.GLOBAL_FILTER_KEY);
-    });
-    (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.deleteLocalStorageItems)(_to_consumable_array(keys).concat([
-        _utils_common__WEBPACK_IMPORTED_MODULE_3__.LOGIN_SCOPES_STORAGE_KEY
-    ]));
-    // Redirect to logout
-    if (bounce) {
-        var eightSeconds = new Date(new Date().getTime() + 8 * 1000);
-        js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "true", {
-            expires: eightSeconds
-        });
-        priv.logout({
-            redirectUri: "https://".concat(window.location.host).concat(isBeta)
-        });
-        // Clear cookies and tokens
-        priv.clearToken();
-    }
-}
-var logoutAllTabs = function(bounce) {
-    authChannel.postMessage({
-        type: "logout"
-    });
-    logout(bounce);
-};
-function loginAllTabs() {
-    authChannel.postMessage({
-        type: "login"
-    });
-}
-/*** User Functions ***/ // Get user information
-var getUserInfo = function() {
-    log("Getting User Information");
-    var jwtCookie = js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].get(DEFAULT_COOKIE_NAME);
-    if (jwtCookie && isExistingValid(jwtCookie) && isExistingValid(priv.getToken())) {
-        return (0,_user__WEBPACK_IMPORTED_MODULE_7__["default"])(priv.getTokenParsed());
-    }
-    return updateToken().then(function() {
-        log("Successfully updated token");
-        return (0,_user__WEBPACK_IMPORTED_MODULE_7__["default"])(priv.getTokenParsed());
-    }).catch(function() {
-        if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.pageRequiresAuthentication)()) {
-            log("Trying to log in user to refresh token");
-            return login();
-        }
-    });
-};
-// Check to see if the user is loaded, this is what API calls should wait on
-var isAuthenticated = function() {
-    log("User Ready: ".concat(priv.getAuthenticated()));
-    return priv.getAuthenticated();
-};
-/*** Check Token Status ***/ // If a token is expired, logout of all tabs
-var expiredToken = function() {
-    log("Token has expired, trying to log out");
-    logout();
-};
-// Broadcast message to refresh tokens across tabs
-function refreshTokens() {
-    setCookie(priv.getToken());
-    authChannel.postMessage({
-        type: "refresh"
-    });
-}
-function getRefreshToken() {
-    return priv.getRefershToken();
-}
-// Actually update the token
-function updateToken() {
-    var _priv_updateToken, _priv;
-    return Promise.resolve((_priv = priv) === null || _priv === void 0 ? void 0 : (_priv_updateToken = _priv.updateToken) === null || _priv_updateToken === void 0 ? void 0 : _priv_updateToken.call(_priv)).then(function(refreshed) {
-        // Important! after we update the token
-        // we have to again populate the Cookie!
-        // Otherwise we just update and dont send
-        // the updated token down stream... and things 401
-        setCookie(priv.getToken());
-        log("Attempting to update token");
-        if (refreshed) {
-            log("Token was successfully refreshed");
-        } else {
-            log("Token is still valid, not updating");
-        }
-    }).catch(function(err) {
-        log(err);
-        _sentry_react__WEBPACK_IMPORTED_MODULE_11__.captureException(err);
-        log("Token updated failed, trying to reauth");
-        login();
-    });
-}
-function getCookieExpires(exp) {
-    // we want the cookie to expire at the same time as the JWT session
-    // so we take the exp and get a new GTMString from that
-    var date = new Date(0);
-    date.setUTCSeconds(exp);
-    return date.toUTCString();
-}
-// Set the cookie for 3scale
-function setCookie(token) {
-    log("Setting the cs_jwt cookie");
-    if (token && token.length > 10) {
-        var _priv_getCookie;
-        var cookieName = (_priv_getCookie = priv.getCookie()) === null || _priv_getCookie === void 0 ? void 0 : _priv_getCookie.cookieName;
-        if (cookieName) {
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/wss;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/ws;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/tasks/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/automation-hub;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/remediations/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-            setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/edge/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(decodeToken(token).exp)));
-        }
-    }
-}
-// do this so we can mock out for test
-function setCookieWrapper(str) {
-    window.document.cookie = str;
-}
-// Encoded WIP
-var getEncodedToken = function() {
-    log("Trying to get the encoded token");
-    if (!isExistingValid(priv.getToken())) {
-        log("Failed to get encoded token, trying to update");
-        updateToken();
-    }
-    return priv.getToken();
-};
-// Keycloak server URL
-var getUrl = function(ssoUrl) {
-    return (0,_url__WEBPACK_IMPORTED_MODULE_6__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, ssoUrl);
-};
-
-
-/***/ }),
-
-/***/ "./src/jwt/logger.ts":
-/*!***************************!*\
-  !*** ./src/jwt/logger.ts ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-// const pub = {};
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(fileName) {
-    return function(msg) {
-        if (window.console) {
-            if (window.localStorage && window.localStorage.getItem("chrome:jwt:debug")) {
-                window.console.log("[JWT][".concat(fileName, "] ").concat(msg));
-            }
-        }
-    };
-};
-
-
-/***/ }),
-
-/***/ "./src/jwt/offline.ts":
-/*!****************************!*\
-  !*** ./src/jwt/offline.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getOfflineToken: () => (/* binding */ getOfflineToken),
-/* harmony export */   getPostDataObject: () => (/* binding */ getPostDataObject),
-/* harmony export */   getPostbackUrl: () => (/* binding */ getPostbackUrl),
-/* harmony export */   getWindow: () => (/* binding */ getWindow),
-/* harmony export */   parseHashString: () => (/* binding */ parseHashString),
-/* harmony export */   wipePostbackParamsThatAreNotForUs: () => (/* binding */ wipePostbackParamsThatAreNotForUs)
-/* harmony export */ });
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./url */ "./src/jwt/url.ts");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g;
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-
-
-
-var priv = {};
-// note this function is not exposed
-// it is a run everytime and produce some side affect thing
-// if a special condition is encountered
-//
-// it would be great to not have this behave this way
-// but the order that this needs to run in is very specific
-// so that is somewhat difficult
-function wipePostbackParamsThatAreNotForUs() {
-    if (getWindow().location.href.indexOf(_utils_consts__WEBPACK_IMPORTED_MODULE_0__["default"].offlineToken) !== -1) {
-        var _getWindow_location = getWindow().location, hash = _getWindow_location.hash, origin = _getWindow_location.origin, pathname = _getWindow_location.pathname;
-        // attempt to use postback created from in previous doOffline call
-        var postbackUrl = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(origin).concat(pathname));
-        postbackUrl.hash = hash;
-        // this is a UHC offline token postback
-        // we need to not let the JWT lib see this
-        // and try to use it
-        priv.postbackUrl = postbackUrl.toString();
-        // we do this because keycloak.js looks at the hash for its parameters
-        // and if found uses the params for its own use
-        //
-        // in the UHC offline post back case we *dont*
-        // want the params to be used by keycloak.js
-        // so we have to destroy this stuff and let regular auth routines happen
-        getWindow().location.hash = "";
-        // nuke the params so that people dont see the ugly
-        var url = new URL(getWindow().location.href);
-        url.searchParams.delete(_utils_consts__WEBPACK_IMPORTED_MODULE_0__["default"].noAuthParam);
-        getWindow().history.pushState("offlinePostback", "", url.toString());
-    }
-}
-function getOfflineToken(realm, clientId, configSsoUrl) {
-    return _getOfflineToken.apply(this, arguments);
-}
-function _getOfflineToken() {
-    _getOfflineToken = _async_to_generator(function(realm, clientId, configSsoUrl) {
-        var postbackUrl, ssoUrl, tokenURL, params;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    postbackUrl = getPostbackUrl();
-                    if (priv.response) {
-                        return [
-                            2,
-                            Promise.resolve(priv.response)
-                        ];
-                    }
-                    if (!postbackUrl) {
-                        // we need this postback URL because it contains parameters needed to
-                        // call KC for the actual offline token
-                        // thus we cant continue if it is missing
-                        return [
-                            2,
-                            Promise.reject("not available")
-                        ];
-                    }
-                    return [
-                        4,
-                        (0,_url__WEBPACK_IMPORTED_MODULE_1__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_3__.DEFAULT_SSO_ROUTES, configSsoUrl)
-                    ];
-                case 1:
-                    ssoUrl = _state.sent();
-                    tokenURL = "".concat(ssoUrl, "/realms/").concat(realm, "/protocol/openid-connect/token");
-                    params = parseHashString(postbackUrl);
-                    return [
-                        2,
-                        axios__WEBPACK_IMPORTED_MODULE_2___default().post(tokenURL, getPostDataString(getPostDataObject(postbackUrl, clientId, params.code)), {
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            }
-                        }).then(function(response) {
-                            priv.response = response;
-                            return response;
-                        })
-                    ];
-            }
-        });
-    });
-    return _getOfflineToken.apply(this, arguments);
-}
-function getWindow() {
-    return window;
-}
-function getPostbackUrl() {
-    // let folks only do this once
-    var ret = priv.postbackUrl;
-    delete priv.postbackUrl;
-    return ret;
-}
-function getPostDataObject(url, clientId, code) {
-    var scr = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getEnv)() === "scr";
-    var int = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getEnv)() === "int";
-    var redirectUrl = scr ? "https://console01.stage.openshiftusgov.com/" : int ? "https://console.int.openshiftusgov.com/" : "https://ephem.outrights.cc";
-    return {
-        code: code,
-        grant_type: "authorization_code",
-        client_id: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? "console-dot" : clientId,
-        redirect_uri: (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.ITLess)() ? redirectUrl : encodeURIComponent(url.split("#")[0])
-    };
-}
-function parseHashString(str) {
-    return str.split("#")[1].split("&").reduce(function(result, item) {
-        var parts = item.split("=");
-        result[parts[0]] = parts[1];
-        return result;
-    }, {});
-}
-function getPostDataString(obj) {
-    return Object.entries(obj).map(function(entry) {
-        return "".concat(entry[0], "=").concat(entry[1]);
-    }).join("&");
-}
-
-
-/***/ }),
-
-/***/ "./src/jwt/url.ts":
-/*!************************!*\
-  !*** ./src/jwt/url.ts ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logger */ "./src/jwt/logger.ts");
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_with_holes(arr) {
-    if (Array.isArray(arr)) return arr;
-}
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _iterable_to_array_limit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _s, _e;
-    try {
-        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _non_iterable_rest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _sliced_to_array(arr, i) {
-    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return(g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g);
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-
-var log = (0,_logger__WEBPACK_IMPORTED_MODULE_1__["default"])("insights/url.js");
-// Parse through keycloak options routes
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((function() {
-    var _ref = _async_to_generator(function(env, configSsoUrl) {
-        var ssoEnv, _ssoEnv, _ssoEnv1, _ssoEnv2;
-        return _ts_generator(this, function(_state) {
-            // we have to use hard coded value for console.dev.redhat.com
-            // ugly hack
-            if (location.hostname === "console.dev.redhat.com") {
-                return [
-                    2,
-                    _utils_common__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_SSO_ROUTES.dev.sso
-                ];
-            }
-            if (configSsoUrl) {
-                return [
-                    2,
-                    configSsoUrl
-                ];
-            }
-            ssoEnv = Object.entries(env).find(function(param) {
-                var _param = _sliced_to_array(param, 2), url = _param[1].url;
-                return url.includes(location.hostname);
-            });
-            if (ssoEnv) {
-                ;
-                log("SSO Url: ".concat((_ssoEnv = ssoEnv) === null || _ssoEnv === void 0 ? void 0 : _ssoEnv[1].sso));
-                log("Current env: ".concat((_ssoEnv1 = ssoEnv) === null || _ssoEnv1 === void 0 ? void 0 : _ssoEnv1[0]));
-                return [
-                    2,
-                    (_ssoEnv2 = ssoEnv) === null || _ssoEnv2 === void 0 ? void 0 : _ssoEnv2[1].sso
-                ];
-            } else {
-                log("SSO url: not found, defaulting to qa");
-                log("Current env: not found, defaultint to qa");
-                return [
-                    2,
-                    "https://sso.qa.redhat.com/auth"
-                ];
-            }
-            return [
-                2
-            ];
-        });
-    });
-    return function(env, configSsoUrl) {
-        return _ref.apply(this, arguments);
-    };
-})());
-
-
-/***/ }),
-
-/***/ "./src/jwt/user.ts":
-/*!*************************!*\
-  !*** ./src/jwt/user.ts ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   buildUser: () => (/* binding */ buildUser),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   tryBounceIfUnentitled: () => (/* binding */ tryBounceIfUnentitled)
-/* harmony export */ });
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _entitlements__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entitlements */ "./src/jwt/entitlements.ts");
-/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logger */ "./src/jwt/logger.ts");
-/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) {
-        resolve(value);
-    } else {
-        Promise.resolve(value).then(_next, _throw);
-    }
-}
-function _async_to_generator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-function _ts_generator(thisArg, body) {
-    var f, y, t, g, _ = {
-        label: 0,
-        sent: function() {
-            if (t[0] & 1) throw t[1];
-            return t[1];
-        },
-        trys: [],
-        ops: []
-    };
-    return(g = {
-        next: verb(0),
-        "throw": verb(1),
-        "return": verb(2)
-    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-        return this;
-    }), g);
-    function verb(n) {
-        return function(v) {
-            return step([
-                n,
-                v
-            ]);
-        };
-    }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while(_)try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [
-                op[0] & 2,
-                t.value
-            ];
-            switch(op[0]){
-                case 0:
-                case 1:
-                    t = op;
-                    break;
-                case 4:
-                    _.label++;
-                    return {
-                        value: op[1],
-                        done: false
-                    };
-                case 5:
-                    _.label++;
-                    y = op[1];
-                    op = [
-                        0
-                    ];
-                    continue;
-                case 7:
-                    op = _.ops.pop();
-                    _.trys.pop();
-                    continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                        _ = 0;
-                        continue;
-                    }
-                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                        _.label = op[1];
-                        break;
-                    }
-                    if (op[0] === 6 && _.label < t[1]) {
-                        _.label = t[1];
-                        t = op;
-                        break;
-                    }
-                    if (t && _.label < t[2]) {
-                        _.label = t[2];
-                        _.ops.push(op);
-                        break;
-                    }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop();
-                    continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) {
-            op = [
-                6,
-                e
-            ];
-            y = 0;
-        } finally{
-            f = t = 0;
-        }
-        if (op[0] & 5) throw op[1];
-        return {
-            value: op[0] ? op[1] : void 0,
-            done: true
-        };
-    }
-}
-
-
-
-
-
-var serviceAPI = (0,_entitlements__WEBPACK_IMPORTED_MODULE_1__["default"])();
-var bounceInvocationLock = {
-    // not_entitled modal should appear only once for insights bundle
-    insights: false
-};
-var log = (0,_logger__WEBPACK_IMPORTED_MODULE_2__["default"])("insights/user.js");
-var pathMapper = {
-    "cost-management": "cost_management",
-    insights: "insights",
-    openshift: "openshift",
-    migrations: "migrations",
-    ansible: "ansible",
-    subscriptions: "subscriptions",
-    settings: "settings",
-    "user-preferences": "user_preferences",
-    internal: "internal"
-};
-var REDIRECT_BASE = "".concat(document.location.origin).concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isBeta)() ? (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.getRouterBasename)() : "");
-var unentitledPathMapper = function(section, service) {
-    var expired = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
-    var search = new URLSearchParams(document.location.search);
-    if (!search.has("not_entitled")) {
-        search.append("not_entitled", service);
-    }
-    return ({
-        ansible: "".concat(REDIRECT_BASE, "/ansible/ansible-dashboard/").concat(expired ? "trial/expired" : "trial")
-    })[section] || "".concat(document.location.origin).concat(document.location.pathname, "?").concat(search.toString());
-};
-function getWindow() {
-    return window;
-}
-/* eslint-disable camelcase */ function buildUser(token) {
-    var user = token ? {
-        identity: _object_spread_props(_object_spread({
-            account_number: token.account_number,
-            org_id: token.org_id,
-            type: token.type
-        }, token.idp && {
-            idp: token.idp
-        }), {
-            user: {
-                username: token.username,
-                email: token.email,
-                first_name: token.first_name,
-                last_name: token.last_name,
-                is_active: token.is_active,
-                is_org_admin: token.is_org_admin,
-                is_internal: token.is_internal,
-                locale: token.locale
-            },
-            internal: {
-                org_id: token.org_id,
-                account_id: token.account_id
-            }
-        })
-    } : null;
-    return user;
-}
-/* eslint-enable camelcase */ function partialBounce(redirectAddress, section) {
-    var url = new URL(redirectAddress);
-    _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_4__["default"].replace({
-        pathname: url.pathname,
-        search: url.search
-    });
-    if (section !== "ansible") {
-        bounceInvocationLock[section] = true;
-    }
-}
-function tryBounceIfUnentitled(data, section) {
-    // only test this on the apps that are in valid sections
-    // we need to keep /apps and other things functional
-    if (section !== "insights" && section !== "openshift" && section !== "cost-management" && section !== "migrations" && section !== "ansible" && section !== "subscriptions" && section !== "user-preferences" && section !== "internal") {
-        return;
-    }
-    var ansibleActive = (0,_utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_3__.isAnsibleTrialFlagActive)();
-    // test temporary ansible trial flag
-    if (section === "ansible" && ansibleActive) {
-        return;
-    }
-    // do not show not entitled modal repeadly for the same section
-    if (bounceInvocationLock[section]) {
-        return;
-    }
-    var service = pathMapper[section];
-    // ansibleActive can be true/false/undefined
-    var redirectAddress = unentitledPathMapper(section, service, ansibleActive === false);
-    if (data === true) {
-        // this is a force bounce scenario!
-        if (section !== "ansible") {
-            partialBounce(redirectAddress, section);
-        } else {
-            getWindow().location.replace(redirectAddress);
-        }
-    }
-    if (section && typeof data === "object") {
-        var _data_service, _data;
-        if ((_data = data) === null || _data === void 0 ? void 0 : (_data_service = _data[service]) === null || _data_service === void 0 ? void 0 : _data_service.is_entitled) {
-            log("Entitled to: ".concat(service));
-        } else {
-            log("Not entitled to: ".concat(service));
-            try {
-                var search = new URLSearchParams(window.location.search);
-                // do not trigger redirect if the not_entitled param already exists
-                if (!search.has("not_entitled")) {
-                    partialBounce(redirectAddress, section);
-                } else {
-                    // lock the section if user landed directly on the not_entitled page
-                    if (section !== "ansible") {
-                        bounceInvocationLock[section] = true;
-                    }
-                }
-            } catch (error) {
-                console.error(error);
-                // if something goes wring with the redirect, use standard API
-                getWindow().location.replace(redirectAddress);
-            }
-        }
-    }
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((function() {
-    var _ref = _async_to_generator(function(token) {
-        var _pathName, _pathName1, user, pathName, data, e;
-        return _ts_generator(this, function(_state) {
-            switch(_state.label){
-                case 0:
-                    user = buildUser(token);
-                    pathName = getWindow().location.pathname.split("/");
-                    pathName.shift();
-                    if (pathName[0] === "beta") {
-                        pathName.shift();
-                    }
-                    if (((_pathName = pathName) === null || _pathName === void 0 ? void 0 : _pathName[1]) === "subscriptions" || ((_pathName1 = pathName) === null || _pathName1 === void 0 ? void 0 : _pathName1[1]) === "cost-management") {
-                        pathName.shift();
-                    }
-                    if (!user) return [
-                        3,
-                        7
-                    ];
-                    log("Account Number: ".concat(user.identity.account_number));
-                    data = {};
-                    _state.label = 1;
-                case 1:
-                    _state.trys.push([
-                        1,
-                        5,
-                        ,
-                        6
-                    ]);
-                    if (!user.identity.org_id) return [
-                        3,
-                        3
-                    ];
-                    return [
-                        4,
-                        serviceAPI.servicesGet()
-                    ];
-                case 2:
-                    data = _state.sent();
-                    return [
-                        3,
-                        4
-                    ];
-                case 3:
-                    console.log("Cannot call entitlements API, no account number");
-                    _state.label = 4;
-                case 4:
-                    return [
-                        3,
-                        6
-                    ];
-                case 5:
-                    e = _state.sent();
-                    return [
-                        3,
-                        6
-                    ];
-                case 6:
-                    // NOTE: Openshift supports Users with Account Number of -1
-                    // thus we need to bypass here
-                    // call entitlements on / /beta /openshift or /beta/openshift,
-                    // but swallow error
-                    //
-                    // Landing Page *does* support accounts with -1
-                    // it has to
-                    if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.pageAllowsUnentitled)()) {
-                        return [
-                            2,
-                            _object_spread_props(_object_spread({}, user), {
-                                entitlements: data
-                            })
-                        ];
-                    }
-                    // Important this has to come after the above -1 allow checks
-                    // Otherwise we get bounced on those paths
-                    //
-                    // It also needs to not go int he servicesApi call
-                    // because 3scale 403s if the Account number is -1
-                    //
-                    // we "force" a bounce here because the entitlements API
-                    // was never called
-                    if (!(0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isValidAccountNumber)(user.identity.account_number)) {
-                        tryBounceIfUnentitled(true, pathName[0]);
-                        // always return user regardless of the entitlements result
-                        // required for insights accounts with invalid account number
-                        return [
-                            2,
-                            _object_spread_props(_object_spread({}, user), {
-                                entitlements: data
-                            })
-                        ];
-                    }
-                    tryBounceIfUnentitled(data, pathName[0]);
-                    return [
-                        2,
-                        _object_spread_props(_object_spread({}, user), {
-                            entitlements: data
-                        })
-                    ];
-                case 7:
-                    log("User not ready");
-                    _state.label = 8;
-                case 8:
-                    return [
-                        2
-                    ];
-            }
-        });
-    });
-    return function(token) {
-        return _ref.apply(this, arguments);
-    };
-})());
 
 
 /***/ }),
@@ -19854,6 +18622,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -19952,6 +18721,7 @@ function _unsupported_iterable_to_array(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
 }
+
 
 
 
@@ -20096,10 +18866,8 @@ var DefaultLayoutRoot = function(param) {
         var initialized = param.initialized;
         return initialized;
     });
-    var hideNav = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var user = param.chrome.user;
-        return !user || !Sidebar;
-    });
+    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__["default"]).user;
+    var hideNav = !user || !Sidebar;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", _object_spread({
         id: "chrome-app-render-root"
     }, ouiaTags), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ShieldedRoot, {
@@ -21451,7 +20219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createSupportCase: () => (/* binding */ createSupportCase)
 /* harmony export */ });
 /* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
-/* harmony import */ var _jwt_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jwt/logger */ "./src/jwt/logger.ts");
+/* harmony import */ var _auth_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../auth/logger */ "./src/auth/logger.ts");
 /* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! urijs */ "./node_modules/urijs/src/URI.js");
 /* harmony import */ var urijs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(urijs__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
@@ -21613,7 +20381,7 @@ function _ts_generator(thisArg, body) {
 
 
 
-var log = (0,_jwt_logger__WEBPACK_IMPORTED_MODULE_0__["default"])("createCase.js");
+var log = (0,_auth_logger__WEBPACK_IMPORTED_MODULE_0__["default"])("createCase.js");
 
 
 
@@ -21792,12 +20560,12 @@ function _getProductData() {
     });
     return _getProductData.apply(this, arguments);
 }
-function createSupportCase(userInfo, libjwt, fields) {
+function createSupportCase(userInfo, token, fields) {
     return _createSupportCase.apply(this, arguments);
 }
 function _createSupportCase() {
-    _createSupportCase = _async_to_generator(function(userInfo, libjwt, fields) {
-        var _productData, _productData1, _getEnvDetails, _userInfo_user, _userInfo_user1, _fields, currentProduct, productData, _productData_app_name, _ref, src_hash, app_name, portalUrl, caseUrl, token;
+    _createSupportCase = _async_to_generator(function(userInfo, token, fields) {
+        var _productData, _productData1, _getEnvDetails, _userInfo_user, _userInfo_user1, _fields, currentProduct, productData, _productData_app_name, _ref, src_hash, app_name, portalUrl, caseUrl;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
@@ -21815,16 +20583,6 @@ function _createSupportCase() {
                     portalUrl = "".concat((_getEnvDetails = (0,_common__WEBPACK_IMPORTED_MODULE_2__.getEnvDetails)()) === null || _getEnvDetails === void 0 ? void 0 : _getEnvDetails.portal);
                     caseUrl = "".concat(portalUrl).concat(_consts__WEBPACK_IMPORTED_MODULE_3__.HYDRA_ENDPOINT);
                     log("Creating a support case");
-                    return [
-                        4,
-                        libjwt.initPromise.then(function() {
-                            return libjwt.jwt.getUserInfo().then(function() {
-                                return libjwt.jwt.getEncodedToken();
-                            });
-                        })
-                    ];
-                case 2:
-                    token = _state.sent();
                     fetch(caseUrl, {
                         method: "POST",
                         headers: {
@@ -21913,7 +20671,7 @@ var debugFunctions = {
         return functionBuilder("chrome:jwt:shortSession", true);
     },
     jwtDebug: function() {
-        return functionBuilder("chrome:jwt:debug", true);
+        return functionBuilder("chrome:auth:debug", true);
     },
     reduxDebug: function() {
         return functionBuilder("chrome:redux:debug", true);
@@ -22030,11 +20788,12 @@ var InternalChromeContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   init: () => (/* binding */ init)
 /* harmony export */ });
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../auth */ "./src/auth/index.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _responseInterceptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./responseInterceptors */ "./src/utils/responseInterceptors.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _responseInterceptors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./responseInterceptors */ "./src/utils/responseInterceptors.ts");
+/* harmony import */ var _auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth/crossAccountBouncer */ "./src/auth/crossAccountBouncer.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ /* eslint-disable prefer-rest-params */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -22215,7 +20974,7 @@ var spreadAdditionalHeaders = function(options) {
     }
     return additionalHeaders;
 };
-function init(store, libJwt) {
+function init(store, token) {
     var open = window.XMLHttpRequest.prototype.open;
     var send = window.XMLHttpRequest.prototype.send;
     var setRequestHeader = window.XMLHttpRequest.prototype.setRequestHeader;
@@ -22247,12 +21006,10 @@ function init(store, libJwt) {
     };
     // must use function here because arrows dont "this" like functions
     window.XMLHttpRequest.prototype.send = function sendReplacement() {
-        var _libJwt, _libJwt1;
-        if (checkOrigin(this._url) && ((_libJwt1 = libJwt) === null || _libJwt1 === void 0 ? void 0 : (_libJwt = _libJwt1()) === null || _libJwt === void 0 ? void 0 : _libJwt.jwt.isAuthenticated())) {
+        if (checkOrigin(this._url)) {
             if (!authRequests.has(this._url)) {
-                var _libJwt2, _libJwt3;
                 // Send Auth header, it will be changed to Authorization later down the line
-                this.setRequestHeader("Auth", "Bearer ".concat((_libJwt3 = libJwt) === null || _libJwt3 === void 0 ? void 0 : (_libJwt2 = _libJwt3()) === null || _libJwt2 === void 0 ? void 0 : _libJwt2.jwt.getEncodedToken()));
+                this.setRequestHeader("Auth", "Bearer ".concat(token));
             }
         }
         // eslint-disable-line func-names
@@ -22261,12 +21018,12 @@ function init(store, libJwt) {
         }
         this.onload = function() {
             if (this.status >= 400) {
-                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_2__.get3scaleError)(this.response);
+                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_1__.get3scaleError)(this.response);
                 if (this.status === 403 && this.responseText.includes(DENINED_CROSS_CHECK)) {
-                    (0,_auth__WEBPACK_IMPORTED_MODULE_0__.crossAccountBouncer)();
+                    (0,_auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__["default"])();
                 // check for 3scale error
                 } else if (gatewayError) {
-                    store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_1__.setGatewayError)(gatewayError));
+                    store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_0__.setGatewayError)(gatewayError));
                 }
             }
         };
@@ -22281,12 +21038,10 @@ function init(store, libJwt) {
         for(var _len = arguments.length, rest = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++){
             rest[_key - 2] = arguments[_key];
         }
-        var _libJwt, _libJwt1;
         var tid = Math.random().toString(36);
         var request = new Request(input, _$init);
-        if (checkOrigin(input) && ((_libJwt1 = libJwt) === null || _libJwt1 === void 0 ? void 0 : (_libJwt = _libJwt1()) === null || _libJwt === void 0 ? void 0 : _libJwt.jwt.isAuthenticated()) && !request.headers.has("Authorization")) {
-            var _libJwt2, _libJwt3;
-            request.headers.append("Authorization", "Bearer ".concat((_libJwt3 = libJwt) === null || _libJwt3 === void 0 ? void 0 : (_libJwt2 = _libJwt3()) === null || _libJwt2 === void 0 ? void 0 : _libJwt2.jwt.getEncodedToken()));
+        if (checkOrigin(input) && !request.headers.has("Authorization")) {
+            request.headers.append("Authorization", "Bearer ".concat(token));
         }
         var prom = oldFetch.apply(this, [
             request
@@ -22344,9 +21099,9 @@ function init(store, libJwt) {
                             _state.label = 5;
                         case 5:
                             data = _tmp;
-                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_2__.get3scaleError)(data);
+                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_1__.get3scaleError)(data);
                             if (gatewayError) {
-                                store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_1__.setGatewayError)(gatewayError));
+                                store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_0__.setGatewayError)(gatewayError));
                             }
                             return [
                                 2,
@@ -22428,11 +21183,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isAnsibleTrialFlagActive: () => (/* binding */ isAnsibleTrialFlagActive),
 /* harmony export */   setAnsibleTrialFlag: () => (/* binding */ setAnsibleTrialFlag)
 /* harmony export */ });
-/* harmony import */ var _jwt_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jwt/logger */ "./src/jwt/logger.ts");
+/* harmony import */ var _auth_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../auth/logger */ "./src/auth/logger.ts");
 
 var ANSIBLE_TRIAL_FLAG = "chrome.ansible.trial";
 var TRIAL_DURATION = 10 * 60 * 1000; // 10 minutes
-var log = (0,_jwt_logger__WEBPACK_IMPORTED_MODULE_0__["default"])("Ansible trial invalidation");
+var log = (0,_auth_logger__WEBPACK_IMPORTED_MODULE_0__["default"])("Ansible trial invalidation");
 var isAnsibleTrialFlagActive = function() {
     var expiration = localStorage.getItem(ANSIBLE_TRIAL_FLAG);
     if (expiration) {
@@ -23488,7 +22243,7 @@ module.exports = __webpack_require__.p + "d6083bde9a964ab4.svg";
 
 /***/ }),
 
-/***/ "?8b69":
+/***/ "?599d":
 /*!************************!*\
   !*** crypto (ignored) ***!
   \************************/
