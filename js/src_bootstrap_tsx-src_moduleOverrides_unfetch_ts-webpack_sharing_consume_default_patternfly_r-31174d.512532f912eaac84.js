@@ -18001,17 +18001,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
 
 
 
 // interval timing is short because we want to catch the bubble before ASAP so it does not cover the VA button
-var RETRY_ATTEMPS = 500;
+var RETRY_ATTEMPS = 2000;
 var RETRY_INTERVAL = 50;
 function retry(fn) {
-    var retriesLeft = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 10, interval = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 100;
+    var retriesLeft = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 50, interval = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 100;
     try {
         return fn();
     } catch (error) {
@@ -18067,7 +18065,7 @@ var useDisablePendoOnLanding = function() {
             }, RETRY_INTERVAL);
         }
         return function() {
-            if (interval && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.isProd)() && !_utils_consts__WEBPACK_IMPORTED_MODULE_3__.isITLessEnv) {
+            if (interval && !_utils_consts__WEBPACK_IMPORTED_MODULE_2__.isITLessEnv) {
                 clearInterval(interval);
             }
         };
