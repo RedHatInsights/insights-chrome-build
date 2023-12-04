@@ -1386,7 +1386,7 @@ var OIDCProvider = function(param) {
     }
     function _setupSSO() {
         _setupSSO = _async_to_generator(function() {
-            var data, _data_chrome, ssoUrl, sanitizedSSOUrl;
+            var data, _data_chrome, ssoUrl;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
@@ -1398,9 +1398,8 @@ var OIDCProvider = function(param) {
                         data = _state.sent().data;
                         try {
                             _data_chrome = data.chrome, ssoUrl = _data_chrome.config.ssoUrl;
-                            sanitizedSSOUrl = "".concat(ssoUrl.replace(/\/$/, ""), "/");
                             setState({
-                                ssoUrl: (0,_platformUrl__WEBPACK_IMPORTED_MODULE_4__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_SSO_ROUTES, sanitizedSSOUrl),
+                                ssoUrl: (0,_platformUrl__WEBPACK_IMPORTED_MODULE_4__["default"])(_utils_common__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_SSO_ROUTES, ssoUrl),
                                 microFrontendConfig: data
                             });
                         } catch (error) {
@@ -3304,15 +3303,19 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 var log = (0,_logger__WEBPACK_IMPORTED_MODULE_1__["default"])("auth/platform.ts");
+// add trailing slash if missing
+function sanitizeUrl(url) {
+    return "".concat(url.replace(/\/$/, ""), "/");
+}
 // Parse through keycloak options routes
 function platformUlr(env, configSsoUrl) {
     // we have to use hard coded value for console.dev.redhat.com
     // ugly hack
     if (location.hostname === "console.dev.redhat.com") {
-        return _utils_common__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_SSO_ROUTES.dev.sso;
+        return sanitizeUrl(_utils_common__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_SSO_ROUTES.dev.sso);
     }
     if (configSsoUrl) {
-        return configSsoUrl;
+        return sanitizeUrl(configSsoUrl);
     }
     var ssoEnv = Object.entries(env).find(function(param) {
         var _param = _sliced_to_array(param, 2), url = _param[1].url;
@@ -3322,7 +3325,7 @@ function platformUlr(env, configSsoUrl) {
         var _ssoEnv, _ssoEnv1, _ssoEnv2;
         log("SSO Url: ".concat((_ssoEnv = ssoEnv) === null || _ssoEnv === void 0 ? void 0 : _ssoEnv[1].sso));
         log("Current env: ".concat((_ssoEnv1 = ssoEnv) === null || _ssoEnv1 === void 0 ? void 0 : _ssoEnv1[0]));
-        return (_ssoEnv2 = ssoEnv) === null || _ssoEnv2 === void 0 ? void 0 : _ssoEnv2[1].sso;
+        return sanitizeUrl((_ssoEnv2 = ssoEnv) === null || _ssoEnv2 === void 0 ? void 0 : _ssoEnv2[1].sso);
     } else {
         log("SSO url: not found, defaulting to qa");
         log("Current env: not found, defaulting to qa");
