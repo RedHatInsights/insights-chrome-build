@@ -9537,7 +9537,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/FilterHooks */ "./node_modules/@redhat-cloud-services/frontend-components/esm/FilterHooks/tagFilterHook.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/FilterHooks */ "./node_modules/@redhat-cloud-services/frontend-components/esm/FilterHooks/tagFilterHook.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
@@ -9549,6 +9549,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9743,6 +9745,8 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 var useLoadTags = function() {
     var hasAccess = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : false;
     var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
@@ -9797,11 +9801,13 @@ var GlobalFilter = function(param) {
             workloads: workloads
         };
     }, react_redux__WEBPACK_IMPORTED_MODULE_1__.shallowEqual), count = _useSelector.count, total = _useSelector.total, tags = _useSelector.tags, sid = _useSelector.sid, workloads = _useSelector.workloads;
-    var isDisabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
-        var globalFilterHidden = param.globalFilter.globalFilterHidden, appId = param.chrome.appId;
-        return globalFilterHidden || !appId;
+    var globalFilterHidden = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
+        var globalFilterHidden = param.globalFilter.globalFilterHidden;
+        return globalFilterHidden;
     });
-    var _useTagsFilter = (0,_redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_11__.useTagsFilter)([
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var isDisabled = globalFilterHidden || !activeModule;
+    var _useTagsFilter = (0,_redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_13__.useTagsFilter)([
         workloads
     ].concat(_to_consumable_array(sid), _to_consumable_array(tags)), isLoaded, total - count, function(_e, closeFn) {
         setIsOpen(function() {
