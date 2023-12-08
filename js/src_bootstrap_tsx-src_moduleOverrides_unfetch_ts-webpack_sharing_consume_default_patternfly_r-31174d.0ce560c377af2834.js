@@ -20918,6 +20918,13 @@ function _async_to_generator(fn) {
         });
     };
 }
+function _instanceof(left, right) {
+    if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+        return !!right[Symbol.hasInstance](left);
+    } else {
+        return left instanceof right;
+    }
+}
 function _iterable_to_array(iter) {
     if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
@@ -21036,15 +21043,24 @@ function _ts_generator(thisArg, body) {
 // TODO: Refactor this file to use modern JS
 var xhrResults = [];
 var fetchResults = {};
-var DENINED_CROSS_CHECK = "Access denied from RBAC on cross-access check";
+var DENIED_CROSS_CHECK = "Access denied from RBAC on cross-access check";
+var AUTH_ALLOWED_ORIGINS = [
+    location.origin,
+    "https://api.openshift.com",
+    "https://api.stage.openshift.com"
+];
 var checkOrigin = function() {
     var path = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-    if (path.constructor.name === "URL") {
-        return path.origin === location.origin;
-    } else if (path.constructor.name === "Request") {
-        return path.url.includes(location.origin);
-    } else if (path.constructor.name === "String") {
-        return path.includes(location.origin) || !path.startsWith("http");
+    if (_instanceof(path, URL)) {
+        return AUTH_ALLOWED_ORIGINS.includes(path.origin);
+    } else if (_instanceof(path, Request)) {
+        return AUTH_ALLOWED_ORIGINS.some(function(origin) {
+            return path.url.includes(origin);
+        });
+    } else if (typeof path === "string") {
+        return AUTH_ALLOWED_ORIGINS.some(function(origin) {
+            return path.includes(origin);
+        }) || !path.startsWith("http");
     }
     return true;
 };
@@ -21106,7 +21122,7 @@ function init(store, token) {
         this.onload = function() {
             if (this.status >= 400) {
                 var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_1__.get3scaleError)(this.response);
-                if (this.status === 403 && this.responseText.includes(DENINED_CROSS_CHECK)) {
+                if (this.status === 403 && this.responseText.includes(DENIED_CROSS_CHECK)) {
                     (0,_auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__["default"])();
                 // check for 3scale error
                 } else if (gatewayError) {
