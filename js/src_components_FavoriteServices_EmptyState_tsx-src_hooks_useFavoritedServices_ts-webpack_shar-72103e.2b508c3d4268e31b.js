@@ -801,6 +801,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/dist/esm/index.js");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _Navigation_navContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Navigation/navContext */ "./src/components/Navigation/navContext.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -880,6 +882,8 @@ function _object_without_properties_loose(source, excluded) {
     }
     return target;
 }
+
+
 
 
 
@@ -1007,11 +1011,7 @@ var ChromeLink = function(_param) {
         "children"
     ]);
     var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Navigation_navContext__WEBPACK_IMPORTED_MODULE_5__["default"]), onLinkClick = _useContext.onLinkClick, isNavOpen = _useContext.isNavOpen, inPageLayout = _useContext.inPageLayout;
-    var currAppId = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        var _chrome;
-        return (_chrome = chrome) === null || _chrome === void 0 ? void 0 : _chrome.appId;
-    });
+    var currAppId = (0,jotai__WEBPACK_IMPORTED_MODULE_7__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
     var LinkComponent = !rest.isExternal ? LinkWrapper : RefreshLink;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LinkComponent, _object_spread(_object_spread_props(_object_spread({}, inPageLayout && !isNavOpen ? {
         tabIndex: -1
@@ -4002,6 +4002,27 @@ var updateNotifications = function(payload) {
         payload: payload
     };
 };
+
+
+/***/ }),
+
+/***/ "./src/state/atoms.ts":
+/*!****************************!*\
+  !*** ./src/state/atoms.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   activeModuleAtom: () => (/* binding */ activeModuleAtom),
+/* harmony export */   contextSwitcherOpenAtom: () => (/* binding */ contextSwitcherOpenAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+// setup initial chrome atoms
+var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
+var activeModuleAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(undefined);
 
 
 /***/ }),

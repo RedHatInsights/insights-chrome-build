@@ -9754,9 +9754,10 @@ var useLoadTags = function() {
         var scope = param.globalFilter.scope;
         return scope;
     });
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
     var isDisabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
-        var globalFilterHidden = param.globalFilter.globalFilterHidden, appId = param.chrome.appId;
-        return globalFilterHidden || !appId;
+        var globalFilterHidden = param.globalFilter.globalFilterHidden;
+        return globalFilterHidden || !activeModule;
     });
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function(activeTags, search) {
@@ -20101,27 +20102,6 @@ function spinUpStore() {
         actions: actions
     };
 }
-
-
-/***/ }),
-
-/***/ "./src/state/atoms.ts":
-/*!****************************!*\
-  !*** ./src/state/atoms.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   activeModuleAtom: () => (/* binding */ activeModuleAtom),
-/* harmony export */   contextSwitcherOpenAtom: () => (/* binding */ contextSwitcherOpenAtom)
-/* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
-
-// setup initial chrome atoms
-var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
-var activeModuleAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(undefined);
 
 
 /***/ }),
