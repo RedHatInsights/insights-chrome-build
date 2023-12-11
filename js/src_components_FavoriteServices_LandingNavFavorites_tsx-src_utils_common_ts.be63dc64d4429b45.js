@@ -126,6 +126,7 @@ var LandingNavFavorites = function() {
                 to: favorite.pathname,
                 className: "chr-c-favorite-service__tile"
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.Card, {
+                className: "chr-c-card-landing-fav",
                 isClickable: true
             }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_0__.CardHeader, {
                 selectableActions: {
