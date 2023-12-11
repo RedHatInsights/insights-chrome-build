@@ -84,6 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var blankUser = {
+    scope: [],
     entitlements: {},
     identity: {
         org_id: "",
@@ -105,6 +106,9 @@ var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
         return Promise.resolve();
     },
     getToken: function() {
+        return Promise.resolve("");
+    },
+    getRefreshToken: function() {
         return Promise.resolve("");
     },
     getOfflineToken: function() {
