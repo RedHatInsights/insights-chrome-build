@@ -3232,12 +3232,14 @@ function postbackUrlSetup() {
         // nuke the params so that people dont see the ugly
         var url = new URL(window.location.href);
         url.searchParams.delete(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam);
+        url.hash = "";
         window.history.pushState("offlinePostback", "", url.toString());
     }
 }
 function prepareOfflineRedirect() {
     var base = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : window.location.href;
     var url = new URL(base);
+    url.hash = "";
     url.searchParams.delete(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam);
     url.searchParams.append(_utils_consts__WEBPACK_IMPORTED_MODULE_0__.noAuthParam, _utils_consts__WEBPACK_IMPORTED_MODULE_0__.offlineToken);
     var redirectUri = url.toString().replace("/?", "?");
