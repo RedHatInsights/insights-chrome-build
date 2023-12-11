@@ -8641,3 +8641,7 @@
 .chr-c-pagination-landing-favorites .pf-v5-c-options-menu__toggle {
   display: none !important;
 }
+
+.chr-c-card-landing-fav {
+  height: 110px;
+}

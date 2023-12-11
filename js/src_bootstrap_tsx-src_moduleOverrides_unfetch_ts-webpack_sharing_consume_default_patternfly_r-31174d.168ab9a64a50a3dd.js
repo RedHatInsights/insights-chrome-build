@@ -1500,6 +1500,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
 /* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
 /* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1740,12 +1741,14 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_9__["default"])();
 var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
 var log = (0,_logger__WEBPACK_IMPORTED_MODULE_13__["default"])("OIDCSecured.tsx");
 /* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
     var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
     return {
+        scope: [],
         entitlements: entitlements,
         identity: {
             org_id: (_user_profile = user.profile) === null || _user_profile === void 0 ? void 0 : _user_profile.org_id,
@@ -1834,7 +1837,7 @@ function OIDCSecured(param) {
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    var _authRef_current_user_access_token, _authRef_current_settings_metadata_token_endpoint, _authRef_current_settings_metadata_token_endpoint1, _authRef_current_user2, _authRef_current_user_access_token1, _authRef_current_user_expires_at, _authRef_current_user3;
+    var _authRef_current_user_access_token, _authRef_current_user_refresh_token, _authRef_current_user2, _authRef_current_user_access_token1, _authRef_current_user_expires_at, _authRef_current_user3;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         ready: false,
         logoutAllTabs: function() {
@@ -1859,9 +1862,15 @@ function OIDCSecured(param) {
             var _authRef_current_user;
             return Promise.resolve((_authRef_current_user_access_token = (_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token) !== null && _authRef_current_user_access_token !== void 0 ? _authRef_current_user_access_token : "");
         },
+        getRefreshToken: function() {
+            var _authRef_current_user;
+            return Promise.resolve((_authRef_current_user_refresh_token = (_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.refresh_token) !== null && _authRef_current_user_refresh_token !== void 0 ? _authRef_current_user_refresh_token : "");
+        },
         getOfflineToken: function() {
-            var _authRef_current_settings_metadata, _authRef_current_settings_metadata1;
-            return (0,_offline__WEBPACK_IMPORTED_MODULE_17__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(((_authRef_current_settings_metadata_token_endpoint1 = (_authRef_current_settings_metadata1 = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata1 === void 0 ? void 0 : _authRef_current_settings_metadata1.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint1 !== void 0 ? _authRef_current_settings_metadata_token_endpoint1 : "").split("#")[0]));
+            var _authRef_current_settings_metadata;
+            var redirectUri = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_18__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(window.location.origin).concat(window.location.pathname));
+            var _authRef_current_settings_metadata_token_endpoint;
+            return (0,_offline__WEBPACK_IMPORTED_MODULE_17__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
         },
         doOffline: function() {
             return (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(authRef.current, [
@@ -4014,6 +4023,7 @@ var createChromeContext = function(param) {
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.ITLess)();
     var api = _object_spread_props(_object_spread({}, actions), {
         auth: {
+            getRefreshToken: chromeAuth.getRefreshToken,
             getToken: chromeAuth.getToken,
             getUser: chromeAuth.getUser,
             logout: chromeAuth.logout,
