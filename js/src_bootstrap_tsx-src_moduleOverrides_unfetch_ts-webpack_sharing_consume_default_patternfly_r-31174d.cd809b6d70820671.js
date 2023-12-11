@@ -1746,6 +1746,7 @@ var log = (0,_logger__WEBPACK_IMPORTED_MODULE_13__["default"])("OIDCSecured.tsx"
 /* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
     var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
     return {
+        scope: [],
         entitlements: entitlements,
         identity: {
             org_id: (_user_profile = user.profile) === null || _user_profile === void 0 ? void 0 : _user_profile.org_id,
@@ -1834,7 +1835,7 @@ function OIDCSecured(param) {
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    var _authRef_current_user_access_token, _authRef_current_settings_metadata_token_endpoint, _authRef_current_settings_metadata_token_endpoint1, _authRef_current_user2, _authRef_current_user_access_token1, _authRef_current_user_expires_at, _authRef_current_user3;
+    var _authRef_current_user_access_token, _authRef_current_user_refresh_token, _authRef_current_settings_metadata_token_endpoint, _authRef_current_settings_metadata_token_endpoint1, _authRef_current_user2, _authRef_current_user_access_token1, _authRef_current_user_expires_at, _authRef_current_user3;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         ready: false,
         logoutAllTabs: function() {
@@ -1858,6 +1859,10 @@ function OIDCSecured(param) {
         getToken: function() {
             var _authRef_current_user;
             return Promise.resolve((_authRef_current_user_access_token = (_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token) !== null && _authRef_current_user_access_token !== void 0 ? _authRef_current_user_access_token : "");
+        },
+        getRefreshToken: function() {
+            var _authRef_current_user;
+            return Promise.resolve((_authRef_current_user_refresh_token = (_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.refresh_token) !== null && _authRef_current_user_refresh_token !== void 0 ? _authRef_current_user_refresh_token : "");
         },
         getOfflineToken: function() {
             var _authRef_current_settings_metadata, _authRef_current_settings_metadata1;
@@ -4014,6 +4019,7 @@ var createChromeContext = function(param) {
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.ITLess)();
     var api = _object_spread_props(_object_spread({}, actions), {
         auth: {
+            getRefreshToken: chromeAuth.getRefreshToken,
             getToken: chromeAuth.getToken,
             getUser: chromeAuth.getUser,
             logout: chromeAuth.logout,
