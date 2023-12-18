@@ -1443,7 +1443,10 @@ var OIDCProvider = function(param) {
             response_type: "code",
             response_mode: "fragment",
             onSigninCallback: function() {
-                window.history.replaceState({}, document.title, window.location.pathname);
+                var startUrl = new URL(window.location.href);
+                // remove the SSO code params from the URL
+                startUrl.hash = "";
+                window.history.replaceState({}, document.title, startUrl);
             },
             userStore: new oidc_client_ts__WEBPACK_IMPORTED_MODULE_3__.WebStorageStateStore({
                 store: window.localStorage
