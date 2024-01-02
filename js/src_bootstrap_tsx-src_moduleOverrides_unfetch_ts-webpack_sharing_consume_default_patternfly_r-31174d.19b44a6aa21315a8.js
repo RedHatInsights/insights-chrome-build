@@ -1504,7 +1504,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
 /* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _setCookie__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../setCookie */ "./src/auth/setCookie.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1727,7 +1726,6 @@ function _ts_generator(thisArg, body) {
         };
     }
 }
-
 
 
 
@@ -1991,10 +1989,7 @@ function OIDCSecured(param) {
         auth
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        var _authRef_current_user, _authRef_current, _authRef_current_user1;
         authRef.current = auth;
-        var _authRef_current_user_access_token, _authRef_current_user_expires_at;
-        (0,_setCookie__WEBPACK_IMPORTED_MODULE_19__.setCookie)((_authRef_current_user_access_token = (_authRef_current = authRef.current) === null || _authRef_current === void 0 ? void 0 : (_authRef_current_user = _authRef_current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token) !== null && _authRef_current_user_access_token !== void 0 ? _authRef_current_user_access_token : "", (_authRef_current_user_expires_at = (_authRef_current_user1 = authRef.current.user) === null || _authRef_current_user1 === void 0 ? void 0 : _authRef_current_user1.expires_at) !== null && _authRef_current_user_expires_at !== void 0 ? _authRef_current_user_expires_at : 0);
     }, [
         auth
     ]);
