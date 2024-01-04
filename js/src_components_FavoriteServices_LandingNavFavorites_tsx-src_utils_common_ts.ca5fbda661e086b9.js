@@ -222,7 +222,8 @@ var bundleMapping = {
     allservices: "Home",
     iam: "Identity & Access Management",
     internal: "Internal",
-    quay: "Quay.io"
+    quay: "Quay.io",
+    subscriptions: "Subscription Services"
 };
 var useBundle = function() {
     var bundleId = getUrl("bundle");
