@@ -9000,6 +9000,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
 /* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9067,6 +9068,8 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
+var FEEDBACK_OPEN_EVENT = "chrome.feedback.open";
 var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function() {
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
     var usePendoFeedback = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useSelector)(function(param) {
@@ -9081,6 +9084,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("feedbackHome"), 2), modalPage = _useState[0], setModalPage = _useState[1];
     var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__["default"]).getEnvironment;
     var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__.useSegment)().analytics;
     var user = chromeAuth.user;
     var env = getEnvironment();
     var isAvailable = env === "prod" || env === "stage";
@@ -9234,6 +9238,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         className: "chr-c-button-feedback",
         onClick: function() {
             if (!usePendoFeedback) {
+                analytics === null || analytics === void 0 ? void 0 : analytics.track(FEEDBACK_OPEN_EVENT);
                 setIsModalOpen(true);
             }
         }
