@@ -17199,6 +17199,16 @@ var SearchInput = function(param) {
         label: searchItems.length > 0 ? "Top ".concat(searchItems.length, " results") : undefined
     }, searchItems.map(function(item, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Menu__WEBPACK_IMPORTED_MODULE_2__.MenuItem, {
+            onKeyDown: function(e) {
+                if (e.key === "Enter") {
+                    /**
+                         * Needs pushed to the end of the execution queue to not "swallow" the event
+                         * First the navigation event must execute and
+                         *  */ setTimeout(function() {
+                        setIsOpen(false);
+                    });
+                }
+            },
             key: index,
             className: "pf-v5-u-mb-xs",
             component: function(props) {
