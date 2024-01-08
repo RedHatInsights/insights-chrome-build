@@ -21427,6 +21427,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var sentryInitialized = false;
 function getAppDetails() {
     var pathName = window.location.pathname.split("/");
     var appGroup;
@@ -21452,6 +21453,10 @@ function getAppDetails() {
 }
 // Actually initialize sentry with the group's api key
 function initSentry() {
+    if (sentryInitialized) {
+        return;
+    }
+    sentryInitialized = true;
     var appDetails = getAppDetails();
     var API_KEY;
     switch(appDetails.app.group){
