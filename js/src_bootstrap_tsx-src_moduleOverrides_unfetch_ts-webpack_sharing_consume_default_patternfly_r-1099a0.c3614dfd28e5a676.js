@@ -1487,19 +1487,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _getInitialScope__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../getInitialScope */ "./src/auth/getInitialScope.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _entitlementsApi__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../entitlementsApi */ "./src/auth/entitlementsApi.ts");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
-/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/sentry */ "./src/utils/sentry.ts");
-/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
-/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils */ "./src/auth/OIDCConnector/utils.ts");
-/* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
-/* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
-/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _getInitialScope__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../getInitialScope */ "./src/auth/getInitialScope.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _entitlementsApi__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../entitlementsApi */ "./src/auth/entitlementsApi.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/sentry */ "./src/utils/sentry.ts");
+/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils */ "./src/auth/OIDCConnector/utils.ts");
+/* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
+/* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
+/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1741,9 +1743,11 @@ function _ts_generator(thisArg, body) {
 
 
 
-var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_9__["default"])();
+
+
+var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_8__["default"])();
 var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
-var log = (0,_logger__WEBPACK_IMPORTED_MODULE_13__["default"])("OIDCSecured.tsx");
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_12__["default"])("OIDCSecured.tsx");
 /* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
     var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
     return {
@@ -1836,6 +1840,7 @@ function OIDCSecured(param) {
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
+    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_20__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
     var _authRef_current_user_access_token, _authRef_current_user_expires_at, _authRef_current_user2;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         ready: false,
@@ -1844,13 +1849,13 @@ function OIDCSecured(param) {
             authChannel.postMessage({
                 type: "logout"
             });
-            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.logout)(authRef.current, bounce);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_13__.logout)(authRef.current, bounce);
         },
         logout: function() {
-            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.logout)(authRef.current, true);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_13__.logout)(authRef.current, true);
         },
         login: function(requiredScopes) {
-            return (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(authRef.current, requiredScopes);
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, requiredScopes);
         },
         loginAllTabs: function() {
             authChannel.postMessage({
@@ -1869,14 +1874,14 @@ function OIDCSecured(param) {
         },
         getOfflineToken: function() {
             var _authRef_current_settings_metadata;
-            var redirectUri = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_18__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(window.location.origin).concat(window.location.pathname));
+            var redirectUri = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_17__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(window.location.origin).concat(window.location.pathname));
             var _authRef_current_settings_metadata_token_endpoint;
-            return (0,_offline__WEBPACK_IMPORTED_MODULE_17__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
+            return (0,_offline__WEBPACK_IMPORTED_MODULE_16__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
         },
         doOffline: function() {
-            return (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(authRef.current, [
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, [
                 "offline_access"
-            ], (0,_offline__WEBPACK_IMPORTED_MODULE_17__.prepareOfflineRedirect)());
+            ], (0,_offline__WEBPACK_IMPORTED_MODULE_16__.prepareOfflineRedirect)());
         },
         getUser: function() {
             var _authRef_current_user;
@@ -1891,12 +1896,14 @@ function OIDCSecured(param) {
             var _microFrontendConfig_initialModuleScope, routes, initialModuleScope, initialModuleConfig;
             return _ts_generator(this, function(_state) {
                 routes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.generateRoutesList)(microFrontendConfig);
-                dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_6__.loadModulesSchema)(microFrontendConfig));
-                initialModuleScope = (0,_getInitialScope__WEBPACK_IMPORTED_MODULE_7__["default"])(routes, window.location.pathname);
+                dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_19__.loadModulesSchema)(microFrontendConfig));
+                // eventually all attributes will be stored in jotai atom
+                setScalprumConfigAtom(microFrontendConfig);
+                initialModuleScope = (0,_getInitialScope__WEBPACK_IMPORTED_MODULE_6__["default"])(routes, window.location.pathname);
                 initialModuleConfig = initialModuleScope && ((_microFrontendConfig_initialModuleScope = microFrontendConfig[initialModuleScope]) === null || _microFrontendConfig_initialModuleScope === void 0 ? void 0 : _microFrontendConfig_initialModuleScope.config);
-                (0,_initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_16__["default"])();
+                (0,_initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__["default"])();
                 if (!(0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.hasAuthParams)() && !auth.activeNavigator && !auth.isLoading && !auth.isAuthenticated) {
-                    (0,_utils__WEBPACK_IMPORTED_MODULE_14__.login)(auth, initialModuleConfig === null || initialModuleConfig === void 0 ? void 0 : initialModuleConfig.ssoScopes);
+                    (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(auth, initialModuleConfig === null || initialModuleConfig === void 0 ? void 0 : initialModuleConfig.ssoScopes);
                 }
                 return [
                     2
@@ -1918,7 +1925,7 @@ function OIDCSecured(param) {
                     case 0:
                         // order of calls is important
                         // init the IQE enablement first to add the necessary auth headers to the requests
-                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_8__.init)(store, user.access_token);
+                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__.init)(store, user.access_token);
                         return [
                             4,
                             fetchEntitlements(user)
@@ -1929,12 +1936,12 @@ function OIDCSecured(param) {
                         getUser = function() {
                             return Promise.resolve(chromeUser);
                         };
-                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_10__.initializeVisibilityFunctions)({
+                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_9__.initializeVisibilityFunctions)({
                             getUser: getUser,
                             getToken: function() {
                                 return Promise.resolve(user.access_token);
                             },
-                            getUserPermissions: (0,_createGetUserPermissions__WEBPACK_IMPORTED_MODULE_15__["default"])(getUser, function() {
+                            getUserPermissions: (0,_createGetUserPermissions__WEBPACK_IMPORTED_MODULE_14__["default"])(getUser, function() {
                                 return Promise.resolve(user.access_token);
                             })
                         });
@@ -1947,7 +1954,7 @@ function OIDCSecured(param) {
                                 tokenExpires: user.expires_at
                             });
                         });
-                        (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_11__["default"])(chromeUser);
+                        (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_10__["default"])(chromeUser);
                         return [
                             2
                         ];
@@ -1992,7 +1999,7 @@ function OIDCSecured(param) {
         auth
     ]);
     if (!auth.isAuthenticated || !state.ready) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_11__["default"], {
             cookieElement: cookieElement,
             setCookieElement: setCookieElement
         });
@@ -7340,7 +7347,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ErrorComponents/GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -7443,7 +7450,7 @@ var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(func
         var _modules_scope;
         return (modules === null || modules === void 0 ? void 0 : (_modules_scope = modules[scope]) === null || _modules_scope === void 0 ? void 0 : _modules_scope.defaultDocumentTitle) || scope;
     });
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtom)(_state_atoms__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom), 2), activeModule = _useAtom[0], setActiveModule = _useAtom[1];
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom), 2), activeModule = _useAtom[0], setActiveModule = _useAtom[1];
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.batch)(function() {
             // Only trigger update on a first application render before any active module has been selected
@@ -7828,7 +7835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
 /* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../hooks/useBundle */ "./src/hooks/useBundle.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -7905,7 +7912,7 @@ var DefaultErrorComponent = function(props) {
     var _props_error, _props_errorInfo, _props_error1, _props_error2;
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(), 2), sentryId = _useState[0], setSentryId = _useState[1];
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_17__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_16__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_17__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_16__.activeModuleAtom);
     var exceptionMessage = ((_props_error = props.error) === null || _props_error === void 0 ? void 0 : _props_error.message) ? props.error.message : "Unhandled UI runtime error";
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var _props_error, _props_errorInfo, _props_error1, _props_error_cause, _props_error2;
@@ -8239,7 +8246,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 
 
 
@@ -8273,7 +8280,7 @@ var Description = function(param) {
 };
 var GatewayErrorComponent = function(param) {
     var error = param.error;
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
     var activeProduct = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(state) {
         return state.chrome.activeProduct;
     });
@@ -9564,7 +9571,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9768,7 +9775,7 @@ var useLoadTags = function() {
         var scope = param.globalFilter.scope;
         return scope;
     });
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
     var isDisabled = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
         var globalFilterHidden = param.globalFilter.globalFilterHidden;
         return globalFilterHidden || !activeModule;
@@ -9820,7 +9827,7 @@ var GlobalFilter = function(param) {
         var globalFilterHidden = param.globalFilter.globalFilterHidden;
         return globalFilterHidden;
     });
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
     var isDisabled = globalFilterHidden || !activeModule;
     var _useTagsFilter = (0,_redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_13__.useTagsFilter)([
         workloads
@@ -15296,7 +15303,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/quickstarts */ "webpack/sharing/consume/default/@patternfly/quickstarts/@patternfly/quickstarts");
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
 /* harmony import */ var _FeatureFlags__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../FeatureFlags */ "./src/components/FeatureFlags/index.ts");
 /* harmony import */ var _ScalprumRoot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ScalprumRoot */ "./src/components/RootApp/ScalprumRoot.tsx");
@@ -15313,7 +15320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-dom */ "webpack/sharing/consume/default/react-dom/react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -15385,6 +15393,7 @@ function _object_spread_props(target, source) {
 
 
 
+
 var NotEntitledModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_NotEntitledModal_index_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../NotEntitledModal */ "./src/components/NotEntitledModal/index.tsx"));
 });
@@ -15393,14 +15402,11 @@ var Debugger = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(functio
 });
 var RootApp = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(props) {
     var _user_identity;
-    var config = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        return chrome.scalprumConfig;
-    });
+    var config = (0,jotai__WEBPACK_IMPORTED_MODULE_19__.useAtomValue)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.scalprumConfigAtom);
     var _useQuickstartsStates = (0,_QuickStart_useQuickstartsStates__WEBPACK_IMPORTED_MODULE_9__["default"])(), activateQuickstart = _useQuickstartsStates.activateQuickstart, allQuickStartStates = _useQuickstartsStates.allQuickStartStates, setAllQuickStartStates = _useQuickstartsStates.setAllQuickStartStates, activeQuickStartID = _useQuickstartsStates.activeQuickStartID, setActiveQuickStartID = _useQuickstartsStates.setActiveQuickStartID;
     var _useHelpTopicState = (0,_QuickStart_useHelpTopicState__WEBPACK_IMPORTED_MODULE_10__["default"])(), helpTopics = _useHelpTopicState.helpTopics, addHelpTopics = _useHelpTopicState.addHelpTopics, disableTopics = _useHelpTopicState.disableTopics, enableTopics = _useHelpTopicState.enableTopics;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_18__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_17__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_19__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_17__.activeModuleAtom);
     var quickStarts = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(function(param) {
         var _param_chrome = param.chrome, quickstarts = _param_chrome.quickstarts.quickstarts;
         return Object.values(quickstarts).flat();
@@ -18069,7 +18075,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 
 
 
@@ -18093,7 +18099,7 @@ function retry(fn) {
     }
 }
 var useDisablePendoOnLanding = function() {
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_3__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_2__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_3__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__.activeModuleAtom);
     var toggleGuides = function() {
         // push the call to the end of the event loop to make sure the pendo script is loaded and initialized
         setTimeout(function() {
@@ -18230,7 +18236,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../analytics/useSegment */ "./src/analytics/useSegment.ts");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 
 
 
@@ -18240,7 +18246,7 @@ var RETRY_ATTEMPS = 10;
 var RETRY_INTERVAL = 2000;
 var SEGMENT_EVENT_NAME = "pendo-badge-clicked";
 var useTrackPendoUsage = function() {
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_3__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_2__.activeModuleAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_3__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__.activeModuleAtom);
     var mutableData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({
         activeModule: activeModule
     });
@@ -18314,7 +18320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -18359,7 +18365,7 @@ function _unsupported_iterable_to_array(o, minLen) {
             return [];
         }
     };
-    var activeModuleId = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms__WEBPACK_IMPORTED_MODULE_4__.activeModuleAtom);
+    var activeModuleId = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_4__.activeModuleAtom);
     // get scope module definition
     var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
         var modules = param.chrome.modules;
@@ -19410,23 +19416,9 @@ function loadNavigationSegmentReducer(state, param) {
 }
 function loadModulesSchemaReducer(state, param) {
     var schema = param.payload.schema;
-    var scalprumConfig = Object.entries(schema).reduce(function(acc, param) {
-        var _param = _sliced_to_array(param, 2), name = _param[0], config = _param[1];
-        return _object_spread_props(_object_spread({}, acc), _define_property({}, name, {
-            name: name,
-            module: "".concat(name, "#./RootApp"),
-            manifestLocation: "".concat(window.location.origin).concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() ? "/beta" : "").concat(config.manifestLocation, "?ts=").concat(Date.now())
-        }));
-    }, {
-        chrome: {
-            name: "chrome",
-            manifestLocation: "".concat(window.location.origin).concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() ? "/beta" : "", "/apps/chrome/js/fed-mods.json?ts=").concat(Date.now())
-        }
-    });
     var moduleRoutes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.generateRoutesList)(schema);
     return _object_spread_props(_object_spread({}, state), {
         modules: schema,
-        scalprumConfig: scalprumConfig,
         moduleRoutes: moduleRoutes
     });
 }
@@ -19995,7 +19987,6 @@ var chromeInitialState = {
     globalFilter: _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.globalFilterDefaultState
 };
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
-    // const chromeInitialState = JSON.parse(localStorage.getItem('chrome')) || {};
     return {
         chrome: function() {
             var state = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {
@@ -20010,7 +20001,6 @@ var chromeInitialState = {
                 },
                 contextSwitcherOpen: false,
                 modules: {},
-                scalprumConfig: {},
                 moduleRoutes: [],
                 notifications: {
                     data: [],
@@ -20103,6 +20093,162 @@ function spinUpStore() {
 
 /***/ }),
 
+/***/ "./src/state/atoms.ts":
+/*!****************************!*\
+  !*** ./src/state/atoms.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   contextSwitcherOpenAtom: () => (/* binding */ contextSwitcherOpenAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+// setup initial chrome atoms
+var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
+
+
+/***/ }),
+
+/***/ "./src/state/atoms/scalprumConfigAtom.ts":
+/*!***********************************************!*\
+  !*** ./src/state/atoms/scalprumConfigAtom.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   scalprumConfigAtom: () => (/* binding */ scalprumConfigAtom),
+/* harmony export */   writeInitialScalprumConfigAtom: () => (/* binding */ writeInitialScalprumConfigAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+
+
+var scalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)({});
+// Write only scalprum config atom. Its used to mutate the initial metadata retrieved from chrome service
+var writeInitialScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(null, function(_get, set, schema) {
+    var isBetaEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isBeta)();
+    var scalprumConfig = Object.entries(schema).reduce(function(acc, param) {
+        var _param = _sliced_to_array(param, 2), name = _param[0], config = _param[1];
+        return _object_spread_props(_object_spread({}, acc), _define_property({}, name, {
+            name: name,
+            module: "".concat(name, "#./RootApp"),
+            manifestLocation: "".concat(window.location.origin).concat(isBetaEnv ? "/beta" : "").concat(config.manifestLocation, "?ts=").concat(Date.now())
+        }));
+    }, {
+        chrome: {
+            name: "chrome",
+            manifestLocation: "".concat(window.location.origin).concat(isBetaEnv ? "/beta" : "", "/apps/chrome/js/fed-mods.json?ts=").concat(Date.now())
+        }
+    });
+    set(scalprumConfigAtom, scalprumConfig);
+});
+
+
+/***/ }),
+
 /***/ "./src/state/chromeStore.ts":
 /*!**********************************!*\
   !*** ./src/state/chromeStore.ts ***!
@@ -20114,16 +20260,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
 /* harmony import */ var _atoms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 
 
-var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.createStore)();
+
+var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_2__.createStore)();
 // setup initial chrome store state
 chromeStore.set(_atoms__WEBPACK_IMPORTED_MODULE_0__.contextSwitcherOpenAtom, false);
-chromeStore.set(_atoms__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, undefined);
+chromeStore.set(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_1__.activeModuleAtom, undefined);
 // globally handle subscription to activeModuleAtom
-chromeStore.sub(_atoms__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, function() {
+chromeStore.sub(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_1__.activeModuleAtom, function() {
 // console.log('activeModule in store', chromeStore.get(activeModuleAtom));
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (chromeStore);
@@ -20309,7 +20457,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./consts */ "./src/utils/consts.ts");
 /* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
 /* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../state/chromeStore */ "./src/state/chromeStore.ts");
-/* harmony import */ var _state_atoms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../state/atoms */ "./src/state/atoms.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -20627,7 +20775,7 @@ function _getProductData() {
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    activeModule = _state_chromeStore__WEBPACK_IMPORTED_MODULE_5__["default"].get(_state_atoms__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
+                    activeModule = _state_chromeStore__WEBPACK_IMPORTED_MODULE_5__["default"].get(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
                     return [
                         4,
                         getAppInfo(activeModule !== null && activeModule !== void 0 ? activeModule : "")
