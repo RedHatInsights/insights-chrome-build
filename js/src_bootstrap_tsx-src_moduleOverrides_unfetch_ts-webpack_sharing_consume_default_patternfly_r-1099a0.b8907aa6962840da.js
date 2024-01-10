@@ -1499,9 +1499,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
 /* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _setCookie__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../setCookie */ "./src/auth/setCookie.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1745,6 +1746,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_8__["default"])();
 var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
 var log = (0,_logger__WEBPACK_IMPORTED_MODULE_12__["default"])("OIDCSecured.tsx");
@@ -1840,7 +1842,7 @@ function OIDCSecured(param) {
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_20__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
+    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_21__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
     var _authRef_current_user_access_token, _authRef_current_user_expires_at, _authRef_current_user2;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         ready: false,
@@ -1994,7 +1996,10 @@ function OIDCSecured(param) {
         auth
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        var _auth_user, _auth_user1;
         authRef.current = auth;
+        var _auth_user_access_token, _auth_user_expires_at;
+        (0,_setCookie__WEBPACK_IMPORTED_MODULE_20__.setCookie)((_auth_user_access_token = (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : _auth_user.access_token) !== null && _auth_user_access_token !== void 0 ? _auth_user_access_token : "", (_auth_user_expires_at = (_auth_user1 = auth.user) === null || _auth_user1 === void 0 ? void 0 : _auth_user1.expires_at) !== null && _auth_user_expires_at !== void 0 ? _auth_user_expires_at : 0);
     }, [
         auth
     ]);
