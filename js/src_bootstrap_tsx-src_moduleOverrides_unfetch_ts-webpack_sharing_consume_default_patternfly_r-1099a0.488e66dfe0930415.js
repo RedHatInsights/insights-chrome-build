@@ -21205,18 +21205,29 @@ var AUTH_ALLOWED_ORIGINS = [
     "https://api.openshift.com",
     "https://api.stage.openshift.com"
 ];
-var checkOrigin = function() {
+var AUTH_EXCLUDED_URLS = [
+    "https://api.openshift.com/api/upgrades_info/",
+    "https://api.stage.openshift.com/api/upgrades_info/"
+];
+var isExcluded = function(target) {
+    return AUTH_EXCLUDED_URLS.some(function(url) {
+        return target.includes(url);
+    });
+};
+var verifyTarget = function(originMatch, urlMatch) {
+    return AUTH_ALLOWED_ORIGINS.some(function(origin) {
+        return originMatch.includes(origin);
+    }) && !isExcluded(urlMatch);
+};
+var shouldInjectAuthHeaders = function() {
     var path = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
     if (_instanceof(path, URL)) {
-        return AUTH_ALLOWED_ORIGINS.includes(path.origin);
+        // the type URL has a different match function than the cases above
+        return AUTH_ALLOWED_ORIGINS.includes(path.origin) && !isExcluded(path.href);
     } else if (_instanceof(path, Request)) {
-        return AUTH_ALLOWED_ORIGINS.some(function(origin) {
-            return path.url.includes(origin);
-        });
+        return verifyTarget(path.url, path.url);
     } else if (typeof path === "string") {
-        return AUTH_ALLOWED_ORIGINS.some(function(origin) {
-            return path.includes(origin);
-        }) || !path.startsWith("http");
+        return verifyTarget(path, path) || !path.startsWith("http");
     }
     return true;
 };
@@ -21265,7 +21276,7 @@ function init(store, authRef) {
     };
     // must use function here because arrows dont "this" like functions
     window.XMLHttpRequest.prototype.send = function sendReplacement() {
-        if (checkOrigin(this._url)) {
+        if (shouldInjectAuthHeaders(this._url)) {
             if (!authRequests.has(this._url)) {
                 var _authRef_current_user;
                 // Send Auth header, it will be changed to Authorization later down the line
@@ -21300,7 +21311,7 @@ function init(store, authRef) {
         }
         var tid = Math.random().toString(36);
         var request = new Request(input, _$init);
-        if (checkOrigin(input) && !request.headers.has("Authorization")) {
+        if (shouldInjectAuthHeaders(input) && !request.headers.has("Authorization")) {
             var _authRef_current_user;
             request.headers.append("Authorization", "Bearer ".concat((_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token));
         }
