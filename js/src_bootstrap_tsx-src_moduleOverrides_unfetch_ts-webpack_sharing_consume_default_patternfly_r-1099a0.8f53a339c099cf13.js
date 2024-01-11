@@ -1927,7 +1927,7 @@ function OIDCSecured(param) {
                     case 0:
                         // order of calls is important
                         // init the IQE enablement first to add the necessary auth headers to the requests
-                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__.init)(store, user.access_token);
+                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__.init)(store, authRef);
                         return [
                             4,
                             fetchEntitlements(user)
@@ -4045,7 +4045,13 @@ var createChromeContext = function(param) {
             getOfflineToken: chromeAuth.getOfflineToken,
             qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"]), {
                 init: function() {
-                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(store, chromeAuth.token);
+                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(store, {
+                        current: {
+                            user: {
+                                access_token: chromeAuth.token
+                            }
+                        }
+                    });
                 }
             })
         },
@@ -21227,7 +21233,7 @@ var spreadAdditionalHeaders = function(options) {
     }
     return additionalHeaders;
 };
-function init(store, token) {
+function init(store, authRef) {
     var open = window.XMLHttpRequest.prototype.open;
     var send = window.XMLHttpRequest.prototype.send;
     var setRequestHeader = window.XMLHttpRequest.prototype.setRequestHeader;
@@ -21261,8 +21267,9 @@ function init(store, token) {
     window.XMLHttpRequest.prototype.send = function sendReplacement() {
         if (checkOrigin(this._url)) {
             if (!authRequests.has(this._url)) {
+                var _authRef_current_user;
                 // Send Auth header, it will be changed to Authorization later down the line
-                this.setRequestHeader("Auth", "Bearer ".concat(token));
+                this.setRequestHeader("Auth", "Bearer ".concat((_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token));
             }
         }
         // eslint-disable-line func-names
@@ -21294,7 +21301,8 @@ function init(store, token) {
         var tid = Math.random().toString(36);
         var request = new Request(input, _$init);
         if (checkOrigin(input) && !request.headers.has("Authorization")) {
-            request.headers.append("Authorization", "Bearer ".concat(token));
+            var _authRef_current_user;
+            request.headers.append("Authorization", "Bearer ".concat((_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token));
         }
         var prom = oldFetch.apply(this, [
             request
