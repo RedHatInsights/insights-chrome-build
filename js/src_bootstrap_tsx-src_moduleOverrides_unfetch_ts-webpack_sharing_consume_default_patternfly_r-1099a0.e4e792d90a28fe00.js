@@ -2331,9 +2331,9 @@ function login(auth) {
     log("Logging in");
     // Redirect to login
     js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "false");
-    // TODO: Remove once ephemeral environment supports full and thin profile
     var scope = [
-        "openid"
+        "openid",
+        "api.console"
     ].concat(_to_consumable_array(requiredScopes));
     var partner = getPartnerScope(window.location.pathname);
     if (partner) {
