@@ -2331,7 +2331,10 @@ function login(auth) {
     log("Logging in");
     // Redirect to login
     js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_loggedOut", "false");
-    var scope = [
+    //FIX ME: Temp fix until scope is added in-boundary
+    var scope = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.ITLess)() ? [
+        "openid"
+    ].concat(_to_consumable_array(requiredScopes)) : [
         "openid",
         "api.console"
     ].concat(_to_consumable_array(requiredScopes));
