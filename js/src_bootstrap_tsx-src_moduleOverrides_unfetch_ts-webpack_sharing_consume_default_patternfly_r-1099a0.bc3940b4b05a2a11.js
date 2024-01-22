@@ -1499,10 +1499,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
 /* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _setCookie__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../setCookie */ "./src/auth/setCookie.ts");
+/* harmony import */ var _shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../shouldReAuthScopes */ "./src/auth/shouldReAuthScopes.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1747,13 +1749,15 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
+
 var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_8__["default"])();
 var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
 var log = (0,_logger__WEBPACK_IMPORTED_MODULE_12__["default"])("OIDCSecured.tsx");
 /* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
     var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
     return {
-        scope: [],
         entitlements: entitlements,
         identity: {
             org_id: (_user_profile = user.profile) === null || _user_profile === void 0 ? void 0 : _user_profile.org_id,
@@ -1837,12 +1841,19 @@ function _fetchEntitlements() {
 }
 function OIDCSecured(param) {
     var children = param.children, microFrontendConfig = param.microFrontendConfig, cookieElement = param.cookieElement, setCookieElement = param.setCookieElement;
-    var _authRef_current_user, _authRef_current_user1;
+    var _activeModule_config, _authRef_current_user, _authRef_current_user1;
     var auth = (0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.useAuth)();
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_21__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
+    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
+    var activeModuleId = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_22__.activeModuleAtom);
+    // get scope module definition
+    var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
+        var modules = param.chrome.modules;
+        return activeModuleId ? (modules || {})[activeModuleId] : undefined;
+    });
+    var requiredScopes = (activeModule === null || activeModule === void 0 ? void 0 : (_activeModule_config = activeModule.config) === null || _activeModule_config === void 0 ? void 0 : _activeModule_config.ssoScopes) || [];
     var _authRef_current_user_access_token, _authRef_current_user_expires_at, _authRef_current_user2;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         ready: false,
@@ -1891,7 +1902,23 @@ function OIDCSecured(param) {
         },
         token: (_authRef_current_user_access_token = (_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token) !== null && _authRef_current_user_access_token !== void 0 ? _authRef_current_user_access_token : "",
         tokenExpires: (_authRef_current_user_expires_at = (_authRef_current_user1 = authRef.current.user) === null || _authRef_current_user1 === void 0 ? void 0 : _authRef_current_user1.expires_at) !== null && _authRef_current_user_expires_at !== void 0 ? _authRef_current_user_expires_at : 0,
-        user: mapOIDCUserToChromeUser((_authRef_current_user2 = authRef.current.user) !== null && _authRef_current_user2 !== void 0 ? _authRef_current_user2 : {}, {})
+        user: mapOIDCUserToChromeUser((_authRef_current_user2 = authRef.current.user) !== null && _authRef_current_user2 !== void 0 ? _authRef_current_user2 : {}, {}),
+        reAuthWithScopes: /*#__PURE__*/ _async_to_generator(function() {
+            var _len, additionalScopes, _key, _shouldReAuthScopes, shouldReAuth, reAuthScopes;
+            var _arguments = arguments;
+            return _ts_generator(this, function(_state) {
+                for(_len = _arguments.length, additionalScopes = new Array(_len), _key = 0; _key < _len; _key++){
+                    additionalScopes[_key] = _arguments[_key];
+                }
+                _shouldReAuthScopes = _sliced_to_array((0,_shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_21__["default"])(requiredScopes, additionalScopes), 2), shouldReAuth = _shouldReAuthScopes[0], reAuthScopes = _shouldReAuthScopes[1];
+                if (shouldReAuth) {
+                    (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, reAuthScopes);
+                }
+                return [
+                    2
+                ];
+            });
+        })
     }), 2), state = _useState[0], setState = _useState[1];
     var startChrome = function() {
         var _ref = _async_to_generator(function() {
@@ -2003,6 +2030,10 @@ function OIDCSecured(param) {
     }, [
         auth
     ]);
+    if (auth.error) {
+        // leave the auth error handling on the global ErrorBoundary
+        throw auth.error;
+    }
     if (!auth.isAuthenticated || !state.ready) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_11__["default"], {
             cookieElement: cookieElement,
@@ -3573,6 +3604,77 @@ function _setCookie() {
 
 /***/ }),
 
+/***/ "./src/auth/shouldReAuthScopes.ts":
+/*!****************************************!*\
+  !*** ./src/auth/shouldReAuthScopes.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_without_holes(arr) {
+    if (Array.isArray(arr)) return _array_like_to_array(arr);
+}
+function _iterable_to_array(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _non_iterable_spread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _to_consumable_array(arr) {
+    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+
+var getCurrentScopes = function() {
+    try {
+        return JSON.parse(localStorage.getItem(_utils_common__WEBPACK_IMPORTED_MODULE_0__.LOGIN_SCOPES_STORAGE_KEY) || "[]");
+    } catch (e) {
+        // unable to parse scopes because the entry does not exist or the entry is not an array
+        return [];
+    }
+};
+function shouldReAuthScopes(requiredScopes) {
+    var additionalScopes = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [];
+    var currentScopes = getCurrentScopes();
+    var neededScopes = _to_consumable_array(requiredScopes).concat(_to_consumable_array(additionalScopes));
+    var missingScope = neededScopes.some(function(scope) {
+        return !currentScopes.includes(scope);
+    });
+    var shouldReAuth = // normal scenario for account that was not authenticated with required scopes
+    missingScope || // scenario accounts that were redirected from sso and might not have completed required steps (like completing full profile registration)
+    requiredScopes.length > 0 && !missingScope && document.referrer.match(/sso\.[a-z]+\.redhat\.com/);
+    /**
+   * FIXME: RHFULL scope (and all legacy scopes??) are not showing up in the token response, so we don't know if the scope was authenticated
+   * Work with #forum-ciam and the `@ciam-s-client-integration-sre` to fix that
+   *  */ // if current login scope is not full profile and scope requires it, trigger full profile login`
+    var newScopes = shouldReAuth ? Array.from(new Set(_to_consumable_array(neededScopes).concat(_to_consumable_array(currentScopes)))) : [];
+    return [
+        !!shouldReAuth,
+        newScopes
+    ];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (shouldReAuthScopes);
+
+
+/***/ }),
+
 /***/ "./src/bootstrap.tsx":
 /*!***************************!*\
   !*** ./src/bootstrap.tsx ***!
@@ -3696,7 +3798,7 @@ if (entry) {
         store: _state_chromeStore__WEBPACK_IMPORTED_MODULE_11__["default"]
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
         store: (_spinUpStore = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_4__.spinUpStore)()) === null || _spinUpStore === void 0 ? void 0 : _spinUpStore.store
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AuthProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__.IntlProvider, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_intl__WEBPACK_IMPORTED_MODULE_3__.IntlProvider, {
         locale: language,
         messages: _locales_data_json__WEBPACK_IMPORTED_MODULE_9__[language],
         onError: function(error) {
@@ -3704,7 +3806,7 @@ if (entry) {
                 console.error(error);
             }
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null)))))));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ErrorComponents_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(AuthProvider, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null)))))));
 }
 
 
@@ -4056,7 +4158,8 @@ var createChromeContext = function(param) {
                         }
                     });
                 }
-            })
+            }),
+            reAuthWithScopes: chromeAuth.reAuthWithScopes
         },
         initialized: true,
         isProd: _utils_common__WEBPACK_IMPORTED_MODULE_4__.isProd,
@@ -8995,33 +9098,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Card */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Card/@patternfly/react-core/dist/dynamic/components/Card");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Grid */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Grid/@patternfly/react-core/dist/dynamic/layouts/Grid");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Label */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Label/@patternfly/react-core/dist/dynamic/components/Label");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Modal */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Modal/@patternfly/react-core/dist/dynamic/components/Modal?3413");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../static/images/feedback_illo.svg */ "./static/images/feedback_illo.svg");
-/* harmony import */ var _FeedbackForm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FeedbackForm */ "./src/components/Feedback/FeedbackForm.tsx");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./FeedbackSuccess */ "./src/components/Feedback/FeedbackSuccess.tsx");
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var _FeedbackError__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./FeedbackError */ "./src/components/Feedback/FeedbackError.tsx");
-/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Flex */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Flex/@patternfly/react-core/dist/dynamic/layouts/Flex");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Grid */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Grid/@patternfly/react-core/dist/dynamic/layouts/Grid");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Label */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Label/@patternfly/react-core/dist/dynamic/components/Label");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Modal */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Modal/@patternfly/react-core/dist/dynamic/components/Modal?3413");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../static/images/feedback_illo.svg */ "./static/images/feedback_illo.svg");
+/* harmony import */ var _FeedbackForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./FeedbackForm */ "./src/components/Feedback/FeedbackForm.tsx");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./FeedbackSuccess */ "./src/components/Feedback/FeedbackSuccess.tsx");
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _FeedbackError__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./FeedbackError */ "./src/components/Feedback/FeedbackError.tsx");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
+/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
+/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9090,27 +9195,28 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var FEEDBACK_OPEN_EVENT = "chrome.feedback.open";
 var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function() {
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
-    var usePendoFeedback = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useSelector)(function(param) {
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_11__.useIntl)();
+    var usePendoFeedback = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
         var usePendoFeedback = param.chrome.usePendoFeedback;
         return usePendoFeedback;
     });
-    var isOpen = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useSelector)(function(param) {
+    var isOpen = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
         var isFeedbackModalOpen = param.chrome.isFeedbackModalOpen;
         return isFeedbackModalOpen;
     });
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_9__.useDispatch)();
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useDispatch)();
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("feedbackHome"), 2), modalPage = _useState[0], setModalPage = _useState[1];
-    var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__["default"]).getEnvironment;
-    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
-    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__.useSegment)().analytics;
+    var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_18__["default"]).getEnvironment;
+    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_21__["default"]);
+    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_22__.useSegment)().analytics;
     var user = chromeAuth.user;
     var env = getEnvironment();
     var isAvailable = env === "prod" || env === "stage";
     var setIsModalOpen = function(isOpen) {
-        return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_13__.toggleFeedbackModal)(isOpen));
+        return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_14__.toggleFeedbackModal)(isOpen));
     };
     var handleCloseModal = function() {
         setIsModalOpen(false), setModalPage("feedbackHome");
@@ -9121,51 +9227,57 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
             case "feedbackHome":
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
                     className: "chr-c-feedback-content"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, {
-                    component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.TextVariants.h1
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].tellAboutExperience)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].helpUsImproveHCC))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-                    className: "chr-c-feedback-cards"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+                    className: "pf-v5-u-flex-grow-1"
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextContent, {
+                    className: "pf-v5-u-mb-md"
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
+                    component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextVariants.h1
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].tellAboutExperience)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].helpUsImproveHCC))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
                         return setModalPage("feedbackOne");
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
-                    className: "chr-c-feedback-card-title"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].shareFeedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].howIsConsoleExperience))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-primary-color-100"
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].shareFeedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].howIsConsoleExperience))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
                         return setModalPage("reportBugOne");
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
-                    className: "chr-c-feedback-card-title"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].reportABug)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].describeBugUrgentCases))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-primary-color-100"
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].reportABug)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].describeBugUrgentCases))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
-                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_18__.createSupportCase)(user.identity, chromeAuth.token);
+                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_19__.createSupportCase)(user.identity, chromeAuth.token);
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
-                    className: "chr-c-feedback-card-title"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].getSupport))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-primary-color-100"
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].getSupport))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                    className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
                         return setModalPage("informDirection");
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
-                    className: "chr-c-feedback-card-title"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informRedhatDirection))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities)))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
+                    className: "pf-v5-u-primary-color-100"
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informRedhatDirection))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities)))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
                     className: "chr-c-feedback-button",
                     ouiaId: "cancel-feedback",
                     key: "cancel",
                     variant: "link",
                     onClick: handleCloseModal
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].cancel)));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].cancel))));
             case "feedbackOne":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
                     user: user,
                     onCloseModal: handleCloseModal,
                     onSubmit: function() {
@@ -9177,14 +9289,14 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].shareYourFeedback),
-                    textareaLabel: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].enterFeedback),
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].shareYourFeedback),
+                    textareaLabel: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].enterFeedback),
                     feedbackType: "Feedback",
-                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitFeedback)
+                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitFeedback)
                 });
             case "reportBugOne":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
                     user: user,
                     onCloseModal: handleCloseModal,
                     onSubmit: function() {
@@ -9196,18 +9308,18 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].reportABug),
-                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].describeReportBug), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].reportABug),
+                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].describeReportBug), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
                         component: "a",
                         href: "https://access.redhat.com/support/cases/#/case/new/get-support?caseCreate=true&source=console",
                         target: "_blank"
-                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default()), null))),
+                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))),
                     feedbackType: "Bug",
-                    checkboxDescription: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].weNeverSharePersonalInformation)),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitFeedback)
+                    checkboxDescription: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].weNeverSharePersonalInformation)),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitFeedback)
                 });
             case "informDirection":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
                     user: user,
                     onCloseModal: handleCloseModal,
                     onSubmit: function() {
@@ -9219,37 +9331,37 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informRedhatDirection),
-                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informDirectionDescription), "\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informRedhatDirection),
+                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informDirectionDescription), "\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
                         component: "a",
                         href: "https://www.redhat.com/en/about/user-research",
                         target: "_blank"
-                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].userResearchTeam)), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].directInfluence)),
+                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].userResearchTeam)), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].directInfluence)),
                     feedbackType: "[Research Opportunities]",
                     textAreaHidden: true,
-                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].weNeverSharePersonalInformation),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].joinMailingList)
+                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].weNeverSharePersonalInformation),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].joinMailingList)
                 });
             case "feedbackSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].feedbackSent),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].thankYouForFeedback),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].feedbackSent),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].thankYouForFeedback),
                     onCloseModal: handleCloseModal
                 });
             case "bugReportSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].bugReported),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].teamWillReviewBug),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].bugReported),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].teamWillReviewBug),
                     onCloseModal: handleCloseModal
                 });
             case "informDirectionSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].responseSent),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].thankYouForInterest),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].responseSent),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].thankYouForInterest),
                     onCloseModal: handleCloseModal
                 });
             case "feedbackError":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackError__WEBPACK_IMPORTED_MODULE_16__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackError__WEBPACK_IMPORTED_MODULE_17__["default"], {
                     onCloseModal: handleCloseModal
                 });
         }
@@ -9263,26 +9375,26 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                 setIsModalOpen(true);
             }
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_8___default()), null), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].feedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_5__.Modal, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9___default()), null), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].feedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__.Modal, {
         "aria-label": "Feedback modal",
         isOpen: isOpen,
         className: "chr-c-feedback-modal",
-        variant: _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_5__.ModalVariant.large,
+        variant: _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__.ModalVariant.large,
         onClose: handleCloseModal
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3__.Grid, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3__.GridItem, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4__.Grid, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4__.GridItem, {
         span: 8,
         rowSpan: 12
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ModalDescription, {
         modalPage: modalPage
-    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_3__.GridItem, {
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Grid__WEBPACK_IMPORTED_MODULE_4__.GridItem, {
         span: 4,
         className: "chr-c-feedback-image"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
         alt: "feedback illustration",
-        src: _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_11__
-    }))), !isAvailable && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_4__.Label, {
+        src: _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_12__
+    }))), !isAvailable && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_5__.Label, {
         color: "red"
-    }, " ", intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitOnlyInStageProd), " ")));
+    }, " ", intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitOnlyInStageProd), " ")));
 });
 FeedbackModal.displayName = "FeedbackModal";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FeedbackModal);
@@ -18331,26 +18443,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _auth_shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth/shouldReAuthScopes */ "./src/auth/shouldReAuthScopes.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
     return arr2;
 }
-function _array_without_holes(arr) {
-    if (Array.isArray(arr)) return _array_like_to_array(arr);
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
 }
-function _iterable_to_array(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
 }
-function _non_iterable_spread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function _to_consumable_array(arr) {
-    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
 }
 function _unsupported_iterable_to_array(o, minLen) {
     if (!o) return;
@@ -18367,19 +18500,11 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 /**
- * If required, attempt to reauthenticate current user with full profile login.
+ * If required, attempt to reauthenticate current user with additional scopes.
  */ var useUserSSOScopes = function() {
     var _activeModule_config;
-    var login = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__["default"]).login;
-    var getCurrentScopes = function() {
-        try {
-            return JSON.parse(localStorage.getItem(_utils_common__WEBPACK_IMPORTED_MODULE_2__.LOGIN_SCOPES_STORAGE_KEY) || "[]");
-        } catch (e) {
-            // unable to parse scopes because the entry does not exist or the entry is not an array
-            return [];
-        }
-    };
-    var activeModuleId = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_4__.activeModuleAtom);
+    var login = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__["default"]).login;
+    var activeModuleId = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_3__.activeModuleAtom);
     // get scope module definition
     var activeModule = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
         var modules = param.chrome.modules;
@@ -18387,21 +18512,9 @@ function _unsupported_iterable_to_array(o, minLen) {
     });
     var requiredScopes = (activeModule === null || activeModule === void 0 ? void 0 : (_activeModule_config = activeModule.config) === null || _activeModule_config === void 0 ? void 0 : _activeModule_config.ssoScopes) || [];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        var _activeModule_config;
-        var currentScopes = getCurrentScopes();
-        var requiredScopes = (activeModule === null || activeModule === void 0 ? void 0 : (_activeModule_config = activeModule.config) === null || _activeModule_config === void 0 ? void 0 : _activeModule_config.ssoScopes) || [];
-        var missingScope = requiredScopes.some(function(scope) {
-            return !currentScopes.includes(scope);
-        });
-        var shouldReAuth = // normal scenario for account that was not authenticated with required scopes
-        missingScope || // scenario accounts that were redirected from sso and might not have completed required steps (like completing full profile registration)
-        requiredScopes.length > 0 && !missingScope && document.referrer.match(/sso\.[a-z]+\.redhat\.com/);
-        /**
-     * FIXME: RHFULL scope (and all legacy scopes??) are not showing up in the token response, so we don't know if the scope was authenticated
-     * Work with #forum-ciam and the `@ciam-s-client-integration-sre` to fix that
-     *  */ // if current login scope is not full profile and scope requires it, trigger full profile login`
+        var _shouldReAuthScopes = _sliced_to_array((0,_auth_shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_4__["default"])(requiredScopes), 2), shouldReAuth = _shouldReAuthScopes[0], newScopes = _shouldReAuthScopes[1];
         if (shouldReAuth) {
-            login(Array.from(new Set(_to_consumable_array(requiredScopes).concat(_to_consumable_array(currentScopes)))));
+            login(newScopes);
         }
     }, [
         requiredScopes,
