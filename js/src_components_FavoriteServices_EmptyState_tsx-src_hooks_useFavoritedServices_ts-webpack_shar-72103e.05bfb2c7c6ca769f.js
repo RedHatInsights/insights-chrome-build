@@ -84,7 +84,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var blankUser = {
-    scope: [],
     entitlements: {},
     identity: {
         org_id: "",
@@ -124,7 +123,10 @@ var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
     },
     token: "",
     tokenExpires: 0,
-    user: blankUser
+    user: blankUser,
+    reAuthWithScopes: function() {
+        return Promise.resolve();
+    }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeAuthContext);
 
