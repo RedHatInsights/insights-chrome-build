@@ -176,6 +176,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -442,6 +444,8 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 var previewBundles = [
     ""
 ];
@@ -569,10 +573,7 @@ var useAppFilter = function() {
         var navigation = param.chrome.navigation;
         return navigation;
     });
-    var modules = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var modules = param.chrome.modules;
-        return modules;
-    });
+    var modules = (0,jotai__WEBPACK_IMPORTED_MODULE_6__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_5__.chromeModulesAtom);
     var handleBundleData = function() {
         var _ref = _async_to_generator(function(param) {
             var _param_data, id, navItems, title, links, bundleLinks, extraLinks, promises;
@@ -803,8 +804,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/esm/index.js");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _Navigation_navContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Navigation/navContext */ "./src/components/Navigation/navContext.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -892,13 +894,11 @@ function _object_without_properties_loose(source, excluded) {
 
 
 
+
 var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(param) {
     var _param_href = param.href, href = _param_href === void 0 ? "" : _param_href, isBeta = param.isBeta, onLinkClick = param.onLinkClick, className = param.className, currAppId = param.currAppId, appId = param.appId, children = param.children, tabIndex = param.tabIndex;
     var linkRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var moduleRoutes = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var moduleRoutes = param.chrome.moduleRoutes;
-        return moduleRoutes;
-    });
+    var moduleRoutes = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_7__.moduleRoutesAtom);
     var moduleEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         return moduleRoutes === null || moduleRoutes === void 0 ? void 0 : moduleRoutes.find(function(route) {
             return href === null || href === void 0 ? void 0 : href.includes(route.path);
@@ -1010,7 +1010,7 @@ var ChromeLink = function(_param) {
         "children"
     ]);
     var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Navigation_navContext__WEBPACK_IMPORTED_MODULE_5__["default"]), onLinkClick = _useContext.onLinkClick, isNavOpen = _useContext.isNavOpen, inPageLayout = _useContext.inPageLayout;
-    var currAppId = (0,jotai__WEBPACK_IMPORTED_MODULE_7__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
+    var currAppId = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_6__.activeModuleAtom);
     var LinkComponent = !rest.isExternal ? LinkWrapper : RefreshLink;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(LinkComponent, _object_spread(_object_spread_props(_object_spread({}, inPageLayout && !isNavOpen ? {
         tabIndex: -1
@@ -3571,7 +3571,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GLOBAL_FILTER_TOGGLE: () => (/* binding */ GLOBAL_FILTER_TOGGLE),
 /* harmony export */   GLOBAL_FILTER_UPDATE: () => (/* binding */ GLOBAL_FILTER_UPDATE),
 /* harmony export */   LOAD_LEFT_NAVIGATION_SEGMENT: () => (/* binding */ LOAD_LEFT_NAVIGATION_SEGMENT),
-/* harmony export */   LOAD_MODULES_SCHEMA: () => (/* binding */ LOAD_MODULES_SCHEMA),
 /* harmony export */   LOAD_NAVIGATION_LANDING_PAGE: () => (/* binding */ LOAD_NAVIGATION_LANDING_PAGE),
 /* harmony export */   MARK_ACTIVE_PRODUCT: () => (/* binding */ MARK_ACTIVE_PRODUCT),
 /* harmony export */   MARK_ALL_NOTIFICATION_AS_READ: () => (/* binding */ MARK_ALL_NOTIFICATION_AS_READ),
@@ -3581,11 +3580,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MARK_REQUEST_NOTIFICATION_SEEN: () => (/* binding */ MARK_REQUEST_NOTIFICATION_SEEN),
 /* harmony export */   POPULATE_NOTIFICATIONS: () => (/* binding */ POPULATE_NOTIFICATIONS),
 /* harmony export */   POPULATE_QUICKSTARTS_CATALOG: () => (/* binding */ POPULATE_QUICKSTARTS_CATALOG),
-/* harmony export */   REGISTER_MODULE: () => (/* binding */ REGISTER_MODULE),
 /* harmony export */   SET_GATEWAY_ERROR: () => (/* binding */ SET_GATEWAY_ERROR),
 /* harmony export */   SET_PENDO_FEEDBACK_FLAG: () => (/* binding */ SET_PENDO_FEEDBACK_FLAG),
 /* harmony export */   STORE_INITIAL_HASH: () => (/* binding */ STORE_INITIAL_HASH),
-/* harmony export */   TOGGLECONTEXTSWITCHER: () => (/* binding */ TOGGLECONTEXTSWITCHER),
 /* harmony export */   TOGGLE_DEBUGGER_BUTTON: () => (/* binding */ TOGGLE_DEBUGGER_BUTTON),
 /* harmony export */   TOGGLE_DEBUGGER_MODAL: () => (/* binding */ TOGGLE_DEBUGGER_MODAL),
 /* harmony export */   TOGGLE_FEEDBACK_MODAL: () => (/* binding */ TOGGLE_FEEDBACK_MODAL),
@@ -3606,11 +3603,8 @@ var GLOBAL_FILTER_SCOPE = "@@chrome/set-global-filter-scope";
 var GLOBAL_FILTER_UPDATE = "@@chrome/global-filter-update";
 var GLOBAL_FILTER_TOGGLE = "@@chrome/global-filter-toggle";
 var GLOBAL_FILTER_REMOVE = "@@chrome/global-filter-remove";
-var REGISTER_MODULE = "@@chrome/register-async-module";
-var TOGGLECONTEXTSWITCHER = "@@chrome/context-switcher-toggle";
 var LOAD_NAVIGATION_LANDING_PAGE = "@@chrome/load-navigation-landing-page";
 var LOAD_LEFT_NAVIGATION_SEGMENT = "@@chrome/load-navigation-segment";
-var LOAD_MODULES_SCHEMA = "@@chrome/load-modules-schema";
 var SET_PENDO_FEEDBACK_FLAG = "@@chrome/set-pendo-feedback-flag";
 var TOGGLE_FEEDBACK_MODAL = "@@chrome/toggle-feedback-modal";
 var TOGGLE_DEBUGGER_MODAL = "@@chrome/toggle-debugger-modal";
@@ -3657,7 +3651,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   globalFilterChange: () => (/* binding */ globalFilterChange),
 /* harmony export */   globalFilterScope: () => (/* binding */ globalFilterScope),
 /* harmony export */   loadLeftNavSegment: () => (/* binding */ loadLeftNavSegment),
-/* harmony export */   loadModulesSchema: () => (/* binding */ loadModulesSchema),
 /* harmony export */   loadNavigationLandingPage: () => (/* binding */ loadNavigationLandingPage),
 /* harmony export */   markAccessRequestNotification: () => (/* binding */ markAccessRequestNotification),
 /* harmony export */   markActiveProduct: () => (/* binding */ markActiveProduct),
@@ -3666,10 +3659,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   markNotificationAsRead: () => (/* binding */ markNotificationAsRead),
 /* harmony export */   markNotificationAsUnread: () => (/* binding */ markNotificationAsUnread),
 /* harmony export */   onToggle: () => (/* binding */ onToggle),
-/* harmony export */   onToggleContextSwitcher: () => (/* binding */ onToggleContextSwitcher),
 /* harmony export */   populateNotifications: () => (/* binding */ populateNotifications),
 /* harmony export */   populateQuickstartsCatalog: () => (/* binding */ populateQuickstartsCatalog),
-/* harmony export */   registerModule: () => (/* binding */ registerModule),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
 /* harmony export */   setGatewayError: () => (/* binding */ setGatewayError),
 /* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
@@ -3816,23 +3807,6 @@ function removeGlobalFilter() {
         }
     };
 }
-function registerModule(module, manifest) {
-    if (!module) {
-        throw new Error("unknown module identifier: ".concat(module));
-    }
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.REGISTER_MODULE,
-        payload: {
-            module: module,
-            manifest: manifest
-        }
-    };
-}
-var onToggleContextSwitcher = function() {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.TOGGLECONTEXTSWITCHER
-    };
-};
 var loadNavigationLandingPage = function(schema) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.LOAD_NAVIGATION_LANDING_PAGE,
@@ -3847,14 +3821,6 @@ var loadLeftNavSegment = function(schema, segment, pathName, shouldMerge) {
             schema: schema,
             pathName: pathName,
             shouldMerge: shouldMerge
-        }
-    };
-};
-var loadModulesSchema = function(schema) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.LOAD_MODULES_SCHEMA,
-        payload: {
-            schema: schema
         }
     };
 };
@@ -4004,11 +3970,109 @@ var updateNotifications = function(payload) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   activeModuleAtom: () => (/* binding */ activeModuleAtom)
+/* harmony export */   activeModuleAtom: () => (/* binding */ activeModuleAtom),
+/* harmony export */   activeModuleDefinitionReadAtom: () => (/* binding */ activeModuleDefinitionReadAtom)
 /* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var _chromeModuleAtom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
 
-var activeModuleAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(undefined);
+
+var activeModuleAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(undefined);
+var activeModuleDefinitionReadAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(function(get) {
+    var activeModuleId = get(activeModuleAtom);
+    var chromeModules = get(_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.chromeModulesAtom);
+    return activeModuleId ? chromeModules === null || chromeModules === void 0 ? void 0 : chromeModules[activeModuleId] : undefined;
+});
+
+
+/***/ }),
+
+/***/ "./src/state/atoms/chromeModuleAtom.ts":
+/*!*********************************************!*\
+  !*** ./src/state/atoms/chromeModuleAtom.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   chromeModulesAtom: () => (/* binding */ chromeModulesAtom),
+/* harmony export */   loadModulesSchemaWriteAtom: () => (/* binding */ loadModulesSchemaWriteAtom),
+/* harmony export */   moduleRoutesAtom: () => (/* binding */ moduleRoutesAtom),
+/* harmony export */   onRegisterModuleWriteAtom: () => (/* binding */ onRegisterModuleWriteAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+
+
+var chromeModulesAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)({});
+var moduleRoutesAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)([]);
+var onRegisterModuleWriteAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(null, function(get, set, payload) {
+    var modules = get(chromeModulesAtom);
+    var isModuleLoaded = modules === null || modules === void 0 ? void 0 : modules[payload.module];
+    if (!isModuleLoaded && typeof payload.manifestLocation === "string") {
+        set(chromeModulesAtom, _object_spread_props(_object_spread({}, modules), _define_property({}, payload.module, {
+            manifestLocation: payload.manifestLocation
+        })));
+    }
+});
+var loadModulesSchemaWriteAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(null, function(get, set, schema) {
+    var moduleRoutes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.generateRoutesList)(schema);
+    set(moduleRoutesAtom, moduleRoutes);
+    set(chromeModulesAtom, schema);
+});
 
 
 /***/ }),
