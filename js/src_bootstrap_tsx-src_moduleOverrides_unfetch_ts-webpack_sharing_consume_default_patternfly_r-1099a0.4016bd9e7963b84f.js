@@ -2362,8 +2362,7 @@ function login(auth) {
     var scope = (0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.ITLess)() ? [
         "openid"
     ].concat(_to_consumable_array(requiredScopes)) : [
-        "openid",
-        "api.console"
+        "openid"
     ].concat(_to_consumable_array(requiredScopes));
     var partner = getPartnerScope(window.location.pathname);
     if (partner) {
