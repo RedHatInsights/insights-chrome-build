@@ -11332,6 +11332,232 @@ var SatelliteLink = function() {
 
 /***/ }),
 
+/***/ "./src/components/Header/SettingsToggle.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/Header/SettingsToggle.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Dropdown */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Dropdown/@patternfly/react-core/dist/dynamic/components/Dropdown?b1e7");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?cef1");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?5ce2");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Popover */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Popover/@patternfly/react-core/dist/dynamic/components/Popover");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChromeLink/ChromeLink */ "./src/components/ChromeLink/ChromeLink.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+    var target = _object_without_properties_loose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+
+
+
+
+
+
+
+var SettingsToggle = function(props) {
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
+    var dropdownItems = props.dropdownItems.map(function(param, groupIndex) {
+        var title = param.title, items = param.items;
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownGroup, {
+            key: title,
+            label: title
+        }, items.map(function(_param) {
+            var url = _param.url, title = _param.title, onClick = _param.onClick, isHidden = _param.isHidden, isDisabled = _param.isDisabled, _param_rel = _param.rel, rel = _param_rel === void 0 ? "noopener noreferrer" : _param_rel, rest = _object_without_properties(_param, [
+                "url",
+                "title",
+                "onClick",
+                "isHidden",
+                "isDisabled",
+                "rel"
+            ]);
+            return !isHidden ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
+                key: title,
+                ouiaId: title,
+                isDisabled: isDisabled,
+                component: function(param) {
+                    var itemClassName = param.className;
+                    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_5__["default"], _object_spread_props(_object_spread({}, rest), {
+                        className: itemClassName,
+                        href: url,
+                        rel: rel,
+                        isBeta: (0,_utils_common__WEBPACK_IMPORTED_MODULE_6__.isBeta)()
+                    }), title);
+                }
+            }, title) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), {
+                key: "fragment"
+            });
+        }), groupIndex < props.dropdownItems.length - 1 && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_2__.Divider, {
+            key: "divider"
+        }));
+    });
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+        popperProps: {
+            position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_4__.PopoverPosition.right
+        },
+        onOpenChange: setIsOpen,
+        toggle: function(toggleRef) {
+            var _props_id;
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__.MenuToggle, {
+                ref: toggleRef,
+                variant: props.icon ? "plain" : "default",
+                className: props.className,
+                id: (_props_id = props.id) === null || _props_id === void 0 ? void 0 : _props_id.toString(),
+                onClick: function() {
+                    setIsOpen(function(prev) {
+                        return !prev;
+                    });
+                },
+                "aria-label": props.ariaLabel,
+                isExpanded: isOpen
+            }, props.icon && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(props.icon, null));
+        },
+        isOpen: isOpen,
+        onSelect: function() {
+            setIsOpen(function(prev) {
+                return !prev;
+            });
+        },
+        ouiaId: props.ouiaId
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownList, null, dropdownItems));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SettingsToggle);
+
+
+/***/ }),
+
 /***/ "./src/components/Header/ToolbarToggle.tsx":
 /*!*************************************************!*\
   !*** ./src/components/Header/ToolbarToggle.tsx ***!
@@ -11611,22 +11837,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_redhat_icon__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_redhat_icon__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _UserToggle__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./UserToggle */ "./src/components/Header/UserToggle.tsx");
 /* harmony import */ var _ToolbarToggle__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ToolbarToggle */ "./src/components/Header/ToolbarToggle.tsx");
-/* harmony import */ var _HeaderAlert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./HeaderAlert */ "./src/components/Header/HeaderAlert.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _SettingsToggle__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./SettingsToggle */ "./src/components/Header/SettingsToggle.tsx");
+/* harmony import */ var _HeaderAlert__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./HeaderAlert */ "./src/components/Header/HeaderAlert.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -11740,10 +11967,11 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)();
+
+var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.ITLess)();
 var switchRelease = function(isBeta, pathname, previewEnabled) {
-    js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_toggledRelease", "true");
-    var previewFragment = (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.getRouterBasename)(pathname);
+    js_cookie__WEBPACK_IMPORTED_MODULE_18__["default"].set("cs_toggledRelease", "true");
+    var previewFragment = (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.getRouterBasename)(pathname);
     if (isBeta) {
         return pathname.replace(previewFragment.includes("beta") ? /\/beta/ : /\/preview/, "");
     } else {
@@ -11784,47 +12012,105 @@ var SettingsButton = function(param) {
         className: "tooltip-button-settings-cy"
     }));
 };
+var ExpandedSettingsButton = function(param) {
+    var settingsMenuDropdownGroups = param.settingsMenuDropdownGroups;
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
+        aria: "none",
+        "aria-live": "polite",
+        content: "Settings",
+        flipBehavior: [
+            "bottom"
+        ],
+        className: "tooltip-inner-settings-cy"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SettingsToggle__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        key: "Settings menu",
+        icon: function() {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_11___default()), null);
+        },
+        id: "SettingsMenu",
+        ariaLabel: "Settings menu",
+        ouiaId: "chrome-settings",
+        hasToggleIndicator: null,
+        "widget-type": "SettingsMenu",
+        dropdownItems: settingsMenuDropdownGroups,
+        className: "tooltip-button-settings-cy"
+    }));
+};
 var Tools = function() {
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
         isInternal: true,
         isRhosakEntitled: false,
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
-    var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.sources.integrations");
-    var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_25__["default"])().xs;
-    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_26__["default"]), user = _useContext.user, token = _useContext.token;
-    var unreadNotifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
+    var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.sources.integrations");
+    var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__["default"])().xs;
+    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_27__["default"]), user = _useContext.user, token = _useContext.token;
+    var unreadNotifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_17__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
         return notifications.data.some(function(item) {
             return !item.read;
         });
     });
-    var isDrawerExpanded = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useSelector)(function(param) {
+    var isDrawerExpanded = (0,react_redux__WEBPACK_IMPORTED_MODULE_17__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
         return notifications === null || notifications === void 0 ? void 0 : notifications.isExpanded;
     });
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_16__.useDispatch)();
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_19__.useIntl)();
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_17__.useDispatch)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_20__.useIntl)();
     var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
     var settingsPath = isITLessEnv ? "/settings/my-user-access" : enableIntegrations ? "/settings/integrations" : "/settings/sources";
     var identityAndAccessManagmentPath = "/iam/user-access/users";
-    var betaSwitcherTitle = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)() ? intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].stopUsing) : intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].use), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].betaRelease));
-    var enableAuthDropdownOption = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.chrome.dropdown.authfactor");
-    var previewEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.chrome.preview");
-    var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_20__.useFlag)("platform.chrome.notifications-drawer");
-    /* list out the items for the settings menu */ var settingsMenuDropdownItems = [
+    var betaSwitcherTitle = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)() ? intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].stopUsing) : intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].use), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].betaRelease));
+    var enableAuthDropdownOption = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.dropdown.authfactor");
+    var enableExpandedSettings = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.expanded-settings");
+    var previewEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.preview");
+    var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.notifications-drawer");
+    /* list out the items for the settings menu */ var settingsMenuDropdownGroups = [
+        {
+            title: "Settings",
+            items: [
+                {
+                    url: "/settings/integrations",
+                    title: "Integrations"
+                },
+                {
+                    url: "/settings/notifications",
+                    title: "Notifications"
+                }
+            ]
+        },
+        {
+            title: "Identity and Access Management",
+            items: [
+                {
+                    url: "/iam/my-user-access",
+                    title: "My User Access"
+                },
+                {
+                    url: identityAndAccessManagmentPath,
+                    title: "User Access"
+                },
+                {
+                    url: "/iam/authentication-policy/authentication-factors",
+                    title: "Authentication Policy"
+                },
+                {
+                    url: "/application-services/service-accounts",
+                    title: "Service Accounts"
+                }
+            ]
+        }
+    ];
+    // Old settings menu
+    var settingsMenuDropdownItems = [
         {
             url: settingsPath,
-            title: "Settings",
-            target: "_self",
-            appId: "sources"
+            title: "Settings"
         }
     ].concat(_to_consumable_array(enableAuthDropdownOption ? [
         {
             url: identityAndAccessManagmentPath,
-            title: "Identity & Access Management",
-            target: "_self",
-            appId: "iam"
+            title: "Identity & Access Management"
         }
     ] : []));
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
@@ -11844,44 +12130,44 @@ var Tools = function() {
     };
     /* list out the items for the about menu */ var aboutMenuDropdownItems = [
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].apiDocumentation),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].apiDocumentation),
             onClick: function() {
                 return window.open("https://developers.redhat.com/api-catalog/", "_blank");
             },
             isHidden: isITLessEnv
         },
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].openSupportCase),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].openSupportCase),
             onClick: function() {
-                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_22__.createSupportCase)(user.identity, token);
+                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_23__.createSupportCase)(user.identity, token);
             },
             isDisabled: window.location.href.includes("/application-services") && !isRhosakEntitled,
             isHidden: isITLessEnv
         },
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].statusPage),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].statusPage),
             onClick: function() {
                 return window.open("https://status.redhat.com/", "_blank");
             },
             isHidden: isITLessEnv
         },
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].supportOptions),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].supportOptions),
             onClick: function() {
                 return window.location.href = supportOptionsUrl();
             }
         },
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].insightsRhelDocumentation),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].insightsRhelDocumentation),
             onClick: function() {
                 return window.open("https://access.redhat.com/documentation/en-us/red_hat_insights", "_blank");
             },
-            isHidden: (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.getSection)() !== "insights" || isITLessEnv
+            isHidden: (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.getSection)() !== "insights" || isITLessEnv
         },
         {
-            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_21__["default"].demoMode),
+            title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_22__["default"].demoMode),
             onClick: function() {
-                return js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_demo", "true") && window.location.reload();
+                return js_cookie__WEBPACK_IMPORTED_MODULE_18__["default"].set("cs_demo", "true") && window.location.reload();
             },
             isHidden: !isDemoAcc
         }
@@ -11898,7 +12184,7 @@ var Tools = function() {
         {
             title: betaSwitcherTitle,
             onClick: function() {
-                return window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)(), location.pathname, previewEnabled);
+                return window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)(), location.pathname, previewEnabled);
             }
         },
         {
@@ -11931,9 +12217,9 @@ var Tools = function() {
             label: "Preview on",
             labelOff: "Preview off",
             "aria-label": "Preview switcher",
-            isChecked: (0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)(),
+            isChecked: (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)(),
             onChange: function() {
-                return window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)(), location.pathname, previewEnabled);
+                return window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)(), location.pathname, previewEnabled);
             },
             isReversed: true,
             className: "chr-c-beta-switcher"
@@ -11971,11 +12257,11 @@ var Tools = function() {
         className: "chr-c-notification-badge",
         variant: unreadNotifications ? "unread" : "read",
         onClick: function() {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_24__.toggleNotificationsDrawer)());
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_25__.toggleNotificationsDrawer)());
         },
         "aria-label": "Notifications",
         isExpanded: isDrawerExpanded
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_23___default()), null)))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_24___default()), null)))), localStorage.getItem("chrome:darkmode") === "true" && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ThemeToggle, null)), isInternal && !(0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.ITLess)() && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
         className: "pf-v5-u-mr-0"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tooltip__WEBPACK_IMPORTED_MODULE_9__.Tooltip, {
         aria: "none",
@@ -11990,7 +12276,9 @@ var Tools = function() {
             default: "hidden",
             md: "visible"
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SettingsButton, {
+    }, enableExpandedSettings ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ExpandedSettingsButton, {
+        settingsMenuDropdownGroups: settingsMenuDropdownGroups
+    }) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SettingsButton, {
         settingsMenuDropdownItems: settingsMenuDropdownItems
     })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_8__.ToolbarItem, {
         className: "pf-v5-u-mr-0",
@@ -12032,9 +12320,9 @@ var Tools = function() {
                 rel: "noopener noreferrer"
             }, action.title));
         })
-    }))), js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].get("cs_toggledRelease") === "true" ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HeaderAlert__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }))), js_cookie__WEBPACK_IMPORTED_MODULE_18__["default"].get("cs_toggledRelease") === "true" ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HeaderAlert__WEBPACK_IMPORTED_MODULE_16__["default"], {
         className: "chr-c-alert-preview",
-        title: "Preview has been ".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)() ? "enabled" : "disabled", "."),
+        title: "Preview has been ".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)() ? "enabled" : "disabled", "."),
         variant: _patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_2__.AlertVariant.info,
         actionLinks: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_2__.AlertActionLink, {
             component: "a",
@@ -12044,11 +12332,11 @@ var Tools = function() {
             title: "Learn more link"
         }, "Learn more"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Alert__WEBPACK_IMPORTED_MODULE_2__.AlertActionLink, {
             onClick: function() {
-                window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)(), location.pathname, previewEnabled);
+                window.location.href = switchRelease((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)(), location.pathname, previewEnabled);
             }
-        }, "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_18__.isBeta)() ? "Disable" : "Enable", " preview"))),
+        }, "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.isBeta)() ? "Disable" : "Enable", " preview"))),
         onDismiss: function() {
-            return js_cookie__WEBPACK_IMPORTED_MODULE_17__["default"].set("cs_toggledRelease", "false");
+            return js_cookie__WEBPACK_IMPORTED_MODULE_18__["default"].set("cs_toggledRelease", "false");
         }
     }) : null);
 };
