@@ -11536,7 +11536,7 @@ var SettingsToggle = function(props) {
                 className: props.className,
                 id: (_props_id = props.id) === null || _props_id === void 0 ? void 0 : _props_id.toString(),
                 onClick: function() {
-                    setIsOpen(function(prev) {
+                    return setIsOpen(function(prev) {
                         return !prev;
                     });
                 },
@@ -11546,7 +11546,7 @@ var SettingsToggle = function(props) {
         },
         isOpen: isOpen,
         onSelect: function() {
-            setIsOpen(function(prev) {
+            return setIsOpen(function(prev) {
                 return !prev;
             });
         },
@@ -12105,12 +12105,14 @@ var Tools = function() {
     var settingsMenuDropdownItems = [
         {
             url: settingsPath,
-            title: "Settings"
+            title: "Settings",
+            appId: "sources"
         }
     ].concat(_to_consumable_array(enableAuthDropdownOption ? [
         {
             url: identityAndAccessManagmentPath,
-            title: "Identity & Access Management"
+            title: "Identity & Access Management",
+            appId: "iam"
         }
     ] : []));
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
