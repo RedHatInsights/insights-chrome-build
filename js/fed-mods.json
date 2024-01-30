@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.a70b1c785ac894d7.js"
+            "/beta/apps/chrome/js/chrome.f5f1c85e75650327.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.afdc470990922d08.js",
