@@ -2930,15 +2930,16 @@ var useFavoritedServices = function() {
         });
     }, []);
     var linksWithFragments = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
+        var internalLinks = _to_consumable_array(allLinks);
         // push items with unique hrefs from our fake bundle for leaf creation
         fakeBundle.forEach(function(item) {
-            if (!allLinks.some(function(link) {
+            if (!internalLinks.some(function(link) {
                 return link.href === item.href;
             })) {
-                allLinks.push(item);
+                internalLinks.push(item);
             }
         });
-        return allLinks.map(function(link) {
+        return internalLinks.map(function(link) {
             var linkLeaf;
             // use every to exit early if match was found
             _to_consumable_array(bundles).concat([
@@ -2966,7 +2967,7 @@ var useFavoritedServices = function() {
     var favoriteServices = favoritePages.reduce(function(acc, curr) {
         var service = linksWithFragments.find(function(service) {
             var _service_href;
-            return !service.isExternal && ((_service_href = service.href) === null || _service_href === void 0 ? void 0 : _service_href.includes(curr.pathname));
+            return !service.isExternal && ((_service_href = service.href) === null || _service_href === void 0 ? void 0 : _service_href.startsWith(curr.pathname));
         });
         // only pick favorite link if it is favorite and application exists in our all services registry
         if (curr.favorite && service) {
