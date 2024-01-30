@@ -12065,6 +12065,8 @@ var Tools = function() {
     var enableExpandedSettings = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.expanded-settings");
     var previewEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.preview");
     var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.notifications-drawer");
+    var enableMyUserAccessLanding = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__.useFlag)("platform.chrome.my-user-access-landing-page");
+    var myUserAccessPath = enableMyUserAccessLanding ? "/iam/user-access/overview" : "/iam/my-user-access";
     /* list out the items for the settings menu */ var settingsMenuDropdownGroups = [
         {
             title: "Settings",
@@ -12083,7 +12085,7 @@ var Tools = function() {
             title: "Identity and Access Management",
             items: [
                 {
-                    url: "/iam/my-user-access",
+                    url: myUserAccessPath,
                     title: "My User Access"
                 },
                 {
@@ -12519,6 +12521,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_15__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -12608,6 +12612,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var DropdownItems = function(param) {
     var _param_username = param.username, username = _param_username === void 0 ? "" : _param_username, isOrgAdmin = param.isOrgAdmin, accountNumber = param.accountNumber, isInternal = param.isInternal, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
     var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.getEnv)();
@@ -12618,6 +12623,8 @@ var DropdownItems = function(param) {
     var accountNumberTooltip = "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].useAccountNumber));
     var questionMarkRef = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)(null);
     var logout = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__["default"]).logout;
+    var enableMyUserAccessLanding = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_15__.useFlag)("platform.chrome.my-user-access-landing-page");
+    var myUserAccessPath = enableMyUserAccessLanding ? "/iam/user-access/overview" : "/iam/my-user-access";
     return [
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "Username",
@@ -12673,7 +12680,7 @@ var DropdownItems = function(param) {
                 var className = param.className;
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     className: className,
-                    href: "/iam/my-user-access",
+                    href: myUserAccessPath,
                     appId: "rbac"
                 }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].myUserAccess));
             },
