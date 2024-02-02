@@ -12614,7 +12614,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 var DropdownItems = function(param) {
-    var _param_username = param.username, username = _param_username === void 0 ? "" : _param_username, isOrgAdmin = param.isOrgAdmin, accountNumber = param.accountNumber, isInternal = param.isInternal, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
+    var _param_username = param.username, username = _param_username === void 0 ? "" : _param_username, isOrgAdmin = param.isOrgAdmin, accountNumber = param.accountNumber, orgId = param.orgId, isInternal = param.isInternal, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
     var env = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.getEnv)();
     var isProd = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.isProd)();
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)();
@@ -12659,7 +12659,16 @@ var DropdownItems = function(param) {
             className: "chr-c-dropdown-item__stack--value sentry-mask data-hj-suppress"
         }, accountNumber)), isInternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
             className: "chr-c-dropdown-item__stack--subValue"
-        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].internalUser)))))),
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].internalUser))))), orgId && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
+            key: "Org ID",
+            isDisabled: true
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dl", {
+            className: "chr-c-dropdown-item__stack"
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
+            className: "chr-c-dropdown-item__stack--header"
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].orgId)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dd", {
+            className: "chr-c-dropdown-item__stack--value"
+        }, orgId)))),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_5__.Divider, {
             component: "li",
             key: "separator"
@@ -12723,7 +12732,7 @@ var DropdownItems = function(param) {
 var UserToggle = function(param) {
     var _param_isSmall = param.isSmall, isSmall = _param_isSmall === void 0 ? false : _param_isSmall, _param_extraItems = param.extraItems, extraItems = _param_extraItems === void 0 ? [] : _param_extraItems;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), 2), isOpen = _useState[0], setIsOpen = _useState[1];
-    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__["default"]), _useContext_user = _useContext.user, _useContext_user_identity = _useContext_user.identity, user = _useContext_user_identity.user, account_number = _useContext_user_identity.account_number;
+    var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__["default"]), _useContext_user = _useContext.user, _useContext_user_identity = _useContext_user.identity, user = _useContext_user_identity.user, account_number = _useContext_user_identity.account_number, internal = _useContext_user_identity.internal;
     var name = (user === null || user === void 0 ? void 0 : user.first_name) + " " + (user === null || user === void 0 ? void 0 : user.last_name);
     var onSelect = function(event) {
         if ([
@@ -12769,6 +12778,7 @@ var UserToggle = function(param) {
         username: user === null || user === void 0 ? void 0 : user.username,
         isOrgAdmin: user === null || user === void 0 ? void 0 : user.is_org_admin,
         accountNumber: account_number,
+        orgId: internal === null || internal === void 0 ? void 0 : internal.org_id,
         isInternal: user === null || user === void 0 ? void 0 : user.is_internal,
         extraItems: extraItems
     })));
