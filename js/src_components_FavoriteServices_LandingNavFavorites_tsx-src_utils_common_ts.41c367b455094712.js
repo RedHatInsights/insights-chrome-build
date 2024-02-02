@@ -212,7 +212,7 @@ function getUrl(type) {
     return type === "bundle" ? sections[1] : sections[2 + isAnsible(sections)];
 }
 var bundleMapping = {
-    "application-services": "Application and Data Services",
+    "application-services": "Application Services",
     openshift: "OpenShift",
     ansible: "Ansible Automation Platform",
     insights: "Red Hat Insights",
