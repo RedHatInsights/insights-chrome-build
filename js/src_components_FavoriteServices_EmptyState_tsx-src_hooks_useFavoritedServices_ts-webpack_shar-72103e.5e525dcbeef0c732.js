@@ -3351,6 +3351,11 @@ __webpack_require__.r(__webpack_exports__);
         description: "Account number:",
         defaultMessage: "Account number:"
     },
+    orgId: {
+        id: "orgId",
+        description: "Org ID:",
+        defaultMessage: "Org ID:"
+    },
     orgAdministrator: {
         id: "orgAdministrator",
         description: "Org. Administrator",
