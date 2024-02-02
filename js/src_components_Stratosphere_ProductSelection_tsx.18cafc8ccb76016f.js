@@ -351,11 +351,11 @@ var productsList = [
     },
     {
         img: "/apps/frontend-assets/logos/logo__application-services.svg",
-        description: "Learn how to access your Application and Data services.",
+        description: "Learn how to access your Application services.",
         link: {
             href: "/application-services/overview",
             appId: "applicationServices",
-            label: "Application and Data Services"
+            label: "Application Services"
         }
     }
 ];
