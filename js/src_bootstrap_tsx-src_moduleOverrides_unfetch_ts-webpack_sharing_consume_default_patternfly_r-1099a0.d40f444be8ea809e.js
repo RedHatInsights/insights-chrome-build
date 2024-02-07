@@ -12661,7 +12661,8 @@ var DropdownItems = function(param) {
             className: "chr-c-dropdown-item__stack--subValue"
         }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].internalUser))))), orgId && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_1__.DropdownItem, {
             key: "Org ID",
-            isDisabled: true
+            isDisabled: true,
+            ouiaId: "chrome-user-org-id"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dl", {
             className: "chr-c-dropdown-item__stack"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("dt", {
