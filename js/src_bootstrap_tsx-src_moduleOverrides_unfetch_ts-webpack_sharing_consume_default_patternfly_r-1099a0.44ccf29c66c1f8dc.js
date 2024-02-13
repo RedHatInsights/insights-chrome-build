@@ -12099,7 +12099,7 @@ var Tools = function() {
                     title: "Authentication Policy"
                 },
                 {
-                    url: "/application-services/service-accounts",
+                    url: "/iam/service-accounts",
                     title: "Service Accounts"
                 }
             ]
