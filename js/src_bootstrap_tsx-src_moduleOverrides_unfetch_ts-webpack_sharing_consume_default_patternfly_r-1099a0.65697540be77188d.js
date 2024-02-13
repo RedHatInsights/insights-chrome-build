@@ -10294,9 +10294,11 @@ var GlobalFilterDropdown = function(param) {
         variant: "link",
         ouiaId: "global-filter-clear",
         onClick: function() {
-            return setValue(function() {
+            var _filter_onFilter;
+            setValue(function() {
                 return {};
             });
+            filter === null || filter === void 0 ? void 0 : (_filter_onFilter = filter.onFilter) === null || _filter_onFilter === void 0 ? void 0 : _filter_onFilter.call(filter, "");
         }
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].clearFilters))))), isOpen && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TagsModal__WEBPACK_IMPORTED_MODULE_11__["default"], {
         isOpen: isOpen,
