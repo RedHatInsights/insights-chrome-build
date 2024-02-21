@@ -18893,12 +18893,12 @@ function _unsupported_iterable_to_array(o, minLen) {
 var useWindowWidth = function() {
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth >= 1450), 2), lg = _useState[0], setLg = _useState[1];
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth >= 768), 2), md = _useState1[0], setMd = _useState1[1];
-    var _useState2 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth < 420), 2), xs = _useState2[0], setXs = _useState2[1];
+    var _useState2 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth < 520), 2), xs = _useState2[0], setXs = _useState2[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var handleResize = function() {
             setLg(window.innerWidth >= 1450);
             setMd(window.innerWidth >= 768);
-            setXs(window.innerWidth < 420);
+            setXs(window.innerWidth < 520);
         };
         window.addEventListener("resize", handleResize);
         (function() {
