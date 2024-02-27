@@ -15975,7 +15975,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
 /* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
 /* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
 /* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
@@ -15996,9 +15996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/useChromeServiceEvents */ "./src/hooks/useChromeServiceEvents.ts");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useTrackPendoUsage */ "./src/hooks/useTrackPendoUsage.ts");
-/* harmony import */ var _hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../hooks/useDisablePendoOnLanding */ "./src/hooks/useDisablePendoOnLanding.ts");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -16258,7 +16257,6 @@ function _ts_generator(thisArg, body) {
 
 
 
-
 var ProductSelection = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_Stratosphere_ProductSelection_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../Stratosphere/ProductSelection */ "./src/components/Stratosphere/ProductSelection.tsx"));
 });
@@ -16301,16 +16299,14 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var internalFilteredTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
     var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__["default"]).analytics;
-    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_29__["default"]);
-    var registerModule = (0,jotai__WEBPACK_IMPORTED_MODULE_31__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_30__.onRegisterModuleWriteAtom);
+    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_28__["default"]);
+    var registerModule = (0,jotai__WEBPACK_IMPORTED_MODULE_30__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_29__.onRegisterModuleWriteAtom);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var mutableChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     // initialize WS event handling
     (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
     // track pendo usage
     (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__["default"])();
-    // disable guides on landing page
-    (0,_hooks_useDisablePendoOnLanding__WEBPACK_IMPORTED_MODULE_28__["default"])();
     function _getNotifications() {
         _getNotifications = _async_to_generator(function() {
             var _notifications_data, notifications, error;
@@ -18504,97 +18500,6 @@ var useChromeServiceEvents = function() {
     ]);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useChromeServiceEvents);
-
-
-/***/ }),
-
-/***/ "./src/hooks/useDisablePendoOnLanding.ts":
-/*!***********************************************!*\
-  !*** ./src/hooks/useDisablePendoOnLanding.ts ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
-
-
-
-
-// interval timing is short because we want to catch the bubble before ASAP so it does not cover the VA button
-var RETRY_ATTEMPS = 2000;
-var RETRY_INTERVAL = 50;
-function retry(fn) {
-    var retriesLeft = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 50, interval = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 100;
-    try {
-        return fn();
-    } catch (error) {
-        var newRetry = retriesLeft - 1;
-        if (newRetry > 0) {
-            setTimeout(function() {
-                retry(fn, newRetry, interval);
-            }, interval);
-        } else {
-            console.error("Pendo retries exhausted: ", error);
-        }
-    }
-}
-var useDisablePendoOnLanding = function() {
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_3__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_2__.activeModuleAtom);
-    var toggleGuides = function() {
-        // push the call to the end of the event loop to make sure the pendo script is loaded and initialized
-        setTimeout(function() {
-            if (window.pendo && activeModule === "landing") {
-                // pendo functions might not be ready for what ever reason, we will have to retry a few times to give it a shot
-                retry(function() {
-                    var _window_pendo, _window_pendo1;
-                    (_window_pendo = window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.setGuidesDisabled(true);
-                    (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : _window_pendo1.stopGuides();
-                });
-            } else if (window.pendo) {
-                retry(function() {
-                    var _window_pendo, _window_pendo1;
-                    (_window_pendo = window.pendo) === null || _window_pendo === void 0 ? void 0 : _window_pendo.setGuidesDisabled(false);
-                    (_window_pendo1 = window.pendo) === null || _window_pendo1 === void 0 ? void 0 : _window_pendo1.startGuides();
-                });
-            }
-        });
-    };
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        var attempt = 0;
-        var interval = undefined;
-        if (window.pendo) {
-            toggleGuides();
-        } else {
-            interval = setInterval(function() {
-                if (attempt < RETRY_ATTEMPS) {
-                    attempt += 1;
-                    if (window.pendo) {
-                        clearInterval(interval);
-                        toggleGuides();
-                    }
-                } else {
-                    clearInterval(interval);
-                }
-            }, RETRY_INTERVAL);
-        }
-        return function() {
-            if (interval && !_utils_consts__WEBPACK_IMPORTED_MODULE_1__.isITLessEnv) {
-                clearInterval(interval);
-            }
-        };
-    }, [
-        activeModule
-    ]);
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useDisablePendoOnLanding);
 
 
 /***/ }),
