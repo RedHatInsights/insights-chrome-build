@@ -5912,14 +5912,22 @@ var AllServicesMenu = function(param) {
     var handleTabClick = function(event, tabIndex) {
         setActiveTabKey(tabIndex);
     };
+    var handleClickOutside = function(event) {
+        var _panelRef_current;
+        if (isOpen && panelRef.current && !((_panelRef_current = panelRef.current) === null || _panelRef_current === void 0 ? void 0 : _panelRef_current.contains(event.target))) {
+            setIsOpen(false);
+        }
+    };
     var onTabClick = function(section, index) {
         setSelectedService(section);
         setActiveTabKey(index);
+        setIsExpanded(false);
     };
     var onToggle = function(_e, isExpanded) {
         setIsExpanded(isExpanded);
     };
     var tabContentRef = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createRef();
+    var panelRef = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(null);
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_common__WEBPACK_IMPORTED_MODULE_16__.AllServicesDropdownContext.Provider, {
         value: {
             onLinkClick: function onLinkClick() {
@@ -5930,10 +5938,12 @@ var AllServicesMenu = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         ref: menuRef,
         className: "pf-v5-u-w-100 chr-c-page__services-nav-dropdown-menu",
-        "data-testid": "chr-c__find-app-service"
+        "data-testid": "chr-c__find-app-service",
+        onClick: handleClickOutside
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Backdrop__WEBPACK_IMPORTED_MODULE_1__.Backdrop, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Panel__WEBPACK_IMPORTED_MODULE_5__.Panel, {
         variant: "raised",
-        className: "pf-v5-u-p-0 chr-c-panel-services-nav"
+        className: "pf-v5-u-p-0 chr-c-panel-services-nav",
+        ref: panelRef
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Panel__WEBPACK_IMPORTED_MODULE_5__.PanelMain, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.Sidebar, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.SidebarPanel, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.StackItem, {
         className: "chr-l-stack__item-browse-all-services pf-v5-u-w-100 pf-v5-u-p-md"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__.TextContent, {
@@ -6114,7 +6124,8 @@ var AllServicesTabs = function(param) {
         onToggle: onToggle,
         toggleText: activeTabTitle,
         role: "region",
-        className: "pf-v5-u-p-md pf-v5-u-pr-0"
+        className: "pf-v5-u-p-md pf-v5-u-pr-0",
+        ouiaId: "all-services-tabs"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
         onClick: function(e) {
             handleTabClick === null || handleTabClick === void 0 ? void 0 : handleTabClick(e, _common__WEBPACK_IMPORTED_MODULE_4__.FAVORITE_TAB_ID);
