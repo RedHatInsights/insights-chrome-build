@@ -1,14 +1,14 @@
 {
   "app_name": "chrome",
   "node_version": ">=16.0.0",
-  "src_hash": "e9986d0729d596b0b8f41d97ddf32788a5cb5ae6",
+  "src_hash": "b7a2b3edd50a4163c1b9985aeddc3a8ebfb1b54c",
   "src_tag": "",
   "src_branch": "master",
   "patternfly_dependencies": ["@patternfly/patternfly@5.1.0","@patternfly/quickstarts@5.1.0","@patternfly/react-charts@7.1.2","@patternfly/react-core@5.1.2","@patternfly/react-icons@5.1.2","@patternfly/react-tokens@5.1.2","pf-4-styles@npm:@patternfly/patternfly@4.224.5"],
   "rh_cloud_services_dependencies": ["@redhat-cloud-services/chrome@1.0.9","@redhat-cloud-services/entitlements-client@1.2.0","@redhat-cloud-services/frontend-components-notifications@4.1.0","@redhat-cloud-services/frontend-components-pdf-generator@4.0.4","@redhat-cloud-services/frontend-components-utilities@4.0.2","@redhat-cloud-services/frontend-components@4.2.2","@redhat-cloud-services/host-inventory-client@1.2.0","@redhat-cloud-services/rbac-client@1.2.0"],
   "travis": {
     "event_type": "push",
-    "build_number": "13190",
-    "build_web_url": "https://app.travis-ci.com/RedHatInsights/insights-chrome/builds/269169278"
+    "build_number": "13217",
+    "build_web_url": "https://app.travis-ci.com/RedHatInsights/insights-chrome/builds/269281843"
   }
 }
