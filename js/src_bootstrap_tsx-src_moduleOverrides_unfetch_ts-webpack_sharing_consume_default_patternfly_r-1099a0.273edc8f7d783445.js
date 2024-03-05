@@ -10933,6 +10933,7 @@ var FeedbackRoute = function() {
     var paths = localStorage.getItem("chrome:experimental:feedback") === "true" ? [
         "*"
     ] : [
+        "/",
         "insights/*",
         "settings/*",
         "openshift/*",
