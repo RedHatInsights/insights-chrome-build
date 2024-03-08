@@ -3774,9 +3774,9 @@ var App = function() {
     });
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), 2), cookieElement = _useState[0], setCookieElement = _useState[1];
     useInitializeAnalytics();
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        var title = typeof documentTitle === "string" ? "".concat(documentTitle, " | ") : "";
-        document.title = "".concat(title, "console.redhat.com");
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        var title = typeof documentTitle === "string" ? "".concat(documentTitle, " | Hybrid Cloud Console") : "Hybrid Cloud Console";
+        document.title = title;
     }, [
         documentTitle
     ]);
@@ -7476,17 +7476,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ErrorComponents/GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
-/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
-function _array_like_to_array(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _array_with_holes(arr) {
-    if (Array.isArray(arr)) return arr;
-}
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -7499,33 +7490,6 @@ function _define_property(obj, key, value) {
         obj[key] = value;
     }
     return obj;
-}
-function _iterable_to_array_limit(arr, i) {
-    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-    if (_i == null) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _s, _e;
-    try {
-        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-        }
-    } catch (err) {
-        _d = true;
-        _e = err;
-    } finally{
-        try {
-            if (!_n && _i["return"] != null) _i["return"]();
-        } finally{
-            if (_d) throw _e;
-        }
-    }
-    return _arr;
-}
-function _non_iterable_rest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _object_spread(target) {
     for(var i = 1; i < arguments.length; i++){
@@ -7542,18 +7506,6 @@ function _object_spread(target) {
     }
     return target;
 }
-function _sliced_to_array(arr, i) {
-    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _unsupported_iterable_to_array(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _array_like_to_array(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
-}
-
 
 
 
@@ -7570,7 +7522,6 @@ function _unsupported_iterable_to_array(o, minLen) {
 // eslint-disable-next-line react/display-name
 var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function(param) {
     var scope = param.scope, module = param.module, scopeClass = param.scopeClass, path = param.path, props = param.props;
-    var _chromeModules_scope;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var setActiveHelpTopicByName = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__.HelpTopicContext).setActiveHelpTopicByName;
     var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__["default"]).user;
@@ -7578,18 +7529,11 @@ var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(func
         var gatewayError = param.chrome.gatewayError;
         return gatewayError;
     });
-    var chromeModules = (0,jotai__WEBPACK_IMPORTED_MODULE_13__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_12__.chromeModulesAtom);
-    var defaultTitle = (chromeModules === null || chromeModules === void 0 ? void 0 : (_chromeModules_scope = chromeModules[scope]) === null || _chromeModules_scope === void 0 ? void 0 : _chromeModules_scope.defaultDocumentTitle) || scope;
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_13__.useAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom), 2), activeModule = _useAtom[0], setActiveModule = _useAtom[1];
+    var setActiveModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useSetAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.batch)(function() {
             // Only trigger update on a first application render before any active module has been selected
             // should be triggered only once per session
-            if (!activeModule) {
-                /**
-           * Default document title update. If application won't update its title chrome sets a title using module config
-           */ dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.updateDocumentTitle)(defaultTitle || "Hybrid Cloud Console"));
-            }
             setActiveModule(scope);
         });
         /**
