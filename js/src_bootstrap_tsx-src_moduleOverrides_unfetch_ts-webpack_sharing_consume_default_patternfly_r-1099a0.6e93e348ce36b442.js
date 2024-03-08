@@ -21448,22 +21448,25 @@ var fetchResults = {};
 var DENIED_CROSS_CHECK = "Access denied from RBAC on cross-access check";
 var AUTH_ALLOWED_ORIGINS = [
     location.origin,
-    "https://api.openshift.com",
-    "https://api.stage.openshift.com"
+    /https:\/\/api(?:\.[a-z]+)?\.openshift(?:[a-z]+)?\.com/
 ];
 var AUTH_EXCLUDED_URLS = [
-    "https://api.openshift.com/api/upgrades_info/",
-    "https://api.stage.openshift.com/api/upgrades_info/"
+    /https:\/\/api(?:\.[a-z]+)?\.openshift(?:[a-z]+)?\.com\/api\/upgrades_info/
 ];
 var isExcluded = function(target) {
-    return AUTH_EXCLUDED_URLS.some(function(url) {
-        return target.includes(url);
+    return AUTH_EXCLUDED_URLS.some(function(regex) {
+        return regex.test(target);
     });
 };
 var verifyTarget = function(originMatch, urlMatch) {
-    return AUTH_ALLOWED_ORIGINS.some(function(origin) {
-        return originMatch.includes(origin);
-    }) && !isExcluded(urlMatch);
+    var isOriginAllowed = AUTH_ALLOWED_ORIGINS.some(function(origin) {
+        if (typeof origin === "string") {
+            return originMatch.includes(origin);
+        } else if (_instanceof(origin, RegExp)) {
+            return origin.test(originMatch);
+        }
+    });
+    return isOriginAllowed && !isExcluded(urlMatch);
 };
 var shouldInjectAuthHeaders = function() {
     var path = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
