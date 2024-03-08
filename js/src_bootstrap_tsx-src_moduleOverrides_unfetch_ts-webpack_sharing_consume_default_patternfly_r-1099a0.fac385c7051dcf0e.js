@@ -13842,48 +13842,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Popover */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Popover/@patternfly/react-core/dist/dynamic/components/Popover");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Icon */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Icon/@patternfly/react-core/dist/dynamic/components/Icon?2f5c");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Badge */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Badge/@patternfly/react-core/dist/dynamic/components/Badge?2d75");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Flex */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Flex/@patternfly/react-core/dist/dynamic/layouts/Flex");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Dropdown */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Dropdown/@patternfly/react-core/dist/dynamic/components/Dropdown?9dfb");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?3e1b");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?36a1");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?41df");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/EmptyState */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/EmptyState/@patternfly/react-core/dist/dynamic/components/EmptyState?b702");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/NotificationDrawer */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/NotificationDrawer/@patternfly/react-core/dist/dynamic/components/NotificationDrawer");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/filter-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/filter-icon/@patternfly/react-icons/dist/dynamic/icons/filter-icon?6c44");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-slash-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-slash-icon/@patternfly/react-icons/dist/dynamic/icons/bell-slash-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-alt-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon?a424");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var lodash_orderBy__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! lodash/orderBy */ "./node_modules/lodash/orderBy.js");
-/* harmony import */ var lodash_orderBy__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(lodash_orderBy__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _NotificationItem__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./NotificationItem */ "./src/components/NotificationsDrawer/NotificationItem.tsx");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _notificationDrawerUtils__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./notificationDrawerUtils */ "./src/components/NotificationsDrawer/notificationDrawerUtils.ts");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Badge */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Badge/@patternfly/react-core/dist/dynamic/components/Badge?2d75");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Flex */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Flex/@patternfly/react-core/dist/dynamic/layouts/Flex");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Dropdown */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Dropdown/@patternfly/react-core/dist/dynamic/components/Dropdown?9dfb");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?3e1b");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?36a1");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?41df");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/EmptyState */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/EmptyState/@patternfly/react-core/dist/dynamic/components/EmptyState?b702");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/NotificationDrawer */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/NotificationDrawer/@patternfly/react-core/dist/dynamic/components/NotificationDrawer");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/filter-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/filter-icon/@patternfly/react-icons/dist/dynamic/icons/filter-icon?6c44");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-slash-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-slash-icon/@patternfly/react-icons/dist/dynamic/icons/bell-slash-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon/@patternfly/react-icons/dist/dynamic/icons/external-link-square-alt-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon?a424");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var lodash_orderBy__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! lodash/orderBy */ "./node_modules/lodash/orderBy.js");
+/* harmony import */ var lodash_orderBy__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(lodash_orderBy__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _NotificationItem__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./NotificationItem */ "./src/components/NotificationsDrawer/NotificationItem.tsx");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var _notificationDrawerUtils__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./notificationDrawerUtils */ "./src/components/NotificationsDrawer/notificationDrawerUtils.ts");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -13993,22 +13989,20 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-
-
 var EmptyNotifications = function() {
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9__.EmptyState, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9__.EmptyStateIcon, {
-        icon: (_patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_15___default())
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_12__.Title, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8__.EmptyState, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8__.EmptyStateIcon, {
+        icon: (_patternfly_react_icons_dist_dynamic_icons_bell_slash_icon__WEBPACK_IMPORTED_MODULE_14___default())
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_11__.Title, {
         headingLevel: "h4",
         size: "lg"
-    }, "No notifications found"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_9__.EmptyStateBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_8__.Button, {
+    }, "No notifications found"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_8__.EmptyStateBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_7__.Button, {
         component: "a",
         variant: "link",
-        icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_16___default()), null),
+        icon: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_square_alt_icon__WEBPACK_IMPORTED_MODULE_15___default()), null),
         iconPosition: "right",
         href: "./user-preferences/notifications",
         target: "_blank"
-    }, "Check your User Preferences"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_11__.Text, null, "Contact your Organization Administrator")));
+    }, "Check your User Preferences"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_10__.Text, null, "Contact your Organization Administrator")));
 };
 var DrawerPanelBase = function(param) {
     var innerRef = param.innerRef;
@@ -14017,13 +14011,13 @@ var DrawerPanelBase = function(param) {
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isFilterDropdownOpen = _useState1[0], setIsFilterDropdownOpen = _useState1[1];
     var _useState2 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), 2), activeFilters = _useState2[0], setActiveFilters = _useState2[1];
     var _useState3 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), 2), filteredNotifications = _useState3[0], setFilteredNotifications = _useState3[1];
-    var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_20__.useNavigate)();
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_13__.useDispatch)();
-    var notifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_13__.useSelector)(function(param) {
+    var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_18__.useNavigate)();
+    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_12__.useDispatch)();
+    var notifications = (0,react_redux__WEBPACK_IMPORTED_MODULE_12__.useSelector)(function(param) {
         var notifications = param.chrome.notifications;
         return (notifications === null || notifications === void 0 ? void 0 : notifications.data) || [];
     });
-    var auth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_24__["default"]);
+    var auth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__["default"]);
     var isOrgAdmin = auth === null || auth === void 0 ? void 0 : (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : (_auth_user_identity = _auth_user.identity) === null || _auth_user_identity === void 0 ? void 0 : (_auth_user_identity_user = _auth_user_identity.user) === null || _auth_user_identity_user === void 0 ? void 0 : _auth_user_identity_user.is_org_admin;
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var modifiedNotifications = (activeFilters || []).reduce(function(acc, chosenFilter) {
@@ -14038,14 +14032,14 @@ var DrawerPanelBase = function(param) {
     ]);
     var onNotificationsDrawerClose = function() {
         setActiveFilters([]);
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_22__.toggleNotificationsDrawer)());
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_20__.toggleNotificationsDrawer)());
     };
     var onMarkAllAsRead = function() {
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_22__.markAllNotificationsAsRead)());
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_20__.markAllNotificationsAsRead)());
         setIsDropdownOpen(false);
     };
     var onMarkAllAsUnread = function() {
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_22__.markAllNotificationsAsUnread)());
+        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_20__.markAllNotificationsAsUnread)());
         setIsDropdownOpen(false);
     };
     var onFilterSelect = function(chosenFilter) {
@@ -14060,63 +14054,53 @@ var DrawerPanelBase = function(param) {
         onNotificationsDrawerClose();
     };
     var dropdownItems = [
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
+            key: "actions",
+            description: "Actions"
+        }),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "read all",
             onClick: onMarkAllAsRead,
             isDisabled: notifications.length === 0
         }, "Mark visible as read"),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "unread all",
             onClick: onMarkAllAsUnread,
             isDisabled: notifications.length === 0
         }, "Mark visible as unread"),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7__.Divider, {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__.Divider, {
             key: "divider"
         }),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
+            key: "quick links",
+            description: "Quick links"
+        }),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "event log",
             onClick: function() {
                 return onNavigateTo("/settings/notifications/eventlog");
             }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, null, "View event log"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, {
-            align: {
-                default: "alignRight"
-            }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-            className: "pf-v5-u-ml-auto"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17___default()), null))))),
-        isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, "View event log"))),
+        isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "notification settings",
             onClick: function() {
                 return onNavigateTo("/settings/notifications/configure-events");
             }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, null, "Configure notification settings"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, {
-            align: {
-                default: "alignRight"
-            }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-            className: "pf-v5-u-ml-auto"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17___default()), null))))),
-        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, "Configure notification settings"))),
+        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "notification preferences",
             onClick: function() {
                 return onNavigateTo("/settings/notifications/user-preferences");
             }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, null, "Manage my notification preferences"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_4__.FlexItem, {
-            align: {
-                default: "alignRight"
-            }
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-            className: "pf-v5-u-ml-auto"
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_17___default()), null)))))
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, "Manage my notification preferences")))
     ];
     var filterDropdownItems = function() {
         return [
-            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownGroup, {
+            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownGroup, {
                 key: "filter-label",
                 label: "Show notifications for..."
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownList, null, _notificationDrawerUtils__WEBPACK_IMPORTED_MODULE_23__.filterConfig.map(function(source) {
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownList, null, _notificationDrawerUtils__WEBPACK_IMPORTED_MODULE_21__.filterConfig.map(function(source) {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
                     key: source.value,
                     onClick: function() {
                         return onFilterSelect(source.value);
@@ -14125,7 +14109,7 @@ var DrawerPanelBase = function(param) {
                     isSelected: activeFilters.includes(source.value),
                     hasCheckbox: true
                 }, source.title);
-            }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7__.Divider, null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownItem, {
+            }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__.Divider, null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
                 key: "reset-filters",
                 isDisabled: activeFilters.length === 0,
                 onClick: function() {
@@ -14138,7 +14122,7 @@ var DrawerPanelBase = function(param) {
         if (notifications.length === 0) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(EmptyNotifications, null);
         }
-        var sortedNotifications = lodash_orderBy__WEBPACK_IMPORTED_MODULE_19___default()((activeFilters === null || activeFilters === void 0 ? void 0 : activeFilters.length) > 0 ? filteredNotifications : notifications, [
+        var sortedNotifications = lodash_orderBy__WEBPACK_IMPORTED_MODULE_17___default()((activeFilters === null || activeFilters === void 0 ? void 0 : activeFilters.length) > 0 ? filteredNotifications : notifications, [
             "read",
             "created"
         ], [
@@ -14146,24 +14130,24 @@ var DrawerPanelBase = function(param) {
             "asc"
         ]);
         return sortedNotifications.map(function(notification) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NotificationItem__WEBPACK_IMPORTED_MODULE_21__["default"], {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NotificationItem__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 key: notification.id,
                 notification: notification,
                 onNavigateTo: onNavigateTo
             });
         });
     };
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__.NotificationDrawer, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__.NotificationDrawer, {
         ref: innerRef
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__.NotificationDrawerHeader, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__.NotificationDrawerHeader, {
         onClose: onNotificationsDrawerClose,
         title: "Notifications",
         className: "pf-u-align-items-center"
-    }, activeFilters.length > 0 && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_3__.Badge, {
+    }, activeFilters.length > 0 && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2__.Badge, {
         isRead: true
-    }, activeFilters.length), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.Dropdown, {
+    }, activeFilters.length), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.Dropdown, {
         toggle: function(toggleRef) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6__.MenuToggle, {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__.MenuToggle, {
                 ref: toggleRef,
                 onClick: function() {
                     return setIsFilterDropdownOpen(!isFilterDropdownOpen);
@@ -14171,7 +14155,7 @@ var DrawerPanelBase = function(param) {
                 id: "notifications-filter-toggle",
                 variant: "plain",
                 "aria-label": "Notifications filter"
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_14___default()), null));
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_filter_icon__WEBPACK_IMPORTED_MODULE_13___default()), null));
         },
         isOpen: isFilterDropdownOpen,
         onOpenChange: setIsFilterDropdownOpen,
@@ -14179,9 +14163,9 @@ var DrawerPanelBase = function(param) {
             position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__.PopoverPosition.right
         },
         id: "notifications-filter-dropdown"
-    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.Dropdown, {
+    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.Dropdown, {
         toggle: function(toggleRef) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_6__.MenuToggle, {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__.MenuToggle, {
                 ref: toggleRef,
                 onClick: function() {
                     return setIsDropdownOpen(!isDropdownOpen);
@@ -14190,7 +14174,7 @@ var DrawerPanelBase = function(param) {
                 id: "notifications-actions-toggle",
                 "aria-label": "Notifications actions dropdown",
                 isFullWidth: true
-            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_18___default()), null));
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_16___default()), null));
         },
         isOpen: isDropdownOpen,
         onOpenChange: setIsDropdownOpen,
@@ -14198,7 +14182,7 @@ var DrawerPanelBase = function(param) {
             position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__.PopoverPosition.right
         },
         id: "notifications-actions-dropdown"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_5__.DropdownList, null, dropdownItems))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__.NotificationDrawerBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_10__.NotificationDrawerList, null, renderNotifications())));
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownList, null, dropdownItems))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__.NotificationDrawerBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_9__.NotificationDrawerList, null, renderNotifications())));
 };
 var DrawerPanel = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function(props, innerRef) {
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DrawerPanelBase, _object_spread({
