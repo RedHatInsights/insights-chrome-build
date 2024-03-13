@@ -1,4 +1,4 @@
-(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_components_FavoriteServices_EmptyState_tsx-src_hooks_useFavoritedServices_ts-webpack_shar-72103e"],{
+(self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_components_FavoriteServices_EmptyState_tsx-src_hooks_useFavoritedServices_ts-webpack_shar-aa35ff"],{
 
 /***/ "./src/components/FavoriteServices/EmptyState.scss":
 /*!*********************************************************!*\
@@ -2983,7 +2983,8 @@ var useFavoritedServices = function() {
                 {
                     name: title,
                     pathname: curr.pathname,
-                    description: service.description
+                    description: service.description,
+                    icon: service.icon
                 }
             ]);
         }
