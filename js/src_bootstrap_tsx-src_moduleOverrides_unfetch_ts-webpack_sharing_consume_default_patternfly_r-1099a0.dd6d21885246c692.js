@@ -5349,9 +5349,15 @@ var AllServicesDropdown = function() {
         isOpen,
         menuRef
     ]);
-    var onToggleClick = function(ev) {
-        ev.stopPropagation();
-        setIsOpen(!isOpen);
+    var onToggleClick = function() {
+        /**
+     * Why timeout?
+     * We need to wait for the click event to propagate to the document and close any other open dropdowns.
+     * The set state must be pushed to the end of the que. Otherwise the handleClickOutside will be called after the dropdown
+     * was opened and it will close it again.
+     */ setTimeout(function() {
+            setIsOpen(!isOpen);
+        });
     };
     var toggle = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__.MenuToggle, {
         className: "pf-v5-u-h-100 chr-c-link-service-toggle pf-v5-u-pl-lg pf-v5-u-pr-lg",
