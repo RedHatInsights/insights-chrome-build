@@ -91,6 +91,7 @@ var blankUser = {
     }
 };
 var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+    ssoUrl: "",
     ready: false,
     logoutAllTabs: function() {
         return undefined;

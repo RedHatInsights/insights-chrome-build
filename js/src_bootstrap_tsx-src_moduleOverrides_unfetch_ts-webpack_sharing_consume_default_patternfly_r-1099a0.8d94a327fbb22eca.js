@@ -1458,6 +1458,7 @@ var OIDCProvider = function(param) {
         });
     }
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_oidc_context__WEBPACK_IMPORTED_MODULE_2__.AuthProvider, authProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OIDCSecured__WEBPACK_IMPORTED_MODULE_5__.OIDCSecured, {
+        ssoUrl: state.ssoUrl,
         cookieElement: cookieElement,
         setCookieElement: setCookieElement,
         microFrontendConfig: state.microFrontendConfig
@@ -1840,7 +1841,7 @@ function _fetchEntitlements() {
     return _fetchEntitlements.apply(this, arguments);
 }
 function OIDCSecured(param) {
-    var children = param.children, microFrontendConfig = param.microFrontendConfig, cookieElement = param.cookieElement, setCookieElement = param.setCookieElement;
+    var children = param.children, microFrontendConfig = param.microFrontendConfig, cookieElement = param.cookieElement, setCookieElement = param.setCookieElement, ssoUrl = param.ssoUrl;
     var _activeModule_config, _authRef_current_user, _authRef_current_user1;
     var auth = (0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.useAuth)();
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
@@ -1852,6 +1853,7 @@ function OIDCSecured(param) {
     var requiredScopes = (activeModule === null || activeModule === void 0 ? void 0 : (_activeModule_config = activeModule.config) === null || _activeModule_config === void 0 ? void 0 : _activeModule_config.ssoScopes) || [];
     var _authRef_current_user_access_token, _authRef_current_user_expires_at, _authRef_current_user2;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+        ssoUrl: ssoUrl,
         ready: false,
         logoutAllTabs: function() {
             var bounce = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : true;
@@ -4175,7 +4177,17 @@ var createChromeContext = function(param) {
             return (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnv)();
         },
         getEnvironmentDetails: function() {
-            return (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnvDetails)();
+            var environment = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnvDetails)();
+            if (environment && chromeAuth.ssoUrl) {
+                environment.sso = chromeAuth.ssoUrl;
+            } else {
+                environment = {
+                    url: [],
+                    portal: "undefined",
+                    sso: chromeAuth.ssoUrl
+                };
+            }
+            return environment;
         },
         createCase: function(fields) {
             return chromeAuth.getUser().then(function(user) {
