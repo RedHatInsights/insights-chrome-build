@@ -1,6 +1,18 @@
 "use strict";
 (self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_components_FavoriteServices_DashboardFavorites_tsx"],{
 
+/***/ "./src/components/FavoriteServices/DashboardFavorites.scss":
+/*!*****************************************************************!*\
+  !*** ./src/components/FavoriteServices/DashboardFavorites.scss ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/components/FavoriteServices/DashboardFavorites.tsx":
 /*!****************************************************************!*\
   !*** ./src/components/FavoriteServices/DashboardFavorites.tsx ***!
@@ -25,6 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _ServiceIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ServiceIcon */ "./src/components/FavoriteServices/ServiceIcon.tsx");
+/* harmony import */ var _DashboardFavorites_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DashboardFavorites.scss */ "./src/components/FavoriteServices/DashboardFavorites.scss");
+
 
 
 
@@ -41,9 +55,7 @@ var DashboardFavorites = function() {
     };
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, favoritedServices.length === 0 ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_FavoriteServices_EmptyState__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__.Gallery, {
         hasGutter: true,
-        maxWidths: {
-            default: "350px"
-        }
+        className: "widget-favorites pf-v5-u-m-md"
     }, favoritedServices.map(function(favorite, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__.GalleryItem, {
             key: index
