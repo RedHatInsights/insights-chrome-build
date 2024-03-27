@@ -10090,7 +10090,8 @@ var FeedbackRoute = function() {
         "openshift/*",
         "application-services/*",
         "ansible/*",
-        "edge/*"
+        "edge/*",
+        "subscriptions/*"
     ];
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, paths.map(function(path) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
