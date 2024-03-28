@@ -3839,6 +3839,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
 /* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
 /* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pdf/requestPdf */ "./src/pdf/requestPdf.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4091,6 +4092,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var createChromeContext = function(param) {
     var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, registerModule = param.registerModule, chromeAuth = param.chromeAuth;
     var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(chromeAuth.getUser);
@@ -4290,7 +4292,8 @@ var createChromeContext = function(param) {
         },
         enablePackagesDebug: function() {
             return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__.warnDuplicatePkg)();
-        }
+        },
+        requestPdf: _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_18__["default"]
     });
     return api;
 };
@@ -18668,6 +18671,337 @@ var SatelliteToken = function() {
  * This is required for the segment analytics
  * It uses the unfetch library which is not compatbile with our fecth library and fails to initialize the browser client.
  * */ module.exports = window.fetch;
+
+
+/***/ }),
+
+/***/ "./src/pdf/requestPdf.ts":
+/*!*******************************!*\
+  !*** ./src/pdf/requestPdf.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+    var target = _object_without_properties_loose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+var downloadPDF = function() {
+    var _ref = _async_to_generator(function(url) {
+        var filename, resp, result, blob, hiddenLink;
+        var _arguments = arguments;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    filename = _arguments.length > 1 && _arguments[1] !== void 0 ? _arguments[1] : "report.pdf";
+                    return [
+                        4,
+                        fetch(url)
+                    ];
+                case 1:
+                    resp = _state.sent();
+                    if (!!resp.ok) return [
+                        3,
+                        3
+                    ];
+                    return [
+                        4,
+                        resp.json()
+                    ];
+                case 2:
+                    result = _state.sent();
+                    console.error(result);
+                    throw new Error("Failed to download PDF. Check console for more details.");
+                case 3:
+                    return [
+                        4,
+                        resp.blob()
+                    ];
+                case 4:
+                    blob = _state.sent();
+                    hiddenLink = document.createElement("a");
+                    hiddenLink.href = window.URL.createObjectURL(blob);
+                    hiddenLink.download = filename;
+                    document.body.appendChild(hiddenLink);
+                    hiddenLink.click();
+                    hiddenLink.remove();
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return function downloadPDF(url) {
+        return _ref.apply(this, arguments);
+    };
+}();
+var pollStatus = function() {
+    var _ref = _async_to_generator(function(statusID) {
+        return _ts_generator(this, function(_state) {
+            return [
+                2,
+                new Promise(function(resolve, reject) {
+                    var interval = setInterval(/*#__PURE__*/ _async_to_generator(function() {
+                        var _ref, _ref_data, data, error;
+                        return _ts_generator(this, function(_state) {
+                            switch(_state.label){
+                                case 0:
+                                    _state.trys.push([
+                                        0,
+                                        2,
+                                        ,
+                                        3
+                                    ]);
+                                    return [
+                                        4,
+                                        axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/crc-pdf-generator/v2/status/".concat(statusID))
+                                    ];
+                                case 1:
+                                    _ref = _state.sent(), _ref_data = _ref.data, data = _ref_data.status;
+                                    if (data.status === "Generated") {
+                                        clearInterval(interval);
+                                        resolve(data);
+                                    }
+                                    if (data.status.includes("Failed")) {
+                                        clearInterval(interval);
+                                        reject(new Error(data.status));
+                                    }
+                                    return [
+                                        3,
+                                        3
+                                    ];
+                                case 2:
+                                    error = _state.sent();
+                                    clearInterval(interval);
+                                    reject(error);
+                                    return [
+                                        3,
+                                        3
+                                    ];
+                                case 3:
+                                    return [
+                                        2
+                                    ];
+                            }
+                        });
+                    }), 10000);
+                })
+            ];
+        });
+    });
+    return function pollStatus(statusID) {
+        return _ref.apply(this, arguments);
+    };
+}();
+var requestPdf = function() {
+    var _ref = _async_to_generator(function(options) {
+        var filename, rest, _ref, statusID, status, error;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    filename = options.filename, rest = _object_without_properties(options, [
+                        "filename"
+                    ]);
+                    _state.label = 1;
+                case 1:
+                    _state.trys.push([
+                        1,
+                        4,
+                        ,
+                        5
+                    ]);
+                    return [
+                        4,
+                        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/crc-pdf-generator/v2/create", rest)
+                    ];
+                case 2:
+                    _ref = _state.sent(), statusID = _ref.data.statusID;
+                    return [
+                        4,
+                        pollStatus(statusID)
+                    ];
+                case 3:
+                    status = _state.sent().status;
+                    if (status === "Generated") {
+                        downloadPDF("/api/crc-pdf-generator/v2/download/".concat(statusID), filename);
+                    }
+                    return [
+                        3,
+                        5
+                    ];
+                case 4:
+                    error = _state.sent();
+                    console.log(error);
+                    return [
+                        3,
+                        5
+                    ];
+                case 5:
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return function requestPdf(options) {
+        return _ref.apply(this, arguments);
+    };
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (requestPdf);
 
 
 /***/ }),
