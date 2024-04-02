@@ -37,6 +37,64 @@ var ACSIcon = function() {
 
 /***/ }),
 
+/***/ "./src/components/AllServicesDropdown/icon-ai-technology.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/components/AllServicesDropdown/icon-ai-technology.tsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var AITechnologyIcon = function() {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "28",
+        height: "28",
+        viewBox: "0 0 38 38"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", {
+        id: "uuid-fb69441b-b57f-4918-99bb-aad41e7175f0"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", {
+        x: "1",
+        y: "1",
+        width: "36",
+        height: "36",
+        rx: "9",
+        ry: "9",
+        strokeWidth: "0"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+        d: "m28,2.25c4.27336,0,7.75,3.47664,7.75,7.75v18c0,4.27336-3.47664,7.75-7.75,7.75H10c-4.27336,0-7.75-3.47664-7.75-7.75V10c0-4.27336,3.47664-7.75,7.75-7.75h18m0-1.25H10C5.02944,1,1,5.02943,1,10v18c0,4.97057,4.02944,9,9,9h18c4.97056,0,9-4.02943,9-9V10c0-4.97057-4.02944-9-9-9h0Z",
+        fill: "#4d4d4d",
+        strokeWidth: "0"
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", {
+        id: "uuid-2ba0340d-2b48-4a88-9260-2cfffdbae283"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+        d: "m19,29.625c-.10449,0-.20898-.02637-.30371-.07861l-9-5c-.20264-.11279-.32617-.32812-.32129-.56006.00537-.23193.13818-.44189.3457-.54541l2-1c.30859-.15381.68506-.02832.83838.27979.1543.30859.0293.68408-.27979.83838l-.93994.47021,7.66064,4.25586,7.66113-4.25586-.94043-.47021c-.30859-.1543-.43457-.52979-.2793-.83838.1543-.31006.53125-.43262.83789-.27979l2,1c.20801.10352.34082.31348.3457.54541s-.11914.44727-.32129.56006l-9,5c-.09473.05225-.19922.07861-.30371.07861Z",
+        fill: "#e00",
+        strokeWidth: "0"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+        d: "m19.15332,21.39404c-.33887-.08643-.6748.11865-.75928.45264-.20068.79443-.79541,1.39893-1.51416,1.54004-1.02734.20117-2.06396-.65674-2.27197-1.53076-.05322-.22607-.05273-.46924.00293-.72266.00659-.03027-.00073-.05914.00134-.08917.00299-.04205.00726-.08258.00183-.1236-.00525-.04016-.01801-.07629-.0307-.11414-.0127-.03827-.02405-.07526-.04382-.11029-.01965-.03497-.04541-.06378-.07141-.09442-.02582-.03052-.04999-.0603-.08167-.08557-.03271-.02625-.07013-.04376-.10822-.06323-.02631-.01343-.04675-.03436-.07556-.04419-.5177-.17749-.97192-.45697-1.35571-.79919.0517.00305.10065.0155.15308.0155,1.44727,0,2.625-1.17773,2.625-2.625,0-.34521-.27979-.625-.625-.625s-.625.27979-.625.625c0,.7583-.6167,1.375-1.375,1.375-.75385,0-1.36646-.6098-1.37366-1.36194-.00006-.00507-.00134-.00995-.00134-.01501-.00586-1.66943,1.32764-3.18848,2.47852-3.38184.29053-.04785.64404-.021.80615.00244.76904.1123,1.32617.51465,1.6582.83252.24902.23926.64404.23096.8833-.01904.23877-.24902.23047-.64453-.01904-.8833-.46338-.44434-1.24561-1.00684-2.34229-1.16748-.10547-.0166-.6582-.08789-1.19336.00244-.06549.01099-.13196.04083-.19788.05688.25311-1.03925,1.18536-1.81567,2.30139-1.81567,1.30957,0,2.375,1.06543,2.375,2.375,0,.02484.01135.04596.01416.07001.00488.04248.01147.08246.02466.12231.01257.03827.02881.07251.04816.10712.01953.0351.0401.06714.06598.09784.026.03094.05432.05682.08582.08221.03064.02478.0614.04639.09668.06519.03741.01996.07605.03339.11743.04553.02295.00677.04156.02136.06567.02551.03558.00623.07062.00903.10571.00916.00024,0,.00049.00012.00073.00012.00012,0,.00018-.00006.00031-.00006.00024,0,.00043.00006.00067.00006.08008,0,.15649-.01776.22833-.04633.02466-.00977.04431-.02618.06732-.03888.04413-.02429.08661-.04926.12378-.08344.02185-.02008.03796-.04382.05676-.06683.02966-.03607.05658-.07257.07776-.11523.01434-.02875.02295-.05872.03278-.08978.00842-.02667.02356-.04968.0285-.07806.26855-1.55762,1.4082-2.48145,2.36133-2.48145h.01562c.75293.00781,1.33008.55762,1.54297.79346.23047.25732.625.27588.88281.04541.25586-.23096.27637-.62646.04492-.88232-.32324-.3584-1.20996-1.19336-2.45703-1.20654h-.03027c-1.1449,0-2.20697.68921-2.89203,1.74573-.63739-1.04224-1.77582-1.74573-3.08453-1.74573-1.99902,0-3.625,1.62598-3.625,3.625,0,.0282.01245.05225.01605.07947-1.1131.8244-2.01984,2.26544-2.01575,3.91888,0,.00061-.00031.00104-.00031.00165,0,.00031.00012.00061.00012.00092,0,.00037-.00012.00067-.00012.00104.00629,1.88336,1.18011,3.58411,2.95685,4.38977-.0105.2558.00208.50848.06024.75281.30664,1.29199,1.62891,2.52344,3.16943,2.52344.18359,0,.37061-.01758.55859-.05469,1.19141-.23389,2.16699-1.19922,2.48535-2.45996.08496-.33447-.11719-.6748-.45215-.75928Z",
+        fill: "#fff",
+        strokeWidth: "0"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+        d: "m20.62372,17.14917l.763-1.52417h2.15021c.27264.5885.86511,1,1.55487,1,.94629,0,1.7168-.77002,1.7168-1.7168s-.77051-1.7168-1.7168-1.7168c-.75909,0-1.39758.49884-1.62341,1.18359h-2.46838c-.23633,0-.45312.13379-.55859.3457l-.78668,1.5733c-.17731-.06207-.36475-.1026-.56293-.1026-.94678,0-1.7168.77002-1.7168,1.7168s.77002,1.7168,1.7168,1.7168c.94629,0,1.7168-.77002,1.7168-1.7168,0-.2738-.07037-.52917-.18488-.75903Zm4.46808-2.70776c.25781,0,.4668.20947.4668.4668s-.20898.4668-.4668.4668-.4668-.20947-.4668-.4668.20898-.4668.4668-.4668Zm-6,3.93359c-.25732,0-.4668-.20947-.4668-.4668s.20947-.4668.4668-.4668c.25781,0,.4668.20947.4668.4668s-.20898.4668-.4668.4668Z",
+        fill: "#fff",
+        strokeWidth: "0"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+        d: "m25.0918,17.375c-.68976,0-1.28223.4115-1.55487,1h-1.53693c-.34473,0-.625.27979-.625.625v2.53693c-.58838.27258-1,.86481-1,1.55487,0,.94678.77051,1.7168,1.7168,1.7168s1.7168-.77002,1.7168-1.7168c0-.75946-.49902-1.39771-1.18359-1.62347v-1.84332h.84338c.22583.68475.86432,1.18359,1.62341,1.18359.94629,0,1.7168-.77002,1.7168-1.7168s-.77051-1.7168-1.7168-1.7168Zm-3,6.18359c-.25781,0-.4668-.20947-.4668-.4668s.20898-.4668.4668-.4668.4668.20947.4668.4668-.20898.4668-.4668.4668Zm3-4c-.25781,0-.4668-.20947-.4668-.4668s.20898-.4668.4668-.4668.4668.20947.4668.4668-.20898.4668-.4668.4668Z",
+        fill: "#fff",
+        strokeWidth: "0"
+    })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AITechnologyIcon);
+
+
+/***/ }),
+
 /***/ "./src/components/AllServicesDropdown/icon-ansible.tsx":
 /*!*************************************************************!*\
   !*** ./src/components/AllServicesDropdown/icon-ansible.tsx ***!
@@ -682,48 +740,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _AllServicesDropdown_icon_placeholder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AllServicesDropdown/icon-placeholder */ "./src/components/AllServicesDropdown/icon-placeholder.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_acs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AllServicesDropdown/icon-acs */ "./src/components/AllServicesDropdown/icon-acs.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_ansible__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AllServicesDropdown/icon-ansible */ "./src/components/AllServicesDropdown/icon-ansible.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_app_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AllServicesDropdown/icon-app-services */ "./src/components/AllServicesDropdown/icon-app-services.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_data_science__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AllServicesDropdown/icon-data-science */ "./src/components/AllServicesDropdown/icon-data-science.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_edge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AllServicesDropdown/icon-edge */ "./src/components/AllServicesDropdown/icon-edge.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_insights__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../AllServicesDropdown/icon-insights */ "./src/components/AllServicesDropdown/icon-insights.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_openshift__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../AllServicesDropdown/icon-openshift */ "./src/components/AllServicesDropdown/icon-openshift.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_quay_io__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../AllServicesDropdown/icon-quay-io */ "./src/components/AllServicesDropdown/icon-quay-io.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_rh__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../AllServicesDropdown/icon-rh */ "./src/components/AllServicesDropdown/icon-rh.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_services__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../AllServicesDropdown/icon-services */ "./src/components/AllServicesDropdown/icon-services.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_subscriptions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../AllServicesDropdown/icon-subscriptions */ "./src/components/AllServicesDropdown/icon-subscriptions.tsx");
-/* harmony import */ var _AllServicesDropdown_icon_trusted_content__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../AllServicesDropdown/icon-trusted-content */ "./src/components/AllServicesDropdown/icon-trusted-content.tsx");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/boxes-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/boxes-icon/@patternfly/react-icons/dist/dynamic/icons/boxes-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/chart-line-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/chart-line-icon/@patternfly/react-icons/dist/dynamic/icons/chart-line-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cloud-security-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cloud-security-icon/@patternfly/react-icons/dist/dynamic/icons/cloud-security-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon/@patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cog-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cog-icon/@patternfly/react-icons/dist/dynamic/icons/cog-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/credit-card-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/credit-card-icon/@patternfly/react-icons/dist/dynamic/icons/credit-card-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cube-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cube-icon/@patternfly/react-icons/dist/dynamic/icons/cube-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/lightbulb-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/infrastructure-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/rocket-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/rocket-icon/@patternfly/react-icons/dist/dynamic/icons/rocket-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon/@patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/users-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/users-icon/@patternfly/react-icons/dist/dynamic/icons/users-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/monitoring-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/monitoring-icon/@patternfly/react-icons/dist/dynamic/icons/monitoring-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/automation-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/automation-icon/@patternfly/react-icons/dist/dynamic/icons/automation-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _AllServicesDropdown_icon_ai_technology__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AllServicesDropdown/icon-ai-technology */ "./src/components/AllServicesDropdown/icon-ai-technology.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_acs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AllServicesDropdown/icon-acs */ "./src/components/AllServicesDropdown/icon-acs.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_ansible__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AllServicesDropdown/icon-ansible */ "./src/components/AllServicesDropdown/icon-ansible.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_app_services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AllServicesDropdown/icon-app-services */ "./src/components/AllServicesDropdown/icon-app-services.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_data_science__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AllServicesDropdown/icon-data-science */ "./src/components/AllServicesDropdown/icon-data-science.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_edge__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../AllServicesDropdown/icon-edge */ "./src/components/AllServicesDropdown/icon-edge.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_insights__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../AllServicesDropdown/icon-insights */ "./src/components/AllServicesDropdown/icon-insights.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_openshift__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../AllServicesDropdown/icon-openshift */ "./src/components/AllServicesDropdown/icon-openshift.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_quay_io__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../AllServicesDropdown/icon-quay-io */ "./src/components/AllServicesDropdown/icon-quay-io.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_rh__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../AllServicesDropdown/icon-rh */ "./src/components/AllServicesDropdown/icon-rh.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_services__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../AllServicesDropdown/icon-services */ "./src/components/AllServicesDropdown/icon-services.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_subscriptions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../AllServicesDropdown/icon-subscriptions */ "./src/components/AllServicesDropdown/icon-subscriptions.tsx");
+/* harmony import */ var _AllServicesDropdown_icon_trusted_content__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../AllServicesDropdown/icon-trusted-content */ "./src/components/AllServicesDropdown/icon-trusted-content.tsx");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/boxes-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/boxes-icon/@patternfly/react-icons/dist/dynamic/icons/boxes-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/chart-line-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/chart-line-icon/@patternfly/react-icons/dist/dynamic/icons/chart-line-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cloud-security-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cloud-security-icon/@patternfly/react-icons/dist/dynamic/icons/cloud-security-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon/@patternfly/react-icons/dist/dynamic/icons/cloud-upload-alt-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cog-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cog-icon/@patternfly/react-icons/dist/dynamic/icons/cog-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/credit-card-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/credit-card-icon/@patternfly/react-icons/dist/dynamic/icons/credit-card-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/cube-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/cube-icon/@patternfly/react-icons/dist/dynamic/icons/cube-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/lightbulb-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon/@patternfly/react-icons/dist/dynamic/icons/lightbulb-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/infrastructure-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon/@patternfly/react-icons/dist/dynamic/icons/infrastructure-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/rocket-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/rocket-icon/@patternfly/react-icons/dist/dynamic/icons/rocket-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon/@patternfly/react-icons/dist/dynamic/icons/shopping-cart-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/users-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/users-icon/@patternfly/react-icons/dist/dynamic/icons/users-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/monitoring-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/monitoring-icon/@patternfly/react-icons/dist/dynamic/icons/monitoring-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/automation-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/automation-icon/@patternfly/react-icons/dist/dynamic/icons/automation-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29__);
+
 
 
 
@@ -755,6 +815,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var FavorableIcons;
 (function(FavorableIcons) {
+    FavorableIcons["AITechnologyIcon"] = "AITechnologyIcon";
     FavorableIcons["ACSIcon"] = "ACSIcon";
     FavorableIcons["AnsibleIcon"] = "AnsibleIcon";
     FavorableIcons["AppServicesIcon"] = "AppServicesIcon";
@@ -785,34 +846,35 @@ var FavorableIcons;
     FavorableIcons["MonitoringIcon"] = "MonitoringIcon";
 })(FavorableIcons || (FavorableIcons = {}));
 var iconEnum = {
-    ACSIcon: _AllServicesDropdown_icon_acs__WEBPACK_IMPORTED_MODULE_2__["default"],
-    AnsibleIcon: _AllServicesDropdown_icon_ansible__WEBPACK_IMPORTED_MODULE_3__["default"],
-    AppServicesIcon: _AllServicesDropdown_icon_app_services__WEBPACK_IMPORTED_MODULE_4__["default"],
-    DataScienceIcon: _AllServicesDropdown_icon_data_science__WEBPACK_IMPORTED_MODULE_5__["default"],
-    EdgeIcon: _AllServicesDropdown_icon_edge__WEBPACK_IMPORTED_MODULE_6__["default"],
-    InsightsIcon: _AllServicesDropdown_icon_insights__WEBPACK_IMPORTED_MODULE_7__["default"],
-    OpenShiftIcon: _AllServicesDropdown_icon_openshift__WEBPACK_IMPORTED_MODULE_8__["default"],
-    QuayIoIcon: _AllServicesDropdown_icon_quay_io__WEBPACK_IMPORTED_MODULE_9__["default"],
-    RHIcon: _AllServicesDropdown_icon_rh__WEBPACK_IMPORTED_MODULE_10__["default"],
-    ServicesIcon: _AllServicesDropdown_icon_services__WEBPACK_IMPORTED_MODULE_11__["default"],
-    SubscriptionsIcon: _AllServicesDropdown_icon_subscriptions__WEBPACK_IMPORTED_MODULE_12__["default"],
-    TrustedContentIcon: _AllServicesDropdown_icon_trusted_content__WEBPACK_IMPORTED_MODULE_13__["default"],
+    AITechnologyIcon: _AllServicesDropdown_icon_ai_technology__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ACSIcon: _AllServicesDropdown_icon_acs__WEBPACK_IMPORTED_MODULE_3__["default"],
+    AnsibleIcon: _AllServicesDropdown_icon_ansible__WEBPACK_IMPORTED_MODULE_4__["default"],
+    AppServicesIcon: _AllServicesDropdown_icon_app_services__WEBPACK_IMPORTED_MODULE_5__["default"],
+    DataScienceIcon: _AllServicesDropdown_icon_data_science__WEBPACK_IMPORTED_MODULE_6__["default"],
+    EdgeIcon: _AllServicesDropdown_icon_edge__WEBPACK_IMPORTED_MODULE_7__["default"],
+    InsightsIcon: _AllServicesDropdown_icon_insights__WEBPACK_IMPORTED_MODULE_8__["default"],
+    OpenShiftIcon: _AllServicesDropdown_icon_openshift__WEBPACK_IMPORTED_MODULE_9__["default"],
+    QuayIoIcon: _AllServicesDropdown_icon_quay_io__WEBPACK_IMPORTED_MODULE_10__["default"],
+    RHIcon: _AllServicesDropdown_icon_rh__WEBPACK_IMPORTED_MODULE_11__["default"],
+    ServicesIcon: _AllServicesDropdown_icon_services__WEBPACK_IMPORTED_MODULE_12__["default"],
+    SubscriptionsIcon: _AllServicesDropdown_icon_subscriptions__WEBPACK_IMPORTED_MODULE_13__["default"],
+    TrustedContentIcon: _AllServicesDropdown_icon_trusted_content__WEBPACK_IMPORTED_MODULE_14__["default"],
     PlaceholderIcon: _AllServicesDropdown_icon_placeholder__WEBPACK_IMPORTED_MODULE_1__["default"],
-    CloudUploadAltIcon: (_patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_17___default()),
-    AutomationIcon: (_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_27___default()),
-    LightBulbIcon: (_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_21___default()),
-    RocketIcon: (_patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_23___default()),
-    UsersIcon: (_patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_25___default()),
-    InfrastructureIcon: (_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_22___default()),
-    BellIcon: (_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_28___default()),
-    ChartLineIcon: (_patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_15___default()),
-    CloudSecurityIcon: (_patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_16___default()),
-    CreditCardIcon: (_patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_19___default()),
-    CogIcon: (_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_18___default()),
-    ShoppingCartIcon: (_patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_24___default()),
-    CubeIcon: (_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_20___default()),
-    BoxesIcon: (_patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_14___default()),
-    MonitoringIcon: (_patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_26___default())
+    CloudUploadAltIcon: (_patternfly_react_icons_dist_dynamic_icons_cloud_upload_alt_icon__WEBPACK_IMPORTED_MODULE_18___default()),
+    AutomationIcon: (_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28___default()),
+    LightBulbIcon: (_patternfly_react_icons_dist_dynamic_icons_lightbulb_icon__WEBPACK_IMPORTED_MODULE_22___default()),
+    RocketIcon: (_patternfly_react_icons_dist_dynamic_icons_rocket_icon__WEBPACK_IMPORTED_MODULE_24___default()),
+    UsersIcon: (_patternfly_react_icons_dist_dynamic_icons_users_icon__WEBPACK_IMPORTED_MODULE_26___default()),
+    InfrastructureIcon: (_patternfly_react_icons_dist_dynamic_icons_infrastructure_icon__WEBPACK_IMPORTED_MODULE_23___default()),
+    BellIcon: (_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29___default()),
+    ChartLineIcon: (_patternfly_react_icons_dist_dynamic_icons_chart_line_icon__WEBPACK_IMPORTED_MODULE_16___default()),
+    CloudSecurityIcon: (_patternfly_react_icons_dist_dynamic_icons_cloud_security_icon__WEBPACK_IMPORTED_MODULE_17___default()),
+    CreditCardIcon: (_patternfly_react_icons_dist_dynamic_icons_credit_card_icon__WEBPACK_IMPORTED_MODULE_20___default()),
+    CogIcon: (_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_19___default()),
+    ShoppingCartIcon: (_patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_25___default()),
+    CubeIcon: (_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_21___default()),
+    BoxesIcon: (_patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_15___default()),
+    MonitoringIcon: (_patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_27___default())
 };
 var ServiceIcon = function(param) {
     var icon = param.icon;
