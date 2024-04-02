@@ -18977,7 +18977,10 @@ var requestPdf = function() {
                 case 3:
                     status = _state.sent().status;
                     if (status === "Generated") {
-                        downloadPDF("/api/crc-pdf-generator/v2/download/".concat(statusID), filename);
+                        return [
+                            2,
+                            downloadPDF("/api/crc-pdf-generator/v2/download/".concat(statusID), filename)
+                        ];
                     }
                     return [
                         3,
@@ -18986,10 +18989,7 @@ var requestPdf = function() {
                 case 4:
                     error = _state.sent();
                     console.log(error);
-                    return [
-                        3,
-                        5
-                    ];
+                    throw new Error("Failed to generate PDF. Check console for more details.");
                 case 5:
                     return [
                         2
