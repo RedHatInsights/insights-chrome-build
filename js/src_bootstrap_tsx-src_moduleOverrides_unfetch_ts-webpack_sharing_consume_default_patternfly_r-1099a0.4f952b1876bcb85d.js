@@ -10142,7 +10142,7 @@ var Header = function(param) {
         }
     }, !lg && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(HeaderTools, null))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Masthead__WEBPACK_IMPORTED_MODULE_4__.MastheadContent, {
         className: "pf-v5-u-mx-md pf-v5-u-mx-0-on-2xl"
-    }, (user === null || user === void 0 ? void 0 : (_user_identity = user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.account_number) && !isITLessEnv && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_1___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(FeedbackRoute, null), document.body), user && isActivationPath && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Activation__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, (user === null || user === void 0 ? void 0 : (_user_identity = user.identity) === null || _user_identity === void 0 ? void 0 : _user_identity.org_id) && !isITLessEnv && /*#__PURE__*/ react_dom__WEBPACK_IMPORTED_MODULE_1___default().createPortal(/*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(FeedbackRoute, null), document.body), user && isActivationPath && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Activation__WEBPACK_IMPORTED_MODULE_9__["default"], {
         user: user,
         request: search
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_5__.Toolbar, {
@@ -20974,7 +20974,8 @@ var fetchResults = {};
 var DENIED_CROSS_CHECK = "Access denied from RBAC on cross-access check";
 var AUTH_ALLOWED_ORIGINS = [
     location.origin,
-    /https:\/\/api(?:\.[a-z]+)?\.openshift(?:[a-z]+)?\.com/
+    /https:\/\/api(?:\.[a-z]+)?\.openshift(?:[a-z]+)?\.com/,
+    /https:\/\/api?\.demo-experience(?:\.[a-z]+)?\.demo?\.redhat?\.com/
 ];
 var AUTH_EXCLUDED_URLS = [
     /https:\/\/api(?:\.[a-z]+)?\.openshift(?:[a-z]+)?\.com\/api\/upgrades_info/
