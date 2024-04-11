@@ -169,6 +169,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/Routes/virtual-assistant.scss":
+/*!******************************************************!*\
+  !*** ./src/components/Routes/virtual-assistant.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/components/Search/SearchDescription.scss":
 /*!******************************************************!*\
   !*** ./src/components/Search/SearchDescription.scss ***!
@@ -15956,6 +15969,57 @@ var ChromeRoutes = function(param) {
 
 /***/ }),
 
+/***/ "./src/components/Routes/VirtualAssistant.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/Routes/VirtualAssistant.tsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
+/* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _virtual_assistant_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./virtual-assistant.scss */ "./src/components/Routes/virtual-assistant.scss");
+
+
+
+
+var viableRoutes = [
+    "/",
+    "/insights/*",
+    "/settings/*",
+    "/subscriptions/overview/*",
+    "/subscriptions/inventory/*",
+    "/subscriptions/usage/*"
+];
+var VirtualAssistant = function() {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Routes, null, viableRoutes.map(function(route) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
+            key: route,
+            path: route,
+            element: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+                className: "virtualAssistant astro__virtual-assistant pf-v5-u-mr-xs"
+            }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__.ScalprumComponent, {
+                scope: "virtualAssistant",
+                module: "./AstroVirtualAssistant",
+                fallback: null,
+                ErrorComponent: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)
+            }))
+        });
+    }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VirtualAssistant);
+
+
+/***/ }),
+
 /***/ "./src/components/Satellite/SatelliteTable.tsx":
 /*!*****************************************************!*\
   !*** ./src/components/Satellite/SatelliteTable.tsx ***!
@@ -18178,6 +18242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_21__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _components_Routes_VirtualAssistant__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../components/Routes/VirtualAssistant */ "./src/components/Routes/VirtualAssistant.tsx");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -18301,6 +18366,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var DefaultLayout = function(param) {
     var hasBanner = param.hasBanner, selectedAccountNumber = param.selectedAccountNumber, hideNav = param.hideNav, isNavOpen = param.isNavOpen, setIsNavOpen = param.setIsNavOpen, Sidebar = param.Sidebar, Footer = param.Footer;
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_13__.useIntl)();
@@ -18357,7 +18423,7 @@ var DefaultLayout = function(param) {
         className: "chr-viewing-as sentry-mask data-hj-suppress"
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_14__["default"].viewingAsAccount, {
         selectedAccountNumber: selectedAccountNumber
-    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Stratosphere_RedirectBanner__WEBPACK_IMPORTED_MODULE_12__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_Routes__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Stratosphere_RedirectBanner__WEBPACK_IMPORTED_MODULE_12__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_VirtualAssistant__WEBPACK_IMPORTED_MODULE_23__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_Routes__WEBPACK_IMPORTED_MODULE_10__["default"], {
         routesProps: {
             scopeClass: "chr-scope__default-layout"
         }
