@@ -9249,7 +9249,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _redhat_cloud_services_frontend_components_ConditionalFilter__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/ConditionalFilter */ "./node_modules/@redhat-cloud-services/frontend-components/esm/ConditionalFilter/GroupFilter.js");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
@@ -9272,6 +9271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _globalFilterApi__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./globalFilterApi */ "./src/components/GlobalFilter/globalFilterApi.ts");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _GroupFilterInputGroup__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./GroupFilterInputGroup */ "./src/components/GlobalFilter/GroupFilterInputGroup.tsx");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -9280,63 +9280,11 @@ function _array_like_to_array(arr, len) {
 function _array_without_holes(arr) {
     if (Array.isArray(arr)) return _array_like_to_array(arr);
 }
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
 function _iterable_to_array(iter) {
     if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
 function _non_iterable_spread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
 }
 function _to_consumable_array(arr) {
     return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
@@ -9365,12 +9313,8 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-/** Create unique hotjar event for selected tags */ var generateGlobalFilterEvent = function(isChecked, value) {
-    return "global_filter_tag_".concat(isChecked ? "uncheck" : "check", "_").concat(value);
-};
 var GlobalFilterDropdown = function(param) {
     var allowed = param.allowed, isDisabled = param.isDisabled, filter = param.filter, chips = param.chips, setValue = param.setValue, selectedTags = param.selectedTags, isOpen = param.isOpen, filterTagsBy = param.filterTagsBy, setIsOpen = param.setIsOpen;
-    var _filter_groups;
     /**
    * Hotjar API reference: https://help.hotjar.com/hc/en-us/articles/4405109971095-Events-API-Reference#the-events-api-call
    * window.hj is only avaiable in console.redhat.com and console.redhat.com/beta
@@ -9401,38 +9345,11 @@ var GlobalFilterDropdown = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_9__.SplitItem, null, auth.ready && allowed !== undefined ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(GroupFilterWrapper, {
         content: !allowed || isDisabled ? !allowed ? "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].noInventoryPermissions)) : "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].globalFilterNotApplicable)) : "",
         position: "right"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_ConditionalFilter__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        className: "chr-c-menu-global-filter__select",
-        selected: selectedTags,
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GroupFilterInputGroup__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        filter: filter,
         isDisabled: isDisabled,
-        groups: ((_filter_groups = filter.groups) === null || _filter_groups === void 0 ? void 0 : _filter_groups.map(function(group) {
-            var _group_items;
-            return _object_spread_props(_object_spread({}, group), {
-                items: (_group_items = group.items) === null || _group_items === void 0 ? void 0 : _group_items.map(function(item) {
-                    return _object_spread_props(_object_spread({}, item), {
-                        onClick: function(e, selected, group, currItem, groupName, itemName) {
-                            var _selected_groupName_itemName, _selected_groupName;
-                            generateGlobalFilterEvent(selected === null || selected === void 0 ? void 0 : (_selected_groupName = selected[groupName]) === null || _selected_groupName === void 0 ? void 0 : (_selected_groupName_itemName = _selected_groupName[itemName]) === null || _selected_groupName_itemName === void 0 ? void 0 : _selected_groupName_itemName.isSelected, item.value);
-                        // item.onClick?.(e, selected, group, currItem, groupName, itemName);
-                        }
-                    });
-                })
-            });
-        })) || [],
-        onChange: filter.onChange,
-        placeholder: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTags),
-        isFilterable: true,
-        onFilter: filter.onFilter || function() {
-            return undefined;
-        },
-        filterBy: filter.filterBy,
-        showMoreTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].showMore),
-        onShowMore: function() {
-            return setIsOpen(true);
-        },
-        showMoreOptions: {
-            isLoadButton: true
-        }
+        selectedTags: selectedTags,
+        setIsOpen: setIsOpen
     })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Skeleton__WEBPACK_IMPORTED_MODULE_8__.Skeleton, {
         fontSize: "xl"
     })), allowed && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_9__.SplitItem, {
@@ -9495,6 +9412,82 @@ var GlobalFilterDropdown = function(param) {
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_7__.Divider, null));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GlobalFilterDropdown);
+
+
+/***/ }),
+
+/***/ "./src/components/GlobalFilter/GroupFilterInputGroup.tsx":
+/*!***************************************************************!*\
+  !*** ./src/components/GlobalFilter/GroupFilterInputGroup.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _redhat_cloud_services_frontend_components_ConditionalFilter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/ConditionalFilter */ "./node_modules/@redhat-cloud-services/frontend-components/esm/ConditionalFilter/GroupFilter.js");
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/components/InputGroup/InputGroup.js");
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/components/InputGroup/InputGroupItem.js");
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/components/Popover/Popover.js");
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/components/Button/Button.js");
+/* harmony import */ var _patternfly_react_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-icons */ "./node_modules/@patternfly/react-icons/dist/esm/icons/outlined-question-circle-icon.js");
+
+
+
+
+
+
+var GroupFilterInputGroup = function(param) {
+    var filter = param.filter, isDisabled = param.isDisabled, selectedTags = param.selectedTags, setIsOpen = param.setIsOpen;
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_1__.useIntl)();
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.InputGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_4__.InputGroupItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_ConditionalFilter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "chr-c-menu-global-filter__select",
+        selected: selectedTags,
+        isDisabled: isDisabled,
+        groups: filter.groups,
+        onChange: filter.onChange,
+        placeholder: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTags),
+        isFilterable: true,
+        onFilter: filter.onFilter || function() {
+            return undefined;
+        },
+        filterBy: filter.filterBy,
+        showMoreTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].showMore),
+        onShowMore: function() {
+            return setIsOpen(true);
+        },
+        showMoreOptions: {
+            isLoadButton: true
+        }
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_4__.InputGroupItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.Popover, {
+        "aria-label": "Tags help Popover",
+        position: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.PopoverPosition.top,
+        headerContent: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverHeader)),
+        bodyContent: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverContent1), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+            href: "https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/getting_started_with_the_subscriptions_service/proc-installing-satellite-inventory-upload-plugin_assembly-setting-up-subscriptionwatch-ctxt",
+            target: "_blank",
+            rel: "noreferrer"
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverSatelliteLink)), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverContent2), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+            href: "https://access.redhat.com/documentation/en-us/red_hat_insights/1-latest/html/client_configuration_guide_for_red_hat_insights/assembly-client-data-adding-tags#con-insights-client-custom-system-tagging_insights-cg-adding-tags",
+            target: "_blank",
+            rel: "noreferrer"
+        }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverCCGLink)), " ", intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_2__["default"].filterByTagsPopoverContent3)),
+        appendTo: function() {
+            return document.body;
+        }
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__.Button, {
+        variant: "control",
+        "aria-label": "Tags help"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_icons__WEBPACK_IMPORTED_MODULE_8__.OutlinedQuestionCircleIcon, null)))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GroupFilterInputGroup);
 
 
 /***/ }),
