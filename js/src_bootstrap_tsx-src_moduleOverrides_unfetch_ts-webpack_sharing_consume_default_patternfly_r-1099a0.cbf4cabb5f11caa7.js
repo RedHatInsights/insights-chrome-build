@@ -6030,6 +6030,7 @@ var AllServicesTabs = function(param) {
         className: "pf-v5-u-p-md pf-v5-u-pr-0",
         ouiaId: "all-services-tabs"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
+        ouiaId: "AllServices-favorites-Tab",
         onClick: function(e) {
             handleTabClick === null || handleTabClick === void 0 ? void 0 : handleTabClick(e, _common__WEBPACK_IMPORTED_MODULE_4__.FAVORITE_TAB_ID);
         },
@@ -6041,6 +6042,7 @@ var AllServicesTabs = function(param) {
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_3___default()), null)))
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, linkSections.map(function(section, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
+            ouiaId: "AllServices-".concat(section.id, "-Tab"),
             key: index,
             eventKey: index,
             title: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabTitleText, null, section.title),
