@@ -5388,6 +5388,7 @@ var AllServicesDropdown = function() {
         });
     };
     var toggle = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_3__.MenuToggle, {
+        "data-ouia-component-id": "AllServices-DropdownToggle",
         className: "pf-v5-u-h-100 chr-c-link-service-toggle pf-v5-u-pl-lg pf-v5-u-pr-lg",
         ref: toggleRef,
         onClick: onToggleClick,
