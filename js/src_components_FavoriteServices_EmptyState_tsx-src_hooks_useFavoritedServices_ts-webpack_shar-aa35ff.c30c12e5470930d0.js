@@ -1171,8 +1171,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
+/* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1230,6 +1231,7 @@ function _object_spread_props(target, source) {
 
 
 
+
 var config = {
     url: "".concat(document.location.origin, "/api/featureflags/v0"),
     clientKey: "proxy-123",
@@ -1245,7 +1247,7 @@ var config = {
             // prevent the request from falling back to default error behavior
             //add warning level
             if (resp.status >= 400) {
-                _sentry_react__WEBPACK_IMPORTED_MODULE_3__.captureMessage("Feature loading error server error! ".concat(resp.status, ": ").concat(resp.statusText, "."), "warning");
+                _sentry_react__WEBPACK_IMPORTED_MODULE_4__.captureMessage("Feature loading error server error! ".concat(resp.status, ": ").concat(resp.statusText, "."), "warning");
                 throw new Error("Feature loading error server error! ".concat(resp.status, ": ").concat(resp.statusText, "."));
             }
             var contentType = resp.headers.get("content-type");
@@ -1256,7 +1258,7 @@ var config = {
             }
             return resp;
         }).catch(function(err) {
-            (0,_sentry_react__WEBPACK_IMPORTED_MODULE_3__.captureException)(err);
+            (0,_sentry_react__WEBPACK_IMPORTED_MODULE_4__.captureException)(err);
             // set the error flag
             localStorage.setItem(UNLEASH_ERROR_KEY, "true");
             return {
@@ -1290,6 +1292,11 @@ var FeatureFlagsProvider = function(param) {
         var _user_identity_internal;
         return new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.UnleashClient(_object_spread_props(_object_spread({}, config), {
             context: _object_spread({
+                // TODO: instead of the isBeta, use the internal chrome state
+                // the unleash context is not generic, look for issue/PR in the unleash repo or create one
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                "platform.chrome.ui.preview": (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)(),
                 userId: user === null || user === void 0 ? void 0 : (_user_identity_internal = user.identity.internal) === null || _user_identity_internal === void 0 ? void 0 : _user_identity_internal.account_id
             }, user ? {
                 properties: {
