@@ -13096,6 +13096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _notificationDrawerUtils__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./notificationDrawerUtils */ "./src/components/NotificationsDrawer/notificationDrawerUtils.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -13106,6 +13107,35 @@ function _array_with_holes(arr) {
 }
 function _array_without_holes(arr) {
     if (Array.isArray(arr)) return _array_like_to_array(arr);
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
 }
 function _define_property(obj, key, value) {
     if (key in obj) {
@@ -13182,6 +13212,102 @@ function _unsupported_iterable_to_array(o, minLen) {
     if (n === "Map" || n === "Set") return Array.from(n);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
 }
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
 
 
 
@@ -13236,6 +13362,46 @@ var DrawerPanelBase = function(param) {
     });
     var auth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
     var isOrgAdmin = auth === null || auth === void 0 ? void 0 : (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : (_auth_user_identity = _auth_user.identity) === null || _auth_user_identity === void 0 ? void 0 : (_auth_user_identity_user = _auth_user_identity.user) === null || _auth_user_identity_user === void 0 ? void 0 : _auth_user_identity_user.is_org_admin;
+    var getUserPermissions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_21__["default"]).getUserPermissions;
+    var _useState4 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), hasNotificationsPermissions = _useState4[0], setHasNotificationsPermissions = _useState4[1];
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        var mounted = true;
+        var fetchPermissions = function() {
+            var _ref = _async_to_generator(function() {
+                var permissions;
+                return _ts_generator(this, function(_state) {
+                    switch(_state.label){
+                        case 0:
+                            return [
+                                4,
+                                getUserPermissions === null || getUserPermissions === void 0 ? void 0 : getUserPermissions("notifications")
+                            ];
+                        case 1:
+                            permissions = _state.sent();
+                            if (mounted) {
+                                setHasNotificationsPermissions(permissions === null || permissions === void 0 ? void 0 : permissions.some(function(item) {
+                                    return [
+                                        "notifications:*:*",
+                                        "notifications:notifications:read",
+                                        "notifications:notifications:write"
+                                    ].includes(typeof item === "string" && item || (item === null || item === void 0 ? void 0 : item.permission));
+                                }));
+                            }
+                            return [
+                                2
+                            ];
+                    }
+                });
+            });
+            return function fetchPermissions() {
+                return _ref.apply(this, arguments);
+            };
+        }();
+        fetchPermissions();
+        return function() {
+            mounted = false;
+        };
+    }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var modifiedNotifications = (activeFilters || []).reduce(function(acc, chosenFilter) {
             return _to_consumable_array(acc).concat(_to_consumable_array(notifications.filter(function(param) {
@@ -13298,7 +13464,7 @@ var DrawerPanelBase = function(param) {
                 return onNavigateTo("/settings/notifications/eventlog");
             }
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, "View event log"))),
-        isOrgAdmin && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
+        (isOrgAdmin || hasNotificationsPermissions) && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
             key: "notification settings",
             onClick: function() {
                 return onNavigateTo("/settings/notifications/configure-events");
