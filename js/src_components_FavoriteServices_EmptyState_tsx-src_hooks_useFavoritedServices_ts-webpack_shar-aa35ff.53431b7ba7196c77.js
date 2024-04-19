@@ -147,10 +147,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isAllServicesLink: () => (/* binding */ isAllServicesLink)
 /* harmony export */ });
 var isAllServicesGroup = function(item) {
-    return item.isGroup === true;
+    return (item === null || item === void 0 ? void 0 : item.isGroup) === true;
 };
 function isAllServicesLink(item) {
-    return !!item.href;
+    return !!(item === null || item === void 0 ? void 0 : item.href);
 }
 
 
@@ -2017,10 +2017,10 @@ var NavContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
 
 /***/ }),
 
-/***/ "./src/hooks/useAllServices.ts":
-/*!*************************************!*\
-  !*** ./src/hooks/useAllServices.ts ***!
-  \*************************************/
+/***/ "./src/hooks/useAllLinks.ts":
+/*!**********************************!*\
+  !*** ./src/hooks/useAllLinks.ts ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2028,14 +2028,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
+/* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
-/* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2301,9 +2298,6 @@ function _ts_generator(thisArg, body) {
 
 
 
-
-
-var allServicesFetchCache = {};
 var getFirstChildRoute = function() {
     var routes = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
     var firstLeaf = routes.find(function(item) {
@@ -2333,31 +2327,39 @@ var handleBundleResponse = function(bundle) {
         ]);
         // item is a group
         if (navItems) {
-            return _to_consumable_array(acc).concat(_to_consumable_array(handleBundleResponse(_object_spread_props(_object_spread({}, rest), {
+            var _acc;
+            (_acc = acc).push.apply(_acc, _to_consumable_array(handleBundleResponse(_object_spread_props(_object_spread({}, rest), {
                 navItems: navItems
             })).links));
+            return acc;
         }
-        if (expandable && routes && rest.id) {
+        if (typeof expandable !== "undefined" && typeof routes !== "undefined" && typeof rest.id !== "undefined") {
             var childRoute = getFirstChildRoute(routes);
             if (childRoute) {
+                var _acc1;
                 var expandableLink = _object_spread_props(_object_spread({}, childRoute), {
                     title: rest.title,
                     description: rest.description,
                     id: rest.id
                 });
-                return _to_consumable_array(acc).concat(_to_consumable_array(routes), [
+                (_acc1 = acc).push.apply(_acc1, _to_consumable_array(routes).concat([
                     expandableLink
-                ]);
+                ]));
+            // return acc;
             }
         }
         // item is an expandable section
-        if (expandable && routes) {
-            return _to_consumable_array(acc).concat(_to_consumable_array(routes));
+        if (typeof expandable !== "undefined" && typeof routes !== "undefined") {
+            var // console.log('rest:', { ...rest, routes });
+            _acc2;
+            (_acc2 = acc).push.apply(_acc2, _to_consumable_array(handleBundleResponse(_object_spread_props(_object_spread({}, rest), {
+                navItems: routes
+            })).links));
+            return acc;
         }
         // regular NavItem
-        return _to_consumable_array(acc).concat([
-            rest
-        ]);
+        acc.push(rest);
+        return acc;
     }, []);
     var bundleFirstLink = getFirstChildRoute(bundle.navItems);
     if (bundleFirstLink && bundle.id) {
@@ -2374,16 +2376,370 @@ var handleBundleResponse = function(bundle) {
         links: (flatLinks || []).flat()
     };
 };
-var parseBundlesToObject = function(items) {
-    return items === null || items === void 0 ? void 0 : items.reduce(function(acc, curr) {
-        // make sure nested structures are parsed as well
-        if (curr.expandable && curr.routes) {
-            return _object_spread({}, acc, parseBundlesToObject(curr.routes));
+var getNavLinks = function(navItems) {
+    var links = [];
+    navItems.forEach(function(item) {
+        if ((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isExpandableNav)(item)) {
+            links.concat(getNavLinks(item.routes));
+        } else if (item.groupId && item.navItems) {
+            links.concat(getNavLinks(item.navItems));
+        } else {
+            links.push(item);
         }
-        return curr.id ? _object_spread_props(_object_spread({}, acc), _define_property({}, curr.id, curr)) : acc;
-    }, {});
+    });
+    return links;
 };
-var matchStrings = function(value, searchTerm) {
+var fetchNavigation = function() {
+    var _ref = _async_to_generator(function() {
+        var bundlesNavigation, parsedBundles, allLinks;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    return [
+                        4,
+                        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_1__["default"])().then(function(data) {
+                            return data.map(handleBundleResponse);
+                        })
+                    ];
+                case 1:
+                    bundlesNavigation = _state.sent();
+                    return [
+                        4,
+                        Promise.all(bundlesNavigation.map(function() {
+                            var _ref = _async_to_generator(function(bundleNav) {
+                                var _tmp, _tmp1;
+                                return _ts_generator(this, function(_state) {
+                                    switch(_state.label){
+                                        case 0:
+                                            _tmp = [
+                                                _object_spread({}, bundleNav)
+                                            ];
+                                            _tmp1 = {};
+                                            return [
+                                                4,
+                                                Promise.all(bundleNav.links.map(_utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_2__.evaluateVisibility))
+                                            ];
+                                        case 1:
+                                            return [
+                                                2,
+                                                _object_spread_props.apply(void 0, _tmp.concat([
+                                                    (_tmp1.links = _state.sent().filter(function(param) {
+                                                        var isHidden = param.isHidden;
+                                                        return !isHidden;
+                                                    }), _tmp1)
+                                                ]))
+                                            ];
+                                    }
+                                });
+                            });
+                            return function(bundleNav) {
+                                return _ref.apply(this, arguments);
+                            };
+                        }()))
+                    ];
+                case 2:
+                    parsedBundles = _state.sent();
+                    allLinks = parsedBundles.map(function(param) {
+                        var links = param.links;
+                        return getNavLinks(links);
+                    }).flat();
+                    return [
+                        2,
+                        allLinks
+                    ];
+            }
+        });
+    });
+    return function fetchNavigation() {
+        return _ref.apply(this, arguments);
+    };
+}();
+var useAllLinks = function() {
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), 2), allLinks = _useState[0], setAllLinks = _useState[1];
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
+        fetchNavigation().then(setAllLinks);
+    }, []);
+    return allLinks;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useAllLinks);
+
+
+/***/ }),
+
+/***/ "./src/hooks/useAllServices.ts":
+/*!*************************************!*\
+  !*** ./src/hooks/useAllServices.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function _array_without_holes(arr) {
+    if (Array.isArray(arr)) return _array_like_to_array(arr);
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _iterable_to_array(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _non_iterable_spread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _to_consumable_array(arr) {
+    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+function _ts_values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function() {
+            if (o && i >= o.length) o = void 0;
+            return {
+                value: o && o[i++],
+                done: !o
+            };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+
+
+
+
+var allServicesFetchCache = {};
+var matchStrings = function() {
+    var value = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "", searchTerm = arguments.length > 1 ? arguments[1] : void 0;
     // convert strings to lowercase and remove any white spaces
     return value.toLocaleLowerCase().replace(/\s/gm, "").includes(searchTerm.toLocaleLowerCase().replace(/\s/gm, ""));
 };
@@ -2438,84 +2794,185 @@ var filterAllServicesSections = function(allServicesLinks, filterValue) {
         return acc;
     }, []);
 };
-var findNavItems = function() {
-    var items = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [], availableLinks = arguments.length > 1 ? arguments[1] : void 0;
-    return items.map(function(item) {
-        var _availableLinks_find;
-        if ((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(item)) {
-            return _object_spread_props(_object_spread({}, item), {
-                links: findNavItems(item.links, availableLinks)
-            });
-        } else if ((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesLink)(item)) {
-            return item;
-        }
-        if (typeof item !== "string") {
-            return item;
-        }
-        var _item_split = _sliced_to_array(item.split("."), 2), bundle = _item_split[0], nav = _item_split[1];
-        var currBundle = ((_availableLinks_find = availableLinks.find(function(param) {
-            var id = param.id;
-            return id === bundle;
-        })) === null || _availableLinks_find === void 0 ? void 0 : _availableLinks_find.items) || {};
-        return Object.values(currBundle).find(function(param) {
-            var id = param.id;
-            return id === nav;
+var evaluateLinksVisibility = function() {
+    var _ref = _async_to_generator(function(sections) {
+        var que, groupQue, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _loop, _iterator, _step, err;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    que = [];
+                    sections.forEach(function(section) {
+                        var newLinksQue = section.links.map(function() {
+                            var _ref = _async_to_generator(function(link) {
+                                var nestedLinksQue, links;
+                                return _ts_generator(this, function(_state) {
+                                    switch(_state.label){
+                                        case 0:
+                                            if (!(0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(link)) return [
+                                                3,
+                                                3
+                                            ];
+                                            return [
+                                                4,
+                                                link.links.map(_utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__.evaluateVisibility)
+                                            ];
+                                        case 1:
+                                            nestedLinksQue = _state.sent();
+                                            return [
+                                                4,
+                                                Promise.all(nestedLinksQue)
+                                            ];
+                                        case 2:
+                                            links = _state.sent();
+                                            return [
+                                                2,
+                                                _object_spread_props(_object_spread({}, link), {
+                                                    links: links
+                                                })
+                                            ];
+                                        case 3:
+                                            if ((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesLink)(link)) {
+                                                return [
+                                                    2,
+                                                    (0,_utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__.evaluateVisibility)(link)
+                                                ];
+                                            }
+                                            _state.label = 4;
+                                        case 4:
+                                            return [
+                                                2
+                                            ];
+                                    }
+                                });
+                            });
+                            return function(link) {
+                                return _ref.apply(this, arguments);
+                            };
+                        }());
+                        que.push(_object_spread_props(_object_spread({}, section), {
+                            linksQue: newLinksQue
+                        }));
+                    });
+                    return [
+                        4,
+                        Promise.all(que)
+                    ];
+                case 1:
+                    groupQue = _state.sent();
+                    _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
+                    _state.label = 2;
+                case 2:
+                    _state.trys.push([
+                        2,
+                        7,
+                        8,
+                        9
+                    ]);
+                    _loop = function() {
+                        var section, _section_linksQue, links;
+                        return _ts_generator(this, function(_state) {
+                            switch(_state.label){
+                                case 0:
+                                    section = _step.value;
+                                    return [
+                                        4,
+                                        Promise.all((_section_linksQue = section.linksQue) !== null && _section_linksQue !== void 0 ? _section_linksQue : [])
+                                    ];
+                                case 1:
+                                    links = _state.sent();
+                                    section.links = [];
+                                    links.forEach(function(link) {
+                                        if (((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(link) || (0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesLink)(link)) && !link.isHidden) {
+                                            if ((0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(link)) {
+                                                section.links.push(_object_spread_props(_object_spread({}, link), {
+                                                    links: link.links.filter(function(item) {
+                                                        return !item.isHidden;
+                                                    })
+                                                }));
+                                            } else {
+                                                section.links.push(link);
+                                            }
+                                        }
+                                    });
+                                    delete section.linksQue;
+                                    return [
+                                        2
+                                    ];
+                            }
+                        });
+                    };
+                    _iterator = groupQue[Symbol.iterator]();
+                    _state.label = 3;
+                case 3:
+                    if (!!(_iteratorNormalCompletion = (_step = _iterator.next()).done)) return [
+                        3,
+                        6
+                    ];
+                    return [
+                        5,
+                        _ts_values(_loop())
+                    ];
+                case 4:
+                    _state.sent();
+                    _state.label = 5;
+                case 5:
+                    _iteratorNormalCompletion = true;
+                    return [
+                        3,
+                        3
+                    ];
+                case 6:
+                    return [
+                        3,
+                        9
+                    ];
+                case 7:
+                    err = _state.sent();
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                    return [
+                        3,
+                        9
+                    ];
+                case 8:
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return != null) {
+                            _iterator.return();
+                        }
+                    } finally{
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                    return [
+                        7
+                    ];
+                case 9:
+                    return [
+                        2,
+                        groupQue
+                    ];
+            }
         });
-    }).filter(Boolean);
-};
+    });
+    return function evaluateLinksVisibility(sections) {
+        return _ref.apply(this, arguments);
+    };
+}();
 var useAllServices = function() {
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
         ready: false,
-        allLinks: [],
         error: false,
         availableSections: []
-    }), 2), _useState_ = _useState[0], ready = _useState_.ready, error = _useState_.error, availableSections = _useState_.availableSections, allLinks = _useState_.allLinks, setState = _useState[1];
+    }), 2), _useState_ = _useState[0], ready = _useState_.ready, error = _useState_.error, availableSections = _useState_.availableSections, setState = _useState[1];
     var isMounted = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(false);
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""), 2), filterValue = _useState1[0], setFilterValue = _useState1[1];
-    // TODO: move constant once the AppFilter is fully replaced
-    var fetchNavigation = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function() {
-        return (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_4__["default"])().then(function(data) {
-            return data.map(handleBundleResponse);
-        }).then(function(data) {
-            return Promise.all(data.map(function() {
-                var _ref = _async_to_generator(function(bundleNav) {
-                    var _tmp, _tmp1;
-                    return _ts_generator(this, function(_state) {
-                        switch(_state.label){
-                            case 0:
-                                _tmp = [
-                                    _object_spread({}, bundleNav)
-                                ];
-                                _tmp1 = {};
-                                return [
-                                    4,
-                                    Promise.all(bundleNav.links.map(_utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_5__.evaluateVisibility))
-                                ];
-                            case 1:
-                                return [
-                                    2,
-                                    _object_spread_props.apply(void 0, _tmp.concat([
-                                        (_tmp1.links = _state.sent().filter(function(param) {
-                                            var isHidden = param.isHidden;
-                                            return !isHidden;
-                                        }), _tmp1)
-                                    ]))
-                                ];
-                        }
-                    });
-                });
-                return function(bundleNav) {
-                    return _ref.apply(this, arguments);
-                };
-            }()));
-        });
-    }, []);
     var fetchSections = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(/*#__PURE__*/ _async_to_generator(function() {
         var query, request, response;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    query = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getChromeStaticPathname)("services"), "/services.json");
+                    query = "".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getChromeStaticPathname)("services"), "/services-generated.json");
                     request = allServicesFetchCache[query];
                     if (!request) {
                         request = axios__WEBPACK_IMPORTED_MODULE_0___default().get(query);
@@ -2531,50 +2988,24 @@ var useAllServices = function() {
                     delete allServicesFetchCache[query];
                     return [
                         2,
-                        response.data
+                        evaluateLinksVisibility(response.data)
                     ];
             }
         });
     }), []);
     var setNavigation = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(/*#__PURE__*/ _async_to_generator(function() {
-        var bundleItems, sections, availableLinks, allLinks, availableSections;
+        var sections, availableSections;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     return [
                         4,
-                        fetchNavigation()
-                    ];
-                case 1:
-                    bundleItems = _state.sent();
-                    return [
-                        4,
                         fetchSections()
                     ];
-                case 2:
+                case 1:
                     sections = _state.sent();
                     if (isMounted.current) {
-                        availableLinks = bundleItems.map(function(bundle) {
-                            var _bundle_links;
-                            return _object_spread_props(_object_spread({}, bundle), {
-                                items: parseBundlesToObject((_bundle_links = bundle.links) === null || _bundle_links === void 0 ? void 0 : _bundle_links.flat())
-                            });
-                        });
-                        allLinks = availableLinks.flatMap(function(bundle) {
-                            return bundle.links.flatMap(function(link) {
-                                return (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isExpandableNav)(link) ? link.routes : link;
-                            });
-                        });
-                        availableSections = sections.reduce(function(acc, _param) {
-                            var links = _param.links, rest = _object_without_properties(_param, [
-                                "links"
-                            ]);
-                            return _to_consumable_array(acc).concat([
-                                _object_spread_props(_object_spread({}, rest), {
-                                    links: findNavItems(links, availableLinks).filter(Boolean)
-                                })
-                            ]);
-                        }, []).filter(function(param) {
+                        availableSections = sections.filter(function(param) {
                             var links = param.links;
                             if ((links === null || links === void 0 ? void 0 : links.length) === 0) {
                                 return false;
@@ -2585,14 +3016,8 @@ var useAllServices = function() {
                         });
                         setState(function(prev) {
                             return _object_spread_props(_object_spread({}, prev), {
-                                allLinks: allLinks,
                                 availableSections: availableSections,
-                                ready: true,
-                                // no links means all bundle requests have failed
-                                error: availableLinks.flatMap(function(param) {
-                                    var items = param.items;
-                                    return Object.keys(items || {});
-                                }).length === 0
+                                ready: true
                             });
                         });
                     }
@@ -2602,8 +3027,7 @@ var useAllServices = function() {
             }
         });
     }), [
-        fetchSections,
-        fetchNavigation
+        fetchSections
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         isMounted.current = true;
@@ -2620,27 +3044,13 @@ var useAllServices = function() {
         ready,
         filterValue
     ]);
-    // Provide a flat list of all available links
-    var servicesLinks = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
-        return linkSections.flatMap(function(param) {
-            var links = param.links;
-            return links;
-        }).flatMap(function(item) {
-            return (0,_components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__.isAllServicesGroup)(item) ? item.links : item;
-        }).flat();
-    }, [
-        linkSections
-    ]);
     return {
         linkSections: linkSections,
-        allLinks: allLinks,
-        servicesLinks: servicesLinks,
         error: error,
         ready: ready,
         availableSections: availableSections,
         filterValue: filterValue,
-        setFilterValue: setFilterValue,
-        findNavItems: findNavItems
+        setFilterValue: setFilterValue
     };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useAllServices);
@@ -2795,6 +3205,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
 /* harmony import */ var _components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
+/* harmony import */ var _useAllLinks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./useAllLinks */ "./src/hooks/useAllLinks.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2911,9 +3322,11 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var useFavoritedServices = function() {
     var favoritePages = (0,_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__["default"])().favoritePages;
-    var _useAllServices = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])(), allLinks = _useAllServices.allLinks, availableSections = _useAllServices.availableSections;
+    var availableSections = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])().availableSections;
+    var allLinks = (0,_useAllLinks__WEBPACK_IMPORTED_MODULE_6__["default"])();
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), 2), bundles = _useState[0], setBundles = _useState[1];
     var fakeBundle = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function() {
         // escape early if we have no services
