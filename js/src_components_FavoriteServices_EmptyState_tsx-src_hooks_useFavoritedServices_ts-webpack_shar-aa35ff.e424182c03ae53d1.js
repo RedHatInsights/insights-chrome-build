@@ -1289,7 +1289,7 @@ var FeatureFlagsProvider = function(param) {
     var children = param.children;
     var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__["default"]).user;
     unleashClient = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        var _user_identity_internal;
+        var _user_identity_internal, _user_identity_internal1;
         return new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.UnleashClient(_object_spread_props(_object_spread({}, config), {
             context: _object_spread({
                 // TODO: instead of the isBeta, use the internal chrome state
@@ -1297,7 +1297,8 @@ var FeatureFlagsProvider = function(param) {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 "platform.chrome.ui.preview": (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)(),
-                userId: user === null || user === void 0 ? void 0 : (_user_identity_internal = user.identity.internal) === null || _user_identity_internal === void 0 ? void 0 : _user_identity_internal.account_id
+                userId: user === null || user === void 0 ? void 0 : (_user_identity_internal = user.identity.internal) === null || _user_identity_internal === void 0 ? void 0 : _user_identity_internal.account_id,
+                orgId: user === null || user === void 0 ? void 0 : (_user_identity_internal1 = user.identity.internal) === null || _user_identity_internal1 === void 0 ? void 0 : _user_identity_internal1.org_id
             }, user ? {
                 properties: {
                     account_number: user === null || user === void 0 ? void 0 : user.identity.account_number,
