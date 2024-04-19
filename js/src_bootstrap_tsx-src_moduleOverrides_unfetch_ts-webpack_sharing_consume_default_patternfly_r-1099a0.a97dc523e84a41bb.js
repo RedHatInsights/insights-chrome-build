@@ -5891,7 +5891,7 @@ var AllServicesMenu = function(param) {
         eventKey: activeTabKey,
         id: TAB_CONTENT_ID,
         ref: tabContentRef,
-        "aria-label": selectedService.description
+        "aria-label": selectedService === null || selectedService === void 0 ? void 0 : selectedService.description
     }, activeTabKey === FAVORITE_TAB_ID ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_15__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_12__["default"], {
         favoritedServices: favoritedServices
     })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallery__WEBPACK_IMPORTED_MODULE_14__["default"], {
