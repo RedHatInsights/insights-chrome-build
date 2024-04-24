@@ -16212,6 +16212,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var viableRoutes = [
     "/",
+    "/insights/*",
     "/settings/*",
     "/subscriptions/overview/*",
     "/subscriptions/inventory/*",
