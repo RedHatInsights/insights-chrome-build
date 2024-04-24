@@ -5044,7 +5044,7 @@ function _object_spread(target) {
 
 
 var AllServicesGroup = function(param) {
-    var title = param.title, links = param.links;
+    var title = param.title, links = param.links, category = param.category;
     var filteredLinks = (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)() ? links.filter(function(link) {
         return (0,_allServicesLinks__WEBPACK_IMPORTED_MODULE_4__.isAllServicesLink)(link) && link.ITLess;
     }) : links;
@@ -5056,7 +5056,9 @@ var AllServicesGroup = function(param) {
         className: "pf-v5-u-pt-xs pf-v5-u-font-weight-bold"
     }, title), filteredLinks.map(function(link, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_AllServicesLink__WEBPACK_IMPORTED_MODULE_3__["default"], _object_spread({
-            key: index
+            key: index,
+            category: category,
+            group: (0,_utils_common__WEBPACK_IMPORTED_MODULE_2__.titleToId)(title)
         }, link));
     }));
 };
@@ -5092,8 +5094,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
 /* harmony import */ var _hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../hooks/useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+
 
 
 
@@ -5106,8 +5110,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AllServicesLink = function(param) {
-    var href = param.href, title = param.title, isExternal = param.isExternal;
-    var moduleRoutes = (0,jotai__WEBPACK_IMPORTED_MODULE_10__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_9__.moduleRoutesAtom);
+    var href = param.href, title = param.title, isExternal = param.isExternal, category = param.category, group = param.group;
+    var moduleRoutes = (0,jotai__WEBPACK_IMPORTED_MODULE_11__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_9__.moduleRoutesAtom);
     // Find service appId
     var appId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
         var _moduleRoutes_find;
@@ -5139,11 +5143,13 @@ var AllServicesLink = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_7__["default"], {
         appId: appId,
         isExternal: isExternal,
-        href: href
+        href: href,
+        "data-ouia-component-id": "".concat(category, "-").concat(group ? "".concat(group, "-") : "").concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.titleToId)(title), "-Link")
     }, title, isExternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
         className: "pf-v5-u-ml-sm chr-c-icon-external-link",
         isInline: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_6___default()), null))), !isExternal && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+        "data-ouia-component-id": "".concat(category, "-").concat(group ? "".concat(group, "-") : "").concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_10__.titleToId)(title), "-FavoriteToggle"),
         onClick: function() {
             return handleFavouriteToggle(href, isFavorite);
         },
@@ -5209,6 +5215,30 @@ function _object_spread(target) {
     }
     return target;
 }
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) {
+            symbols = symbols.filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            });
+        }
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _object_spread_props(target, source) {
+    source = source != null ? source : {};
+    if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+        ownKeys(Object(source)).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
 
 
 
@@ -5238,10 +5268,13 @@ var AllServicesSection = function(param) {
         className: "pf-v5-u-mb-md"
     }, description || null), filteredLinks.map(function(link, index) {
         return (0,_allServicesLinks__WEBPACK_IMPORTED_MODULE_7__.isAllServicesGroup)(link) ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_AllServicesGroup__WEBPACK_IMPORTED_MODULE_5__["default"], _object_spread({
+            key: index,
+            category: (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.titleToId)(title)
+        }, link)) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_AllServicesLink__WEBPACK_IMPORTED_MODULE_6__["default"], _object_spread_props(_object_spread({
             key: index
-        }, link)) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_AllServicesLink__WEBPACK_IMPORTED_MODULE_6__["default"], _object_spread({
-            key: index
-        }, link));
+        }, link), {
+            category: (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.titleToId)(title)
+        }));
     }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllServicesSection);
@@ -5442,6 +5475,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
 /* harmony import */ var _AllServicesGalleryLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllServicesGalleryLink */ "./src/components/AllServicesDropdown/AllServicesGalleryLink.tsx");
 /* harmony import */ var _AllServicesGallerySection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AllServicesGallerySection */ "./src/components/AllServicesDropdown/AllServicesGallerySection.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -5475,6 +5509,7 @@ function _object_spread(target) {
 
 
 
+
 var AllServicesGallery = function(param) {
     var selectedService = param.selectedService;
     var sections = [];
@@ -5490,11 +5525,13 @@ var AllServicesGallery = function(param) {
         hasGutter: true
     }, links.map(function(link, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGalleryLink__WEBPACK_IMPORTED_MODULE_3__["default"], _object_spread({
-            key: index
+            key: index,
+            category: (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.titleToId)(selectedService.title)
         }, link));
     })), sections.map(function(section, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallerySection__WEBPACK_IMPORTED_MODULE_4__["default"], _object_spread({
-            key: index
+            key: index,
+            category: (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.titleToId)(selectedService.title)
         }, section));
     }));
 };
@@ -5536,6 +5573,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../hooks/useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
 /* harmony import */ var _FavoriteServices_ServiceIcon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../FavoriteServices/ServiceIcon */ "./src/components/FavoriteServices/ServiceIcon.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+
 
 
 
@@ -5550,7 +5589,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AllServicesGalleryLink = function(param) {
-    var href = param.href, title = param.title, icon = param.icon, description = param.description, isExternal = param.isExternal;
+    var href = param.href, title = param.title, icon = param.icon, description = param.description, isExternal = param.isExternal, category = param.category, group = param.group;
     var _useFavoritePagesWrapper = (0,_hooks_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_10__["default"])(), favoritePage = _useFavoritePagesWrapper.favoritePage, unfavoritePage = _useFavoritePagesWrapper.unfavoritePage, favoritePages = _useFavoritePagesWrapper.favoritePages;
     var onLinkClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_common__WEBPACK_IMPORTED_MODULE_11__.AllServicesDropdownContext).onLinkClick;
     var TitleIcon = icon ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServiceIcon__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -5570,7 +5609,8 @@ var AllServicesGalleryLink = function(param) {
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_8__["default"], {
         isExternal: isExternal,
         href: href,
-        className: "chr-c-favorite-service__tile"
+        className: "chr-c-favorite-service__tile",
+        "data-ouia-component-id": "".concat(category, "-").concat(group ? "".concat(group, "-") : "").concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.titleToId)(title), "-Link")
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
         className: classnames__WEBPACK_IMPORTED_MODULE_9___default()("chr-c-link-service-card chr-c-favorite-trigger", {
             "chr-c-icon-favorited": isFavorite
@@ -5593,6 +5633,7 @@ var AllServicesGalleryLink = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_7___default()), null)) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
         variant: "plain",
         className: "pf-v5-u-p-0",
+        ouiaId: "".concat(category, "-").concat(group ? "".concat(group, "-") : "").concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_13__.titleToId)(title), "-FavoriteToggle"),
         onClick: function(e) {
             e.stopPropagation();
             e.preventDefault();
@@ -5630,6 +5671,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _AllServicesGalleryLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AllServicesGalleryLink */ "./src/components/AllServicesDropdown/AllServicesGalleryLink.tsx");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -5686,8 +5728,9 @@ function _object_spread_props(target, source) {
 
 
 
+
 var AllServicesGallerySection = function(param) {
-    var title = param.title, links = param.links;
+    var title = param.title, links = param.links, category = param.category;
     if (links.length === 0) {
         return null;
     }
@@ -5699,6 +5742,8 @@ var AllServicesGallerySection = function(param) {
         hasGutter: true
     }, links.map(function(link, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_AllServicesGalleryLink__WEBPACK_IMPORTED_MODULE_3__["default"], _object_spread_props(_object_spread({}, link), {
+            category: category,
+            group: (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.titleToId)(title),
             key: index
         }));
     }))));

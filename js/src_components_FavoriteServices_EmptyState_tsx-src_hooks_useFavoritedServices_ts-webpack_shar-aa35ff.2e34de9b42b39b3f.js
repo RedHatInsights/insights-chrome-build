@@ -896,8 +896,17 @@ function _object_without_properties_loose(source, excluded) {
 
 
 
-var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(param) {
-    var _param_href = param.href, href = _param_href === void 0 ? "" : _param_href, isBeta = param.isBeta, onLinkClick = param.onLinkClick, className = param.className, currAppId = param.currAppId, appId = param.appId, children = param.children, tabIndex = param.tabIndex;
+var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function(_param) {
+    var _param_href = _param.href, href = _param_href === void 0 ? "" : _param_href, isBeta = _param.isBeta, onLinkClick = _param.onLinkClick, className = _param.className, currAppId = _param.currAppId, appId = _param.appId, children = _param.children, tabIndex = _param.tabIndex, props = _object_without_properties(_param, [
+        "href",
+        "isBeta",
+        "onLinkClick",
+        "className",
+        "currAppId",
+        "appId",
+        "children",
+        "tabIndex"
+    ]);
     var linkRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     var moduleRoutes = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_7__.moduleRoutesAtom);
     var moduleEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
@@ -917,17 +926,17 @@ var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
         actionId = "/";
     }
     /**
-   * If the sub nav item points to application root
-   * eg. /openshift/cost-management we don't want to send "/cost-management" but "/"
-   * We are not in app sub route but in app root
-   */ var domEvent = {
+     * If the sub nav item points to application root
+     * eg. /openshift/cost-management we don't want to send "/cost-management" but "/"
+     * We are not in app sub route but in app root
+     */ var domEvent = {
         href: href,
         id: actionId,
         navId: actionId,
         /**
-     * @deprecated
-     * Remove once nav overhaul is in all environments
-     */ type: "click"
+       * @deprecated
+       * Remove once nav overhaul is in all environments
+       */ type: "click"
     };
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
     var onClick = function(event) {
@@ -940,15 +949,15 @@ var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
             }
         }
         /**
-     * Add reference to the DOM link element
-     */ domEvent.target = linkRef.current;
+       * Add reference to the DOM link element
+       */ domEvent.target = linkRef.current;
         dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_4__.appNavClick)({
             id: actionId
         }, domEvent));
     };
     // turns /settings/rbac/roles -> settings_rbac_roles
     var quickStartHighlightId = href.split("/").slice(href.startsWith("/") ? 1 : 0).join("_");
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.NavLink, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.NavLink, _object_spread_props(_object_spread({}, props), {
         onMouseEnter: function() {
             if (moduleEntry) {
                 preloadTimeout.current = setTimeout(function() {
@@ -968,7 +977,7 @@ var LinkWrapper = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
         to: href,
         className: className,
         "data-quickstart-id": quickStartHighlightId
-    }, children);
+    }), children);
 });
 LinkWrapper.displayName = "MemoizedLinkWrapper";
 var basepath = document.baseURI;
