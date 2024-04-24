@@ -101,6 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   noop: () => (/* binding */ noop),
 /* harmony export */   pageAllowsUnentitled: () => (/* binding */ pageAllowsUnentitled),
 /* harmony export */   pageRequiresAuthentication: () => (/* binding */ pageRequiresAuthentication),
+/* harmony export */   titleToId: () => (/* binding */ titleToId),
 /* harmony export */   trustarcScriptSetup: () => (/* binding */ trustarcScriptSetup),
 /* harmony export */   updateDocumentTitle: () => (/* binding */ updateDocumentTitle)
 /* harmony export */ });
@@ -785,6 +786,12 @@ function findNavLeafPath(navItems) {
         navItems: leafPath
     };
 }
+// converts text to an identifier in title case
+var titleToId = function(title) {
+    return title === null || title === void 0 ? void 0 : title.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word) {
+        return word.toUpperCase();
+    }).replace(/\s+/g, "");
+};
 
 
 /***/ })
