@@ -9179,12 +9179,6 @@ var GlobalFilter = function(param) {
             workloads: workloads
         };
     }, react_redux__WEBPACK_IMPORTED_MODULE_1__.shallowEqual), count = _useSelector.count, total = _useSelector.total, tags = _useSelector.tags, sid = _useSelector.sid, workloads = _useSelector.workloads;
-    var globalFilterHidden = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
-        var globalFilterHidden = param.globalFilter.globalFilterHidden;
-        return globalFilterHidden;
-    });
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
-    var isDisabled = globalFilterHidden || !activeModule;
     var _useTagsFilter = (0,_redhat_cloud_services_frontend_components_FilterHooks__WEBPACK_IMPORTED_MODULE_13__.useTagsFilter)([
         workloads
     ].concat(_to_consumable_array(sid), _to_consumable_array(tags)), isLoaded, total - count, function(_e, closeFn) {
@@ -9205,19 +9199,17 @@ var GlobalFilter = function(param) {
         });
     }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        if (hasAccess && !isDisabled) {
+        if (hasAccess) {
             loadTags(selectedTags, filterTagsBy);
             selectTags(selectedTags);
         }
     }, [
         selectedTags,
         filterTagsBy,
-        hasAccess,
-        isDisabled
+        hasAccess
     ]);
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GlobalFilterMenu__WEBPACK_IMPORTED_MODULE_6__.GlobalFilterDropdown, {
         allowed: hasAccess,
-        isDisabled: isDisabled,
         filter: filter,
         chips: _to_consumable_array(chips.filter(function(param) {
             var key = param.key;
@@ -9247,12 +9239,22 @@ var GlobalFilterWrapper = function() {
     // FIXME: Clean up the global filter display flag
     var isLanding = pathname === "/";
     var isAllowed = (0,_utils_common__WEBPACK_IMPORTED_MODULE_8__.isGlobalFilterAllowed)();
+    var globalFilterHidden = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function(param) {
+        var globalFilterHidden = param.globalFilter.globalFilterHidden;
+        return globalFilterHidden;
+    });
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var isDisabled = globalFilterHidden || !activeModule;
     var isGlobalFilterEnabled = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        if (isDisabled) {
+            return false;
+        }
         var globalFilterAllowed = isAllowed || globalFilterRemoved;
         return !isLanding && (globalFilterAllowed || Boolean(localStorage.getItem("chrome:experimental:global-filter")));
     }, [
         isLanding,
-        isAllowed
+        isAllowed,
+        isDisabled
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var mounted = true;
@@ -9380,7 +9382,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 var GlobalFilterDropdown = function(param) {
-    var allowed = param.allowed, isDisabled = param.isDisabled, filter = param.filter, chips = param.chips, setValue = param.setValue, selectedTags = param.selectedTags, isOpen = param.isOpen, filterTagsBy = param.filterTagsBy, setIsOpen = param.setIsOpen;
+    var allowed = param.allowed, _param_isDisabled = param.isDisabled, isDisabled = _param_isDisabled === void 0 ? false : _param_isDisabled, filter = param.filter, chips = param.chips, setValue = param.setValue, selectedTags = param.selectedTags, isOpen = param.isOpen, filterTagsBy = param.filterTagsBy, setIsOpen = param.setIsOpen;
     /**
    * Hotjar API reference: https://help.hotjar.com/hc/en-us/articles/4405109971095-Events-API-Reference#the-events-api-call
    * window.hj is only avaiable in console.redhat.com and console.redhat.com/beta
