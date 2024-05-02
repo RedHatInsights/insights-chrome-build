@@ -15342,7 +15342,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @redhat-cloud-services/chrome */ "webpack/sharing/consume/default/@redhat-cloud-services/chrome/@redhat-cloud-services/chrome");
 /* harmony import */ var _redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_redhat_cloud_services_chrome__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
 /* harmony import */ var _layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../layouts/DefaultLayout */ "./src/layouts/DefaultLayout.tsx");
 /* harmony import */ var _layouts_AllServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../layouts/AllServices */ "./src/layouts/AllServices.tsx");
@@ -15365,6 +15365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../hooks/useTrackPendoUsage */ "./src/hooks/useTrackPendoUsage.ts");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _hooks_useTabName__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../hooks/useTabName */ "./src/hooks/useTabName.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -15624,6 +15625,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var ProductSelection = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function() {
     return __webpack_require__.e(/*! import() */ "src_components_Stratosphere_ProductSelection_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../Stratosphere/ProductSelection */ "./src/components/Stratosphere/ProductSelection.tsx"));
 });
@@ -15667,13 +15669,15 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var internalFilteredTopics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
     var analytics = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_analytics_SegmentContext__WEBPACK_IMPORTED_MODULE_14__["default"]).analytics;
     var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_28__["default"]);
-    var registerModule = (0,jotai__WEBPACK_IMPORTED_MODULE_30__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_29__.onRegisterModuleWriteAtom);
+    var registerModule = (0,jotai__WEBPACK_IMPORTED_MODULE_31__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_29__.onRegisterModuleWriteAtom);
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var mutableChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     // initialize WS event handling
     (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
     // track pendo usage
     (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_27__["default"])();
+    // setting default tab title
+    (0,_hooks_useTabName__WEBPACK_IMPORTED_MODULE_30__["default"])();
     function _getNotifications() {
         _getNotifications = _async_to_generator(function() {
             var _notifications_data, notifications, error;
@@ -17988,6 +17992,66 @@ var useMarketplacePartner = function() {
     };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useMarketplacePartner);
+
+
+/***/ }),
+
+/***/ "./src/hooks/useTabName.ts":
+/*!*********************************!*\
+  !*** ./src/hooks/useTabName.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _useBreadcrumbsLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useBreadcrumbsLinks */ "./src/hooks/useBreadcrumbsLinks.ts");
+/* harmony import */ var _useBundle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useBundle */ "./src/hooks/useBundle.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+var useTabName = function() {
+    var bundleTitle = (0,_useBundle__WEBPACK_IMPORTED_MODULE_3__["default"])().bundleTitle;
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_1__.activeModuleAtom);
+    var pathname = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_0__.useLocation)().pathname;
+    var fragments = (0,_useBreadcrumbsLinks__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    var title = (0,react__WEBPACK_IMPORTED_MODULE_4__.useMemo)(function() {
+        var fragmentsWithoutBundle = fragments.slice(1) // remove the bundle
+        .slice(-2) // limit to closest link parent
+        .map(function(param) {
+            var title = param.title;
+            return title;
+        });
+        // toReversed is not properly supported in all envs we run this code
+        fragmentsWithoutBundle.reverse();
+        return "".concat(fragmentsWithoutBundle.join(" - "), " | ").concat(bundleTitle);
+    }, [
+        activeModule,
+        pathname,
+        fragments
+    ]);
+    (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function() {
+        var _title_split;
+        // sometimes the nav files are not loaded yet and the first section is empty
+        if (((_title_split = title.split(" | ")) === null || _title_split === void 0 ? void 0 : _title_split[0].length) > 1) {
+            document.title = title;
+        }
+    }, [
+        title
+    ]);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useTabName);
 
 
 /***/ }),
