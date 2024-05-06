@@ -59,18 +59,17 @@ var DashboardFavorites = function() {
     }, favoritedServices.map(function(favorite, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Gallery__WEBPACK_IMPORTED_MODULE_0__.GalleryItem, {
             key: index
-        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-            to: favorite.pathname
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_1__.Split, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_1__.SplitItem, {
             className: "pf-v5-u-mr-sm"
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ServiceIcon__WEBPACK_IMPORTED_MODULE_8__["default"], {
             icon: favorite.icon
-        })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_1__.SplitItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
-            component: "a",
+        })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Split__WEBPACK_IMPORTED_MODULE_1__.SplitItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+            to: favorite.pathname
+        }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
             className: "pf-v5-u-mb-0"
-        }, favorite.name), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
+        }, favorite.name)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
             component: "small"
-        }, getBundle(favorite.pathname)))))));
+        }, getBundle(favorite.pathname))))));
     }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DashboardFavorites);
