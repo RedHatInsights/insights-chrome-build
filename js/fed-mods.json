@@ -1,13 +1,13 @@
 {
     "chrome": {
         "entry": [
-            "/beta/apps/chrome/js/chrome.ecc7f52084ee2069.js"
+            "/beta/apps/chrome/js/chrome.0ec46b841b0d2ff0.js"
         ],
         "modules": [
             "/beta/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.afdc470990922d08.js",
             "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.24dce0920e658f82.css",
             "/beta/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.12d4e50aeceb30fc.js",
-            "/beta/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.db275b45d3ab43ae.css",
+            "/beta/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.bfd72a9eed04f284.css",
             "/beta/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.96b1248b52b3e0b1.js",
             "/beta/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.0f1b0fa873d4a200.js",
             "/beta/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.be6865c521f12f21.js",
