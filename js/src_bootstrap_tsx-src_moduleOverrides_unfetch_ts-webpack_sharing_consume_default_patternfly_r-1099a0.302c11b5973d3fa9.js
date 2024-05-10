@@ -11084,6 +11084,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
 /* harmony import */ var _hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useWindowWidth */ "./src/hooks/useWindowWidth.tsx");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
+/* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../state/chromeStore */ "./src/state/chromeStore.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -11198,10 +11200,13 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
+
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.ITLess)();
 var switchRelease = function(isBeta, pathname, previewEnabled) {
     js_cookie__WEBPACK_IMPORTED_MODULE_18__["default"].set("cs_toggledRelease", "true");
     var previewFragment = (0,_utils_common__WEBPACK_IMPORTED_MODULE_19__.getRouterBasename)(pathname);
+    _state_chromeStore__WEBPACK_IMPORTED_MODULE_29__["default"].set(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_28__.isPreviewAtom, !isBeta);
     if (isBeta) {
         return pathname.replace(previewFragment.includes("beta") ? /\/beta/ : /\/preview/, "");
     } else {
@@ -20239,6 +20244,26 @@ var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false)
 
 /***/ }),
 
+/***/ "./src/state/atoms/releaseAtom.ts":
+/*!****************************************!*\
+  !*** ./src/state/atoms/releaseAtom.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   isPreviewAtom: () => (/* binding */ isPreviewAtom)
+/* harmony export */ });
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/state/atoms/utils.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+
+
+var isPreviewAtom = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.atomWithToggle)((0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)());
+
+
+/***/ }),
+
 /***/ "./src/state/atoms/scalprumConfigAtom.ts":
 /*!***********************************************!*\
   !*** ./src/state/atoms/scalprumConfigAtom.ts ***!
@@ -20376,6 +20401,31 @@ var writeInitialScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)
 
 /***/ }),
 
+/***/ "./src/state/atoms/utils.ts":
+/*!**********************************!*\
+  !*** ./src/state/atoms/utils.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   atomWithToggle: () => (/* binding */ atomWithToggle)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+// recipe from https://jotai.org/docs/recipes/atom-with-toggle
+function atomWithToggle(initialValue) {
+    var anAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(initialValue, function(get, set, nextValue) {
+        var update = nextValue !== null && nextValue !== void 0 ? nextValue : !get(anAtom);
+        set(anAtom, update);
+    });
+    return anAtom;
+}
+
+
+/***/ }),
+
 /***/ "./src/state/chromeStore.ts":
 /*!**********************************!*\
   !*** ./src/state/chromeStore.ts ***!
@@ -20387,16 +20437,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
 /* harmony import */ var _atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 /* harmony import */ var _atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./atoms/contextSwitcher */ "./src/state/atoms/contextSwitcher.ts");
+/* harmony import */ var _atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 
 
 
-var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_2__.createStore)();
+
+
+var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_4__.createStore)();
 // setup initial chrome store state
 chromeStore.set(_atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__.contextSwitcherOpenAtom, false);
 chromeStore.set(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, undefined);
+chromeStore.set(_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__.isPreviewAtom, (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)());
 // globally handle subscription to activeModuleAtom
 chromeStore.sub(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, function() {
 // console.log('activeModule in store', chromeStore.get(activeModuleAtom));
