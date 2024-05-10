@@ -21128,6 +21128,9 @@ var debugFunctions = {
     },
     sentryDebug: function() {
         return functionBuilder("chrome:sentry:debug", true);
+    },
+    forceLocalPreview: function() {
+        return functionBuilder("chrome:local-preview", true);
     }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (debugFunctions);
