@@ -11939,7 +11939,7 @@ var DropdownItems = function(param) {
                 var className = param.className;
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], {
                     className: className,
-                    href: "/user-preferences/notifications",
+                    href: "/settings/notifications/user-preferences",
                     appId: "userPreferences"
                 }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_12__["default"].userPreferences));
             },
