@@ -3601,6 +3601,7 @@ function _setCookie() {
                     setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/automation-hub;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
                     setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/remediations/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
                     setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/edge/v1;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
+                    setCookieWrapper("".concat(cookieName, "=").concat(token, ";") + "path=/api/crc-pdf-generator/v2/download;" + "secure=true;" + "expires=".concat(getCookieExpires(expiresAt)));
                 }
             }
             return [
