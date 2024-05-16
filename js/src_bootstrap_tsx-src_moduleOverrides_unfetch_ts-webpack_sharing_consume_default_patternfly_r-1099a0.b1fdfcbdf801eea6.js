@@ -21811,7 +21811,7 @@ function initSentry() {
     sentryInitialized = true;
     var appDetails = getAppDetails();
     var API_KEY;
-    switch(appDetails.app.group){
+    switch(appDetails.app.name){
         case "advisor":
             API_KEY = "https://f8eb44de949e487e853185c09340f3cf@o490301.ingest.us.sentry.io/4505397435367424";
             break;
