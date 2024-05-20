@@ -3867,9 +3867,6 @@ function _array_like_to_array(arr, len) {
 function _array_with_holes(arr) {
     if (Array.isArray(arr)) return arr;
 }
-function _array_without_holes(arr) {
-    if (Array.isArray(arr)) return _array_like_to_array(arr);
-}
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
     try {
         var info = gen[key](arg);
@@ -3912,9 +3909,6 @@ function _define_property(obj, key, value) {
     }
     return obj;
 }
-function _iterable_to_array(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
 function _iterable_to_array_limit(arr, i) {
     var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
     if (_i == null) return;
@@ -3941,9 +3935,6 @@ function _iterable_to_array_limit(arr, i) {
 }
 function _non_iterable_rest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _non_iterable_spread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _object_spread(target) {
     for(var i = 1; i < arguments.length; i++){
@@ -3986,9 +3977,6 @@ function _object_spread_props(target, source) {
 }
 function _sliced_to_array(arr, i) {
     return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
-}
-function _to_consumable_array(arr) {
-    return _array_without_holes(arr) || _iterable_to_array(arr) || _unsupported_iterable_to_array(arr) || _non_iterable_spread();
 }
 function _unsupported_iterable_to_array(o, minLen) {
     if (!o) return;
@@ -4210,6 +4198,15 @@ var createChromeContext = function(param) {
             }
             return environment;
         },
+        getAvailableBundles: function() {
+            return Object.entries(_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.bundleMapping).map(function(param) {
+                var _param = _sliced_to_array(param, 2), key = _param[0], value = _param[1];
+                return {
+                    id: key,
+                    title: value
+                };
+            });
+        },
         createCase: function(fields) {
             return chromeAuth.getUser().then(function(user) {
                 return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_5__.createSupportCase)(user.identity, chromeAuth.token, fields);
@@ -4273,20 +4270,14 @@ var createChromeContext = function(param) {
         segment: {
             setPageMetadata: setPageMetadata
         },
-        toggleFeedbackModal: function() {
-            for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
-                args[_key] = arguments[_key];
-            }
-            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleFeedbackModal.apply(void 0, _to_consumable_array(args)));
+        toggleFeedbackModal: function(isOpen) {
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleFeedbackModal)(isOpen));
         },
         enableDebugging: function() {
             return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerButton)(true));
         },
-        toggleDebuggerModal: function() {
-            for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
-                args[_key] = arguments[_key];
-            }
-            return dispatch(_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerModal.apply(void 0, _to_consumable_array(args)));
+        toggleDebuggerModal: function(isOpen) {
+            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerModal)(isOpen));
         },
         // FIXME: Update types once merged
         quickStarts: quickstartsAPI,
