@@ -783,6 +783,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_automation_icon__WEBPACK_IMPORTED_MODULE_28__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bell-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bell-icon/@patternfly/react-icons/dist/dynamic/icons/bell-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bell_icon__WEBPACK_IMPORTED_MODULE_29__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_brain_icon__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/brain-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/brain-icon/@patternfly/react-icons/dist/dynamic/icons/brain-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_brain_icon__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_brain_icon__WEBPACK_IMPORTED_MODULE_30__);
+
 
 
 
@@ -819,6 +822,7 @@ var FavorableIcons;
     FavorableIcons["ACSIcon"] = "ACSIcon";
     FavorableIcons["AnsibleIcon"] = "AnsibleIcon";
     FavorableIcons["AppServicesIcon"] = "AppServicesIcon";
+    FavorableIcons["BrainIcon"] = "BrainIcon";
     FavorableIcons["DataScienceIcon"] = "DataScienceIcon";
     FavorableIcons["EdgeIcon"] = "EdgeIcon";
     FavorableIcons["InsightsIcon"] = "InsightsIcon";
@@ -874,6 +878,7 @@ var iconEnum = {
     ShoppingCartIcon: (_patternfly_react_icons_dist_dynamic_icons_shopping_cart_icon__WEBPACK_IMPORTED_MODULE_25___default()),
     CubeIcon: (_patternfly_react_icons_dist_dynamic_icons_cube_icon__WEBPACK_IMPORTED_MODULE_21___default()),
     BoxesIcon: (_patternfly_react_icons_dist_dynamic_icons_boxes_icon__WEBPACK_IMPORTED_MODULE_15___default()),
+    BrainIcon: (_patternfly_react_icons_dist_dynamic_icons_brain_icon__WEBPACK_IMPORTED_MODULE_30___default()),
     MonitoringIcon: (_patternfly_react_icons_dist_dynamic_icons_monitoring_icon__WEBPACK_IMPORTED_MODULE_27___default())
 };
 var ServiceIcon = function(param) {
