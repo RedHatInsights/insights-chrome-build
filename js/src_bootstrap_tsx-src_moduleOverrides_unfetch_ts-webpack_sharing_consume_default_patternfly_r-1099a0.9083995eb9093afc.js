@@ -16132,10 +16132,6 @@ var redirects = [
         to: "/subscriptions/overview"
     },
     {
-        path: "/business-services",
-        to: "/business-services/hybrid-committed-spend"
-    },
-    {
         path: "/docs",
         to: "/docs/api"
     }

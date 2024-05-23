@@ -459,7 +459,6 @@ var requiredBundles = [
     "settings",
     "iam",
     "quay",
-    "business-services",
     "subscriptions"
 ].concat(_to_consumable_array(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBundles : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBundles : [])).filter(Boolean);
 var itLessBundles = [
