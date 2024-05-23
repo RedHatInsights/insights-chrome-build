@@ -477,8 +477,7 @@ var bundlesOrder = [
     "cost-management",
     "subscriptions",
     "iam",
-    "quay",
-    "business-services"
+    "quay"
 ];
 function findModuleByLink(href) {
     var modules = (arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
