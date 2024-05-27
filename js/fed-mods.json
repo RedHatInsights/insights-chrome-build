@@ -1,17 +1,18 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.b4bfe0e1fa9e45a3.js"
+            "/apps/chrome/js/chrome.fbe22f68a0aec11c.js"
         ],
         "modules": [
             "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.afdc470990922d08.js",
             "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.24dce0920e658f82.css",
-            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.aa319ff8780f6533.js",
-            "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.cc997010b95737a9.js",
+            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.12d4e50aeceb30fc.js",
+            "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.bfd72a9eed04f284.css",
+            "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.96b1248b52b3e0b1.js",
             "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.0f1b0fa873d4a200.js",
-            "/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.19a576ad23d8cb1a.js",
+            "/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.be6865c521f12f21.js",
             "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.fbc13eff37c51b78.js",
-            "/apps/chrome/js/src_utils_common_ts.557f08467066b9e1.js"
+            "/apps/chrome/js/src_utils_common_ts.48e7ab5a34d35f60.js"
         ]
     }
 }
