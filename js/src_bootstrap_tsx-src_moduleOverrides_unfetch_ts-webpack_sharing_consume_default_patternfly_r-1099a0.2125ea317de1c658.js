@@ -19054,33 +19054,6 @@ function _async_to_generator(fn) {
         });
     };
 }
-function _object_without_properties(source, excluded) {
-    if (source == null) return {};
-    var target = _object_without_properties_loose(source, excluded);
-    var key, i;
-    if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for(i = 0; i < sourceSymbolKeys.length; i++){
-            key = sourceSymbolKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-            target[key] = source[key];
-        }
-    }
-    return target;
-}
-function _object_without_properties_loose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for(i = 0; i < sourceKeys.length; i++){
-        key = sourceKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        target[key] = source[key];
-    }
-    return target;
-}
 function _ts_generator(thisArg, body) {
     var f, y, t, g, _ = {
         label: 0,
@@ -19286,13 +19259,11 @@ var pollStatus = function() {
 }();
 var requestPdf = function() {
     var _ref = _async_to_generator(function(options) {
-        var filename, rest, _ref, statusID, status, error;
+        var filename, payload, _ref, statusID, status, error;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    filename = options.filename, rest = _object_without_properties(options, [
-                        "filename"
-                    ]);
+                    filename = options.filename, payload = options.payload;
                     _state.label = 1;
                 case 1:
                     _state.trys.push([
@@ -19303,7 +19274,9 @@ var requestPdf = function() {
                     ]);
                     return [
                         4,
-                        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/crc-pdf-generator/v2/create", rest)
+                        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/crc-pdf-generator/v2/create", {
+                            payload: payload
+                        })
                     ];
                 case 2:
                     _ref = _state.sent(), statusID = _ref.data.statusID;
