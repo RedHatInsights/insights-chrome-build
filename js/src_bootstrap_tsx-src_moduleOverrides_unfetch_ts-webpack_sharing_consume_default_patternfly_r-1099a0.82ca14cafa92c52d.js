@@ -1497,28 +1497,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_oidc_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-oidc-context */ "./node_modules/react-oidc-context/dist/esm/react-oidc-context.js");
 /* harmony import */ var broadcast_channel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! broadcast-channel */ "./node_modules/broadcast-channel/dist/esbrowser/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-/* harmony import */ var _getInitialScope__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../getInitialScope */ "./src/auth/getInitialScope.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _entitlementsApi__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../entitlementsApi */ "./src/auth/entitlementsApi.ts");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
-/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/sentry */ "./src/utils/sentry.ts");
-/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
-/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils */ "./src/auth/OIDCConnector/utils.ts");
-/* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
-/* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
-/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
-/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
+/* harmony import */ var _ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _getInitialScope__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../getInitialScope */ "./src/auth/getInitialScope.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _entitlementsApi__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../entitlementsApi */ "./src/auth/entitlementsApi.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils_sentry__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/sentry */ "./src/utils/sentry.ts");
+/* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../logger */ "./src/auth/logger.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils */ "./src/auth/OIDCConnector/utils.ts");
+/* harmony import */ var _createGetUserPermissions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../createGetUserPermissions */ "./src/auth/createGetUserPermissions.ts");
+/* harmony import */ var _initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../initializeAccessRequestCookies */ "./src/auth/initializeAccessRequestCookies.ts");
+/* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
+/* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/consts */ "./src/utils/consts.ts");
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
-/* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
-/* harmony import */ var _setCookie__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../setCookie */ "./src/auth/setCookie.ts");
-/* harmony import */ var _shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../shouldReAuthScopes */ "./src/auth/shouldReAuthScopes.ts");
-/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
-/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../state/atoms/scalprumConfigAtom */ "./src/state/atoms/scalprumConfigAtom.ts");
+/* harmony import */ var _setCookie__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../setCookie */ "./src/auth/setCookie.ts");
+/* harmony import */ var _shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../shouldReAuthScopes */ "./src/auth/shouldReAuthScopes.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../state/chromeStore */ "./src/state/chromeStore.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1766,9 +1765,9 @@ function _ts_generator(thisArg, body) {
 
 
 
-var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_8__["default"])();
+var serviceAPI = (0,_entitlementsApi__WEBPACK_IMPORTED_MODULE_7__["default"])();
 var authChannel = new broadcast_channel__WEBPACK_IMPORTED_MODULE_2__.BroadcastChannel("auth");
-var log = (0,_logger__WEBPACK_IMPORTED_MODULE_12__["default"])("OIDCSecured.tsx");
+var log = (0,_logger__WEBPACK_IMPORTED_MODULE_11__["default"])("OIDCSecured.tsx");
 /* eslint-disable @typescript-eslint/no-explicit-any */ function mapOIDCUserToChromeUser(user, entitlements) {
     var _user_profile, _user_profile1, _user_profile2, _user_profile3, _user_profile4, _user_profile5, _user_profile6, _user_profile7, _user_profile8, _user_profile9, _user_profile10, _user_profile11, _user_profile12;
     return {
@@ -1858,11 +1857,10 @@ function OIDCSecured(param) {
     var _activeModule_config, _authRef_current_user, _authRef_current_user1;
     var auth = (0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.useAuth)();
     var authRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(auth);
-    var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
-    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_18__.writeInitialScalprumConfigAtom);
-    var loadModulesSchema = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_22__.loadModulesSchemaWriteAtom);
+    var setScalprumConfigAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_scalprumConfigAtom__WEBPACK_IMPORTED_MODULE_17__.writeInitialScalprumConfigAtom);
+    var loadModulesSchema = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_21__.loadModulesSchemaWriteAtom);
     // get scope module definition
-    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_21__.activeModuleDefinitionReadAtom);
+    var activeModule = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_20__.activeModuleDefinitionReadAtom);
     var requiredScopes = (activeModule === null || activeModule === void 0 ? void 0 : (_activeModule_config = activeModule.config) === null || _activeModule_config === void 0 ? void 0 : _activeModule_config.ssoScopes) || [];
     var _authRef_current_user_access_token, _authRef_current_user_expires_at, _authRef_current_user2;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -1873,13 +1871,13 @@ function OIDCSecured(param) {
             authChannel.postMessage({
                 type: "logout"
             });
-            (0,_utils__WEBPACK_IMPORTED_MODULE_13__.logout)(authRef.current, bounce);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_12__.logout)(authRef.current, bounce);
         },
         logout: function() {
-            (0,_utils__WEBPACK_IMPORTED_MODULE_13__.logout)(authRef.current, true);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_12__.logout)(authRef.current, true);
         },
         login: function(requiredScopes) {
-            return (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, requiredScopes);
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_12__.login)(authRef.current, requiredScopes);
         },
         loginAllTabs: function() {
             authChannel.postMessage({
@@ -1898,14 +1896,14 @@ function OIDCSecured(param) {
         },
         getOfflineToken: function() {
             var _authRef_current_settings_metadata;
-            var redirectUri = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_17__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(window.location.origin).concat(window.location.pathname));
+            var redirectUri = new URL(localStorage.getItem(_utils_consts__WEBPACK_IMPORTED_MODULE_16__.OFFLINE_REDIRECT_STORAGE_KEY) || "".concat(window.location.origin).concat(window.location.pathname));
             var _authRef_current_settings_metadata_token_endpoint;
-            return (0,_offline__WEBPACK_IMPORTED_MODULE_16__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
+            return (0,_offline__WEBPACK_IMPORTED_MODULE_15__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
         },
         doOffline: function() {
-            return (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, [
+            return (0,_utils__WEBPACK_IMPORTED_MODULE_12__.login)(authRef.current, [
                 "offline_access"
-            ], (0,_offline__WEBPACK_IMPORTED_MODULE_16__.prepareOfflineRedirect)());
+            ], (0,_offline__WEBPACK_IMPORTED_MODULE_15__.prepareOfflineRedirect)());
         },
         getUser: function() {
             var _authRef_current_user;
@@ -1921,9 +1919,9 @@ function OIDCSecured(param) {
                 for(_len = _arguments.length, additionalScopes = new Array(_len), _key = 0; _key < _len; _key++){
                     additionalScopes[_key] = _arguments[_key];
                 }
-                _shouldReAuthScopes = _sliced_to_array((0,_shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_20__["default"])(requiredScopes, additionalScopes), 2), shouldReAuth = _shouldReAuthScopes[0], reAuthScopes = _shouldReAuthScopes[1];
+                _shouldReAuthScopes = _sliced_to_array((0,_shouldReAuthScopes__WEBPACK_IMPORTED_MODULE_19__["default"])(requiredScopes, additionalScopes), 2), shouldReAuth = _shouldReAuthScopes[0], reAuthScopes = _shouldReAuthScopes[1];
                 if (shouldReAuth) {
-                    (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(authRef.current, reAuthScopes);
+                    (0,_utils__WEBPACK_IMPORTED_MODULE_12__.login)(authRef.current, reAuthScopes);
                 }
                 return [
                     2
@@ -1935,15 +1933,15 @@ function OIDCSecured(param) {
         var _ref = _async_to_generator(function() {
             var _microFrontendConfig_initialModuleScope, routes, initialModuleScope, initialModuleConfig;
             return _ts_generator(this, function(_state) {
-                routes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_5__.generateRoutesList)(microFrontendConfig);
+                routes = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.generateRoutesList)(microFrontendConfig);
                 loadModulesSchema(microFrontendConfig);
                 // eventually all attributes will be stored in jotai atom
                 setScalprumConfigAtom(microFrontendConfig);
-                initialModuleScope = (0,_getInitialScope__WEBPACK_IMPORTED_MODULE_6__["default"])(routes, window.location.pathname);
+                initialModuleScope = (0,_getInitialScope__WEBPACK_IMPORTED_MODULE_5__["default"])(routes, window.location.pathname);
                 initialModuleConfig = initialModuleScope && ((_microFrontendConfig_initialModuleScope = microFrontendConfig[initialModuleScope]) === null || _microFrontendConfig_initialModuleScope === void 0 ? void 0 : _microFrontendConfig_initialModuleScope.config);
-                (0,_initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_15__["default"])();
+                (0,_initializeAccessRequestCookies__WEBPACK_IMPORTED_MODULE_14__["default"])();
                 if (!(0,react_oidc_context__WEBPACK_IMPORTED_MODULE_1__.hasAuthParams)() && !auth.activeNavigator && !auth.isLoading && !auth.isAuthenticated) {
-                    (0,_utils__WEBPACK_IMPORTED_MODULE_13__.login)(auth, initialModuleConfig === null || initialModuleConfig === void 0 ? void 0 : initialModuleConfig.ssoScopes);
+                    (0,_utils__WEBPACK_IMPORTED_MODULE_12__.login)(auth, initialModuleConfig === null || initialModuleConfig === void 0 ? void 0 : initialModuleConfig.ssoScopes);
                 }
                 return [
                     2
@@ -1965,7 +1963,7 @@ function OIDCSecured(param) {
                     case 0:
                         // order of calls is important
                         // init the IQE enablement first to add the necessary auth headers to the requests
-                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_7__.init)(store, authRef);
+                        (0,_utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_6__.init)(_state_chromeStore__WEBPACK_IMPORTED_MODULE_22__["default"], authRef);
                         return [
                             4,
                             fetchEntitlements(user)
@@ -1976,12 +1974,12 @@ function OIDCSecured(param) {
                         getUser = function() {
                             return Promise.resolve(chromeUser);
                         };
-                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_9__.initializeVisibilityFunctions)({
+                        (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_8__.initializeVisibilityFunctions)({
                             getUser: getUser,
                             getToken: function() {
                                 return Promise.resolve(user.access_token);
                             },
-                            getUserPermissions: (0,_createGetUserPermissions__WEBPACK_IMPORTED_MODULE_14__["default"])(getUser, function() {
+                            getUserPermissions: (0,_createGetUserPermissions__WEBPACK_IMPORTED_MODULE_13__["default"])(getUser, function() {
                                 return Promise.resolve(user.access_token);
                             })
                         });
@@ -1994,7 +1992,7 @@ function OIDCSecured(param) {
                                 tokenExpires: user.expires_at
                             });
                         });
-                        (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_10__["default"])(chromeUser);
+                        (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_9__["default"])(chromeUser);
                         return [
                             2
                         ];
@@ -2037,7 +2035,7 @@ function OIDCSecured(param) {
         var _auth_user, _auth_user1;
         authRef.current = auth;
         var _auth_user_access_token, _auth_user_expires_at;
-        (0,_setCookie__WEBPACK_IMPORTED_MODULE_19__.setCookie)((_auth_user_access_token = (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : _auth_user.access_token) !== null && _auth_user_access_token !== void 0 ? _auth_user_access_token : "", (_auth_user_expires_at = (_auth_user1 = auth.user) === null || _auth_user1 === void 0 ? void 0 : _auth_user1.expires_at) !== null && _auth_user_expires_at !== void 0 ? _auth_user_expires_at : 0);
+        (0,_setCookie__WEBPACK_IMPORTED_MODULE_18__.setCookie)((_auth_user_access_token = (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : _auth_user.access_token) !== null && _auth_user_access_token !== void 0 ? _auth_user_access_token : "", (_auth_user_expires_at = (_auth_user1 = auth.user) === null || _auth_user1 === void 0 ? void 0 : _auth_user1.expires_at) !== null && _auth_user_expires_at !== void 0 ? _auth_user_expires_at : 0);
     }, [
         auth
     ]);
@@ -2046,12 +2044,12 @@ function OIDCSecured(param) {
         throw auth.error;
     }
     if (!auth.isAuthenticated || !state.ready) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_10__["default"], {
             cookieElement: cookieElement,
             setCookieElement: setCookieElement
         });
     }
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
         value: state
     }, children);
 }
@@ -3859,6 +3857,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
 /* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
 /* harmony import */ var _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pdf/requestPdf */ "./src/pdf/requestPdf.ts");
+/* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../state/chromeStore */ "./src/state/chromeStore.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4100,6 +4099,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var createChromeContext = function(param) {
     var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, registerModule = param.registerModule, chromeAuth = param.chromeAuth;
     var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(chromeAuth.getUser);
@@ -4159,7 +4159,7 @@ var createChromeContext = function(param) {
             getOfflineToken: chromeAuth.getOfflineToken,
             qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"]), {
                 init: function() {
-                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(store, {
+                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(_state_chromeStore__WEBPACK_IMPORTED_MODULE_19__["default"], {
                         current: {
                             user: {
                                 access_token: chromeAuth.token
@@ -6744,8 +6744,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ErrorComponents/GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+/* harmony import */ var _state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../state/atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -6787,17 +6788,15 @@ function _object_spread(target) {
 
 
 
+
 // eslint-disable-next-line react/display-name
 var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function(param) {
     var scope = param.scope, module = param.module, scopeClass = param.scopeClass, path = param.path, props = param.props;
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var setActiveHelpTopicByName = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__.HelpTopicContext).setActiveHelpTopicByName;
     var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__["default"]).user;
-    var gatewayError = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function(param) {
-        var gatewayError = param.chrome.gatewayError;
-        return gatewayError;
-    });
-    var setActiveModule = (0,jotai__WEBPACK_IMPORTED_MODULE_12__.useSetAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var gatewayError = (0,jotai__WEBPACK_IMPORTED_MODULE_13__.useAtomValue)(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_12__.gatewayErrorAtom);
+    var setActiveModule = (0,jotai__WEBPACK_IMPORTED_MODULE_13__.useSetAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.batch)(function() {
             // Only trigger update on a first application render before any active module has been selected
@@ -19243,7 +19242,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   onPageObjectId: () => (/* binding */ onPageObjectId),
 /* harmony export */   populateNotificationsReducer: () => (/* binding */ populateNotificationsReducer),
 /* harmony export */   populateQuickstartsReducer: () => (/* binding */ populateQuickstartsReducer),
-/* harmony export */   setGatewayError: () => (/* binding */ setGatewayError),
 /* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
 /* harmony export */   toggleDebuggerButton: () => (/* binding */ toggleDebuggerButton),
 /* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
@@ -19533,12 +19531,6 @@ function markActiveProduct(state, param) {
     var payload = param.payload;
     return _object_spread_props(_object_spread({}, state), {
         activeProduct: payload
-    });
-}
-function setGatewayError(state, param) {
-    var payload = param.payload;
-    return _object_spread_props(_object_spread({}, state), {
-        gatewayError: payload
     });
 }
 function toggleNotificationsReducer(state) {
@@ -19959,7 +19951,7 @@ function _define_property(obj, key, value) {
 
 
 var _obj;
-var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_PENDO_FEEDBACK_FLAG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setPendoFeedbackFlag), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_FEEDBACK_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleFeedbackModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_GATEWAY_ERROR, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setGatewayError), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_NOTIFICATIONS_DRAWER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.updateNotificationsReducer), _obj);
+var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_PENDO_FEEDBACK_FLAG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setPendoFeedbackFlag), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_FEEDBACK_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleFeedbackModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_NOTIFICATIONS_DRAWER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markNotificationAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_READ, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsRead), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ALL_NOTIFICATION_AS_UNREAD, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAllNotificationsAsUnread), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.updateNotificationsReducer), _obj);
 var _obj1;
 var globalFilter = (_obj1 = {}, _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTags), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTagsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDs), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloads), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloadsPending), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_SCOPE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onSetGlobalFilterScope), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_TOGGLE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterToggle), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_REMOVE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterRemove), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_UPDATE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onTagSelect), _obj1);
 var chromeInitialState = {
@@ -20100,6 +20092,28 @@ __webpack_require__.r(__webpack_exports__);
 
 // setup initial chrome atoms
 var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
+
+
+/***/ }),
+
+/***/ "./src/state/atoms/gatewayErrorAtom.ts":
+/*!*********************************************!*\
+  !*** ./src/state/atoms/gatewayErrorAtom.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clearGatewayErrorAtom: () => (/* binding */ clearGatewayErrorAtom),
+/* harmony export */   gatewayErrorAtom: () => (/* binding */ gatewayErrorAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+var gatewayErrorAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(undefined);
+var clearGatewayErrorAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(null, function(_get, set) {
+    set(gatewayErrorAtom, undefined);
+});
 
 
 /***/ }),
@@ -20568,21 +20582,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
 /* harmony import */ var _atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 /* harmony import */ var _atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./atoms/contextSwitcher */ "./src/state/atoms/contextSwitcher.ts");
 /* harmony import */ var _atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
 
 
 
 
 
-var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_4__.createStore)();
+
+var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.createStore)();
 // setup initial chrome store state
 chromeStore.set(_atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__.contextSwitcherOpenAtom, false);
 chromeStore.set(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, undefined);
 chromeStore.set(_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__.isPreviewAtom, (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)());
+chromeStore.set(_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_4__.gatewayErrorAtom, undefined);
 // globally handle subscription to activeModuleAtom
 chromeStore.sub(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, function() {
 // console.log('activeModule in store', chromeStore.get(activeModuleAtom));
@@ -21339,9 +21356,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   init: () => (/* binding */ init)
 /* harmony export */ });
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _responseInterceptors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./responseInterceptors */ "./src/utils/responseInterceptors.ts");
-/* harmony import */ var _auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth/crossAccountBouncer */ "./src/auth/crossAccountBouncer.ts");
+/* harmony import */ var _responseInterceptors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./responseInterceptors */ "./src/utils/responseInterceptors.ts");
+/* harmony import */ var _auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../auth/crossAccountBouncer */ "./src/auth/crossAccountBouncer.ts");
+/* harmony import */ var _state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ /* eslint-disable prefer-rest-params */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -21554,7 +21571,7 @@ var spreadAdditionalHeaders = function(options) {
     }
     return additionalHeaders;
 };
-function init(store, authRef) {
+function init(chromeStore, authRef) {
     var open = window.XMLHttpRequest.prototype.open;
     var send = window.XMLHttpRequest.prototype.send;
     var setRequestHeader = window.XMLHttpRequest.prototype.setRequestHeader;
@@ -21599,12 +21616,12 @@ function init(store, authRef) {
         }
         this.onload = function() {
             if (this.status >= 400) {
-                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_1__.get3scaleError)(this.response);
+                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(this.response);
                 if (this.status === 403 && this.responseText.includes(DENIED_CROSS_CHECK)) {
-                    (0,_auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_2__["default"])();
+                    (0,_auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_1__["default"])();
                 // check for 3scale error
                 } else if (gatewayError) {
-                    store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_0__.setGatewayError)(gatewayError));
+                    chromeStore.set(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_2__.gatewayErrorAtom, gatewayError);
                 }
             }
         };
@@ -21681,9 +21698,9 @@ function init(store, authRef) {
                             _state.label = 5;
                         case 5:
                             data = _tmp;
-                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_1__.get3scaleError)(data);
+                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(data);
                             if (gatewayError) {
-                                store.dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_0__.setGatewayError)(gatewayError));
+                                chromeStore.set(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_2__.gatewayErrorAtom, gatewayError);
                             }
                             return [
                                 2,
@@ -23190,6 +23207,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
@@ -23203,6 +23221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
 /* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../state/atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -23434,6 +23453,8 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 function cleanNavItemsHref(navItem) {
     var result = _object_spread({}, navItem);
     if (typeof result.groupId !== "undefined") {
@@ -23462,6 +23483,7 @@ var appendQSSearch = function(currentSearch, activeQuickStartID) {
 };
 var useNavigation = function() {
     var _useFlagsStatus = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_8__.useFlagsStatus)(), flagsReady = _useFlagsStatus.flagsReady, flagsError = _useFlagsStatus.flagsError;
+    var clearGatewayError = (0,jotai__WEBPACK_IMPORTED_MODULE_10__.useSetAtom)(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_9__.clearGatewayErrorAtom);
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
     var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
     var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
@@ -23496,7 +23518,7 @@ var useNavigation = function() {
                         /**
              * Clean gateway error on URL change
              */ if (localStorage.getItem(_common__WEBPACK_IMPORTED_MODULE_5__.BLOCK_CLEAR_GATEWAY_ERROR) !== "true") {
-                            dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.setGatewayError)());
+                            clearGatewayError();
                         }
                     });
                 }
