@@ -4046,7 +4046,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MARK_REQUEST_NOTIFICATION_SEEN: () => (/* binding */ MARK_REQUEST_NOTIFICATION_SEEN),
 /* harmony export */   POPULATE_NOTIFICATIONS: () => (/* binding */ POPULATE_NOTIFICATIONS),
 /* harmony export */   POPULATE_QUICKSTARTS_CATALOG: () => (/* binding */ POPULATE_QUICKSTARTS_CATALOG),
-/* harmony export */   SET_GATEWAY_ERROR: () => (/* binding */ SET_GATEWAY_ERROR),
 /* harmony export */   SET_PENDO_FEEDBACK_FLAG: () => (/* binding */ SET_PENDO_FEEDBACK_FLAG),
 /* harmony export */   STORE_INITIAL_HASH: () => (/* binding */ STORE_INITIAL_HASH),
 /* harmony export */   TOGGLE_DEBUGGER_BUTTON: () => (/* binding */ TOGGLE_DEBUGGER_BUTTON),
@@ -4084,7 +4083,6 @@ var POPULATE_QUICKSTARTS_CATALOG = "@@chrome/populate-quickstarts-catalog";
 var ADD_QUICKSTARTS_TO_APP = "@@chrome/add-quickstart";
 var DISABLE_QUICKSTARTS = "@@chrome/disable-quickstarts";
 var CLEAR_QUICKSTARTS = "@@chrome/clear-quickstarts";
-var SET_GATEWAY_ERROR = "@@chrome/set-gateway-error";
 var TOGGLE_NOTIFICATIONS_DRAWER = "@@chrome/toggle-notifications-drawer";
 var POPULATE_NOTIFICATIONS = "@@chrome/populate-notifications";
 var MARK_NOTIFICATION_AS_READ = "@@chrome/mark-notification-as-read";
@@ -4128,7 +4126,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   populateNotifications: () => (/* binding */ populateNotifications),
 /* harmony export */   populateQuickstartsCatalog: () => (/* binding */ populateQuickstartsCatalog),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
-/* harmony export */   setGatewayError: () => (/* binding */ setGatewayError),
 /* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
 /* harmony export */   toggleDebuggerButton: () => (/* binding */ toggleDebuggerButton),
 /* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
@@ -4374,12 +4371,6 @@ var markActiveProduct = function(product) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ACTIVE_PRODUCT,
         payload: product
-    };
-};
-var setGatewayError = function(error) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.SET_GATEWAY_ERROR,
-        payload: error
     };
 };
 var toggleNotificationsDrawer = function() {
