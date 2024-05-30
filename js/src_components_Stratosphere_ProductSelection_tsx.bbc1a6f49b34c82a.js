@@ -64,6 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var currentYear = new Date().getFullYear();
 var FooterLink = function(param) {
     var href = param.href, label = param.label;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.Text, {
@@ -83,7 +84,7 @@ var Footer = function() {
         className: "pf-v5-u-mr-2xl"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.Text, {
         component: "small"
-    }, "Copyright c 2023 Red Hat, Inc."))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Level__WEBPACK_IMPORTED_MODULE_2__.LevelItem, {
+    }, "Copyright c ", currentYear, " Red Hat, Inc."))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Level__WEBPACK_IMPORTED_MODULE_2__.LevelItem, {
         className: "pf-v5-u-mr-auto"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.Flex, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.FlexItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(FooterLink, {
         href: "https://www.redhat.com/en/about/privacy-policy",
