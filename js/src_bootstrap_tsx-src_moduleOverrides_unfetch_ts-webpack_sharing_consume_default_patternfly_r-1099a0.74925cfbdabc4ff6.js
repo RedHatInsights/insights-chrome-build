@@ -8813,6 +8813,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+var currentYear = new Date().getFullYear();
 var Footer = function(param) {
     var setCookieElement = param.setCookieElement, cookieElement = param.cookieElement;
     var cookieRef = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
@@ -8847,7 +8848,7 @@ var Footer = function(param) {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
         component: "p",
         className: "pf-v5-u-color-400 pf-v5-u-font-size-xs"
-    }, "\xa92023 Red Hat, Inc.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.TextContent, {
+    }, "\xa9", currentYear, " Red Hat, Inc.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.TextContent, {
         className: "pf-v5-l-flex pf-m-column pf-v5-u-flex-direction-row-on-md pf-v5-u-font-size-xs"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_4__.Text, {
         component: "a",
