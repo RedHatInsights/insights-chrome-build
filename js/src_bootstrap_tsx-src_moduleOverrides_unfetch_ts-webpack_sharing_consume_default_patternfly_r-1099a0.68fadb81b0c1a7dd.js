@@ -21521,6 +21521,8 @@ function _ts_generator(thisArg, body) {
 // TODO: Refactor this file to use modern JS
 var xhrResults = [];
 var fetchResults = {};
+// this extra header helps with API metrics
+var FE_ORIGIN_HEADER_NAME = "x-rh-frontend-origin";
 var DENIED_CROSS_CHECK = "Access denied from RBAC on cross-access check";
 var AUTH_ALLOWED_ORIGINS = [
     location.origin,
@@ -21535,6 +21537,19 @@ var isExcluded = function(target) {
     return AUTH_EXCLUDED_URLS.some(function(regex) {
         return regex.test(target);
     });
+};
+var shouldInjectUIHeader = function() {
+    var path = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
+    if (_instanceof(path, URL)) {
+        // the type URL has a different match function than the cases above
+        return location.origin === path.origin && !isExcluded(path.href);
+    } else if (_instanceof(path, Request)) {
+        var isOriginAllowed = location.origin === path.url;
+        return isOriginAllowed && !isExcluded(path.url);
+    } else if (typeof path === "string") {
+        return location.origin === path || !path.startsWith("http");
+    }
+    return true;
 };
 var verifyTarget = function(originMatch, urlMatch) {
     var isOriginAllowed = AUTH_ALLOWED_ORIGINS.some(function(origin) {
@@ -21610,6 +21625,9 @@ function init(chromeStore, authRef) {
                 this.setRequestHeader("Auth", "Bearer ".concat((_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token));
             }
         }
+        if (shouldInjectUIHeader(this._url)) {
+            this.setRequestHeader(FE_ORIGIN_HEADER_NAME, "hcc");
+        }
         // eslint-disable-line func-names
         if (iqeEnabled) {
             xhrResults.push(this);
@@ -21641,6 +21659,9 @@ function init(chromeStore, authRef) {
         if (shouldInjectAuthHeaders(input) && !request.headers.has("Authorization")) {
             var _authRef_current_user;
             request.headers.append("Authorization", "Bearer ".concat((_authRef_current_user = authRef.current.user) === null || _authRef_current_user === void 0 ? void 0 : _authRef_current_user.access_token));
+        }
+        if (shouldInjectUIHeader(request) && !request.headers.has(FE_ORIGIN_HEADER_NAME)) {
+            request.headers.append(FE_ORIGIN_HEADER_NAME, "hcc");
         }
         var prom = oldFetch.apply(this, [
             request
