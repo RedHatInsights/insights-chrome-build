@@ -1900,6 +1900,9 @@ function OIDCSecured(param) {
             var _authRef_current_settings_metadata_token_endpoint;
             return (0,_offline__WEBPACK_IMPORTED_MODULE_15__.getOfflineToken)((_authRef_current_settings_metadata_token_endpoint = (_authRef_current_settings_metadata = authRef.current.settings.metadata) === null || _authRef_current_settings_metadata === void 0 ? void 0 : _authRef_current_settings_metadata.token_endpoint) !== null && _authRef_current_settings_metadata_token_endpoint !== void 0 ? _authRef_current_settings_metadata_token_endpoint : "", authRef.current.settings.client_id, encodeURIComponent(redirectUri.toString().split("#")[0]));
         },
+        forceRefresh: function() {
+            return Promise.resolve();
+        },
         doOffline: function() {
             return (0,_utils__WEBPACK_IMPORTED_MODULE_12__.login)(authRef.current, [
                 "offline_access"
@@ -1989,7 +1992,8 @@ function OIDCSecured(param) {
                                 getUser: getUser,
                                 user: chromeUser,
                                 token: user.access_token,
-                                tokenExpires: user.expires_at
+                                tokenExpires: user.expires_at,
+                                forceRefresh: authRef.current.signinSilent
                             });
                         });
                         (0,_utils_sentry__WEBPACK_IMPORTED_MODULE_9__["default"])(chromeUser);
@@ -4298,7 +4302,9 @@ var createChromeContext = function(param) {
             };
         },
         $internal: {
-            store: store
+            store: store,
+            // Not supposed to be used by tenants
+            forceAuthRefresh: chromeAuth.forceRefresh
         },
         enablePackagesDebug: function() {
             return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__.warnDuplicatePkg)();
@@ -21545,12 +21551,12 @@ var shouldInjectUIHeader = function() {
         // the type URL has a different match function than the cases above
         return location.origin === path.origin && !isExcluded(path.href);
     } else if (_instanceof(path, Request)) {
-        var isOriginAllowed = location.origin === path.url;
+        var isOriginAllowed = path.url.startsWith(location.origin);
         return isOriginAllowed && !isExcluded(path.url);
     } else if (typeof path === "string") {
-        return location.origin === path || !path.startsWith("http");
+        return path.startsWith(location.origin) || path.startsWith("/api");
     }
-    return true;
+    return false;
 };
 var verifyTarget = function(originMatch, urlMatch) {
     var isOriginAllowed = AUTH_ALLOWED_ORIGINS.some(function(origin) {
