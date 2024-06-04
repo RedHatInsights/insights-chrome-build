@@ -127,6 +127,9 @@ var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
     user: blankUser,
     reAuthWithScopes: function() {
         return Promise.resolve();
+    },
+    forceRefresh: function() {
+        return Promise.resolve();
     }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeAuthContext);
