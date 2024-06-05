@@ -16223,7 +16223,8 @@ var viableRoutes = [
     "/settings/*",
     "/subscriptions/overview/*",
     "/subscriptions/inventory/*",
-    "/subscriptions/usage/*"
+    "/subscriptions/usage/*",
+    "/openshift/insights/*"
 ];
 var VirtualAssistant = function() {
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Routes, null, viableRoutes.map(function(route) {
