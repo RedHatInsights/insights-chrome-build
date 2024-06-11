@@ -13,6 +13,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/AllServicesDropdown/AllServicesTabs.scss":
+/*!*****************************************************************!*\
+  !*** ./src/components/AllServicesDropdown/AllServicesTabs.scss ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/components/Breadcrumbs/Breadcrumbs.scss":
 /*!*****************************************************!*\
   !*** ./src/components/Breadcrumbs/Breadcrumbs.scss ***!
@@ -5778,18 +5791,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Tabs */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Tabs/@patternfly/react-core/dist/dynamic/components/Tabs?81b7");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/times-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/times-icon/@patternfly/react-icons/dist/dynamic/icons/times-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../FavoriteServices/ServicesGallery */ "./src/components/FavoriteServices/ServicesGallery.tsx");
-/* harmony import */ var _AllServicesTabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./AllServicesTabs */ "./src/components/AllServicesDropdown/AllServicesTabs.tsx");
-/* harmony import */ var _AllServicesGallery__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./AllServicesGallery */ "./src/components/AllServicesDropdown/AllServicesGallery.tsx");
-/* harmony import */ var _FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../FavoriteServices/QuickAccess */ "./src/components/FavoriteServices/QuickAccess.tsx");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/times-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/times-icon/@patternfly/react-icons/dist/dynamic/icons/times-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../FavoriteServices/ServicesGallery */ "./src/components/FavoriteServices/ServicesGallery.tsx");
+/* harmony import */ var _AllServicesTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./AllServicesTabs */ "./src/components/AllServicesDropdown/AllServicesTabs.tsx");
+/* harmony import */ var _AllServicesGallery__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AllServicesGallery */ "./src/components/AllServicesDropdown/AllServicesGallery.tsx");
+/* harmony import */ var _FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../FavoriteServices/QuickAccess */ "./src/components/FavoriteServices/QuickAccess.tsx");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -5851,8 +5861,6 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
-
-
 var TAB_CONTENT_ID = "refTab1Section";
 var FAVORITE_TAB_ID = "favorites";
 var AllServicesMenu = function(param) {
@@ -5880,7 +5888,7 @@ var AllServicesMenu = function(param) {
     };
     var tabContentRef = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createRef();
     var panelRef = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(null);
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_common__WEBPACK_IMPORTED_MODULE_16__.AllServicesDropdownContext.Provider, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_common__WEBPACK_IMPORTED_MODULE_14__.AllServicesDropdownContext.Provider, {
         value: {
             onLinkClick: function onLinkClick() {
                 // close modal on any link click
@@ -5897,18 +5905,8 @@ var AllServicesMenu = function(param) {
         className: "pf-v5-u-p-0 chr-c-panel-services-nav",
         ref: panelRef
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Panel__WEBPACK_IMPORTED_MODULE_5__.PanelMain, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.Sidebar, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.SidebarPanel, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.StackItem, {
-        className: "chr-l-stack__item-browse-all-services pf-v5-u-w-100 pf-v5-u-p-md"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__.TextContent, {
-        className: "pf-v5-u-text-align-center-on-md pf-v5-u-pl-sm pf-v5-u-pl-0-on-md"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__.Text, {
-        component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_8__.TextVariants.p
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        href: "/allservices"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_2__.Button, {
-        isBlock: true
-    }, "All services"))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.StackItem, {
         className: "pf-v5-u-w-100"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesTabs__WEBPACK_IMPORTED_MODULE_11__["default"], {
         activeTabKey: activeTabKey,
         handleTabClick: handleTabClick,
         isExpanded: isExpanded,
@@ -5929,20 +5927,20 @@ var AllServicesMenu = function(param) {
                     onClick: function() {
                         return setIsOpen(!isOpen);
                     }
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_11___default()), null))
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9___default()), null))
             ]
         },
         className: "pf-v5-u-pr-xs pf-v5-u-pr-md-on-md"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_9__.Title, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__.Title, {
         headingLevel: "h2"
     }, activeTabKey === FAVORITE_TAB_ID ? "Favorites" : selectedService.title)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_3__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7__.TabContent, {
         eventKey: activeTabKey,
         id: TAB_CONTENT_ID,
         ref: tabContentRef,
         "aria-label": selectedService === null || selectedService === void 0 ? void 0 : selectedService.description
-    }, activeTabKey === FAVORITE_TAB_ID ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_15__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, activeTabKey === FAVORITE_TAB_ID ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_13__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_10__["default"], {
         favoritedServices: favoritedServices
-    })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallery__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallery__WEBPACK_IMPORTED_MODULE_12__["default"], {
         selectedService: selectedService
     })))))))))));
 };
@@ -5972,6 +5970,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?dc5f");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
+/* harmony import */ var _AllServicesTabs_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AllServicesTabs.scss */ "./src/components/AllServicesDropdown/AllServicesTabs.scss");
+/* harmony import */ var _PlatformServicesLinks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./PlatformServicesLinks */ "./src/components/AllServicesDropdown/PlatformServicesLinks.tsx");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -6030,6 +6035,11 @@ function _object_spread_props(target, source) {
 
 
 
+
+
+
+
+
 var TabWrapper = function(props) {
     var tabRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     var hoverTimer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(undefined);
@@ -6076,20 +6086,36 @@ var AllServicesTabs = function(param) {
         onToggle: onToggle,
         toggleText: activeTabTitle,
         role: "region",
-        className: "pf-v5-u-p-md pf-v5-u-pr-0",
+        className: "pf-v5-u-p-md pf-v5-u-pr-0 pf-v5-u-pl-0-on-md",
         ouiaId: "all-services-tabs"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pr-0 pf-v5-u-pt-0 pf-v5-u-pb-sm",
+        component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextVariants.p
+    }, "Platform"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__.Divider, {
+        className: "pf-v5-u-pb-md"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PlatformServicesLinks__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pr-0 pf-v5-u-pt-lg pf-v5-u-pb-sm",
+        component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextVariants.p
+    }, "Solutions", " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        href: "/allservices",
+        className: "pf-v5-u-font-size-sm pf-v5-u-p-md",
+        "data-ouia-component-id": "View all link"
+    }, "View all")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__.Divider, {
+        className: "pf-v5-u-pb-sm"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
         ouiaId: "AllServices-favorites-Tab",
         onClick: function(e) {
             handleTabClick === null || handleTabClick === void 0 ? void 0 : handleTabClick(e, _common__WEBPACK_IMPORTED_MODULE_4__.FAVORITE_TAB_ID);
         },
         eventKey: _common__WEBPACK_IMPORTED_MODULE_4__.FAVORITE_TAB_ID,
-        title: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabTitleText, null, "Favorites", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+        title: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_2__.TabTitleText, {
+            className: "pf-v5-u-pl-sm"
+        }, "Favorites", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_1__.Icon, {
             className: "chr-c-icon-service-tab pf-v5-u-ml-sm",
             status: "warning",
             isInline: true
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_star_icon__WEBPACK_IMPORTED_MODULE_3___default()), null)))
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, linkSections.map(function(section, index) {
+    }), linkSections.map(function(section, index) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TabWrapper, {
             ouiaId: "AllServices-".concat(section.id, "-Tab"),
             key: index,
@@ -6099,11 +6125,45 @@ var AllServicesTabs = function(param) {
             tabContentRef: tabContentRef,
             onClick: function() {
                 return onTabClick(section, index);
-            }
+            },
+            className: "pf-v5-u-pl-sm"
         });
     })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllServicesTabs);
+
+
+/***/ }),
+
+/***/ "./src/components/AllServicesDropdown/PlatformServicesLinks.tsx":
+/*!**********************************************************************!*\
+  !*** ./src/components/AllServicesDropdown/PlatformServicesLinks.tsx ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
+
+
+var PlatformServiceslinks = function() {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        href: "/ansible",
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, "Red Hat Ansible Platform"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        href: "/insights",
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, "Red Hat Enterprise Linux"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        href: "/openshift/overview",
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, "Red Hat OpenShift"));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PlatformServiceslinks);
 
 
 /***/ }),

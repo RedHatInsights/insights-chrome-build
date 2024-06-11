@@ -17568,14 +17568,14 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
     --pf-v5-c-sidebar__panel--BackgroundColor: var(--pf-v5-global--BackgroundColor--200);
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__main {
-    height: 630px;
+    height: 770px;
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__content {
-    height: 630px;
+    height: 770px;
     overflow: auto;
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__panel {
-    height: 630px;
+    height: 770px;
     box-shadow: inset -4px 0 4px -4px rgba(0, 0, 0, 0.16);
   }
   .chr-c-panel-services-nav .pf-v5-c-sidebar__panel .pf-v5-c-tabs {
@@ -17609,6 +17609,12 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/components/AllServicesDropdown/AllServicesTabs.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+.pf-v5-c-tabs.pf-m-vertical .pf-v5-c-tabs__list {
+  max-width: 100%;
 }
 /*!*****************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/components/Breadcrumbs/Breadcrumbs.scss ***!
