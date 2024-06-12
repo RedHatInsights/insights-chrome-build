@@ -4042,22 +4042,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   LOAD_LEFT_NAVIGATION_SEGMENT: () => (/* binding */ LOAD_LEFT_NAVIGATION_SEGMENT),
 /* harmony export */   LOAD_NAVIGATION_LANDING_PAGE: () => (/* binding */ LOAD_NAVIGATION_LANDING_PAGE),
 /* harmony export */   MARK_ACTIVE_PRODUCT: () => (/* binding */ MARK_ACTIVE_PRODUCT),
-/* harmony export */   MARK_ALL_NOTIFICATION_AS_READ: () => (/* binding */ MARK_ALL_NOTIFICATION_AS_READ),
-/* harmony export */   MARK_ALL_NOTIFICATION_AS_UNREAD: () => (/* binding */ MARK_ALL_NOTIFICATION_AS_UNREAD),
-/* harmony export */   MARK_NOTIFICATION_AS_READ: () => (/* binding */ MARK_NOTIFICATION_AS_READ),
-/* harmony export */   MARK_NOTIFICATION_AS_UNREAD: () => (/* binding */ MARK_NOTIFICATION_AS_UNREAD),
 /* harmony export */   MARK_REQUEST_NOTIFICATION_SEEN: () => (/* binding */ MARK_REQUEST_NOTIFICATION_SEEN),
-/* harmony export */   POPULATE_NOTIFICATIONS: () => (/* binding */ POPULATE_NOTIFICATIONS),
 /* harmony export */   POPULATE_QUICKSTARTS_CATALOG: () => (/* binding */ POPULATE_QUICKSTARTS_CATALOG),
 /* harmony export */   SET_PENDO_FEEDBACK_FLAG: () => (/* binding */ SET_PENDO_FEEDBACK_FLAG),
 /* harmony export */   STORE_INITIAL_HASH: () => (/* binding */ STORE_INITIAL_HASH),
 /* harmony export */   TOGGLE_DEBUGGER_BUTTON: () => (/* binding */ TOGGLE_DEBUGGER_BUTTON),
 /* harmony export */   TOGGLE_DEBUGGER_MODAL: () => (/* binding */ TOGGLE_DEBUGGER_MODAL),
 /* harmony export */   TOGGLE_FEEDBACK_MODAL: () => (/* binding */ TOGGLE_FEEDBACK_MODAL),
-/* harmony export */   TOGGLE_NOTIFICATIONS_DRAWER: () => (/* binding */ TOGGLE_NOTIFICATIONS_DRAWER),
 /* harmony export */   UPDATE_ACCESS_REQUESTS_NOTIFICATIONS: () => (/* binding */ UPDATE_ACCESS_REQUESTS_NOTIFICATIONS),
 /* harmony export */   UPDATE_DOCUMENT_TITLE_REDUCER: () => (/* binding */ UPDATE_DOCUMENT_TITLE_REDUCER),
-/* harmony export */   UPDATE_NOTIFICATIONS: () => (/* binding */ UPDATE_NOTIFICATIONS),
 /* harmony export */   USER_LOGIN: () => (/* binding */ USER_LOGIN)
 /* harmony export */ });
 var USER_LOGIN = "@@chrome/user-login";
@@ -4086,13 +4079,6 @@ var POPULATE_QUICKSTARTS_CATALOG = "@@chrome/populate-quickstarts-catalog";
 var ADD_QUICKSTARTS_TO_APP = "@@chrome/add-quickstart";
 var DISABLE_QUICKSTARTS = "@@chrome/disable-quickstarts";
 var CLEAR_QUICKSTARTS = "@@chrome/clear-quickstarts";
-var TOGGLE_NOTIFICATIONS_DRAWER = "@@chrome/toggle-notifications-drawer";
-var POPULATE_NOTIFICATIONS = "@@chrome/populate-notifications";
-var MARK_NOTIFICATION_AS_READ = "@@chrome/mark-notification-as-read";
-var MARK_NOTIFICATION_AS_UNREAD = "@@chrome/mark-notification-as-unread";
-var MARK_ALL_NOTIFICATION_AS_READ = "@@chrome/mark-all-notification-as-read";
-var MARK_ALL_NOTIFICATION_AS_UNREAD = "@@chrome/mark-all-notification-as-unread";
-var UPDATE_NOTIFICATIONS = "@@chrome/update-notifications";
 
 
 /***/ }),
@@ -4121,12 +4107,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   loadNavigationLandingPage: () => (/* binding */ loadNavigationLandingPage),
 /* harmony export */   markAccessRequestNotification: () => (/* binding */ markAccessRequestNotification),
 /* harmony export */   markActiveProduct: () => (/* binding */ markActiveProduct),
-/* harmony export */   markAllNotificationsAsRead: () => (/* binding */ markAllNotificationsAsRead),
-/* harmony export */   markAllNotificationsAsUnread: () => (/* binding */ markAllNotificationsAsUnread),
-/* harmony export */   markNotificationAsRead: () => (/* binding */ markNotificationAsRead),
-/* harmony export */   markNotificationAsUnread: () => (/* binding */ markNotificationAsUnread),
 /* harmony export */   onToggle: () => (/* binding */ onToggle),
-/* harmony export */   populateNotifications: () => (/* binding */ populateNotifications),
 /* harmony export */   populateQuickstartsCatalog: () => (/* binding */ populateQuickstartsCatalog),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
 /* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
@@ -4134,10 +4115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
 /* harmony export */   toggleFeedbackModal: () => (/* binding */ toggleFeedbackModal),
 /* harmony export */   toggleGlobalFilter: () => (/* binding */ toggleGlobalFilter),
-/* harmony export */   toggleNotificationsDrawer: () => (/* binding */ toggleNotificationsDrawer),
 /* harmony export */   updateAccessRequestsNotifications: () => (/* binding */ updateAccessRequestsNotifications),
 /* harmony export */   updateDocumentTitle: () => (/* binding */ updateDocumentTitle),
-/* harmony export */   updateNotifications: () => (/* binding */ updateNotifications),
 /* harmony export */   userLogIn: () => (/* binding */ userLogIn)
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action-types */ "./src/redux/action-types.ts");
@@ -4374,47 +4353,6 @@ var markActiveProduct = function(product) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ACTIVE_PRODUCT,
         payload: product
-    };
-};
-var toggleNotificationsDrawer = function() {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.TOGGLE_NOTIFICATIONS_DRAWER
-    };
-};
-var populateNotifications = function(data) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.POPULATE_NOTIFICATIONS,
-        payload: {
-            data: data
-        }
-    };
-};
-var markNotificationAsRead = function(id) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_NOTIFICATION_AS_READ,
-        payload: id
-    };
-};
-var markNotificationAsUnread = function(id) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_NOTIFICATION_AS_UNREAD,
-        payload: id
-    };
-};
-var markAllNotificationsAsRead = function() {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ALL_NOTIFICATION_AS_READ
-    };
-};
-var markAllNotificationsAsUnread = function() {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ALL_NOTIFICATION_AS_UNREAD
-    };
-};
-var updateNotifications = function(payload) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.UPDATE_NOTIFICATIONS,
-        payload: payload
     };
 };
 
