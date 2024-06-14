@@ -4044,11 +4044,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MARK_ACTIVE_PRODUCT: () => (/* binding */ MARK_ACTIVE_PRODUCT),
 /* harmony export */   MARK_REQUEST_NOTIFICATION_SEEN: () => (/* binding */ MARK_REQUEST_NOTIFICATION_SEEN),
 /* harmony export */   POPULATE_QUICKSTARTS_CATALOG: () => (/* binding */ POPULATE_QUICKSTARTS_CATALOG),
-/* harmony export */   SET_PENDO_FEEDBACK_FLAG: () => (/* binding */ SET_PENDO_FEEDBACK_FLAG),
 /* harmony export */   STORE_INITIAL_HASH: () => (/* binding */ STORE_INITIAL_HASH),
 /* harmony export */   TOGGLE_DEBUGGER_BUTTON: () => (/* binding */ TOGGLE_DEBUGGER_BUTTON),
 /* harmony export */   TOGGLE_DEBUGGER_MODAL: () => (/* binding */ TOGGLE_DEBUGGER_MODAL),
-/* harmony export */   TOGGLE_FEEDBACK_MODAL: () => (/* binding */ TOGGLE_FEEDBACK_MODAL),
 /* harmony export */   UPDATE_ACCESS_REQUESTS_NOTIFICATIONS: () => (/* binding */ UPDATE_ACCESS_REQUESTS_NOTIFICATIONS),
 /* harmony export */   UPDATE_DOCUMENT_TITLE_REDUCER: () => (/* binding */ UPDATE_DOCUMENT_TITLE_REDUCER),
 /* harmony export */   USER_LOGIN: () => (/* binding */ USER_LOGIN)
@@ -4066,8 +4064,6 @@ var GLOBAL_FILTER_TOGGLE = "@@chrome/global-filter-toggle";
 var GLOBAL_FILTER_REMOVE = "@@chrome/global-filter-remove";
 var LOAD_NAVIGATION_LANDING_PAGE = "@@chrome/load-navigation-landing-page";
 var LOAD_LEFT_NAVIGATION_SEGMENT = "@@chrome/load-navigation-segment";
-var SET_PENDO_FEEDBACK_FLAG = "@@chrome/set-pendo-feedback-flag";
-var TOGGLE_FEEDBACK_MODAL = "@@chrome/toggle-feedback-modal";
 var TOGGLE_DEBUGGER_MODAL = "@@chrome/toggle-debugger-modal";
 var TOGGLE_DEBUGGER_BUTTON = "@@chrome/toggle-debugger-button";
 var UPDATE_ACCESS_REQUESTS_NOTIFICATIONS = "@@chrome/update-access-requests-notifications";
@@ -4110,10 +4106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   onToggle: () => (/* binding */ onToggle),
 /* harmony export */   populateQuickstartsCatalog: () => (/* binding */ populateQuickstartsCatalog),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
-/* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
 /* harmony export */   toggleDebuggerButton: () => (/* binding */ toggleDebuggerButton),
 /* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
-/* harmony export */   toggleFeedbackModal: () => (/* binding */ toggleFeedbackModal),
 /* harmony export */   toggleGlobalFilter: () => (/* binding */ toggleGlobalFilter),
 /* harmony export */   updateAccessRequestsNotifications: () => (/* binding */ updateAccessRequestsNotifications),
 /* harmony export */   updateDocumentTitle: () => (/* binding */ updateDocumentTitle),
@@ -4274,18 +4268,6 @@ var loadLeftNavSegment = function(schema, segment, pathName, shouldMerge) {
  */ var onToggle = function() {
     return {
         type: "NAVIGATION_TOGGLE"
-    };
-};
-var setPendoFeedbackFlag = function(payload) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.SET_PENDO_FEEDBACK_FLAG,
-        payload: payload
-    };
-};
-var toggleFeedbackModal = function(payload) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.TOGGLE_FEEDBACK_MODAL,
-        payload: payload
     };
 };
 var toggleDebuggerModal = function(payload) {
