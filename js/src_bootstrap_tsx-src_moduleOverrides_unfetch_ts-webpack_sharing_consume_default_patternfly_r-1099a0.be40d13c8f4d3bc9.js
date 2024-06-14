@@ -3864,17 +3864,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_debugFunctions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/debugFunctions */ "./src/utils/debugFunctions.ts");
 /* harmony import */ var _components_GlobalFilter_globalFilterApi__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/GlobalFilter/globalFilterApi */ "./src/components/GlobalFilter/globalFilterApi.ts");
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
-/* harmony import */ var _components_Feedback__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Feedback */ "./src/components/Feedback/index.ts");
-/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
-/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
-/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
-/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
-/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
-/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
-/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
-/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
-/* harmony import */ var _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pdf/requestPdf */ "./src/pdf/requestPdf.ts");
-/* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../state/chromeStore */ "./src/state/chromeStore.ts");
+/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/redux-config */ "./src/redux/redux-config.ts");
+/* harmony import */ var _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/isAnsibleTrialFlagActive */ "./src/utils/isAnsibleTrialFlagActive.ts");
+/* harmony import */ var _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/chromeHistory */ "./src/utils/chromeHistory.ts");
+/* harmony import */ var _redux_action_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../redux/action-types */ "./src/redux/action-types.ts");
+/* harmony import */ var _hooks_useBundle__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../hooks/useBundle */ "./src/hooks/useBundle.ts");
+/* harmony import */ var _warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./warnDuplicatePackages */ "./src/chrome/warnDuplicatePackages.ts");
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../utils/iqeEnablement */ "./src/utils/iqeEnablement.ts");
+/* harmony import */ var _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../pdf/requestPdf */ "./src/pdf/requestPdf.ts");
+/* harmony import */ var _state_chromeStore__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../state/chromeStore */ "./src/state/chromeStore.ts");
+/* harmony import */ var _state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../state/atoms/feedbackModalAtom */ "./src/state/atoms/feedbackModalAtom.ts");
+/* harmony import */ var _components_Feedback__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/Feedback */ "./src/components/Feedback/index.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4117,10 +4118,11 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var createChromeContext = function(param) {
     var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, registerModule = param.registerModule, chromeAuth = param.chromeAuth;
     var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(chromeAuth.getUser);
-    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_16__.getVisibilityFunctions)();
+    var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_15__.getVisibilityFunctions)();
     var dispatch = store.dispatch;
     var actions = {
         appAction: function(action) {
@@ -4157,7 +4159,7 @@ var createChromeContext = function(param) {
             });
         }
         if (typeof listener === "function") {
-            return _redux_redux_config__WEBPACK_IMPORTED_MODULE_10__.middlewareListener.addNew(listener(callback));
+            return _redux_redux_config__WEBPACK_IMPORTED_MODULE_9__.middlewareListener.addNew(listener(callback));
         }
     };
     var identifyApp = function(_data, appTitle, noSuffix) {
@@ -4174,9 +4176,9 @@ var createChromeContext = function(param) {
             login: chromeAuth.login,
             doOffline: chromeAuth.doOffline,
             getOfflineToken: chromeAuth.getOfflineToken,
-            qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"]), {
+            qe: _object_spread_props(_object_spread({}, _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_16__["default"]), {
                 init: function() {
-                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_17__["default"].init(_state_chromeStore__WEBPACK_IMPORTED_MODULE_19__["default"], {
+                    return _utils_iqeEnablement__WEBPACK_IMPORTED_MODULE_16__["default"].init(_state_chromeStore__WEBPACK_IMPORTED_MODULE_18__["default"], {
                         current: {
                             user: {
                                 access_token: chromeAuth.token
@@ -4193,11 +4195,11 @@ var createChromeContext = function(param) {
             return js_cookie__WEBPACK_IMPORTED_MODULE_2__["default"].set("cs_demo", "true");
         },
         getBundle: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.getUrl)("bundle");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_13__.getUrl)("bundle");
         },
-        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__["default"],
+        getBundleData: _hooks_useBundle__WEBPACK_IMPORTED_MODULE_13__["default"],
         getApp: function() {
-            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.getUrl)("app");
+            return (0,_hooks_useBundle__WEBPACK_IMPORTED_MODULE_13__.getUrl)("app");
         },
         getEnvironment: function() {
             return (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.getEnv)();
@@ -4216,7 +4218,7 @@ var createChromeContext = function(param) {
             return environment;
         },
         getAvailableBundles: function() {
-            return Object.entries(_hooks_useBundle__WEBPACK_IMPORTED_MODULE_14__.bundleMapping).map(function(param) {
+            return Object.entries(_hooks_useBundle__WEBPACK_IMPORTED_MODULE_13__.bundleMapping).map(function(param) {
                 var _param = _sliced_to_array(param, 2), key = _param[0], value = _param[1];
                 return {
                     id: key,
@@ -4256,11 +4258,11 @@ var createChromeContext = function(param) {
             /**
        * Restore app URL hash fragment after the global filter is disabled
        */ if (initialHash) {
-                _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"].replace(_object_spread_props(_object_spread({}, _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"].location), {
+                _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_11__["default"].replace(_object_spread_props(_object_spread({}, _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_11__["default"].location), {
                     hash: initialHash
                 }));
                 dispatch({
-                    type: _redux_action_types__WEBPACK_IMPORTED_MODULE_13__.STORE_INITIAL_HASH
+                    type: _redux_action_types__WEBPACK_IMPORTED_MODULE_12__.STORE_INITIAL_HASH
                 });
             }
             dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleGlobalFilter)(isHidden));
@@ -4283,12 +4285,12 @@ var createChromeContext = function(param) {
         on: on,
         experimentalApi: true,
         isFedramp: isITLessEnv,
-        usePendoFeedback: _components_Feedback__WEBPACK_IMPORTED_MODULE_9__.usePendoFeedback,
+        usePendoFeedback: _components_Feedback__WEBPACK_IMPORTED_MODULE_20__.usePendoFeedback,
         segment: {
             setPageMetadata: setPageMetadata
         },
         toggleFeedbackModal: function(isOpen) {
-            return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleFeedbackModal)(isOpen));
+            _state_chromeStore__WEBPACK_IMPORTED_MODULE_18__["default"].set(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_19__.isFeedbackModalOpenAtom, isOpen);
         },
         enableDebugging: function() {
             return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_3__.toggleDebuggerButton)(true));
@@ -4299,10 +4301,10 @@ var createChromeContext = function(param) {
         // FIXME: Update types once merged
         quickStarts: quickstartsAPI,
         helpTopics: helpTopics,
-        clearAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.clearAnsibleTrialFlag,
-        isAnsibleTrialFlagActive: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.isAnsibleTrialFlagActive,
-        setAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_11__.setAnsibleTrialFlag,
-        chromeHistory: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_12__["default"],
+        clearAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_10__.clearAnsibleTrialFlag,
+        isAnsibleTrialFlagActive: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_10__.isAnsibleTrialFlagActive,
+        setAnsibleTrialFlag: _utils_isAnsibleTrialFlagActive__WEBPACK_IMPORTED_MODULE_10__.setAnsibleTrialFlag,
+        chromeHistory: _utils_chromeHistory__WEBPACK_IMPORTED_MODULE_11__["default"],
         analytics: analytics,
         // FIXME: Update types once merged
         useGlobalFilter: useGlobalFilter,
@@ -4320,9 +4322,9 @@ var createChromeContext = function(param) {
             forceAuthRefresh: chromeAuth.forceRefresh
         },
         enablePackagesDebug: function() {
-            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_15__.warnDuplicatePkg)();
+            return (0,_warnDuplicatePackages__WEBPACK_IMPORTED_MODULE_14__.warnDuplicatePkg)();
         },
-        requestPdf: _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_18__["default"]
+        requestPdf: _pdf_requestPdf__WEBPACK_IMPORTED_MODULE_17__["default"]
     });
     return api;
 };
@@ -8399,21 +8401,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon/@patternfly/react-icons/dist/dynamic/icons/outlined-comments-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-intl */ "webpack/sharing/consume/default/react-intl/react-intl");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/feedbackModalAtom */ "./src/state/atoms/feedbackModalAtom.ts");
 /* harmony import */ var _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../static/images/feedback_illo.svg */ "./static/images/feedback_illo.svg");
 /* harmony import */ var _FeedbackForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./FeedbackForm */ "./src/components/Feedback/FeedbackForm.tsx");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./FeedbackSuccess */ "./src/components/Feedback/FeedbackSuccess.tsx");
-/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
-/* harmony import */ var _FeedbackError__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./FeedbackError */ "./src/components/Feedback/FeedbackError.tsx");
-/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
-/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
-/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
+/* harmony import */ var _FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./FeedbackSuccess */ "./src/components/Feedback/FeedbackSuccess.tsx");
+/* harmony import */ var _locales_Messages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../locales/Messages */ "./src/locales/Messages.ts");
+/* harmony import */ var _FeedbackError__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./FeedbackError */ "./src/components/Feedback/FeedbackError.tsx");
+/* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
+/* harmony import */ var _utils_createCase__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/createCase */ "./src/utils/createCase.ts");
+/* harmony import */ var _Feedback_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Feedback.scss */ "./src/components/Feedback/Feedback.scss");
+/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
+/* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -8485,28 +8486,19 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 var FEEDBACK_OPEN_EVENT = "chrome.feedback.open";
 var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function() {
-    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_11__.useIntl)();
-    var usePendoFeedback = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
-        var usePendoFeedback = param.chrome.usePendoFeedback;
-        return usePendoFeedback;
-    });
-    var isOpen = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useSelector)(function(param) {
-        var isFeedbackModalOpen = param.chrome.isFeedbackModalOpen;
-        return isFeedbackModalOpen;
-    });
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_10__.useDispatch)();
+    var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtom)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.isFeedbackModalOpenAtom), 2), isModalOpen = _useAtom[0], setIsModalOpen = _useAtom[1];
+    var usePendoFeedback = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtomValue)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.usePendoFeedbackAtom);
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("feedbackHome"), 2), modalPage = _useState[0], setModalPage = _useState[1];
-    var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_18__["default"]).getEnvironment;
-    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_21__["default"]);
-    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_22__.useSegment)().analytics;
+    var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__["default"]).getEnvironment;
+    var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    var analytics = (0,_analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__.useSegment)().analytics;
     var user = chromeAuth.user;
     var env = getEnvironment();
     var isAvailable = env === "prod" || env === "stage";
-    var setIsModalOpen = function(isOpen) {
-        return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_14__.toggleFeedbackModal)(isOpen));
-    };
     var handleCloseModal = function() {
-        setIsModalOpen(false), setModalPage("feedbackHome");
+        setIsModalOpen(false);
+        setModalPage("feedbackHome");
     };
     var ModalDescription = function(param) {
         var modalPage = param.modalPage;
@@ -8520,7 +8512,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     className: "pf-v5-u-mb-md"
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
                     component: _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.TextVariants.h1
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].tellAboutExperience)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].helpUsImproveHCC))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].tellAboutExperience)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].helpUsImproveHCC))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
                     className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
@@ -8529,7 +8521,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "pf-v5-u-primary-color-100"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].shareFeedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].howIsConsoleExperience))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].shareFeedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].howIsConsoleExperience))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
                     className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
@@ -8538,16 +8530,16 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "pf-v5-u-primary-color-100"
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].reportABug)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].describeBugUrgentCases))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].reportABug)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].describeBugUrgentCases))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
                     className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
-                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_19__.createSupportCase)(user.identity, chromeAuth.token);
+                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_18__.createSupportCase)(user.identity, chromeAuth.token);
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "pf-v5-u-primary-color-100"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].getSupport))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].getSupport))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.Card, {
                     className: "pf-v5-u-mb-lg",
                     isSelectableRaised: true,
                     isCompact: true,
@@ -8556,13 +8548,13 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "pf-v5-u-primary-color-100"
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informRedhatDirection))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities)))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informRedhatDirection))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardBody, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities)))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_3__.FlexItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
                     className: "chr-c-feedback-button",
                     ouiaId: "cancel-feedback",
                     key: "cancel",
                     variant: "link",
                     onClick: handleCloseModal
-                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].cancel))));
+                }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].cancel))));
             case "feedbackOne":
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
                     user: user,
@@ -8576,11 +8568,11 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].shareYourFeedback),
-                    textareaLabel: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].enterFeedback),
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].shareYourFeedback),
+                    textareaLabel: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].enterFeedback),
                     feedbackType: "Feedback",
-                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitFeedback)
+                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitFeedback)
                 });
             case "reportBugOne":
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -8595,15 +8587,15 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].reportABug),
-                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].describeReportBug), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].reportABug),
+                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].describeReportBug), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
                         component: "a",
                         href: "https://access.redhat.com/support/cases/#/case/new/get-support?caseCreate=true&source=console",
                         target: "_blank"
-                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))),
+                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].openSupportCase), " ", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_external_link_alt_icon__WEBPACK_IMPORTED_MODULE_8___default()), null))),
                     feedbackType: "Bug",
-                    checkboxDescription: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].learnAboutResearchOpportunities), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].weNeverSharePersonalInformation)),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitFeedback)
+                    checkboxDescription: "".concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].learnAboutResearchOpportunities), " ").concat(intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].weNeverSharePersonalInformation)),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitFeedback)
                 });
             case "informDirection":
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -8618,37 +8610,37 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     handleFeedbackError: function() {
                         return setModalPage("feedbackError");
                     },
-                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informRedhatDirection),
-                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].informDirectionDescription), "\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
+                    modalTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informRedhatDirection),
+                    modalDescription: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, null, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].informDirectionDescription), "\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_7__.Text, {
                         component: "a",
                         href: "https://www.redhat.com/en/about/user-research",
                         target: "_blank"
-                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].userResearchTeam)), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].directInfluence)),
+                    }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].userResearchTeam)), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].directInfluence)),
                     feedbackType: "[Research Opportunities]",
                     textAreaHidden: true,
-                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].weNeverSharePersonalInformation),
-                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].joinMailingList)
+                    checkboxDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].weNeverSharePersonalInformation),
+                    submitTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].joinMailingList)
                 });
             case "feedbackSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].feedbackSent),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].thankYouForFeedback),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].feedbackSent),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].thankYouForFeedback),
                     onCloseModal: handleCloseModal
                 });
             case "bugReportSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].bugReported),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].teamWillReviewBug),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].bugReported),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].teamWillReviewBug),
                     onCloseModal: handleCloseModal
                 });
             case "informDirectionSuccess":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].responseSent),
-                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].thankYouForInterest),
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackSuccess__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                    successTitle: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].responseSent),
+                    successDescription: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].thankYouForInterest),
                     onCloseModal: handleCloseModal
                 });
             case "feedbackError":
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackError__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FeedbackError__WEBPACK_IMPORTED_MODULE_16__["default"], {
                     onCloseModal: handleCloseModal
                 });
         }
@@ -8662,9 +8654,9 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                 setIsModalOpen(true);
             }
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9___default()), null), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].feedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__.Modal, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_outlined_comments_icon__WEBPACK_IMPORTED_MODULE_9___default()), null), intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].feedback)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__.Modal, {
         "aria-label": "Feedback modal",
-        isOpen: isOpen,
+        isOpen: isModalOpen,
         className: "chr-c-feedback-modal",
         variant: _patternfly_react_core_dist_dynamic_components_Modal__WEBPACK_IMPORTED_MODULE_6__.ModalVariant.large,
         onClose: handleCloseModal
@@ -8681,7 +8673,7 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         src: _static_images_feedback_illo_svg__WEBPACK_IMPORTED_MODULE_12__
     }))), !isAvailable && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_5__.Label, {
         color: "red"
-    }, " ", intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_16__["default"].submitOnlyInStageProd), " ")));
+    }, " ", intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_15__["default"].submitOnlyInStageProd), " ")));
 });
 FeedbackModal.displayName = "FeedbackModal";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FeedbackModal);
@@ -8777,8 +8769,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _redux_redux_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../redux/redux-config */ "./src/redux/redux-config.ts");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../state/atoms/feedbackModalAtom */ "./src/state/atoms/feedbackModalAtom.ts");
 
 
 
@@ -8786,13 +8778,15 @@ var usePendoFeedback = function() {
     /**
    * We have to use the "spinUpStore" instead of just calling useDispatch
    * Otherwise we will end up using the "dispatch" instance from the application not chrome!
-   */ var _spinUpStore = (0,_redux_redux_config__WEBPACK_IMPORTED_MODULE_1__.spinUpStore)(), dispatch = _spinUpStore.store.dispatch;
+   */ var setPendoFeedback = (0,jotai__WEBPACK_IMPORTED_MODULE_2__.useSetAtom)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_1__.usePendoFeedbackAtom);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_2__.setPendoFeedbackFlag)(true));
+        setPendoFeedback(true);
         return function() {
-            dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_2__.setPendoFeedbackFlag)(false));
+            setPendoFeedback(false);
         };
-    }, []);
+    }, [
+        setPendoFeedback
+    ]);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (usePendoFeedback);
 
@@ -19285,10 +19279,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   onPageAction: () => (/* binding */ onPageAction),
 /* harmony export */   onPageObjectId: () => (/* binding */ onPageObjectId),
 /* harmony export */   populateQuickstartsReducer: () => (/* binding */ populateQuickstartsReducer),
-/* harmony export */   setPendoFeedbackFlag: () => (/* binding */ setPendoFeedbackFlag),
 /* harmony export */   toggleDebuggerButton: () => (/* binding */ toggleDebuggerButton),
-/* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal),
-/* harmony export */   toggleFeedbackModal: () => (/* binding */ toggleFeedbackModal)
+/* harmony export */   toggleDebuggerModal: () => (/* binding */ toggleDebuggerModal)
 /* harmony export */ });
 /* harmony import */ var _utils_consts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/consts */ "./src/utils/consts.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
@@ -19457,18 +19449,6 @@ function loadNavigationSegmentReducer(state, param) {
         });
     }
     return state;
-}
-function setPendoFeedbackFlag(state, param) {
-    var payload = param.payload;
-    return _object_spread_props(_object_spread({}, state), {
-        usePendoFeedback: payload
-    });
-}
-function toggleFeedbackModal(state, param) {
-    var payload = param.payload;
-    return _object_spread_props(_object_spread({}, state), {
-        isFeedbackModalOpen: payload
-    });
 }
 function toggleDebuggerModal(state, param) {
     var payload = param.payload;
@@ -19907,7 +19887,7 @@ function _define_property(obj, key, value) {
 
 
 var _obj;
-var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.SET_PENDO_FEEDBACK_FLAG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.setPendoFeedbackFlag), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_FEEDBACK_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleFeedbackModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _obj);
+var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.APP_NAV_CLICK, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.appNavClick), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_NAVIGATION_LANDING_PAGE, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationLandingPageReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.LOAD_LEFT_NAVIGATION_SEGMENT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loadNavigationSegmentReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_MODAL, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerModal), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.TOGGLE_DEBUGGER_BUTTON, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.toggleDebuggerButton), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_ACCESS_REQUESTS_NOTIFICATIONS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.accessRequestsNotificationsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_REQUEST_NOTIFICATION_SEEN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markAccessRequestRequestReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.POPULATE_QUICKSTARTS_CATALOG, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.populateQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.ADD_QUICKSTARTS_TO_APP, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.addQuickstartstoApp), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.DISABLE_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.disableQuickstartsReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CLEAR_QUICKSTARTS, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.clearQuickstartsReducer), _obj);
 var _obj1;
 var globalFilter = (_obj1 = {}, _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTags), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTagsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDs), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloads), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloadsPending), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_SCOPE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onSetGlobalFilterScope), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_TOGGLE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterToggle), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_REMOVE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterRemove), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_UPDATE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onTagSelect), _obj1);
 var chromeInitialState = {
@@ -20038,6 +20018,26 @@ __webpack_require__.r(__webpack_exports__);
 
 // setup initial chrome atoms
 var contextSwitcherOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
+
+
+/***/ }),
+
+/***/ "./src/state/atoms/feedbackModalAtom.ts":
+/*!**********************************************!*\
+  !*** ./src/state/atoms/feedbackModalAtom.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   isFeedbackModalOpenAtom: () => (/* binding */ isFeedbackModalOpenAtom),
+/* harmony export */   usePendoFeedbackAtom: () => (/* binding */ usePendoFeedbackAtom)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+var isFeedbackModalOpenAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
+var usePendoFeedbackAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(false);
 
 
 /***/ }),
@@ -20668,24 +20668,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
 /* harmony import */ var _atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 /* harmony import */ var _atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./atoms/contextSwitcher */ "./src/state/atoms/contextSwitcher.ts");
 /* harmony import */ var _atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
+/* harmony import */ var _atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./atoms/feedbackModalAtom */ "./src/state/atoms/feedbackModalAtom.ts");
 
 
 
 
 
 
-var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.createStore)();
+
+var chromeStore = (0,jotai__WEBPACK_IMPORTED_MODULE_6__.createStore)();
 // setup initial chrome store state
 chromeStore.set(_atoms_contextSwitcher__WEBPACK_IMPORTED_MODULE_1__.contextSwitcherOpenAtom, false);
 chromeStore.set(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, undefined);
 chromeStore.set(_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_2__.isPreviewAtom, (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)());
 chromeStore.set(_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_4__.gatewayErrorAtom, undefined);
+chromeStore.set(_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_5__.isFeedbackModalOpenAtom, false);
 // globally handle subscription to activeModuleAtom
 chromeStore.sub(_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_0__.activeModuleAtom, function() {
 // console.log('activeModule in store', chromeStore.get(activeModuleAtom));
