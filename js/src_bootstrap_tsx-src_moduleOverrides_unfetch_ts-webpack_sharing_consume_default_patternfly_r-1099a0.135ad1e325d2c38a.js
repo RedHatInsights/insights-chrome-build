@@ -16428,21 +16428,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @scalprum/react-core */ "webpack/sharing/consume/default/@scalprum/react-core/@scalprum/react-core");
 /* harmony import */ var _scalprum_react_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scalprum_react_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _virtual_assistant_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./virtual-assistant.scss */ "./src/components/Routes/virtual-assistant.scss");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
+/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _virtual_assistant_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./virtual-assistant.scss */ "./src/components/Routes/virtual-assistant.scss");
 
 
 
 
-var viableRoutes = [
-    "/",
-    "/insights/*",
-    "/settings/*",
-    "/subscriptions/overview/*",
-    "/subscriptions/inventory/*",
-    "/subscriptions/usage/*",
-    "/openshift/insights/*"
-];
+
+var flaggedRoutes = {
+    "platform.va.openshift.insights": "/openshift/insights/*"
+};
 var VirtualAssistant = function() {
+    var viableRoutes = [
+        "/",
+        "/insights/*",
+        "/settings/*",
+        "/subscriptions/overview/*",
+        "/subscriptions/inventory/*",
+        "/subscriptions/usage/*"
+    ];
+    var allFlags = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_3__.useFlags)();
+    allFlags.forEach(function(flag) {
+        if (flaggedRoutes[flag.name] && flag.enabled) {
+            viableRoutes.push(flaggedRoutes[flag.name]);
+        }
+    });
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Routes, null, viableRoutes.map(function(route) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
             key: route,
