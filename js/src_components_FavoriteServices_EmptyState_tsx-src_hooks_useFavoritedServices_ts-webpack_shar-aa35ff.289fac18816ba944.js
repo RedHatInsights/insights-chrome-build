@@ -69,74 +69,6 @@ function useSegment() {
 
 /***/ }),
 
-/***/ "./src/auth/ChromeAuthContext.ts":
-/*!***************************************!*\
-  !*** ./src/auth/ChromeAuthContext.ts ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-var blankUser = {
-    entitlements: {},
-    identity: {
-        org_id: "",
-        type: ""
-    }
-};
-var ChromeAuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
-    ssoUrl: "",
-    ready: false,
-    logoutAllTabs: function() {
-        return undefined;
-    },
-    loginAllTabs: function() {
-        return undefined;
-    },
-    logout: function() {
-        return undefined;
-    },
-    login: function() {
-        return Promise.resolve();
-    },
-    getToken: function() {
-        return Promise.resolve("");
-    },
-    getRefreshToken: function() {
-        return Promise.resolve("");
-    },
-    getOfflineToken: function() {
-        return Promise.resolve({
-            data: {}
-        });
-    },
-    doOffline: function() {
-        return Promise.resolve();
-    },
-    getUser: function() {
-        return Promise.resolve(blankUser);
-    },
-    token: "",
-    tokenExpires: 0,
-    user: blankUser,
-    reAuthWithScopes: function() {
-        return Promise.resolve();
-    },
-    forceRefresh: function() {
-        return Promise.resolve();
-    }
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChromeAuthContext);
-
-
-/***/ }),
-
 /***/ "./src/components/AllServices/allServicesLinks.ts":
 /*!********************************************************!*\
   !*** ./src/components/AllServices/allServicesLinks.ts ***!
@@ -180,8 +112,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -450,9 +383,8 @@ function _ts_generator(thisArg, body) {
 
 
 
-var previewBundles = [
-    ""
-];
+
+var LOCAL_PREVIEW = localStorage.getItem("chrome:local-preview") === "true";
 var requiredBundles = [
     "application-services",
     "openshift",
@@ -463,7 +395,7 @@ var requiredBundles = [
     "iam",
     "quay",
     "subscriptions"
-].concat(_to_consumable_array(!(0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isProd)() ? previewBundles : (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)() ? previewBundles : [])).filter(Boolean);
+];
 var itLessBundles = [
     "openshift",
     "insights",
@@ -552,7 +484,7 @@ var isDuplicate = function(items, href) {
     });
 };
 var useAppFilter = function() {
-    var isBetaEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)();
+    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_7__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_6__.isPreviewAtom);
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
         isLoaded: false,
         isLoading: false,
@@ -575,7 +507,7 @@ var useAppFilter = function() {
         var navigation = param.chrome.navigation;
         return navigation;
     });
-    var modules = (0,jotai__WEBPACK_IMPORTED_MODULE_6__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_5__.chromeModulesAtom);
+    var modules = (0,jotai__WEBPACK_IMPORTED_MODULE_7__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_5__.chromeModulesAtom);
     var handleBundleData = function() {
         var _ref = _async_to_generator(function(param) {
             var _param_data, id, navItems, title, links, bundleLinks, extraLinks, promises;
@@ -717,7 +649,10 @@ var useAppFilter = function() {
             bundles.map(function(fragment) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.getChromeStaticPathname)("navigation"), "/").concat(fragment, "-navigation.json?ts=").concat(Date.now()))// fallback static CSC for EE env
                 .catch(function() {
-                    return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(isBetaEnv ? "/beta" : "", "/config/chrome/").concat(fragment, "-navigation.json?ts=").concat(Date.now()));
+                    // FIXME: Remove this once local preview is enabled by default
+                    // No /beta will be needed in the future
+                    var previewFragment = LOCAL_PREVIEW ? "" : isPreview ? "/beta" : "";
+                    return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(previewFragment, "/config/chrome/").concat(fragment, "-navigation.json?ts=").concat(Date.now()));
                 }).then(handleBundleData).then(function() {
                     return Object.values(existingSchemas).map(function(data) {
                         return handleBundleData({
@@ -1163,165 +1098,41 @@ var EmptyState = function() {
 
 /***/ }),
 
-/***/ "./src/components/FeatureFlags/FeatureFlagsProvider.tsx":
-/*!**************************************************************!*\
-  !*** ./src/components/FeatureFlags/FeatureFlagsProvider.tsx ***!
-  \**************************************************************/
+/***/ "./src/components/FeatureFlags/unleashClient.ts":
+/*!******************************************************!*\
+  !*** ./src/components/FeatureFlags/unleashClient.ts ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   UNLEASH_ERROR_KEY: () => (/* binding */ UNLEASH_ERROR_KEY),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   getFeatureFlagsError: () => (/* binding */ getFeatureFlagsError),
-/* harmony export */   unleashClient: () => (/* binding */ unleashClient)
+/* harmony export */   getUnleashClient: () => (/* binding */ getUnleashClient),
+/* harmony export */   setUnleashClient: () => (/* binding */ setUnleashClient),
+/* harmony export */   unleashClientExists: () => (/* binding */ unleashClientExists)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @unleash/proxy-client-react */ "webpack/sharing/consume/default/@unleash/proxy-client-react/@unleash/proxy-client-react");
-/* harmony import */ var _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _sentry_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/react */ "./node_modules/@sentry/react/node_modules/@sentry/core/esm/exports.js");
-/* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/common */ "./src/utils/common.ts");
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-    if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-            symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-            });
-        }
-        keys.push.apply(keys, symbols);
-    }
-    return keys;
-}
-function _object_spread_props(target, source) {
-    source = source != null ? source : {};
-    if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-        ownKeys(Object(source)).forEach(function(key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-    }
-    return target;
-}
-
-
-
-
-
-
-var config = {
-    url: "".concat(document.location.origin, "/api/featureflags/v0"),
-    clientKey: "proxy-123",
-    appName: "web",
-    headerName: "X-Unleash-Auth",
-    refreshInterval: 60000,
-    metricsInterval: 120000,
-    fetch: function(url, headers) {
-        /**
-     * The default fetch handler in the client does not handle 500 errors and does not set the error flag or calls the on('error') listener.
-     * So we need a little bit of cheating to unblock the flagError and flagsReady variables
-     */ return window.fetch(url, headers).then(function(resp) {
-            // prevent the request from falling back to default error behavior
-            //add warning level
-            if (resp.status >= 400) {
-                _sentry_react__WEBPACK_IMPORTED_MODULE_4__.captureMessage("Feature loading error server error! ".concat(resp.status, ": ").concat(resp.statusText, "."), "warning");
-                throw new Error("Feature loading error server error! ".concat(resp.status, ": ").concat(resp.statusText, "."));
-            }
-            var contentType = resp.headers.get("content-type");
-            // make sure the response has correct content type
-            // in case the API falls back to the chrome HTML template
-            if (!(contentType === null || contentType === void 0 ? void 0 : contentType.includes("application/json"))) {
-                throw new Error("Feature loading error server error! Invalid response content type. Expected 'application/json, got: ".concat(contentType, "'"));
-            }
-            return resp;
-        }).catch(function(err) {
-            (0,_sentry_react__WEBPACK_IMPORTED_MODULE_4__.captureException)(err);
-            // set the error flag
-            localStorage.setItem(UNLEASH_ERROR_KEY, "true");
-            return {
-                headers: {
-                    get: function() {
-                        return "";
-                    }
-                },
-                json: function() {
-                    return Promise.resolve({
-                        toggles: []
-                    });
-                },
-                ok: true
-            };
-        });
-    }
-};
+var unleashClient;
 var UNLEASH_ERROR_KEY = "chrome:feature-flags:error";
 /**
  * Clear error localstorage flag before initialization
  */ localStorage.setItem(UNLEASH_ERROR_KEY, "false");
-var unleashClient;
 var getFeatureFlagsError = function() {
     return localStorage.getItem(UNLEASH_ERROR_KEY) === "true";
 };
-var FeatureFlagsProvider = function(param) {
-    var children = param.children;
-    var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_2__["default"]).user;
-    unleashClient = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        var _user_identity_internal, _user_identity_internal1;
-        return new _unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.UnleashClient(_object_spread_props(_object_spread({}, config), {
-            context: _object_spread({
-                // TODO: instead of the isBeta, use the internal chrome state
-                // the unleash context is not generic, look for issue/PR in the unleash repo or create one
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                "platform.chrome.ui.preview": (0,_utils_common__WEBPACK_IMPORTED_MODULE_3__.isBeta)(),
-                userId: user === null || user === void 0 ? void 0 : (_user_identity_internal = user.identity.internal) === null || _user_identity_internal === void 0 ? void 0 : _user_identity_internal.account_id,
-                orgId: user === null || user === void 0 ? void 0 : (_user_identity_internal1 = user.identity.internal) === null || _user_identity_internal1 === void 0 ? void 0 : _user_identity_internal1.org_id
-            }, user ? {
-                properties: {
-                    account_number: user === null || user === void 0 ? void 0 : user.identity.account_number,
-                    email: user === null || user === void 0 ? void 0 : user.identity.user.email
-                }
-            } : {})
-        }));
-    }, []);
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.FlagProvider, {
-        unleashClient: unleashClient
-    }, children);
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FeatureFlagsProvider);
+function getUnleashClient() {
+    if (!unleashClient) {
+        throw new Error("UnleashClient not initialized!");
+    }
+    return unleashClient;
+}
+function setUnleashClient(client) {
+    unleashClient = client;
+}
+function unleashClientExists() {
+    return !!unleashClient;
+}
 
 
 /***/ }),
@@ -2040,9 +1851,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
 /* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
+/* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -2308,6 +2121,8 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 var getFirstChildRoute = function() {
     var routes = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
     var firstLeaf = routes.find(function(item) {
@@ -2400,14 +2215,14 @@ var getNavLinks = function(navItems) {
     return links;
 };
 var fetchNavigation = function() {
-    var _ref = _async_to_generator(function() {
+    var _ref = _async_to_generator(function(isPreview) {
         var bundlesNavigation, parsedBundles, allLinks;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
                     return [
                         4,
-                        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_1__["default"])().then(function(data) {
+                        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_1__["default"])(isPreview).then(function(data) {
                             return data.map(handleBundleResponse);
                         })
                     ];
@@ -2460,14 +2275,15 @@ var fetchNavigation = function() {
             }
         });
     });
-    return function fetchNavigation() {
+    return function fetchNavigation(isPreview) {
         return _ref.apply(this, arguments);
     };
 }();
 var useAllLinks = function() {
+    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_4__.isPreviewAtom);
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), 2), allLinks = _useState[0], setAllLinks = _useState[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
-        fetchNavigation().then(setAllLinks);
+        fetchNavigation(isPreview).then(setAllLinks);
     }, []);
     return allLinks;
 };
@@ -3211,11 +3027,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _useAllServices__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useAllServices */ "./src/hooks/useAllServices.ts");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/fetchNavigationFiles */ "./src/utils/fetchNavigationFiles.ts");
 /* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 /* harmony import */ var _useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./useFavoritePagesWrapper */ "./src/hooks/useFavoritePagesWrapper.ts");
 /* harmony import */ var _components_AllServices_allServicesLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/AllServices/allServicesLinks */ "./src/components/AllServices/allServicesLinks.ts");
 /* harmony import */ var _useAllLinks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./useAllLinks */ "./src/hooks/useAllLinks.ts");
+/* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -3333,7 +3151,10 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
+
 var useFavoritedServices = function() {
+    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_8__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_7__.isPreviewAtom);
     var favoritePages = (0,_useFavoritePagesWrapper__WEBPACK_IMPORTED_MODULE_4__["default"])().favoritePages;
     var availableSections = (0,_useAllServices__WEBPACK_IMPORTED_MODULE_0__["default"])().availableSections;
     var allLinks = (0,_useAllLinks__WEBPACK_IMPORTED_MODULE_6__["default"])();
@@ -3355,7 +3176,7 @@ var useFavoritedServices = function() {
         availableSections
     ]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
-        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__["default"])().then(function(data) {
+        (0,_utils_fetchNavigationFiles__WEBPACK_IMPORTED_MODULE_2__["default"])(isPreview).then(function(data) {
             return setBundles(data);
         }).catch(function(error) {
             console.error("Unable to fetch favorite services", error);
@@ -4457,6 +4278,237 @@ var loadModulesSchemaWriteAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(nul
 
 /***/ }),
 
+/***/ "./src/state/atoms/releaseAtom.ts":
+/*!****************************************!*\
+  !*** ./src/state/atoms/releaseAtom.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   isPreviewAtom: () => (/* binding */ isPreviewAtom)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/VisibilitySingleton */ "./src/utils/VisibilitySingleton.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/state/atoms/utils.ts");
+/* harmony import */ var _components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/FeatureFlags/unleashClient */ "./src/components/FeatureFlags/unleashClient.ts");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
+
+
+var isPreviewAtom = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.atomWithToggle)(undefined, function() {
+    var _ref = _async_to_generator(function(isPreview) {
+        var error;
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    _state.trys.push([
+                        0,
+                        3,
+                        ,
+                        4
+                    ]);
+                    if (!(0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_1__.visibilityFunctionsExist)()) return [
+                        3,
+                        2
+                    ];
+                    (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_1__.updateVisibilityFunctionsBeta)(isPreview);
+                    return [
+                        4,
+                        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/chrome-service/v1/user/update-ui-preview", {
+                            uiPreview: isPreview
+                        })
+                    ];
+                case 1:
+                    _state.sent();
+                    _state.label = 2;
+                case 2:
+                    if ((0,_components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_3__.unleashClientExists)()) {
+                        // Required to change the `platform.chrome.ui.preview` context in the feature flags, TS is bugged
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        (0,_components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_3__.getUnleashClient)().updateContext({
+                            "platform.chrome.ui.preview": isPreview
+                        });
+                    }
+                    return [
+                        3,
+                        4
+                    ];
+                case 3:
+                    error = _state.sent();
+                    console.error("Failed to update the visibility functions or feature flags context", error);
+                    return [
+                        3,
+                        4
+                    ];
+                case 4:
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return function(isPreview) {
+        return _ref.apply(this, arguments);
+    };
+}());
+
+
+/***/ }),
+
+/***/ "./src/state/atoms/utils.ts":
+/*!**********************************!*\
+  !*** ./src/state/atoms/utils.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   atomWithToggle: () => (/* binding */ atomWithToggle)
+/* harmony export */ });
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
+
+// recipe from https://jotai.org/docs/recipes/atom-with-toggle
+function atomWithToggle(initialValue, onToggle) {
+    var anAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(initialValue, function(get, set, nextValue) {
+        var update = nextValue !== null && nextValue !== void 0 ? nextValue : !get(anAtom);
+        set(anAtom, update);
+        onToggle === null || onToggle === void 0 ? void 0 : onToggle(update);
+    });
+    return anAtom;
+}
+
+
+/***/ }),
+
 /***/ "./src/utils/VisibilitySingleton.ts":
 /*!******************************************!*\
   !*** ./src/utils/VisibilitySingleton.ts ***!
@@ -4467,7 +4519,9 @@ var loadModulesSchemaWriteAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_1__.atom)(nul
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   getVisibilityFunctions: () => (/* binding */ getVisibilityFunctions),
-/* harmony export */   initializeVisibilityFunctions: () => (/* binding */ initializeVisibilityFunctions)
+/* harmony export */   initializeVisibilityFunctions: () => (/* binding */ initializeVisibilityFunctions),
+/* harmony export */   updateVisibilityFunctionsBeta: () => (/* binding */ updateVisibilityFunctionsBeta),
+/* harmony export */   visibilityFunctionsExist: () => (/* binding */ visibilityFunctionsExist)
 /* harmony export */ });
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./src/utils/common.ts");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
@@ -4477,8 +4531,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
 /* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/FeatureFlags/FeatureFlagsProvider */ "./src/components/FeatureFlags/FeatureFlagsProvider.tsx");
-/* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/esm/index.js");
+/* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/esm/index.js");
+/* harmony import */ var _components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/FeatureFlags/unleashClient */ "./src/components/FeatureFlags/unleashClient.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -4750,7 +4804,7 @@ var getValue = function() {
     return lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, accessor) || lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(response || {}, "data.".concat(accessor));
 };
 var initialize = function(param) {
-    var getUserPermissions = param.getUserPermissions, getUser = param.getUser, getToken = param.getToken;
+    var getUserPermissions = param.getUserPermissions, getUser = param.getUser, getToken = param.getToken, isPreview = param.isPreview;
     /**
    * Check if is permitted to see navigation link
    * @param {array} permissions array checked user permissions
@@ -4907,8 +4961,11 @@ var initialize = function(param) {
         isProd: function() {
             return (0,_common__WEBPACK_IMPORTED_MODULE_0__.isProd)();
         },
-        isBeta: function() {
-            return (0,_common__WEBPACK_IMPORTED_MODULE_0__.isBeta)();
+        /**
+     * @deprecated Should use feature flags instead
+     * @returns {boolean}
+     */ isBeta: function() {
+            return isPreview;
         },
         isHidden: function() {
             return true;
@@ -5015,12 +5072,13 @@ var initialize = function(param) {
             };
         }(),
         featureFlag: function(flagName, expectedValue) {
-            return (0,_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.getFeatureFlagsError)() !== true && (_components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === null || _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient === void 0 ? void 0 : _components_FeatureFlags_FeatureFlagsProvider__WEBPACK_IMPORTED_MODULE_5__.unleashClient.isEnabled(flagName)) === expectedValue;
+            var _getUnleashClient;
+            return (0,_components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_6__.getFeatureFlagsError)() !== true && ((_getUnleashClient = (0,_components_FeatureFlags_unleashClient__WEBPACK_IMPORTED_MODULE_6__.getUnleashClient)()) === null || _getUnleashClient === void 0 ? void 0 : _getUnleashClient.isEnabled(flagName)) === expectedValue;
         }
     };
     // in order to properly distribute the module, it has be added to the webpack share scope to avoid reference issues if these functions are called from chrome shared modules
-    (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.initSharedScope)();
-    var scope = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.getSharedScope)();
+    (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_5__.initSharedScope)();
+    var scope = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_5__.getSharedScope)();
     scope["@chrome/visibilityFunctions"] = {
         "*": {
             loaded: 1,
@@ -5031,11 +5089,20 @@ var initialize = function(param) {
     };
 };
 var getVisibilityFunctions = function() {
-    var visibilityFunctions = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_6__.getSharedScope)()["@chrome/visibilityFunctions"];
+    var visibilityFunctions = (0,_scalprum_core__WEBPACK_IMPORTED_MODULE_5__.getSharedScope)()["@chrome/visibilityFunctions"];
     if (!visibilityFunctions) {
         throw new Error("Visibility functions were not initialized! Call the initialized function first.");
     }
     return visibilityFunctions["*"].get();
+};
+var visibilityFunctionsExist = function() {
+    return !!(0,_scalprum_core__WEBPACK_IMPORTED_MODULE_5__.getSharedScope)()["@chrome/visibilityFunctions"];
+};
+var updateVisibilityFunctionsBeta = function(isPreview) {
+    var visibilityFunctions = getVisibilityFunctions();
+    visibilityFunctions.isBeta = function() {
+        return isPreview;
+    };
 };
 var initializeVisibilityFunctions = initialize;
 
@@ -5187,10 +5254,10 @@ function _ts_generator(thisArg, body) {
 
 
 
+var LOCAL_PREVIEW = localStorage.getItem("chrome:local-preview") === "true";
 function isBundleNavigation(item) {
     return typeof item !== "undefined";
 }
-var bundles = (0,_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)() ? _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.itLessBundles : _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles;
 function isNavItems(navigation) {
     return Array.isArray(navigation.navItems);
 }
@@ -5212,8 +5279,10 @@ var filesCache = {
     existingRequest: undefined
 };
 var fetchNavigationFiles = function() {
-    var _ref = _async_to_generator(function() {
+    var _ref = _async_to_generator(function(isPreview) {
+        var bundles;
         return _ts_generator(this, function(_state) {
+            bundles = (0,_common__WEBPACK_IMPORTED_MODULE_2__.ITLess)() ? _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.itLessBundles : _components_AppFilter_useAppFilter__WEBPACK_IMPORTED_MODULE_1__.requiredBundles;
             if (filesCache.ready && filesCache.expires > Date.now()) {
                 return [
                     2,
@@ -5229,7 +5298,10 @@ var fetchNavigationFiles = function() {
             }
             filesCache.existingRequest = Promise.all(bundles.map(function(fragment) {
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_common__WEBPACK_IMPORTED_MODULE_2__.getChromeStaticPathname)("navigation"), "/").concat(fragment, "-navigation.json?ts=").concat(Date.now())).catch(function() {
-                    return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat((0,_common__WEBPACK_IMPORTED_MODULE_2__.isBeta)() ? "/beta" : "", "/config/chrome/").concat(fragment, "-navigation.json?ts=").concat(Date.now()));
+                    // FIXME: Remove this once local preview is enabled by default
+                    // No /beta will be needed in the future
+                    var previewFragment = LOCAL_PREVIEW ? "" : isPreview ? "/beta" : "";
+                    return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(previewFragment, "/config/chrome/").concat(fragment, "-navigation.json?ts=").concat(Date.now()));
                 }).then(function(response) {
                     return response.data;
                 }).catch(function(err) {
@@ -5251,7 +5323,7 @@ var fetchNavigationFiles = function() {
             ];
         });
     });
-    return function fetchNavigationFiles() {
+    return function fetchNavigationFiles(isPreview) {
         return _ref.apply(this, arguments);
     };
 }();

@@ -354,6 +354,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+var LOCAL_PREVIEW = localStorage.getItem("chrome:local-preview") === "true";
 var DEFAULT_SSO_ROUTES = {
     prod: {
         url: [
@@ -542,14 +543,18 @@ function getEnvDetails() {
 function isProd() {
     return location.host === "cloud.redhat.com" || location.host === "console.redhat.com" || location.host.includes("prod.foo.redhat.com");
 }
-function isBeta(pathname) {
+/**
+ * @deprecated preview flag is now determined via chrome internal state variable
+ */ function isBeta(pathname) {
     var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
     return [
         "beta",
         "preview"
     ].includes(previewFragment);
 }
-function getRouterBasename(pathname) {
+/**
+ * @deprecated router basename will always be `/`
+ */ function getRouterBasename(pathname) {
     var previewFragment = (pathname !== null && pathname !== void 0 ? pathname : window.location.pathname).split("/")[1];
     return isBeta(pathname) ? "/".concat(previewFragment) : "/";
 }
@@ -671,7 +676,10 @@ var chromeServiceStaticPathname = {
     }
 };
 function getChromeStaticPathname(type) {
-    var stableEnv = isBeta() ? "beta" : "stable";
+    // TODO: Remove once local preview is enabled by default
+    // Only non-beta env will exist in the future
+    // Feature flags should be used to enable/disable features
+    var stableEnv = LOCAL_PREVIEW ? "stable" : isBeta() ? "beta" : "stable";
     var prodEnv = isProd() ? "prod" : ITLess() ? "itless" : "stage";
     return "".concat(CHROME_SERVICE_BASE).concat(chromeServiceStaticPathname[stableEnv][prodEnv], "/").concat(type);
 }
