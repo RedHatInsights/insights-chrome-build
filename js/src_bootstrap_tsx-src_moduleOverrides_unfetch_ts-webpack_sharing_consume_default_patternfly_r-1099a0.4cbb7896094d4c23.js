@@ -13730,7 +13730,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Popover */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Popover/@patternfly/react-core/dist/dynamic/components/Popover");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Badge */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Badge/@patternfly/react-core/dist/dynamic/components/Badge?58de");
@@ -13766,6 +13766,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 /* harmony import */ var _state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../state/atoms/notificationDrawerAtom */ "./src/state/atoms/notificationDrawerAtom.ts");
+/* harmony import */ var _redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/BulkSelect */ "./node_modules/@redhat-cloud-services/frontend-components/esm/BulkSelect/BulkSelect.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_21__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -13998,6 +14001,8 @@ function _ts_generator(thisArg, body) {
 
 
 
+
+
 var EmptyNotifications = function(param) {
     var isOrgAdmin = param.isOrgAdmin, onLinkClick = param.onLinkClick;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyState, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyStateIcon, {
@@ -14021,15 +14026,18 @@ var DrawerPanelBase = function(param) {
     var _auth_user_identity_user, _auth_user_identity, _auth_user;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isDropdownOpen = _useState[0], setIsDropdownOpen = _useState[1];
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isFilterDropdownOpen = _useState1[0], setIsFilterDropdownOpen = _useState1[1];
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_21__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerFilterAtom), 2), activeFilters = _useAtom[0], setActiveFilters = _useAtom[1];
-    var toggleDrawer = (0,jotai__WEBPACK_IMPORTED_MODULE_21__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerExpandedAtom);
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerFilterAtom), 2), activeFilters = _useAtom[0], setActiveFilters = _useAtom[1];
+    var toggleDrawer = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerExpandedAtom);
     var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_15__.useNavigate)();
-    var notifications = (0,jotai__WEBPACK_IMPORTED_MODULE_21__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerDataAtom);
-    var updateNotificationsStatus = (0,jotai__WEBPACK_IMPORTED_MODULE_21__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationsStatusAtom);
+    var notifications = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerDataAtom);
+    var selectedNotifications = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerSelectedAtom);
+    var updateSelectedNotification = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationSelectedAtom);
     var auth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_18__["default"]);
     var isOrgAdmin = auth === null || auth === void 0 ? void 0 : (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : (_auth_user_identity = _auth_user.identity) === null || _auth_user_identity === void 0 ? void 0 : (_auth_user_identity_user = _auth_user_identity.user) === null || _auth_user_identity_user === void 0 ? void 0 : _auth_user_identity_user.is_org_admin;
     var getUserPermissions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_19__["default"]).getUserPermissions;
     var _useState2 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), hasNotificationsPermissions = _useState2[0], setHasNotificationsPermissions = _useState2[1];
+    var updateNotificationRead = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationReadAtom);
+    var updateAllNotificationsSelected = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationsSelectedAtom);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var mounted = true;
         var fetchPermissions = function() {
@@ -14082,13 +14090,30 @@ var DrawerPanelBase = function(param) {
         setActiveFilters([]);
         toggleDrawer(false);
     };
-    var onMarkAllAsRead = function() {
-        updateNotificationsStatus(true);
-        setIsDropdownOpen(false);
+    var onUpdateSelectedStatus = function(read) {
+        axios__WEBPACK_IMPORTED_MODULE_21___default().put("/api/notifications/v1/notifications/drawer/read", {
+            notification_ids: selectedNotifications.map(function(notification) {
+                return notification.id;
+            }),
+            read_status: read
+        }).then(function() {
+            selectedNotifications.forEach(function(notification) {
+                return updateNotificationRead(notification.id, read);
+            });
+            setIsDropdownOpen(false);
+            updateAllNotificationsSelected(false);
+        }).catch(function(e) {
+            console.error("failed to update notification read status", e);
+        });
     };
-    var onMarkAllAsUnread = function() {
-        updateNotificationsStatus(false);
-        setIsDropdownOpen(false);
+    var selectAllNotifications = function(selected) {
+        updateAllNotificationsSelected(selected);
+    };
+    var selectVisibleNotifications = function() {
+        var visibleNotifications = activeFilters.length > 0 ? filteredNotifications : notifications;
+        visibleNotifications.forEach(function(notification) {
+            return updateSelectedNotification(notification.id, true);
+        });
     };
     var onFilterSelect = function(chosenFilter) {
         activeFilters.includes(chosenFilter) ? setActiveFilters(activeFilters.filter(function(filter) {
@@ -14107,15 +14132,19 @@ var DrawerPanelBase = function(param) {
             description: "Actions"
         }),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
-            key: "read all",
-            onClick: onMarkAllAsRead,
+            key: "read selected",
+            onClick: function() {
+                onUpdateSelectedStatus(true);
+            },
             isDisabled: notifications.length === 0
-        }, "Mark visible as read"),
+        }, "Mark selected as read"),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.DropdownItem, {
-            key: "unread all",
-            onClick: onMarkAllAsUnread,
+            key: "unread selected",
+            onClick: function() {
+                onUpdateSelectedStatus(false);
+            },
             isDisabled: notifications.length === 0
-        }, "Mark visible as unread"),
+        }, "Mark selected as unread"),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_6__.Divider, {
             key: "divider"
         }),
@@ -14214,7 +14243,39 @@ var DrawerPanelBase = function(param) {
             position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__.PopoverPosition.right
         },
         id: "notifications-filter-dropdown"
-    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.Dropdown, {
+    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        id: "notifications-bulk-select",
+        items: [
+            {
+                title: "Select none (0)",
+                key: "select-none",
+                onClick: function() {
+                    return selectAllNotifications(false);
+                }
+            },
+            {
+                title: "Select visible (".concat(activeFilters.length > 0 ? filteredNotifications.length : notifications.length, ")"),
+                key: "select-visible",
+                onClick: selectVisibleNotifications
+            },
+            {
+                title: "Select all (".concat(notifications.length, ")"),
+                key: "select-all",
+                onClick: function() {
+                    return selectAllNotifications(true);
+                }
+            }
+        ],
+        count: notifications.filter(function(param) {
+            var selected = param.selected;
+            return selected;
+        }).length,
+        checked: notifications.length > 0 && notifications.every(function(param) {
+            var selected = param.selected;
+            return selected;
+        }),
+        ouiaId: "notifications-bulk-select"
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_4__.Dropdown, {
         toggle: function(toggleRef) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__.MenuToggle, {
                 ref: toggleRef,
@@ -14258,7 +14319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?dc4e");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/NotificationDrawer */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/NotificationDrawer/@patternfly/react-core/dist/dynamic/components/NotificationDrawer");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Popover */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Popover/@patternfly/react-core/dist/dynamic/components/Popover");
@@ -14273,8 +14334,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon/@patternfly/react-icons/dist/dynamic/icons/ellipsis-v-icon?01c0");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_ellipsis_v_icon__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/DateFormat */ "./node_modules/@redhat-cloud-services/frontend-components/esm/DateFormat/DateFormat.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/DateFormat */ "./node_modules/@redhat-cloud-services/frontend-components/esm/DateFormat/DateFormat.js");
 /* harmony import */ var _state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../state/atoms/notificationDrawerAtom */ "./src/state/atoms/notificationDrawerAtom.ts");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -14332,18 +14395,32 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var NotificationItem = function(param) {
     var notification = param.notification, onNavigateTo = param.onNavigateTo;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isDropdownOpen = _useState[0], setIsDropdownOpen = _useState[1];
-    var updateNotificationRead = (0,jotai__WEBPACK_IMPORTED_MODULE_9__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_8__.updateNotificationReadAtom);
+    var updateNotificationSelected = (0,jotai__WEBPACK_IMPORTED_MODULE_10__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_8__.updateNotificationSelectedAtom);
+    var updateNotificationRead = (0,jotai__WEBPACK_IMPORTED_MODULE_10__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_8__.updateNotificationReadAtom);
     var onCheckboxToggle = function() {
-        updateNotificationRead(notification.id, !notification.read);
-        setIsDropdownOpen(false);
+        updateNotificationSelected(notification.id, !notification.selected);
+    };
+    var onMarkAsRead = function() {
+        axios__WEBPACK_IMPORTED_MODULE_9___default().put("/api/notifications/v1/notifications/drawer/read", {
+            notification_ids: [
+                notification.id
+            ],
+            read_status: !notification.read
+        }).then(function() {
+            updateNotificationRead(notification.id, !notification.read);
+            setIsDropdownOpen(false);
+        }).catch(function(e) {
+            console.error("failed to update notification read status", e);
+        });
     };
     var notificationDropdownItems = [
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__.DropdownItem, {
             key: "read",
-            onClick: onCheckboxToggle
+            onClick: onMarkAsRead
         }, "Mark as ".concat(!notification.read ? "read" : "unread")),
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__.DropdownItem, {
             key: "manage-event",
@@ -14360,10 +14437,10 @@ var NotificationItem = function(param) {
         title: notification.title,
         srTitle: "Info notification:"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Checkbox__WEBPACK_IMPORTED_MODULE_3__.Checkbox, {
-        isChecked: notification.read,
+        isChecked: notification.selected,
         onChange: onCheckboxToggle,
-        id: "read-checkbox",
-        name: "read-checkbox"
+        id: "selected-checkbox",
+        name: "selected-checkbox"
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__.Dropdown, {
         toggle: function(toggleRef) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__.MenuToggle, {
@@ -14384,7 +14461,7 @@ var NotificationItem = function(param) {
         },
         id: "notification-item-dropdown"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__.DropdownList, null, notificationDropdownItems))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_NotificationDrawer__WEBPACK_IMPORTED_MODULE_1__.NotificationDrawerListItemBody, {
-        timestamp: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        timestamp: /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_11__["default"], {
             date: notification.created
         })
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Label__WEBPACK_IMPORTED_MODULE_4__.Label, {
@@ -21008,8 +21085,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   notificationDrawerDataAtom: () => (/* binding */ notificationDrawerDataAtom),
 /* harmony export */   notificationDrawerExpandedAtom: () => (/* binding */ notificationDrawerExpandedAtom),
 /* harmony export */   notificationDrawerFilterAtom: () => (/* binding */ notificationDrawerFilterAtom),
+/* harmony export */   notificationDrawerSelectedAtom: () => (/* binding */ notificationDrawerSelectedAtom),
 /* harmony export */   unreadNotificationsAtom: () => (/* binding */ unreadNotificationsAtom),
 /* harmony export */   updateNotificationReadAtom: () => (/* binding */ updateNotificationReadAtom),
+/* harmony export */   updateNotificationSelectedAtom: () => (/* binding */ updateNotificationSelectedAtom),
+/* harmony export */   updateNotificationsSelectedAtom: () => (/* binding */ updateNotificationsSelectedAtom),
 /* harmony export */   updateNotificationsStatusAtom: () => (/* binding */ updateNotificationsStatusAtom)
 /* harmony export */ });
 /* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/vanilla.mjs");
@@ -21128,6 +21208,29 @@ var addNotificationAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(null, func
     });
     set(notificationDrawerCountAtom, function(prev) {
         return prev + notifications.length;
+    });
+});
+var notificationDrawerSelectedAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(function(get) {
+    return get(notificationDrawerDataAtom).filter(function(notification) {
+        return notification.selected;
+    });
+});
+var updateNotificationSelectedAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(null, function(_get, set, id, selected) {
+    set(notificationDrawerDataAtom, function(prev) {
+        return prev.map(function(notification) {
+            return notification.id === id ? _object_spread_props(_object_spread({}, notification), {
+                selected: selected
+            }) : notification;
+        });
+    });
+});
+var updateNotificationsSelectedAtom = (0,jotai__WEBPACK_IMPORTED_MODULE_0__.atom)(null, function(_get, set, selected) {
+    set(notificationDrawerDataAtom, function(prev) {
+        return prev.map(function(notification) {
+            return _object_spread_props(_object_spread({}, notification), {
+                selected: selected
+            });
+        });
     });
 });
 
