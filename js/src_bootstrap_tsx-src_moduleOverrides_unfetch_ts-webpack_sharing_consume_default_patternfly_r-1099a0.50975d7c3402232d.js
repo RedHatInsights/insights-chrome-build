@@ -7640,7 +7640,7 @@ var DefaultErrorComponent = function(props) {
         activeModule
     ]);
     // second level of error capture if xhr/fetch interceptor fails
-    var gatewayError = (0,_utils_responseInterceptors__WEBPACK_IMPORTED_MODULE_13__.get3scaleError)(props.error);
+    var gatewayError = (0,_utils_responseInterceptors__WEBPACK_IMPORTED_MODULE_13__.get3scaleError)(props.error, props.signIn);
     if (gatewayError) {
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_14__["default"], {
             error: gatewayError
@@ -7888,7 +7888,8 @@ var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
                 if (this.state.hasError) {
                     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DefaultErrorComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
                         error: this.state.error,
-                        errorInfo: this.state.errorInfo
+                        errorInfo: this.state.errorInfo,
+                        signIn: this.props.singIn
                     });
                 }
                 return this.props.children;
@@ -22651,7 +22652,7 @@ function init(chromeStore, authRef) {
         }
         this.onload = function() {
             if (this.status >= 400) {
-                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(this.response);
+                var gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(this.response, authRef.current.signinRedirect);
                 if (this.status === 403 && this.responseText.includes(DENIED_CROSS_CHECK)) {
                     (0,_auth_crossAccountBouncer__WEBPACK_IMPORTED_MODULE_1__["default"])();
                 // check for 3scale error
@@ -22736,7 +22737,7 @@ function init(chromeStore, authRef) {
                             _state.label = 5;
                         case 5:
                             data = _tmp;
-                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(data);
+                            gatewayError = (0,_responseInterceptors__WEBPACK_IMPORTED_MODULE_0__.get3scaleError)(data, authRef.current.signinRedirect);
                             if (gatewayError) {
                                 chromeStore.set(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_2__.gatewayErrorAtom, gatewayError);
                             }
@@ -24063,13 +24064,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   COMPLIACE_ERROR_CODES: () => (/* binding */ COMPLIACE_ERROR_CODES),
 /* harmony export */   get3scaleError: () => (/* binding */ get3scaleError)
 /* harmony export */ });
+// eslint-disable-next-line no-restricted-imports
 var COMPLIACE_ERROR_CODES = [
     "ERROR_OFAC",
     "ERROR_T5",
     "ERROR_EXPORT_CONTROL"
 ];
 var errorCodeRegexp = new RegExp("(".concat(COMPLIACE_ERROR_CODES.join("|"), ")"));
-function get3scaleError(response) {
+function get3scaleError(response, signIn) {
+    if (signIn && typeof response !== "string" && isTokenExpiredError(response)) {
+        signIn();
+        return;
+    }
     // attempt to parse XHR response
     var parsedResponse;
     try {
@@ -24107,6 +24113,14 @@ function get3scaleError(response) {
 function isComplianceError() {
     var response = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
     return !!response.match(errorCodeRegexp);
+}
+var TOKEN_EXPIRED_MATCHER = "Invalid JWT token - 'exp' claim expired at";
+function isTokenExpiredError(error) {
+    var _error_errors;
+    return error === null || error === void 0 ? void 0 : (_error_errors = error.errors) === null || _error_errors === void 0 ? void 0 : _error_errors.find(function(param) {
+        var status = param.status, detail = param.detail;
+        return status === 401 && (detail === null || detail === void 0 ? void 0 : detail.includes(TOKEN_EXPIRED_MATCHER));
+    });
 }
 
 
