@@ -4626,7 +4626,8 @@ var createChromeContext = function(param) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   hacApps: () => (/* binding */ hacApps)
 /* harmony export */ });
 /* harmony import */ var _scalprum_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @scalprum/core */ "./node_modules/@scalprum/core/esm/index.js");
 /* eslint-disable @typescript-eslint/no-var-requires */ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -4813,7 +4814,7 @@ var hacApps = [
 ];
 var updateSharedScope = function() {
     var calculateTo = function(to) {
-        if (window.location.pathname.includes('/hac')) {
+        if (window.location.pathname.match(/(\/hac\/|\/hac$)/)) {
             // FIXME: Create a global dynamic plugin solution to scope plugin nested routes
             if (typeof to === 'string' && !to.startsWith('/hac') && to.startsWith('/') && hacApps.some(function(item) {
                 return to.startsWith(item);
