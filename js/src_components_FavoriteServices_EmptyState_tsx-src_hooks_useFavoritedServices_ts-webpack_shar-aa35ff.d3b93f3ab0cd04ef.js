@@ -2893,6 +2893,11 @@ __webpack_require__.r(__webpack_exports__);
         description: 'Demo mode',
         defaultMessage: 'Demo mode'
     },
+    globalLearningResourcesPage: {
+        id: 'globalLearningResourcesPage',
+        description: 'All learning resources',
+        defaultMessage: 'Global learning resources page'
+    },
     loggedOut: {
         id: 'loggedOut',
         description: 'You have successfully logged out.',
