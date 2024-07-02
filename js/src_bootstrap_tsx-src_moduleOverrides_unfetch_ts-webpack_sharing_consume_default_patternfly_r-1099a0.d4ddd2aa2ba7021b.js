@@ -19879,7 +19879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_GlobalFilter_GlobalFilter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/GlobalFilter/GlobalFilter */ "./src/components/GlobalFilter/GlobalFilter.tsx");
@@ -19910,6 +19910,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _components_Routes_VirtualAssistant__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../components/Routes/VirtualAssistant */ "./src/components/Routes/VirtualAssistant.tsx");
 /* harmony import */ var _state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../state/atoms/notificationDrawerAtom */ "./src/state/atoms/notificationDrawerAtom.ts");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../utils/common */ "./src/utils/common.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -20035,11 +20036,12 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var DefaultLayout = function(param) {
     var hasBanner = param.hasBanner, selectedAccountNumber = param.selectedAccountNumber, hideNav = param.hideNav, isNavOpen = param.isNavOpen, setIsNavOpen = param.setIsNavOpen, Sidebar = param.Sidebar, Footer = param.Footer;
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_12__.useIntl)();
     var _useNavigation = (0,_utils_useNavigation__WEBPACK_IMPORTED_MODULE_18__["default"])(), loaded = _useNavigation.loaded, schema = _useNavigation.schema, noNav = _useNavigation.noNav;
-    var isNotificationsDrawerExpanded = (0,jotai__WEBPACK_IMPORTED_MODULE_24__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_23__.notificationDrawerExpandedAtom);
+    var isNotificationsDrawerExpanded = (0,jotai__WEBPACK_IMPORTED_MODULE_25__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_23__.notificationDrawerExpandedAtom);
     var drawerPanelRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     var focusDrawer = function() {
         var _drawerPanelRef_current;
@@ -20088,7 +20090,7 @@ var DefaultLayout = function(param) {
         className: "chr-viewing-as sentry-mask data-hj-suppress"
     }, intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_13__["default"].viewingAsAccount, {
         selectedAccountNumber: selectedAccountNumber
-    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Stratosphere_RedirectBanner__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_VirtualAssistant__WEBPACK_IMPORTED_MODULE_22__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_Routes__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Stratosphere_RedirectBanner__WEBPACK_IMPORTED_MODULE_11__["default"], null), (0,_utils_common__WEBPACK_IMPORTED_MODULE_24__.ITLess)() ? null : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_VirtualAssistant__WEBPACK_IMPORTED_MODULE_22__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Routes_Routes__WEBPACK_IMPORTED_MODULE_9__["default"], {
         routesProps: {
             scopeClass: 'chr-scope__default-layout'
         }
