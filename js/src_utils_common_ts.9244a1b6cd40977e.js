@@ -88,6 +88,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getEnvDetails: () => (/* binding */ getEnvDetails),
 /* harmony export */   getRouterBasename: () => (/* binding */ getRouterBasename),
 /* harmony export */   getSection: () => (/* binding */ getSection),
+/* harmony export */   getSevenDaysAgo: () => (/* binding */ getSevenDaysAgo),
 /* harmony export */   getWindow: () => (/* binding */ getWindow),
 /* harmony export */   highlightItems: () => (/* binding */ highlightItems),
 /* harmony export */   isBeta: () => (/* binding */ isBeta),
@@ -800,6 +801,11 @@ var titleToId = function(title) {
         return word.toUpperCase();
     }).replace(/\s+/g, '');
 };
+function getSevenDaysAgo() {
+    var today = new Date();
+    var sevenDaysAgo = new Date(today.setDate(today.getDate() - 7));
+    return sevenDaysAgo.toISOString().split('.')[0];
+}
 
 
 /***/ })
