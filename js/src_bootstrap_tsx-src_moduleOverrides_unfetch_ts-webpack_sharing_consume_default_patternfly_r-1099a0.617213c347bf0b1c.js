@@ -14436,7 +14436,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Popover */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Popover/@patternfly/react-core/dist/dynamic/components/Popover");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Badge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Badge */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Badge/@patternfly/react-core/dist/dynamic/components/Badge?394c");
@@ -14472,9 +14472,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/internalChromeContext */ "./src/utils/internalChromeContext.ts");
 /* harmony import */ var _state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../state/atoms/notificationDrawerAtom */ "./src/state/atoms/notificationDrawerAtom.ts");
-/* harmony import */ var _redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/BulkSelect */ "./node_modules/@redhat-cloud-services/frontend-components/esm/BulkSelect/BulkSelect.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/BulkSelect */ "./node_modules/@redhat-cloud-services/frontend-components/esm/BulkSelect/BulkSelect.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Stack */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Stack/@patternfly/react-core/dist/dynamic/layouts/Stack");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__);
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -14709,6 +14711,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 var EmptyNotifications = function(param) {
     var isOrgAdmin = param.isOrgAdmin, onLinkClick = param.onLinkClick;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyState, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyStateIcon, {
@@ -14716,34 +14719,45 @@ var EmptyNotifications = function(param) {
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_10__.Title, {
         headingLevel: "h4",
         size: "lg"
-    }, "No notifications found"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyStateBody, null, isOrgAdmin ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "Try\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
+    }, "No notifications found"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_EmptyState__WEBPACK_IMPORTED_MODULE_7__.EmptyStateBody, null, isOrgAdmin ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "There are currently no notifications for you.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "Try\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
         onClick: onLinkClick,
         to: "/settings/notifications/user-preferences"
     }, "checking your notification preferences"), "\xa0and managing the\xa0", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
         onClick: onLinkClick,
         to: "/settings/notifications/configure-events"
-    }, "notification configuration"), "\xa0for your organization.") : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
+    }, "notification configuration"), "\xa0for your organization."))) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "There are currently no notifications for you.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
         onClick: onLinkClick,
-        to: "/settings/notifications/configure-events"
-    }, "Configure notification settings"), ".", /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "Contact your organization administrator."))));
+        to: "/settings/notifications/user-preferences"
+    }, "Check your Notification Preferences")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Link, {
+        onClick: onLinkClick,
+        to: "/settings/notifications/notificationslog"
+    }, "View the Event log to see all fired events")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_22__.StackItem, {
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_9__.Text, null, "Contact your organization administrator"))))));
 };
 var DrawerPanelBase = function(param) {
     var innerRef = param.innerRef;
     var _auth_user_identity_user, _auth_user_identity, _auth_user;
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isDropdownOpen = _useState[0], setIsDropdownOpen = _useState[1];
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), isFilterDropdownOpen = _useState1[0], setIsFilterDropdownOpen = _useState1[1];
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerFilterAtom), 2), activeFilters = _useAtom[0], setActiveFilters = _useAtom[1];
-    var toggleDrawer = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerExpandedAtom);
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerFilterAtom), 2), activeFilters = _useAtom[0], setActiveFilters = _useAtom[1];
+    var toggleDrawer = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerExpandedAtom);
     var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_15__.useNavigate)();
-    var notifications = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerDataAtom);
-    var selectedNotifications = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerSelectedAtom);
-    var updateSelectedNotification = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationSelectedAtom);
+    var notifications = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerDataAtom);
+    var selectedNotifications = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.notificationDrawerSelectedAtom);
+    var updateSelectedNotification = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationSelectedAtom);
     var auth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_18__["default"]);
     var isOrgAdmin = auth === null || auth === void 0 ? void 0 : (_auth_user = auth.user) === null || _auth_user === void 0 ? void 0 : (_auth_user_identity = _auth_user.identity) === null || _auth_user_identity === void 0 ? void 0 : (_auth_user_identity_user = _auth_user_identity.user) === null || _auth_user_identity_user === void 0 ? void 0 : _auth_user_identity_user.is_org_admin;
     var getUserPermissions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_19__["default"]).getUserPermissions;
     var _useState2 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), 2), hasNotificationsPermissions = _useState2[0], setHasNotificationsPermissions = _useState2[1];
-    var updateNotificationRead = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationReadAtom);
-    var updateAllNotificationsSelected = (0,jotai__WEBPACK_IMPORTED_MODULE_22__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationsSelectedAtom);
+    var updateNotificationRead = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationReadAtom);
+    var updateAllNotificationsSelected = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_20__.updateNotificationsSelectedAtom);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         var mounted = true;
         var fetchPermissions = function() {
@@ -14949,7 +14963,7 @@ var DrawerPanelBase = function(param) {
             position: _patternfly_react_core_dist_dynamic_components_Popover__WEBPACK_IMPORTED_MODULE_1__.PopoverPosition.right
         },
         id: "notifications-filter-dropdown"
-    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_23__["default"], {
+    }, filterDropdownItems()), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_BulkSelect__WEBPACK_IMPORTED_MODULE_24__["default"], {
         id: "notifications-bulk-select",
         items: [
             {
@@ -17097,7 +17111,13 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
                         ]);
                         return [
                             4,
-                            axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/notifications/v1/notifications/drawer')
+                            axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/notifications/v1/notifications/drawer", {
+                                params: {
+                                    limit: 50,
+                                    sort_by: 'read:asc',
+                                    startDate: (0,_utils_common__WEBPACK_IMPORTED_MODULE_23__.getSevenDaysAgo)()
+                                }
+                            })
                         ];
                     case 1:
                         data = _state.sent().data;
