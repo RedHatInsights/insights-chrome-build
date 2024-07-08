@@ -15196,7 +15196,7 @@ var NotificationItem = function(param) {
         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Dropdown__WEBPACK_IMPORTED_MODULE_6__.DropdownItem, {
             key: "manage-event",
             onClick: function() {
-                return onNavigateTo('settings/notifications/configure-events');
+                return onNavigateTo("/settings/notifications/configure-events?bundle=".concat(notification.bundle, "&tab=configuration"));
             }
         }, "Manage this event")
     ];
