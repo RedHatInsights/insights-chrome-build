@@ -992,16 +992,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?7990");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Flex */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Flex/@patternfly/react-core/dist/dynamic/layouts/Flex");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Stack */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Stack/@patternfly/react-core/dist/dynamic/layouts/Stack");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
-/* harmony import */ var _EmptyState_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./EmptyState.scss */ "./src/components/FavoriteServices/EmptyState.scss");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/layouts/Stack */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/layouts/Stack/@patternfly/react-core/dist/dynamic/layouts/Stack");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ChromeLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ChromeLink */ "./src/components/ChromeLink/index.ts");
+/* harmony import */ var _EmptyState_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./EmptyState.scss */ "./src/components/FavoriteServices/EmptyState.scss");
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1060,36 +1058,31 @@ function _object_spread_props(target, source) {
 
 
 
-
 var EmptyState = function() {
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement((react__WEBPACK_IMPORTED_MODULE_4___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Flex__WEBPACK_IMPORTED_MODULE_1__.Flex, {
-        className: "pf-v5-u-justify-content-center pf-v5-u-align-items-stretch"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__.Stack, {
-        className: "pf-v5-u-justify-content-center"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__.StackItem, {
-        className: "pf-v5-u-text-align-center"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement("img", {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1__.StackItem, {
+        className: "chr-l-stack__item-centered pf-v5-u-mt-xl"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement("img", {
         src: "https://console.redhat.com/apps/frontend-assets/favoritedservices/favoriting-emptystate.svg",
         alt: "favoriting image"
-    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__.StackItem, {
-        className: "pf-v5-u-text-align-center"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.Text, {
+    })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1__.StackItem, {
+        className: "chr-l-stack__item-centered pf-v5-u-mt-md"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
         component: "h3",
         className: "pf-v5-m-center"
-    }, "No favorited services"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.Text, {
+    }, "No favorited services"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_2__.Text, {
         component: "small",
         className: "pf-v5-u-mt-sm"
-    }, "Add a service to your favorites to get started here."))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_2__.StackItem, {
-        className: "pf-v5-u-text-align-center pf-v5-u-mt-md"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_0__.Button, {
+    }, "Add a service to your favorites to get started here."))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_1__.StackItem, {
+        className: "chr-l-stack__item-centered pf-v5-u-mt-md"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "primary",
         alt: "View all services",
         component: function(props) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_5__["default"], _object_spread_props(_object_spread({}, props), {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_4__["default"], _object_spread_props(_object_spread({}, props), {
                 href: "/allservices"
             }));
         }
-    }, "View all services")))));
+    }, "View all services")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EmptyState);
 
