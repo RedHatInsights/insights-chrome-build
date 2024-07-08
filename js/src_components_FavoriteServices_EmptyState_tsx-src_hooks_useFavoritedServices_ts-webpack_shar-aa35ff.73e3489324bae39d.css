@@ -8398,6 +8398,8 @@
   }
 }
 
-.pf-v5-l-flex {
-  height: 100%;
+.chr-l-stack__item-centered, .chr-c-card-centered {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
