@@ -4397,7 +4397,7 @@ function _ts_generator(thisArg, body) {
 
 
 var createChromeContext = function(param) {
-    var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, registerModule = param.registerModule, chromeAuth = param.chromeAuth, isPreview = param.isPreview, addNavListener = param.addNavListener, deleteNavListener = param.deleteNavListener;
+    var useGlobalFilter = param.useGlobalFilter, store = param.store, setPageMetadata = param.setPageMetadata, analytics = param.analytics, quickstartsAPI = param.quickstartsAPI, helpTopics = param.helpTopics, registerModule = param.registerModule, chromeAuth = param.chromeAuth, isPreview = param.isPreview, addNavListener = param.addNavListener, deleteNavListener = param.deleteNavListener, addWsEventListener = param.addWsEventListener;
     var fetchPermissions = (0,_auth_fetchPermissions__WEBPACK_IMPORTED_MODULE_0__.createFetchPermissionsWatcher)(chromeAuth.getUser);
     var visibilityFunctions = (0,_utils_VisibilitySingleton__WEBPACK_IMPORTED_MODULE_15__.getVisibilityFunctions)();
     var dispatch = store.dispatch;
@@ -4451,6 +4451,7 @@ var createChromeContext = function(param) {
     };
     var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_4__.ITLess)();
     var api = _object_spread_props(_object_spread({}, actions), {
+        addWsEventListener: addWsEventListener,
         auth: {
             getRefreshToken: chromeAuth.getRefreshToken,
             getToken: chromeAuth.getToken,
@@ -17069,7 +17070,7 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
     var store = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var mutableChromeApi = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
     // initialize WS event handling
-    (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
+    var addWsEventListener = (0,_hooks_useChromeServiceEvents__WEBPACK_IMPORTED_MODULE_25__["default"])();
     // track pendo usage
     (0,_hooks_useTrackPendoUsage__WEBPACK_IMPORTED_MODULE_26__["default"])();
     // setting default tab title
@@ -17194,7 +17195,8 @@ var ScalprumRoot = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fun
             registerModule: registerModule,
             isPreview: isPreview,
             addNavListener: addNavListener,
-            deleteNavListener: deleteNavListener
+            deleteNavListener: deleteNavListener,
+            addWsEventListener: addWsEventListener
         });
     // reset chrome object after token (user) updates/changes
     }, [
@@ -19224,14 +19226,14 @@ function _ts_generator(thisArg, body) {
 
 
 var NOTIFICATION_DRAWER = 'com.redhat.console.notifications.drawer';
-var SAMPLE_EVENT = 'sample.type';
 var ALL_TYPES = [
-    NOTIFICATION_DRAWER,
-    SAMPLE_EVENT
+    NOTIFICATION_DRAWER
 ];
 function isGenericEvent(event) {
     return (typeof event === "undefined" ? "undefined" : _type_of(event)) === 'object' && event !== null && ALL_TYPES.includes(event.type);
 }
+// needs to be outside rendring cycle to preserver clients when chrome API changes
+var wsEventListenersRegistry = _define_property({}, NOTIFICATION_DRAWER, new Map());
 var useChromeServiceEvents = function() {
     var handleEvent = function handleEvent(type, data) {
         handlerMap[type](data);
@@ -19240,13 +19242,28 @@ var useChromeServiceEvents = function() {
     var addNotification = (0,jotai__WEBPACK_IMPORTED_MODULE_5__.useSetAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_4__.addNotificationAtom);
     var isNotificationsEnabled = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_1__.useFlag)('platform.chrome.notifications-drawer');
     var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_3__["default"]), token = _useContext.token, tokenExpires = _useContext.tokenExpires;
+    var removeEventListener = function(id) {
+        var type = id.description;
+        wsEventListenersRegistry[type].delete(id);
+    };
+    var addEventListener = function(type, listener) {
+        var id = Symbol(type);
+        wsEventListenersRegistry[type].set(id, listener);
+        return function() {
+            return removeEventListener(id);
+        };
+    };
+    var triggerListeners = function(type, data) {
+        wsEventListenersRegistry[type].forEach(function(cb) {
+            return cb(data);
+        });
+    };
     var handlerMap = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        var _obj;
-        return _obj = {}, _define_property(_obj, NOTIFICATION_DRAWER, function(data) {
+        return _define_property({}, NOTIFICATION_DRAWER, function(data) {
+            triggerListeners(NOTIFICATION_DRAWER, data);
+            // TODO: Move away from chrome once the portal content is moved to notifications
             addNotification(data.data);
-        }), _define_property(_obj, SAMPLE_EVENT, function(data) {
-            return console.log('Received sample payload', data);
-        }), _obj;
+        });
     }, []);
     var createConnection = function() {
         var _ref = _async_to_generator(function() {
@@ -19283,6 +19300,21 @@ var useChromeServiceEvents = function() {
                                 console.error('Handler failed when processing WS payload: ', data, error);
                             }
                         };
+                        socket.onclose = function() {
+                            // renew connection on close
+                            // pod was restarted or network issue
+                            setTimeout(function() {
+                                createConnection();
+                            }, 2000);
+                        };
+                        socket.onerror = function(error) {
+                            console.error('WS connection error: ', error);
+                            // renew connection on error
+                            // data was unable to be sent
+                            setTimeout(function() {
+                                createConnection();
+                            }, 2000);
+                        };
                         _state.label = 2;
                     case 2:
                         return [
@@ -19307,6 +19339,7 @@ var useChromeServiceEvents = function() {
     }, [
         isNotificationsEnabled
     ]);
+    return addEventListener;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useChromeServiceEvents);
 
