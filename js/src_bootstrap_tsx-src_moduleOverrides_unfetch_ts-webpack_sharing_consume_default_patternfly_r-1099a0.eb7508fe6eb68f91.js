@@ -1314,7 +1314,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _OIDCSecured__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./OIDCSecured */ "./src/auth/OIDCConnector/OIDCSecured.tsx");
 /* harmony import */ var _components_AppPlaceholder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/AppPlaceholder */ "./src/components/AppPlaceholder/index.tsx");
 /* harmony import */ var _offline__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../offline */ "./src/auth/offline.ts");
-/* harmony import */ var _OIDCStateReloader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./OIDCStateReloader */ "./src/auth/OIDCConnector/OIDCStateReloader.tsx");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -1493,7 +1492,6 @@ function _ts_generator(thisArg, body) {
 
 
 
-
 var LOCAL_PREVIEW = localStorage.getItem('chrome:local-preview') === 'true';
 // TODO: remove this once the local preview is enabled by default
 var betaPartial = LOCAL_PREVIEW ? '' : (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.isBeta)() ? '/beta' : '';
@@ -1580,12 +1578,12 @@ var OIDCProvider = function(param) {
             setCookieElement: setCookieElement
         });
     }
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OIDCStateReloader__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_oidc_context__WEBPACK_IMPORTED_MODULE_2__.AuthProvider, authProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OIDCSecured__WEBPACK_IMPORTED_MODULE_5__.OIDCSecured, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_oidc_context__WEBPACK_IMPORTED_MODULE_2__.AuthProvider, authProviderProps, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OIDCSecured__WEBPACK_IMPORTED_MODULE_5__.OIDCSecured, {
         ssoUrl: state.ssoUrl,
         cookieElement: cookieElement,
         setCookieElement: setCookieElement,
         microFrontendConfig: state.microFrontendConfig
-    }, children)));
+    }, children));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OIDCProvider);
 
@@ -2154,180 +2152,6 @@ function OIDCSecured(param) {
         value: state
     }, children);
 }
-
-
-/***/ }),
-
-/***/ "./src/auth/OIDCConnector/OIDCStateReloader.tsx":
-/*!******************************************************!*\
-  !*** ./src/auth/OIDCConnector/OIDCStateReloader.tsx ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ OIDCStateReloader)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _assert_this_initialized(self) {
-    if (self === void 0) {
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-    return self;
-}
-function _class_call_check(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
-function _defineProperties(target, props) {
-    for(var i = 0; i < props.length; i++){
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-    }
-}
-function _create_class(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-}
-function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _get_prototype_of(o) {
-    _get_prototype_of = Object.setPrototypeOf ? Object.getPrototypeOf : function getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-    };
-    return _get_prototype_of(o);
-}
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function");
-    }
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: {
-            value: subClass,
-            writable: true,
-            configurable: true
-        }
-    });
-    if (superClass) _set_prototype_of(subClass, superClass);
-}
-function _possible_constructor_return(self, call) {
-    if (call && (_type_of(call) === "object" || typeof call === "function")) {
-        return call;
-    }
-    return _assert_this_initialized(self);
-}
-function _set_prototype_of(o, p) {
-    _set_prototype_of = Object.setPrototypeOf || function setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-    };
-    return _set_prototype_of(o, p);
-}
-function _type_of(obj) {
-    "@swc/helpers - typeof";
-    return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
-}
-function _is_native_reflect_construct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
-    try {
-        Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
-        return true;
-    } catch (e) {
-        return false;
-    }
-}
-function _create_super(Derived) {
-    var hasNativeReflectConstruct = _is_native_reflect_construct();
-    return function _createSuperInternal() {
-        var Super = _get_prototype_of(Derived), result;
-        if (hasNativeReflectConstruct) {
-            var NewTarget = _get_prototype_of(this).constructor;
-            result = Reflect.construct(Super, arguments, NewTarget);
-        } else {
-            result = Super.apply(this, arguments);
-        }
-        return _possible_constructor_return(this, result);
-    };
-}
-
-var INVALID_AUTH_STATE_ERROR = 'No matching state found in storage';
-var OIDCStateReloader = /*#__PURE__*/ function(_React_Component) {
-    "use strict";
-    _inherits(OIDCStateReloader, _React_Component);
-    var _super = _create_super(OIDCStateReloader);
-    function OIDCStateReloader() {
-        _class_call_check(this, OIDCStateReloader);
-        var _this;
-        _this = _super.apply(this, arguments);
-        _define_property(_assert_this_initialized(_this), "state", {
-            hasError: false
-        });
-        return _this;
-    }
-    _create_class(OIDCStateReloader, [
-        {
-            key: "handleInvalidAuthState",
-            value: function handleInvalidAuthState() {
-                var repairedUrl = new URL(window.location.href);
-                // remove invalid SSO state and force re authentication
-                repairedUrl.hash = '';
-                // remove possibly broken local storage state from client
-                localStorage.clear();
-                // hard page reload
-                window.location.href = repairedUrl.toString();
-            }
-        },
-        {
-            key: "componentDidCatch",
-            value: function componentDidCatch(error) {
-                // handle invalid auth state error
-                if (typeof error.message === 'string' && error.message === INVALID_AUTH_STATE_ERROR) {
-                    this.handleInvalidAuthState();
-                }
-            }
-        },
-        {
-            key: "render",
-            value: function render() {
-                if (this.state.hasError) {
-                    return null;
-                }
-                return this.props.children;
-            }
-        }
-    ], [
-        {
-            key: "getDerivedStateFromError",
-            value: function getDerivedStateFromError() {
-                return {
-                    hasError: true
-                };
-            }
-        }
-    ]);
-    return OIDCStateReloader;
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
-
 
 
 /***/ }),
@@ -7889,6 +7713,7 @@ function _create_super(Derived) {
 }
 
 
+var INVALID_AUTH_STATE_ERROR = 'No matching state found in storage';
 var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
     "use strict";
     _inherits(ErrorBoundary, _React_Component);
@@ -7904,6 +7729,18 @@ var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
     }
     _create_class(ErrorBoundary, [
         {
+            key: "handleInvalidAuthState",
+            value: function handleInvalidAuthState() {
+                var repairedUrl = new URL(window.location.href);
+                // remove invalid SSO state and force re authentication
+                repairedUrl.hash = '';
+                // remove possibly broken local storage state from client
+                localStorage.clear();
+                // hard page reload
+                window.location.href = repairedUrl.toString();
+            }
+        },
+        {
             key: "componentDidCatch",
             value: function componentDidCatch(error, errorInfo) {
                 console.error('Chrome encountered an error!', error);
@@ -7913,6 +7750,9 @@ var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
                         errorInfo: errorInfo
                     });
                 });
+                if (typeof error.message === 'string' && error.message === INVALID_AUTH_STATE_ERROR) {
+                    this.handleInvalidAuthState();
+                }
             }
         },
         {
