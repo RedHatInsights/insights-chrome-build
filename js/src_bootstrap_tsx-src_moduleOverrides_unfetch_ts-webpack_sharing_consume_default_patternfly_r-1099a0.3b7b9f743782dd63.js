@@ -13328,11 +13328,11 @@ var ChromeNavGroup = function(param) {
     if (isHidden) {
         return null;
     }
-    var groupTitle = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+    var groupTitle = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, icon && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Icon__WEBPACK_IMPORTED_MODULE_1__.Icon, {
         size: "sm",
         className: "pf-v5-u-mr-sm",
         isInline: true
-    }, icon && _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_3__.sectionTitleMapper[icon]), title);
+    }, _ChromeNavItemFactory__WEBPACK_IMPORTED_MODULE_3__.sectionTitleMapper[icon]), title);
     return(// PF does not allow node/element in the NavGroup prop types, hence the type cast
     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Nav__WEBPACK_IMPORTED_MODULE_2__.NavGroup, {
         className: "chr-c-section-nav",
