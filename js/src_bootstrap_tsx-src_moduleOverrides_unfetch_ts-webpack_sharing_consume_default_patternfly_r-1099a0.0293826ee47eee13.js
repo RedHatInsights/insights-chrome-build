@@ -6291,13 +6291,16 @@ __webpack_require__.r(__webpack_exports__);
 var PlatformServiceslinks = function() {
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
         href: "/ansible",
-        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm",
+        "data-ouia-component-id": "AllServices-Dropdown-Ansible"
     }, "Red Hat Ansible Platform"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
         href: "/insights",
-        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm",
+        "data-ouia-component-id": "AllServices-Dropdown-RHEL"
     }, "Red Hat Enterprise Linux"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
         href: "/openshift/overview",
-        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm"
+        className: "pf-v5-u-pl-lg pf-v5-u-pb-sm",
+        "data-ouia-component-id": "AllServices-Dropdown-Openshift"
     }, "Red Hat OpenShift"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PlatformServiceslinks);
