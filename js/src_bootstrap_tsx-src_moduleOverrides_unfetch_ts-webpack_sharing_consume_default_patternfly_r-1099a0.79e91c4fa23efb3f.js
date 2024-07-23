@@ -19098,7 +19098,10 @@ var useChromeServiceEvents = function() {
                             // renew connection on close
                             // pod was restarted or network issue
                             setTimeout(function() {
-                                createConnection();
+                                if (retries.current < RETRY_LIMIT) {
+                                    createConnection();
+                                }
+                                retries.current += 1;
                             }, 2000);
                         };
                         socket.onerror = function(error) {
