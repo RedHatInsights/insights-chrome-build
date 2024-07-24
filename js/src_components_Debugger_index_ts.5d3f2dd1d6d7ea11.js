@@ -33,15 +33,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bug_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/bug-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/bug-icon/@patternfly/react-icons/dist/dynamic/icons/bug-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_bug_icon__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_bug_icon__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "webpack/sharing/consume/default/react-redux/react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.ts");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?deef");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Select */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Select/@patternfly/react-core/dist/dynamic/components/Select?1084");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _DebuggerTable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DebuggerTable */ "./src/components/Debugger/DebuggerTable.tsx");
-/* harmony import */ var _Debugger_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Debugger.scss */ "./src/components/Debugger/Debugger.scss");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/MenuToggle */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/MenuToggle/@patternfly/react-core/dist/dynamic/components/MenuToggle?deef");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Select */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Select/@patternfly/react-core/dist/dynamic/components/Select?1084");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _DebuggerTable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./DebuggerTable */ "./src/components/Debugger/DebuggerTable.tsx");
+/* harmony import */ var _Debugger_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Debugger.scss */ "./src/components/Debugger/Debugger.scss");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var _state_atoms_debuggerModalatom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../state/atoms/debuggerModalatom */ "./src/state/atoms/debuggerModalatom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -101,14 +100,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 var DebuggerModal = function(param) {
     var user = param.user;
-    var isOpen = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function(param) {
-        var isDebuggerModalOpen = param.chrome.isDebuggerModalOpen;
-        return isDebuggerModalOpen;
-    });
-    var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
-    var setIsModalOpen = function(isOpen) {
-        return dispatch((0,_redux_actions__WEBPACK_IMPORTED_MODULE_6__.toggleDebuggerModal)(isOpen));
-    };
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_10__.useAtom)(_state_atoms_debuggerModalatom__WEBPACK_IMPORTED_MODULE_9__.isDebuggerModalOpenAtom), 2), isOpen = _useAtom[0], setIsModalOpen = _useAtom[1];
     var _React_useState = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState(false), 2), isDropdownOpen = _React_useState[0], setIsOpen = _React_useState[1];
     var _React_useState1 = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState('Entitlements'), 2), selected = _React_useState1[0], setSelected = _React_useState1[1];
     var menuRef = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(null);
@@ -120,7 +112,7 @@ var DebuggerModal = function(param) {
         setIsOpen(false);
     };
     var toggle = function(toggleRef) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_7__.MenuToggle, {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_MenuToggle__WEBPACK_IMPORTED_MODULE_5__.MenuToggle, {
             ref: toggleRef,
             onClick: onToggleClick,
             isExpanded: isDropdownOpen,
@@ -143,7 +135,7 @@ var DebuggerModal = function(param) {
         }
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "chr-c-debugger-content"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Chrome Debugger")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__.Select, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_3__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Chrome Debugger")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__.Select, {
         id: "single-select",
         ref: menuRef,
         isOpen: isDropdownOpen,
@@ -153,11 +145,11 @@ var DebuggerModal = function(param) {
             return setIsOpen(isOpen);
         },
         toggle: toggle
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__.SelectList, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__.SelectOption, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__.SelectList, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__.SelectOption, {
         itemId: "Entitlements"
-    }, "Entitlements"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_8__.SelectOption, {
+    }, "Entitlements"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Select__WEBPACK_IMPORTED_MODULE_6__.SelectOption, {
         itemId: "Roles"
-    }, "Roles"))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DebuggerTable__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, "Roles"))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DebuggerTable__WEBPACK_IMPORTED_MODULE_7__["default"], {
         user: user,
         selected: selected
     }))));
