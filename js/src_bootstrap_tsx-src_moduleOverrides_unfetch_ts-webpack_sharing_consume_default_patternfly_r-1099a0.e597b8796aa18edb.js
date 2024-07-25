@@ -23303,7 +23303,8 @@ var clearAnsibleTrialFlag = function() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   fuzzySearch: () => (/* binding */ fuzzySearch)
+/* harmony export */   fuzzySearch: () => (/* binding */ fuzzySearch),
+/* harmony export */   minimumDistanceMatches: () => (/* binding */ minimumDistanceMatches)
 /* harmony export */ });
 // heavily inspired by https://github.com/taleinat/levenshtein-search
 // package is not maintained anymore, the code lives here
@@ -23515,8 +23516,9 @@ function makeChar2needleIdx(needle, maxDist) {
     }
     return res;
 }
+var debugFlag = false;
 function fuzzySearch(needle, haystack, maxDist) {
-    var ngramLen, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, index, err;
+    var ngramLen, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, index, err, generator, _iteratorNormalCompletion1, _didIteratorError1, _iteratorError1, _iterator1, _step1, match, err;
     return _ts_generator(this, function(_state) {
         switch(_state.label){
             case 0:
@@ -23591,7 +23593,7 @@ function fuzzySearch(needle, haystack, maxDist) {
             case 8:
                 return [
                     3,
-                    13
+                    22
                 ];
             case 9:
                 if (!(ngramLen >= 10)) return [
@@ -23606,22 +23608,122 @@ function fuzzySearch(needle, haystack, maxDist) {
                 _state.sent();
                 return [
                     3,
-                    13
+                    22
                 ];
             case 11:
-                return [
-                    5,
-                    _ts_values(fuzzySearchCandidates(needle, haystack, maxDist))
+                generator = fuzzySearchCandidates(needle, haystack, maxDist);
+                if (!debugFlag) return [
+                    3,
+                    20
                 ];
+                _iteratorNormalCompletion1 = true, _didIteratorError1 = false, _iteratorError1 = undefined;
+                _state.label = 12;
             case 12:
-                _state.sent();
+                _state.trys.push([
+                    12,
+                    17,
+                    18,
+                    19
+                ]);
+                _iterator1 = generator[Symbol.iterator]();
                 _state.label = 13;
             case 13:
+                if (!!(_iteratorNormalCompletion1 = (_step1 = _iterator1.next()).done)) return [
+                    3,
+                    16
+                ];
+                match = _step1.value;
+                console.log('search match', match);
+                return [
+                    4,
+                    match
+                ];
+            case 14:
+                _state.sent();
+                _state.label = 15;
+            case 15:
+                _iteratorNormalCompletion1 = true;
+                return [
+                    3,
+                    13
+                ];
+            case 16:
+                return [
+                    3,
+                    19
+                ];
+            case 17:
+                err = _state.sent();
+                _didIteratorError1 = true;
+                _iteratorError1 = err;
+                return [
+                    3,
+                    19
+                ];
+            case 18:
+                try {
+                    if (!_iteratorNormalCompletion1 && _iterator1.return != null) {
+                        _iterator1.return();
+                    }
+                } finally{
+                    if (_didIteratorError1) {
+                        throw _iteratorError1;
+                    }
+                }
+                return [
+                    7
+                ];
+            case 19:
+                return [
+                    3,
+                    22
+                ];
+            case 20:
+                return [
+                    5,
+                    _ts_values(generator)
+                ];
+            case 21:
+                _state.sent();
+                _state.label = 22;
+            case 22:
                 return [
                     2
                 ];
         }
     });
+}
+function minimumDistanceMatches(matches) {
+    var minDist = null;
+    var out = [];
+    var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
+    try {
+        for(var _iterator = matches[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
+            var match = _step.value;
+            if (minDist === null || match.dist < minDist) {
+                minDist = match.dist;
+                out = [
+                    match
+                ];
+            } else if (match.dist === minDist) {
+                out.push(match);
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally{
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+                _iterator.return();
+            }
+        } finally{
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+    return out;
 }
 function _expand(needle, haystack, maxDist) {
     maxDist = +maxDist;
@@ -23816,11 +23918,10 @@ function fuzzySearchNgrams(needle, haystack, maxDist) {
     });
 }
 function fuzzySearchCandidates(needle, haystack, maxDist) {
-    var debugFlag, needleLen, haystackLen, char2needleIdx, prevCandidates, candidates, i, haystackChar, needleIdx, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, candidate, _candidate_dist, _candidate_dist1, nSkipped, _candidate_needleIdx, _candidate_dist2, _candidate_dist3, _candidate_dist4, _candidate_dist5, _candidate_dist6, _candidate_needleIdx1, _candidate_needleIdx2, _candidate_dist7, err, _iteratorNormalCompletion1, _didIteratorError1, _iteratorError1, _iterator1, _step1, candidate1, _candidate_needleIdx3, err;
+    var needleLen, haystackLen, char2needleIdx, prevCandidates, candidates, i, haystackChar, needleIdx, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, candidate, _candidate_dist, _candidate_dist1, nSkipped, _candidate_needleIdx, _candidate_dist2, _candidate_dist3, _candidate_dist4, _candidate_needleIdx1, _candidate_needleIdx2, _candidate_dist5, err, _iteratorNormalCompletion1, _didIteratorError1, _iteratorError1, _iterator1, _step1, candidate1, _candidate_needleIdx3, err;
     return _ts_generator(this, function(_state) {
         switch(_state.label){
             case 0:
-                debugFlag = false;
                 if (debugFlag) console.log("fuzzySearchCandidates(".concat(needle, ", ").concat(haystack, ", ").concat(maxDist, ")"));
                 // prepare some often used things in advance
                 needleLen = needle.length;
@@ -23850,13 +23951,6 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     3,
                     3
                 ];
-                if (debugFlag) {
-                    console.log("yield ".concat({
-                        start: i,
-                        end: i + 1,
-                        dist: needleIdx
-                    }));
-                }
                 return [
                     4,
                     {
@@ -23904,13 +23998,6 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     3,
                     8
                 ];
-                if (debugFlag) {
-                    console.log("yield ".concat({
-                        start: candidate.startIdx,
-                        end: i + 1,
-                        dist: candidate.dist
-                    }));
-                }
                 return [
                     4,
                     {
@@ -23959,20 +24046,12 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     3,
                     13
                 ];
-                if (debugFlag) {
-                    ;
-                    console.log("yield ".concat({
-                        start: candidate.startIdx,
-                        end: i + 1,
-                        dist: ((_candidate_dist2 = candidate.dist) !== null && _candidate_dist2 !== void 0 ? _candidate_dist2 : 0) + nSkipped
-                    }));
-                }
                 return [
                     4,
                     {
                         start: candidate.startIdx,
                         end: i + 1,
-                        dist: ((_candidate_dist3 = candidate.dist) !== null && _candidate_dist3 !== void 0 ? _candidate_dist3 : 0) + nSkipped
+                        dist: ((_candidate_dist2 = candidate.dist) !== null && _candidate_dist2 !== void 0 ? _candidate_dist2 : 0) + nSkipped
                     }
                 ];
             case 12:
@@ -23990,20 +24069,12 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     3,
                     15
                 ];
-                if (debugFlag) {
-                    ;
-                    console.log("yield ".concat({
-                        start: candidate.startIdx,
-                        end: i + 1,
-                        dist: ((_candidate_dist4 = candidate.dist) !== null && _candidate_dist4 !== void 0 ? _candidate_dist4 : 0) + nSkipped
-                    }));
-                }
                 return [
                     4,
                     {
                         start: candidate.startIdx,
                         end: i + 1,
-                        dist: ((_candidate_dist5 = candidate.dist) !== null && _candidate_dist5 !== void 0 ? _candidate_dist5 : 0) + nSkipped
+                        dist: ((_candidate_dist3 = candidate.dist) !== null && _candidate_dist3 !== void 0 ? _candidate_dist3 : 0) + nSkipped
                     }
                 ];
             case 14:
@@ -24016,7 +24087,7 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                 candidates.push({
                     startIdx: candidate.startIdx,
                     needleIdx: candidate.needleIdx + 1 + nSkipped,
-                    dist: ((_candidate_dist6 = candidate.dist) !== null && _candidate_dist6 !== void 0 ? _candidate_dist6 : 0) + nSkipped
+                    dist: ((_candidate_dist4 = candidate.dist) !== null && _candidate_dist4 !== void 0 ? _candidate_dist4 : 0) + nSkipped
                 });
                 _state.label = 16;
             case 16:
@@ -24036,7 +24107,7 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     candidates.push({
                         startIdx: candidate.startIdx,
                         needleIdx: ((_candidate_needleIdx2 = candidate.needleIdx) !== null && _candidate_needleIdx2 !== void 0 ? _candidate_needleIdx2 : 0) + 1,
-                        dist: ((_candidate_dist7 = candidate.dist) !== null && _candidate_dist7 !== void 0 ? _candidate_dist7 : 0) + 1
+                        dist: ((_candidate_dist5 = candidate.dist) !== null && _candidate_dist5 !== void 0 ? _candidate_dist5 : 0) + 1
                     });
                 }
                 _state.label = 19;
@@ -24073,7 +24144,7 @@ function fuzzySearchCandidates(needle, haystack, maxDist) {
                     7
                 ];
             case 23:
-                if (debugFlag) console.log(candidates);
+                if (debugFlag) console.log('Candidates: ', candidates);
                 _state.label = 24;
             case 24:
                 i++;
@@ -24207,10 +24278,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   localQuery: () => (/* binding */ localQuery)
 /* harmony export */ });
 /* harmony import */ var _orama_orama__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @orama/orama */ "./node_modules/@orama/orama/dist/methods/search.js");
-/* harmony import */ var _levenshtein_search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./levenshtein-search */ "./src/utils/levenshtein-search.ts");
+/* harmony import */ var _types_types_d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../@types/types.d */ "./src/@types/types.d.ts");
 /* harmony import */ var _state_atoms_localSearchAtom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/atoms/localSearchAtom */ "./src/state/atoms/localSearchAtom.ts");
 /* harmony import */ var _isNavItemVisible__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
-/* harmony import */ var _types_types_d__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../@types/types.d */ "./src/@types/types.d.ts");
+/* harmony import */ var _levenshtein_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./levenshtein-search */ "./src/utils/levenshtein-search.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -24370,32 +24441,13 @@ var matchCache = {
     description: {}
 };
 var resultCache = {};
-var START_MARK_LENGTH = 6;
-var END_MARK_LENGTH = START_MARK_LENGTH + 1;
-var OFFSET_BASE = START_MARK_LENGTH + END_MARK_LENGTH;
-function markText(text, start, end, offset) {
-    var markStart = OFFSET_BASE * offset + start + offset * 2 - 1;
-    var markEnd = OFFSET_BASE * offset + end + offset * 2;
-    return "".concat(text.substring(0, markStart), "<mark>").concat(text.substring(markStart, markEnd), "</mark>").concat(text.substring(markEnd));
-}
-function highlightText(term, text, category) {
-    var _matchCache_category;
-    var key = "".concat(term, "-").concat(text);
-    // check cache
-    if ((_matchCache_category = matchCache[category]) === null || _matchCache_category === void 0 ? void 0 : _matchCache_category[key]) {
-        return matchCache[category][key];
-    }
-    var internalText = text;
-    // generate fuzzy matches
-    var res = (0,_levenshtein_search__WEBPACK_IMPORTED_MODULE_0__.fuzzySearch)(term, internalText, 2);
-    var marks = _to_consumable_array(res).sort(function(a, b) {
+// merge overlapping marks into smaller sets
+// example: start: 1, end: 5, start: 3, end: 7 => start: 1, end: 7
+function joinMatchPositions(marks) {
+    return marks.toSorted(function(a, b) {
         return a.start - b.start;
-    });
-    // merge overlapping marks into smaller sets
-    // example: start: 1, end: 5, start: 3, end: 7 => start: 1, end: 7
-    var merged = marks.reduce(function(acc, param) {
+    }).reduce(function(acc, param) {
         var start = param.start, end = param.end;
-        if (!start || !end) return acc;
         var bounded = acc.findIndex(function(o) {
             return o.start >= start && o.start <= end || start >= o.start && start <= o.end;
         });
@@ -24412,14 +24464,67 @@ function highlightText(term, text, category) {
         }
         return acc;
     }, []);
-    // mark text from reduced match set
-    merged.forEach(function(param, index) {
-        var start = param.start, end = param.end;
-        internalText = markText(internalText, start, end, index);
+}
+function applyMarks(text, marks) {
+    var sortedMarks = marks.toSorted(function(a, b) {
+        return a.start - b.start;
     });
+    var out = '';
+    var prevEnd = 0;
+    var _iteratorNormalCompletion = true, _didIteratorError = false, _iteratorError = undefined;
+    try {
+        for(var _iterator = sortedMarks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true){
+            var mark = _step.value;
+            if (mark.end < prevEnd) {
+                throw new Error("Invalid mark overlap: { start: ".concat(mark.start, ", end: ").concat(mark.end, " } overlaps with mark ending at ").concat(prevEnd));
+            }
+            out += text.substring(prevEnd, mark.start);
+            out += "<mark>".concat(text.substring(mark.start, mark.end), "</mark>");
+            prevEnd = mark.end;
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally{
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+                _iterator.return();
+            }
+        } finally{
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+    out += text.substring(prevEnd, text.length);
+    return out;
+}
+var LOWERCASE_A = 'a'.charCodeAt(0);
+var UPPERCASE_A = 'A'.charCodeAt(0);
+var UPPERCASE_Z = 'Z'.charCodeAt(0);
+// ASCII lowercase, which preserves length (unlink toLowerCase).
+function asciiLowercase(value) {
+    var _String;
+    var out = [];
+    for(var i = 0; i < value.length; ++i){
+        var codeUnit = value.charCodeAt(i);
+        var adjusted = codeUnit >= UPPERCASE_A && codeUnit <= UPPERCASE_Z ? codeUnit - UPPERCASE_A + LOWERCASE_A : codeUnit;
+        out.push(adjusted);
+    }
+    return (_String = String).fromCharCode.apply(_String, _to_consumable_array(out));
+}
+function highlightText(term, text, category) {
+    var _matchCache_category;
+    var key = "".concat(term, "-").concat(text);
+    // check cache
+    if ((_matchCache_category = matchCache[category]) === null || _matchCache_category === void 0 ? void 0 : _matchCache_category[key]) {
+        return matchCache[category][key];
+    }
+    var mergedMarks = joinMatchPositions((0,_levenshtein_search__WEBPACK_IMPORTED_MODULE_3__.minimumDistanceMatches)(_to_consumable_array((0,_levenshtein_search__WEBPACK_IMPORTED_MODULE_3__.fuzzySearch)(asciiLowercase(term), asciiLowercase(text), 2))));
+    var markedText = applyMarks(text, mergedMarks);
     // cache result
-    matchCache[category][key] = internalText;
-    return internalText;
+    matchCache[category][key] = markedText;
+    return markedText;
 }
 function checkResultPermissions(id) {
     return _checkResultPermissions.apply(this, arguments);
@@ -24431,7 +24536,7 @@ function _checkResultPermissions() {
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    env = _arguments.length > 1 && _arguments[1] !== void 0 ? _arguments[1] : _types_types_d__WEBPACK_IMPORTED_MODULE_3__.ReleaseEnv.STABLE;
+                    env = _arguments.length > 1 && _arguments[1] !== void 0 ? _arguments[1] : _types_types_d__WEBPACK_IMPORTED_MODULE_0__.ReleaseEnv.STABLE;
                     cacheKey = "".concat(env, "-").concat(id);
                     cacheHit = _state_atoms_localSearchAtom__WEBPACK_IMPORTED_MODULE_1__.SearchPermissionsCache.get(cacheKey);
                     if (cacheHit) {
@@ -24467,7 +24572,7 @@ var localQuery = function() {
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
-                    env = _arguments.length > 2 && _arguments[2] !== void 0 ? _arguments[2] : _types_types_d__WEBPACK_IMPORTED_MODULE_3__.ReleaseEnv.STABLE;
+                    env = _arguments.length > 2 && _arguments[2] !== void 0 ? _arguments[2] : _types_types_d__WEBPACK_IMPORTED_MODULE_0__.ReleaseEnv.STABLE;
                     _state.label = 1;
                 case 1:
                     _state.trys.push([
