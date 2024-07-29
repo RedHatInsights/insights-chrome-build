@@ -3918,18 +3918,8 @@ var App = function(param) {
         getUser: getUser,
         token: token
     });
-    var documentTitle = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function(param) {
-        var chrome = param.chrome;
-        return chrome === null || chrome === void 0 ? void 0 : chrome.documentTitle;
-    });
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), 2), cookieElement = _useState[0], setCookieElement = _useState[1];
     useInitializeAnalytics();
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
-        var title = typeof documentTitle === 'string' ? "".concat(documentTitle, " | Hybrid Cloud Console") : 'Hybrid Cloud Console';
-        document.title = title;
-    }, [
-        documentTitle
-    ]);
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_RootApp__WEBPACK_IMPORTED_MODULE_5__["default"], {
         cookieElement: cookieElement,
         setCookieElement: setCookieElement
@@ -20584,7 +20574,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GLOBAL_FILTER_UPDATE: () => (/* binding */ GLOBAL_FILTER_UPDATE),
 /* harmony export */   MARK_ACTIVE_PRODUCT: () => (/* binding */ MARK_ACTIVE_PRODUCT),
 /* harmony export */   STORE_INITIAL_HASH: () => (/* binding */ STORE_INITIAL_HASH),
-/* harmony export */   UPDATE_DOCUMENT_TITLE_REDUCER: () => (/* binding */ UPDATE_DOCUMENT_TITLE_REDUCER),
 /* harmony export */   USER_LOGIN: () => (/* binding */ USER_LOGIN)
 /* harmony export */ });
 var USER_LOGIN = '@@chrome/user-login';
@@ -20597,7 +20586,6 @@ var GLOBAL_FILTER_SCOPE = '@@chrome/set-global-filter-scope';
 var GLOBAL_FILTER_UPDATE = '@@chrome/global-filter-update';
 var GLOBAL_FILTER_TOGGLE = '@@chrome/global-filter-toggle';
 var GLOBAL_FILTER_REMOVE = '@@chrome/global-filter-remove';
-var UPDATE_DOCUMENT_TITLE_REDUCER = '@@chrome/update-document-title';
 var MARK_ACTIVE_PRODUCT = '@@chrome/mark-active-product';
 var STORE_INITIAL_HASH = '@@chrome/store-initial-hash';
 
@@ -20624,7 +20612,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   onToggle: () => (/* binding */ onToggle),
 /* harmony export */   removeGlobalFilter: () => (/* binding */ removeGlobalFilter),
 /* harmony export */   toggleGlobalFilter: () => (/* binding */ toggleGlobalFilter),
-/* harmony export */   updateDocumentTitle: () => (/* binding */ updateDocumentTitle),
 /* harmony export */   userLogIn: () => (/* binding */ userLogIn)
 /* harmony export */ });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action-types */ "./src/redux/action-types.ts");
@@ -20706,12 +20693,6 @@ function removeGlobalFilter() {
         type: 'NAVIGATION_TOGGLE'
     };
 };
-var updateDocumentTitle = function(title) {
-    return {
-        type: _action_types__WEBPACK_IMPORTED_MODULE_0__.UPDATE_DOCUMENT_TITLE_REDUCER,
-        payload: title
-    };
-};
 var markActiveProduct = function(product) {
     return {
         type: _action_types__WEBPACK_IMPORTED_MODULE_0__.MARK_ACTIVE_PRODUCT,
@@ -20731,7 +20712,6 @@ var markActiveProduct = function(product) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   documentTitleReducer: () => (/* binding */ documentTitleReducer),
 /* harmony export */   loginReducer: () => (/* binding */ loginReducer),
 /* harmony export */   markActiveProduct: () => (/* binding */ markActiveProduct),
 /* harmony export */   onPageAction: () => (/* binding */ onPageAction),
@@ -20808,12 +20788,6 @@ function onPageObjectId(state, param) {
     var payload = param.payload;
     return _object_spread_props(_object_spread({}, state), {
         pageObjectId: payload
-    });
-}
-function documentTitleReducer(state, param) {
-    var payload = param.payload;
-    return _object_spread_props(_object_spread({}, state), {
-        documentTitle: payload
     });
 }
 function markActiveProduct(state, param) {
@@ -21155,7 +21129,7 @@ function _define_property(obj, key, value) {
 
 
 var _obj;
-var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.UPDATE_DOCUMENT_TITLE_REDUCER, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.documentTitleReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _obj);
+var reducers = (_obj = {}, _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.USER_LOGIN, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.loginReducer), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_ACTION, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageAction), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_PAGE_OBJECT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.onPageObjectId), _define_property(_obj, _action_types__WEBPACK_IMPORTED_MODULE_2__.MARK_ACTIVE_PRODUCT, _chromeReducers__WEBPACK_IMPORTED_MODULE_0__.markActiveProduct), _obj);
 var _obj1;
 var globalFilter = (_obj1 = {}, _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTags), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_TAGS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllTagsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDs), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_SIDS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllSIDsPending), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_FULFILLED"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloads), _define_property(_obj1, "".concat(_action_types__WEBPACK_IMPORTED_MODULE_2__.CHROME_GET_ALL_WORKLOADS, "_PENDING"), _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGetAllWorkloadsPending), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_SCOPE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onSetGlobalFilterScope), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_TOGGLE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterToggle), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_REMOVE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onGlobalFilterRemove), _define_property(_obj1, _action_types__WEBPACK_IMPORTED_MODULE_2__.GLOBAL_FILTER_UPDATE, _globalFilterReducers__WEBPACK_IMPORTED_MODULE_1__.onTagSelect), _obj1);
 var chromeInitialState = {
