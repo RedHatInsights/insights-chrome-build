@@ -221,6 +221,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/components/Search/SearchTitle.scss":
+/*!************************************************!*\
+  !*** ./src/components/Search/SearchTitle.scss ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/layouts/AllServices.scss":
 /*!**************************************!*\
   !*** ./src/layouts/AllServices.scss ***!
@@ -18289,7 +18302,8 @@ var SearchInput = function(param) {
             }
         }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchTitle__WEBPACK_IMPORTED_MODULE_12__["default"], {
             title: item.title,
-            bundleTitle: item.bundleTitle.replace(/(\[|\])/gm, '')
+            bundleTitle: item.bundleTitle.replace(/(\[|\])/gm, ''),
+            className: "pf-v5-u-mb-xs"
         }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SearchDescription__WEBPACK_IMPORTED_MODULE_13__["default"], {
             description: item.description
         }));
@@ -18327,31 +18341,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Text */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Text/@patternfly/react-core/dist/dynamic/components/Text");
-/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SearchTitle_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchTitle.scss */ "./src/components/Search/SearchTitle.scss");
 
 
 var SearchTitle = function(param) {
-    var title = param.title, bundleTitle = param.bundleTitle;
+    var title = param.title, bundleTitle = param.bundleTitle, _param_className = param.className, className = _param_className === void 0 ? '' : _param_className;
     var showBundleTitle = bundleTitle.replace(/\s/g, '').length > 0;
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__.Text, {
-        component: "small",
-        className: "pf-v5-u-link-color chr-c-search-title",
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "chr-search-title-content pf-v5-u-link-color ".concat(className)
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("small", {
+        className: "pf-v5-u-link-color chr-c-search-title"
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+        className: "chr-c-search-title",
         dangerouslySetInnerHTML: {
             __html: title
         }
-    }), showBundleTitle && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__.Text, {
-        component: "small",
-        className: "pf-v5-u-link-color"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    }), showBundleTitle && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
         className: "pf-v5-u-px-sm"
-    }, "|")), showBundleTitle && /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Text__WEBPACK_IMPORTED_MODULE_1__.Text, {
-        component: "small",
-        className: "pf-v5-u-link-color",
+    }, "|"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
         dangerouslySetInnerHTML: {
             __html: bundleTitle
         }
-    }));
+    }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchTitle);
 
