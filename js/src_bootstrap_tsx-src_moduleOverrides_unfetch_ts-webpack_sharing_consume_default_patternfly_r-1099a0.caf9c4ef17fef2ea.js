@@ -4353,9 +4353,9 @@ var createChromeContext = function(param) {
                 };
             });
         },
-        createCase: function(fields) {
+        createCase: function(options) {
             return chromeAuth.getUser().then(function(user) {
-                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_5__.createSupportCase)(user.identity, chromeAuth.token, fields);
+                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_5__.createSupportCase)(user.identity, chromeAuth.token, options);
             });
         },
         getUserPermissions: /*#__PURE__*/ _async_to_generator(function() {
@@ -8686,7 +8686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?7990");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Card */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Card/@patternfly/react-core/dist/dynamic/components/Card");
@@ -8719,6 +8719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
 /* harmony import */ var _analytics_useSegment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../analytics/useSegment */ "./src/analytics/useSegment.ts");
 /* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
+/* harmony import */ var _hooks_useSupportCaseData__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../hooks/useSupportCaseData */ "./src/hooks/useSupportCaseData.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -8789,11 +8790,12 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var FEEDBACK_OPEN_EVENT = 'chrome.feedback.open';
 var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function() {
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_10__.useIntl)();
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtom)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.isFeedbackModalOpenAtom), 2), isModalOpen = _useAtom[0], setIsModalOpen = _useAtom[1];
-    var usePendoFeedback = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.usePendoFeedbackAtom);
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_24__.useAtom)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.isFeedbackModalOpenAtom), 2), isModalOpen = _useAtom[0], setIsModalOpen = _useAtom[1];
+    var usePendoFeedback = (0,jotai__WEBPACK_IMPORTED_MODULE_24__.useAtomValue)(_state_atoms_feedbackModalAtom__WEBPACK_IMPORTED_MODULE_11__.usePendoFeedbackAtom);
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('feedbackHome'), 2), modalPage = _useState[0], setModalPage = _useState[1];
     var getEnvironment = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_utils_internalChromeContext__WEBPACK_IMPORTED_MODULE_17__["default"]).getEnvironment;
     var chromeAuth = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_20__["default"]);
@@ -8805,7 +8807,8 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         setIsModalOpen(false);
         setModalPage('feedbackHome');
     };
-    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_23__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_22__.isPreviewAtom);
+    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_24__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_22__.isPreviewAtom);
+    var supportCaseData = (0,_hooks_useSupportCaseData__WEBPACK_IMPORTED_MODULE_23__["default"])();
     var ModalDescription = function(param) {
         var modalPage = param.modalPage;
         switch(modalPage){
@@ -8841,7 +8844,9 @@ var FeedbackModal = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
                     isSelectableRaised: true,
                     isCompact: true,
                     onClick: function() {
-                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_18__.createSupportCase)(user.identity, chromeAuth.token, isPreview);
+                        return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_18__.createSupportCase)(user.identity, chromeAuth.token, isPreview, {
+                            supportCaseData: supportCaseData
+                        });
                     }
                 }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_2__.CardTitle, {
                     className: "pf-v5-u-primary-color-100"
@@ -12198,7 +12203,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Button */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Button/@patternfly/react-core/dist/dynamic/components/Button?7990");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Divider */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Divider/@patternfly/react-core/dist/dynamic/components/Divider?101c");
@@ -12237,6 +12242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 /* harmony import */ var _state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../state/atoms/notificationDrawerAtom */ "./src/state/atoms/notificationDrawerAtom.ts");
 /* harmony import */ var _PreviewAlert__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./PreviewAlert */ "./src/components/Header/PreviewAlert.tsx");
+/* harmony import */ var _hooks_useSupportCaseData__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../hooks/useSupportCaseData */ "./src/hooks/useSupportCaseData.ts");
 /* eslint-disable @typescript-eslint/ban-ts-comment */ function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -12350,6 +12356,7 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
 var isITLessEnv = (0,_utils_common__WEBPACK_IMPORTED_MODULE_15__.ITLess)();
 var InternalButton = function() {
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Button__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -12415,13 +12422,13 @@ var Tools = function() {
         isRhosakEntitled: false,
         isDemoAcc: false
     }), 2), _useState_ = _useState[0], isDemoAcc = _useState_.isDemoAcc, isInternal = _useState_.isInternal, isRhosakEntitled = _useState_.isRhosakEntitled, setState = _useState[1];
-    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_26__.useAtom)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_23__.isPreviewAtom), 2), isPreview = _useAtom[0], setIsPreview = _useAtom[1];
+    var _useAtom = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_27__.useAtom)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_23__.isPreviewAtom), 2), isPreview = _useAtom[0], setIsPreview = _useAtom[1];
     var enableIntegrations = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_17__.useFlag)('platform.sources.integrations');
     var enableGlobalLearningResourcesPage = (0,_unleash_proxy_client_react__WEBPACK_IMPORTED_MODULE_17__.useFlag)('platform.learning-resources.global-learning-resources');
     var xs = (0,_hooks_useWindowWidth__WEBPACK_IMPORTED_MODULE_21__["default"])().xs;
     var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_22__["default"]), user = _useContext.user, token = _useContext.token;
-    var unreadNotifications = (0,jotai__WEBPACK_IMPORTED_MODULE_26__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_24__.unreadNotificationsAtom);
-    var _useAtom1 = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_26__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_24__.notificationDrawerExpandedAtom), 2), isNotificationDrawerExpanded = _useAtom1[0], toggleNotifications = _useAtom1[1];
+    var unreadNotifications = (0,jotai__WEBPACK_IMPORTED_MODULE_27__.useAtomValue)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_24__.unreadNotificationsAtom);
+    var _useAtom1 = _sliced_to_array((0,jotai__WEBPACK_IMPORTED_MODULE_27__.useAtom)(_state_atoms_notificationDrawerAtom__WEBPACK_IMPORTED_MODULE_24__.notificationDrawerExpandedAtom), 2), isNotificationDrawerExpanded = _useAtom1[0], toggleNotifications = _useAtom1[1];
     var intl = (0,react_intl__WEBPACK_IMPORTED_MODULE_16__.useIntl)();
     var settingsPath = isITLessEnv ? "/settings/my-user-access" : enableIntegrations ? "/settings/integrations" : '/settings/sources';
     var identityAndAccessManagmentPath = '/iam/user-access/overview';
@@ -12493,6 +12500,7 @@ var Tools = function() {
     }, [
         user
     ]);
+    var supportCaseData = (0,_hooks_useSupportCaseData__WEBPACK_IMPORTED_MODULE_26__["default"])();
     var supportOptionsUrl = function() {
         return isITLessEnv ? 'https://redhatgov.servicenowservices.com/css' : 'https://access.redhat.com/support';
     };
@@ -12507,7 +12515,9 @@ var Tools = function() {
         {
             title: intl.formatMessage(_locales_Messages__WEBPACK_IMPORTED_MODULE_18__["default"].openSupportCase),
             onClick: function() {
-                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_19__.createSupportCase)(user.identity, token, isPreview);
+                return (0,_utils_createCase__WEBPACK_IMPORTED_MODULE_19__.createSupportCase)(user.identity, token, isPreview, {
+                    supportCaseData: supportCaseData
+                });
             },
             isDisabled: window.location.href.includes('/application-services') && !isRhosakEntitled,
             isHidden: isITLessEnv
@@ -19162,6 +19172,73 @@ var useMarketplacePartner = function() {
 
 /***/ }),
 
+/***/ "./src/hooks/useSupportCaseData.ts":
+/*!*****************************************!*\
+  !*** ./src/hooks/useSupportCaseData.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "webpack/sharing/consume/default/react-router-dom/react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../state/atoms/chromeModuleAtom */ "./src/state/atoms/chromeModuleAtom.ts");
+/* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
+
+
+
+
+
+function findRouteSupportCaseData(routes, currentPathname) {
+    var sortedModules = routes.sort(function(a, b) {
+        return b.pathname.length - a.pathname.length;
+    });
+    var matchedRoute = sortedModules.find(function(param) {
+        var pathname = param.pathname;
+        return (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.matchPath)({
+            path: pathname,
+            end: false
+        }, currentPathname);
+    });
+    return matchedRoute === null || matchedRoute === void 0 ? void 0 : matchedRoute.supportCaseData;
+}
+var useSupportCaseData = function() {
+    var scope = (0,jotai__WEBPACK_IMPORTED_MODULE_4__.useAtomValue)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_3__.activeModuleAtom);
+    var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
+    var modules = (0,jotai__WEBPACK_IMPORTED_MODULE_4__.useAtomValue)(_state_atoms_chromeModuleAtom__WEBPACK_IMPORTED_MODULE_2__.chromeModulesAtom);
+    var moduleConfig = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        return scope ? modules[scope] : undefined;
+    }, [
+        modules,
+        scope
+    ]);
+    var supportCaseData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function() {
+        var _moduleConfig_config;
+        if (!(moduleConfig === null || moduleConfig === void 0 ? void 0 : moduleConfig.modules)) {
+            return undefined;
+        }
+        var routeCaseData = findRouteSupportCaseData(moduleConfig.modules.flatMap(function(param) {
+            var routes = param.routes;
+            return routes;
+        }), location.pathname);
+        return routeCaseData !== null && routeCaseData !== void 0 ? routeCaseData : moduleConfig === null || moduleConfig === void 0 ? void 0 : (_moduleConfig_config = moduleConfig.config) === null || _moduleConfig_config === void 0 ? void 0 : _moduleConfig_config.supportCaseData;
+    }, [
+        moduleConfig,
+        location
+    ]);
+    return supportCaseData;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useSupportCaseData);
+
+
+/***/ }),
+
 /***/ "./src/hooks/useTabName.ts":
 /*!*********************************!*\
   !*** ./src/hooks/useTabName.ts ***!
@@ -22433,6 +22510,33 @@ function _object_spread(target) {
     }
     return target;
 }
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+    var target = _object_without_properties_loose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
 function _ts_generator(thisArg, body) {
     var f, y, t, g, _ = {
         label: 0,
@@ -22709,12 +22813,12 @@ function _getProductData() {
     });
     return _getProductData.apply(this, arguments);
 }
-function createSupportCase(userInfo, token, isPreview, fields) {
+function createSupportCase(userInfo, token, isPreview, options) {
     return _createSupportCase.apply(this, arguments);
 }
 function _createSupportCase() {
-    _createSupportCase = _async_to_generator(function(userInfo, token, isPreview, fields) {
-        var _getEnvDetails, _userInfo_user, _userInfo_user1, currentProduct, productData, _productData_app_name, _ref, src_hash, app_name, portalUrl, caseUrl;
+    _createSupportCase = _async_to_generator(function(userInfo, token, isPreview, options) {
+        var _getEnvDetails, _userInfo_user, _userInfo_user1, currentProduct, productData, _productData_app_name, _ref, src_hash, app_name, portalUrl, caseUrl, _ref1, supportCaseData, fields;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
@@ -22732,6 +22836,11 @@ function _createSupportCase() {
                     }, src_hash = _ref.src_hash, app_name = _ref.app_name;
                     portalUrl = "".concat((_getEnvDetails = (0,_common__WEBPACK_IMPORTED_MODULE_2__.getEnvDetails)()) === null || _getEnvDetails === void 0 ? void 0 : _getEnvDetails.portal);
                     caseUrl = "".concat(portalUrl).concat(_consts__WEBPACK_IMPORTED_MODULE_3__.HYDRA_ENDPOINT);
+                    _ref1 = options !== null && options !== void 0 ? options : {
+                        caseFields: {}
+                    }, supportCaseData = _ref1.supportCaseData, fields = _object_without_properties(_ref1, [
+                        "supportCaseData"
+                    ]);
                     log('Creating a support case');
                     fetch(caseUrl, {
                         method: 'POST',
@@ -22756,7 +22865,9 @@ function _createSupportCase() {
                         return response.json();
                     }).then(function(data) {
                         if (data) {
-                            var query = urijs__WEBPACK_IMPORTED_MODULE_1___default()("?seSessionId=".concat(data.session.id, "&product=").concat(data.sessionDetails.product, "&version=").concat(src_hash)).normalize();
+                            var _supportCaseData_product, _supportCaseData_version;
+                            // FIXME: Use the URLSearchParams API instead of URI.js
+                            var query = urijs__WEBPACK_IMPORTED_MODULE_1___default()("?seSessionId=".concat(data.session.id, "&product=").concat((_supportCaseData_product = supportCaseData === null || supportCaseData === void 0 ? void 0 : supportCaseData.product) !== null && _supportCaseData_product !== void 0 ? _supportCaseData_product : data.sessionDetails.product, "&version=").concat((_supportCaseData_version = supportCaseData === null || supportCaseData === void 0 ? void 0 : supportCaseData.version) !== null && _supportCaseData_version !== void 0 ? _supportCaseData_version : src_hash)).normalize();
                             window.open("".concat(portalUrl, "/support/cases/#/case/new/open-case/describe-issue").concat(query.readable()));
                             return createSupportSentry(data.session.id, fields);
                         }
