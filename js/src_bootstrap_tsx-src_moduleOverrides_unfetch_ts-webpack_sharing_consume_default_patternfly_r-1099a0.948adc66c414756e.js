@@ -7329,6 +7329,47 @@ var ContextSwitcher = function(param) {
 
 /***/ }),
 
+/***/ "./src/components/ErrorComponents/AccountOnHoldError.tsx":
+/*!***************************************************************!*\
+  !*** ./src/components/ErrorComponents/AccountOnHoldError.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   checkAccountOnHold: () => (/* binding */ checkAccountOnHold),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _redhat_cloud_services_frontend_components_NotAuthorized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/NotAuthorized */ "./node_modules/@redhat-cloud-services/frontend-components/esm/NotAuthorized/NotAuthorized.js");
+
+
+var ON_HOLD_MARK = 'Insights authorization failed - ERROR_EXPORT_CONTROL:';
+var checkAccountOnHold = function(error) {
+    var _error_response_data_errors_, _error_response_data_errors, _error_response_data, _error_response;
+    return error === null || error === void 0 ? void 0 : (_error_response = error.response) === null || _error_response === void 0 ? void 0 : (_error_response_data = _error_response.data) === null || _error_response_data === void 0 ? void 0 : (_error_response_data_errors = _error_response_data.errors) === null || _error_response_data_errors === void 0 ? void 0 : (_error_response_data_errors_ = _error_response_data_errors[0]) === null || _error_response_data_errors_ === void 0 ? void 0 : _error_response_data_errors_.detail.includes(ON_HOLD_MARK);
+};
+var AccountOnHoldError = function(param) {
+    var error = param.error;
+    var _error_response;
+    var data = (_error_response = error.response) === null || _error_response === void 0 ? void 0 : _error_response.data.errors[0].detail;
+    var description = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        dangerouslySetInnerHTML: {
+            __html: data
+        }
+    });
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_NotAuthorized__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        description: description,
+        serviceName: "Hybrid Cloud Console"
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AccountOnHoldError);
+
+
+/***/ }),
+
 /***/ "./src/components/ErrorComponents/DefaultErrorComponent.tsx":
 /*!******************************************************************!*\
   !*** ./src/components/ErrorComponents/DefaultErrorComponent.tsx ***!
@@ -7564,6 +7605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _DefaultErrorComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DefaultErrorComponent */ "./src/components/ErrorComponents/DefaultErrorComponent.tsx");
+/* harmony import */ var _AccountOnHoldError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountOnHoldError */ "./src/components/ErrorComponents/AccountOnHoldError.tsx");
 function _assert_this_initialized(self) {
     if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -7703,6 +7745,7 @@ function _create_super(Derived) {
 }
 
 
+
 var INVALID_AUTH_STATE_ERROR = 'No matching state found in storage';
 var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
     "use strict";
@@ -7749,6 +7792,11 @@ var ErrorBoundary = /*#__PURE__*/ function(_React_Component) {
             key: "render",
             value: function render() {
                 if (this.state.hasError) {
+                    if ((0,_AccountOnHoldError__WEBPACK_IMPORTED_MODULE_2__.checkAccountOnHold)(this.state.error)) {
+                        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AccountOnHoldError__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                            error: this.state.error
+                        });
+                    }
                     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DefaultErrorComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
                         error: this.state.error,
                         errorInfo: this.state.errorInfo,
