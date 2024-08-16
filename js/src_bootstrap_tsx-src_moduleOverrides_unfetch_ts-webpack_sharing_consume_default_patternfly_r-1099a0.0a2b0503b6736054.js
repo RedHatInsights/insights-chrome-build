@@ -6280,7 +6280,7 @@ var PlatformServiceslinks = function() {
         href: "/ansible",
         className: "pf-v5-u-pl-lg pf-v5-u-pb-sm",
         "data-ouia-component-id": "AllServices-Dropdown-Ansible"
-    }, "Red Hat Ansible Platform"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, "Red Hat Ansible Automation Platform"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ChromeLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
         href: "/insights",
         className: "pf-v5-u-pl-lg pf-v5-u-pb-sm",
         "data-ouia-component-id": "AllServices-Dropdown-RHEL"
