@@ -12656,7 +12656,8 @@ var Tools = function() {
                 return setIsPreview();
             },
             isReversed: true,
-            className: "chr-c-beta-switcher"
+            className: "chr-c-beta-switcher",
+            ouiaId: "PreviewSwitcher"
         });
     };
     var ThemeToggle = function() {
