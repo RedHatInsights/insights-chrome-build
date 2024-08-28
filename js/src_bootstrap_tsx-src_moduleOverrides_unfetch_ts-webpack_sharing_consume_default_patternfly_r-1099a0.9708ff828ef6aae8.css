@@ -9018,13 +9018,6 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
   --pf-v5-c-icon__content--Color: var(--pf-v5-global--Color--light-100);
   margin-right: var(--pf-v5-global--spacer--sm);
 }
-.chr-c-masthead .chr-c-beta-switcher {
-  --pf-v5-c-switch--FontSize: var(--pf-v5-global--FontSize--sm);
-}
-.chr-c-masthead .chr-c-beta-switcher .pf-v5-c-switch__label {
-  color: var(--pf-v5-global--palette--black-400) !important;
-  padding-right: 0;
-}
 .chr-c-masthead .chr-c-dropdown-item__stack {
   white-space: nowrap;
 }
@@ -34650,4 +34643,14 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
 .chr-c-footer .pf-v5-c-content {
   --pf-v5-c-content--a--Color: var(--pf-v5-global--Color--light-100);
   --pf-v5-c-content--a--hover--Color: var(--pf-v5-global--Color--light-100);
+}
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/components/BetaSwitcher/BetaSwitcher.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+.chr-c-beta-switcher {
+  background-color: var(--pf-v5-global--BackgroundColor--dark-400);
+  transition: background-color 0.3s;
+}
+.chr-c-beta-switcher.active {
+  background-color: var(--pf-v5-global--palette--blue-200);
 }
