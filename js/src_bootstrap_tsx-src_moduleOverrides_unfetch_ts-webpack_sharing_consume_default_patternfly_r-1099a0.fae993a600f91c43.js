@@ -1402,6 +1402,33 @@ function _iterable_to_array_limit(arr, i) {
 function _non_iterable_rest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
+function _object_without_properties(source, excluded) {
+    if (source == null) return {};
+    var target = _object_without_properties_loose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _object_without_properties_loose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
 function _sliced_to_array(arr, i) {
     return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
 }
@@ -1525,7 +1552,7 @@ var OIDCProvider = function(param) {
     var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined), 2), state = _useState1[0], setState = _useState1[1];
     function _setupSSO() {
         _setupSSO = _async_to_generator(function() {
-            var data, _data_chrome, ssoUrl;
+            var _ref, _ref_data, ignore, data, _data_chrome, ssoUrl;
             return _ts_generator(this, function(_state) {
                 switch(_state.label){
                     case 0:
@@ -1534,7 +1561,10 @@ var OIDCProvider = function(param) {
                             (0,_utils_common__WEBPACK_IMPORTED_MODULE_1__.loadFedModules)()
                         ];
                     case 1:
-                        data = _state.sent().data;
+                        _ref = _state.sent(), _ref_data = _ref.// ignore $schema from the data as it is an spec ref
+                        data, ignore = _ref_data.$schema, data = _object_without_properties(_ref.data, [
+                            "$schema"
+                        ]);
                         try {
                             _data_chrome = data.chrome, ssoUrl = _data_chrome.config.ssoUrl;
                             setState({
@@ -7368,10 +7398,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../ErrorComponents/GatewayErrorComponent */ "./src/components/ErrorComponents/GatewayErrorComponent.tsx");
 /* harmony import */ var _auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/ChromeAuthContext */ "./src/auth/ChromeAuthContext.ts");
-/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
 /* harmony import */ var _state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../state/atoms/activeModuleAtom */ "./src/state/atoms/activeModuleAtom.ts");
 /* harmony import */ var _state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../state/atoms/gatewayErrorAtom */ "./src/state/atoms/gatewayErrorAtom.ts");
 /* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
+/* harmony import */ var _utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/isNavItemVisible */ "./src/utils/isNavItemVisible.ts");
+/* harmony import */ var _NotFoundRoute__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../NotFoundRoute */ "./src/components/NotFoundRoute/index.ts");
+function _array_like_to_array(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function _array_with_holes(arr) {
+    if (Array.isArray(arr)) return arr;
+}
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
 function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -7384,6 +7453,33 @@ function _define_property(obj, key, value) {
         obj[key] = value;
     }
     return obj;
+}
+function _iterable_to_array_limit(arr, i) {
+    var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+    if (_i == null) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _s, _e;
+    try {
+        for(_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true){
+            _arr.push(_s.value);
+            if (i && _arr.length === i) break;
+        }
+    } catch (err) {
+        _d = true;
+        _e = err;
+    } finally{
+        try {
+            if (!_n && _i["return"] != null) _i["return"]();
+        } finally{
+            if (_d) throw _e;
+        }
+    }
+    return _arr;
+}
+function _non_iterable_rest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _object_spread(target) {
     for(var i = 1; i < arguments.length; i++){
@@ -7400,6 +7496,114 @@ function _object_spread(target) {
     }
     return target;
 }
+function _sliced_to_array(arr, i) {
+    return _array_with_holes(arr) || _iterable_to_array_limit(arr, i) || _unsupported_iterable_to_array(arr, i) || _non_iterable_rest();
+}
+function _unsupported_iterable_to_array(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _array_like_to_array(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _array_like_to_array(o, minLen);
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+
+
 
 
 
@@ -7417,13 +7621,72 @@ function _object_spread(target) {
 
 // eslint-disable-next-line react/display-name
 var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function(param) {
-    var scope = param.scope, module = param.module, scopeClass = param.scopeClass, path = param.path, props = param.props;
-    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_14__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_13__.isPreviewAtom);
+    var scope = param.scope, module = param.module, scopeClass = param.scopeClass, path = param.path, props = param.props, permissions = param.permissions;
+    var checkPermissions = function checkPermissions(permissions) {
+        return _checkPermissions.apply(this, arguments);
+    };
+    var isPreview = (0,jotai__WEBPACK_IMPORTED_MODULE_16__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_13__.isPreviewAtom);
     var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
     var setActiveHelpTopicByName = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_patternfly_quickstarts__WEBPACK_IMPORTED_MODULE_8__.HelpTopicContext).setActiveHelpTopicByName;
     var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_auth_ChromeAuthContext__WEBPACK_IMPORTED_MODULE_10__["default"]).user;
-    var gatewayError = (0,jotai__WEBPACK_IMPORTED_MODULE_14__.useAtomValue)(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_12__.gatewayErrorAtom);
-    var setActiveModule = (0,jotai__WEBPACK_IMPORTED_MODULE_14__.useSetAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    var gatewayError = (0,jotai__WEBPACK_IMPORTED_MODULE_16__.useAtomValue)(_state_atoms_gatewayErrorAtom__WEBPACK_IMPORTED_MODULE_12__.gatewayErrorAtom);
+    var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null), 2), isHidden = _useState[0], setIsHidden = _useState[1];
+    var setActiveModule = (0,jotai__WEBPACK_IMPORTED_MODULE_16__.useSetAtom)(_state_atoms_activeModuleAtom__WEBPACK_IMPORTED_MODULE_11__.activeModuleAtom);
+    function _checkPermissions() {
+        _checkPermissions = _async_to_generator(function(permissions) {
+            var withResult, error;
+            return _ts_generator(this, function(_state) {
+                switch(_state.label){
+                    case 0:
+                        _state.trys.push([
+                            0,
+                            2,
+                            ,
+                            3
+                        ]);
+                        return [
+                            4,
+                            Promise.all(permissions.map(function(permission) {
+                                return (0,_utils_isNavItemVisible__WEBPACK_IMPORTED_MODULE_14__.evaluateVisibility)({
+                                    permissions: permission
+                                });
+                            }))
+                        ];
+                    case 1:
+                        withResult = _state.sent();
+                        setIsHidden(withResult.some(function(result) {
+                            return result.isHidden;
+                        }));
+                        return [
+                            3,
+                            3
+                        ];
+                    case 2:
+                        error = _state.sent();
+                        console.error('Error while checking route permissions', error);
+                        // if there is an error, hide the route
+                        // better missing page than runtime error that brings down entire chrome
+                        setIsHidden(true);
+                        return [
+                            3,
+                            3
+                        ];
+                    case 3:
+                        return [
+                            2
+                        ];
+                }
+            });
+        });
+        return _checkPermissions.apply(this, arguments);
+    }
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
+        if (Array.isArray(permissions)) {
+            checkPermissions(permissions);
+        }
+    }, [
+        permissions
+    ]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function() {
         (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.batch)(function() {
             // Only trigger update on a first application render before any active module has been selected
@@ -7444,6 +7707,8 @@ var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(func
        * TODO: Discuss default close feature of topics
        * Topics drawer has no close button, therefore there might be an issue with opened topics after user changes route and does not clear the active topic trough the now non existing elements.
        */ setActiveHelpTopicByName && setActiveHelpTopicByName('');
+        // reset visibility function
+        setIsHidden(null);
         return function() {
             /**
          * Reset global filter when switching application
@@ -7456,6 +7721,13 @@ var ChromeRoute = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(func
         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_ErrorComponents_GatewayErrorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
             error: gatewayError
         });
+    }
+    if (isHidden === null && Array.isArray(permissions)) {
+        return _utils_loading_fallback__WEBPACK_IMPORTED_MODULE_2__["default"];
+    }
+    if (isHidden) {
+        // do not spill the beans about hidden routes
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_NotFoundRoute__WEBPACK_IMPORTED_MODULE_15__["default"], null);
     }
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
         className: classnames__WEBPACK_IMPORTED_MODULE_7___default()(scopeClass, scope)
