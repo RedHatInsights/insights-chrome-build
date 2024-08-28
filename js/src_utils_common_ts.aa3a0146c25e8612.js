@@ -707,7 +707,8 @@ var generateRoutesList = function(modules) {
                     manifestLocation: manifestLocation,
                     dynamic: typeof dynamic === 'boolean' ? dynamic : typeof route === 'string' ? true : route.dynamic,
                     exact: typeof route === 'string' ? false : route.exact,
-                    props: (typeof route === "undefined" ? "undefined" : _type_of(route)) === 'object' ? route.props : undefined
+                    props: (typeof route === "undefined" ? "undefined" : _type_of(route)) === 'object' ? route.props : undefined,
+                    permissions: (typeof route === "undefined" ? "undefined" : _type_of(route)) === 'object' ? route.permissions : undefined
                 };
             });
         }).flat()));
