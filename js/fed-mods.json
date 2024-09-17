@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.8c4677f6a1ac7724.js"
+            "/apps/chrome/js/chrome.7533564a9589d2f4.js"
         ],
         "modules": [
             "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.c45ab527d3507d42.js",
@@ -9,7 +9,7 @@
             "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.b6e1f62cb0cf628d.js",
             "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.bfd72a9eed04f284.css",
             "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.c60872e9cf94f9cc.js",
-            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.33d8ccd41581ad89.js",
+            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.2384e406f2808f20.js",
             "/apps/chrome/js/_9b31.8dfbb3484ac74f3e.js",
             "/apps/chrome/js/node_modules_patternfly_react-core_dist_esm_components_List_index_js-_c0470.cd4f4eccc93be174.js",
             "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.0f1b0fa873d4a200.js",
