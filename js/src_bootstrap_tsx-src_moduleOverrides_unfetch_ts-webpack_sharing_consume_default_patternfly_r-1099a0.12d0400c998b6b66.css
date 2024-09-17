@@ -17526,11 +17526,17 @@ button.pf-v5-c-button.chr-c-button-feedback:hover {
     top: 70px;
     height: 100vh;
   }
+  .chr-c-page__services-nav-dropdown-menu.preview-offset {
+    top: 102px;
+  }
 }
 @media screen and (max-width: 1450px) {
   .chr-c-page__services-nav-dropdown-menu {
     top: 118px;
     height: 100vh;
+  }
+  .chr-c-page__services-nav-dropdown-menu.preview-offset {
+    top: 150px;
   }
 }
 .chr-c-page__services-nav-dropdown-menu .pf-v5-c-dropdown__menu::before {
