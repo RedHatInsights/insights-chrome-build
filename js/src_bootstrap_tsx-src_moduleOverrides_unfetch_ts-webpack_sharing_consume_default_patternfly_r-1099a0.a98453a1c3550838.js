@@ -5961,13 +5961,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Tabs__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Title */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Title/@patternfly/react-core/dist/dynamic/components/Title");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Title__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/times-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/times-icon/@patternfly/react-icons/dist/dynamic/icons/times-icon");
-/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../FavoriteServices/ServicesGallery */ "./src/components/FavoriteServices/ServicesGallery.tsx");
-/* harmony import */ var _AllServicesTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./AllServicesTabs */ "./src/components/AllServicesDropdown/AllServicesTabs.tsx");
-/* harmony import */ var _AllServicesGallery__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AllServicesGallery */ "./src/components/AllServicesDropdown/AllServicesGallery.tsx");
-/* harmony import */ var _FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../FavoriteServices/QuickAccess */ "./src/components/FavoriteServices/QuickAccess.tsx");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
+/* harmony import */ var jotai__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! jotai */ "./node_modules/jotai/esm/react.mjs");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/times-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/times-icon/@patternfly/react-icons/dist/dynamic/icons/times-icon");
+/* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../FavoriteServices/ServicesGallery */ "./src/components/FavoriteServices/ServicesGallery.tsx");
+/* harmony import */ var _AllServicesTabs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AllServicesTabs */ "./src/components/AllServicesDropdown/AllServicesTabs.tsx");
+/* harmony import */ var _AllServicesGallery__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./AllServicesGallery */ "./src/components/AllServicesDropdown/AllServicesGallery.tsx");
+/* harmony import */ var _FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../FavoriteServices/QuickAccess */ "./src/components/FavoriteServices/QuickAccess.tsx");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./common */ "./src/components/AllServicesDropdown/common.ts");
+/* harmony import */ var _state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../state/atoms/releaseAtom */ "./src/state/atoms/releaseAtom.ts");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -6029,6 +6033,9 @@ function _unsupported_iterable_to_array(o, minLen) {
 
 
 
+
+
+
 var TAB_CONTENT_ID = 'refTab1Section';
 var FAVORITE_TAB_ID = 'favorites';
 var AllServicesMenu = function(param) {
@@ -6036,6 +6043,7 @@ var AllServicesMenu = function(param) {
     var _React_useState = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState(FAVORITE_TAB_ID), 2), activeTabKey = _React_useState[0], setActiveTabKey = _React_useState[1];
     var _React_useState1 = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState(false), 2), isExpanded = _React_useState1[0], setIsExpanded = _React_useState1[1];
     var _React_useState2 = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState(linkSections[0]), 2), selectedService = _React_useState2[0], setSelectedService = _React_useState2[1];
+    var hideBanner = (0,jotai__WEBPACK_IMPORTED_MODULE_17__.useAtomValue)(_state_atoms_releaseAtom__WEBPACK_IMPORTED_MODULE_16__.hidePreviewBannerAtom);
     // Toggle currently active tab
     var handleTabClick = function(event, tabIndex) {
         setActiveTabKey(tabIndex);
@@ -6056,7 +6064,7 @@ var AllServicesMenu = function(param) {
     };
     var tabContentRef = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createRef();
     var panelRef = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(null);
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_common__WEBPACK_IMPORTED_MODULE_14__.AllServicesDropdownContext.Provider, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_common__WEBPACK_IMPORTED_MODULE_15__.AllServicesDropdownContext.Provider, {
         value: {
             onLinkClick: function onLinkClick() {
                 // close modal on any link click
@@ -6065,7 +6073,9 @@ var AllServicesMenu = function(param) {
         }
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         ref: menuRef,
-        className: "pf-v5-u-w-100 chr-c-page__services-nav-dropdown-menu",
+        className: classnames__WEBPACK_IMPORTED_MODULE_9___default()('pf-v5-u-w-100 chr-c-page__services-nav-dropdown-menu', {
+            'preview-offset': !hideBanner
+        }),
         "data-testid": "chr-c__find-app-service",
         onClick: handleClickOutside
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Backdrop__WEBPACK_IMPORTED_MODULE_1__.Backdrop, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Panel__WEBPACK_IMPORTED_MODULE_5__.Panel, {
@@ -6074,7 +6084,7 @@ var AllServicesMenu = function(param) {
         ref: panelRef
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Panel__WEBPACK_IMPORTED_MODULE_5__.PanelMain, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.Sidebar, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Sidebar__WEBPACK_IMPORTED_MODULE_6__.SidebarPanel, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.Stack, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_layouts_Stack__WEBPACK_IMPORTED_MODULE_4__.StackItem, {
         className: "pf-v5-u-w-100"
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesTabs__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesTabs__WEBPACK_IMPORTED_MODULE_12__["default"], {
         activeTabKey: activeTabKey,
         handleTabClick: handleTabClick,
         isExpanded: isExpanded,
@@ -6095,7 +6105,7 @@ var AllServicesMenu = function(param) {
                     onClick: function() {
                         return setIsOpen(!isOpen);
                     }
-                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_9___default()), null))
+                }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((_patternfly_react_icons_dist_dynamic_icons_times_icon__WEBPACK_IMPORTED_MODULE_10___default()), null))
             ]
         },
         className: "pf-v5-u-pr-xs pf-v5-u-pr-md-on-md"
@@ -6106,9 +6116,9 @@ var AllServicesMenu = function(param) {
         id: TAB_CONTENT_ID,
         ref: tabContentRef,
         "aria-label": selectedService === null || selectedService === void 0 ? void 0 : selectedService.description
-    }, activeTabKey === FAVORITE_TAB_ID ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_13__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }, activeTabKey === FAVORITE_TAB_ID ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_QuickAccess__WEBPACK_IMPORTED_MODULE_14__["default"], null), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FavoriteServices_ServicesGallery__WEBPACK_IMPORTED_MODULE_11__["default"], {
         favoritedServices: favoritedServices
-    })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallery__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    })) : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AllServicesGallery__WEBPACK_IMPORTED_MODULE_13__["default"], {
         selectedService: selectedService
     })))))))))));
 };
