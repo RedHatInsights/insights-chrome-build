@@ -3110,8 +3110,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     teamWillReviewBug: {
         id: 'teamWillReviewBug',
-        description: 'We appreciate your feedback and our team will review your report shorlty',
-        defaultMessage: 'We appreciate your feedback and our team will review your report shorlty'
+        description: 'We appreciate your feedback and our team will review your report shortly',
+        defaultMessage: 'We appreciate your feedback and our team will review your report shortly'
     },
     responseSent: {
         id: 'responseSent',
