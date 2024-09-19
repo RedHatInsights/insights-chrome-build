@@ -91,7 +91,6 @@ aside {
 .chr-render {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
 }
 .chr-render > main {
   flex-grow: 1;
