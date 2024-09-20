@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.59efa6ba1b5977a9.js"
+            "/apps/chrome/js/chrome.9391b56b8be0380a.js"
         ],
         "modules": [
             "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.c45ab527d3507d42.js",
@@ -15,7 +15,7 @@
             "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.0f1b0fa873d4a200.js",
             "/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.be6865c521f12f21.js",
             "/apps/chrome/js/vendors-node_modules_lodash_lodash_js.2887c54816758da3.js",
-            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.08c41e29fa9bd03e.js",
+            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.8b68251c9e845129.js",
             "/apps/chrome/js/vendors-node_modules_patternfly_react-core_dist_esm_components_Form_ActionGroup_js-node_modul-d7884a.fd36ebc5c6f8ffe6.js",
             "/apps/chrome/js/src_utils_common_ts.aa3a0146c25e8612.js"
         ]
