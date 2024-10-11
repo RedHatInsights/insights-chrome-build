@@ -1,22 +1,22 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.b9649df2d847127b.js"
+            "/apps/chrome/js/chrome.5793bdbb964186cb.js"
         ],
         "modules": [
             "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.c2ea82c6066bc2f5.js",
-            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.90e3d8ddacec2428.css",
-            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.668386f09c7dbba3.js",
+            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.c9a394102e41bc87.css",
+            "/apps/chrome/js/src_components_FavoriteServices_LandingNavFavorites_tsx.a73a32934b9500cb.js",
             "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.f413256cd31ecf39.css",
-            "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.00115c43277aa82b.js",
-            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.074269fa8239a568.js",
+            "/apps/chrome/js/src_components_FavoriteServices_DashboardFavorites_tsx.1d503185efcaffbf.js",
+            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.3f8c290d3d87f758.js",
             "/apps/chrome/js/_9b31.8dfbb3484ac74f3e.js",
             "/apps/chrome/js/node_modules_patternfly_react-core_dist_esm_components_List_index_js-_c0470.c31c583af7805341.js",
             "/apps/chrome/js/vendors-node_modules_buffer_index_js-node_modules_lodash__baseFlatten_js-node_modules_lodash_-1de864.a59cd35be41d332a.js",
             "/apps/chrome/js/vendors-node_modules_axios_index_js-node_modules_lodash_flatMap_js.d6736feddb565a34.js",
             "/apps/chrome/js/vendors-node_modules_lodash_lodash_js.f556a7985d9093bf.js",
-            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.e8a83db1af4dd89f.js",
-            "/apps/chrome/js/vendors-node_modules_patternfly_react-core_dist_esm_components_Form_ActionGroup_js-node_modul-d7884a.bdfde3da8dedd566.js",
+            "/apps/chrome/js/vendors-node_modules_redhat-cloud-services_frontend-components-pdf-generator_dist_esm_index_js.f5b1e79f5bfaa09a.js",
+            "/apps/chrome/js/vendors-node_modules_patternfly_react-core_dist_esm_components_Form_ActionGroup_js-node_modul-4ed326.6dc913d70dae5f60.js",
             "/apps/chrome/js/src_utils_common_ts.ba4a43866ecd54e2.js"
         ]
     }
