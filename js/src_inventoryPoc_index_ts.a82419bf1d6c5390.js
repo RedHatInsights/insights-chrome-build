@@ -1,5 +1,53 @@
-"use strict";
 (self["webpackChunkinsights_chrome"] = self["webpackChunkinsights_chrome"] || []).push([["src_inventoryPoc_index_ts"],{
+
+/***/ "./src/inventoryPoc/FilterToolbar.tsx":
+/*!********************************************!*\
+  !*** ./src/inventoryPoc/FilterToolbar.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Toolbar */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Toolbar/@patternfly/react-core/dist/dynamic/components/Toolbar?534c");
+/* harmony import */ var _patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-core */ "./node_modules/@patternfly/react-core/dist/esm/components/Pagination/Pagination.js");
+
+
+
+var FilterToolbar = function(props) {
+    var page = props.page, perPage = props.perPage, onSetPage = props.onSetPage, onPerPageSelect = props.onPerPageSelect;
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1__.Toolbar, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1__.ToolbarContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_1__.ToolbarItem, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_2__.Pagination, {
+        onPerPageSelect: function(_e, newPerPage) {
+            return onPerPageSelect(newPerPage);
+        },
+        onSetPage: function(_e, newPage) {
+            return onSetPage(newPage);
+        },
+        page: page,
+        perPage: perPage,
+        perPageOptions: [
+            5,
+            10,
+            20,
+            50,
+            100
+        ].map(function(i) {
+            return {
+                title: "".concat(i),
+                value: i
+            };
+        })
+    })))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FilterToolbar);
+
+
+/***/ }),
 
 /***/ "./src/inventoryPoc/InventoryColumn.ts":
 /*!*********************************************!*\
@@ -7,6 +55,7 @@
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   BaseInventoryColumn: () => (/* binding */ BaseInventoryColumn),
@@ -149,14 +198,16 @@ function isAsyncColumnData(columnData) {
 var BaseInventoryColumn = /*#__PURE__*/ function() {
     "use strict";
     function BaseInventoryColumn(columnId, title, param) {
-        var columnData = param.columnData;
+        var columnData = param.columnData, sortable = (arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {}).sortable;
         _class_call_check(this, BaseInventoryColumn);
         _define_property(this, "columnId", void 0);
         _define_property(this, "title", void 0);
         _define_property(this, "columnData", void 0);
+        _define_property(this, "sortable", false);
         this.columnId = columnId;
         this.title = title;
         this.columnData = columnData;
+        this.sortable = sortable;
     }
     _create_class(BaseInventoryColumn, [
         {
@@ -175,6 +226,12 @@ var BaseInventoryColumn = /*#__PURE__*/ function() {
             key: "getColumnData",
             value: function getColumnData() {
                 return this.columnData;
+            }
+        },
+        {
+            key: "getSortable",
+            value: function getSortable() {
+                return !!this.sortable;
             }
         },
         {
@@ -299,6 +356,7 @@ var InventoryColumn = /*#__PURE__*/ function(BaseInventoryColumn) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -306,13 +364,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react/react?1a75");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _InventoryColumn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InventoryColumn */ "./src/inventoryPoc/InventoryColumn.ts");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Table.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Thead.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Tr.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Th.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Tbody.js");
-/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Td.js");
-/* harmony import */ var _redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/DateFormat */ "./node_modules/@redhat-cloud-services/frontend-components/esm/DateFormat/DateFormat.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Table.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Thead.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Tr.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Th.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Tbody.js");
+/* harmony import */ var _patternfly_react_table__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @patternfly/react-table */ "./node_modules/@patternfly/react-table/dist/esm/components/Table/Td.js");
+/* harmony import */ var _redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @redhat-cloud-services/frontend-components/DateFormat */ "./node_modules/@redhat-cloud-services/frontend-components/esm/DateFormat/DateFormat.js");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_security_icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/security-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/security-icon/@patternfly/react-icons/dist/dynamic/icons/security-icon");
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_security_icon__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_security_icon__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_tag_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @patternfly/react-icons/dist/dynamic/icons/tag-icon */ "webpack/sharing/consume/default/@patternfly/react-icons/dist/dynamic/icons/tag-icon/@patternfly/react-icons/dist/dynamic/icons/tag-icon");
@@ -332,6 +390,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_icons_dist_dynamic_icons_cog_icon__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @patternfly/react-core/dist/dynamic/components/Toolbar */ "webpack/sharing/consume/default/@patternfly/react-core/dist/dynamic/components/Toolbar/@patternfly/react-core/dist/dynamic/components/Toolbar?534c");
 /* harmony import */ var _patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_patternfly_react_core_dist_dynamic_components_Toolbar__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _FilterToolbar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./FilterToolbar */ "./src/inventoryPoc/FilterToolbar.tsx");
 function _array_like_to_array(arr, len) {
     if (len == null || len > arr.length) len = arr.length;
     for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
@@ -568,6 +627,7 @@ function _ts_generator(thisArg, body) {
 
 
 
+
 function createRows(columns) {
     var rowNumber = columns.reduce(function(acc, column) {
         var _column_isAsync;
@@ -648,17 +708,27 @@ function useColumnData(columns) {
     return res;
 }
 var ModularInventory = function(param) {
-    var columns = param.columns;
+    var columns = param.columns, onSort = param.onSort, sortBy = param.sortBy, sortDirection = param.sortDirection;
     var _useColumnData = _sliced_to_array(useColumnData(columns), 1), allData = _useColumnData[0];
-    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_12__.Table, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_13__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_14__.Tr, null, columns.map(function(column) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__.Th, {
+    return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_13__.Table, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_14__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__.Tr, null, columns.map(function(column, idx) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__.Th, {
+            sort: column.getSortable() ? {
+                columnIndex: idx,
+                sortBy: {
+                    index: sortBy,
+                    direction: sortDirection
+                },
+                onSort: function(_e, index, direction) {
+                    return onSort(index, direction);
+                }
+            } : undefined,
             key: column.getColumnId()
         }, column.getTitle());
-    }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_16__.Tbody, null, allData.map(function(row, index) {
-        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_14__.Tr, {
+    }))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_17__.Tbody, null, allData.map(function(row, index) {
+        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_15__.Tr, {
             key: index
         }, row.map(function(cell, cellIndex) {
-            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_17__.Td, {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_18__.Td, {
                 key: cellIndex
             }, cell);
         }));
@@ -666,12 +736,12 @@ var ModularInventory = function(param) {
 };
 var columnIds = [
     'id',
-    'name',
+    'display_name',
     'all-cves',
     'cves',
     'tags',
     'os',
-    'lastCheckIn',
+    'updated',
     'criticalCves',
     'importantCves',
     'moderateCves',
@@ -874,16 +944,20 @@ var columnsRegistry = {
             columnData: hosts.map(function(host) {
                 return host.id;
             })
+        }, {
+            sortable: true
         });
     },
-    name: function(hosts) {
-        return new _InventoryColumn__WEBPACK_IMPORTED_MODULE_1__.BaseInventoryColumn('name', 'System Name', {
+    display_name: function(hosts) {
+        return new _InventoryColumn__WEBPACK_IMPORTED_MODULE_1__.BaseInventoryColumn('display_name', 'System Name', {
             columnData: hosts.map(function(host) {
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
                     key: host.id,
                     href: "#"
                 }, host.display_name);
             })
+        }, {
+            sortable: true
         });
     },
     'all-cves': function(_e, cvePromises) {
@@ -999,15 +1073,17 @@ var columnsRegistry = {
             })
         });
     },
-    lastCheckIn: function(hosts) {
-        return new _InventoryColumn__WEBPACK_IMPORTED_MODULE_1__.BaseInventoryColumn('lastCheckIn', 'Last check-in', {
+    updated: function(hosts) {
+        return new _InventoryColumn__WEBPACK_IMPORTED_MODULE_1__.BaseInventoryColumn('updated', 'Last check-in', {
             columnData: hosts.map(function(host) {
                 var _host_per_reporter_staleness_puptoo, _host_per_reporter_staleness_puptoo1;
-                return ((_host_per_reporter_staleness_puptoo = host.per_reporter_staleness.puptoo) === null || _host_per_reporter_staleness_puptoo === void 0 ? void 0 : _host_per_reporter_staleness_puptoo.last_check_in) ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_18__["default"], {
+                return ((_host_per_reporter_staleness_puptoo = host.per_reporter_staleness.puptoo) === null || _host_per_reporter_staleness_puptoo === void 0 ? void 0 : _host_per_reporter_staleness_puptoo.last_check_in) ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_redhat_cloud_services_frontend_components_DateFormat__WEBPACK_IMPORTED_MODULE_19__["default"], {
                     key: host.id,
                     date: (_host_per_reporter_staleness_puptoo1 = host.per_reporter_staleness.puptoo) === null || _host_per_reporter_staleness_puptoo1 === void 0 ? void 0 : _host_per_reporter_staleness_puptoo1.last_check_in
                 }) : null;
             })
+        }, {
+            sortable: true
         });
     }
 };
@@ -1015,6 +1091,7 @@ var ModularInventoryRoute = function() {
     var initData = function initData() {
         return _initData.apply(this, arguments);
     };
+    var _filterState_orderHow;
     var _React_useState = _sliced_to_array(react__WEBPACK_IMPORTED_MODULE_0___default().useState([]), 2), hosts = _React_useState[0], setHosts = _React_useState[1];
     var _useState = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(columnIds.reduce(function(acc, curr) {
         acc[curr] = true;
@@ -1060,7 +1137,7 @@ var ModularInventoryRoute = function() {
                     case 0:
                         return [
                             4,
-                            (0,_api__WEBPACK_IMPORTED_MODULE_4__.getHosts)()
+                            (0,_api__WEBPACK_IMPORTED_MODULE_4__.getHosts)(filterState)
                         ];
                     case 1:
                         response = _state.sent();
@@ -1074,15 +1151,53 @@ var ModularInventoryRoute = function() {
         });
         return _initData.apply(this, arguments);
     }
+    var _useState1 = _sliced_to_array((0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+        page: 1,
+        perPage: 20,
+        orderBy: 'updated',
+        orderHow: 'DESC'
+    }), 2), filterState = _useState1[0], setFilterState = _useState1[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function() {
         initData();
-    }, []);
+    }, [
+        JSON.stringify(filterState)
+    ]);
+    var onPerPageSelect = function(perPage) {
+        setFilterState(function(prev) {
+            return _object_spread_props(_object_spread({}, prev), {
+                perPage: perPage
+            });
+        });
+    };
+    var onSetPage = function(page) {
+        setFilterState(function(prev) {
+            return _object_spread_props(_object_spread({}, prev), {
+                page: page
+            });
+        });
+    };
+    var _columnIds_indexOf;
     return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "pf-v5-u-p-md"
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ColumnEnabler, {
         enabledColumns: enabledColumns,
         handleCheckboxChange: handleCheckboxChange
-    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ModularInventory, {
+    }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FilterToolbar__WEBPACK_IMPORTED_MODULE_12__["default"], _object_spread({
+        onPerPageSelect: onPerPageSelect,
+        onSetPage: onSetPage
+    }, filterState)), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ModularInventory, {
+        sortBy: filterState.orderBy ? (_columnIds_indexOf = columnIds.indexOf(filterState.orderBy)) !== null && _columnIds_indexOf !== void 0 ? _columnIds_indexOf : 0 : 0,
+        sortDirection: (_filterState_orderHow = filterState.orderHow) === null || _filterState_orderHow === void 0 ? void 0 : _filterState_orderHow.toLocaleLowerCase(),
+        onSort: function(index, direction) {
+            console.log(index, direction);
+            setFilterState(function(prev) {
+                var _columnIds_index, _direction_toUpperCase;
+                return _object_spread_props(_object_spread({}, prev), {
+                    orderBy: (_columnIds_index = columnIds[index]) !== null && _columnIds_index !== void 0 ? _columnIds_index : 'updated',
+                    orderHow: (_direction_toUpperCase = direction.toUpperCase()) !== null && _direction_toUpperCase !== void 0 ? _direction_toUpperCase : 'DESC'
+                });
+            });
+        },
         columns: cols
     }));
 };
@@ -1097,6 +1212,7 @@ var ModularInventoryRoute = function() {
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   getHostCVEs: () => (/* binding */ getHostCVEs),
@@ -1233,19 +1349,20 @@ function _ts_generator(thisArg, body) {
 }
 
 var getHosts = function() {
-    var _ref = _async_to_generator(function() {
-        var response;
+    var _ref = _async_to_generator(function(param) {
+        var _param_orderBy, orderBy, _param_orderHow, orderHow, _param_page, page, _param_perPage, perPage, response;
         return _ts_generator(this, function(_state) {
             switch(_state.label){
                 case 0:
+                    _param_orderBy = param.orderBy, orderBy = _param_orderBy === void 0 ? 'updated' : _param_orderBy, _param_orderHow = param.orderHow, orderHow = _param_orderHow === void 0 ? 'DESC' : _param_orderHow, _param_page = param.page, page = _param_page === void 0 ? 1 : _param_page, _param_perPage = param.perPage, perPage = _param_perPage === void 0 ? 20 : _param_perPage;
                     return [
                         4,
                         axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/inventory/v1/hosts', {
                             params: {
-                                page: 1,
-                                per_page: 20,
-                                order_by: 'updated',
-                                order_how: 'DESC',
+                                page: page,
+                                per_page: perPage,
+                                order_by: orderBy,
+                                order_how: orderHow,
                                 'fields[system_profile]': [
                                     'operating_system'
                                 ]
@@ -1261,7 +1378,7 @@ var getHosts = function() {
             }
         });
     });
-    return function getHosts() {
+    return function getHosts(_) {
         return _ref.apply(this, arguments);
     };
 }();
@@ -1455,6 +1572,7 @@ var getHostPatch = function() {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* reexport safe */ _ModularInventory__WEBPACK_IMPORTED_MODULE_0__["default"])
@@ -1465,6 +1583,16 @@ __webpack_require__.r(__webpack_exports__);
 // Ownership will be decided in future
 
 
+
+/***/ }),
+
+/***/ "?b574":
+/*!**********************************!*\
+  !*** ./pagination.css (ignored) ***!
+  \**********************************/
+/***/ (() => {
+
+/* (ignored) */
 
 /***/ })
 
