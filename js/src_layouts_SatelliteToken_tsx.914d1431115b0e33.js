@@ -224,13 +224,13 @@ var IPWhitelistTable = function() {
             setInputAddresses('');
             setIsIPModalOpen(false);
         },
-        title: 'Add IP Addresses to Allow List',
+        title: 'Add IP addresses to allowlist',
         variant: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.ModalVariant.medium
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_4__.Form, {
         onSubmit: function(event) {
             return event.preventDefault();
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__.FormGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__.Text, null, "Before connecting to your satellite servers, Red Hat needs to add your IP address or range of IP addresses to an allow-list.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_8__.TextInput, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__.FormGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__.Text, null, "Before connecting to your satellite servers, Red Hat needs to add your IP address or range of IP addresses to an allowlist.")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_8__.TextInput, {
         validated: validationError ? _patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__.ValidatedOptions.error : _patternfly_react_core__WEBPACK_IMPORTED_MODULE_9__.ValidatedOptions.default,
         placeholder: "127.0.0.1/32",
         onChange: function(_event, value) {
@@ -249,13 +249,13 @@ var IPWhitelistTable = function() {
             setRemoveAddresses('');
             setIsIPRemoveModalOpen(false);
         },
-        title: 'Remove IP Addresses from Allow List',
+        title: 'Remove IP addresses from allowlist',
         variant: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_3__.ModalVariant.medium
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_4__.Form, {
         onSubmit: function(event) {
             return event.preventDefault();
         }
-    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__.FormGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__.Text, null, "The following IP addresses will be removed from the allow list")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_8__.TextInput, {
+    }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_5__.FormGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_6__.TextContent, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_7__.Text, null, "The following IP addresses will be removed from the allowlist")), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_8__.TextInput, {
         isDisabled: true,
         value: removeAddresses
     })), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_14__.ActionGroup, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_15__.Button, {
@@ -283,7 +283,7 @@ var IPWhitelistTable = function() {
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_20__.Bullseye, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_21__.EmptyState, {
         variant: _patternfly_react_core__WEBPACK_IMPORTED_MODULE_21__.EmptyStateVariant.sm
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_22__.EmptyStateHeader, {
-        titleText: "No IP Addresses Allowed",
+        titleText: "No IP addresses allowed",
         headingLevel: "h2"
     }), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core__WEBPACK_IMPORTED_MODULE_23__.EmptyStateBody, null, "Before connecting to your satellite servers, Red Hat needs to add your IP address or range of IP addresses to an allow-list.")))));
     var ipTable = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_24__.OuterScrollContainer, {
@@ -291,7 +291,7 @@ var IPWhitelistTable = function() {
             maxHeight: '25rem'
         }
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_25__.InnerScrollContainer, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_26__.Table, {
-        "aria-label": "IP Address Allow List",
+        "aria-label": "IP allowlist",
         variant: _patternfly_react_table__WEBPACK_IMPORTED_MODULE_17__.TableVariant.compact,
         isStickyHeader: true
     }, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_27__.Thead, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_18__.Tr, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_28__.Th, null, columnNames.ip_block), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_28__.Th, null, columnNames.org_id), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_28__.Th, null, columnNames.created_at), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_28__.Th, null, columnNames.remove))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_table__WEBPACK_IMPORTED_MODULE_29__.Tbody, null, allAddresses.length <= 0 && emptyTable, allAddresses.map(function(ipBlock) {
@@ -672,7 +672,7 @@ var SatelliteToken = function() {
         isReadOnly: true,
         hoverTip: "Copy",
         clickTip: "Copied"
-    }, "SATELLITE_RH_CLOUD_URL=".concat(satelliteUrl, " org_id=<organization_id> foreman-rake rh_cloud:hybridcloud_register")))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_7__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "Registrations"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_SatelliteTable__WEBPACK_IMPORTED_MODULE_8__["default"], null)))), isOrgAdmin ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_7__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "IP Address Allow List"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_IPWhitelistTable__WEBPACK_IMPORTED_MODULE_9__["default"], null)))) : null));
+    }, "SATELLITE_RH_CLOUD_URL=".concat(satelliteUrl, " org_id=<organization_id> foreman-rake rh_cloud:hybridcloud_register")))))), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_7__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "Registrations"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_SatelliteTable__WEBPACK_IMPORTED_MODULE_8__["default"], null)))), isOrgAdmin ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Page__WEBPACK_IMPORTED_MODULE_7__.PageSection, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.Card, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardTitle, null, "IP allowlist"), /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_patternfly_react_core_dist_dynamic_components_Card__WEBPACK_IMPORTED_MODULE_4__.CardBody, null, /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Satellite_IPWhitelistTable__WEBPACK_IMPORTED_MODULE_9__["default"], null)))) : null));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SatelliteToken);
 
