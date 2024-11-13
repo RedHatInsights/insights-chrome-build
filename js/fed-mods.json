@@ -1,7 +1,7 @@
 {
     "chrome": {
         "entry": [
-            "/apps/chrome/js/chrome.5d842de9127d84e3.js"
+            "/apps/chrome/js/chrome.2075e5990dc7b13f.js"
         ],
         "modules": [
             "/apps/chrome/js/src_pdf_DownloadButton_tsx-webpack_sharing_consume_default_react_react.c2ea82c6066bc2f5.js",
@@ -9,7 +9,7 @@
             "/apps/chrome/js/node_modules_lodash_flatMap_js-src_components_FavoriteServices_LandingNavFavorites_tsx.f5250e5132c973c8.js",
             "/apps/chrome/js/node_modules_lodash_flatMap_js-src_components_FavoriteServices_DashboardFavorites_tsx.f413256cd31ecf39.css",
             "/apps/chrome/js/node_modules_lodash_flatMap_js-src_components_FavoriteServices_DashboardFavorites_tsx.ec5aa87c988ffd59.js",
-            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.3f8c290d3d87f758.js",
+            "/apps/chrome/js/src_layouts_SatelliteToken_tsx.914d1431115b0e33.js",
             "/apps/chrome/js/node_modules_redhat-cloud-services_frontend-components_esm_DateFormat_DateFormat_js-node_modu-438706.d6132a8e4f7e53e0.js",
             "/apps/chrome/js/_9b31.8dfbb3484ac74f3e.js",
             "/apps/chrome/js/node_modules_patternfly_react-core_dist_esm_components_List_index_js-_c0470.c31c583af7805341.js",
